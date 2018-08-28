@@ -1,4 +1,4 @@
-View Common Cartridges in the browser. Requires no server-side processing.
+View Common Cartridges in the browser.
 
 ## Development
 
