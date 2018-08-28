@@ -24,3 +24,4 @@ yarn-error.log*
 
 TODO.md
 public/cartridges
+.netlify
