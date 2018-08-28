@@ -5,7 +5,6 @@ import RichContent from "./RichContent";
 export default class WikiContent extends Component {
   render() {
     const doc = this.props.doc;
-
     const title = doc.querySelector("title")
       ? doc.querySelector("title").textContent
       : "Untitled";

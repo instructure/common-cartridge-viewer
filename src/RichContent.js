@@ -7,7 +7,17 @@ import Text from "@instructure/ui-elements/lib/components/Text";
 const DOMPurify = createDOMPurify(window);
 
 export default class RichContent extends Component {
-  async componentDidMount() {
+  componentDidMount() {
+    this.update();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.html !== this.props.html) {
+      this.update();
+    }
+  }
+
+  async update() {
     if (this.props.entryMap == null) {
       console.warn("this.props.entryMap missing");
       return;
@@ -29,22 +39,20 @@ export default class RichContent extends Component {
         )
         .map(async img => {
           const src = img.getAttribute("src").split("?")[0];
-
           const entryKey = src.replace(CC_FILE_PREFIX, "web_resources");
-
-          const entry = this.props.entryMap.get(entryKey);
+          const entry = this.props.entryMap.get(decodeURIComponent(entryKey));
 
           if (entry) {
             const blob = await getBlobFromEntry(entry);
-
             const dataUrl = await blobToDataUrl(blob);
-
             img.setAttribute("src", dataUrl);
           }
         })
     );
 
-    this.contentNode.appendChild(fragment);
+    if (this.contentNode) {
+      this.contentNode.appendChild(fragment);
+    }
   }
 
   setContentRef = node => {

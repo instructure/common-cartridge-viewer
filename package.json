@@ -29,13 +29,28 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "testcafe chrome,firefox ./tests/ --app \"serve ./build -s\"",
-    "test-chrome": "testcafe chrome ./tests/ --app \"serve ./build -s\"",
-    "test-firefox": "testcafe firefox ./tests/ --app \"serve ./build -s\"",
-    "test-safari": "testcafe safari ./tests/ --app \"serve ./build -s\"",
+    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
+    "test-chrome": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
+    "test-firefox": "testcafe firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
+    "test-safari": "testcafe safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
+    "test-all": "testcafe chrome,firefox,safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
     "eject": "react-scripts eject"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "1.14.2",
     "serve": "^9.6.0",
     "testcafe": "^0.21.1"
   }

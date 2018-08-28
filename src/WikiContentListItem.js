@@ -5,6 +5,7 @@ import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
 import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { getTextFromEntry } from "./utils.js";
+import { basename } from "path";
 
 export default class WikiContentListItem extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class WikiContentListItem extends Component {
 
     const xml = await getTextFromEntry(entry);
 
-    const doc = parser.parseFromString(xml, "text/xml");
+    const doc = parser.parseFromString(xml, "text/html");
 
     const title =
       doc.querySelector("title") && doc.querySelector("title").textContent;
@@ -60,7 +61,7 @@ export default class WikiContentListItem extends Component {
           </span>
           <div style={{ flex: 1 }}>
             <Link as={RouterLink} to={`${this.props.href}`}>
-              {this.state.title || "[Untitled?]"}
+              {this.state.title || basename(this.props.href)}
             </Link>
           </div>
           {this.state.workflowState != null && (

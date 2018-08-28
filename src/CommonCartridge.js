@@ -19,6 +19,7 @@ import Breadcrumb, {
 } from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
 import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import Link from "@instructure/ui-elements/lib/components/Link";
+import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import Grid, {
   GridRow,
   GridCol
@@ -39,7 +40,8 @@ import DiscussionListItem from "./DiscussionListItem";
 import FileListItem from "./FileListItem";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
-import prettyBytes from "./vendor/pretty-bytes";
+
+import waitingWristWatch from "./images/waiting-wrist-watch.svg";
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
 
@@ -60,7 +62,7 @@ export default class CommonCartridge extends Component {
       files: [],
       filter: "organizations",
       isLoaded: false,
-      loadProgress: null,
+      loadProgress: {},
       modules: [],
       pageResources: [],
       otherResources: []
@@ -86,10 +88,6 @@ export default class CommonCartridge extends Component {
       );
     }
   }
-
-  handleLoadProgress = event => {
-    this.setState({ loadProgress: event });
-  };
 
   async getEntriesFromSrc() {
     const [request, getEntriesPromise] = getEntriesFromXHR(this.props.src);
@@ -290,14 +288,11 @@ export default class CommonCartridge extends Component {
         .filter(item => item.querySelector("title"))
         .map(item => {
           const title = item.querySelector("title").textContent;
-
           const itemNodes = Array.from(item.querySelectorAll("item"));
-
           const items = itemNodes.map(item => {
             const title = item.querySelector("title")
               ? item.querySelector("title").textContent
               : "Untitled";
-
             const identifierref = item.getAttribute("identifierref");
 
             if (identifierref == null) {
@@ -313,18 +308,15 @@ export default class CommonCartridge extends Component {
             }
 
             const type = resource.getAttribute("type");
-
             const href = getResourceHref(resource);
 
             const dependencyHrefs = Array.from(
               resource.querySelectorAll("dependency")
             ).map(node => {
               const identifier = node.getAttribute("identifierref");
-
               const resource = manifest.querySelector(
                 `resource[identifier="${identifier}"]`
               );
-
               return getResourceHref(resource);
             });
 
@@ -340,12 +332,17 @@ export default class CommonCartridge extends Component {
         })
         .filter(module => module != null);
 
+      const moduleItems = modules.reduce((state, module) => {
+        return state.concat(module.items.filter(item => item.href != null));
+      }, []);
+
       this.setState({
         assessmentResources,
         assignmentResources,
         discussionResources,
         fileResources,
         isLoaded: true,
+        moduleItems,
         modules,
         otherResources,
         pageResources,
@@ -370,41 +367,42 @@ export default class CommonCartridge extends Component {
     this.props.onHistoryChange(history);
   };
 
+  handleLoadProgress = event => {
+    this.setState({ loadProgress: event });
+  };
+
   render() {
     if (this.state.isLoaded === false) {
-      const showProgress =
-        this.state.loadProgress != null && this.state.loadProgress.loaded;
-
-      const prettyProgressBytes =
-        showProgress && prettyBytes(this.state.loadProgress.loaded).split(" ");
-
-      const displayProgress =
-        prettyProgressBytes &&
-        `${parseFloat(prettyProgressBytes[0]).toFixed(1)} ${
-          prettyProgressBytes[1]
-        }`;
-
       return (
         <View as="div" margin="small" padding="large" textAlign="center">
-          {showProgress && (
-            <Progress
-              variant="bar"
-              animateOnMount
-              label="Loading completion"
-              formatValueText={(valueNow, valueMax) =>
-                `${prettyBytes(valueNow)} of ${prettyBytes(valueMax)} loaded`
-              }
-              formatDisplayedValue={(valueNow, valueMax) => (
-                <Text>
-                  <pre>{displayProgress}</pre>
-                </Text>
-              )}
-              valueNow={this.state.loadProgress.loaded}
-              valueMax={this.state.loadProgress.total}
-            />
-          )}
+          <Billboard
+            size="medium"
+            heading={"Loading Cartridge"}
+            hero={size => (
+              <img
+                alt=""
+                style={{ width: "125px", height: "80px" }}
+                src={waitingWristWatch}
+              />
+            )}
+            message="This may take some time depending on the size of the cartridge."
+          />
 
-          {showProgress === false && <span> </span>}
+          <Progress
+            variant="bar"
+            animateOnMount
+            label="Loading completion"
+            formatValueText={(valueNow, valueMax) =>
+              `${Math.floor((valueNow / valueMax) * 100)}% loaded`
+            }
+            formatDisplayedValue={(valueNow, valueMax) => (
+              <Text>
+                <pre>{Math.floor((valueNow / valueMax) * 100)}%</pre>
+              </Text>
+            )}
+            valueNow={this.state.loadProgress.loaded}
+            valueMax={this.state.loadProgress.total}
+          />
         </View>
       );
     }
@@ -882,6 +880,7 @@ export default class CommonCartridge extends Component {
                               <Resource
                                 entryMap={this.state.entryMap}
                                 href={match.url}
+                                moduleItems={this.state.moduleItems}
                                 src={this.props.src}
                               />
                             )}
