@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+
+    <script type="text/javascript" src="https://unpkg.com/zip-js@0.0.2/WebContent/zip.js"></script>
+	  <script type="text/javascript" src="https://unpkg.com/sanitize-html@1.18.2/dist/sanitize-html.min.js"></script>
+
+    <title>common-cartridge-viewer</title>
+  </head>
+
+  <body>
+    <script>
+      zip.workerScriptsPath = '/vendor/zip.js/'
+    </script>
+
+    <div id="root"></div>
+  </body>
+</html>

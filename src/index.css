@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+}
+
+.ListItem-inner {
+  padding: 10px;
+  border-left: 1px solid #c8cdd1;
+  border-right: 1px solid #c8cdd1;
+}
+
+/* temporary */
+ul.unstyled-list,
+ul.ExpandCollapseList,
+ul.assessment-questions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.unstyled-list li {
+  padding: 0;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-family: "LatoWeb", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ExpandCollapseList {
+  border: 1px solid #e9ebed;
+  border-radius: 4px;
+}
+
+.ExpandCollapseList-item:first-of-type {
+  border-top: none;
+}
+
+.ExpandCollapseList-item-inner {
+  display: flex;
+}
+
+.ExpandCollapseList .ExpandCollapseList .ExpandCollapseList-item:first-of-type {
+  border-top: 1px solid #e9ebed;
+}
+
+.ExpandCollapseList-item {
+  border-top: 1px solid #e9ebed;
+  padding: 12px;
+}
+
+.ExpandCollapseList .ExpandCollapseList {
+  border: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ExpandCollapseList-item-pts {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ExpandCollapseList-item-workflow-state {
+  margin-left: 8px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ExpandCollapseList-item-details {
+  color: #4e575f;
+  font-size: 0.82rem;
+  margin-top: 4px;
+}
+
+.resource-icon {
+  margin-right: 12px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.RichContent img {
+  max-width: 100%;
+}
+
+.course-title {
+  margin: 0;
+  font-family: LatoWeb, Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.8rem;
+}
