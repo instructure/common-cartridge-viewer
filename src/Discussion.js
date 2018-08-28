@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
+import Icon from "@instructure/ui-icons/lib/Line/IconDiscussion";
 import RichContent from "./RichContent";
 
 export default class Discussion extends Component {
@@ -12,8 +13,20 @@ export default class Discussion extends Component {
 
     const descriptionHtml = assignmentNode.querySelector("text").textContent;
 
+    const labelColor = "#6f2562";
+
     return (
       <React.Fragment>
+        <div className="resource-label" style={{ color: labelColor }}>
+          <div
+            className="resource-label-icon"
+            style={{ backgroundColor: labelColor }}
+          >
+            <Icon color="primary-inverse" />
+          </div>
+          <span>Discussion</span>
+        </div>
+
         <Heading level="h1" margin="0 0 small">
           {title}
         </Heading>

@@ -43,6 +43,28 @@ export default class WebResource extends Component {
       const blob = await getBlobFromEntry(entry);
       saveAs(blob, filename);
     }
+
+    document.body.addEventListener("keydown", this.handleKeyDown);
+  }
+
+  handleKeyDown = event => {
+    if (event.which === 37) {
+      const link = document.querySelector(".previous-link a");
+      if (link != null) {
+        link.click();
+      }
+      event.preventDefault();
+    } else if (event.which === 39) {
+      const link = document.querySelector(".next-link a");
+      if (link != null) {
+        link.click();
+      }
+      event.preventDefault();
+    }
+  };
+
+  componentWillUnmount() {
+    document.body.removeEventListener("keydown", this.handleKeyDown);
   }
 
   render() {
@@ -149,7 +171,7 @@ export default class WebResource extends Component {
         {(previousItem || nextItem) && (
           <div>
             {previousItem && (
-              <div style={{ float: "left" }}>
+              <div className="previous-link" style={{ float: "left" }}>
                 <Button
                   to={`/${previousItem.href}`}
                   variant="ghost"
@@ -162,7 +184,7 @@ export default class WebResource extends Component {
             )}
 
             {nextItem && (
-              <div style={{ float: "right" }}>
+              <div className="next-link" style={{ float: "right" }}>
                 <Button
                   as={RouterLink}
                   to={`/${nextItem.href}`}
