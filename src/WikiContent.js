@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
+import Icon from "@instructure/ui-icons/lib/Line/IconDocument";
 import RichContent from "./RichContent";
 
 export default class WikiContent extends Component {
@@ -11,8 +12,20 @@ export default class WikiContent extends Component {
 
     const html = doc.body ? doc.body.innerHTML : ""; // doc.body.innerHTML;
 
+    const labelColor = "#8A6240";
+
     return (
       <React.Fragment>
+        <div className="resource-label" style={{ color: labelColor }}>
+          <div
+            className="resource-label-icon"
+            style={{ backgroundColor: labelColor }}
+          >
+            <Icon color="primary-inverse" />
+          </div>
+          <span>Page</span>
+        </div>
+
         <Heading level="h1" margin="0 0 small">
           {title}
         </Heading>

@@ -2,6 +2,26 @@ body {
   margin: 0;
 }
 
+.resource-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+}
+
+.resource-label-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  margin-right: 6px;
+  font-size: 1.1rem;
+}
+
 .ListItem-inner {
   padding: 10px;
   border-left: 1px solid #c8cdd1;
