@@ -26,8 +26,6 @@ export default class WebResource extends Component {
   }
 
   async componentDidMount() {
-    const extension = (getExtension(this.props.href) || "").toLowerCase();
-
     const entry = this.props.entryMap.get(this.props.href.substr(1));
     if (entry == null) {
       this.setState({ isNotFound: true });
