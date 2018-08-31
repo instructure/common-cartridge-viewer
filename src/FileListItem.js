@@ -57,7 +57,7 @@ export default class FileListItem extends Component {
           </span>
           <div style={{ flex: 1 }}>
             <Link as={RouterLink} to={`${this.props.href}`}>
-              {this.state.title}
+              {this.state.title.replace(/^(web_resources\/)/, "")}
             </Link>
           </div>
 
