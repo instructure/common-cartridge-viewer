@@ -3,6 +3,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import RichContent from "./RichContent";
 import FormFieldGroup from "@instructure/ui-forms/lib/components/FormFieldGroup";
 import FormField from "@instructure/ui-forms/lib/components/FormField";
+import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
 import Select from "@instructure/ui-forms/lib/components/Select";
 import NumberInput from "@instructure/ui-forms/lib/components/NumberInput";
 
@@ -29,12 +30,23 @@ export default class Assignment extends Component {
         ? parseFloat(gradableNode.getAttribute("points_possible"))
         : 0;
 
+    const labelColor = "#AD4AA0";
+
     return (
       <React.Fragment>
+        <div className="resource-label" style={{ color: labelColor }}>
+          <div
+            className="resource-label-icon"
+            style={{ backgroundColor: labelColor }}
+          >
+            <Icon color="primary-inverse" />
+          </div>
+          <span>Assignment</span>
+        </div>
+
         <Heading level="h1" margin="0 0 small">
           {title}
         </Heading>
-
         <FormFieldGroup id="assignmentfields" description="">
           {submissionFormats.length > 0 && (
             <Select
