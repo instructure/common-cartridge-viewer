@@ -4,6 +4,7 @@ import { questionTypeLabels } from "./constants";
 import RichContent from "./RichContent";
 import FormFieldGroup from "@instructure/ui-forms/lib/components/FormFieldGroup";
 import FormField from "@instructure/ui-forms/lib/components/FormField";
+import Icon from "@instructure/ui-icons/lib/Line/IconQuiz";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import View from "@instructure/ui-layout/lib/components/View";
 import Pill from "@instructure/ui-elements/lib/components/Pill";
@@ -63,8 +64,20 @@ export default class Assessment extends Component {
       );
     });
 
+    const labelColor = "#A1403E";
+
     return (
       <React.Fragment>
+        <div className="resource-label" style={{ color: labelColor }}>
+          <div
+            className="resource-label-icon"
+            style={{ backgroundColor: labelColor }}
+          >
+            <Icon color="primary-inverse" />
+          </div>
+          <span>Assessment</span>
+        </div>
+
         <Heading level="h1" margin="0 0 small">
           {title}
         </Heading>
