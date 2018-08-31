@@ -78,6 +78,11 @@ test("Files", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .click(Selector("button").withText("Files"))
+    .expect(
+      Selector("div").withText("web_resources/Ally Accessibility Checklist.pdf")
+        .exists
+    )
+    .notOk()
     .expect(Selector("a").withText("Ally Accessibility Checklist.pdf").exists)
     .ok()
     .expect(Selector("a").withText("files_page_falconer.png").exists)
