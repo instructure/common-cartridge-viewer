@@ -34,16 +34,6 @@ export default class WebResource extends Component {
       return;
     }
 
-    if (
-      ["png", "jpg", "gif", "webp", "html", "qti", "xml"].includes(
-        extension
-      ) === false
-    ) {
-      const filename = basename(entry.filename);
-      const blob = await getBlobFromEntry(entry);
-      saveAs(blob, filename);
-    }
-
     document.body.addEventListener("keydown", this.handleKeyDown);
   }
 
@@ -61,6 +51,13 @@ export default class WebResource extends Component {
       }
       event.preventDefault();
     }
+  };
+
+  handleDownload = async () => {
+    const entry = this.props.entryMap.get(this.props.href.substr(1));
+    const filename = basename(entry.filename);
+    const blob = await getBlobFromEntry(entry);
+    saveAs(blob, filename);
   };
 
   componentWillUnmount() {
@@ -152,7 +149,8 @@ export default class WebResource extends Component {
       resource = (
         <Billboard
           size="medium"
-          message={`Downloading ${filename}`}
+          message={`Download ${filename}`}
+          onClick={this.handleDownload}
           hero={size => <IconDownload size={size} />}
         />
       );
