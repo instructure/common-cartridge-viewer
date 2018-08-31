@@ -5,6 +5,7 @@ import { saveAs } from "file-saver/FileSaver";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
 import Button from "@instructure/ui-buttons/lib/components/Button";
+import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
 
 import Image from "./Image";
 import Assignment from "./Assignment";
@@ -172,27 +173,37 @@ export default class WebResource extends Component {
           <div>
             {previousItem && (
               <div className="previous-link" style={{ float: "left" }}>
-                <Button
-                  to={`/${previousItem.href}`}
-                  variant="ghost"
-                  as={RouterLink}
-                  title={previousItem.title}
+                <Tooltip
+                  variant="inverse"
+                  tip={previousItem.title}
+                  placement="end"
                 >
-                  Previous
-                </Button>
+                  <Button
+                    to={`/${previousItem.href}`}
+                    variant="ghost"
+                    as={RouterLink}
+                  >
+                    Previous
+                  </Button>
+                </Tooltip>
               </div>
             )}
 
             {nextItem && (
               <div className="next-link" style={{ float: "right" }}>
-                <Button
-                  as={RouterLink}
-                  to={`/${nextItem.href}`}
-                  variant="ghost"
-                  title={nextItem.title}
+                <Tooltip
+                  variant="inverse"
+                  tip={nextItem.title}
+                  placement="start"
                 >
-                  Next
-                </Button>
+                  <Button
+                    as={RouterLink}
+                    to={`/${nextItem.href}`}
+                    variant="ghost"
+                  >
+                    Next
+                  </Button>
+                </Tooltip>
               </div>
             )}
           </div>
