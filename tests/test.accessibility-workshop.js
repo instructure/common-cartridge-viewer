@@ -60,7 +60,7 @@ test("Pages", async t => {
     .notContains("IMS-CC-FILEBASE", "CC file prefix not replaced");
 });
 
-test.skip("Discussions", async t => {
+test("Discussions", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .click(Selector("button").withText("Discussions"))
