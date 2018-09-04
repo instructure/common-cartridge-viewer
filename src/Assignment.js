@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import RichContent from "./RichContent";
 import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
-import Select from "@instructure/ui-forms/lib/components/Select";
-import NumberInput from "@instructure/ui-forms/lib/components/NumberInput";
 
 export default class Assignment extends Component {
   render() {
