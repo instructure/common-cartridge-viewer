@@ -45,8 +45,12 @@ test("Pages", async t => {
     .ok()
     .expect(Selector("a").withText("Caption Hub").exists)
     .ok();
+});
 
+test("Substition token (IMS-CC-FILEBASE)", async t => {
   await t
+    .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .click(Selector("button").withText("Pages"))
     .click(Selector("a").withText("The Time is Now"))
     .expect(Selector("h2").withText("Accessibility is the Law"))
     .ok()
@@ -58,6 +62,18 @@ test("Pages", async t => {
   await t
     .expect(src)
     .notContains("IMS-CC-FILEBASE", "CC file prefix not replaced");
+});
+
+test.skip("Substition token (WIKI_REFERENCE)", async t => {
+  await t
+    .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .click(Selector("button").withText("Pages"))
+    .click(Selector("a").withText("The Time is Now"))
+    .click(Selector("a").withText("on this page"))
+    .expect(
+      Selector("h1").withText(`RTC Accessibilty Advisory Committee`).exists
+    )
+    .ok();
 });
 
 test("Discussions", async t => {
