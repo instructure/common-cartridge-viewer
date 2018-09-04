@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import RichContent from "./RichContent";
-import FormFieldGroup from "@instructure/ui-forms/lib/components/FormFieldGroup";
-import FormField from "@instructure/ui-forms/lib/components/FormField";
 import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
 import Select from "@instructure/ui-forms/lib/components/Select";
 import NumberInput from "@instructure/ui-forms/lib/components/NumberInput";
@@ -47,40 +45,32 @@ export default class Assignment extends Component {
         <Heading level="h1" margin="0 0 small">
           {title}
         </Heading>
-        <FormFieldGroup id="assignmentfields" description="">
+        <React.Fragment>
           {submissionFormats.length > 0 && (
-            <Select
-              readOnly={true}
-              label="Submission formats"
-              defaultOption={submissionFormats}
-              formatSelectedOption={option => {
-                return <span>{option.label}</span>;
-              }}
-              multiple
-              onChange={(event, options) => console.log(options)}
-            >
-              {submissionFormats.map(format => (
-                <option key={format} value={format}>
-                  {format}
-                </option>
-              ))}
-            </Select>
+            <React.Fragment>
+              <div style={{ marginTop: "12px", marginBottom: "12px" }}>
+                <span style={{ fontWeight: "bold" }}>Submission formats</span>:{" "}
+                {submissionFormats.map(format => (
+                  <span>{format}</span>
+                ))}
+              </div>
+            </React.Fragment>
           )}
 
           {gradableNode != null && (
-            <NumberInput readOnly={true} label="Points" defaultValue={points} />
+            <div>
+              <span style={{ fontWeight: "bold" }}>Points</span>: {points}
+            </div>
           )}
 
           {descriptionHtml &&
             descriptionHtml.length > 0 && (
-              <FormField id="description" label="Description">
-                <RichContent
-                  html={descriptionHtml}
-                  entryMap={this.props.entryMap}
-                />
-              </FormField>
+              <RichContent
+                html={descriptionHtml}
+                entryMap={this.props.entryMap}
+              />
             )}
-        </FormFieldGroup>
+        </React.Fragment>
       </React.Fragment>
     );
   }
