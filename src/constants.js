@@ -1,4 +1,5 @@
-export const CC_FILE_PREFIX = "%24IMS-CC-FILEBASE%24"; // $
+export const CC_FILE_PREFIX = "%24IMS-CC-FILEBASE%24";
+export const WIKI_REFERENCE = "%24WIKI_REFERENCE%24";
 
 export const resourceTypes = {
   WEB_CONTENT: "webcontent",

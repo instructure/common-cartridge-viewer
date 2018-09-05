@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getBlobFromEntry, blobToDataUrl } from "./utils";
 import createDOMPurify from "dompurify";
-import { CC_FILE_PREFIX } from "./constants";
+import { CC_FILE_PREFIX, WIKI_REFERENCE } from "./constants";
 import Text from "@instructure/ui-elements/lib/components/Text";
 
 const DOMPurify = createDOMPurify(window);
@@ -27,6 +27,17 @@ export default class RichContent extends Component {
       RETURN_DOM_FRAGMENT: true,
       RETURN_DOM_IMPORT: true
     });
+
+    const links = Array.from(fragment.querySelectorAll("a[href]"));
+    const wikiExp = RegExp(`${WIKI_REFERENCE}/(pages)/(.*)`);
+    await Promise.all(
+      links
+        .filter(link => wikiExp.test(link.getAttribute("href")))
+        .map(async link => {
+          const slug = (link.getAttribute("href") || "").match(wikiExp)[2];
+          link.setAttribute("href", `#/wiki_content/${slug}.html`);
+        })
+    );
 
     const images = Array.from(fragment.querySelectorAll("img"));
 
