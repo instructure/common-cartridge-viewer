@@ -64,7 +64,7 @@ test("Substition token (IMS-CC-FILEBASE)", async t => {
     .notContains("IMS-CC-FILEBASE", "CC file prefix not replaced");
 });
 
-test.skip("Substition token (WIKI_REFERENCE)", async t => {
+test("Substition token (WIKI_REFERENCE)", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .click(Selector("button").withText("Pages"))
