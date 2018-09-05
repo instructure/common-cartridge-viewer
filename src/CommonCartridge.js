@@ -283,13 +283,14 @@ export default class CommonCartridge extends Component {
       // organizations
 
       const modules = Array.from(
-        manifest.querySelectorAll("organizations > organization > item")
+        manifest.querySelectorAll("organizations > organization > item > item")
       )
         .filter(item => item.querySelector("title"))
         .map(item => {
           const title = item.querySelector("title").textContent;
           const itemNodes = Array.from(item.querySelectorAll("item"));
           const items = itemNodes.map(item => {
+            const identifier = item.getAttribute("identifier");
             const title = item.querySelector("title")
               ? item.querySelector("title").textContent
               : "Untitled";
@@ -321,10 +322,11 @@ export default class CommonCartridge extends Component {
             });
 
             return {
-              title,
+              dependencyHrefs,
               href,
-              type,
-              dependencyHrefs
+              identifier,
+              title,
+              type
             };
           });
 
@@ -573,12 +575,12 @@ export default class CommonCartridge extends Component {
         });
 
         return (
-          <li key={index}>
+          <li className="Module" key={index}>
             <Heading level="h3">
-              <div style={{ padding: "12px" }}>{title}</div>
+              <div style={{ padding: "12px 0 12px 0" }}>{title}</div>
             </Heading>
 
-            <ul className="ExpandCollapseList">{itemComponents}</ul>
+            <ul className="ModuleItems ExpandCollapseList">{itemComponents}</ul>
           </li>
         );
       }
@@ -763,7 +765,7 @@ export default class CommonCartridge extends Component {
                                         Modules
                                       </ScreenReaderContent>
                                     </Heading>
-                                    <ul className="ExpandCollapseList">
+                                    <ul className="Modules">
                                       {moduleComponents}
                                     </ul>
                                   </div>
@@ -777,7 +779,7 @@ export default class CommonCartridge extends Component {
                                         Discussions
                                       </ScreenReaderContent>
                                     </Heading>
-                                    <ul className="ExpandCollapseList">
+                                    <ul className="Discussions ExpandCollapseList">
                                       {discussionComponents}
                                     </ul>
                                   </div>
@@ -805,7 +807,7 @@ export default class CommonCartridge extends Component {
                                         Assessments
                                       </ScreenReaderContent>
                                     </Heading>
-                                    <ul className="ExpandCollapseList">
+                                    <ul className="Assessments ExpandCollapseList">
                                       {assessmentComponents}
                                     </ul>
                                   </div>
@@ -819,7 +821,7 @@ export default class CommonCartridge extends Component {
                                         Pages
                                       </ScreenReaderContent>
                                     </Heading>
-                                    <ul className="ExpandCollapseList">
+                                    <ul className="Pages ExpandCollapseList">
                                       {pageComponents}
                                     </ul>
                                   </div>
@@ -832,7 +834,7 @@ export default class CommonCartridge extends Component {
                                       Files
                                     </ScreenReaderContent>
                                   </Heading>
-                                  <ul className="ExpandCollapseList">
+                                  <ul className="Files ExpandCollapseList">
                                     {fileComponents}
                                   </ul>
                                 </div>
@@ -845,7 +847,7 @@ export default class CommonCartridge extends Component {
                                       Other resources
                                     </ScreenReaderContent>
                                   </Heading>
-                                  <ul className="ExpandCollapseList">
+                                  <ul className="OtherResources ExpandCollapseList">
                                     {resourceComponents}
                                   </ul>
                                 </div>

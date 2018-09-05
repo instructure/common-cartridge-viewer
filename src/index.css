@@ -53,6 +53,11 @@ h3 {
   border-radius: 4px;
 }
 
+.Module {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
 .ExpandCollapseList-item:first-of-type {
   border-top: none;
 }
