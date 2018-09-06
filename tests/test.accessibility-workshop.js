@@ -36,7 +36,7 @@ test("Next and previous links", async t => {
 test("Pages", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
-    .click(Selector("button").withText("Pages"))
+    .click(Selector("a").withText("Pages"))
     .expect(Selector("a").withText("The Time is Now").exists)
     .ok()
     .expect(Selector("a").withText("Accessibility Resources").exists)
@@ -50,7 +50,7 @@ test("Pages", async t => {
 test("Substition token (IMS-CC-FILEBASE)", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
-    .click(Selector("button").withText("Pages"))
+    .click(Selector("a").withText("Pages"))
     .click(Selector("a").withText("The Time is Now"))
     .expect(Selector("h2").withText("Accessibility is the Law"))
     .ok()
@@ -67,7 +67,7 @@ test("Substition token (IMS-CC-FILEBASE)", async t => {
 test("Substition token (WIKI_REFERENCE)", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
-    .click(Selector("button").withText("Pages"))
+    .click(Selector("a").withText("Pages"))
     .click(Selector("a").withText("The Time is Now"))
     .click(Selector("a").withText("on this page"))
     .expect(
@@ -79,7 +79,7 @@ test("Substition token (WIKI_REFERENCE)", async t => {
 test("Discussions", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
-    .click(Selector("button").withText("Discussions"))
+    .click(Selector("a").withText("Discussions"))
     .expect(Selector("a").withText("Accessibility in your life").exists)
     .ok()
     .expect(Selector("a").withText("Your courses, Accessible").exists)
@@ -93,7 +93,7 @@ test("Discussions", async t => {
 test("Files", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
-    .click(Selector("button").withText("Files"))
+    .click(Selector("a").withText("Files"))
     .expect(
       Selector("div").withText("web_resources/Ally Accessibility Checklist.pdf")
         .exists
