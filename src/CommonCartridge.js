@@ -3,9 +3,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
-  HashRouter as Router,
   Route,
-  Link as RouterLink,
+  NavLink as RouterLink,
   Switch,
   Redirect
 } from "react-router-dom";
@@ -13,7 +12,6 @@ import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
 import Progress from "@instructure/ui-elements/lib/components/Progress";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Button from "@instructure/ui-buttons/lib/components/Button";
 import Breadcrumb, {
   BreadcrumbLink
 } from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
@@ -638,105 +636,43 @@ export default class CommonCartridge extends Component {
         <Grid>
           <GridRow>
             <GridCol width={2}>
-              <ul
-                className="unstyled-list"
-                style={{
-                  marginTop: "8px",
-                  marginBottom: "8px",
-                  marginLeft: "8px"
-                }}
-              >
+              <nav>
                 {this.state.modules.length > 0 && (
-                  <li>
-                    <Button
-                      variant={
-                        this.state.filter === "organizations"
-                          ? "primary"
-                          : "link"
-                      }
-                      onClick={this.setFilter.bind(null, "organizations")}
-                    >
-                      Modules ({this.state.modules.length})
-                    </Button>
-                  </li>
+                  <RouterLink exact className="MenuItem" to="/">
+                    Modules ({this.state.modules.length})
+                  </RouterLink>
                 )}
 
                 {this.state.assignmentResources.length > 0 && (
-                  <li>
-                    <Button
-                      variant={
-                        this.state.filter === "assignments" ? "primary" : "link"
-                      }
-                      onClick={this.setFilter.bind(null, "assignments")}
-                    >
-                      Assignments ({this.state.assignmentResources.length})
-                    </Button>
-                  </li>
+                  <RouterLink className="MenuItem" to="/assignments">
+                    Assignments ({this.state.assignmentResources.length})
+                  </RouterLink>
                 )}
 
                 {this.state.pageResources.length > 0 && (
-                  <li>
-                    <Button
-                      variant={
-                        this.state.filter === "pages" ? "primary" : "link"
-                      }
-                      onClick={this.setFilter.bind(null, "pages")}
-                    >
-                      Pages ({this.state.pageResources.length})
-                    </Button>
-                  </li>
+                  <RouterLink className="MenuItem" to="/pages">
+                    Pages ({this.state.pageResources.length})
+                  </RouterLink>
                 )}
 
                 {this.state.discussionResources.length > 0 && (
-                  <li>
-                    <Button
-                      variant={
-                        this.state.filter === "discussions" ? "primary" : "link"
-                      }
-                      onClick={this.setFilter.bind(null, "discussions")}
-                    >
-                      Discussions ({this.state.discussionResources.length})
-                    </Button>
-                  </li>
+                  <RouterLink className="MenuItem" to="/discussions">
+                    Discussions ({this.state.discussionResources.length})
+                  </RouterLink>
                 )}
 
                 {this.state.assessmentResources.length > 0 && (
-                  <li>
-                    <Button
-                      variant={
-                        this.state.filter === "assessments" ? "primary" : "link"
-                      }
-                      onClick={this.setFilter.bind(null, "assessments")}
-                    >
-                      Assessments ({this.state.assessmentResources.length})
-                    </Button>
-                  </li>
+                  <RouterLink className="MenuItem" to="/assessments">
+                    Assessments ({this.state.assessmentResources.length})
+                  </RouterLink>
                 )}
-
-                {/* {this.state.quizzes.length > 0 && (
-                  <li>
-                    <Button
-                      variant="link"
-                      onClick={this.setFilter.bind(null, "other")}
-                    >
-                      Other ({resourceComponents.length})
-                    </Button>
-                  </li>
-                )} */}
 
                 {this.state.fileResources.length > 0 && (
-                  <li>
-                    <Button
-                      variant={
-                        this.state.filter === "files" ? "primary" : "link"
-                      }
-                      onClick={this.setFilter.bind(null, "files")}
-                    >
-                      Files ({this.state.fileResources.length})
-                    </Button>
-                  </li>
+                  <RouterLink className="MenuItem" to="/files">
+                    Files ({this.state.fileResources.length})
+                  </RouterLink>
                 )}
-              </ul>
+              </nav>
             </GridCol>
 
             <GridCol width={10}>
@@ -746,118 +682,48 @@ export default class CommonCartridge extends Component {
                 padding="small"
                 background="default"
               >
-                <Router>
-                  <React.Fragment>
-                    <Switch>
-                      <Route
-                        exact
-                        path="/"
-                        render={() =>
-                          onlyOneSupportedResource ? (
-                            <Redirect to={`/${href}`} />
-                          ) : (
-                            <React.Fragment>
-                              {this.state.filter === "organizations" &&
-                                this.state.modules.length > 0 && (
-                                  <div className="Cartridge-content-inner">
-                                    <Heading level="h1">
-                                      <ScreenReaderContent>
-                                        Modules
-                                      </ScreenReaderContent>
-                                    </Heading>
-                                    <ul className="Modules">
-                                      {moduleComponents}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {this.state.filter === "discussions" &&
-                                this.state.discussionResources.length > 0 && (
-                                  <div className="Cartridge-content-inner">
-                                    <Heading level="h1">
-                                      <ScreenReaderContent>
-                                        Discussions
-                                      </ScreenReaderContent>
-                                    </Heading>
-                                    <ul className="Discussions ExpandCollapseList">
-                                      {discussionComponents}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {this.state.filter === "assignments" &&
-                                assignmentComponents.length > 0 && (
-                                  <div className="Cartridge-content-inner">
-                                    <Heading level="h1">
-                                      <ScreenReaderContent>
-                                        Assignments
-                                      </ScreenReaderContent>
-                                    </Heading>
-                                    <ul className="ExpandCollapseList">
-                                      {assignmentComponents}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {this.state.filter === "assessments" &&
-                                assessmentComponents.length > 0 && (
-                                  <div className="Cartridge-content-inner">
-                                    <Heading level="h1">
-                                      <ScreenReaderContent>
-                                        Assessments
-                                      </ScreenReaderContent>
-                                    </Heading>
-                                    <ul className="Assessments ExpandCollapseList">
-                                      {assessmentComponents}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {this.state.filter === "pages" &&
-                                this.state.pageResources.length > 0 && (
-                                  <div className="Cartridge-content-inner">
-                                    <Heading level="h1">
-                                      <ScreenReaderContent>
-                                        Pages
-                                      </ScreenReaderContent>
-                                    </Heading>
-                                    <ul className="Pages ExpandCollapseList">
-                                      {pageComponents}
-                                    </ul>
-                                  </div>
-                                )}
-
-                              {this.state.filter === "files" && (
+                <React.Fragment>
+                  <Switch>
+                    <Route
+                      exact
+                      path="/"
+                      render={() =>
+                        onlyOneSupportedResource ? (
+                          <Redirect to={`/${href}`} />
+                        ) : (
+                          <React.Fragment>
+                            {this.state.filter === "organizations" &&
+                              this.state.modules.length > 0 && (
                                 <div className="Cartridge-content-inner">
                                   <Heading level="h1">
                                     <ScreenReaderContent>
-                                      Files
+                                      Modules
                                     </ScreenReaderContent>
                                   </Heading>
-                                  <ul className="Files ExpandCollapseList">
-                                    {fileComponents}
+                                  <ul className="Modules">
+                                    {moduleComponents}
                                   </ul>
                                 </div>
                               )}
 
-                              {this.state.filter === "other" && (
-                                <div className="Cartridge-content-inner">
-                                  <Heading level="h1">
-                                    <ScreenReaderContent>
-                                      Other resources
-                                    </ScreenReaderContent>
-                                  </Heading>
-                                  <ul className="OtherResources ExpandCollapseList">
-                                    {resourceComponents}
-                                  </ul>
-                                </div>
-                              )}
-                            </React.Fragment>
-                          )
-                        }
-                      />
+                            {this.state.filter === "other" && (
+                              <div className="Cartridge-content-inner">
+                                <Heading level="h1">
+                                  <ScreenReaderContent>
+                                    Other resources
+                                  </ScreenReaderContent>
+                                </Heading>
+                                <ul className="OtherResources ExpandCollapseList">
+                                  {resourceComponents}
+                                </ul>
+                              </div>
+                            )}
+                          </React.Fragment>
+                        )
+                      }
+                    />
 
-                      {/* <Route
+                    {/* <Route
                 exact
                 path="/wiki_content/:file.html"
                 render={({ match }) => {
@@ -874,37 +740,117 @@ export default class CommonCartridge extends Component {
                 }}
               /> */}
 
-                      <Route
-                        path="*"
-                        render={({ match }) => (
-                          <div>
-                            {this.state.entryMap.size > 0 && (
-                              <Resource
-                                entryMap={this.state.entryMap}
-                                href={match.url}
-                                moduleItems={this.state.moduleItems}
-                                src={this.props.src}
-                              />
-                            )}
-                          </div>
-                        )}
-                      />
-                    </Switch>
+                    <Route
+                      exact
+                      path="/pages"
+                      render={({ match }) => (
+                        <div className="Cartridge-content-inner">
+                          <Heading level="h1">
+                            <ScreenReaderContent>Pages</ScreenReaderContent>
+                          </Heading>
+                          <ul className="Pages ExpandCollapseList">
+                            {pageComponents}
+                          </ul>
+                        </div>
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/discussions"
+                      render={({ match }) => (
+                        <div className="Cartridge-content-inner">
+                          <Heading level="h1">
+                            <ScreenReaderContent>
+                              Discussions
+                            </ScreenReaderContent>
+                          </Heading>
+                          <ul className="Discussions ExpandCollapseList">
+                            {discussionComponents}
+                          </ul>
+                        </div>
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/files"
+                      render={({ match }) => (
+                        <div className="Cartridge-content-inner">
+                          <Heading level="h1">
+                            <ScreenReaderContent>Files</ScreenReaderContent>
+                          </Heading>
+                          <ul className="Files ExpandCollapseList">
+                            {fileComponents}
+                          </ul>
+                        </div>
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/assignments"
+                      render={({ match }) => (
+                        <div className="Cartridge-content-inner">
+                          <Heading level="h1">
+                            <ScreenReaderContent>
+                              Assignments
+                            </ScreenReaderContent>
+                          </Heading>
+                          <ul className="ExpandCollapseList">
+                            {assignmentComponents}
+                          </ul>
+                        </div>
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/assessments"
+                      render={({ match }) => (
+                        <div className="Cartridge-content-inner">
+                          <Heading level="h1">
+                            <ScreenReaderContent>
+                              Assessments
+                            </ScreenReaderContent>
+                          </Heading>
+                          <ul className="Assessments ExpandCollapseList">
+                            {assessmentComponents}
+                          </ul>
+                        </div>
+                      )}
+                    />
 
                     <Route
                       path="*"
-                      render={({ match, history }) => {
-                        return (
-                          <RouterObserver
-                            match={match}
-                            history={history}
-                            onHistoryChange={this.handleHistoryChange}
-                          />
-                        );
-                      }}
+                      render={({ match }) => (
+                        <div>
+                          {this.state.entryMap.size > 0 && (
+                            <Resource
+                              entryMap={this.state.entryMap}
+                              href={match.url}
+                              moduleItems={this.state.moduleItems}
+                              src={this.props.src}
+                            />
+                          )}
+                        </div>
+                      )}
                     />
-                  </React.Fragment>
-                </Router>
+                  </Switch>
+
+                  <Route
+                    path="*"
+                    render={({ match, history }) => {
+                      return (
+                        <RouterObserver
+                          match={match}
+                          history={history}
+                          onHistoryChange={this.handleHistoryChange}
+                        />
+                      );
+                    }}
+                  />
+                </React.Fragment>
               </View>
             </GridCol>
           </GridRow>

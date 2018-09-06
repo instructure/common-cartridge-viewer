@@ -10,6 +10,8 @@ import Button from "@instructure/ui-buttons/lib/components/Button";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import View from "@instructure/ui-layout/lib/components/View";
 
+import { HashRouter as Router } from "react-router-dom";
+
 const queryString = require("query-string-es5");
 
 const parseQueryString = queryString.parse(window.location.search);
@@ -116,17 +118,21 @@ export default class App extends Component {
           )}
 
         {this.state.cartridge != null && (
-          <CommonCartridge
-            onHistoryChange={this.handleHistoryChange}
-            src={this.state.cartridge}
-          />
+          <Router>
+            <CommonCartridge
+              onHistoryChange={this.handleHistoryChange}
+              src={this.state.cartridge}
+            />
+          </Router>
         )}
 
         {this.state.file != null && (
-          <CommonCartridge
-            onHistoryChange={this.handleHistoryChange}
-            file={this.state.file}
-          />
+          <Router>
+            <CommonCartridge
+              onHistoryChange={this.handleHistoryChange}
+              file={this.state.file}
+            />
+          </Router>
         )}
       </View>
     );
