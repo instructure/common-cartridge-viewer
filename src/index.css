@@ -28,6 +28,25 @@ body {
   border-right: 1px solid #c8cdd1;
 }
 
+.MenuItem {
+  color: #3b4a57;
+  text-decoration: none;
+  padding: 6px 8px;
+  padding-left: 16px;
+  display: block;
+  border-left: 3px solid transparent;
+}
+
+.MenuItem:hover:not(.active) {
+  text-decoration: underline;
+}
+
+.MenuItem.active,
+.MenuItem:active {
+  color: #398ddc;
+  border-left: 3px solid #398ddc;
+}
+
 /* temporary */
 ul.unstyled-list,
 ul.ExpandCollapseList,
