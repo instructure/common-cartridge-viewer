@@ -29,8 +29,11 @@ export default class WikiContentListItem extends Component {
 
     const doc = parser.parseFromString(xml, "text/html");
 
-    const title =
-      doc.querySelector("title") && doc.querySelector("title").textContent;
+    const itemTitle = this.props.item != null && this.props.item.title;
+
+    const title = itemTitle
+      ? itemTitle
+      : doc.querySelector("title") && doc.querySelector("title").textContent;
 
     const workflowStateNode = doc.querySelector('meta[name="workflow_state"]');
 
