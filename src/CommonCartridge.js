@@ -2,12 +2,8 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import {
-  Route,
-  NavLink as RouterLink,
-  Switch,
-  Redirect
-} from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+import NavLink from "./NavLink";
 import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
 import Progress from "@instructure/ui-elements/lib/components/Progress";
@@ -564,9 +560,11 @@ export default class CommonCartridge extends Component {
                 </div>
 
                 <div style={{ flex: 1 }}>
-                  <Link as={RouterLink} to={`/${item.href}`}>
-                    {item.title}
-                  </Link>
+                  {item.href && (
+                    <Link as={NavLink} to={`${item.href}`}>
+                      <span>{item.title || "Untitled"}</span>
+                    </Link>
+                  )}
                 </div>
               </div>
             </li>
@@ -592,7 +590,7 @@ export default class CommonCartridge extends Component {
           <li className="ExpandCollapseList-item" key={index}>
             <div className="li-inner">
               <div>
-                <Link as={RouterLink} to={`/${getResourceHref(resource)}`}>
+                <Link as={NavLink} to={`/${getResourceHref(resource)}`}>
                   {getResourceHref(resource)}
                 </Link>
               </div>
@@ -639,39 +637,39 @@ export default class CommonCartridge extends Component {
             <GridCol width={2}>
               <nav>
                 {this.state.modules.length > 0 && (
-                  <RouterLink exact className="MenuItem" to="/">
+                  <NavLink exact className="MenuItem" to="/">
                     Modules ({this.state.modules.length})
-                  </RouterLink>
+                  </NavLink>
                 )}
 
                 {this.state.assignmentResources.length > 0 && (
-                  <RouterLink className="MenuItem" to="/assignments">
+                  <NavLink className="MenuItem" to="/assignments">
                     Assignments ({this.state.assignmentResources.length})
-                  </RouterLink>
+                  </NavLink>
                 )}
 
                 {this.state.pageResources.length > 0 && (
-                  <RouterLink className="MenuItem" to="/pages">
+                  <NavLink className="MenuItem" to="/pages">
                     Pages ({this.state.pageResources.length})
-                  </RouterLink>
+                  </NavLink>
                 )}
 
                 {this.state.discussionResources.length > 0 && (
-                  <RouterLink className="MenuItem" to="/discussions">
+                  <NavLink className="MenuItem" to="/discussions">
                     Discussions ({this.state.discussionResources.length})
-                  </RouterLink>
+                  </NavLink>
                 )}
 
                 {this.state.assessmentResources.length > 0 && (
-                  <RouterLink className="MenuItem" to="/assessments">
+                  <NavLink className="MenuItem" to="/assessments">
                     Assessments ({this.state.assessmentResources.length})
-                  </RouterLink>
+                  </NavLink>
                 )}
 
                 {this.state.fileResources.length > 0 && (
-                  <RouterLink className="MenuItem" to="/files">
+                  <NavLink className="MenuItem" to="/files">
                     Files ({this.state.fileResources.length})
-                  </RouterLink>
+                  </NavLink>
                 )}
               </nav>
             </GridCol>
