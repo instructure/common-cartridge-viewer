@@ -286,6 +286,7 @@ export default class CommonCartridge extends Component {
         .filter(item => item.querySelector("title"))
         .map(item => {
           const title = item.querySelector("title").textContent;
+          const identifier = item.getAttribute("identifier");
           const itemNodes = Array.from(item.querySelectorAll("item"));
           const items = itemNodes.map(item => {
             const identifier = item.getAttribute("identifier");
@@ -328,7 +329,7 @@ export default class CommonCartridge extends Component {
             };
           });
 
-          return { title, items };
+          return { title, identifier, items };
         })
         .filter(module => module != null);
 
@@ -467,7 +468,7 @@ export default class CommonCartridge extends Component {
     });
 
     const moduleComponents = this.state.modules.map(
-      ({ title, ref, items }, index) => {
+      ({ title, ref, items, identifier }, index) => {
         const itemComponents = items.map((item, index) => {
           const isSubheading = item.href == null;
 
@@ -574,8 +575,8 @@ export default class CommonCartridge extends Component {
 
         return (
           <li className="Module" key={index}>
-            <Heading level="h3">
-              <div style={{ padding: "12px 0 12px 0" }}>{title}</div>
+            <Heading level="h3" id={`module-${identifier}`}>
+              <div style={{ padding: "12px 0 6px 0" }}>{title}</div>
             </Heading>
 
             <ul className="ModuleItems ExpandCollapseList">{itemComponents}</ul>
