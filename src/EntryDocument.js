@@ -28,7 +28,7 @@ export default class EntryDocument extends Component {
 
   async update() {
     const src = this.props.src;
-    const path = this.props.href.substr(1);
+    const path = this.props.href;
     const id = `${src}/${path}`;
 
     if (documents.has(id)) {

@@ -49,7 +49,7 @@ export default class Assessment extends Component {
 
       return (
         <View
-          key={item.ident}
+          key={index}
           as="li"
           padding="small none"
           background="default"

@@ -90,3 +90,7 @@ export function getResourceHref(resource) {
 
   return null;
 }
+
+export function getExtension(uri) {
+  return uri.split(".").pop();
+}

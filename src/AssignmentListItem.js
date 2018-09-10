@@ -19,33 +19,23 @@ export default class AssignmentListItem extends Component {
 
   async componentDidMount() {
     const parser = new DOMParser();
-
     const path = this.props.href.substr(1);
-
     const entry = this.props.entryMap.get(path);
-
     const xml = await getTextFromEntry(entry);
-
     const doc = parser.parseFromString(xml, "text/xml");
-
     const title =
       doc.querySelector("title") && doc.querySelector("title").textContent;
-
     const description = doc.querySelector("text").textContent;
-
     const gradableNode = doc.querySelector("gradable");
-
     const points =
       gradableNode &&
       gradableNode.textContent === "true" &&
       gradableNode.getAttribute("points_possible")
         ? parseFloat(gradableNode.getAttribute("points_possible"))
         : 0;
-
     const workflowStateNode = doc.querySelector(
       "extensions > assignment > workflow_state"
     );
-
     const workflowState = workflowStateNode && workflowStateNode.textContent;
 
     this.setState({
@@ -73,7 +63,7 @@ export default class AssignmentListItem extends Component {
             <IconAssignment color={iconColor} />
           </span>
           <div style={{ flex: 1 }}>
-            <Link as={RouterLink} to={`${this.props.href}`}>
+            <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
               {this.state.title}
             </Link>
           </div>

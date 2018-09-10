@@ -17,14 +17,10 @@ export default class Image extends Component {
   }
 
   async componentDidMount() {
-    const entryKey = this.props.href.substr(1);
-
+    const entryKey = this.props.href;
     const entry = this.props.entryMap.get(entryKey);
-
     const filename = basename(entry.filename);
-
     const blob = await getBlobFromEntry(entry);
-
     const dataUrl = await blobToDataUrl(blob);
 
     this.setState({

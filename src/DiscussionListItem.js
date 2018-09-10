@@ -19,35 +19,22 @@ export default class DiscussionListItem extends Component {
 
   async componentDidMount() {
     const parser = new DOMParser();
-
     const path = this.props.href.substr(1);
-
     const entry = this.props.entryMap.get(path);
-
     const xml = await getTextFromEntry(entry);
-
     const doc = parser.parseFromString(xml, "text/xml");
-
     const title = doc.querySelector("title").textContent;
-
     const depPath = this.props.dependencyHrefs[0];
-
     const depEntry = this.props.entryMap.get(depPath);
-
     const depXml = await getTextFromEntry(depEntry);
-
     const depDoc = parser.parseFromString(depXml, "text/xml");
-
     const workflowStateNode = depDoc.querySelector(
       "topicMeta > workflow_state"
     );
-
     const workflowState = workflowStateNode && workflowStateNode.textContent;
-
     const pointsPossibleNode =
       depDoc &&
       depDoc.querySelector("topicMeta > assignment > points_possible");
-
     const points =
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
 
@@ -76,7 +63,7 @@ export default class DiscussionListItem extends Component {
           </span>
 
           <div style={{ flex: 1 }}>
-            <Link as={RouterLink} to={`${this.props.href}`}>
+            <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
               {this.state.title}
             </Link>
           </div>

@@ -19,39 +19,25 @@ export default class AssessmentListItem extends Component {
 
   async componentDidMount() {
     const parser = new DOMParser();
-
     const path = this.props.href.substr(1);
-
     const entry = this.props.entryMap.get(path);
-
     const xml = await getTextFromEntry(entry);
-
     const doc = parser.parseFromString(xml, "text/xml");
-
     const depPath = this.props.dependencyHrefs[0];
-
     const depEntry = this.props.entryMap.get(depPath);
-
     const depXml = await getTextFromEntry(depEntry);
-
     const depDoc = parser.parseFromString(depXml, "text/xml");
-
     const title =
       doc.querySelector("assessment") &&
       doc.querySelector("assessment").getAttribute("title");
-
     const pointsPossibleNode =
       depDoc && depDoc.querySelector("quiz > assignment > points_possible");
-
     const points =
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
-
     const questionCount = doc.querySelectorAll("assessment > section > item")
       .length;
-
     const workflowStateNode =
       depDoc && depDoc.querySelector("quiz > assignment > workflow_state");
-
     const workflowState = workflowStateNode && workflowStateNode.textContent;
 
     this.setState({
@@ -80,7 +66,7 @@ export default class AssessmentListItem extends Component {
           </span>
           <div style={{ flex: 1 }}>
             <div>
-              <Link as={RouterLink} to={`${this.props.href}`}>
+              <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
                 {this.state.title}
               </Link>
             </div>

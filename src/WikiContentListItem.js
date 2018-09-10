@@ -20,23 +20,15 @@ export default class WikiContentListItem extends Component {
 
   async componentDidMount() {
     const parser = new DOMParser();
-
     const path = this.props.href.substr(1);
-
     const entry = this.props.entryMap.get(path);
-
     const xml = await getTextFromEntry(entry);
-
     const doc = parser.parseFromString(xml, "text/html");
-
     const itemTitle = this.props.item != null && this.props.item.title;
-
     const title = itemTitle
       ? itemTitle
       : doc.querySelector("title") && doc.querySelector("title").textContent;
-
     const workflowStateNode = doc.querySelector('meta[name="workflow_state"]');
-
     const workflowState =
       workflowStateNode && workflowStateNode.getAttribute("content");
 
@@ -63,7 +55,7 @@ export default class WikiContentListItem extends Component {
             <IconDocument color={iconColor} />
           </span>
           <div style={{ flex: 1 }}>
-            <Link as={RouterLink} to={`${this.props.href}`}>
+            <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
               {this.state.title || basename(this.props.href)}
             </Link>
           </div>
