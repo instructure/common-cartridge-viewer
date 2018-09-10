@@ -6,13 +6,9 @@ import RichContent from "./RichContent";
 export default class Discussion extends Component {
   render() {
     const doc = this.props.doc;
-
-    const assignmentNode = doc.querySelector("topic");
-
-    const title = assignmentNode.querySelector("title").textContent;
-
-    const descriptionHtml = assignmentNode.querySelector("text").textContent;
-
+    const topicNode = doc.querySelector("topic");
+    const title = topicNode.querySelector("title").textContent;
+    const descriptionHtml = topicNode.querySelector("text").textContent;
     const labelColor = "#6f2562";
 
     return (

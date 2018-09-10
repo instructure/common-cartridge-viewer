@@ -7,12 +7,9 @@ import NavLink from "./NavLink";
 import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
 import Progress from "@instructure/ui-elements/lib/components/Progress";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Breadcrumb, {
   BreadcrumbLink
 } from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
-import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
-import Link from "@instructure/ui-elements/lib/components/Link";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import Grid, {
   GridRow,
@@ -22,18 +19,19 @@ import {
   getTextFromEntry,
   getEntriesFromXHR,
   getEntriesFromBlob,
+  getExtension,
   getResourceHref
 } from "./utils.js";
 import { resourceTypes } from "./constants";
 import styles from "./styles.css";
-import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
-import WikiContentListItem from "./WikiContentListItem";
-import AssignmentListItem from "./AssignmentListItem";
-import AssessmentListItem from "./AssessmentListItem";
-import DiscussionListItem from "./DiscussionListItem";
-import FileListItem from "./FileListItem";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
+import AssessmentList from "./AssessmentList";
+import AssignmentList from "./AssignmentList";
+import DiscussionList from "./DiscussionList";
+import FileList from "./FileList";
+import ModulesList from "./ModulesList";
+import WikiContentList from "./WikiContentList";
 
 import waitingWristWatch from "./images/waiting-wrist-watch.svg";
 
@@ -148,6 +146,21 @@ export default class CommonCartridge extends Component {
         manifest.querySelectorAll("resources > resource")
       );
 
+      const resourceMap = new Map();
+      resources.forEach(resource => {
+        resourceMap.set(resource.getAttribute("identifier"), resource);
+      });
+
+      const resourceIdsByHrefMap = new Map();
+      resources
+        .filter(resource => resource.getAttribute("href") != null)
+        .forEach(resource => {
+          resourceIdsByHrefMap.set(
+            resource.getAttribute("href"),
+            resource.getAttribute("identifier")
+          );
+        });
+
       const supportedResources = resources.filter(resource => {
         const type = resource.getAttribute("type");
 
@@ -166,27 +179,9 @@ export default class CommonCartridge extends Component {
         .filter(isNot(resourceTypes.WEB_CONTENT))
         .filter(isNot(resourceTypes.ASSOCIATED_CONTENT));
 
-      // discussions
-
       const discussionResources = resources
         .filter(is(resourceTypes.DISCUSSION_TOPIC))
-        .filter(node => node.querySelector("file"))
-        .map(node => ({
-          href: node.querySelector("file").getAttribute("href"),
-          dependencyHrefs: Array.from(node.querySelectorAll("dependency")).map(
-            node => {
-              const identifier = node.getAttribute("identifierref");
-
-              const resource = manifest.querySelector(
-                `resource[identifier="${identifier}"]`
-              );
-
-              return getResourceHref(resource);
-            }
-          )
-        }));
-
-      // pages
+        .filter(node => node.querySelector("file"));
 
       const pageResources = resources
         .filter(is(resourceTypes.WEB_CONTENT))
@@ -212,69 +207,26 @@ export default class CommonCartridge extends Component {
           return true;
         })
         .filter(node => node.querySelector("file"))
-        .map(node => ({
-          href: node.querySelector("file").getAttribute("href")
-        }))
         // needs filter to filter out dependencies
-        .filter(({ href }) => {
-          const extension = getExtension(href);
+        .filter(node => {
+          const extension = getExtension(
+            node.querySelector("file").getAttribute("href")
+          );
 
           return ["html", "htm"].includes(extension);
         });
 
-      // files
-
       const fileResources = resources
         .filter(is(resourceTypes.WEB_CONTENT))
-        .filter(node => node.querySelector("file"))
-        .map(node => ({
-          href: node.querySelector("file").getAttribute("href"),
-          metadata: node.querySelector("metadata")
-        }))
-        // needs filter to filter out dependencies
-        .filter(({ href }) => {
-          const extension = getExtension(href);
-
-          return ["html", "htm"].includes(extension) === false;
-        });
+        .filter(node => node.querySelector("file"));
 
       const assessmentResources = resources
         .filter(is(resourceTypes.ASSESSMENT_CONTENT))
-        .filter(node => node.querySelector("file"))
-        .map(node => ({
-          href: node.querySelector("file").getAttribute("href"),
-          dependencyHrefs: Array.from(node.querySelectorAll("dependency")).map(
-            node => {
-              const identifier = node.getAttribute("identifierref");
-
-              const resource = manifest.querySelector(
-                `resource[identifier="${identifier}"]`
-              );
-
-              return getResourceHref(resource);
-            }
-          )
-        }));
+        .filter(node => node.querySelector("file"));
 
       const assignmentResources = resources
         .filter(is(resourceTypes.ASSIGNMENT))
-        .filter(node => node.querySelector("file"))
-        .map(node => ({
-          href: node.querySelector("file").getAttribute("href"),
-          dependencyHrefs: Array.from(node.querySelectorAll("dependency")).map(
-            node => {
-              const identifier = node.getAttribute("identifierref");
-
-              const resource = manifest.querySelector(
-                `resource[identifier="${identifier}"]`
-              );
-
-              return getResourceHref(resource);
-            }
-          )
-        }));
-
-      // organizations
+        .filter(node => node.querySelector("file"));
 
       const modules = Array.from(
         manifest.querySelectorAll("organizations > organization > item > item")
@@ -320,6 +272,7 @@ export default class CommonCartridge extends Component {
               dependencyHrefs,
               href,
               identifier,
+              identifierref,
               title,
               type
             };
@@ -337,12 +290,14 @@ export default class CommonCartridge extends Component {
         assessmentResources,
         assignmentResources,
         discussionResources,
+        resourceMap,
         fileResources,
         isLoaded: true,
         moduleItems,
         modules,
         otherResources,
         pageResources,
+        resourceIdsByHrefMap,
         rightsDescription,
         supportedResources,
         title,
@@ -410,214 +365,9 @@ export default class CommonCartridge extends Component {
       onlyOneSupportedResource &&
       getResourceHref(this.state.supportedResources[0]);
 
-    const discussionComponents = this.state.discussionResources.map(
-      ({ href, dependencyHrefs }, index) => {
-        return (
-          <DiscussionListItem
-            key={index}
-            src={this.props.src}
-            href={`/${href}`}
-            dependencyHrefs={dependencyHrefs}
-            entryMap={this.state.entryMap}
-          />
-        );
-      }
-    );
-
-    const assignmentComponents = this.state.assignmentResources.map(
-      ({ href, dependencyHrefs }, index) => {
-        return (
-          <AssignmentListItem
-            key={index}
-            src={this.props.src}
-            href={`/${href}`}
-            dependencyHrefs={dependencyHrefs}
-            entryMap={this.state.entryMap}
-          />
-        );
-      }
-    );
-
-    const assessmentComponents = this.state.assessmentResources.map(
-      ({ href, dependencyHrefs }, index) => {
-        return (
-          <AssessmentListItem
-            key={index}
-            src={this.props.src}
-            href={`/${href}`}
-            dependencyHrefs={dependencyHrefs}
-            entryMap={this.state.entryMap}
-          />
-        );
-      }
-    );
-
-    const pageComponents = this.state.pageResources.map(({ href }, index) => {
-      return (
-        <WikiContentListItem
-          key={index}
-          src={this.props.src}
-          href={`/${href}`}
-          entryMap={this.state.entryMap}
-        />
-      );
-    });
-
-    const moduleComponents = this.state.modules.map(
-      ({ title, ref, items, identifier }, index) => {
-        const itemComponents = items.map((item, index) => {
-          const isSubheading = item.href == null;
-
-          if (isSubheading) {
-            return (
-              <li key={index} className="ExpandCollapseList-item">
-                <div className="ExpandCollapseList-item-inner">
-                  <h3>{item.title}</h3>
-                </div>
-              </li>
-            );
-          }
-
-          const extension = getExtension(item.href);
-
-          const isWikiContent =
-            item.type === resourceTypes.WEB_CONTENT &&
-            ["html", "htm"].includes(extension);
-
-          if (isWikiContent) {
-            return (
-              <WikiContentListItem
-                key={index}
-                item={item}
-                src={this.props.src}
-                href={`/${item.href}`}
-                dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.state.entryMap}
-              />
-            );
-          }
-
-          if (item.type === resourceTypes.ASSIGNMENT) {
-            return (
-              <AssignmentListItem
-                key={index}
-                item={item}
-                src={this.props.src}
-                href={`/${item.href}`}
-                dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.state.entryMap}
-              />
-            );
-          }
-
-          if (item.type === resourceTypes.ASSESSMENT_CONTENT) {
-            return (
-              <AssessmentListItem
-                key={index}
-                item={item}
-                src={this.props.src}
-                href={`/${item.href}`}
-                dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.state.entryMap}
-              />
-            );
-          }
-
-          if (item.type === resourceTypes.DISCUSSION_TOPIC) {
-            return (
-              <DiscussionListItem
-                key={index}
-                item={item}
-                src={this.props.src}
-                href={`/${item.href}`}
-                dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.state.entryMap}
-              />
-            );
-          }
-
-          if (item.type === resourceTypes.WEB_CONTENT) {
-            return (
-              <FileListItem
-                key={index}
-                src={this.props.src}
-                href={`/${item.href}`}
-                metadata={item.metadata}
-                entryMap={this.state.entryMap}
-              />
-            );
-          }
-
-          return (
-            <li key={index} className="ExpandCollapseList-item">
-              <div className="ExpandCollapseList-item-inner">
-                <div>
-                  {item.type === resourceTypes.WEB_LINK && (
-                    <span className="resource-icon">
-                      <IconExternalLink />
-                    </span>
-                  )}
-                </div>
-
-                <div style={{ flex: 1 }}>
-                  {item.href && (
-                    <Link as={NavLink} to={`${item.href}`}>
-                      <span>{item.title || "Untitled"}</span>
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </li>
-          );
-        });
-
-        return (
-          <li className="Module" key={index}>
-            <Heading level="h3" id={`module-${identifier}`}>
-              <div style={{ padding: "12px 0 6px 0" }}>{title}</div>
-            </Heading>
-
-            <ul className="ModuleItems ExpandCollapseList">{itemComponents}</ul>
-          </li>
-        );
-      }
-    );
-
-    const resourceComponents = this.state.otherResources
-      .filter(resource => resource && resource.getAttribute("href"))
-      .map((resource, index) => {
-        return (
-          <li className="ExpandCollapseList-item" key={index}>
-            <div className="li-inner">
-              <div>
-                <Link as={NavLink} to={`/${getResourceHref(resource)}`}>
-                  {getResourceHref(resource)}
-                </Link>
-              </div>
-              <div>
-                {resource.getAttribute("type")}{" "}
-                {resource.getAttribute("intendeduse") && (
-                  <span>({resource.getAttribute("intendeduse")})</span>
-                )}
-              </div>
-            </div>
-          </li>
-        );
-      });
-
-    const fileComponents = this.state.fileResources.map(
-      ({ href, metadata }, index) => {
-        return (
-          <FileListItem
-            key={index}
-            src={this.props.src}
-            href={`/${href}`}
-            metadata={metadata}
-            entryMap={this.state.entryMap}
-          />
-        );
-      }
-    );
+    if (onlyOneSupportedResource) {
+      return <Redirect to={`/${href}`} />;
+    }
 
     return (
       <div className={styles.BrowserContent}>
@@ -686,120 +436,42 @@ export default class CommonCartridge extends Component {
                     <Route
                       exact
                       path="/"
-                      render={() =>
-                        onlyOneSupportedResource ? (
-                          <Redirect to={`/${href}`} />
-                        ) : (
-                          <React.Fragment>
-                            {this.state.filter === "organizations" &&
-                              this.state.modules.length > 0 && (
-                                <div className="Cartridge-content-inner">
-                                  <Heading level="h1">
-                                    <ScreenReaderContent>
-                                      Modules
-                                    </ScreenReaderContent>
-                                  </Heading>
-                                  <ul className="Modules">
-                                    {moduleComponents}
-                                  </ul>
-                                </div>
-                              )}
-
-                            {this.state.filter === "other" && (
-                              <div className="Cartridge-content-inner">
-                                <Heading level="h1">
-                                  <ScreenReaderContent>
-                                    Other resources
-                                  </ScreenReaderContent>
-                                </Heading>
-                                <ul className="OtherResources ExpandCollapseList">
-                                  {resourceComponents}
-                                </ul>
-                              </div>
-                            )}
-                          </React.Fragment>
-                        )
-                      }
-                    />
-
-                    {/* <Route
-                exact
-                path="/wiki_content/:file.html"
-                render={({ match }) => {
-                  return (
-                    <div>
-                      {this.state.entryMap.size > 0 && (
-                        <WikiContent
+                      render={({ match }) => (
+                        <ModulesList
                           entryMap={this.state.entryMap}
-                          href={match.url}
+                          moduleItems={this.state.moduleItems}
+                          modules={this.state.modules}
+                          match={match}
                         />
                       )}
-                    </div>
-                  );
-                }}
-              /> */}
+                    />
 
                     <Route
                       exact
-                      path="/pages"
+                      path="/resources/:identifier"
                       render={({ match }) => (
-                        <div className="Cartridge-content-inner">
-                          <Heading level="h1">
-                            <ScreenReaderContent>Pages</ScreenReaderContent>
-                          </Heading>
-                          <ul className="Pages ExpandCollapseList">
-                            {pageComponents}
-                          </ul>
-                        </div>
+                        <Resource
+                          entryMap={this.state.entryMap}
+                          identifier={match.params.identifier}
+                          moduleItems={this.state.moduleItems}
+                          modules={this.state.modules}
+                          resourceMap={this.state.resourceMap}
+                          resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
+                          src={this.props.src}
+                        />
                       )}
                     />
 
                     <Route
                       exact
-                      path="/discussions"
+                      path="/modules/:module"
                       render={({ match }) => (
-                        <div className="Cartridge-content-inner">
-                          <Heading level="h1">
-                            <ScreenReaderContent>
-                              Discussions
-                            </ScreenReaderContent>
-                          </Heading>
-                          <ul className="Discussions ExpandCollapseList">
-                            {discussionComponents}
-                          </ul>
-                        </div>
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/files"
-                      render={({ match }) => (
-                        <div className="Cartridge-content-inner">
-                          <Heading level="h1">
-                            <ScreenReaderContent>Files</ScreenReaderContent>
-                          </Heading>
-                          <ul className="Files ExpandCollapseList">
-                            {fileComponents}
-                          </ul>
-                        </div>
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/assignments"
-                      render={({ match }) => (
-                        <div className="Cartridge-content-inner">
-                          <Heading level="h1">
-                            <ScreenReaderContent>
-                              Assignments
-                            </ScreenReaderContent>
-                          </Heading>
-                          <ul className="ExpandCollapseList">
-                            {assignmentComponents}
-                          </ul>
-                        </div>
+                        <ModulesList
+                          entryMap={this.state.entryMap}
+                          moduleItems={this.state.moduleItems}
+                          modules={this.state.modules}
+                          match={match}
+                        />
                       )}
                     />
 
@@ -807,32 +479,69 @@ export default class CommonCartridge extends Component {
                       exact
                       path="/assessments"
                       render={({ match }) => (
-                        <div className="Cartridge-content-inner">
-                          <Heading level="h1">
-                            <ScreenReaderContent>
-                              Assessments
-                            </ScreenReaderContent>
-                          </Heading>
-                          <ul className="Assessments ExpandCollapseList">
-                            {assessmentComponents}
-                          </ul>
-                        </div>
+                        <AssessmentList
+                          resources={this.state.assessmentResources}
+                          entryMap={this.state.entryMap}
+                          moduleItems={this.state.moduleItems}
+                          resourceMap={this.state.resourceMap}
+                          src={this.props.src}
+                        />
                       )}
                     />
 
                     <Route
-                      path="*"
+                      exact
+                      path="/pages"
                       render={({ match }) => (
-                        <div>
-                          {this.state.entryMap.size > 0 && (
-                            <Resource
-                              entryMap={this.state.entryMap}
-                              href={match.url}
-                              moduleItems={this.state.moduleItems}
-                              src={this.props.src}
-                            />
-                          )}
-                        </div>
+                        <WikiContentList
+                          resources={this.state.pageResources}
+                          entryMap={this.state.entryMap}
+                          moduleItems={this.state.moduleItems}
+                          resourceMap={this.state.resourceMap}
+                          src={this.props.src}
+                        />
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/discussions"
+                      render={({ match }) => (
+                        <DiscussionList
+                          resources={this.state.discussionResources}
+                          entryMap={this.state.entryMap}
+                          moduleItems={this.state.moduleItems}
+                          resourceMap={this.state.resourceMap}
+                          src={this.props.src}
+                        />
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/files"
+                      render={({ match }) => (
+                        <FileList
+                          resources={this.state.fileResources}
+                          entryMap={this.state.entryMap}
+                          moduleItems={this.state.moduleItems}
+                          resourceMap={this.state.resourceMap}
+                          src={this.props.src}
+                        />
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/assignments"
+                      render={({ match }) => (
+                        <AssignmentList
+                          resources={this.state.assignmentResources}
+                          entryMap={this.state.entryMap}
+                          moduleItems={this.state.moduleItems}
+                          resourceMap={this.state.resourceMap}
+                          src={this.props.src}
+                        />
                       )}
                     />
                   </Switch>
@@ -865,8 +574,4 @@ function is(type) {
 
 function isNot(type) {
   return resource => resource.getAttribute("type") !== type;
-}
-
-function getExtension(uri) {
-  return uri.split(".").pop();
 }

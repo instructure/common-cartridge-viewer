@@ -9,9 +9,7 @@ export default class WikiContent extends Component {
     const title = doc.querySelector("title")
       ? doc.querySelector("title").textContent
       : "Untitled";
-
     const html = doc.body ? doc.body.innerHTML : ""; // doc.body.innerHTML;
-
     const labelColor = "#8A6240";
 
     return (
@@ -30,7 +28,11 @@ export default class WikiContent extends Component {
           {title}
         </Heading>
 
-        <RichContent html={html} entryMap={this.props.entryMap} />
+        <RichContent
+          entryMap={this.props.entryMap}
+          html={html}
+          resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+        />
       </React.Fragment>
     );
   }

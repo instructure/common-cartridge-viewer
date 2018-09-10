@@ -1,6 +1,20 @@
 import { Selector } from "testcafe";
 
-fixture`Dashboard`.page`http://localhost:5000/`;
+fixture`Accessibility Workshop cartridge`.page`http://localhost:5000/`;
+
+test("Resource not found", async t => {
+  await t
+    .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .expect(
+      Selector("h3").withText("Part 1: Overview: Accessibility and ALLY").exists
+    )
+    .ok("Header shows", { timeout: 20000 });
+
+  await t
+    .navigateTo("#/resources/notfound")
+    .expect(Selector("span").withText("Not found").exists)
+    .ok();
+});
 
 test("Basic elements exist", async t => {
   await t
@@ -104,5 +118,9 @@ test("Files", async t => {
     .expect(Selector("a").withText("files_page_falconer.png").exists)
     .ok()
     .expect(Selector("a").withText("Ally - Student Documentation.docx").exists)
-    .ok();
+    .ok()
+    .expect(Selector("a").withText("wiki_content").exists)
+    .notOk()
+    .expect(Selector("a").withText("the-time-is-now").exists)
+    .notOk();
 });

@@ -1,6 +1,5 @@
 import { basename } from "path";
 import React, { Component } from "react";
-import { resourceTypes } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver/FileSaver";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
@@ -8,32 +7,32 @@ import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
 
-import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
 import Discussion from "./Discussion";
 import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
-import { getBlobFromEntry } from "./utils";
-import { getExtension, getResourceHref } from "./utils";
+import EntryDocument from "./EntryDocument";
+import WebLink from "./WebLink";
+import { getBlobFromEntry, getExtension } from "./utils";
 
 import notFoundImage from "./images/404-empty-planet.svg";
 
-export default class Resource extends Component {
+export default class WebResource extends Component {
   constructor() {
     super();
     this.state = {
-      isLoaded: false,
       isNotFound: false
     };
   }
 
   async componentDidMount() {
-    const resource = this.props.resourceMap.get(this.props.identifier);
-    if (resource == null) {
+    const entry = this.props.entryMap.get(this.props.href.substr(1));
+    if (entry == null) {
       this.setState({ isNotFound: true });
       return;
     }
+
     document.body.addEventListener("keydown", this.handleKeyDown);
   }
 
@@ -65,8 +64,10 @@ export default class Resource extends Component {
   }
 
   render() {
-    let resource = this.props.resourceMap.get(this.props.identifier);
-    if (resource == null) {
+    const extension = (getExtension(this.props.href) || "").toLowerCase();
+    const filename = basename(this.props.href);
+
+    if (this.state.isNotFound) {
       return (
         <Billboard
           size="medium"
@@ -82,91 +83,80 @@ export default class Resource extends Component {
       );
     }
 
-    const href = getResourceHref(resource);
-    const filename = basename(href);
-    const extension = getExtension(href).toLowerCase();
-    if (resource.getAttribute("identifierref") != null) {
-      resource = this.props.resourceMap.get(
-        resource.getAttribute("identifierref")
+    let resource;
+
+    if (["png", "jpg", "gif", "webp"].includes(extension)) {
+      resource = (
+        <Image href={this.props.href} entryMap={this.props.entryMap} />
+      );
+    } else if (["html"].includes(extension)) {
+      resource = (
+        <EntryDocument
+          href={this.props.href}
+          src={this.props.src}
+          entryMap={this.props.entryMap}
+          type="text/html"
+          render={doc => (
+            <WikiContent entryMap={this.props.entryMap} doc={doc} />
+          )}
+        />
+      );
+    } else if (["qti"].includes(extension)) {
+      resource = (
+        <Assessment entryMap={this.props.entryMap} href={this.props.href} />
+      );
+    } else if (["xml"].includes(extension)) {
+      resource = (
+        <EntryDocument
+          href={this.props.href}
+          src={this.props.src}
+          entryMap={this.props.entryMap}
+          type="text/xml"
+          render={doc => {
+            if (
+              doc.querySelector("assignment") &&
+              doc.querySelector("assignment").getAttribute("xmlns") ===
+                "http://www.imsglobal.org/xsd/imscc_extensions/assignment"
+            ) {
+              return <Assignment doc={doc} entryMap={this.props.entryMap} />;
+            } else if (
+              doc.querySelector("topic") &&
+              doc.querySelector("topic").getAttribute("xmlns") ===
+                "http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1"
+            ) {
+              return <Discussion doc={doc} entryMap={this.props.entryMap} />;
+            } else if (
+              doc.querySelector("questestinterop") &&
+              doc.querySelector("questestinterop").getAttribute("xmlns") ===
+                "http://www.imsglobal.org/xsd/ims_qtiasiv1p2"
+            ) {
+              return <Assessment doc={doc} entryMap={this.props.entryMap} />;
+            } else if (
+              doc.querySelector("url") &&
+              doc.firstChild.getAttribute("xmlns") ===
+                "http://www.imsglobal.org/xsd/imsccv1p1/imswl_v1p1"
+            ) {
+              return <WebLink doc={doc} />;
+            }
+
+            return <div>Not supported.</div>;
+          }}
+        />
+      );
+    } else {
+      // file
+      resource = (
+        <Billboard
+          size="medium"
+          message={`Download ${filename}`}
+          onClick={this.handleDownload}
+          hero={size => <IconDownload size={size} />}
+        />
       );
     }
-
-    let resourceComponent;
-    if (resource.getAttribute("type") === resourceTypes.ASSESSMENT_CONTENT) {
-      resourceComponent = (
-        <EntryDocument
-          entryMap={this.props.entryMap}
-          href={href}
-          render={doc => (
-            <Assessment entryMap={this.props.entryMap} doc={doc} />
-          )}
-          src={this.props.src}
-          type="text/xml"
-        />
-      );
-    } else if (resource.getAttribute("type") === resourceTypes.ASSIGNMENT) {
-      resourceComponent = (
-        <EntryDocument
-          entryMap={this.props.entryMap}
-          href={href}
-          render={doc => (
-            <Assignment entryMap={this.props.entryMap} doc={doc} />
-          )}
-          src={this.props.src}
-          type="text/xml"
-        />
-      );
-    } else if (
-      resource.getAttribute("type") === resourceTypes.DISCUSSION_TOPIC
-    ) {
-      resourceComponent = (
-        <EntryDocument
-          entryMap={this.props.entryMap}
-          href={href}
-          render={doc => (
-            <Discussion entryMap={this.props.entryMap} doc={doc} />
-          )}
-          src={this.props.src}
-          type="text/xml"
-        />
-      );
-    } else if (resource.getAttribute("type") === resourceTypes.WEB_CONTENT) {
-      if (["png", "jpg", "gif", "webp"].includes(extension)) {
-        return <Image href={href} entryMap={this.props.entryMap} />;
-      }
-
-      if (["html", "htm"].includes(extension)) {
-        resourceComponent = (
-          <EntryDocument
-            entryMap={this.props.entryMap}
-            href={href}
-            render={doc => (
-              <WikiContent
-                doc={doc}
-                entryMap={this.props.entryMap}
-                resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              />
-            )}
-            src={this.props.src}
-            type="text/html"
-          />
-        );
-      } else {
-        resourceComponent = (
-          <Billboard
-            size="medium"
-            message={`Download ${filename}`}
-            onClick={this.handleDownload}
-            hero={size => <IconDownload size={size} />}
-          />
-        );
-      }
-    }
-
-    // console.debug(resource.getAttribute("type"));
 
     const currentIndex = this.props.moduleItems.findIndex(
-      item => `${item.href}` === href
+      item => `/${item.href}` === this.props.href
     );
     const previousItem =
       currentIndex > -1 && this.props.moduleItems[currentIndex - 1];
@@ -185,8 +175,7 @@ export default class Resource extends Component {
                   placement="end"
                 >
                   <Button
-                    to={`/resources/${previousItem.identifierref ||
-                      previousItem.identifier}`}
+                    to={`/${previousItem.href}`}
                     variant="ghost"
                     as={RouterLink}
                   >
@@ -205,8 +194,7 @@ export default class Resource extends Component {
                 >
                   <Button
                     as={RouterLink}
-                    to={`/resources/${nextItem.identifierref ||
-                      nextItem.identifier}`}
+                    to={`/${nextItem.href}`}
                     variant="ghost"
                   >
                     Next
@@ -223,7 +211,7 @@ export default class Resource extends Component {
             paddingTop: previousItem || nextItem ? "16px" : "0"
           }}
         >
-          {resourceComponent}
+          {resource}
         </div>
       </React.Fragment>
     );

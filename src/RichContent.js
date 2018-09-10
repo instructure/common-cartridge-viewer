@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { getBlobFromEntry, blobToDataUrl } from "./utils";
 import createDOMPurify from "dompurify";
-import { CC_FILE_PREFIX, WIKI_REFERENCE } from "./constants";
+import {
+  CC_FILE_PREFIX,
+  WIKI_REFERENCE,
+  CANVAS_OBJECT_REFERENCE
+} from "./constants";
 import Text from "@instructure/ui-elements/lib/components/Text";
 
 const DOMPurify = createDOMPurify(window);
@@ -28,19 +32,40 @@ export default class RichContent extends Component {
       RETURN_DOM_IMPORT: true
     });
 
-    const links = Array.from(fragment.querySelectorAll("a[href]"));
-    const wikiExp = RegExp(`${WIKI_REFERENCE}/(pages)/(.*)`);
-    await Promise.all(
-      links
-        .filter(link => wikiExp.test(link.getAttribute("href")))
-        .map(async link => {
-          const slug = (link.getAttribute("href") || "").match(wikiExp)[2];
-          link.setAttribute("href", `#/wiki_content/${slug}.html`);
-        })
-    );
+    {
+      const links = Array.from(fragment.querySelectorAll("a[href]"));
+      const wikiExp = RegExp(`${WIKI_REFERENCE}/(pages)/(.*)`);
+      await Promise.all(
+        links
+          .filter(link => wikiExp.test(link.getAttribute("href")))
+          .map(async link => {
+            const slug = (link.getAttribute("href") || "").match(wikiExp)[2];
+            const href = `wiki_content/${slug}.html`;
+            const entry = this.props.entryMap.get(href);
+            if (entry && this.props.resourceIdsByHrefMap.has(href)) {
+              const resourceId = this.props.resourceIdsByHrefMap.get(href);
+              link.setAttribute("href", `#/resources/${resourceId}`);
+            }
+          })
+      );
+    }
+
+    {
+      const links = Array.from(fragment.querySelectorAll("a[href]"));
+      const moduleExp = RegExp(`${CANVAS_OBJECT_REFERENCE}/(modules)/(.*)`);
+      await Promise.all(
+        links
+          .filter(link => moduleExp.test(link.getAttribute("href")))
+          .map(async link => {
+            const resourceId = (link.getAttribute("href") || "").match(
+              moduleExp
+            )[2];
+            link.setAttribute("href", `#/modules/${resourceId}`);
+          })
+      );
+    }
 
     const images = Array.from(fragment.querySelectorAll("img"));
-
     await Promise.all(
       images
         .filter(

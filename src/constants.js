@@ -1,25 +1,26 @@
 export const CC_FILE_PREFIX = "%24IMS-CC-FILEBASE%24";
 export const WIKI_REFERENCE = "%24WIKI_REFERENCE%24";
+export const CANVAS_OBJECT_REFERENCE = "%24CANVAS_OBJECT_REFERENCE%24";
 
 export const resourceTypes = {
-  WEB_CONTENT: "webcontent",
+  ASSESSMENT_CONTENT: "imsqti_xmlv1p2/imscc_xmlv1p1/assessment",
+  ASSIGNMENT: "assignment_xmlv1p0",
   ASSOCIATED_CONTENT:
     "associatedcontent/imscc_xmlv1p1/learning-application-resource",
+  BLTI: "imsbasiclti_xmlv1p0",
   DISCUSSION_TOPIC: "imsdt_xmlv1p1",
-  ASSIGNMENT: "assignment_xmlv1p0",
-  WEB_LINK: "imswl_xmlv1p1",
-  ASSESSMENT_CONTENT: "imsqti_xmlv1p2/imscc_xmlv1p1/assessment",
   QUESTION_BANK: "imsqti_xmlv1p2/imscc_xmlv1p1/question-bank",
-  BLTI: "imsbasiclti_xmlv1p0"
+  WEB_CONTENT: "webcontent",
+  WEB_LINK: "imswl_xmlv1p1"
 };
 
 export const questionTypes = {
+  ESSAY: "cc.essay.v0p1",
+  FILL_IN_THE_BLANK: "cc.fib.v0p1",
   MULTIPLE_CHOICE: "cc.multiple_choice.v0p1",
   MULTIPLE_RESPONSE: "cc.multiple_response.v0p1",
-  TRUEFALSE: "cc.true_false.v0p1",
-  FILL_IN_THE_BLANK: "cc.fib.v0p1",
   PATTERN_MATCH: "cc.pattern_match.v0p1",
-  ESSAY: "cc.essay.v0p1"
+  TRUEFALSE: "cc.true_false.v0p1"
 };
 
 export const questionTypeLabels = {
