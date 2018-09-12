@@ -4,6 +4,7 @@ import createDOMPurify from "dompurify";
 import {
   CC_FILE_PREFIX,
   WIKI_REFERENCE,
+  CANVAS_COURSE_REFERENCE,
   CANVAS_OBJECT_REFERENCE
 } from "./constants";
 import Text from "@instructure/ui-elements/lib/components/Text";
@@ -52,7 +53,7 @@ export default class RichContent extends Component {
 
     {
       const links = Array.from(fragment.querySelectorAll("a[href]"));
-      const moduleExp = RegExp(`${CANVAS_OBJECT_REFERENCE}/(modules)/(.*)`);
+      const moduleExp = RegExp(`${CANVAS_OBJECT_REFERENCE}/(.*)/(.*)`);
       await Promise.all(
         links
           .filter(link => moduleExp.test(link.getAttribute("href")))
@@ -60,7 +61,22 @@ export default class RichContent extends Component {
             const resourceId = (link.getAttribute("href") || "").match(
               moduleExp
             )[2];
-            link.setAttribute("href", `#/modules/${resourceId}`);
+            link.setAttribute("href", `#/resources/${resourceId}`);
+          })
+      );
+    }
+
+    {
+      const links = Array.from(fragment.querySelectorAll("a[href]"));
+      const moduleExp = RegExp(`${CANVAS_COURSE_REFERENCE}/(.*)/(.*)`);
+      await Promise.all(
+        links
+          .filter(link => moduleExp.test(link.getAttribute("href")))
+          .map(async link => {
+            const resourceId = (link.getAttribute("href") || "").match(
+              moduleExp
+            )[2];
+            link.setAttribute("href", `#/resources/${resourceId}`);
           })
       );
     }
