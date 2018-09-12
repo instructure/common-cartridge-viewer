@@ -41,7 +41,9 @@ export default class RichContent extends Component {
         links
           .filter(link => wikiExp.test(link.getAttribute("href")))
           .map(async link => {
-            const slug = (link.getAttribute("href") || "").match(wikiExp)[2];
+            const slug = (link.getAttribute("href") || "")
+              .split("?")[0]
+              .match(wikiExp)[2];
             const href = `wiki_content/${slug}.html`;
             const entry = this.props.entryMap.get(href);
             if (entry && this.props.resourceIdsByHrefMap.has(href)) {
@@ -59,9 +61,9 @@ export default class RichContent extends Component {
         links
           .filter(link => moduleExp.test(link.getAttribute("href")))
           .map(async link => {
-            const resourceId = (link.getAttribute("href") || "").match(
-              moduleExp
-            )[2];
+            const resourceId = (link.getAttribute("href") || "")
+              .split("?")[0]
+              .match(moduleExp)[2];
             link.setAttribute("href", `#/resources/${resourceId}`);
           })
       );
@@ -74,9 +76,9 @@ export default class RichContent extends Component {
         links
           .filter(link => moduleExp.test(link.getAttribute("href")))
           .map(async link => {
-            const resourceId = (link.getAttribute("href") || "").match(
-              moduleExp
-            )[2];
+            const resourceId = (link.getAttribute("href") || "")
+              .split("?")[0]
+              .match(moduleExp)[2];
             link.setAttribute("href", `#/resources/${resourceId}`);
           })
       );
