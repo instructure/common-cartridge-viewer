@@ -3,6 +3,7 @@ import { getBlobFromEntry, blobToDataUrl } from "./utils";
 import createDOMPurify from "dompurify";
 import {
   CC_FILE_PREFIX,
+  CC_FILE_PREFIX_OLD,
   WIKI_REFERENCE,
   CANVAS_COURSE_REFERENCE,
   CANVAS_OBJECT_REFERENCE
@@ -87,11 +88,14 @@ export default class RichContent extends Component {
         .filter(
           img =>
             img.getAttribute("src") &&
-            img.getAttribute("src").indexOf(CC_FILE_PREFIX) > -1
+            (img.getAttribute("src").indexOf(CC_FILE_PREFIX_OLD) > -1 ||
+              img.getAttribute("src").indexOf(CC_FILE_PREFIX) > -1)
         )
         .map(async img => {
           const src = img.getAttribute("src").split("?")[0];
-          const entryKey = src.replace(CC_FILE_PREFIX, "web_resources");
+          const entryKey = src
+            .replace(CC_FILE_PREFIX_OLD, "web_resources")
+            .replace(CC_FILE_PREFIX, "web_resources");
           const entry = this.props.entryMap.get(decodeURIComponent(entryKey));
 
           if (entry) {
