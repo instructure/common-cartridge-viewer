@@ -1,6 +1,7 @@
 export const CC_FILE_PREFIX = "%24IMS-CC-FILEBASE%24";
 export const WIKI_REFERENCE = "%24WIKI_REFERENCE%24";
 export const CANVAS_OBJECT_REFERENCE = "%24CANVAS_OBJECT_REFERENCE%24";
+export const CANVAS_COURSE_REFERENCE = "%24CANVAS_COURSE_REFERENCE%24";
 
 export const resourceTypes = {
   ASSESSMENT_CONTENT: "imsqti_xmlv1p2/imscc_xmlv1p1/assessment",

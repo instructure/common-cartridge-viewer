@@ -12,11 +12,12 @@ import Pill from "@instructure/ui-elements/lib/components/Pill";
 export default class Assessment extends Component {
   render() {
     const doc = this.props.doc;
-
     const assessmentNode = doc.querySelector("assessment");
-
+    if (assessmentNode == null) {
+      // Not yet loaded
+      return null;
+    }
     const title = assessmentNode.getAttribute("title");
-
     const metadata = getMetadataFields(
       assessmentNode.parentNode.querySelector("assessment > qtimetadata")
     );
