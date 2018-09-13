@@ -14,6 +14,7 @@ import Assignment from "./Assignment";
 import Discussion from "./Discussion";
 import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
+import WebLink from "./WebLink";
 import { getBlobFromEntry } from "./utils";
 import { getExtension, getResourceHref } from "./utils";
 
@@ -92,7 +93,19 @@ export default class Resource extends Component {
     }
 
     let resourceComponent;
-    if (resource.getAttribute("type") === resourceTypes.ASSESSMENT_CONTENT) {
+    if (resource.getAttribute("type") === resourceTypes.WEB_LINK) {
+      resourceComponent = (
+        <EntryDocument
+          entryMap={this.props.entryMap}
+          href={href}
+          render={doc => <WebLink doc={doc} />}
+          src={this.props.src}
+          type="text/xml"
+        />
+      );
+    } else if (
+      resource.getAttribute("type") === resourceTypes.ASSESSMENT_CONTENT
+    ) {
       resourceComponent = (
         <EntryDocument
           entryMap={this.props.entryMap}
@@ -162,8 +175,6 @@ export default class Resource extends Component {
         );
       }
     }
-
-    // console.debug(resource.getAttribute("type"));
 
     const currentIndex = this.props.moduleItems.findIndex(
       item => `${item.href}` === href
