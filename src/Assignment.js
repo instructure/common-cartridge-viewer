@@ -6,26 +6,23 @@ import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
 export default class Assignment extends Component {
   render() {
     const doc = this.props.doc;
-
     const assignmentNode = doc.querySelector("assignment");
-
+    if (assignmentNode == null) {
+      // Not yet loaded
+      return null;
+    }
     const title = assignmentNode.querySelector("title").textContent;
-
     const descriptionHtml = assignmentNode.querySelector("text").textContent;
-
     const submissionFormats = Array.from(
       assignmentNode.querySelectorAll("submission_formats > format")
     ).map(node => node.getAttribute("type"));
-
     const gradableNode = assignmentNode.querySelector("gradable");
-
     const points =
       gradableNode &&
       gradableNode.textContent === "true" &&
       gradableNode.getAttribute("points_possible")
         ? parseFloat(gradableNode.getAttribute("points_possible"))
         : 0;
-
     const labelColor = "#AD4AA0";
 
     return (

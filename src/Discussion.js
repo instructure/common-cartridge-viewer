@@ -7,6 +7,10 @@ export default class Discussion extends Component {
   render() {
     const doc = this.props.doc;
     const topicNode = doc.querySelector("topic");
+    if (topicNode == null) {
+      // Not yet loaded
+      return null;
+    }
     const title = topicNode.querySelector("title").textContent;
     const descriptionHtml = topicNode.querySelector("text").textContent;
     const labelColor = "#6f2562";
