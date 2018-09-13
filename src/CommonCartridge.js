@@ -326,36 +326,38 @@ export default class CommonCartridge extends Component {
   render() {
     if (this.state.isLoaded === false) {
       return (
-        <View as="div" margin="small" padding="large" textAlign="center">
-          <Billboard
-            size="medium"
-            heading={"Loading Cartridge"}
-            hero={size => (
-              <img
-                alt=""
-                style={{ width: "125px", height: "80px" }}
-                src={waitingWristWatch}
-              />
-            )}
-            message="This may take some time depending on the size of the cartridge."
-          />
+        <div className="delayed-appearance">
+          <View as="div" margin="small" padding="large" textAlign="center">
+            <Billboard
+              size="medium"
+              heading={"Loading Cartridge"}
+              hero={size => (
+                <img
+                  alt=""
+                  style={{ width: "125px", height: "80px" }}
+                  src={waitingWristWatch}
+                />
+              )}
+              message="This may take some time depending on the size of the cartridge."
+            />
 
-          <Progress
-            variant="bar"
-            animateOnMount
-            label="Loading completion"
-            formatValueText={(valueNow, valueMax) =>
-              `${Math.floor((valueNow / valueMax) * 100)}% loaded`
-            }
-            formatDisplayedValue={(valueNow, valueMax) => (
-              <Text>
-                <pre>{Math.floor((valueNow / valueMax) * 100)}%</pre>
-              </Text>
-            )}
-            valueNow={this.state.loadProgress.loaded}
-            valueMax={this.state.loadProgress.total}
-          />
-        </View>
+            <Progress
+              variant="bar"
+              animateOnMount
+              label="Loading completion"
+              formatValueText={(valueNow, valueMax) =>
+                `${Math.floor((valueNow / valueMax) * 100)}% loaded`
+              }
+              formatDisplayedValue={(valueNow, valueMax) => (
+                <Text>
+                  <pre>{Math.floor((valueNow / valueMax) * 100)}%</pre>
+                </Text>
+              )}
+              valueNow={this.state.loadProgress.loaded}
+              valueMax={this.state.loadProgress.total}
+            />
+          </View>
+        </div>
       );
     }
 
