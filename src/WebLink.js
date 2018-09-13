@@ -5,13 +5,14 @@ import Icon from "@instructure/ui-icons/lib/Line/IconExternalLink";
 export default class WebLink extends Component {
   render() {
     const doc = this.props.doc;
-
+    if (doc.querySelector("url") == null) {
+      // Not yet loaded
+      return null;
+    }
+    const href = doc.querySelector("url").getAttribute("href");
     const title = doc.querySelector("title")
       ? doc.querySelector("title").textContent
       : "Untitled";
-
-    const href = doc.querySelector("url").getAttribute("href");
-
     const labelColor = "#AD4AA0";
 
     return (

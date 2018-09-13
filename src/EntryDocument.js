@@ -45,7 +45,7 @@ export default class EntryDocument extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
+    if (this.state.isLoading || this.state.doc == null) {
       return <span />;
     }
 
