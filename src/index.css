@@ -136,3 +136,32 @@ h3 {
   font-weight: normal;
   font-size: 1.8rem;
 }
+
+@-webkit-keyframes delayed-appearance {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes delayed-appearance {
+  0% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.delayed-appearance {
+  -webkit-animation: delayed-appearance 1.1s 1;
+  animation: delayed-appearance 1.1s 1;
+}
