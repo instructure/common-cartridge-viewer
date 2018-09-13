@@ -6,9 +6,8 @@ import RichContent from "./RichContent";
 export default class WikiContent extends Component {
   render() {
     const doc = this.props.doc;
-    const title = doc.querySelector("title")
-      ? doc.querySelector("title").textContent
-      : "Untitled";
+    const title =
+      doc.querySelector("title") && doc.querySelector("title").textContent;
     const html = doc.body ? doc.body.innerHTML : ""; // doc.body.innerHTML;
     const labelColor = "#8A6240";
 
@@ -24,9 +23,11 @@ export default class WikiContent extends Component {
           <span>Page</span>
         </div>
 
-        <Heading level="h1" margin="0 0 small">
-          {title}
-        </Heading>
+        {title != null && (
+          <Heading level="h1" margin="0 0 small">
+            {title}
+          </Heading>
+        )}
 
         <RichContent
           entryMap={this.props.entryMap}
