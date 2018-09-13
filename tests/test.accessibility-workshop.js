@@ -33,18 +33,63 @@ test("Basic elements exist", async t => {
 
 test("Next and previous links", async t => {
   await t.click(Selector("a").withText("Ally: Accessibility Workshop"));
-  await t.click(Selector("a").withText("Accessibility FAQ"));
-  await t.expect(Selector("h1").withText(`Accessibility FAQ`).exists).ok();
-  await t.click(Selector("a").withText("Next"));
-  await t.expect(Selector("h1").withText(`What is ALLY?`).exists).ok();
-  await t.click(Selector("a").withText("Next"));
+
   await t
+    .click(Selector("a").withText("Accessibility FAQ"))
+    .expect(Selector("h1").withText(`Accessibility FAQ`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`What is ALLY?`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
     .expect(
       Selector("h1").withText(`Alt Text: Writing Alternative Text`).exists
     )
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`Caption Hub`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`Accessibility in your life`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`Share your "Before" Courses`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`Your courses, Accessible`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`Call it out to your Students`).exists)
+    .ok()
+    .click(Selector("a").withText("Next"))
+    .expect(Selector("h1").withText(`Accessibility Resources`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`Call it out to your Students`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`Your courses, Accessible`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`Share your "Before" Courses`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`Accessibility in your life`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`Caption Hub`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(
+      Selector("h1").withText(`Alt Text: Writing Alternative Text`).exists
+    )
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`What is ALLY?`).exists)
+    .ok()
+    .click(Selector("a").withText("Previous"))
+    .expect(Selector("h1").withText(`Accessibility FAQ`).exists)
     .ok();
-  await t.click(Selector("a").withText("Previous"));
-  await t.expect(Selector("h1").withText(`What is ALLY?`).exists).ok();
 });
 
 test("Pages", async t => {
