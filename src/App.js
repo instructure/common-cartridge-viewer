@@ -117,11 +117,21 @@ export default class App extends Component {
             </React.Fragment>
           )}
 
-        {(this.state.cartridge != null || this.state.file) && (
+        {this.state.cartridge != null && (
           <Router>
             <CommonCartridge
               onHistoryChange={this.handleHistoryChange}
               src={this.state.cartridge || this.state.file}
+            />
+          </Router>
+        )}
+
+        {this.state.file && (
+          <Router>
+            <CommonCartridge
+              onHistoryChange={this.handleHistoryChange}
+              src="droppedFile"
+              file={this.state.file}
             />
           </Router>
         )}
