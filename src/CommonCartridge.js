@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import NavLink from "./NavLink";
 import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
@@ -52,7 +52,6 @@ export default class CommonCartridge extends Component {
       entries: [],
       entryMap: new Map(),
       files: [],
-      filter: "organizations",
       isLoaded: false,
       loadProgress: {},
       modules: [],
@@ -70,7 +69,7 @@ export default class CommonCartridge extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.src !== prevProps.src) {
+    if (this.props.src !== prevProps.src && this.props.file == null) {
       this.setState(
         {
           isLoaded: false,
@@ -78,6 +77,8 @@ export default class CommonCartridge extends Component {
         },
         () => this.getEntriesFromSrc()
       );
+    } else if (this.props.file != null && this.props.file !== prevProps.file) {
+      this.getEntriesFromFile();
     }
   }
 
@@ -99,49 +100,34 @@ export default class CommonCartridge extends Component {
 
   async loadEntries() {
     const entries = this.state.entries;
-
     const entryMap = new Map();
-
     for (let entry of entries) {
       entryMap.set(entry.filename, entry);
     }
-
     this.setState({ entryMap });
-
     const manifestEntry = entries.find(
       entry => entry.filename === "imsmanifest.xml"
     );
 
     if (manifestEntry != null) {
       const parser = new DOMParser();
-
       const xml = await getTextFromEntry(manifestEntry);
-
       const manifest = parser.parseFromString(xml, "text/xml");
-
       const titleNode = manifest.querySelector(
         "metadata > lom > general > title > string"
       );
-
       const title = titleNode && titleNode.textContent;
-
       const schemaNode = manifest.querySelector("metadata > schema");
-
       const schema = schemaNode && schemaNode.textContent;
-
       const schemaVersionNode = manifest.querySelector(
         "metadata > schemaversion"
       );
-
       const schemaVersion = schemaVersionNode && schemaVersionNode.textContent;
-
       const rightDescriptionNode = manifest.querySelector(
         "metadata > lom > rights > description"
       );
-
       const rightsDescription =
         rightDescriptionNode && rightDescriptionNode.textContent;
-
       const resources = Array.from(
         manifest.querySelectorAll("resources > resource")
       );
@@ -176,8 +162,7 @@ export default class CommonCartridge extends Component {
         .filter(isNot(resourceTypes.DISCUSSION_TOPIC))
         .filter(isNot(resourceTypes.ASSIGNMENT))
         .filter(isNot(resourceTypes.ASSESSMENT_CONTENT))
-        .filter(isNot(resourceTypes.WEB_CONTENT))
-        .filter(isNot(resourceTypes.ASSOCIATED_CONTENT));
+        .filter(isNot(resourceTypes.WEB_CONTENT));
 
       const discussionResources = resources
         .filter(is(resourceTypes.DISCUSSION_TOPIC))
@@ -307,13 +292,6 @@ export default class CommonCartridge extends Component {
     }
   }
 
-  setFilter = filter => {
-    if (this.history) {
-      this.history.push("/");
-    }
-    this.setState({ filter });
-  };
-
   handleHistoryChange = history => {
     this.history = history;
     this.props.onHistoryChange(history);
@@ -363,18 +341,26 @@ export default class CommonCartridge extends Component {
 
     const onlyOneSupportedResource = this.state.supportedResources.length === 1;
 
-    const href =
-      onlyOneSupportedResource &&
-      getResourceHref(this.state.supportedResources[0]);
-
     if (onlyOneSupportedResource) {
-      return <Redirect to={`/${href}`} />;
+      return (
+        <Resource
+          entryMap={this.state.entryMap}
+          identifier={this.state.supportedResources[0].getAttribute(
+            "identifier"
+          )}
+          moduleItems={this.state.moduleItems}
+          modules={this.state.modules}
+          resourceMap={this.state.resourceMap}
+          resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
+          src={this.props.src}
+        />
+      );
     }
 
     return (
       <div className={styles.BrowserContent}>
         <View
-          as="div"
+          as="header"
           margin="small"
           padding="small"
           background="default"
@@ -386,47 +372,49 @@ export default class CommonCartridge extends Component {
         </View>
         <Grid>
           <GridRow>
-            <GridCol width={2}>
-              <nav>
-                {this.state.modules.length > 0 && (
-                  <NavLink exact className="MenuItem" to="/">
-                    Modules ({this.state.modules.length})
-                  </NavLink>
-                )}
+            {onlyOneSupportedResource === false && (
+              <GridCol width={2}>
+                <nav>
+                  {this.state.modules.length > 0 && (
+                    <NavLink exact className="MenuItem" to="/">
+                      Modules ({this.state.modules.length})
+                    </NavLink>
+                  )}
 
-                {this.state.assignmentResources.length > 0 && (
-                  <NavLink className="MenuItem" to="/assignments">
-                    Assignments ({this.state.assignmentResources.length})
-                  </NavLink>
-                )}
+                  {this.state.assignmentResources.length > 0 && (
+                    <NavLink className="MenuItem" to="/assignments">
+                      Assignments ({this.state.assignmentResources.length})
+                    </NavLink>
+                  )}
 
-                {this.state.pageResources.length > 0 && (
-                  <NavLink className="MenuItem" to="/pages">
-                    Pages ({this.state.pageResources.length})
-                  </NavLink>
-                )}
+                  {this.state.pageResources.length > 0 && (
+                    <NavLink className="MenuItem" to="/pages">
+                      Pages ({this.state.pageResources.length})
+                    </NavLink>
+                  )}
 
-                {this.state.discussionResources.length > 0 && (
-                  <NavLink className="MenuItem" to="/discussions">
-                    Discussions ({this.state.discussionResources.length})
-                  </NavLink>
-                )}
+                  {this.state.discussionResources.length > 0 && (
+                    <NavLink className="MenuItem" to="/discussions">
+                      Discussions ({this.state.discussionResources.length})
+                    </NavLink>
+                  )}
 
-                {this.state.assessmentResources.length > 0 && (
-                  <NavLink className="MenuItem" to="/assessments">
-                    Assessments ({this.state.assessmentResources.length})
-                  </NavLink>
-                )}
+                  {this.state.assessmentResources.length > 0 && (
+                    <NavLink className="MenuItem" to="/assessments">
+                      Assessments ({this.state.assessmentResources.length})
+                    </NavLink>
+                  )}
 
-                {this.state.fileResources.length > 0 && (
-                  <NavLink className="MenuItem" to="/files">
-                    Files ({this.state.fileResources.length})
-                  </NavLink>
-                )}
-              </nav>
-            </GridCol>
+                  {this.state.fileResources.length > 0 && (
+                    <NavLink className="MenuItem" to="/files">
+                      Files ({this.state.fileResources.length})
+                    </NavLink>
+                  )}
+                </nav>
+              </GridCol>
+            )}
 
-            <GridCol width={10}>
+            <GridCol width={onlyOneSupportedResource ? 12 : 10}>
               <View
                 as="div"
                 margin="small"
