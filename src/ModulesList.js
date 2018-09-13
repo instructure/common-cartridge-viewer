@@ -105,7 +105,13 @@ export default class ModulesList extends Component {
           }
 
           if (item.type === resourceTypes.WEB_LINK) {
-            return <WebLinkListItem key={index} item={item} />;
+            return (
+              <WebLinkListItem
+                key={index}
+                identifier={item.identifierref}
+                item={item}
+              />
+            );
           }
 
           return (

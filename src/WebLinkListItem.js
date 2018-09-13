@@ -19,7 +19,7 @@ export default class WebLinkListItem extends Component {
 
           <div style={{ flex: 1 }}>
             {this.props.item.href && (
-              <Link as={NavLink} to={`${this.props.item.href}`}>
+              <Link as={NavLink} to={`resources/${this.props.identifier}`}>
                 <span>{this.props.item.title || "Untitled"}</span>
               </Link>
             )}
