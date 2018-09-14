@@ -9,19 +9,18 @@ import TextInput from "@instructure/ui-forms/lib/components/TextInput";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import View from "@instructure/ui-layout/lib/components/View";
-
 import { HashRouter as Router } from "react-router-dom";
 
 const queryString = require("query-string-es5");
-
-const parseQueryString = queryString.parse(window.location.search);
+const parsedQueryString = queryString.parse(window.location.search);
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cartridge: parseQueryString.src, // localCartridges[0],
+      cartridge: parsedQueryString.src,
+      compact: typeof parsedQueryString.compact !== "undefined",
       file: null,
       history: { location: { pathname: "/" } },
       featuredCartridges: []
@@ -120,6 +119,7 @@ export default class App extends Component {
         {this.state.cartridge != null && (
           <Router>
             <CommonCartridge
+              compact={this.state.compact}
               onHistoryChange={this.handleHistoryChange}
               src={this.state.cartridge || this.state.file}
             />
@@ -129,6 +129,7 @@ export default class App extends Component {
         {this.state.file && (
           <Router>
             <CommonCartridge
+              compact={this.state.compact}
               onHistoryChange={this.handleHistoryChange}
               src="droppedFile"
               file={this.state.file}
