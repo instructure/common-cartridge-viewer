@@ -146,17 +146,6 @@ export default class CommonCartridge extends Component {
           );
         });
 
-      const supportedResources = resources.filter(resource => {
-        const type = resource.getAttribute("type");
-
-        return [
-          resourceTypes.DISCUSSION_TOPIC,
-          resourceTypes.ASSESSMENT_CONTENT,
-          resourceTypes.ASSIGNMENT,
-          resourceTypes.WEB_CONTENT
-        ].includes(type);
-      });
-
       const otherResources = resources
         .filter(isNot(resourceTypes.DISCUSSION_TOPIC))
         .filter(isNot(resourceTypes.ASSIGNMENT))
@@ -211,6 +200,13 @@ export default class CommonCartridge extends Component {
       const assignmentResources = resources
         .filter(is(resourceTypes.ASSIGNMENT))
         .filter(node => node.querySelector("file"));
+
+      const showcaseResources = [].concat(
+        pageResources,
+        discussionResources,
+        assessmentResources,
+        assignmentResources
+      );
 
       const modules = Array.from(
         manifest.querySelectorAll("organizations > organization > item > item")
@@ -281,9 +277,10 @@ export default class CommonCartridge extends Component {
         modules,
         otherResources,
         pageResources,
+        resources,
         resourceIdsByHrefMap,
         rightsDescription,
-        supportedResources,
+        showcaseResources,
         title,
         schema,
         schemaVersion
@@ -338,7 +335,17 @@ export default class CommonCartridge extends Component {
       );
     }
 
-    const onlyOneSupportedResource = this.state.supportedResources.length === 1;
+    let showcaseSingleResource = null;
+
+    if (this.state.resources.length === 1) {
+      showcaseSingleResource = this.state.resources[0];
+    } else if (
+      this.props.compact &&
+      this.state.modules.length === 0 &&
+      this.state.showcaseResources.length === 1
+    ) {
+      showcaseSingleResource = this.state.showcaseResources[0];
+    }
 
     return (
       <React.Fragment>
@@ -359,7 +366,7 @@ export default class CommonCartridge extends Component {
         <div style={{ marginTop: this.props.compact ? "0" : "12px" }}>
           <Grid>
             <GridRow padding="small">
-              {onlyOneSupportedResource === false && (
+              {showcaseSingleResource === null && (
                 <GridCol width={2}>
                   <nav>
                     {this.state.modules.length > 0 && (
@@ -401,7 +408,7 @@ export default class CommonCartridge extends Component {
                 </GridCol>
               )}
 
-              <GridCol width={onlyOneSupportedResource ? 12 : 10}>
+              <GridCol width={showcaseSingleResource !== null ? 12 : 10}>
                 <View
                   as="main"
                   margin={this.props.compact ? "none" : "small"}
@@ -413,10 +420,24 @@ export default class CommonCartridge extends Component {
                       path="/"
                       render={({ match }) => (
                         <React.Fragment>
-                          {onlyOneSupportedResource ? (
+                          {showcaseSingleResource !== null ? (
                             <Resource
                               entryMap={this.state.entryMap}
-                              identifier={this.state.supportedResources[0].getAttribute(
+                              identifier={this.state.showcaseResources[0].getAttribute(
+                                "identifier"
+                              )}
+                              moduleItems={this.state.moduleItems}
+                              modules={this.state.modules}
+                              resourceMap={this.state.resourceMap}
+                              resourceIdsByHrefMap={
+                                this.state.resourceIdsByHrefMap
+                              }
+                              src={this.props.src}
+                            />
+                          ) : this.state.showcaseResources.length === 1 ? (
+                            <Resource
+                              entryMap={this.state.entryMap}
+                              identifier={this.state.showcaseResources[0].getAttribute(
                                 "identifier"
                               )}
                               moduleItems={this.state.moduleItems}
