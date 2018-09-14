@@ -23,7 +23,6 @@ import {
   getResourceHref
 } from "./utils.js";
 import { resourceTypes } from "./constants";
-import styles from "./styles.css";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import AssessmentList from "./AssessmentList";
@@ -341,98 +340,102 @@ export default class CommonCartridge extends Component {
 
     const onlyOneSupportedResource = this.state.supportedResources.length === 1;
 
-    if (onlyOneSupportedResource) {
-      return (
-        <Resource
-          entryMap={this.state.entryMap}
-          identifier={this.state.supportedResources[0].getAttribute(
-            "identifier"
-          )}
-          moduleItems={this.state.moduleItems}
-          modules={this.state.modules}
-          resourceMap={this.state.resourceMap}
-          resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
-          src={this.props.src}
-        />
-      );
-    }
-
     return (
-      <div className={styles.BrowserContent}>
-        <View
-          as="header"
-          margin="small"
-          padding="small"
-          background="default"
-          borderWidth="0 0 small"
-        >
-          <Breadcrumb size="large" label="You are here:">
-            <BreadcrumbLink>{this.state.title || "Untitled"}</BreadcrumbLink>
-          </Breadcrumb>
-        </View>
-        <Grid>
-          <GridRow>
-            {onlyOneSupportedResource === false && (
-              <GridCol width={2}>
-                <nav>
-                  {this.state.modules.length > 0 && (
-                    <NavLink exact className="MenuItem" to="/">
-                      Modules ({this.state.modules.length})
-                    </NavLink>
-                  )}
+      <React.Fragment>
+        {this.props.compact !== true && (
+          <View
+            as="header"
+            margrin="small"
+            padding="small"
+            background="default"
+            borderWidth="0 0 small"
+          >
+            <Breadcrumb size="large" label="You are here:">
+              <BreadcrumbLink>{this.state.title || "Untitled"}</BreadcrumbLink>
+            </Breadcrumb>
+          </View>
+        )}
 
-                  {this.state.assignmentResources.length > 0 && (
-                    <NavLink className="MenuItem" to="/assignments">
-                      Assignments ({this.state.assignmentResources.length})
-                    </NavLink>
-                  )}
+        <div style={{ marginTop: this.props.compact ? "0" : "12px" }}>
+          <Grid>
+            <GridRow padding="small">
+              {onlyOneSupportedResource === false && (
+                <GridCol width={2}>
+                  <nav>
+                    {this.state.modules.length > 0 && (
+                      <NavLink exact className="MenuItem" to="/">
+                        Modules ({this.state.modules.length})
+                      </NavLink>
+                    )}
 
-                  {this.state.pageResources.length > 0 && (
-                    <NavLink className="MenuItem" to="/pages">
-                      Pages ({this.state.pageResources.length})
-                    </NavLink>
-                  )}
+                    {this.state.assignmentResources.length > 0 && (
+                      <NavLink className="MenuItem" to="/assignments">
+                        Assignments ({this.state.assignmentResources.length})
+                      </NavLink>
+                    )}
 
-                  {this.state.discussionResources.length > 0 && (
-                    <NavLink className="MenuItem" to="/discussions">
-                      Discussions ({this.state.discussionResources.length})
-                    </NavLink>
-                  )}
+                    {this.state.pageResources.length > 0 && (
+                      <NavLink className="MenuItem" to="/pages">
+                        Pages ({this.state.pageResources.length})
+                      </NavLink>
+                    )}
 
-                  {this.state.assessmentResources.length > 0 && (
-                    <NavLink className="MenuItem" to="/assessments">
-                      Assessments ({this.state.assessmentResources.length})
-                    </NavLink>
-                  )}
+                    {this.state.discussionResources.length > 0 && (
+                      <NavLink className="MenuItem" to="/discussions">
+                        Discussions ({this.state.discussionResources.length})
+                      </NavLink>
+                    )}
 
-                  {this.state.fileResources.length > 0 && (
-                    <NavLink className="MenuItem" to="/files">
-                      Files ({this.state.fileResources.length})
-                    </NavLink>
-                  )}
-                </nav>
-              </GridCol>
-            )}
+                    {this.state.assessmentResources.length > 0 && (
+                      <NavLink className="MenuItem" to="/assessments">
+                        Assessments ({this.state.assessmentResources.length})
+                      </NavLink>
+                    )}
 
-            <GridCol width={onlyOneSupportedResource ? 12 : 10}>
-              <View
-                as="div"
-                margin="small"
-                padding="small"
-                background="default"
-              >
-                <React.Fragment>
+                    {this.state.fileResources.length > 0 && (
+                      <NavLink className="MenuItem" to="/files">
+                        Files ({this.state.fileResources.length})
+                      </NavLink>
+                    )}
+                  </nav>
+                </GridCol>
+              )}
+
+              <GridCol width={onlyOneSupportedResource ? 12 : 10}>
+                <View
+                  as="main"
+                  margin={this.props.compact ? "none" : "small"}
+                  background="default"
+                >
                   <Switch>
                     <Route
                       exact
                       path="/"
                       render={({ match }) => (
-                        <ModulesList
-                          entryMap={this.state.entryMap}
-                          moduleItems={this.state.moduleItems}
-                          modules={this.state.modules}
-                          match={match}
-                        />
+                        <React.Fragment>
+                          {onlyOneSupportedResource ? (
+                            <Resource
+                              entryMap={this.state.entryMap}
+                              identifier={this.state.supportedResources[0].getAttribute(
+                                "identifier"
+                              )}
+                              moduleItems={this.state.moduleItems}
+                              modules={this.state.modules}
+                              resourceMap={this.state.resourceMap}
+                              resourceIdsByHrefMap={
+                                this.state.resourceIdsByHrefMap
+                              }
+                              src={this.props.src}
+                            />
+                          ) : (
+                            <ModulesList
+                              entryMap={this.state.entryMap}
+                              moduleItems={this.state.moduleItems}
+                              modules={this.state.modules}
+                              match={match}
+                            />
+                          )}
+                        </React.Fragment>
                       )}
                     />
 
@@ -548,12 +551,12 @@ export default class CommonCartridge extends Component {
                       );
                     }}
                   />
-                </React.Fragment>
-              </View>
-            </GridCol>
-          </GridRow>
-        </Grid>
-      </div>
+                </View>
+              </GridCol>
+            </GridRow>
+          </Grid>
+        </div>
+      </React.Fragment>
     );
   }
 }
