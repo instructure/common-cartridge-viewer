@@ -46,7 +46,9 @@ export default class Assignment extends Component {
               <div style={{ marginTop: "12px", marginBottom: "12px" }}>
                 <span style={{ fontWeight: "bold" }}>Submission formats</span>:{" "}
                 {submissionFormats.map(format => (
-                  <span key={format}>{format}</span>
+                  <span className="submission-format" key={format}>
+                    {format}
+                  </span>
                 ))}
               </div>
             </React.Fragment>
