@@ -137,7 +137,11 @@ export default class Resource extends Component {
           entryMap={this.props.entryMap}
           href={href}
           render={doc => (
-            <Discussion entryMap={this.props.entryMap} doc={doc} />
+            <Discussion
+              entryMap={this.props.entryMap}
+              doc={doc}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+            />
           )}
           src={this.props.src}
           type="text/xml"
