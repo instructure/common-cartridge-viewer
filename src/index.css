@@ -165,3 +165,7 @@ h3 {
   -webkit-animation: delayed-appearance 1.1s 1;
   animation: delayed-appearance 1.1s 1;
 }
+
+.submission-format:not(:last-of-type)::after {
+  content: ", ";
+}
