@@ -522,10 +522,10 @@ export default class CommonCartridge extends Component {
                       path="/discussions"
                       render={({ match }) => (
                         <DiscussionList
-                          resources={this.state.discussionResources}
                           entryMap={this.state.entryMap}
                           moduleItems={this.state.moduleItems}
                           resourceMap={this.state.resourceMap}
+                          resources={this.state.discussionResources}
                           src={this.props.src}
                         />
                       )}
