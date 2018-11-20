@@ -96,12 +96,6 @@ export default class Assessment extends Component {
               <Text>{metadata.get("cc_maxattempts")}</Text>
             </FormField>
           )}
-
-          {metadata.has("qmd_scoretype") && (
-            <FormField id="qmd_scoretype" label="Score type">
-              <Text>{metadata.get("qmd_scoretype")}</Text>
-            </FormField>
-          )}
         </FormFieldGroup>
 
         <Heading level="h2" margin="medium 0 small">
