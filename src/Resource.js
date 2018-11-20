@@ -65,6 +65,22 @@ export default class Resource extends Component {
     document.body.removeEventListener("keydown", this.handleKeyDown);
   }
 
+  setNextButton = node => {
+    this.nextButton = node;
+  };
+
+  setPreviousButton = node => {
+    this.previousButton = node;
+  };
+
+  handleNextButtonPressed = () => {
+    this.nextButton.click();
+  };
+
+  handlePreviousButtonPressed = () => {
+    this.previousButton.click();
+  };
+
   render() {
     let resource = this.props.resourceMap.get(this.props.identifier);
     if (resource == null) {
@@ -204,6 +220,8 @@ export default class Resource extends Component {
                       previousItem.identifier}`}
                     variant="ghost"
                     as={RouterLink}
+                    innerRef={this.setPreviousButton}
+                    onClick={this.handlePreviousButtonPressed}
                   >
                     Previous
                   </Button>
@@ -219,10 +237,12 @@ export default class Resource extends Component {
                   placement="start"
                 >
                   <Button
-                    as={RouterLink}
                     to={`/resources/${nextItem.identifierref ||
                       nextItem.identifier}`}
                     variant="ghost"
+                    as={RouterLink}
+                    innerRef={this.setNextButton}
+                    onClick={this.handleNextButtonPressed}
                   >
                     Next
                   </Button>
