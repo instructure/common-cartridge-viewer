@@ -55,7 +55,9 @@ export default class Resource extends Component {
   };
 
   handleDownload = async () => {
-    const entry = this.props.entryMap.get(this.props.href.substr(1));
+    const resource = this.props.resourceMap.get(this.props.identifier);
+    const href = getResourceHref(resource);
+    const entry = this.props.entryMap.get(href);
     const filename = basename(entry.filename);
     const blob = await getBlobFromEntry(entry);
     saveAs(blob, filename);
