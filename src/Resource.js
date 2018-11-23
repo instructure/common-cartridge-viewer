@@ -1,5 +1,6 @@
 import { basename } from "path";
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { resourceTypes } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver/FileSaver";
@@ -7,6 +8,7 @@ import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
+import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
 
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
@@ -21,8 +23,12 @@ import { getExtension, getResourceHref } from "./utils";
 import notFoundImage from "./images/404-empty-planet.svg";
 
 export default class Resource extends Component {
-  constructor() {
-    super();
+  static propTypes = {
+    allItemsPath: PropTypes.string
+  };
+
+  constructor(props) {
+    super(props);
     this.state = {
       isLoaded: false,
       isNotFound: false
@@ -40,16 +46,10 @@ export default class Resource extends Component {
 
   handleKeyDown = event => {
     if (event.which === 37) {
-      const link = document.querySelector(".previous-link a");
-      if (link != null) {
-        link.click();
-      }
+      this.handlePreviousButtonPressed();
       event.preventDefault();
     } else if (event.which === 39) {
-      const link = document.querySelector(".next-link a");
-      if (link != null) {
-        link.click();
-      }
+      this.handleNextButtonPressed();
       event.preventDefault();
     }
   };
@@ -75,44 +75,97 @@ export default class Resource extends Component {
     this.previousButton = node;
   };
 
+  setAllItemsButton = node => {
+    this.allItemsButton = node;
+  };
+
   handleNextButtonPressed = () => {
-    this.nextButton.click();
+    this.nextButton && this.nextButton.click();
   };
 
   handlePreviousButtonPressed = () => {
-    this.previousButton.click();
+    this.previousButton && this.previousButton.click();
   };
 
-  render() {
-    let resource = this.props.resourceMap.get(this.props.identifier);
-    if (resource == null) {
-      return (
-        <Billboard
-          size="medium"
-          heading={"Not found"}
-          hero={size => (
-            <img
-              alt=""
-              style={{ width: "260px", height: "200px" }}
-              src={notFoundImage}
-            />
-          )}
-        />
-      );
-    }
+  handleAllItemsButtonPressed = () => {
+    this.allItemsButton.click();
+  };
 
-    const href = getResourceHref(resource);
-    const filename = basename(href);
-    const extension = getExtension(href).toLowerCase();
-    if (resource.getAttribute("identifierref") != null) {
-      resource = this.props.resourceMap.get(
-        resource.getAttribute("identifierref")
-      );
-    }
+  renderPreviousButton = previousItem => {
+    return(
+      <div className="previous-link">
+        <Tooltip
+          variant="inverse"
+          tip={previousItem.title}
+          placement="end"
+        >
+          <Button
+            to={`/resources/${previousItem.identifierref ||
+              previousItem.identifier}`}
+            variant="ghost"
+            as={RouterLink}
+            innerRef={this.setPreviousButton}
+            onClick={this.handlePreviousButtonPressed}
+          >
+            Previous
+          </Button>
+        </Tooltip>
+      </div>
+    );
+  };
 
-    let resourceComponent;
-    if (resource.getAttribute("type") === resourceTypes.WEB_LINK) {
-      resourceComponent = (
+  renderNextButton = nextItem => {
+    return(
+      <div className="next-link">
+        <Tooltip
+          variant="inverse"
+          tip={nextItem.title}
+          placement="start"
+        >
+          <Button
+            to={`/resources/${nextItem.identifierref ||
+              nextItem.identifier}`}
+            variant="ghost"
+            as={RouterLink}
+            innerRef={this.setNextButton}
+            onClick={this.handleNextButtonPressed}
+          >
+            Next
+          </Button>
+        </Tooltip>
+      </div>
+    );
+  };
+
+  renderAllItemsButton = () => {
+    return(
+      <Tooltip
+        variant="inverse"
+        tip="All Items"
+        placement="bottom"
+      >
+        <Button
+          to={this.props.allItemsPath}
+          variant="ghost"
+          as={RouterLink}
+          innerRef={this.setAllItemsButton}
+          onClick={this.handleAllItemsButtonPressed}
+        >
+          All Items
+        </Button>
+      </Tooltip>
+    )
+  };
+
+  renderResourceDocument = resource => {
+    let componentToRender
+    const href = getResourceHref(resource)
+    const filename = basename(href)
+    const extension = getExtension(href).toLowerCase()
+    const type = resource.getAttribute('type')
+
+    const components = {
+      [resourceTypes.WEB_LINK]: (
         <EntryDocument
           entryMap={this.props.entryMap}
           href={href}
@@ -120,37 +173,26 @@ export default class Resource extends Component {
           src={this.props.src}
           type="text/xml"
         />
-      );
-    } else if (
-      resource.getAttribute("type") === resourceTypes.ASSESSMENT_CONTENT
-    ) {
-      resourceComponent = (
+      ),
+      [resourceTypes.ASSESSMENT_CONTENT]: (
         <EntryDocument
           entryMap={this.props.entryMap}
           href={href}
-          render={doc => (
-            <Assessment entryMap={this.props.entryMap} doc={doc} />
-          )}
+          render={doc => <Assessment entryMap={this.props.entryMap} doc={doc} />}
           src={this.props.src}
           type="text/xml"
         />
-      );
-    } else if (resource.getAttribute("type") === resourceTypes.ASSIGNMENT) {
-      resourceComponent = (
+      ),
+      [resourceTypes.ASSIGNMENT]: (
         <EntryDocument
           entryMap={this.props.entryMap}
           href={href}
-          render={doc => (
-            <Assignment entryMap={this.props.entryMap} doc={doc} />
-          )}
+          render={doc => <Assignment entryMap={this.props.entryMap} doc={doc} />}
           src={this.props.src}
           type="text/xml"
         />
-      );
-    } else if (
-      resource.getAttribute("type") === resourceTypes.DISCUSSION_TOPIC
-    ) {
-      resourceComponent = (
+      ),
+      [resourceTypes.DISCUSSION_TOPIC]: (
         <EntryDocument
           entryMap={this.props.entryMap}
           href={href}
@@ -164,105 +206,106 @@ export default class Resource extends Component {
           src={this.props.src}
           type="text/xml"
         />
-      );
-    } else if (resource.getAttribute("type") === resourceTypes.WEB_CONTENT) {
-      if (["png", "jpg", "gif", "webp"].includes(extension)) {
-        return <Image href={href} entryMap={this.props.entryMap} />;
-      }
+      )
+    }
 
-      if (["html", "htm"].includes(extension)) {
-        resourceComponent = (
-          <EntryDocument
-            entryMap={this.props.entryMap}
-            href={href}
-            render={doc => (
-              <WikiContent
-                doc={doc}
-                entryMap={this.props.entryMap}
-                resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              />
-            )}
-            src={this.props.src}
-            type="text/html"
-          />
-        );
-      } else {
-        resourceComponent = (
-          <Billboard
-            size="medium"
-            message={`Download ${filename}`}
-            onClick={this.handleDownload}
-            hero={size => <IconDownload size={size} />}
-          />
-        );
+    const webComponents = {
+      image: <Image href={href} entryMap={this.props.entryMap} />,
+      html: (
+        <EntryDocument
+          entryMap={this.props.entryMap}
+          href={href}
+          render={doc => (
+            <WikiContent
+              doc={doc}
+              entryMap={this.props.entryMap}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+            />
+          )}
+          src={this.props.src}
+          type="text/html"
+        />
+      )
+    }
+
+    const downloadComponent = (
+      <Billboard
+        size="medium"
+        message={`Download ${filename}`}
+        onClick={this.handleDownload}
+        hero={size => <IconDownload size={size} />}
+      />
+    )
+
+    if (type === resourceTypes.WEB_CONTENT) {
+      if (['png', 'jpg', 'gif', 'webp'].includes(extension)) {
+        componentToRender = webComponents['image']
+      } else if (['html', 'htm'].includes(extension)) {
+        componentToRender = webComponents['html']
       }
     }
 
-    const currentIndex = this.props.moduleItems.findIndex(
-      item => `${item.href}` === href
-    );
-    const previousItem =
-      currentIndex > -1 && this.props.moduleItems[currentIndex - 1];
-    const nextItem =
-      currentIndex > -1 && this.props.moduleItems[currentIndex + 1];
+    if (componentToRender == null) {
+      componentToRender = components[type]
+    }
+
+    return componentToRender ? componentToRender : downloadComponent
+  }
+
+  render() {
+    let resource = this.props.resourceMap.get(this.props.identifier);
+    const { moduleItems } = this.props;
+
+    if (resource == null) {
+      return (
+        <Billboard
+          size="medium"
+          heading={'Not found'}
+          hero={size => (
+            <img
+              alt=""
+              style={{ width: '260px', height: '200px' }}
+              src={notFoundImage}
+            />
+          )}
+        />
+      )
+    }
+
+    if (resource.getAttribute('identifierref') != null) {
+      resource = this.props.resourceMap.get(resource.getAttribute('identifierref'))
+    }
+
+    const href = getResourceHref(resource)
+    const currentIndex = moduleItems.findIndex(item => `${item.href}` === href)
+
+    const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1]
+
+    const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1]
 
     return (
       <React.Fragment>
-        {(previousItem || nextItem) && (
-          <div>
-            {previousItem && (
-              <div className="previous-link" style={{ float: "left" }}>
-                <Tooltip
-                  variant="inverse"
-                  tip={previousItem.title}
-                  placement="end"
-                >
-                  <Button
-                    to={`/resources/${previousItem.identifierref ||
-                      previousItem.identifier}`}
-                    variant="ghost"
-                    as={RouterLink}
-                    innerRef={this.setPreviousButton}
-                    onClick={this.handlePreviousButtonPressed}
-                  >
-                    Previous
-                  </Button>
-                </Tooltip>
-              </div>
-            )}
-
-            {nextItem && (
-              <div className="next-link" style={{ float: "right" }}>
-                <Tooltip
-                  variant="inverse"
-                  tip={nextItem.title}
-                  placement="start"
-                >
-                  <Button
-                    to={`/resources/${nextItem.identifierref ||
-                      nextItem.identifier}`}
-                    variant="ghost"
-                    as={RouterLink}
-                    innerRef={this.setNextButton}
-                    onClick={this.handleNextButtonPressed}
-                  >
-                    Next
-                  </Button>
-                </Tooltip>
-              </div>
-            )}
-          </div>
-        )}
-
+        <div>
+          <Flex wrapItems justifyItems="space-between" margin="0 0 medium">
+            <FlexItem padding="small">
+              {previousItem && this.renderPreviousButton(previousItem)}
+            </FlexItem>
+            <FlexItem padding="small">
+              {this.props.allItemsPath && this.renderAllItemsButton()}
+            </FlexItem>
+            <FlexItem padding="small">
+              {nextItem && this.renderNextButton(nextItem)}
+            </FlexItem>
+          </Flex>
+        </div>
         <div
           style={{
-            clear: "both",
-            paddingTop: previousItem || nextItem ? "16px" : "0"
+            clear: 'both'
           }}
         >
-          {resourceComponent}
+          {this.renderResourceDocument(resource)}
         </div>
       </React.Fragment>
-    );
+    )
   }
 }

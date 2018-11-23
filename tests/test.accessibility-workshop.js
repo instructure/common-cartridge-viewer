@@ -92,6 +92,25 @@ test("Next and previous links", async t => {
     .ok();
 });
 
+test("Back to all items link", async t => {
+  await t.click(Selector("a").withText("Ally: Accessibility Workshop"));
+
+  await t
+    .click(Selector("a").withText("Accessibility FAQ"))
+    .expect(Selector("h1").withText(`Accessibility FAQ`).exists)
+    .ok()
+    .click(Selector("a").withText("All Items"))
+    .expect(Selector("header").withText("Ally: Accessibility Workshop").exists)
+    .ok()
+    .click(Selector("a").withText("Pages"))
+    .click(Selector("a").withText("The Time is Now"))
+    .expect(Selector("h2").withText("Accessibility is the Law"))
+    .ok()
+    .click(Selector("a").withText("All Items"))
+    .expect(Selector("header").withText("Ally: Accessibility Workshop").exists)
+    .ok();
+});
+
 test("Pages", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
