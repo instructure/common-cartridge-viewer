@@ -97,6 +97,7 @@ export default class ModulesList extends Component {
               <FileListItem
                 entryMap={this.props.entryMap}
                 href={`/${item.href}`}
+                identifier={item.identifierref}
                 key={index}
                 metadata={item.metadata}
                 src={this.props.src}
