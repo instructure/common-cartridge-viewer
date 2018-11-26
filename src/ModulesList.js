@@ -3,8 +3,7 @@ import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Link from "@instructure/ui-elements/lib/components/Link";
 
-import { getExtension } from "./utils.js";
-import { resourceTypes } from "./constants";
+import { resourceTypes, WIKI_CONTENT_HREF_PREFIX } from "./constants";
 import NavLink from "./NavLink";
 import AssignmentListItem from "./AssignmentListItem";
 import AssessmentListItem from "./AssessmentListItem";
@@ -30,11 +29,10 @@ export default class ModulesList extends Component {
             );
           }
 
-          const extension = getExtension(item.href);
-
           const isWikiContent =
             item.type === resourceTypes.WEB_CONTENT &&
-            ["html", "htm"].includes(extension);
+            typeof item.href === "string" &&
+            item.href.includes(WIKI_CONTENT_HREF_PREFIX);
 
           if (isWikiContent) {
             return (
@@ -101,6 +99,7 @@ export default class ModulesList extends Component {
                 key={index}
                 metadata={item.metadata}
                 src={this.props.src}
+                title={item.title}
               />
             );
           }

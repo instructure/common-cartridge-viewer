@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
-import { getExtension } from "./utils"; // getResourceHref
+import { WIKI_CONTENT_HREF_PREFIX } from "./constants";
 import WikiContentListItem from "./WikiContentListItem";
 
 export default class WikiContentList extends Component {
@@ -32,11 +32,10 @@ export default class WikiContentList extends Component {
         href: node.querySelector("file").getAttribute("href")
       }))
       // needs filter to filter out dependencies
-      .filter(({ href }) => {
-        const extension = getExtension(href);
-
-        return ["html", "htm"].includes(extension);
-      });
+      .filter(
+        ({ href }) =>
+          typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
+      );
 
     const listItems =
       this.props.entryMap.size &&
