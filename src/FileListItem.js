@@ -57,7 +57,8 @@ export default class FileListItem extends Component {
           </span>
           <div style={{ flex: 1 }}>
             <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
-              {this.state.title.replace(/^(web_resources\/)/, "")}
+              {this.props.title ||
+                this.state.title.replace(/^(web_resources\/)/, "")}
             </Link>
           </div>
 
