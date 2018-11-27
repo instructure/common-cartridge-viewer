@@ -297,6 +297,10 @@ export default class CommonCartridge extends Component {
     this.setState({ loadProgress: event });
   };
 
+  setActiveNavLink = link => {
+    this.activeNavLink = link;
+  };
+
   render() {
     if (this.state.isLoaded === false) {
       return (
@@ -420,6 +424,7 @@ export default class CommonCartridge extends Component {
                       path="/"
                       render={({ match }) => (
                         <React.Fragment>
+                          { this.setActiveNavLink("/") }
                           {showcaseSingleResource !== null ? (
                             <Resource
                               entryMap={this.state.entryMap}
@@ -433,6 +438,7 @@ export default class CommonCartridge extends Component {
                                 this.state.resourceIdsByHrefMap
                               }
                               src={this.props.src}
+                              allItemsPath={this.activeNavLink}
                             />
                           ) : this.state.showcaseResources.length === 1 ? (
                             <Resource
@@ -447,6 +453,7 @@ export default class CommonCartridge extends Component {
                                 this.state.resourceIdsByHrefMap
                               }
                               src={this.props.src}
+                              allItemsPath={this.activeNavLink}
                             />
                           ) : (
                             <ModulesList
@@ -472,6 +479,7 @@ export default class CommonCartridge extends Component {
                           resourceMap={this.state.resourceMap}
                           resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
                           src={this.props.src}
+                          allItemsPath={this.activeNavLink}
                         />
                       )}
                     />
@@ -493,13 +501,16 @@ export default class CommonCartridge extends Component {
                       exact
                       path="/assessments"
                       render={({ match }) => (
-                        <AssessmentList
-                          resources={this.state.assessmentResources}
-                          entryMap={this.state.entryMap}
-                          moduleItems={this.state.moduleItems}
-                          resourceMap={this.state.resourceMap}
-                          src={this.props.src}
-                        />
+                        <React.Fragment>
+                          { this.setActiveNavLink('/assignments') }
+                          <AssessmentList
+                            resources={this.state.assessmentResources}
+                            entryMap={this.state.entryMap}
+                            moduleItems={this.state.moduleItems}
+                            resourceMap={this.state.resourceMap}
+                            src={this.props.src}
+                          />
+                        </React.Fragment>
                       )}
                     />
 
@@ -507,13 +518,16 @@ export default class CommonCartridge extends Component {
                       exact
                       path="/pages"
                       render={({ match }) => (
-                        <WikiContentList
-                          resources={this.state.pageResources}
-                          entryMap={this.state.entryMap}
-                          moduleItems={this.state.moduleItems}
-                          resourceMap={this.state.resourceMap}
-                          src={this.props.src}
-                        />
+                        <React.Fragment>
+                          { this.setActiveNavLink('/pages') }
+                          <WikiContentList
+                            resources={this.state.pageResources}
+                            entryMap={this.state.entryMap}
+                            moduleItems={this.state.moduleItems}
+                            resourceMap={this.state.resourceMap}
+                            src={this.props.src}
+                          />
+                        </React.Fragment>
                       )}
                     />
 
@@ -521,13 +535,16 @@ export default class CommonCartridge extends Component {
                       exact
                       path="/discussions"
                       render={({ match }) => (
-                        <DiscussionList
-                          entryMap={this.state.entryMap}
-                          moduleItems={this.state.moduleItems}
-                          resourceMap={this.state.resourceMap}
-                          resources={this.state.discussionResources}
-                          src={this.props.src}
-                        />
+                        <React.Fragment>
+                          { this.setActiveNavLink('/discussions') }
+                          <DiscussionList
+                            entryMap={this.state.entryMap}
+                            moduleItems={this.state.moduleItems}
+                            resourceMap={this.state.resourceMap}
+                            resources={this.state.discussionResources}
+                            src={this.props.src}
+                          />
+                        </React.Fragment>
                       )}
                     />
 
@@ -535,29 +552,35 @@ export default class CommonCartridge extends Component {
                       exact
                       path="/files"
                       render={({ match }) => (
-                        <FileList
-                          resources={this.state.fileResources}
-                          entryMap={this.state.entryMap}
-                          moduleItems={this.state.moduleItems}
-                          resourceMap={this.state.resourceMap}
-                          src={this.props.src}
-                        />
+                        <React.Fragment>
+                          { this.setActiveNavLink('/files') }
+                          <FileList
+                            resources={this.state.fileResources}
+                            entryMap={this.state.entryMap}
+                            moduleItems={this.state.moduleItems}
+                            resourceMap={this.state.resourceMap}
+                            src={this.props.src}
+                          />
+                        </React.Fragment>
                       )}
                     />
 
                     <Route
-                      exact
-                      path="/assignments"
-                      render={({ match }) => (
-                        <AssignmentList
-                          resources={this.state.assignmentResources}
-                          entryMap={this.state.entryMap}
-                          moduleItems={this.state.moduleItems}
-                          resourceMap={this.state.resourceMap}
-                          src={this.props.src}
-                        />
-                      )}
-                    />
+                     exact
+                     path="/assignments"
+                     render={({ match }) => (
+                       <React.Fragment>
+                         { this.setActiveNavLink('/assignments') }
+                         <AssignmentList
+                           resources={this.state.assignmentResources}
+                           entryMap={this.state.entryMap}
+                           moduleItems={this.state.moduleItems}
+                           resourceMap={this.state.resourceMap}
+                           src={this.props.src}
+                         />
+                       </React.Fragment>
+                     )}
+                  />
                   </Switch>
 
                   <Route
