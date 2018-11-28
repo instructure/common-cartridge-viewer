@@ -1,7 +1,7 @@
 import { Selector } from "testcafe";
 
 fixture`Course with 1 module (has all item types)`
-  .page`http://localhost:3000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2FCOURSE-for-modules-testing.imscc#/`;
+  .page`http://localhost:5000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2FCOURSE-for-modules-testing.imscc#/`;
 
 test("Module Title is displayed", async t => {
   await t
