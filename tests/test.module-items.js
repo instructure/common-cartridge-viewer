@@ -13,7 +13,6 @@ test("Assignment Items work", async t => {
   await t
     .expect(Selector(".ExpandCollapseList-item:nth-of-type(1) svg[name='IconAssignment']").exists)
     .ok()
-    .click(Selector('.ExpandCollapseList-item:nth-of-type(1) a').withText('First Module Assignment 1'))
-    .expect(Selector('h1').withText('First Module Assignment 1').exists)
+    .expect(Selector('.ExpandCollapseList-item:nth-of-type(1) a').withText('First Module Assignment 1').exists)
     .ok()
 });
