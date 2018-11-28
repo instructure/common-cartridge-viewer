@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import IconAssignment from "@instructure/ui-icons/lib/Line/IconAssignment";
-import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
-import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
-import Link from "@instructure/ui-elements/lib/components/Link";
+import AssignmentListItemBody from "./AssignmentListItemBody";
 
 export default class AssignmentListItem extends Component {
   constructor(props) {
@@ -55,35 +51,14 @@ export default class AssignmentListItem extends Component {
       : "secondary";
 
     return (
-      <li className="ExpandCollapseList-item">
-        <div className="ExpandCollapseList-item-inner">
-          <span className="resource-icon">
-            <IconAssignment color={iconColor} />
-          </span>
-          <div style={{ flex: 1 }}>
-            <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
-              {this.state.title}
-            </Link>
-          </div>
-
-          {this.state.points != null && (
-            <div className="ExpandCollapseList-item-pts">
-              {this.state.points} points
-            </div>
-          )}
-
-          {this.state.workflowState != null && (
-            <div className="ExpandCollapseList-item-workflow-state">
-              {this.state.workflowState === "unpublished" && (
-                <IconUnpublished color={iconColor} />
-              )}
-              {["published", "active"].includes(this.state.workflowState) && (
-                <IconPublish color={iconColor} />
-              )}
-            </div>
-          )}
-        </div>
-      </li>
+      <AssignmentListItemBody
+        iconColor={iconColor}
+        identifier={this.props.identifier}
+        title={this.state.title}
+        description={this.state.workflowState}
+        points={this.state.points}
+        workflowState={this.state.workflowState}
+      />
     );
   }
 }

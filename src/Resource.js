@@ -12,6 +12,7 @@ import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
+import AssociatedContentAssignment from "./AssociatedContentAssignment";
 import Discussion from "./Discussion";
 import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
@@ -185,6 +186,22 @@ export default class Resource extends Component {
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
+            />
+          )}
+          src={this.props.src}
+          type="text/xml"
+        />
+      ),
+      [resourceTypes.ASSOCIATED_CONTENT]: (
+        <EntryDocument
+          getTextByPath={this.props.getTextByPath}
+          href={href}
+          render={doc => (
+            <AssociatedContentAssignment
+              getTextByPath={this.props.getTextByPath}
+              getUrlForPath={this.props.getUrlForPath}
+              doc={doc}
+              identifier={this.props.identifier}
             />
           )}
           src={this.props.src}

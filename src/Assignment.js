@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import RichContent from "./RichContent";
-import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
-import { basename } from "path";
 import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
+import { generateFriendlyStringFromSubmissionFormats } from "./utils";
+import AssignmentBody from "./AssignmentBody";
 
 export default class Assignment extends Component {
   render() {
@@ -24,9 +22,9 @@ export default class Assignment extends Component {
           .replace(CC_FILE_PREFIX, "web_resources")
       )
     );
-    const submissionFormats = Array.from(
-      assignmentNode.querySelectorAll("submission_formats > format")
-    ).map(node => node.getAttribute("type"));
+    const submissionFormats = assignmentNode.querySelector("submission_types")
+      .textContent;
+
     const gradableNode = assignmentNode.querySelector("gradable");
     const points =
       gradableNode &&
@@ -37,73 +35,18 @@ export default class Assignment extends Component {
     const labelColor = "#AD4AA0";
 
     return (
-      <React.Fragment>
-        <div className="resource-label" style={{ color: labelColor }}>
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: labelColor }}
-          >
-            <Icon color="primary-inverse" />
-          </div>
-          <span>Assignment</span>
-        </div>
-
-        <Heading level="h1" margin="0 0 small">
-          {title}
-        </Heading>
-        {submissionFormats.length > 0 && (
-          <React.Fragment>
-            <div style={{ marginTop: "12px", marginBottom: "12px" }}>
-              <span style={{ fontWeight: "bold" }}>Submission formats</span>:{" "}
-              {submissionFormats.map(format => (
-                <span className="submission-format" key={format}>
-                  {format}
-                </span>
-              ))}
-            </div>
-          </React.Fragment>
+      <AssignmentBody
+        title={title}
+        descriptionHtml={descriptionHtml}
+        labelColor={labelColor}
+        pointsPossible={points}
+        submissionFormats={generateFriendlyStringFromSubmissionFormats(
+          submissionFormats
         )}
-
-        {gradableNode != null && (
-          <div>
-            <span style={{ fontWeight: "bold" }}>Points</span>: {points}
-          </div>
-        )}
-
-        {descriptionHtml &&
-          descriptionHtml.length > 0 && (
-            <RichContent
-              html={descriptionHtml}
-              getUrlForPath={this.props.getUrlForPath}
-              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-            />
-          )}
-
-        {attachments.length > 0 && (
-          <React.Fragment>
-            <Heading level="h2">Attachments</Heading>
-            <ul>
-              {attachments.map(attachment => {
-                return (
-                  <li key={attachment}>
-                    {this.props.resourceIdsByHrefMap.has(attachment) ? (
-                      <a
-                        href={`#/resources/${this.props.resourceIdsByHrefMap.get(
-                          attachment
-                        )}`}
-                      >
-                        {basename(attachment)}
-                      </a>
-                    ) : (
-                      basename(attachment)
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </React.Fragment>
-        )}
-      </React.Fragment>
+        getUrlForPath={this.props.getUrlForPath}
+        resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+        attachments={attachments}
+      />
     );
   }
 }

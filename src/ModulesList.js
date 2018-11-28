@@ -12,6 +12,9 @@ import WikiContentListItem from "./WikiContentListItem";
 import FileListItem from "./FileListItem";
 import WebLinkListItem from "./WebLinkListItem";
 
+import { getAssignmentSettingsHref } from "./utils.js";
+import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
+
 export default class ModulesList extends Component {
   render() {
     const moduleComponents = this.props.modules.map(
@@ -60,6 +63,25 @@ export default class ModulesList extends Component {
                 src={this.props.src}
               />
             );
+          }
+
+          if (item.type === resourceTypes.ASSOCIATED_CONTENT) {
+            const associatedContentAssignmentSettings = this.props.isValidPath(
+              getAssignmentSettingsHref(item.identifierref)
+            );
+            if (associatedContentAssignmentSettings) {
+              return (
+                <AssociatedContentAssignmentListItem
+                  dependencyHrefs={item.dependencyHrefs}
+                  getTextByPath={this.props.getTextByPath}
+                  href={`/${item.href}`}
+                  identifier={item.identifierref}
+                  item={item}
+                  key={index}
+                  src={this.props.src}
+                />
+              );
+            }
           }
 
           if (item.type === resourceTypes.ASSESSMENT_CONTENT) {

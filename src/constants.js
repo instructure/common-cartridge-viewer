@@ -3,8 +3,9 @@ export const CC_FILE_PREFIX_OLD = "%24IMS_CC_FILEBASE%24"; // mistaken, replaced
 export const WIKI_REFERENCE = "%24WIKI_REFERENCE%24";
 export const CANVAS_OBJECT_REFERENCE = "%24CANVAS_OBJECT_REFERENCE%24";
 export const CANVAS_COURSE_REFERENCE = "%24CANVAS_COURSE_REFERENCE%24";
-
 export const WIKI_CONTENT_HREF_PREFIX = "wiki_content";
+export const SUBMISSION_TYPE_JOIN_STRING = ", or ";
+export const ASSOCIATED_CONTENT_ASSIGNMENT_TITLE_PREFIX_REGEX = /(^Assignment: )/;
 
 export const resourceTypes = {
   ASSESSMENT_CONTENT: "imsqti_xmlv1p2/imscc_xmlv1p1/assessment",
@@ -34,4 +35,22 @@ export const questionTypeLabels = {
   [questionTypes.FILL_IN_THE_BLANK]: "Fill in the blank",
   [questionTypes.PATTERN_MATCH]: "Pattern match",
   [questionTypes.ESSAY]: "Essay"
+};
+
+export const submissionTypes = {
+  ONLINE_UPLOAD: "online_upload",
+  ONLINE_TEXT_ENTRY: "online_text_entry",
+  ONLINE_URL: "online_url",
+  MEDIA_RECORDING: "media_recording",
+  ON_PAPER: "on_paper",
+  NONE: "none"
+};
+
+export const submissionTypeLabels = {
+  [submissionTypes.ONLINE_UPLOAD]: "a file upload",
+  [submissionTypes.ONLINE_TEXT_ENTRY]: "a text entry box",
+  [submissionTypes.ONLINE_URL]: "a website url",
+  [submissionTypes.MEDIA_RECORDING]: "a media recording",
+  [submissionTypes.ON_PAPER]: "on paper",
+  [submissionTypes.NONE]: "Nothing"
 };

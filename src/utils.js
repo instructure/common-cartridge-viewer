@@ -1,4 +1,10 @@
-import { resourceTypes } from "./constants";
+import {
+  resourceTypes,
+  submissionTypes,
+  submissionTypeLabels,
+  SUBMISSION_TYPE_JOIN_STRING
+} from "./constants";
+
 const zip = window.zip;
 
 export function getReaderFromXHR(url) {
@@ -94,7 +100,7 @@ function $text(document, selector) {
   return node && node.textContent;
 }
 
-export function getResourcesFromXml(xml) {
+export function getResourcesFromXml(xml, isValidPath) {
   const parser = new DOMParser();
   const manifest = parser.parseFromString(xml, "text/xml");
   const title = $text(manifest, "metadata > lom > general > title > string");
@@ -121,6 +127,7 @@ export function getResourcesFromXml(xml) {
   const otherResources = resources
     .filter(isNot(resourceTypes.DISCUSSION_TOPIC))
     .filter(isNot(resourceTypes.ASSIGNMENT))
+    .filter(isNot(resourceTypes.ASSOCIATED_CONTENT))
     .filter(isNot(resourceTypes.ASSESSMENT_CONTENT))
     .filter(isNot(resourceTypes.WEB_CONTENT));
   const discussionResources = resources
@@ -160,11 +167,18 @@ export function getResourcesFromXml(xml) {
   const assignmentResources = resources
     .filter(is(resourceTypes.ASSIGNMENT))
     .filter(node => node.querySelector("file"));
+  const associatedContentAssignmentResources = resources
+    .filter(is(resourceTypes.ASSOCIATED_CONTENT))
+    .filter(node => node.querySelector("file"))
+    .filter(node =>
+      isValidPath(getAssignmentSettingsHref(node.getAttribute("identifier")))
+    );
   const showcaseResources = [].concat(
     pageResources,
     discussionResources,
     assessmentResources,
-    assignmentResources
+    assignmentResources,
+    associatedContentAssignmentResources
   );
   const modules = Array.from(
     manifest.querySelectorAll("organizations > organization > item > item")
@@ -218,6 +232,7 @@ export function getResourcesFromXml(xml) {
   return {
     assessmentResources,
     assignmentResources,
+    associatedContentAssignmentResources,
     discussionResources,
     resourceMap,
     fileResources,
@@ -241,4 +256,39 @@ function is(type) {
 
 function isNot(type) {
   return resource => resource.getAttribute("type") !== type;
+}
+
+export function generateFriendlyStringFromSubmissionFormats(submissionType) {
+  const submissionTypeToSubmissionLabel = submissionType =>
+    Object.keys(submissionTypeLabels).includes(submissionType)
+      ? submissionTypeLabels[submissionType]
+      : "";
+
+  return submissionType === submissionTypes.NONE
+    ? submissionTypeLabels[submissionTypes.NONE]
+    : submissionType
+        .split(",")
+        .map(submissionTypeToSubmissionLabel)
+        .filter(submissionTypeLabel => submissionTypeLabel.length > 0) // get rid of submission types we couldn't find.
+        .join(SUBMISSION_TYPE_JOIN_STRING);
+}
+
+export function getAssignmentSettingsHref(identifier) {
+  return `${identifier}/assignment_settings.xml`;
+}
+
+export function getAssignmentListResources(resources) {
+  return resources
+    .filter(node => node.querySelector("file"))
+    .map(node => ({
+      identifier: node.getAttribute("identifier"),
+      href: node.querySelector("file").getAttribute("href"),
+      dependencyHrefs: Array.from(node.querySelectorAll("dependency")).map(
+        node => {
+          const identifier = node.getAttribute("identifierref");
+          const resource = this.props.resourceMap.get(identifier);
+          return getResourceHref(resource);
+        }
+      )
+    }));
 }
