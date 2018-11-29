@@ -191,8 +191,14 @@ export default class CommonCartridge extends Component {
 
       const fileResources = resources
         .filter(is(resourceTypes.WEB_CONTENT))
-        .filter(node => node.querySelector("file"));
-
+        .filter(node => node.querySelector("file"))
+        .filter(
+          node =>
+            !node
+              .querySelector("file")
+              .getAttribute("href")
+              .startsWith("wiki_content/")
+        );
       const assessmentResources = resources
         .filter(is(resourceTypes.ASSESSMENT_CONTENT))
         .filter(node => node.querySelector("file"));
