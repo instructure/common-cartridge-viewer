@@ -51,20 +51,9 @@ test("File Items work", async t => {
     .ok()
 });
 
-test("File Items work", async t => {
-  const itemCss = '.ExpandCollapseList-item:nth-of-type(3)'
-  const title = `341540_440x350.jpg`
-  await t
-    .expect(Selector(`${itemCss} svg[name='IconPaperclip']`).exists)
-    .ok()
-    .click(Selector(`${itemCss} a`).withText(title))
-    .expect(Selector('h1').withText(title).exists)
-    .ok()
-});
-
 test("Wiki Page Items work", async t => {
   const itemCss = '.ExpandCollapseList-item:nth-of-type(4)'
-  const title = `First Module Wiki Page 1`
+  const title = 'First Module Wiki Page 1'
   await t
     .expect(Selector(`${itemCss} svg[name='IconDocument']`).exists)
     .ok()
@@ -75,7 +64,7 @@ test("Wiki Page Items work", async t => {
 
 test("Discussion Items work", async t => {
   const itemCss = '.ExpandCollapseList-item:nth-of-type(5)'
-  const title = `First Module Discussion 1`
+  const title = 'First Module Discussion 1'
   await t
     .expect(Selector(`${itemCss} svg[name='IconDiscussion']`).exists)
     .ok()
@@ -86,7 +75,7 @@ test("Discussion Items work", async t => {
 
 test("Text Headers work", async t => {
   const itemCss = '.ExpandCollapseList-item:nth-of-type(6)'
-  const title = `First Module Text Header 1`
+  const title = 'First Module Text Header 1'
   await t
     .expect(Selector(`${itemCss} h3`).withText(title).exists)
     .ok()
@@ -94,7 +83,7 @@ test("Text Headers work", async t => {
 
 test("External URL's work", async t => {
   const itemCss = '.ExpandCollapseList-item:nth-of-type(7)'
-  const title = `First Module External URL 1`
+  const title = 'First Module External URL 1'
   await t
     .expect(Selector(`${itemCss} svg[name='IconExternalLink']`).exists)
     .ok()
@@ -106,7 +95,7 @@ test("External URL's work", async t => {
 // fixing CM-599 will make this test pass. Skipping for now
 test.skip("External Tool URL's work", async t => {
   const itemCss = '.ExpandCollapseList-item:nth-of-type(8)'
-  const title = `First Module AnalyTics Beta External Tool`
+  const title = 'First Module AnalyTics Beta External Tool'
   await t
     .expect(Selector(`${itemCss} svg[name='IconExternalLink']`).exists)
     .ok()
