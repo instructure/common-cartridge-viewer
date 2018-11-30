@@ -3,6 +3,9 @@
 # dependencies
 /node_modules
 
+# docker
+docker-compose.override.yml
+
 # testing
 /coverage
 
