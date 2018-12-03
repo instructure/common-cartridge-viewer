@@ -25,7 +25,7 @@ test("Previous link on last page works", async t => {
   await t.expect(titleH1.textContent).contains('First Module Discussion 1')
 })
 
-test.only("All Items link works", async t => {
+test("All Items link works", async t => {
   // because of CM-606 we have to start from the imscc index page
   // please update this test when CM-606 is fixed
   await t.navigateTo('http://localhost:5000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2FCOURSE-for-modules-testing.imscc#/')
