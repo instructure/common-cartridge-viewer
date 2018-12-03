@@ -3,17 +3,18 @@ import { Selector } from "testcafe";
 fixture`Single discussion cartridge (with attachment)`
   .page`http://localhost:5000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2Fsingle-discussion.imscc#/`;
 
-test("Nav is displayed", async t => {
+test("Header, Content, Nav, and Files are displayed", async t => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()
     .expect(Selector("nav").exists)
     .ok()
     .expect(Selector("header").exists)
-    .ok();
+    .ok()
+    .expect(Selector("a.MenuItem").withText('Files (1)').exists)
 });
 
-test("Attachments are displayed", async t => {
+test("Discussion attachment links are displayed", async t => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()
@@ -26,7 +27,7 @@ test("Attachments are displayed", async t => {
 fixture`Single discussion cartridge (with attachment, compact)`
   .page`http://localhost:5000/?compact&src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2Fsingle-discussion.imscc#/`;
 
-test("Header is hidden", async t => {
+test("Header and Nav is hidden", async t => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()
