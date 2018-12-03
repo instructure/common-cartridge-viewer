@@ -4,7 +4,6 @@ import IconAssignment from "@instructure/ui-icons/lib/Line/IconAssignment";
 import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
 import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
-import { getTextFromEntry } from "./utils.js";
 
 export default class AssignmentListItem extends Component {
   constructor(props) {
@@ -18,10 +17,9 @@ export default class AssignmentListItem extends Component {
   }
 
   async componentDidMount() {
-    const parser = new DOMParser();
     const path = this.props.href.substr(1);
-    const entry = this.props.entryMap.get(path);
-    const xml = await getTextFromEntry(entry);
+    const xml = await this.props.getTextByPath(path);
+    const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/xml");
     const title =
       doc.querySelector("title") && doc.querySelector("title").textContent;

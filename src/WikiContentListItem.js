@@ -4,13 +4,12 @@ import IconDocument from "@instructure/ui-icons/lib/Line/IconDocument";
 import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
 import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
-import { getTextFromEntry } from "./utils.js";
 import { basename } from "path";
 
 export default class WikiContentListItem extends Component {
   constructor(props) {
     super(props);
-
+    this.mounted = true;
     this.state = {
       isLoading: true,
       title: null,
@@ -18,11 +17,14 @@ export default class WikiContentListItem extends Component {
     };
   }
 
+  componentWillUnmount() {
+    this.mounted = false;
+  }
+
   async componentDidMount() {
-    const parser = new DOMParser();
     const path = this.props.href.substr(1);
-    const entry = this.props.entryMap.get(path);
-    const xml = await getTextFromEntry(entry);
+    const xml = await this.props.getTextByPath(path);
+    const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/html");
     const itemTitle = this.props.item != null && this.props.item.title;
     const title = itemTitle
@@ -32,11 +34,13 @@ export default class WikiContentListItem extends Component {
     const workflowState =
       workflowStateNode && workflowStateNode.getAttribute("content");
 
-    this.setState({
-      isLoading: false,
-      title,
-      workflowState
-    });
+    if (this.mounted) {
+      this.setState({
+        isLoading: false,
+        title,
+        workflowState
+      });
+    }
   }
 
   render() {

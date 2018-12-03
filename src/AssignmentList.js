@@ -20,20 +20,20 @@ export default class AssignmentList extends Component {
         )
       }));
 
-    const listItems =
-      this.props.entryMap.size &&
-      resources.map(({ href, dependencyHrefs, identifier }, index) => {
+    const listItems = resources.map(
+      ({ href, dependencyHrefs, identifier }, index) => {
         return (
           <AssignmentListItem
-            key={index}
-            src={this.props.src}
+            dependencyHrefs={dependencyHrefs}
+            getTextByPath={this.props.getTextByPath}
             href={`/${href}`}
             identifier={identifier}
-            dependencyHrefs={dependencyHrefs}
-            entryMap={this.props.entryMap}
+            key={index}
+            src={this.props.src}
           />
         );
-      });
+      }
+    );
 
     return (
       <div className="Cartridge-content-inner">

@@ -20,20 +20,20 @@ export default class AssessmentList extends Component {
         )
       }));
 
-    const listItems =
-      this.props.entryMap.size &&
-      resources.map(({ href, identifier, dependencyHrefs }, index) => {
+    const listItems = resources.map(
+      ({ href, identifier, dependencyHrefs }, index) => {
         return (
           <AssessmentListItem
             dependencyHrefs={dependencyHrefs}
-            entryMap={this.props.entryMap}
+            getTextByPath={this.props.getTextByPath}
             href={`/${href}`}
             identifier={identifier}
             key={index}
             src={this.props.src}
           />
         );
-      });
+      }
+    );
 
     return (
       <div className="Cartridge-content-inner">

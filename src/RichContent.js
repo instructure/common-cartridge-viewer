@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { getBlobFromEntry, blobToDataUrl } from "./utils";
 import createDOMPurify from "dompurify";
 import {
   CC_FILE_PREFIX,
@@ -24,33 +23,27 @@ export default class RichContent extends Component {
   }
 
   async update() {
-    if (this.props.entryMap == null) {
-      console.warn("this.props.entryMap missing");
-      return;
-    }
-
     const fragment = DOMPurify.sanitize(this.props.html, {
       RETURN_DOM_FRAGMENT: true,
       RETURN_DOM_IMPORT: true
     });
 
     {
-      const links = Array.from(fragment.querySelectorAll("a[href]"));
       const wikiExp = RegExp(`${WIKI_REFERENCE}/(pages)/(.*)`);
+      const links = Array.from(fragment.querySelectorAll("a[href]")).filter(
+        link => wikiExp.test(link.getAttribute("href"))
+      );
       await Promise.all(
-        links
-          .filter(link => wikiExp.test(link.getAttribute("href")))
-          .map(async link => {
-            const slug = (link.getAttribute("href") || "")
-              .split("?")[0]
-              .match(wikiExp)[2];
-            const href = `wiki_content/${slug}.html`;
-            const entry = this.props.entryMap.get(href);
-            if (entry && this.props.resourceIdsByHrefMap.has(href)) {
-              const resourceId = this.props.resourceIdsByHrefMap.get(href);
-              link.setAttribute("href", `#/resources/${resourceId}`);
-            }
-          })
+        links.map(async link => {
+          const slug = (link.getAttribute("href") || "")
+            .split("?")[0]
+            .match(wikiExp)[2];
+          const href = `wiki_content/${slug}.html`;
+          if (this.props.resourceIdsByHrefMap.has(href)) {
+            const resourceId = this.props.resourceIdsByHrefMap.get(href);
+            link.setAttribute("href", `#/resources/${resourceId}`);
+          }
+        })
       );
     }
 
@@ -84,28 +77,25 @@ export default class RichContent extends Component {
       );
     }
 
-    const images = Array.from(fragment.querySelectorAll("img"));
-    await Promise.all(
-      images
-        .filter(
-          img =>
-            img.getAttribute("src") &&
-            (img.getAttribute("src").indexOf(CC_FILE_PREFIX_OLD) > -1 ||
-              img.getAttribute("src").indexOf(CC_FILE_PREFIX) > -1)
-        )
-        .map(async img => {
-          const src = img.getAttribute("src").split("?")[0];
-          const entryKey = src
-            .replace(CC_FILE_PREFIX_OLD, "web_resources")
-            .replace(CC_FILE_PREFIX, "web_resources");
-          const entry = this.props.entryMap.get(decodeURIComponent(entryKey));
+    const isCartridgeFile = img =>
+      img.getAttribute("src") &&
+      (img.getAttribute("src").indexOf(CC_FILE_PREFIX_OLD) > -1 ||
+        img.getAttribute("src").indexOf(CC_FILE_PREFIX) > -1);
+    const images = Array.from(fragment.querySelectorAll("img")).filter(
+      isCartridgeFile
+    );
 
-          if (entry) {
-            const blob = await getBlobFromEntry(entry);
-            const dataUrl = await blobToDataUrl(blob);
-            img.setAttribute("src", dataUrl);
-          }
-        })
+    await Promise.all(
+      images.map(async img => {
+        const src = img.getAttribute("src").split("?")[0];
+        const relativePath = src
+          .replace(CC_FILE_PREFIX_OLD, "web_resources")
+          .replace(CC_FILE_PREFIX, "web_resources");
+        const url = await this.props.getUrlForPath(relativePath);
+        if (url != null) {
+          img.setAttribute("src", url);
+        }
+      })
     );
 
     if (this.contentNode) {

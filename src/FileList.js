@@ -16,20 +16,19 @@ export default class FileList extends Component {
         return href.startsWith("wiki_content/") === false;
       });
 
-    const listItems =
-      this.props.entryMap.size &&
-      fileResources.map(({ dependencyHrefs, href, identifier }, index) => {
+    const listItems = fileResources.map(
+      ({ dependencyHrefs, href, identifier }, index) => {
         return (
           <FileListItem
             dependencyHrefs={dependencyHrefs}
-            entryMap={this.props.entryMap}
             href={`/${href}`}
             identifier={identifier}
             key={index}
             src={this.props.src}
           />
         );
-      });
+      }
+    );
 
     return (
       <div className="Cartridge-content-inner">

@@ -38,11 +38,11 @@ export default class ModulesList extends Component {
             return (
               <WikiContentListItem
                 dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.props.entryMap}
-                key={index}
+                getTextByPath={this.props.getTextByPath}
                 href={`/${item.href}`}
                 identifier={item.identifierref}
                 item={item}
+                key={index}
                 src={this.props.src}
               />
             );
@@ -52,7 +52,7 @@ export default class ModulesList extends Component {
             return (
               <AssignmentListItem
                 dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.props.entryMap}
+                getTextByPath={this.props.getTextByPath}
                 href={`/${item.href}`}
                 identifier={item.identifierref}
                 item={item}
@@ -66,7 +66,7 @@ export default class ModulesList extends Component {
             return (
               <AssessmentListItem
                 dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.props.entryMap}
+                getTextByPath={this.props.getTextByPath}
                 href={`/${item.href}`}
                 identifier={item.identifierref}
                 item={item}
@@ -80,7 +80,7 @@ export default class ModulesList extends Component {
             return (
               <DiscussionListItem
                 dependencyHrefs={item.dependencyHrefs}
-                entryMap={this.props.entryMap}
+                getTextByPath={this.props.getTextByPath}
                 href={`/${item.href}`}
                 identifier={item.identifierref}
                 item={item}
@@ -93,7 +93,7 @@ export default class ModulesList extends Component {
           if (item.type === resourceTypes.WEB_CONTENT) {
             return (
               <FileListItem
-                entryMap={this.props.entryMap}
+                getTextByPath={this.props.getTextByPath}
                 href={`/${item.href}`}
                 identifier={item.identifierref}
                 key={index}
