@@ -42,7 +42,11 @@ export default class Discussion extends Component {
           {title}
         </Heading>
 
-        <RichContent html={descriptionHtml} entryMap={this.props.entryMap} />
+        <RichContent
+          html={descriptionHtml}
+          getUrlForPath={this.props.getUrlForPath}
+          resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+        />
 
         {attachments.length > 0 && (
           <React.Fragment>

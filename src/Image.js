@@ -1,7 +1,6 @@
 import { basename } from "path";
 import React, { Component } from "react";
 import Spinner from "@instructure/ui-elements/lib/components/Spinner";
-import { getBlobFromEntry, blobToDataUrl } from "./utils";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconImage";
 
@@ -17,15 +16,13 @@ export default class Image extends Component {
   }
 
   async componentDidMount() {
-    const entryKey = this.props.href;
-    const entry = this.props.entryMap.get(entryKey);
-    const filename = basename(entry.filename);
-    const blob = await getBlobFromEntry(entry);
-    const dataUrl = await blobToDataUrl(blob);
+    const relativePath = this.props.href;
+    const imageUrl = await this.props.getUrlForPath(relativePath);
+    const filename = basename(relativePath);
 
     this.setState({
       isLoading: false,
-      dataUrl,
+      imageUrl,
       filename
     });
   }
@@ -51,7 +48,7 @@ export default class Image extends Component {
 
         <Heading level="h1">{this.state.filename}</Heading>
         <p>
-          <img alt="{this.state.filename}" src={this.state.dataUrl} />
+          <img alt={this.state.filename} src={this.state.imageUrl} />
         </p>
       </div>
     );

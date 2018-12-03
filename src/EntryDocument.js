@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { getTextFromEntry } from "./utils.js";
 
 const parser = new DOMParser();
 const documents = new Map();
@@ -12,7 +11,6 @@ const initialState = {
 export default class EntryDocument extends Component {
   constructor(props) {
     super(props);
-
     this.state = initialState;
   }
 
@@ -36,10 +34,8 @@ export default class EntryDocument extends Component {
       return;
     }
 
-    const entry = this.props.entryMap.get(path);
-    const xml = await getTextFromEntry(entry);
+    const xml = await this.props.getTextByPath(path);
     const doc = parser.parseFromString(xml, this.props.type);
-
     documents.set(id, doc);
     this.setState({ isLoading: false, doc });
   }

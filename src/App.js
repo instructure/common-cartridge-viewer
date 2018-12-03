@@ -11,16 +11,11 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import View from "@instructure/ui-layout/lib/components/View";
 import { HashRouter as Router } from "react-router-dom";
 
-const queryString = require("query-string-es5");
-const parsedQueryString = queryString.parse(window.location.search);
-
 export default class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      cartridge: parsedQueryString.src,
-      compact: typeof parsedQueryString.compact !== "undefined",
+      cartridge: this.props.cartridge,
       file: null,
       history: { location: { pathname: "/" } },
       featuredCartridges: []
@@ -57,79 +52,88 @@ export default class App extends Component {
       )
     );
 
+    const hasSourceOrContent =
+      this.state.cartridge == null &&
+      this.state.file == null &&
+      this.props.manifest == null;
+
     return (
       <View as="div" margin="medium">
-        {this.state.cartridge == null &&
-          this.state.file == null && (
-            <React.Fragment>
-              <View as="div" margin="large">
-                <FileDrop
-                  accept=".imscc"
-                  onDropAccepted={files => {
-                    this.setState({ file: files[0] });
-                  }}
-                  onDropRejected={file => {
-                    console.error("file rejected");
-                  }}
-                  label={
-                    <Billboard
-                      heading="View a Common Cartridge (.imscc)"
-                      message="Drag and drop, or click to browse your computer"
-                      hero={<IconZipped />}
-                    />
-                  }
-                />
-              </View>
+        {hasSourceOrContent && (
+          <React.Fragment>
+            <View as="div" margin="large">
+              <FileDrop
+                accept=".imscc"
+                onDropAccepted={files => {
+                  this.setState({ file: files[0] });
+                }}
+                onDropRejected={file => {
+                  console.error("file rejected");
+                }}
+                label={
+                  <Billboard
+                    heading="View a Common Cartridge (.imscc)"
+                    message="Drag and drop, or click to browse your computer"
+                    hero={<IconZipped />}
+                  />
+                }
+              />
+            </View>
+            <form>
+              <Flex justifyItems="center" margin="medium none large">
+                <FlexItem>
+                  <TextInput
+                    name="src"
+                    width="30rem"
+                    label={<ScreenReaderContent>Cartridge</ScreenReaderContent>}
+                    placeholder={
+                      "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+                    }
+                  />
+                </FlexItem>
+                <FlexItem padding="0 0 0 x-small">
+                  <Button type="submit" variant="primary">
+                    View
+                  </Button>
+                </FlexItem>
+              </Flex>
+            </form>
 
-              <form>
-                <Flex justifyItems="center" margin="medium none large">
-                  <FlexItem>
-                    <TextInput
-                      name="src"
-                      width="30rem"
-                      label={
-                        <ScreenReaderContent>Cartridge</ScreenReaderContent>
-                      }
-                      placeholder={
-                        "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-                      }
-                    />
-                  </FlexItem>
-                  <FlexItem padding="0 0 0 x-small">
-                    <Button type="submit" variant="primary">
-                      View
-                    </Button>
-                  </FlexItem>
-                </Flex>
-              </form>
+            <p>
+              View Common Cartridges in the browser. Requires no server-side
+              processing.
+            </p>
 
-              <p>
-                View Common Cartridges in the browser. Requires no server-side
-                processing.
-              </p>
+            <Heading level="h2">Examples</Heading>
 
-              <p>This is in an early rapid development phase.</p>
+            <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
+          </React.Fragment>
+        )}
 
-              <Heading level="h2">Examples</Heading>
-
-              <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
-            </React.Fragment>
-          )}
-
-        {this.state.cartridge != null && (
+        {this.props.manifest != null && (
           <Router>
             <CommonCartridge
-              compact={this.state.compact}
+              compact={this.props.compact}
+              onHistoryChange={this.handleHistoryChange}
+              manifest={this.props.manifest}
+            />
+          </Router>
+        )}
+
+        {this.props.cartridge != null && (
+          <Router>
+            <CommonCartridge
+              compact={this.props.compact}
               onHistoryChange={this.handleHistoryChange}
               src={this.state.cartridge || this.state.file}
             />
           </Router>
         )}
 
-        {this.state.file && (
+        {this.state.file != null && (
           <Router>
             <CommonCartridge
-              compact={this.state.compact}
+              compact={this.props.compact}
               onHistoryChange={this.handleHistoryChange}
               src="droppedFile"
               file={this.state.file}

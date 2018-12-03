@@ -59,7 +59,11 @@ export default class Assessment extends Component {
           <Pill variant="success" margin="0 0 small" text={typeLabel} />
 
           {material && (
-            <RichContent html={material} entryMap={this.props.entryMap} />
+            <RichContent
+              getUrlForPath={this.props.getUrlForPath}
+              html={material}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+            />
           )}
         </View>
       );

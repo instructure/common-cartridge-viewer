@@ -30,7 +30,7 @@ export default class WikiContent extends Component {
         )}
 
         <RichContent
-          entryMap={this.props.entryMap}
+          getUrlForPath={this.props.getUrlForPath}
           html={html}
           resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
         />

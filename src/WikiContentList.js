@@ -37,20 +37,20 @@ export default class WikiContentList extends Component {
           typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
       );
 
-    const listItems =
-      this.props.entryMap.size &&
-      resources.map(({ dependencyHrefs, href, identifier }, index) => {
+    const listItems = resources.map(
+      ({ dependencyHrefs, href, identifier }, index) => {
         return (
           <WikiContentListItem
-            entryMap={this.props.entryMap}
-            key={href}
             dependencyHrefs={dependencyHrefs}
+            getTextByPath={this.props.getTextByPath}
             href={`/${href}`}
             identifier={identifier}
+            key={href}
             src={this.props.src}
           />
         );
-      });
+      }
+    );
 
     return (
       <div className="Cartridge-content-inner">

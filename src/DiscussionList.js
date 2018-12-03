@@ -18,20 +18,20 @@ export default class DiscussionList extends Component {
       identifier: node.getAttribute("identifier")
     }));
 
-    const listItems =
-      this.props.entryMap.size &&
-      resources.map(({ dependencyHrefs, href, identifier }, index) => {
+    const listItems = resources.map(
+      ({ dependencyHrefs, href, identifier }, index) => {
         return (
           <DiscussionListItem
-            key={index}
-            src={this.props.src}
+            dependencyHrefs={dependencyHrefs}
+            getTextByPath={this.props.getTextByPath}
             href={`/${href}`}
             identifier={identifier}
-            dependencyHrefs={dependencyHrefs}
-            entryMap={this.props.entryMap}
+            key={index}
+            src={this.props.src}
           />
         );
-      });
+      }
+    );
 
     return (
       <div className="Cartridge-content-inner">

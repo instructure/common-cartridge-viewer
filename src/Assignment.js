@@ -74,7 +74,8 @@ export default class Assignment extends Component {
           descriptionHtml.length > 0 && (
             <RichContent
               html={descriptionHtml}
-              entryMap={this.props.entryMap}
+              getUrlForPath={this.props.getUrlForPath}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
             />
           )}
 

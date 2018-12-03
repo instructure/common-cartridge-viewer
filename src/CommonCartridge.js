@@ -1,7 +1,4 @@
-// import "babel-polyfill";
-
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Route, Switch } from "react-router-dom";
 import NavLink from "./NavLink";
 import Resource from "./Resource";
@@ -16,13 +13,13 @@ import Grid, {
   GridCol
 } from "@instructure/ui-layout/lib/components/Grid";
 import {
-  getTextFromEntry,
-  getEntriesFromXHR,
+  blobToDataUrl,
+  getBlobFromEntry,
   getEntriesFromBlob,
-  getExtension,
-  getResourceHref
+  getEntriesFromXHR,
+  getResourcesFromXml,
+  getTextFromEntry
 } from "./utils.js";
-import { resourceTypes } from "./constants";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import AssessmentList from "./AssessmentList";
@@ -31,30 +28,30 @@ import DiscussionList from "./DiscussionList";
 import FileList from "./FileList";
 import ModulesList from "./ModulesList";
 import WikiContentList from "./WikiContentList";
-
 import waitingWristWatch from "./images/waiting-wrist-watch.svg";
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
 
 export default class CommonCartridge extends Component {
-  static propTypes = {
-    src: PropTypes.string
-  };
-
   constructor(props) {
     super(props);
-
     this.state = {
       assignments: [],
       assessments: [],
+      basepath:
+        this.props.manifest != null
+          ? this.props.manifest.split("/imsmanifest.xml").slice(0, -1)
+          : null,
       discussions: [],
       entries: [],
       entryMap: new Map(),
       files: [],
+      isCartridgeRemotelyExpanded: this.props.manifest != null,
       isLoaded: false,
       loadProgress: {},
       modules: [],
       pageResources: [],
+      resourceIdsByHrefMap: new Map(),
       otherResources: []
     };
   }
@@ -64,8 +61,54 @@ export default class CommonCartridge extends Component {
       this.getEntriesFromFile();
     } else if (this.props.src != null) {
       this.getEntriesFromSrc();
+    } else if (this.props.manifest != null) {
+      this.getEntriesFromManifest();
     }
   }
+
+  getEntriesFromManifest = () => {
+    fetch(this.props.manifest)
+      .then(response => response.text())
+      .then(xml => {
+        const {
+          assessmentResources,
+          assignmentResources,
+          discussionResources,
+          resourceMap,
+          fileResources,
+          moduleItems,
+          modules,
+          otherResources,
+          pageResources,
+          resources,
+          resourceIdsByHrefMap,
+          rightsDescription,
+          showcaseResources,
+          title,
+          schema,
+          schemaVersion
+        } = getResourcesFromXml(xml);
+        this.setState({
+          assessmentResources,
+          assignmentResources,
+          discussionResources,
+          resourceMap,
+          fileResources,
+          isLoaded: true,
+          moduleItems,
+          modules,
+          otherResources,
+          pageResources,
+          resources,
+          resourceIdsByHrefMap,
+          rightsDescription,
+          showcaseResources,
+          title,
+          schema,
+          schemaVersion
+        });
+      });
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props.src !== prevProps.src && this.props.file == null) {
@@ -83,17 +126,13 @@ export default class CommonCartridge extends Component {
 
   async getEntriesFromSrc() {
     const [request, getEntriesPromise] = getEntriesFromXHR(this.props.src);
-
     request.addEventListener("progress", this.handleLoadProgress);
-
     const entries = await getEntriesPromise;
-
     this.setState({ entries }, () => this.loadEntries());
   }
 
   async getEntriesFromFile() {
     const entries = await getEntriesFromBlob(this.props.file);
-
     this.setState({ entries }, () => this.loadEntries());
   }
 
@@ -109,187 +148,34 @@ export default class CommonCartridge extends Component {
     );
 
     if (manifestEntry != null) {
-      const parser = new DOMParser();
       const xml = await getTextFromEntry(manifestEntry);
-      const manifest = parser.parseFromString(xml, "text/xml");
-      const titleNode = manifest.querySelector(
-        "metadata > lom > general > title > string"
-      );
-      const title = titleNode && titleNode.textContent;
-      const schemaNode = manifest.querySelector("metadata > schema");
-      const schema = schemaNode && schemaNode.textContent;
-      const schemaVersionNode = manifest.querySelector(
-        "metadata > schemaversion"
-      );
-      const schemaVersion = schemaVersionNode && schemaVersionNode.textContent;
-      const rightDescriptionNode = manifest.querySelector(
-        "metadata > lom > rights > description"
-      );
-      const rightsDescription =
-        rightDescriptionNode && rightDescriptionNode.textContent;
-      const resources = Array.from(
-        manifest.querySelectorAll("resources > resource")
-      );
-
-      const resourceMap = new Map();
-      resources.forEach(resource => {
-        resourceMap.set(resource.getAttribute("identifier"), resource);
-      });
-
-      const resourceIdsByHrefMap = new Map();
-      resources
-        .filter(resource => resource.getAttribute("href") != null)
-        .forEach(resource => {
-          resourceIdsByHrefMap.set(
-            resource.getAttribute("href"),
-            resource.getAttribute("identifier")
-          );
-        });
-
-      const otherResources = resources
-        .filter(isNot(resourceTypes.DISCUSSION_TOPIC))
-        .filter(isNot(resourceTypes.ASSIGNMENT))
-        .filter(isNot(resourceTypes.ASSESSMENT_CONTENT))
-        .filter(isNot(resourceTypes.WEB_CONTENT));
-
-      const discussionResources = resources
-        .filter(is(resourceTypes.DISCUSSION_TOPIC))
-        .filter(node => node.querySelector("file"));
-
-      const pageResources = resources
-        .filter(is(resourceTypes.WEB_CONTENT))
-        .filter(node => {
-          const isFallback = node
-            .getAttribute("identifier")
-            .endsWith("_fallback");
-
-          if (isFallback) {
-            const identifier = node
-              .getAttribute("identifier")
-              .split("_fallback")[0];
-
-            const resource = manifest.querySelector(
-              `resource[identifier="${identifier}"]`
-            );
-
-            if (resource != null) {
-              return false;
-            }
-          }
-
-          return true;
-        })
-        .filter(node => node.querySelector("file"))
-        // needs filter to filter out dependencies
-        .filter(node => {
-          const extension = getExtension(
-            node.querySelector("file").getAttribute("href")
-          );
-
-          return ["html", "htm"].includes(extension);
-        });
-
-      const fileResources = resources
-        .filter(is(resourceTypes.WEB_CONTENT))
-        .filter(node => node.querySelector("file"))
-        .filter(node => {
-          const href = getResourceHref(node) || "";
-          return !href.startsWith("wiki_content/");
-        });
-      const assessmentResources = resources
-        .filter(is(resourceTypes.ASSESSMENT_CONTENT))
-        .filter(node => node.querySelector("file"));
-
-      const assignmentResources = resources
-        .filter(is(resourceTypes.ASSIGNMENT))
-        .filter(node => node.querySelector("file"));
-
-      const showcaseResources = [].concat(
-        pageResources,
-        discussionResources,
-        assessmentResources,
-        assignmentResources
-      );
-
-      const modules = Array.from(
-        manifest.querySelectorAll("organizations > organization > item > item")
-      )
-        .filter(item => item.querySelector("title"))
-        .map(item => {
-          const title = item.querySelector("title").textContent;
-          const identifier = item.getAttribute("identifier");
-          const itemNodes = Array.from(item.querySelectorAll("item"));
-          const items = itemNodes.map(item => {
-            const identifier = item.getAttribute("identifier");
-            const title = item.querySelector("title")
-              ? item.querySelector("title").textContent
-              : "Untitled";
-            const identifierref = item.getAttribute("identifierref");
-
-            if (identifierref == null) {
-              return { title };
-            }
-
-            const resource = manifest.querySelector(
-              `resource[identifier="${identifierref}"]`
-            );
-
-            if (resource == null) {
-              return { title };
-            }
-
-            const type = resource.getAttribute("type");
-            const href = getResourceHref(resource);
-
-            const dependencyHrefs = Array.from(
-              resource.querySelectorAll("dependency")
-            ).map(node => {
-              const identifier = node.getAttribute("identifierref");
-              const resource = manifest.querySelector(
-                `resource[identifier="${identifier}"]`
-              );
-              return getResourceHref(resource);
-            });
-
-            return {
-              dependencyHrefs,
-              href,
-              identifier,
-              identifierref,
-              title,
-              type
-            };
-          });
-
-          return { title, identifier, items };
-        })
-        .filter(module => module != null);
-
-      const moduleItems = modules.reduce((state, module) => {
-        return state.concat(module.items.filter(item => item.href != null));
-      }, []);
-
-      this.setState({
-        assessmentResources,
-        assignmentResources,
-        discussionResources,
-        resourceMap,
-        fileResources,
-        isLoaded: true,
-        moduleItems,
-        modules,
-        otherResources,
-        pageResources,
-        resources,
-        resourceIdsByHrefMap,
-        rightsDescription,
-        showcaseResources,
-        title,
-        schema,
-        schemaVersion
-      });
+      this.loadResources(xml);
     }
   }
+
+  getUrlForPath = async path => {
+    if (this.state.isCartridgeRemotelyExpanded) {
+      return `${this.state.basepath}/${path}`;
+    }
+    const blob = await this.getBlobByPath(decodeURIComponent(path));
+    return blob ? blobToDataUrl(blob) : "";
+  };
+
+  getBlobByPath = path => {
+    const entry = this.state.entryMap.get(path);
+    return this.state.isCartridgeRemotelyExpanded
+      ? fetch(`${this.state.basepath}/${path}`).then(response =>
+          response.blob()
+        )
+      : getBlobFromEntry(entry);
+  };
+
+  getTextByPath = path =>
+    this.state.isCartridgeRemotelyExpanded
+      ? fetch(`${this.state.basepath}/${path}`).then(response =>
+          response.text()
+        )
+      : getTextFromEntry(this.state.entryMap.get(path));
 
   handleHistoryChange = history => {
     this.history = history;
@@ -303,6 +189,46 @@ export default class CommonCartridge extends Component {
   setActiveNavLink = link => {
     this.activeNavLink = link;
   };
+
+  loadResources(xml) {
+    const {
+      assessmentResources,
+      assignmentResources,
+      discussionResources,
+      resourceMap,
+      fileResources,
+      moduleItems,
+      modules,
+      otherResources,
+      pageResources,
+      resources,
+      resourceIdsByHrefMap,
+      rightsDescription,
+      showcaseResources,
+      title,
+      schema,
+      schemaVersion
+    } = getResourcesFromXml(xml);
+    this.setState({
+      assessmentResources,
+      assignmentResources,
+      discussionResources,
+      resourceMap,
+      fileResources,
+      isLoaded: true,
+      moduleItems,
+      modules,
+      otherResources,
+      pageResources,
+      resources,
+      resourceIdsByHrefMap,
+      rightsDescription,
+      showcaseResources,
+      title,
+      schema,
+      schemaVersion
+    });
+  }
 
   render() {
     if (this.state.isLoaded === false) {
@@ -427,10 +353,10 @@ export default class CommonCartridge extends Component {
                       path="/"
                       render={({ match }) => (
                         <React.Fragment>
-                          { this.setActiveNavLink("/") }
+                          {this.setActiveNavLink("/")}
                           {showcaseSingleResource !== null ? (
                             <Resource
-                              entryMap={this.state.entryMap}
+                              getTextByPath={this.getTextByPath}
                               identifier={this.state.showcaseResources[0].getAttribute(
                                 "identifier"
                               )}
@@ -445,7 +371,7 @@ export default class CommonCartridge extends Component {
                             />
                           ) : this.state.showcaseResources.length === 1 ? (
                             <Resource
-                              entryMap={this.state.entryMap}
+                              getTextByPath={this.getTextByPath}
                               identifier={this.state.showcaseResources[0].getAttribute(
                                 "identifier"
                               )}
@@ -460,7 +386,7 @@ export default class CommonCartridge extends Component {
                             />
                           ) : (
                             <ModulesList
-                              entryMap={this.state.entryMap}
+                              getTextByPath={this.getTextByPath}
                               moduleItems={this.state.moduleItems}
                               modules={this.state.modules}
                               match={match}
@@ -475,14 +401,20 @@ export default class CommonCartridge extends Component {
                       path="/resources/:identifier"
                       render={({ match }) => (
                         <Resource
-                          entryMap={this.state.entryMap}
+                          allItemsPath={this.activeNavLink}
+                          basepath={this.state.basepath}
+                          getBlobByPath={this.getBlobByPath}
+                          getTextByPath={this.getTextByPath}
+                          getUrlForPath={this.getUrlForPath}
                           identifier={match.params.identifier}
+                          isCartridgeRemotelyExpanded={
+                            this.state.isCartridgeRemotelyExpanded
+                          }
                           moduleItems={this.state.moduleItems}
                           modules={this.state.modules}
-                          resourceMap={this.state.resourceMap}
                           resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
+                          resourceMap={this.state.resourceMap}
                           src={this.props.src}
-                          allItemsPath={this.activeNavLink}
                         />
                       )}
                     />
@@ -505,12 +437,12 @@ export default class CommonCartridge extends Component {
                       path="/assessments"
                       render={({ match }) => (
                         <React.Fragment>
-                          { this.setActiveNavLink('/assignments') }
+                          {this.setActiveNavLink("/assignments")}
                           <AssessmentList
-                            resources={this.state.assessmentResources}
-                            entryMap={this.state.entryMap}
+                            getTextByPath={this.getTextByPath}
                             moduleItems={this.state.moduleItems}
                             resourceMap={this.state.resourceMap}
+                            resources={this.state.assessmentResources}
                             src={this.props.src}
                           />
                         </React.Fragment>
@@ -522,12 +454,12 @@ export default class CommonCartridge extends Component {
                       path="/pages"
                       render={({ match }) => (
                         <React.Fragment>
-                          { this.setActiveNavLink('/pages') }
+                          {this.setActiveNavLink("/pages")}
                           <WikiContentList
-                            resources={this.state.pageResources}
-                            entryMap={this.state.entryMap}
+                            getTextByPath={this.getTextByPath}
                             moduleItems={this.state.moduleItems}
                             resourceMap={this.state.resourceMap}
+                            resources={this.state.pageResources}
                             src={this.props.src}
                           />
                         </React.Fragment>
@@ -539,9 +471,9 @@ export default class CommonCartridge extends Component {
                       path="/discussions"
                       render={({ match }) => (
                         <React.Fragment>
-                          { this.setActiveNavLink('/discussions') }
+                          {this.setActiveNavLink("/discussions")}
                           <DiscussionList
-                            entryMap={this.state.entryMap}
+                            getTextByPath={this.getTextByPath}
                             moduleItems={this.state.moduleItems}
                             resourceMap={this.state.resourceMap}
                             resources={this.state.discussionResources}
@@ -556,7 +488,7 @@ export default class CommonCartridge extends Component {
                       path="/files"
                       render={({ match }) => (
                         <React.Fragment>
-                          { this.setActiveNavLink('/files') }
+                          {this.setActiveNavLink("/files")}
                           <FileList
                             resources={this.state.fileResources}
                             entryMap={this.state.entryMap}
@@ -569,21 +501,21 @@ export default class CommonCartridge extends Component {
                     />
 
                     <Route
-                     exact
-                     path="/assignments"
-                     render={({ match }) => (
-                       <React.Fragment>
-                         { this.setActiveNavLink('/assignments') }
-                         <AssignmentList
-                           resources={this.state.assignmentResources}
-                           entryMap={this.state.entryMap}
-                           moduleItems={this.state.moduleItems}
-                           resourceMap={this.state.resourceMap}
-                           src={this.props.src}
-                         />
-                       </React.Fragment>
-                     )}
-                  />
+                      exact
+                      path="/assignments"
+                      render={({ match }) => (
+                        <React.Fragment>
+                          {this.setActiveNavLink("/assignments")}
+                          <AssignmentList
+                            getTextByPath={this.getTextByPath}
+                            moduleItems={this.state.moduleItems}
+                            resourceMap={this.state.resourceMap}
+                            resources={this.state.assignmentResources}
+                            src={this.props.src}
+                          />
+                        </React.Fragment>
+                      )}
+                    />
                   </Switch>
 
                   <Route
@@ -606,12 +538,4 @@ export default class CommonCartridge extends Component {
       </React.Fragment>
     );
   }
-}
-
-function is(type) {
-  return resource => resource.getAttribute("type") === type;
-}
-
-function isNot(type) {
-  return resource => resource.getAttribute("type") !== type;
 }
