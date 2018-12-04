@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Trans } from "@lingui/macro";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import AssignmentListItem from "./AssignmentListItem";
@@ -38,7 +39,9 @@ export default class AssignmentList extends Component {
     return (
       <div className="Cartridge-content-inner">
         <Heading level="h1">
-          <ScreenReaderContent>Assignments</ScreenReaderContent>
+          <ScreenReaderContent>
+            <Trans>Assignments</Trans>
+          </ScreenReaderContent>
         </Heading>
         <ul className="Assignments ExpandCollapseList">{listItems}</ul>
       </div>

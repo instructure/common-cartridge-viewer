@@ -31,7 +31,7 @@ export default class WebLink extends Component {
           {title}
         </Heading>
 
-        <a href={href} target="_blank">
+        <a href={href} target="_blank" rel="noopener noreferrer">
           Click here to open link in new window
         </a>
       </div>
