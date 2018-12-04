@@ -2,8 +2,8 @@ FROM node:10-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY ./package.json ./package-lock.json ./
-RUN npm install
+COPY ./package.json ./yarn.lock ./
+RUN yarn
 
 COPY . .
 ENV PORT=3300
