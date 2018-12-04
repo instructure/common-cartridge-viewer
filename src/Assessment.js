@@ -70,6 +70,7 @@ export default class Assessment extends Component {
     });
 
     const labelColor = "#A1403E";
+    const showQuestions = !window.location.href.includes('hide-responses')
 
     return (
       <React.Fragment>
@@ -102,11 +103,15 @@ export default class Assessment extends Component {
           )}
         </FormFieldGroup>
 
-        <Heading level="h2" margin="medium 0 small">
-          Questions
-        </Heading>
+        {showQuestions && (
+          <div>
+            <Heading level="h2" margin="medium 0 small">
+              Questions
+            </Heading>
 
-        <ul className="assessment-questions">{questionComponents}</ul>
+            <ul className="assessment-questions">{questionComponents}</ul>
+          </div>
+        )}
       </React.Fragment>
     );
   }
