@@ -30,3 +30,7 @@ TODO.md
 public/cartridges
 .netlify
 .vscode
+
+/src/locales/_build/
+/src/locales/**.json
+messages.js

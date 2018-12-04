@@ -3,42 +3,44 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@instructure/ui-billboard": "^5.20.1",
-    "@instructure/ui-breadcrumb": "^5.20.1",
-    "@instructure/ui-buttons": "^5.13.1",
-    "@instructure/ui-elements": "^5.13.1",
-    "@instructure/ui-forms": "^5.20.1",
-    "@instructure/ui-icons": "^5.15.0",
-    "@instructure/ui-layout": "^5.13.1",
-    "@instructure/ui-themes": "^5.12.0",
-    "@instructure/ui-tree-browser": "^5.13.1",
+    "@instructure/ui-billboard": "^5.34.0",
+    "@instructure/ui-breadcrumb": "^5.34.0",
+    "@instructure/ui-buttons": "^5.34.0",
+    "@instructure/ui-elements": "^5.34.0",
+    "@instructure/ui-forms": "^5.34.0",
+    "@instructure/ui-icons": "^5.34.0",
+    "@instructure/ui-layout": "^5.34.0",
+    "@instructure/ui-themes": "^5.34.0",
+    "@instructure/ui-tree-browser": "^5.34.0",
+    "@lingui/react": "^2.7.2",
     "dompurify": "^1.0.4",
     "file-saver": "^2.0.0",
     "lodash": "^4.17.10",
     "pretty-bytes": "^5.1.0",
     "query-string-es5": "^6.1.4",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "^2.1.1"
   },
   "resolutions": {
-    "react": "16.4.2",
-    "react-dom": "16.4.2"
+    "react": "16.6.3",
+    "react-dom": "16.6.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "add-locale": "lingui add-locale",
     "build": "react-scripts build",
-    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
+    "compile": "lingui compile",
+    "eject": "react-scripts eject",
+    "extract": "lingui extract",
+    "start": "react-scripts start",
+    "test-all": "testcafe chrome,firefox,safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
     "test-chrome": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
     "test-firefox": "testcafe firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
     "test-safari": "testcafe safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
-    "test-all": "testcafe chrome,firefox,safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
-    "eject": "react-scripts eject"
+    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\""
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && yarn run build"
     }
   },
   "lint-staged": {
@@ -48,10 +50,19 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@lingui/cli": "^2.7.2",
+    "@lingui/macro": "^2.7.2",
+    "babel-core": "^7.0.0-bridge.0",
     "husky": "^1.2.0",
-    "lint-staged": "^7.2.2",
-    "prettier": "1.14.2",
-    "serve": "^9.6.0",
+    "lint-staged": "^8.1.0",
+    "prettier": "1.15.3",
+    "serve": "^10.1.1",
     "testcafe": "^0.21.1"
-  }
+  },
+  "browserslist": [
+    "last 2 version",
+    "not ie <= 10",
+    "not op_mini all"
+  ]
 }
