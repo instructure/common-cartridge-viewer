@@ -100,7 +100,7 @@ function $text(document, selector) {
   return node && node.textContent;
 }
 
-export function getResourcesFromXml(xml, isValidPath) {
+export function getResourcesFromXml(xml) {
   const parser = new DOMParser();
   const manifest = parser.parseFromString(xml, "text/xml");
   const title = $text(manifest, "metadata > lom > general > title > string");
@@ -169,10 +169,21 @@ export function getResourcesFromXml(xml, isValidPath) {
     .filter(node => node.querySelector("file"));
   const associatedContentAssignmentResources = resources
     .filter(is(resourceTypes.ASSOCIATED_CONTENT))
-    .filter(node => node.querySelector("file"))
     .filter(node =>
-      isValidPath(getAssignmentSettingsHref(node.getAttribute("identifier")))
+      Array.from(node.querySelectorAll("file")).some(file =>
+        file.getAttribute("href").includes("assignment_settings.xml")
+      )
     );
+  const associatedContentAssignmentHrefsSet = new Set(
+    associatedContentAssignmentResources.map(resource =>
+      Array.from(resource.querySelectorAll("file"))
+        .find(file =>
+          file.getAttribute("href").includes("assignment_settings.xml")
+        )
+        .getAttribute("href")
+    )
+  );
+
   const showcaseResources = [].concat(
     pageResources,
     discussionResources,
@@ -233,6 +244,7 @@ export function getResourcesFromXml(xml, isValidPath) {
     assessmentResources,
     assignmentResources,
     associatedContentAssignmentResources,
+    associatedContentAssignmentHrefsSet,
     discussionResources,
     resourceMap,
     fileResources,

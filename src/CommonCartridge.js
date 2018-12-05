@@ -74,6 +74,8 @@ export default class CommonCartridge extends Component {
         const {
           assessmentResources,
           assignmentResources,
+          associatedContentAssignmentResources,
+          associatedContentAssignmentHrefsSet,
           discussionResources,
           resourceMap,
           fileResources,
@@ -92,6 +94,8 @@ export default class CommonCartridge extends Component {
         this.setState({
           assessmentResources,
           assignmentResources,
+          associatedContentAssignmentResources,
+          associatedContentAssignmentHrefsSet,
           discussionResources,
           resourceMap,
           fileResources,
@@ -179,13 +183,6 @@ export default class CommonCartridge extends Component {
           .catch(err => null)
       : getTextFromEntry(this.state.entryMap.get(path));
 
-  isValidPath = path =>
-    this.state.isCartridgeRemotelyExpanded
-      ? fetch(`${this.state.basepath}/${path}`)
-          .then(response => true)
-          .catch(err => false)
-      : this.state.entryMap.has(path);
-
   handleHistoryChange = history => {
     this.history = history;
     this.props.onHistoryChange(history);
@@ -204,6 +201,7 @@ export default class CommonCartridge extends Component {
       assessmentResources,
       assignmentResources,
       associatedContentAssignmentResources,
+      associatedContentAssignmentHrefsSet,
       discussionResources,
       resourceMap,
       fileResources,
@@ -218,11 +216,12 @@ export default class CommonCartridge extends Component {
       title,
       schema,
       schemaVersion
-    } = getResourcesFromXml(xml, this.isValidPath);
+    } = getResourcesFromXml(xml);
     this.setState({
       assessmentResources,
       assignmentResources,
       associatedContentAssignmentResources,
+      associatedContentAssignmentHrefsSet,
       discussionResources,
       resourceMap,
       fileResources,
@@ -398,7 +397,9 @@ export default class CommonCartridge extends Component {
                           ) : (
                             <ModulesList
                               getTextByPath={this.getTextByPath}
-                              isValidPath={this.isValidPath}
+                              associatedContentAssignmentHrefsSet={
+                                this.state.associatedContentAssignmentHrefsSet
+                              }
                               moduleItems={this.state.moduleItems}
                               modules={this.state.modules}
                               match={match}
@@ -437,7 +438,9 @@ export default class CommonCartridge extends Component {
                       render={({ match }) => (
                         <ModulesList
                           getTextByPath={this.getTextByPath}
-                          isValidPath={this.isValidPath}
+                          associatedContentAssignmentHrefsSet={
+                            this.state.associatedContentAssignmentHrefsSet
+                          }
                           moduleItems={this.state.moduleItems}
                           modules={this.state.modules}
                           match={match}
