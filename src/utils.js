@@ -100,7 +100,7 @@ function $text(document, selector) {
   return node && node.textContent;
 }
 
-export function getResourcesFromXml(xml, isValidPath) {
+export async function getResourcesFromXml(xml, isValidPath) {
   const parser = new DOMParser();
   const manifest = parser.parseFromString(xml, "text/xml");
   const title = $text(manifest, "metadata > lom > general > title > string");
@@ -167,12 +167,22 @@ export function getResourcesFromXml(xml, isValidPath) {
   const assignmentResources = resources
     .filter(is(resourceTypes.ASSIGNMENT))
     .filter(node => node.querySelector("file"));
-  const associatedContentAssignmentResources = resources
+  const associatedContentResources = resources
     .filter(is(resourceTypes.ASSOCIATED_CONTENT))
-    .filter(node => node.querySelector("file"))
-    .filter(node =>
+    .filter(node => node.querySelector("file"));
+  const associatedContentAssignmentResourcePathValidity = await Promise.all(
+    associatedContentResources.map(node =>
       isValidPath(getAssignmentSettingsHref(node.getAttribute("identifier")))
-    );
+    )
+  );
+  const associatedContentAssignmentResources = associatedContentAssignmentResourcePathValidity.reduce(
+    (listOfValidPaths, isCurrentPathValid, i) =>
+      isCurrentPathValid
+        ? [...listOfValidPaths, associatedContentResources[i]]
+        : listOfValidPaths,
+    []
+  );
+
   const showcaseResources = [].concat(
     pageResources,
     discussionResources,

@@ -70,10 +70,11 @@ export default class CommonCartridge extends Component {
   getEntriesFromManifest = () => {
     fetch(this.props.manifest)
       .then(response => response.text())
-      .then(xml => {
+      .then(async xml => {
         const {
           assessmentResources,
           assignmentResources,
+          associatedContentAssignmentResources,
           discussionResources,
           resourceMap,
           fileResources,
@@ -88,10 +89,11 @@ export default class CommonCartridge extends Component {
           title,
           schema,
           schemaVersion
-        } = getResourcesFromXml(xml);
+        } = await getResourcesFromXml(xml, this.isValidPath);
         this.setState({
           assessmentResources,
           assignmentResources,
+          associatedContentAssignmentResources,
           discussionResources,
           resourceMap,
           fileResources,
@@ -150,7 +152,7 @@ export default class CommonCartridge extends Component {
 
     if (manifestEntry != null) {
       const xml = await getTextFromEntry(manifestEntry);
-      this.loadResources(xml);
+      await this.loadResources(xml);
     }
   }
 
@@ -182,7 +184,7 @@ export default class CommonCartridge extends Component {
   isValidPath = path =>
     this.state.isCartridgeRemotelyExpanded
       ? fetch(`${this.state.basepath}/${path}`)
-          .then(response => true)
+          .then(response => response.status === 200)
           .catch(err => false)
       : this.state.entryMap.has(path);
 
@@ -199,7 +201,7 @@ export default class CommonCartridge extends Component {
     this.activeNavLink = link;
   };
 
-  loadResources(xml) {
+  async loadResources(xml) {
     const {
       assessmentResources,
       assignmentResources,
@@ -218,7 +220,7 @@ export default class CommonCartridge extends Component {
       title,
       schema,
       schemaVersion
-    } = getResourcesFromXml(xml, this.isValidPath);
+    } = await getResourcesFromXml(xml, this.isValidPath);
     this.setState({
       assessmentResources,
       assignmentResources,
