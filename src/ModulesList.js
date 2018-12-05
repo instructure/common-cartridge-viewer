@@ -66,10 +66,10 @@ export default class ModulesList extends Component {
           }
 
           if (item.type === resourceTypes.ASSOCIATED_CONTENT) {
-            const associatedContentAssignmentSettings = this.props.isValidPath(
+            const isAssociatedContentAssignment = this.props.associatedContentAssignmentHrefsSet.has(
               getAssignmentSettingsHref(item.identifierref)
             );
-            if (associatedContentAssignmentSettings) {
+            if (isAssociatedContentAssignment) {
               return (
                 <AssociatedContentAssignmentListItem
                   dependencyHrefs={item.dependencyHrefs}
