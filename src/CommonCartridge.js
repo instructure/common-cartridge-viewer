@@ -24,6 +24,7 @@ import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import AssessmentList from "./AssessmentList";
 import AssignmentList from "./AssignmentList";
+import AssociatedContentAssignmentList from "./AssociatedContentAssignmentList";
 import DiscussionList from "./DiscussionList";
 import FileList from "./FileList";
 import ModulesList from "./ModulesList";
@@ -162,20 +163,28 @@ export default class CommonCartridge extends Component {
   };
 
   getBlobByPath = path => {
-    const entry = this.state.entryMap.get(path);
     return this.state.isCartridgeRemotelyExpanded
-      ? fetch(`${this.state.basepath}/${path}`).then(response =>
-          response.blob()
-        )
-      : getBlobFromEntry(entry);
+      ? fetch(`${this.state.basepath}/${path}`)
+          .then(response => response.blob())
+          .catch(err => null)
+      : this.state.entryMap.has(path)
+      ? getBlobFromEntry(this.state.entryMap.get(path))
+      : "";
   };
 
   getTextByPath = path =>
     this.state.isCartridgeRemotelyExpanded
-      ? fetch(`${this.state.basepath}/${path}`).then(response =>
-          response.text()
-        )
+      ? fetch(`${this.state.basepath}/${path}`)
+          .then(response => response.text())
+          .catch(err => null)
       : getTextFromEntry(this.state.entryMap.get(path));
+
+  isValidPath = path =>
+    this.state.isCartridgeRemotelyExpanded
+      ? fetch(`${this.state.basepath}/${path}`)
+          .then(response => true)
+          .catch(err => false)
+      : this.state.entryMap.has(path);
 
   handleHistoryChange = history => {
     this.history = history;
@@ -194,6 +203,7 @@ export default class CommonCartridge extends Component {
     const {
       assessmentResources,
       assignmentResources,
+      associatedContentAssignmentResources,
       discussionResources,
       resourceMap,
       fileResources,
@@ -208,10 +218,11 @@ export default class CommonCartridge extends Component {
       title,
       schema,
       schemaVersion
-    } = getResourcesFromXml(xml);
+    } = getResourcesFromXml(xml, this.isValidPath);
     this.setState({
       assessmentResources,
       assignmentResources,
+      associatedContentAssignmentResources,
       discussionResources,
       resourceMap,
       fileResources,
@@ -280,6 +291,11 @@ export default class CommonCartridge extends Component {
       showcaseSingleResource = this.state.showcaseResources[0];
     }
 
+    const numberOfAssignments = Math.max(
+      this.state.assignmentResources.length,
+      this.state.associatedContentAssignmentResources.length
+    );
+
     return (
       <React.Fragment>
         {this.props.compact !== true && (
@@ -307,31 +323,26 @@ export default class CommonCartridge extends Component {
                         Modules ({this.state.modules.length})
                       </NavLink>
                     )}
-
-                    {this.state.assignmentResources.length > 0 && (
+                    {numberOfAssignments > 0 && (
                       <NavLink className="MenuItem" to="/assignments">
-                        Assignments ({this.state.assignmentResources.length})
+                        Assignments ({numberOfAssignments})
                       </NavLink>
                     )}
-
                     {this.state.pageResources.length > 0 && (
                       <NavLink className="MenuItem" to="/pages">
                         Pages ({this.state.pageResources.length})
                       </NavLink>
                     )}
-
                     {this.state.discussionResources.length > 0 && (
                       <NavLink className="MenuItem" to="/discussions">
                         Discussions ({this.state.discussionResources.length})
                       </NavLink>
                     )}
-
                     {this.state.assessmentResources.length > 0 && (
                       <NavLink className="MenuItem" to="/assessments">
                         Assessments ({this.state.assessmentResources.length})
                       </NavLink>
                     )}
-
                     {this.state.fileResources.length > 0 && (
                       <NavLink className="MenuItem" to="/files">
                         Files ({this.state.fileResources.length})
@@ -387,6 +398,7 @@ export default class CommonCartridge extends Component {
                           ) : (
                             <ModulesList
                               getTextByPath={this.getTextByPath}
+                              isValidPath={this.isValidPath}
                               moduleItems={this.state.moduleItems}
                               modules={this.state.modules}
                               match={match}
@@ -424,7 +436,8 @@ export default class CommonCartridge extends Component {
                       path="/modules/:module"
                       render={({ match }) => (
                         <ModulesList
-                          entryMap={this.state.entryMap}
+                          getTextByPath={this.getTextByPath}
+                          isValidPath={this.isValidPath}
                           moduleItems={this.state.moduleItems}
                           modules={this.state.modules}
                           match={match}
@@ -491,7 +504,6 @@ export default class CommonCartridge extends Component {
                           {this.setActiveNavLink("/files")}
                           <FileList
                             resources={this.state.fileResources}
-                            entryMap={this.state.entryMap}
                             moduleItems={this.state.moduleItems}
                             resourceMap={this.state.resourceMap}
                             src={this.props.src}
@@ -511,6 +523,14 @@ export default class CommonCartridge extends Component {
                             moduleItems={this.state.moduleItems}
                             resourceMap={this.state.resourceMap}
                             resources={this.state.assignmentResources}
+                          />
+                          <AssociatedContentAssignmentList
+                            resources={
+                              this.state.associatedContentAssignmentResources
+                            }
+                            getTextByPath={this.getTextByPath}
+                            moduleItems={this.state.moduleItems}
+                            resourceMap={this.state.resourceMap}
                             src={this.props.src}
                           />
                         </React.Fragment>
