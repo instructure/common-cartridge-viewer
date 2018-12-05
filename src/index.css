@@ -169,3 +169,8 @@ h3 {
 .submission-format:not(:last-of-type)::after {
   content: ", ";
 }
+
+.preview-not-available-icon {
+  width: 282px;
+  margin: 80px 0;
+}
