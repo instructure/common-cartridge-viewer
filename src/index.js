@@ -14,7 +14,7 @@ ReactDOM.render(
     <App
       compact={typeof parsedQueryString.compact !== "undefined"}
       manifest={parsedQueryString.manifest}
-      cartridge={parsedQueryString.src || parsedQueryString.cartridge}
+      cartridge={parsedQueryString.cartridge || parsedQueryString.src}
     />
   </I18nProvider>,
   document.getElementById("root")
