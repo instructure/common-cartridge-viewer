@@ -39,7 +39,10 @@ export default class RichContent extends Component {
             .split("?")[0]
             .match(wikiExp)[2];
           const href = `wiki_content/${slug}.html`;
-          if (this.props.resourceIdsByHrefMap.has(href)) {
+          if (
+            this.props.resourceIdsByHrefMap &&
+            this.props.resourceIdsByHrefMap.has(href)
+          ) {
             const resourceId = this.props.resourceIdsByHrefMap.get(href);
             link.setAttribute("href", `#/resources/${resourceId}`);
           }
