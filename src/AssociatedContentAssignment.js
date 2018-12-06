@@ -5,19 +5,25 @@ import {
   generateFriendlyStringFromSubmissionFormats,
   getAssignmentSettingsHref
 } from "./utils";
+import PreviewUnavailable from "./PreviewUnavailable";
 
 export default class AssociatedContentAssignment extends Component {
+  constructor(props) {
+    super(props);
+    this.settings = null;
+  }
+
   async componentDidMount() {
     const parser = new DOMParser();
     const settingsXml = await this.props.getTextByPath(
       getAssignmentSettingsHref(this.props.identifier)
     );
-    const settings = parser.parseFromString(settingsXml, "text/xml");
-    const pointsPossibleNode = settings.querySelector("points_possible");
+    this.settings = parser.parseFromString(settingsXml, "text/xml");
+    const pointsPossibleNode = this.settings.querySelector("points_possible");
     const pointsPossible =
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
 
-    const submissionNode = settings.querySelector("submission_types");
+    const submissionNode = this.settings.querySelector("submission_types");
     const submissionFormats = submissionNode && submissionNode.textContent;
 
     this.setState({
@@ -42,9 +48,14 @@ export default class AssociatedContentAssignment extends Component {
       );
     const descriptionHtml = doc.querySelector("body").innerHTML;
 
+    const externalTool = this.settings.querySelector(
+      "external_tool_external_identifier"
+    );
     const labelColor = "#AD4AA0";
 
-    return (
+    return externalTool ? (
+      PreviewUnavailable()
+    ) : (
       <AssignmentBody
         title={title}
         descriptionHtml={descriptionHtml}
