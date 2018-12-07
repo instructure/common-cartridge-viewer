@@ -1,5 +1,4 @@
 import { Selector } from "testcafe";
-import { __await } from "tslib";
 
 fixture`Content Navigation links (Next, Previous, Etc.)`;
 
