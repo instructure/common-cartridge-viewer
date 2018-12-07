@@ -80,3 +80,70 @@ test("Associated-content assignment items can be clicked from assignment list vi
     .expect(Selector("p").withText("To complete this assignment:").exists)
     .ok();
 });
+
+fixture`Associated-content assignments (loaded w/ src)`
+  .page`http://localhost:5000/?src=https://s3.amazonaws.com/public-imscc/COURSE-with-associated-content-assignments.imscc#/`;
+
+test("Associated-content assignment items display correctly", async t => {
+  await t
+    .expect(Selector("a").withText("Published Assignment").exists)
+    .ok()
+    .expect(Selector("a").withText("Unpublished Assignment").exists)
+    .ok();
+});
+
+test("Associated-content assignment items can be clicked", async t => {
+  const publishedAssignment = Selector("a").withText("Published Assignment");
+  await t
+    .expect(publishedAssignment.exists)
+    .ok()
+    .click(publishedAssignment);
+
+  await t
+    .expect(Selector("h1").withText("Published Assignment").exists)
+    .ok()
+    .expect(Selector("div").withText("Submitting: Nothing").exists)
+    .ok()
+    .expect(Selector("div").withText("Points: 0").exists)
+    .ok()
+    .expect(Selector("p").withText("This assignment is published").exists)
+    .ok();
+});
+
+test("Associated-content assignment list displays correctly", async t => {
+  const assignmentsNav = Selector("a").withText("Assignments (2)");
+  await t
+    .expect(assignmentsNav.exists)
+    .ok()
+    .click(assignmentsNav);
+
+  await t
+    .expect(Selector("a").withText("Published Assignment").exists)
+    .ok()
+    .expect(Selector("a").withText("Unpublished Assignment").exists)
+    .ok();
+});
+
+test("Associated-content assignment items can be clicked from assignment list view", async t => {
+  const assignmentsNav = Selector("a").withText("Assignments (2)");
+  await t
+    .expect(assignmentsNav.exists)
+    .ok()
+    .click(assignmentsNav);
+
+  const unpublishedAssignment = Selector("a").withText(
+    "Unpublished Assignment"
+  );
+  await t
+    .expect(unpublishedAssignment.exists)
+    .ok()
+    .click(unpublishedAssignment);
+
+  await t
+    .expect(Selector("h1").withText("Unpublished Assignment").exists)
+    .ok()
+    .expect(Selector("div").withText("Submitting: on paper").exists)
+    .ok()
+    .expect(Selector("div").withText("Points: 1").exists)
+    .ok();
+});
