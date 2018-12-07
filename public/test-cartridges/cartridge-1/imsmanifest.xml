@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="ife6c3152cbc3f055b596a033fad66b4c" xmlns="http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource" xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest" xmlns:cpx="http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lomresource_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lommanifest_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_cpextensionv1p2_v1p0.xsd">
+  <metadata>
+    <schema>IMS Common Cartridge</schema>
+    <schemaversion>1.3.0</schemaversion>
+    <lomimscc:lom>
+      <lomimscc:general>
+        <lomimscc:title>
+          <lomimscc:string>COURSE-for-modules-testing</lomimscc:string>
+        </lomimscc:title>
+      </lomimscc:general>
+      <lomimscc:lifeCycle>
+        <lomimscc:contribute>
+          <lomimscc:date>
+            <lomimscc:dateTime>2018-11-28</lomimscc:dateTime>
+          </lomimscc:date>
+        </lomimscc:contribute>
+      </lomimscc:lifeCycle>
+      <lomimscc:rights>
+        <lomimscc:copyrightAndOtherRestrictions>
+          <lomimscc:value>yes</lomimscc:value>
+        </lomimscc:copyrightAndOtherRestrictions>
+        <lomimscc:description>
+          <lomimscc:string>Private (Copyrighted) - http://en.wikipedia.org/wiki/Copyright</lomimscc:string>
+        </lomimscc:description>
+      </lomimscc:rights>
+    </lomimscc:lom>
+  </metadata>
+  <organizations>
+    <organization identifier="org_1" structure="rooted-hierarchy">
+      <item identifier="LearningModules">
+        <item identifier="i02ce3f13d96fb86be0bfcbecfc2e42ed">
+          <title>First Module</title>
+          <item identifier="ife2bc6ca8062a4f5a3923fdbf687b597" identifierref="i7aff7e807cbf2c3be5ca6fc0733ff0a8">
+            <title>First Module Assignment 1</title>
+          </item>
+          <item identifier="i115b5cd9f1266b1f2919150dd0638e2c" identifierref="i4f68489bc67fcd24fdda99053591adb1">
+            <title>First Module Quiz 1</title>
+          </item>
+          <item identifier="ib9e9d751c5934866aeee701374169741" identifierref="i20d994c705d4f2bf05a753e922547b06">
+            <title>photo.jpg</title>
+          </item>
+          <item identifier="ic3d0c9660163ce6258425cf0a961b7ca" identifierref="i0c940bd995254e5f0bf694dc5aaea005">
+            <title>First Module Wiki Page 1</title>
+          </item>
+          <item identifier="ie7d80229fb8dd74df99bb16503a58af7" identifierref="ie18870c878cf8b25262994ef4b236540">
+            <title>First Module Discussion 1</title>
+          </item>
+          <item identifier="i82c316b062776132dfcb682476bb2c5c">
+            <title>First Module Text Header 1</title>
+          </item>
+          <item identifier="id5b96ad031a656e6ee45724fb718ebb5" identifierref="i694d024f7e7bb0de4335817c9d4649f1">
+            <title>First Module External URL 1</title>
+          </item>
+          <item identifier="idc1d64e13995c74b24959e8e309d0cba" identifierref="i2a43afb3f81390abba3db9c894444d1d">
+            <title>First Module AnalyTics Beta External Tool</title>
+          </item>
+        </item>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="i68bec7eed32a8a42c49839b324463c31" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="course_settings/canvas_export.txt">
+      <file href="course_settings/course_settings.xml"/>
+      <file href="course_settings/module_meta.xml"/>
+      <file href="course_settings/assignment_groups.xml"/>
+      <file href="course_settings/files_meta.xml"/>
+      <file href="course_settings/media_tracks.xml"/>
+      <file href="course_settings/canvas_export.txt"/>
+    </resource>
+    <resource identifier="i0c940bd995254e5f0bf694dc5aaea005" type="webcontent" href="wiki_content/first-module-wiki-page-1.html">
+      <file href="wiki_content/first-module-wiki-page-1.html"/>
+    </resource>
+    <resource identifier="i7aff7e807cbf2c3be5ca6fc0733ff0a8" type="assignment_xmlv1p0" href="i7aff7e807cbf2c3be5ca6fc0733ff0a8/assignment.xml">
+      <file href="i7aff7e807cbf2c3be5ca6fc0733ff0a8/assignment.xml"/>
+    </resource>
+    <resource identifier="i7aff7e807cbf2c3be5ca6fc0733ff0a8_fallback" type="webcontent">
+      <cpx:variant identifier="i7aff7e807cbf2c3be5ca6fc0733ff0a8_variant" identifierref="i7aff7e807cbf2c3be5ca6fc0733ff0a8">
+        <cpx:metadata/>
+      </cpx:variant>
+      <file href="i7aff7e807cbf2c3be5ca6fc0733ff0a8/first-module-assignment-1.html"/>
+    </resource>
+    <resource identifier="ie18870c878cf8b25262994ef4b236540" type="imsdt_xmlv1p1">
+      <file href="ie18870c878cf8b25262994ef4b236540.xml"/>
+      <dependency identifierref="i678d44e443b4498882d9ea2e935404ed"/>
+    </resource>
+    <resource identifier="i678d44e443b4498882d9ea2e935404ed" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i678d44e443b4498882d9ea2e935404ed.xml">
+      <file href="i678d44e443b4498882d9ea2e935404ed.xml"/>
+    </resource>
+    <resource identifier="i694d024f7e7bb0de4335817c9d4649f1" type="imswl_xmlv1p1">
+      <file href="i694d024f7e7bb0de4335817c9d4649f1.xml"/>
+    </resource>
+    <resource identifier="i40e2c36d2a4d7d7a9248e994adfce659" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="non_cc_assessments/i40e2c36d2a4d7d7a9248e994adfce659.xml.qti">
+      <file href="non_cc_assessments/i40e2c36d2a4d7d7a9248e994adfce659.xml.qti"/>
+    </resource>
+    <resource identifier="i4f68489bc67fcd24fdda99053591adb1" type="imsqti_xmlv1p2/imscc_xmlv1p1/assessment">
+      <file href="i4f68489bc67fcd24fdda99053591adb1/assessment_qti.xml"/>
+      <dependency identifierref="icb696a141efb615de2e4a72018c8abfb"/>
+    </resource>
+    <resource identifier="icb696a141efb615de2e4a72018c8abfb" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i4f68489bc67fcd24fdda99053591adb1/assessment_meta.xml">
+      <file href="i4f68489bc67fcd24fdda99053591adb1/assessment_meta.xml"/>
+      <file href="non_cc_assessments/i4f68489bc67fcd24fdda99053591adb1.xml.qti"/>
+    </resource>
+    <resource type="webcontent" identifier="i20d994c705d4f2bf05a753e922547b06" href="web_resources/photo.jpg">
+      <file href="web_resources/photo.jpg"/>
+    </resource>
+  </resources>
+</manifest>

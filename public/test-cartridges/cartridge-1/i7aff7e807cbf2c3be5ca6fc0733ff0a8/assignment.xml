@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignment identifier="i7aff7e807cbf2c3be5ca6fc0733ff0a8" xmlns="http://www.imsglobal.org/xsd/imscc_extensions/assignment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscc_extensions/assignment http://www.imsglobal.org/profile/cc/cc_extensions/cc_extresource_assignmentv1p0_v1p0.xsd">
+  <title>First Module Assignment 1</title>
+  <text texttype="text/html">&lt;p&gt;&lt;strong&gt;This is RCE content for this assignment&lt;/strong&gt;&lt;/p&gt;</text>
+  <gradable points_possible="0.0">true</gradable>
+  <submission_formats>
+  </submission_formats>
+  <extensions>
+    <assignment identifier="i7aff7e807cbf2c3be5ca6fc0733ff0a8_canvas" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+      <title>First Module Assignment 1</title>
+      <due_at/>
+      <lock_at/>
+      <unlock_at/>
+      <module_locked>false</module_locked>
+      <assignment_group_identifierref>i4dd2a755ae1a787b89f547e6cfe8ef34</assignment_group_identifierref>
+      <workflow_state>published</workflow_state>
+      <assignment_overrides>
+      </assignment_overrides>
+      <has_group_category>false</has_group_category>
+      <points_possible>0.0</points_possible>
+      <grading_type>points</grading_type>
+      <all_day>false</all_day>
+      <submission_types>none</submission_types>
+      <position>1</position>
+      <turnitin_enabled>false</turnitin_enabled>
+      <vericite_enabled>false</vericite_enabled>
+      <peer_review_count>0</peer_review_count>
+      <peer_reviews>false</peer_reviews>
+      <automatic_peer_reviews>false</automatic_peer_reviews>
+      <anonymous_peer_reviews>false</anonymous_peer_reviews>
+      <grade_group_students_individually>false</grade_group_students_individually>
+      <freeze_on_copy>false</freeze_on_copy>
+      <omit_from_final_grade>false</omit_from_final_grade>
+      <intra_group_peer_reviews>false</intra_group_peer_reviews>
+      <only_visible_to_overrides>false</only_visible_to_overrides>
+      <post_to_sis>false</post_to_sis>
+      <moderated_grading>false</moderated_grading>
+      <grader_count>0</grader_count>
+      <grader_comments_visible_to_graders>true</grader_comments_visible_to_graders>
+      <anonymous_grading>false</anonymous_grading>
+      <graders_anonymous_to_graders>false</graders_anonymous_to_graders>
+      <grader_names_visible_to_final_grader>true</grader_names_visible_to_final_grader>
+      <anonymous_instructor_annotations>false</anonymous_instructor_annotations>
+    </assignment>
+  </extensions>
+</assignment>

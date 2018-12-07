@@ -12,7 +12,9 @@ test("Next link on first page works", async t => {
   const titleH1 = Selector("h1");
 
   await t.navigateTo(
-    "http://localhost:5000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2FCOURSE-for-modules-testing.imscc#/resources/i7aff7e807cbf2c3be5ca6fc0733ff0a8"
+    `http://localhost:5000/?manifest=${encodeURIComponent(
+      "http://localhost:5000/test-cartridges/cartridge-1/imsmanifest.xml"
+    )}#/resources/i7aff7e807cbf2c3be5ca6fc0733ff0a8`
   );
   await t.expect(previousButton.exists).notOk();
   await t.click(nextButton);
@@ -29,7 +31,9 @@ test("Previous link on last page works", async t => {
   const titleH1 = Selector("h1");
 
   await t.navigateTo(
-    "http://localhost:5000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2FCOURSE-for-modules-testing.imscc#/resources/i694d024f7e7bb0de4335817c9d4649f1"
+    `http://localhost:5000/?manifest=${encodeURIComponent(
+      "http://localhost:5000/test-cartridges/cartridge-1/imsmanifest.xml"
+    )}#/resources/i694d024f7e7bb0de4335817c9d4649f1`
   );
   await t.expect(nextButton.exists).notOk();
   await t.click(previousButton);
@@ -40,7 +44,9 @@ test("All Items link works", async t => {
   // because of CM-606 we have to start from the imscc index page
   // please update this test when CM-606 is fixed
   await t.navigateTo(
-    "http://localhost:5000/?src=https%3A%2F%2Fs3.amazonaws.com%2Fpublic-imscc%2FCOURSE-for-modules-testing.imscc#/"
+    `http://localhost:5000/?manifest=${encodeURIComponent(
+      "http://localhost:5000/test-cartridges/cartridge-1/imsmanifest.xml"
+    )}`
   );
   await t.click(Selector("a").withText("First Module Quiz 1"));
   await t.click(Selector("a").withText("All Items"));

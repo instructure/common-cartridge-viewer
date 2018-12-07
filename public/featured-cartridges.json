@@ -1,4 +1,5 @@
 [
+  ["Test course", "/test-cartridges/cartridge-1/imsmanifest.xml"],
   [
     "Ally: Accessibility Workshop",
     "https://s3.amazonaws.com/public-imscc/facc0607309246638c298c6a1b01abcf.imscc",
