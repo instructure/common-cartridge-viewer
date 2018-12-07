@@ -10,6 +10,7 @@ import Button from "@instructure/ui-buttons/lib/components/Button";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import View from "@instructure/ui-layout/lib/components/View";
 import { HashRouter as Router } from "react-router-dom";
+import { getExtension } from "./utils";
 
 export default class App extends Component {
   constructor(props) {
@@ -32,6 +33,19 @@ export default class App extends Component {
     this.setState({ history });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    const url = this.inputRef.value || "";
+    const extension = getExtension(url);
+    const isCartridge = extension === "imscc";
+    const isManifest = url.includes("imsmanifest.xml") && extension === "xml";
+    if (isManifest) {
+      window.location.href = `/?manifest=${encodeURIComponent(url)}`;
+    } else if (isCartridge) {
+      window.location.href = `/?cartridge=${encodeURIComponent(url)}`;
+    }
+  };
+
   componentDidMount() {
     fetch("/featured-cartridges.json")
       .then(response => {
@@ -46,7 +60,7 @@ export default class App extends Component {
     const cartridges = this.state.featuredCartridges.map(
       ([title, href, license, author, source], index) => (
         <li key={index}>
-          <a href={`/?src=${href}`}>{title}</a> ({author}, {license},{" "}
+          <a href={`/?cartridge=${href}`}>{title}</a> ({author}, {license},{" "}
           <a href={source}>source</a>)
         </li>
       )
@@ -79,16 +93,17 @@ export default class App extends Component {
                 }
               />
             </View>
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <Flex justifyItems="center" margin="medium none large">
                 <FlexItem>
                   <TextInput
-                    name="src"
-                    width="30rem"
+                    inputRef={input => (this.inputRef = input)}
                     label={<ScreenReaderContent>Cartridge</ScreenReaderContent>}
+                    name="src"
                     placeholder={
                       "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
                     }
+                    width="30rem"
                   />
                 </FlexItem>
                 <FlexItem padding="0 0 0 x-small">
