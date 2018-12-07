@@ -8,29 +8,29 @@ import {
 import PreviewUnavailable from "./PreviewUnavailable";
 
 export default class AssociatedContentAssignment extends Component {
-  constructor(props) {
-    super(props);
-    this.settings = null;
-  }
-
   async componentDidMount() {
     const parser = new DOMParser();
     const settingsXml = await this.props.getTextByPath(
       getAssignmentSettingsHref(this.props.identifier)
     );
-    this.settings = parser.parseFromString(settingsXml, "text/xml");
-    const pointsPossibleNode = this.settings.querySelector("points_possible");
+    const settings = parser.parseFromString(settingsXml, "text/xml");
+    const pointsPossibleNode = settings.querySelector("points_possible");
     const pointsPossible =
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
 
-    const submissionNode = this.settings.querySelector("submission_types");
+    const submissionNode = settings.querySelector("submission_types");
     const submissionFormats = submissionNode && submissionNode.textContent;
+
+    const externalToolNode = settings.querySelector(
+      "external_tool_external_identifier"
+    );
 
     this.setState({
       pointsPossible,
       submissionFormats: generateFriendlyStringFromSubmissionFormats(
         submissionFormats
-      )
+      ),
+      externalToolNode
     });
   }
 
@@ -48,12 +48,10 @@ export default class AssociatedContentAssignment extends Component {
       );
     const descriptionHtml = doc.querySelector("body").innerHTML;
 
-    const externalTool = this.settings.querySelector(
-      "external_tool_external_identifier"
-    );
+    const isExternalTool = !!this.state.externalToolNode;
     const labelColor = "#AD4AA0";
 
-    return externalTool ? (
+    return isExternalTool ? (
       PreviewUnavailable()
     ) : (
       <AssignmentBody
