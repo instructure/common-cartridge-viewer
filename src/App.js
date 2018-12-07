@@ -62,8 +62,19 @@ export default class App extends Component {
     const cartridges = this.state.featuredCartridges.map(
       ([title, href, license, author, source], index) => (
         <li key={index}>
-          <a href={`/?cartridge=${href}`}>{title}</a> ({author}, {license},{" "}
-          <a href={source}>source</a>)
+          <a
+            href={`/?${
+              href.includes(".xml") ? "manifest" : "cartridge"
+            }=${href}`}
+          >
+            {title}
+          </a>
+          {source && (
+            <span>
+              {" "}
+              ({author}, {license}, <a href={source}>source</a>)
+            </span>
+          )}
         </li>
       )
     );
