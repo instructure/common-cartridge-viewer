@@ -4,6 +4,7 @@ import Icon from "@instructure/ui-icons/lib/Line/IconDiscussion";
 import RichContent from "./RichContent";
 import { basename } from "path";
 import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
+import { Trans } from "@lingui/macro";
 
 export default class Discussion extends Component {
   render() {
@@ -35,7 +36,9 @@ export default class Discussion extends Component {
           >
             <Icon color="primary-inverse" />
           </div>
-          <span>Discussion</span>
+          <span>
+            <Trans>Discussion</Trans>
+          </span>
         </div>
 
         <Heading level="h1" margin="0 0 small">
@@ -50,7 +53,9 @@ export default class Discussion extends Component {
 
         {attachments.length > 0 && (
           <React.Fragment>
-            <Heading level="h2">Attachments</Heading>
+            <Heading level="h2">
+              <Trans>Attachments</Trans>
+            </Heading>
             <ul>
               {attachments.map(attachment => {
                 return (

@@ -1,9 +1,6 @@
-import {
-  resourceTypes,
-  submissionTypes,
-  submissionTypeLabels,
-  SUBMISSION_TYPE_JOIN_STRING
-} from "./constants";
+import { resourceTypes, submissionTypes } from "./constants";
+import { i18n } from "./index";
+import { t } from "@lingui/macro";
 
 const zip = window.zip;
 
@@ -203,7 +200,7 @@ export function getResourcesFromXml(xml) {
         const identifier = item.getAttribute("identifier");
         const title = item.querySelector("title")
           ? item.querySelector("title").textContent
-          : "Untitled";
+          : i18n._(t`Untitled`);
         const identifierref = item.getAttribute("identifierref");
         if (identifierref == null) {
           return { title };
@@ -271,6 +268,17 @@ function isNot(type) {
 }
 
 export function generateFriendlyStringFromSubmissionFormats(submissionType) {
+  const submissionTypeLabels = {
+    [submissionTypes.ONLINE_UPLOAD]: i18n._(t`a file upload`),
+    [submissionTypes.ONLINE_TEXT_ENTRY]: i18n._(`a text entry box`),
+    [submissionTypes.ONLINE_URL]: i18n._(`a website url`),
+    [submissionTypes.MEDIA_RECORDING]: i18n._(`a media recording`),
+    [submissionTypes.ON_PAPER]: i18n._(`on paper`),
+    [submissionTypes.NONE]: i18n._(`Nothing`)
+  };
+
+  const SUBMISSION_TYPE_JOIN_STRING = i18n._(`, or `);
+
   const submissionTypeToSubmissionLabel = submissionType =>
     Object.keys(submissionTypeLabels).includes(submissionType)
       ? submissionTypeLabels[submissionType]

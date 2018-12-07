@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
-import { questionTypeLabels } from "./constants";
+import { questionTypes } from "./constants";
 import RichContent from "./RichContent";
 import FormFieldGroup from "@instructure/ui-forms/lib/components/FormFieldGroup";
 import FormField from "@instructure/ui-forms/lib/components/FormField";
@@ -8,6 +8,8 @@ import Icon from "@instructure/ui-icons/lib/Line/IconQuiz";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import View from "@instructure/ui-layout/lib/components/View";
 import Pill from "@instructure/ui-elements/lib/components/Pill";
+import { I18n } from "@lingui/react";
+import { Trans, t } from "@lingui/macro";
 
 export default class Assessment extends Component {
   render() {
@@ -43,29 +45,74 @@ export default class Assessment extends Component {
     });
 
     const questionComponents = items.map((item, index) => {
-      const typeLabel =
-        questionTypeLabels[item.metadata.get("cc_profile")] || "Other type";
+      const type = item.metadata.get("cc_profile");
 
       const material = item.mattextNode && item.mattextNode.textContent;
 
       return (
-        <View
-          key={index}
-          as="li"
-          padding="small none"
-          background="default"
-          borderWidth="small none none none"
-        >
-          <Pill variant="success" margin="0 0 small" text={typeLabel} />
+        <I18n>
+          {({ i18n }) => (
+            <View
+              key={index}
+              as="li"
+              padding="small none"
+              background="default"
+              borderWidth="small none none none"
+            >
+              {type === questionTypes.MULTIPLE_CHOICE ? (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`Multiple choice`)}
+                />
+              ) : type === questionTypes.MULTIPLE_RESPONSE ? (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`Multiple response`)}
+                />
+              ) : type === questionTypes.TRUEFALSE ? (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`True / false`)}
+                />
+              ) : type === questionTypes.FILL_IN_THE_BLANK ? (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`Fill in the blank`)}
+                />
+              ) : type === questionTypes.PATTERN_MATCH ? (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`Pattern match`)}
+                />
+              ) : type === questionTypes.ESSAY ? (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`Essay`)}
+                />
+              ) : (
+                <Pill
+                  variant="success"
+                  margin="0 0 small"
+                  text={i18n._(t`Other type`)}
+                />
+              )}
 
-          {material && (
-            <RichContent
-              getUrlForPath={this.props.getUrlForPath}
-              html={material}
-              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-            />
+              {material && (
+                <RichContent
+                  getUrlForPath={this.props.getUrlForPath}
+                  html={material}
+                  resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+                />
+              )}
+            </View>
           )}
-        </View>
+        </I18n>
       );
     });
 
@@ -80,7 +127,9 @@ export default class Assessment extends Component {
           >
             <Icon color="primary-inverse" />
           </div>
-          <span>Assessment</span>
+          <span>
+            <Trans>Assessment</Trans>
+          </span>
         </div>
 
         <Heading level="h1" margin="0 0 small">
@@ -103,7 +152,7 @@ export default class Assessment extends Component {
         </FormFieldGroup>
 
         <Heading level="h2" margin="medium 0 small">
-          Questions
+          <Trans>Questions</Trans>
         </Heading>
 
         <ul className="assessment-questions">{questionComponents}</ul>

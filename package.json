@@ -27,7 +27,7 @@
   },
   "scripts": {
     "add-locale": "lingui add-locale",
-    "build": "react-scripts build",
+    "build": "yarn run compile && react-scripts build",
     "compile": "lingui compile",
     "eject": "react-scripts eject",
     "extract": "lingui extract",

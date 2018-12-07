@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconExternalLink";
+import { I18n } from "@lingui/react";
+import { Trans, t } from "@lingui/macro";
 
 export default class WebLink extends Component {
   render() {
@@ -10,31 +12,36 @@ export default class WebLink extends Component {
       return null;
     }
     const href = doc.querySelector("url").getAttribute("href");
-    const title = doc.querySelector("title")
-      ? doc.querySelector("title").textContent
-      : "Untitled";
     const labelColor = "#AD4AA0";
 
     return (
-      <div>
-        <div className="resource-label" style={{ color: labelColor }}>
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: labelColor }}
-          >
-            <Icon color="primary-inverse" />
+      <I18n>
+        {({ i18n }) => (
+          <div>
+            <div className="resource-label" style={{ color: labelColor }}>
+              <div
+                className="resource-label-icon"
+                style={{ backgroundColor: labelColor }}
+              >
+                <Icon color="primary-inverse" />
+              </div>
+              <span>
+                <Trans>External link</Trans>
+              </span>
+            </div>
+
+            <Heading level="h1" margin="0 0 small">
+              {doc.querySelector("title")
+                ? doc.querySelector("title").textContent
+                : i18n._(t`Untitled`)}
+            </Heading>
+
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              <Trans>Click here to open link in new window</Trans>
+            </a>
           </div>
-          <span>External link</span>
-        </div>
-
-        <Heading level="h1" margin="0 0 small">
-          {title}
-        </Heading>
-
-        <a href={href} target="_blank" rel="noopener noreferrer">
-          Click here to open link in new window
-        </a>
-      </div>
+        )}
+      </I18n>
     );
   }
 }

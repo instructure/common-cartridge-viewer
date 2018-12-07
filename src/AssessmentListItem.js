@@ -4,6 +4,7 @@ import IconQuiz from "@instructure/ui-icons/lib/Line/IconQuiz";
 import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
 import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
+import { Trans } from "@lingui/macro";
 
 export default class AssessmentListItem extends Component {
   constructor(props) {
@@ -69,14 +70,14 @@ export default class AssessmentListItem extends Component {
             </div>
             {this.state.questionCount > 0 && (
               <div className="ExpandCollapseList-item-details">
-                {this.state.questionCount} Questions
+                <Trans>{this.state.questionCount} Questions</Trans>
               </div>
             )}
           </div>
 
           {this.state.points != null && (
             <div className="ExpandCollapseList-item-pts">
-              {this.state.points} points
+              <Trans>{this.state.points} points</Trans>
             </div>
           )}
 

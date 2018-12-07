@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import FileListItem from "./FileListItem";
+import { Trans } from "@lingui/macro";
 
 export default class FileList extends Component {
   render() {
@@ -33,7 +34,9 @@ export default class FileList extends Component {
     return (
       <div className="Cartridge-content-inner">
         <Heading level="h1">
-          <ScreenReaderContent>Files</ScreenReaderContent>
+          <ScreenReaderContent>
+            <Trans>Files</Trans>
+          </ScreenReaderContent>
         </Heading>
         <ul className="Files ExpandCollapseList">{listItems}</ul>
       </div>

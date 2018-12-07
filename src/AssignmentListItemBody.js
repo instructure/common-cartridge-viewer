@@ -4,6 +4,7 @@ import IconAssignment from "@instructure/ui-icons/lib/Line/IconAssignment";
 import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
 import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
+import { Trans } from "@lingui/macro";
 
 export default class AssignmentListItemBody extends PureComponent {
   render() {
@@ -21,7 +22,7 @@ export default class AssignmentListItemBody extends PureComponent {
 
           {this.props.points != null && (
             <div className="ExpandCollapseList-item-pts">
-              {this.props.points} points
+              <Trans>{this.props.points} points</Trans>
             </div>
           )}
 
