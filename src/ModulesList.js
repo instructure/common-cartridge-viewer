@@ -11,6 +11,7 @@ import DiscussionListItem from "./DiscussionListItem";
 import WikiContentListItem from "./WikiContentListItem";
 import FileListItem from "./FileListItem";
 import WebLinkListItem from "./WebLinkListItem";
+import { Trans } from "@lingui/macro";
 
 import { getAssignmentSettingsHref } from "./utils.js";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
@@ -150,7 +151,10 @@ export default class ModulesList extends Component {
                 <div style={{ flex: 1 }}>
                   {item.href && (
                     <Link as={NavLink} to={`resources/${item.identifier}`}>
-                      <span>{item.title || "Untitled"} (unidentified)</span>
+                      <span>
+                        {item.title || <Trans>Untitled</Trans>}{" "}
+                        <Trans>(unidentified)</Trans>
+                      </span>
                     </Link>
                   )}
                 </div>

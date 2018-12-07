@@ -4,6 +4,7 @@ import IconPaperclip from "@instructure/ui-icons/lib/Line/IconPaperclip";
 import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
 import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
+import { Trans } from "@lingui/macro";
 
 export default class FileListItem extends Component {
   constructor(props) {
@@ -64,7 +65,7 @@ export default class FileListItem extends Component {
 
           {this.state.points != null && (
             <div className="ExpandCollapseList-item-pts">
-              {this.state.points} points
+              <Trans>{this.state.points} points</Trans>
             </div>
           )}
 

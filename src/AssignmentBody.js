@@ -3,6 +3,7 @@ import { basename } from "path";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
 import RichContent from "./RichContent";
+import { Trans } from "@lingui/macro";
 
 export default class AssignmentBody extends PureComponent {
   render() {
@@ -18,7 +19,9 @@ export default class AssignmentBody extends PureComponent {
           >
             <Icon color="primary-inverse" />
           </div>
-          <span>Assignment</span>
+          <span>
+            <Trans>Assignment</Trans>
+          </span>
         </div>
 
         <Heading level="h1" margin="0 0 small">
@@ -28,7 +31,10 @@ export default class AssignmentBody extends PureComponent {
           this.props.submissionFormats.length > 0 && (
             <React.Fragment>
               <div style={{ marginTop: "12px", marginBottom: "12px" }}>
-                <span style={{ fontWeight: "bold" }}>Submitting</span>:{" "}
+                <span style={{ fontWeight: "bold" }}>
+                  <Trans>Submitting</Trans>
+                </span>
+                :{" "}
                 <span className="submission-format">
                   {this.props.submissionFormats}
                 </span>
@@ -38,8 +44,10 @@ export default class AssignmentBody extends PureComponent {
 
         {this.props.pointsPossible != null && (
           <div>
-            <span style={{ fontWeight: "bold" }}>Points</span>:{" "}
-            {this.props.pointsPossible}
+            <span style={{ fontWeight: "bold" }}>
+              <Trans>Points</Trans>
+            </span>
+            : {this.props.pointsPossible}
           </div>
         )}
 
@@ -52,31 +60,32 @@ export default class AssignmentBody extends PureComponent {
             />
           )}
 
-        {this.props.attachments &&
-          this.props.attachments.length > 0 && (
-            <React.Fragment>
-              <Heading level="h2">Attachments</Heading>
-              <ul>
-                {this.props.attachments.map(attachment => {
-                  return (
-                    <li key={attachment}>
-                      {this.props.resourceIdsByHrefMap.has(attachment) ? (
-                        <a
-                          href={`#/resources/${this.props.resourceIdsByHrefMap.get(
-                            attachment
-                          )}`}
-                        >
-                          {basename(attachment)}
-                        </a>
-                      ) : (
-                        basename(attachment)
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </React.Fragment>
-          )}
+        {this.props.attachments && this.props.attachments.length > 0 && (
+          <React.Fragment>
+            <Heading level="h2">
+              <Trans>Attachments</Trans>
+            </Heading>
+            <ul>
+              {this.props.attachments.map(attachment => {
+                return (
+                  <li key={attachment}>
+                    {this.props.resourceIdsByHrefMap.has(attachment) ? (
+                      <a
+                        href={`#/resources/${this.props.resourceIdsByHrefMap.get(
+                          attachment
+                        )}`}
+                      >
+                        {basename(attachment)}
+                      </a>
+                    ) : (
+                      basename(attachment)
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

@@ -18,6 +18,8 @@ import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
 import { getExtension, getResourceHref } from "./utils";
+import { I18n } from "@lingui/react";
+import { Trans, t } from "@lingui/macro";
 
 import notFoundImage from "./images/404-empty-planet.svg";
 
@@ -104,7 +106,7 @@ export default class Resource extends Component {
             innerRef={this.setPreviousButton}
             onClick={this.handlePreviousButtonPressed}
           >
-            Previous
+            <Trans>Previous</Trans>
           </Button>
         </Tooltip>
       </div>
@@ -122,7 +124,7 @@ export default class Resource extends Component {
             innerRef={this.setNextButton}
             onClick={this.handleNextButtonPressed}
           >
-            Next
+            <Trans>Next</Trans>
           </Button>
         </Tooltip>
       </div>
@@ -139,7 +141,7 @@ export default class Resource extends Component {
           innerRef={this.setAllItemsButton}
           onClick={this.handleAllItemsButtonPressed}
         >
-          All Items
+          <Trans>All Items</Trans>
         </Button>
       </Tooltip>
     );
@@ -278,17 +280,21 @@ export default class Resource extends Component {
 
     if (resource == null) {
       return (
-        <Billboard
-          size="medium"
-          heading={"Not found"}
-          hero={size => (
-            <img
-              alt=""
-              style={{ width: "260px", height: "200px" }}
-              src={notFoundImage}
+        <I18n>
+          {({ i18n }) => (
+            <Billboard
+              size="medium"
+              heading={i18n._(t`Not found`)}
+              hero={size => (
+                <img
+                  alt=""
+                  style={{ width: "260px", height: "200px" }}
+                  src={notFoundImage}
+                />
+              )}
             />
           )}
-        />
+        </I18n>
       );
     }
 

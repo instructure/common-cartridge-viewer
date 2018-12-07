@@ -3,6 +3,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import { WIKI_CONTENT_HREF_PREFIX } from "./constants";
 import WikiContentListItem from "./WikiContentListItem";
+import { Trans } from "@lingui/macro";
 
 export default class WikiContentList extends Component {
   render() {
@@ -55,7 +56,9 @@ export default class WikiContentList extends Component {
     return (
       <div className="Cartridge-content-inner">
         <Heading level="h1">
-          <ScreenReaderContent>Wiki content</ScreenReaderContent>
+          <ScreenReaderContent>
+            <Trans>Wiki content</Trans>
+          </ScreenReaderContent>
         </Heading>
         <ul className="Discussions ExpandCollapseList">{listItems}</ul>
       </div>

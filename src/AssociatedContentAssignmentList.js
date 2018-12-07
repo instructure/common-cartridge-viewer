@@ -3,6 +3,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
 import { getAssignmentListResources } from "./utils";
+import { Trans } from "@lingui/macro";
 
 export default class AssociatedContentAssignmentList extends Component {
   render() {
@@ -29,7 +30,9 @@ export default class AssociatedContentAssignmentList extends Component {
     return (
       <div className="Cartridge-content-inner">
         <Heading level="h1">
-          <ScreenReaderContent>Assignments</ScreenReaderContent>
+          <ScreenReaderContent>
+            <Trans>Assignments</Trans>
+          </ScreenReaderContent>
         </Heading>
         <ul className="Assignments ExpandCollapseList">{listItems}</ul>
       </div>

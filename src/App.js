@@ -11,6 +11,8 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import View from "@instructure/ui-layout/lib/components/View";
 import { HashRouter as Router } from "react-router-dom";
 import { getExtension } from "./utils";
+import { I18n } from "@lingui/react";
+import { Trans, t } from "@lingui/macro";
 
 export default class App extends Component {
   constructor(props) {
@@ -72,90 +74,104 @@ export default class App extends Component {
       this.props.manifest == null;
 
     return (
-      <View as="div" margin="medium">
-        {hasSourceOrContent && (
-          <React.Fragment>
-            <View as="div" margin="large">
-              <FileDrop
-                accept=".imscc"
-                onDropAccepted={files => {
-                  this.setState({ file: files[0] });
-                }}
-                onDropRejected={file => {
-                  console.error("file rejected");
-                }}
-                label={
-                  <Billboard
-                    heading="View a Common Cartridge (.imscc)"
-                    message="Drag and drop, or click to browse your computer"
-                    hero={<IconZipped />}
-                  />
-                }
-              />
-            </View>
-            <form onSubmit={this.handleSubmit}>
-              <Flex justifyItems="center" margin="medium none large">
-                <FlexItem>
-                  <TextInput
-                    inputRef={input => (this.inputRef = input)}
-                    label={<ScreenReaderContent>Cartridge</ScreenReaderContent>}
-                    name="src"
-                    placeholder={
-                      "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+      <I18n>
+        {({ i18n }) => (
+          <View as="div" margin="medium">
+            {hasSourceOrContent && (
+              <React.Fragment>
+                <View as="div" margin="large">
+                  <FileDrop
+                    accept=".imscc"
+                    onDropAccepted={files => {
+                      this.setState({ file: files[0] });
+                    }}
+                    onDropRejected={file => {
+                      console.error("file rejected");
+                    }}
+                    label={
+                      <Billboard
+                        heading={i18n._(t`View a Common Cartridge (.imscc)`)}
+                        message={i18n._(
+                          t`Drag and drop, or click to browse your computer`
+                        )}
+                        hero={<IconZipped />}
+                      />
                     }
-                    width="30rem"
                   />
-                </FlexItem>
-                <FlexItem padding="0 0 0 x-small">
-                  <Button type="submit" variant="primary">
-                    View
-                  </Button>
-                </FlexItem>
-              </Flex>
-            </form>
+                </View>
+                <form onSubmit={this.handleSubmit}>
+                  <Flex justifyItems="center" margin="medium none large">
+                    <FlexItem>
+                      <TextInput
+                        inputRef={input => (this.inputRef = input)}
+                        label={
+                          <ScreenReaderContent>
+                            <Trans>Cartridge</Trans>
+                          </ScreenReaderContent>
+                        }
+                        name="src"
+                        placeholder={i18n._(
+                          t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`
+                        )}
+                        width="30rem"
+                      />
+                    </FlexItem>
+                    <FlexItem padding="0 0 0 x-small">
+                      <Button type="submit" variant="primary">
+                        <Trans>View</Trans>
+                      </Button>
+                    </FlexItem>
+                  </Flex>
+                </form>
 
-            <p>
-              View Common Cartridges in the browser. Requires no server-side
-              processing.
-            </p>
+                <p>
+                  <Trans>
+                    View Common Cartridges in the browser. Requires no
+                    server-side processing.
+                  </Trans>
+                </p>
 
-            <Heading level="h2">Examples</Heading>
+                <Heading level="h2">
+                  <Trans>Examples</Trans>
+                </Heading>
 
-            <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
-          </React.Fragment>
+                <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
+              </React.Fragment>
+            )}
+
+            {this.props.manifest != null && (
+              <Router>
+                <CommonCartridge
+                  compact={this.props.compact}
+                  onHistoryChange={this.handleHistoryChange}
+                  manifest={this.props.manifest}
+                />
+              </Router>
+            )}
+
+            {this.props.cartridge != null && (
+              <Router>
+                <CommonCartridge
+                  compact={this.props.compact}
+                  onHistoryChange={this.handleHistoryChange}
+                  src={this.state.cartridge || this.state.file}
+                />
+              </Router>
+            )}
+
+            {this.state.file != null && (
+              <Router>
+                <CommonCartridge
+                  compact={this.props.compact}
+                  onHistoryChange={this.handleHistoryChange}
+                  src="droppedFile"
+                  file={this.state.file}
+                />
+              </Router>
+            )}
+          </View>
         )}
-
-        {this.props.manifest != null && (
-          <Router>
-            <CommonCartridge
-              compact={this.props.compact}
-              onHistoryChange={this.handleHistoryChange}
-              manifest={this.props.manifest}
-            />
-          </Router>
-        )}
-
-        {this.props.cartridge != null && (
-          <Router>
-            <CommonCartridge
-              compact={this.props.compact}
-              onHistoryChange={this.handleHistoryChange}
-              src={this.state.cartridge || this.state.file}
-            />
-          </Router>
-        )}
-
-        {this.state.file != null && (
-          <Router>
-            <CommonCartridge
-              compact={this.props.compact}
-              onHistoryChange={this.handleHistoryChange}
-              src="droppedFile"
-              file={this.state.file}
-            />
-          </Router>
-        )}
-      </View>
+      </I18n>
     );
   }
 }

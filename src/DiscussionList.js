@@ -3,6 +3,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import { getResourceHref } from "./utils";
 import DiscussionListItem from "./DiscussionListItem";
+import { Trans } from "@lingui/macro";
 
 export default class DiscussionList extends Component {
   render() {
@@ -36,7 +37,9 @@ export default class DiscussionList extends Component {
     return (
       <div className="Cartridge-content-inner">
         <Heading level="h1">
-          <ScreenReaderContent>Discussions</ScreenReaderContent>
+          <ScreenReaderContent>
+            <Trans>Discussions</Trans>
+          </ScreenReaderContent>
         </Heading>
         <ul className="Discussions ExpandCollapseList">{listItems}</ul>
       </div>

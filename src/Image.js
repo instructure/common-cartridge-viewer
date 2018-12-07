@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import Spinner from "@instructure/ui-elements/lib/components/Spinner";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconImage";
+import { I18n } from "@lingui/react";
+import { Trans, t } from "@lingui/macro";
 
 export default class Image extends Component {
   constructor(props) {
@@ -29,7 +31,13 @@ export default class Image extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <Spinner title="Loading" size="small" margin="medium" />;
+      return (
+        <I18n>
+          {({ i18n }) => (
+            <Spinner title={i18n._(t`Loading`)} size="small" margin="medium" />
+          )}
+        </I18n>
+      );
     }
 
     const labelColor = "#AD4AA0";
@@ -43,7 +51,9 @@ export default class Image extends Component {
           >
             <Icon color="primary-inverse" />
           </div>
-          <span>Image</span>
+          <span>
+            <Trans>Image</Trans>
+          </span>
         </div>
 
         <Heading level="h1">{this.state.filename}</Heading>

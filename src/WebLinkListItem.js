@@ -3,6 +3,7 @@ import Link from "@instructure/ui-elements/lib/components/Link";
 import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import NavLink from "./NavLink";
 import { resourceTypes } from "./constants";
+import { Trans } from "@lingui/macro";
 
 export default class WebLinkListItem extends Component {
   render() {
@@ -20,7 +21,7 @@ export default class WebLinkListItem extends Component {
           <div style={{ flex: 1 }}>
             {this.props.item.href && (
               <Link as={NavLink} to={`resources/${this.props.identifier}`}>
-                <span>{this.props.item.title || "Untitled"}</span>
+                <span>{this.props.item.title || <Trans>Untitled</Trans>}</span>
               </Link>
             )}
           </div>
