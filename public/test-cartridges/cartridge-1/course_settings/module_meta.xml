@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <module identifier="i02ce3f13d96fb86be0bfcbecfc2e42ed">
+    <title>First Module</title>
+    <workflow_state>unpublished</workflow_state>
+    <position>1</position>
+    <require_sequential_progress>false</require_sequential_progress>
+    <locked>false</locked>
+    <items>
+      <item identifier="ife2bc6ca8062a4f5a3923fdbf687b597">
+        <content_type>Assignment</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module Assignment 1</title>
+        <identifierref>i7aff7e807cbf2c3be5ca6fc0733ff0a8</identifierref>
+        <position>1</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="i115b5cd9f1266b1f2919150dd0638e2c">
+        <content_type>Quizzes::Quiz</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module Quiz 1</title>
+        <identifierref>i4f68489bc67fcd24fdda99053591adb1</identifierref>
+        <position>2</position>
+        <new_tab/>
+        <indent>1</indent>
+      </item>
+      <item identifier="ib9e9d751c5934866aeee701374169741">
+        <content_type>Attachment</content_type>
+        <workflow_state>active</workflow_state>
+        <title>photo.jpg</title>
+        <identifierref>i20d994c705d4f2bf05a753e922547b06</identifierref>
+        <position>3</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="ic3d0c9660163ce6258425cf0a961b7ca">
+        <content_type>WikiPage</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module Wiki Page 1</title>
+        <identifierref>i0c940bd995254e5f0bf694dc5aaea005</identifierref>
+        <position>4</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="ie7d80229fb8dd74df99bb16503a58af7">
+        <content_type>DiscussionTopic</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module Discussion 1</title>
+        <identifierref>ie18870c878cf8b25262994ef4b236540</identifierref>
+        <position>5</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="i82c316b062776132dfcb682476bb2c5c">
+        <content_type>ContextModuleSubHeader</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module Text Header 1</title>
+        <position>6</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="id5b96ad031a656e6ee45724fb718ebb5">
+        <content_type>ExternalUrl</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module External URL 1</title>
+        <identifierref>id5b96ad031a656e6ee45724fb718ebb5</identifierref>
+        <url>http://google.com</url>
+        <position>7</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+      <item identifier="i2a43afb3f81390abba3db9c894444d1d">
+        <content_type>ContextExternalTool</content_type>
+        <workflow_state>active</workflow_state>
+        <title>First Module AnalyTics Beta External Tool</title>
+        <identifierref>ifefae77c0441c92ea22be756eb657acc</identifierref>
+        <url>https://canvas-analytics-iad-prod.inscloudgate.net/lti_check_teacher_performance</url>
+        <global_identifierref>138</global_identifierref>
+        <position>8</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+    </items>
+  </module>
+</modules>

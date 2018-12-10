@@ -32,11 +32,11 @@
     "eject": "react-scripts eject",
     "extract": "lingui extract",
     "start": "react-scripts start",
-    "test-all": "testcafe chrome,firefox,safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
-    "test-chrome": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
-    "test-firefox": "testcafe firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
-    "test-safari": "testcafe safari ./tests/test.* --app \"node_modules/.bin/serve ./build -s\"",
-    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/serve ./build -s\""
+    "test-all": "testcafe chrome,firefox,safari ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "test-chrome": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "test-firefox": "testcafe firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "test-safari": "testcafe safari ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\""
   },
   "husky": {
     "hooks": {
@@ -57,7 +57,7 @@
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
     "prettier": "1.15.3",
-    "serve": "^10.1.1",
+    "superstatic": "^6.0.4",
     "testcafe": "^0.21.1"
   },
   "browserslist": [

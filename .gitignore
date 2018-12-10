@@ -27,7 +27,6 @@ yarn-error.log*
 /old
 
 TODO.md
-public/cartridges
 .netlify
 .vscode
 

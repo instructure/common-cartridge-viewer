@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<course identifier="i68bec7eed32a8a42c49839b324463c31" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <title>COURSE-for-modules-testing</title>
+  <course_code>COURSE-for-modules-testing</course_code>
+  <start_at/>
+  <conclude_at/>
+  <is_public>false</is_public>
+  <allow_student_wiki_edits>false</allow_student_wiki_edits>
+  <allow_student_forum_attachments>false</allow_student_forum_attachments>
+  <lock_all_announcements>false</lock_all_announcements>
+  <allow_student_organized_groups>true</allow_student_organized_groups>
+  <default_view>modules</default_view>
+  <license>private</license>
+  <restrict_student_future_view>true</restrict_student_future_view>
+  <restrict_student_past_view>true</restrict_student_past_view>
+  <grading_standard_enabled>false</grading_standard_enabled>
+  <storage_quota>524288000</storage_quota>
+  <root_account_uuid>000fS3K1lnNaA67He4xLWzT8sMgar918H9sC19dN</root_account_uuid>
+</course>
