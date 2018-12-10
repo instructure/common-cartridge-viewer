@@ -147,3 +147,28 @@ test("Associated-content assignment items can be clicked from assignment list vi
     .expect(Selector("div").withText("Points: 1").exists)
     .ok();
 });
+
+fixture`Associated-content external tools`
+  .page`http://localhost:5000/?src=https://s3-us-west-2.amazonaws.com/cartridges-for-commons-preview/course_with_lti_quiz_and_google_cloud_assignment.imscc#/`;
+
+test("Displays 'Preview not available' for external tool content", async t => {
+  const assignmentsNav = Selector("a").withText("Assignments (2)");
+  await t
+    .expect(Selector("header").exists)
+    .ok()
+    .click(assignmentsNav);
+
+  const externalGoogleDriveLTI = Selector("a").withText(
+    "Google Drive LTI Assignment"
+  );
+  await t
+    .expect(externalGoogleDriveLTI.exists)
+    .ok()
+    .click(externalGoogleDriveLTI);
+
+  await t
+    .expect(
+      Selector("span").withText("External Tool Content Can't be Previewed")
+    )
+    .ok();
+});
