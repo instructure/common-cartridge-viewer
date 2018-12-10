@@ -18,10 +18,8 @@ import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
 import { getExtension, getResourceHref } from "./utils";
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
-
-import notFoundImage from "./images/404-empty-planet.svg";
+import { Trans } from "@lingui/macro";
+import ResourceUnavailable from "./ResourceUnavailable";
 
 export default class Resource extends Component {
   static propTypes = {
@@ -173,6 +171,7 @@ export default class Resource extends Component {
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
             />
           )}
           src={this.props.src}
@@ -188,6 +187,7 @@ export default class Resource extends Component {
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
             />
           )}
           src={this.props.src}
@@ -204,6 +204,7 @@ export default class Resource extends Component {
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
               identifier={this.props.identifier}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
             />
           )}
           src={this.props.src}
@@ -279,23 +280,7 @@ export default class Resource extends Component {
     const { moduleItems } = this.props;
 
     if (resource == null) {
-      return (
-        <I18n>
-          {({ i18n }) => (
-            <Billboard
-              size="medium"
-              heading={i18n._(t`Not found`)}
-              hero={size => (
-                <img
-                  alt=""
-                  style={{ width: "260px", height: "200px" }}
-                  src={notFoundImage}
-                />
-              )}
-            />
-          )}
-        </I18n>
-      );
+      return <ResourceUnavailable />;
     }
 
     if (resource.getAttribute("identifierref") != null) {
