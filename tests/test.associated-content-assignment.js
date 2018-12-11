@@ -172,3 +172,28 @@ test("Displays 'Preview not available' for external tool content", async t => {
     )
     .ok();
 });
+
+fixture`Web content with a external tool`
+  .page`http://localhost:5000/?src=https://s3.amazonaws.com/public-imscc/COURSE+WITH+A+GOOGLE+DRIVE+LTI+CLOUD+ASSIGNMENT+AND+A+QUIZZES2+ASSIGNMENT.zip#/`;
+
+test("Displays 'Preview not available' when web content is an external tool", async t => {
+  const assignmentsNav = Selector("a").withText("Assignments (2)");
+  await t
+    .expect(Selector("header").exists)
+    .ok()
+    .click(assignmentsNav);
+
+  const externalGoogleDriveLTI = Selector("a").withText(
+    "Google Drive LTI Assignment"
+  );
+  await t
+    .expect(externalGoogleDriveLTI.exists)
+    .ok()
+    .click(externalGoogleDriveLTI);
+
+  await t
+    .expect(
+      Selector("span").withText("External Tool Content Can't be Previewed")
+    )
+    .ok();
+});
