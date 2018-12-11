@@ -49,11 +49,14 @@ body {
 
 /* temporary */
 ul.unstyled-list,
-ul.ExpandCollapseList,
-ul.assessment-questions {
+ul.ExpandCollapseList {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+ol.assessment-questions {
+  padding: 0 1rem;
 }
 
 .unstyled-list li {
@@ -128,6 +131,10 @@ h3 {
 
 .RichContent img {
   max-width: 100%;
+}
+
+.assessment-questions .RichContent p {
+  margin: 0 0 10px 0 !important;
 }
 
 .course-title {
