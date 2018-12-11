@@ -39,7 +39,7 @@ export default class App extends Component {
     event.preventDefault();
     const url = this.inputRef.value || "";
     const extension = getExtension(url);
-    const isCartridge = extension === "imscc";
+    const isCartridge = ["imscc", "zip"].includes(extension);
     const isManifest = url.includes("imsmanifest.xml") && extension === "xml";
     if (isManifest) {
       window.location.href = `/?manifest=${encodeURIComponent(url)}`;
@@ -92,7 +92,7 @@ export default class App extends Component {
               <React.Fragment>
                 <View as="div" margin="large">
                   <FileDrop
-                    accept=".imscc"
+                    accept={[".imscc", ".zip"]}
                     onDropAccepted={files => {
                       this.setState({ file: files[0] });
                     }}
