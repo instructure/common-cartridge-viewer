@@ -92,7 +92,7 @@ export default class App extends Component {
               <React.Fragment>
                 <View as="div" margin="large">
                   <FileDrop
-                    accept=".imscc"
+                    accept={[".imscc", ".zip"]}
                     onDropAccepted={files => {
                       this.setState({ file: files[0] });
                     }}
