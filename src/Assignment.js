@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
 import { generateFriendlyStringFromSubmissionFormats } from "./utils";
 import AssignmentBody from "./AssignmentBody";
+import PreviewUnavailable from "./PreviewUnavailable";
 
 export default class Assignment extends Component {
   render() {
@@ -24,7 +25,9 @@ export default class Assignment extends Component {
     );
     const submissionFormats = assignmentNode.querySelector("submission_types")
       .textContent;
-
+    const externalToolNode = doc.querySelector(
+      "external_tool_external_identifier"
+    );
     const gradableNode = assignmentNode.querySelector("gradable");
     const points =
       gradableNode &&
@@ -34,7 +37,9 @@ export default class Assignment extends Component {
         : 0;
     const labelColor = "#AD4AA0";
 
-    return (
+    return !!externalToolNode ? (
+      PreviewUnavailable()
+    ) : (
       <AssignmentBody
         title={title}
         descriptionHtml={descriptionHtml}
