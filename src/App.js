@@ -39,7 +39,7 @@ export default class App extends Component {
     event.preventDefault();
     const url = this.inputRef.value || "";
     const extension = getExtension(url);
-    const isCartridge = extension === "imscc";
+    const isCartridge = ["imscc", "zip"].includes(extension);
     const isManifest = url.includes("imsmanifest.xml") && extension === "xml";
     if (isManifest) {
       window.location.href = `/?manifest=${encodeURIComponent(url)}`;
