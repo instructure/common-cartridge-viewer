@@ -1,4 +1,8 @@
-import { resourceTypes, submissionTypes } from "./constants";
+import {
+  resourceTypes,
+  submissionTypes,
+  moduleMetaContentTypes
+} from "./constants";
 import { i18n } from "./index";
 import { t } from "@lingui/macro";
 
@@ -102,7 +106,7 @@ export function parseXml(xml) {
   return parser.parseFromString(xml, "text/xml");
 }
 
-export function parseManifestDocument(manifest) {
+export function parseManifestDocument(manifest, { moduleMeta }) {
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
   const schemaVersion = $text(manifest, "metadata > schemaversion");
@@ -197,7 +201,7 @@ export function parseManifestDocument(manifest) {
     .filter(item => item.querySelector("title"))
     .map(item => {
       const title = item.querySelector("title").textContent;
-      const identifier = item.getAttribute("identifier");
+      const moduleIdentifier = item.getAttribute("identifier");
       const itemNodes = Array.from(item.querySelectorAll("item"));
       const items = itemNodes.map(item => {
         const identifier = item.getAttribute("identifier");
@@ -212,7 +216,30 @@ export function parseManifestDocument(manifest) {
           `resource[identifier="${identifierref}"]`
         );
         if (resource == null) {
-          return { title };
+          if (moduleMeta) {
+            const moduleNode = moduleMeta.querySelector(
+              `modules > module[identifier="${moduleIdentifier}"]`
+            );
+            const moduleMetaItem = Array.from(
+              moduleNode.querySelectorAll("items > item")
+            ).find(item => item.getAttribute("identifier") === identifierref);
+            const moduleMetaItemContentType = moduleMetaItem
+              ? $text(moduleMetaItem, "content_type")
+              : "";
+            const isExternalTool =
+              moduleMetaItemContentType ===
+              moduleMetaContentTypes.CONTENT_EXTERNAL_TOOL;
+            if (isExternalTool) {
+              return {
+                title,
+                type: resourceTypes.EXTERNAL_TOOL,
+                href: "#/external/tool"
+              };
+            }
+          }
+          return {
+            title
+          };
         }
         const type = resource.getAttribute("type");
         const href = getResourceHref(resource);
@@ -234,9 +261,11 @@ export function parseManifestDocument(manifest) {
           type
         };
       });
-      return { title, identifier, items };
+
+      return { title, identifier: moduleIdentifier, items };
     })
     .filter(module => module != null);
+
   const moduleItems = modules.reduce((state, module) => {
     return state.concat(module.items.filter(item => item.href != null));
   }, []);

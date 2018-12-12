@@ -34,6 +34,7 @@ import waitingWristWatch from "./images/waiting-wrist-watch.svg";
 import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
+import PreviewUnavailable from "./PreviewUnavailable";
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
 
@@ -151,7 +152,9 @@ export default class CommonCartridge extends Component {
       ? fetch(`${this.state.basepath}/${path}`)
           .then(response => response.text())
           .catch(err => null)
-      : getTextFromEntry(this.state.entryMap.get(path));
+      : this.state.entryMap.has(path)
+      ? getTextFromEntry(this.state.entryMap.get(path))
+      : null;
 
   handleHistoryChange = history => {
     this.history = history;
@@ -183,9 +186,16 @@ export default class CommonCartridge extends Component {
     return externalViewers;
   };
 
+  getModuleMeta = async () => {
+    const xml = await this.getTextByPath("course_settings/module_meta.xml");
+    if (xml == null) return;
+    return parseXml(xml);
+  };
+
   async loadResources(xml) {
     const manifest = parseXml(xml);
-    const result = parseManifestDocument(manifest);
+    const moduleMeta = await this.getModuleMeta();
+    const result = await parseManifestDocument(manifest, { moduleMeta });
     let externalViewers = new Map();
     if (result.hasExternalViewers) {
       externalViewers = await this.getExternalViewers();
@@ -554,6 +564,12 @@ export default class CommonCartridge extends Component {
                           render={({ match }) => (
                             <CourseNavigationUnavailable />
                           )}
+                        />
+
+                        <Route
+                          exact
+                          path="/external/tool"
+                          render={({ match }) => <PreviewUnavailable />}
                         />
                       </Switch>
 

@@ -15,6 +15,7 @@ import { Trans } from "@lingui/macro";
 
 import { getAssignmentSettingsHref } from "./utils.js";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
+import ExternalToolListItem from "./ExternalToolListItem";
 
 export default class ModulesList extends Component {
   render() {
@@ -135,6 +136,10 @@ export default class ModulesList extends Component {
                 item={item}
               />
             );
+          }
+
+          if (item.type === resourceTypes.EXTERNAL_TOOL) {
+            return <ExternalToolListItem key={index} item={item} />;
           }
 
           return (

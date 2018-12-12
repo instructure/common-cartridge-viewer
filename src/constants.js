@@ -13,6 +13,7 @@ export const resourceTypes = {
     "associatedcontent/imscc_xmlv1p1/learning-application-resource",
   BLTI: "imsbasiclti_xmlv1p0",
   DISCUSSION_TOPIC: "imsdt_xmlv1p1",
+  EXTERNAL_TOOL: "external_tool",
   QUESTION_BANK: "imsqti_xmlv1p2/imscc_xmlv1p1/question-bank",
   WEB_CONTENT: "webcontent",
   WEB_LINK: "imswl_xmlv1p1"
@@ -55,3 +56,14 @@ export const DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED = [
   "xls",
   "txt"
 ];
+
+export const moduleMetaContentTypes = {
+  ASSIGNMENT: "Assignment",
+  QUIZ: "Quizzes::Quiz",
+  ATTACHMENT: "Attachment",
+  WIKI_PAGE: "WikiPage",
+  DISCUSSION_TOPIC: "DiscussionTopic",
+  CONTEXT_MODULE_SUBHEADER: "ContextModuleSubHeade",
+  EXTERNAL_URL: "ExternalUrl",
+  CONTENT_EXTERNAL_TOOL: "ContextExternalTool"
+};
