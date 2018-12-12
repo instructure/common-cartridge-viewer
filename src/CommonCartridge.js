@@ -391,48 +391,55 @@ export default class CommonCartridge extends Component {
                           path="/"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/")}
                               {showcaseSingleResource !== null ? (
-                                <Resource
-                                  getTextByPath={this.getTextByPath}
-                                  identifier={this.state.showcaseResources[0].getAttribute(
-                                    "identifier"
-                                  )}
-                                  moduleItems={this.state.moduleItems}
-                                  modules={this.state.modules}
-                                  resourceMap={this.state.resourceMap}
-                                  resourceIdsByHrefMap={
-                                    this.state.resourceIdsByHrefMap
-                                  }
-                                  src={this.props.src}
-                                  allItemsPath={this.activeNavLink}
-                                />
+                                <React.Fragment>
+                                  {this.setActiveNavLink(null)}
+                                  <Resource
+                                    getTextByPath={this.getTextByPath}
+                                    identifier={this.state.showcaseResources[0].getAttribute(
+                                      "identifier"
+                                    )}
+                                    moduleItems={this.state.moduleItems}
+                                    modules={this.state.modules}
+                                    resourceMap={this.state.resourceMap}
+                                    resourceIdsByHrefMap={
+                                      this.state.resourceIdsByHrefMap
+                                    }
+                                    src={this.props.src}
+                                  />
+                                </React.Fragment>
                               ) : this.state.showcaseResources.length === 1 ? (
-                                <Resource
-                                  getTextByPath={this.getTextByPath}
-                                  identifier={this.state.showcaseResources[0].getAttribute(
-                                    "identifier"
-                                  )}
-                                  moduleItems={this.state.moduleItems}
-                                  modules={this.state.modules}
-                                  resourceMap={this.state.resourceMap}
-                                  resourceIdsByHrefMap={
-                                    this.state.resourceIdsByHrefMap
-                                  }
-                                  src={this.props.src}
-                                  allItemsPath={this.activeNavLink}
-                                />
+                                <React.Fragment>
+                                  {this.setActiveNavLink("/")}
+                                  <Resource
+                                    getTextByPath={this.getTextByPath}
+                                    identifier={this.state.showcaseResources[0].getAttribute(
+                                      "identifier"
+                                    )}
+                                    moduleItems={this.state.moduleItems}
+                                    modules={this.state.modules}
+                                    resourceMap={this.state.resourceMap}
+                                    resourceIdsByHrefMap={
+                                      this.state.resourceIdsByHrefMap
+                                    }
+                                    allItemsPath={this.activeNavLink}
+                                    src={this.props.src}
+                                  />
+                                </React.Fragment>
                               ) : (
-                                <ModulesList
-                                  getTextByPath={this.getTextByPath}
-                                  associatedContentAssignmentHrefsSet={
-                                    this.state
-                                      .associatedContentAssignmentHrefsSet
-                                  }
-                                  moduleItems={this.state.moduleItems}
-                                  modules={this.state.modules}
-                                  match={match}
-                                />
+                                <React.Fragment>
+                                  {this.setActiveNavLink("/")}
+                                  <ModulesList
+                                    getTextByPath={this.getTextByPath}
+                                    associatedContentAssignmentHrefsSet={
+                                      this.state
+                                        .associatedContentAssignmentHrefsSet
+                                    }
+                                    moduleItems={this.state.moduleItems}
+                                    modules={this.state.modules}
+                                    match={match}
+                                  />
+                                </React.Fragment>
                               )}
                             </React.Fragment>
                           )}
@@ -442,24 +449,29 @@ export default class CommonCartridge extends Component {
                           exact
                           path="/resources/:identifier"
                           render={({ match }) => (
-                            <Resource
-                              allItemsPath={this.activeNavLink}
-                              basepath={this.state.basepath}
-                              getBlobByPath={this.getBlobByPath}
-                              getTextByPath={this.getTextByPath}
-                              getUrlForPath={this.getUrlForPath}
-                              identifier={match.params.identifier}
-                              isCartridgeRemotelyExpanded={
-                                this.state.isCartridgeRemotelyExpanded
-                              }
-                              moduleItems={this.state.moduleItems}
-                              modules={this.state.modules}
-                              resourceIdsByHrefMap={
-                                this.state.resourceIdsByHrefMap
-                              }
-                              resourceMap={this.state.resourceMap}
-                              src={this.props.src}
-                            />
+                            <React.Fragment>
+                              {this.activeNavLink === undefined &&
+                                !showcaseSingleResource &&
+                                this.setActiveNavLink("/")}
+                              <Resource
+                                allItemsPath={this.activeNavLink}
+                                basepath={this.state.basepath}
+                                getBlobByPath={this.getBlobByPath}
+                                getTextByPath={this.getTextByPath}
+                                getUrlForPath={this.getUrlForPath}
+                                identifier={match.params.identifier}
+                                isCartridgeRemotelyExpanded={
+                                  this.state.isCartridgeRemotelyExpanded
+                                }
+                                moduleItems={this.state.moduleItems}
+                                modules={this.state.modules}
+                                resourceIdsByHrefMap={
+                                  this.state.resourceIdsByHrefMap
+                                }
+                                resourceMap={this.state.resourceMap}
+                                src={this.props.src}
+                              />
+                            </React.Fragment>
                           )}
                         />
 
@@ -467,15 +479,18 @@ export default class CommonCartridge extends Component {
                           exact
                           path="/modules/:module"
                           render={({ match }) => (
-                            <ModulesList
-                              getTextByPath={this.getTextByPath}
-                              associatedContentAssignmentHrefsSet={
-                                this.state.associatedContentAssignmentHrefsSet
-                              }
-                              moduleItems={this.state.moduleItems}
-                              modules={this.state.modules}
-                              match={match}
-                            />
+                            <React.Fragment>
+                              {this.setActiveNavLink("/")}
+                              <ModulesList
+                                getTextByPath={this.getTextByPath}
+                                associatedContentAssignmentHrefsSet={
+                                  this.state.associatedContentAssignmentHrefsSet
+                                }
+                                moduleItems={this.state.moduleItems}
+                                modules={this.state.modules}
+                                match={match}
+                              />
+                            </React.Fragment>
                           )}
                         />
 

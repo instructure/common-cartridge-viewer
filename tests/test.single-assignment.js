@@ -24,4 +24,10 @@ test("Only the assignment shows", async t => {
     .notOk()
     .expect(Selector("header").exists)
     .notOk();
+
+  const allItemsButonsButton = Selector("span")
+    .withText("All Items")
+    .parent("a");
+
+  await t.expect(allItemsButonsButton.exists).notOk();
 });
