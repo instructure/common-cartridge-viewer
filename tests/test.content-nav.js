@@ -41,8 +41,6 @@ test("Previous link on last page works", async t => {
 });
 
 test("All Items link works", async t => {
-  // because of CM-606 we have to start from the imscc index page
-  // please update this test when CM-606 is fixed
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
       "http://localhost:5000/test-cartridges/cartridge-1/imsmanifest.xml"
