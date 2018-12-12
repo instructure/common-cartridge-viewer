@@ -46,9 +46,9 @@ test("All Items link works", async t => {
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
       "http://localhost:5000/test-cartridges/cartridge-1/imsmanifest.xml"
-    )}`
+    )}#/resources/i694d024f7e7bb0de4335817c9d4649f1`
   );
-  await t.click(Selector("a").withText("First Module Quiz 1"));
+
   await t.click(Selector("a").withText("All Items"));
   await t.expect(Selector("div").withText("First Module").exists).ok();
 });
