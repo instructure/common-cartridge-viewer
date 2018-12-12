@@ -28,7 +28,9 @@ test("Previous link on last page works", async t => {
   const previousButton = Selector("span")
     .withText("Previous")
     .parent("a");
-  const spinner = Selector(".DocumentPreview--loading");
+  const externalToolMessage = Selector("span").withText(
+    "External Tool Content Can't be Previewed"
+  );
 
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
@@ -37,7 +39,7 @@ test("Previous link on last page works", async t => {
   );
   await t.expect(nextButton.exists).notOk();
   await t.click(previousButton);
-  await t.expect(spinner.exists).ok();
+  await t.expect(externalToolMessage.exists).ok();
 });
 
 test("All Items link works", async t => {

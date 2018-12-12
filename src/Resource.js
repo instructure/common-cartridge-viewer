@@ -96,13 +96,17 @@ export default class Resource extends Component {
     this.allItemsButton.click();
   };
 
+  makeNavigationButtonHrefFromModule = module =>
+    module.type === resourceTypes.EXTERNAL_TOOL
+      ? "/external/tool"
+      : `/resources/${module.identifierref || module.identifier}`;
+
   renderPreviousButton = previousItem => {
     return (
       <div className="previous-link">
         <Tooltip variant="inverse" tip={previousItem.title} placement="end">
           <Button
-            to={`/resources/${previousItem.identifierref ||
-              previousItem.identifier}`}
+            to={this.makeNavigationButtonHrefFromModule(previousItem)}
             variant="ghost"
             as={RouterLink}
             innerRef={this.setPreviousButton}
@@ -120,7 +124,7 @@ export default class Resource extends Component {
       <div className="next-link">
         <Tooltip variant="inverse" tip={nextItem.title} placement="start">
           <Button
-            to={`/resources/${nextItem.identifierref || nextItem.identifier}`}
+            to={this.makeNavigationButtonHrefFromModule(nextItem)}
             variant="ghost"
             as={RouterLink}
             innerRef={this.setNextButton}
