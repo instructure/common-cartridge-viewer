@@ -306,23 +306,25 @@ export default class Resource extends Component {
 
     const href = getResourceHref(resource);
     const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
-
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
-
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
 
     return (
       <React.Fragment>
         <div>
-          <Flex wrapItems justifyItems="space-between" margin="0 0 medium">
-            <FlexItem padding="small">
+          <Flex margin="0 0 medium">
+            <FlexItem padding="small" width="14rem">
               {previousItem && this.renderPreviousButton(previousItem)}
             </FlexItem>
-            <FlexItem padding="small">
-              {this.props.allItemsPath && this.renderAllItemsButton()}
+            <FlexItem padding="small" grow={true} align="center">
+              <Flex justifyItems="center">
+                {this.props.allItemsPath && this.renderAllItemsButton()}
+              </Flex>
             </FlexItem>
-            <FlexItem padding="small">
-              {nextItem && this.renderNextButton(nextItem)}
+            <FlexItem padding="small" width="14rem">
+              <Flex justifyItems="end">
+                {nextItem && this.renderNextButton(nextItem)}
+              </Flex>
             </FlexItem>
           </Flex>
         </div>
