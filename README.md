@@ -4,8 +4,9 @@ View Common Cartridges in the browser.
 
 ## Development
 
-```
+```bash
 yarn
+yarn run build # populates locale data
 yarn start
 ```
 
@@ -15,7 +16,7 @@ The tests try to visit the app in localhost:5000.
 Before running the tests, set `PORT=5000` as an
 environment variable to make them pass
 
-```
+```bash
 yarn run build
 yarn test
 ```
