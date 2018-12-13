@@ -28,10 +28,13 @@ export default class RichContent extends Component {
       RETURN_DOM_IMPORT: true
     });
 
+    const pagesCourseNavigation = RegExp(`${WIKI_REFERENCE}/pages/$`);
     {
       const wikiExp = RegExp(`${WIKI_REFERENCE}/(pages)/(.*)`);
       const links = Array.from(fragment.querySelectorAll("a[href]")).filter(
-        link => wikiExp.test(link.getAttribute("href"))
+        link =>
+          wikiExp.test(link.getAttribute("href")) &&
+          pagesCourseNavigation.test(link.getAttribute("href")) === false
       );
       await Promise.all(
         links.map(async link => {
@@ -45,6 +48,8 @@ export default class RichContent extends Component {
           ) {
             const resourceId = this.props.resourceIdsByHrefMap.get(href);
             link.setAttribute("href", `#/resources/${resourceId}`);
+          } else {
+            link.setAttribute("href", `#/resources/unavailable`);
           }
         })
       );
@@ -57,24 +62,55 @@ export default class RichContent extends Component {
         links
           .filter(link => moduleExp.test(link.getAttribute("href")))
           .map(async link => {
-            const resourceId = (link.getAttribute("href") || "")
-              .split("?")[0]
-              .match(moduleExp)[2];
-            link.setAttribute("href", `#/resources/${resourceId}`);
+            const href = link.getAttribute("href") || "";
+            const isModuleLink = href.includes("/modules/");
+            if (isModuleLink) {
+              link.setAttribute("href", "#/");
+            } else {
+              const resourceId = href.split("?")[0].match(moduleExp)[2];
+              link.setAttribute("href", `#/resources/${resourceId}`);
+            }
           })
       );
     }
 
     {
       const links = Array.from(fragment.querySelectorAll("a[href]"));
-      const moduleExp = RegExp(`${CANVAS_COURSE_REFERENCE}/(.*)/(.*)`);
+      const moduleExp = RegExp(`${CANVAS_COURSE_REFERENCE}/(.*)`);
       await Promise.all(
         links
-          .filter(link => moduleExp.test(link.getAttribute("href")))
+          .filter(
+            link =>
+              moduleExp.test(link.getAttribute("href")) ||
+              pagesCourseNavigation.test(link.getAttribute("href"))
+          )
           .map(async link => {
-            const resourceId = (link.getAttribute("href") || "")
-              .split("?")[0]
-              .match(moduleExp)[2];
+            link.setAttribute("href", `#/course/navigation`);
+          })
+      );
+    }
+
+    {
+      const links = Array.from(fragment.querySelectorAll("a[href]"));
+      const fileExpOld = RegExp(`${CC_FILE_PREFIX_OLD}/(.*)`);
+      const fileExp = RegExp(`${CC_FILE_PREFIX}/(.*)`);
+      const queryStringExp = /\?(.*)/;
+      await Promise.all(
+        links
+          .filter(
+            link =>
+              fileExpOld.test(link.getAttribute("href")) ||
+              fileExp.test(link.getAttribute("href"))
+          )
+          .map(async link => {
+            const resourceHref = link
+              .getAttribute("href")
+              .replace(CC_FILE_PREFIX_OLD, "web_resources")
+              .replace(CC_FILE_PREFIX, "web_resources")
+              .replace(queryStringExp, "");
+            const resourceId = this.props.resourceIdsByHrefMap.get(
+              decodeURIComponent(resourceHref)
+            );
             link.setAttribute("href", `#/resources/${resourceId}`);
           })
       );

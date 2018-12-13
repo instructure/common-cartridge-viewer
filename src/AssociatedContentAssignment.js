@@ -62,6 +62,7 @@ export default class AssociatedContentAssignment extends Component {
         submissionFormats={this.state.submissionFormats}
         getTextByPath={this.props.getTextByPath}
         getUrlForPath={this.props.getUrlForPath}
+        resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
       />
     );
   }

@@ -32,6 +32,7 @@ import WikiContentList from "./WikiContentList";
 import waitingWristWatch from "./images/waiting-wrist-watch.svg";
 import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
+import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
 
@@ -568,6 +569,14 @@ export default class CommonCartridge extends Component {
                                 src={this.props.src}
                               />
                             </React.Fragment>
+                          )}
+                        />
+
+                        <Route
+                          exact
+                          path="/course/navigation"
+                          render={({ match }) => (
+                            <CourseNavigationUnavailable />
                           )}
                         />
                       </Switch>
