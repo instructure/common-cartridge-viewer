@@ -17,8 +17,9 @@ import {
   getBlobFromEntry,
   getEntriesFromBlob,
   getEntriesFromXHR,
-  getResourcesFromXml,
-  getTextFromEntry
+  getTextFromEntry,
+  parseManifestDocument,
+  parseXml
 } from "./utils.js";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
@@ -49,6 +50,7 @@ export default class CommonCartridge extends Component {
       discussions: [],
       entries: [],
       entryMap: new Map(),
+      externalViewers: new Map(),
       files: [],
       isCartridgeRemotelyExpanded: this.props.manifest != null,
       isLoaded: false,
@@ -62,9 +64,9 @@ export default class CommonCartridge extends Component {
 
   componentDidMount() {
     if (this.props.file != null) {
-      this.getEntriesFromFile();
-    } else if (this.props.src != null) {
-      this.getEntriesFromSrc();
+      this.getEntriesFromDroppedFile();
+    } else if (this.props.cartridge != null) {
+      this.getEntriesFromExternalImscc();
     } else if (this.props.manifest != null) {
       this.getEntriesFromManifest();
     }
@@ -74,72 +76,37 @@ export default class CommonCartridge extends Component {
     fetch(this.props.manifest)
       .then(response => response.text())
       .then(xml => {
-        const {
-          assessmentResources,
-          assignmentResources,
-          associatedContentAssignmentResources,
-          associatedContentAssignmentHrefsSet,
-          discussionResources,
-          resourceMap,
-          fileResources,
-          moduleItems,
-          modules,
-          otherResources,
-          pageResources,
-          resources,
-          resourceIdsByHrefMap,
-          rightsDescription,
-          showcaseResources,
-          title,
-          schema,
-          schemaVersion
-        } = getResourcesFromXml(xml);
-        this.setState({
-          assessmentResources,
-          assignmentResources,
-          associatedContentAssignmentResources,
-          associatedContentAssignmentHrefsSet,
-          discussionResources,
-          resourceMap,
-          fileResources,
-          isLoaded: true,
-          moduleItems,
-          modules,
-          otherResources,
-          pageResources,
-          resources,
-          resourceIdsByHrefMap,
-          rightsDescription,
-          showcaseResources,
-          title,
-          schema,
-          schemaVersion
-        });
+        this.loadResources(xml);
       });
   };
 
   componentDidUpdate(prevProps) {
-    if (this.props.src !== prevProps.src && this.props.file == null) {
+    if (
+      this.props.cartridge !== prevProps.cartridge &&
+      this.props.file == null
+    ) {
       this.setState(
         {
           isLoaded: false,
           filter: "organizations"
         },
-        () => this.getEntriesFromSrc()
+        () => this.getEntriesFromExternalImscc()
       );
     } else if (this.props.file != null && this.props.file !== prevProps.file) {
-      this.getEntriesFromFile();
+      this.getEntriesFromDroppedFile();
     }
   }
 
-  async getEntriesFromSrc() {
-    const [request, getEntriesPromise] = getEntriesFromXHR(this.props.src);
+  async getEntriesFromExternalImscc() {
+    const [request, getEntriesPromise] = getEntriesFromXHR(
+      this.props.cartridge
+    );
     request.addEventListener("progress", this.handleLoadProgress);
     const entries = await getEntriesPromise;
     this.setState({ entries }, () => this.loadEntries());
   }
 
-  async getEntriesFromFile() {
+  async getEntriesFromDroppedFile() {
     const entries = await getEntriesFromBlob(this.props.file);
     this.setState({ entries }, () => this.loadEntries());
   }
@@ -199,47 +166,34 @@ export default class CommonCartridge extends Component {
     this.activeNavLink = link;
   };
 
-  loadResources(xml) {
-    const {
-      assessmentResources,
-      assignmentResources,
-      associatedContentAssignmentResources,
-      associatedContentAssignmentHrefsSet,
-      discussionResources,
-      resourceMap,
-      fileResources,
-      moduleItems,
-      modules,
-      otherResources,
-      pageResources,
-      resources,
-      resourceIdsByHrefMap,
-      rightsDescription,
-      showcaseResources,
-      title,
-      schema,
-      schemaVersion
-    } = getResourcesFromXml(xml);
+  getExternalViewers = async () => {
+    const xml = await this.getTextByPath(
+      "course_settings/external_viewers.xml"
+    );
+    if (xml == null) return;
+    const document = parseXml(xml);
+    if (document == null) return;
+    const externalViewers = new Map();
+    Array.from(document.querySelectorAll("externalViewer")).forEach(node => {
+      externalViewers.set(node.getAttribute("identifier"), {
+        service: node.getAttribute("service"),
+        service_id: node.getAttribute("service-id")
+      });
+    });
+    return externalViewers;
+  };
+
+  async loadResources(xml) {
+    const manifest = parseXml(xml);
+    const result = parseManifestDocument(manifest);
+    let externalViewers = new Map();
+    if (result.hasExternalViewers) {
+      externalViewers = await this.getExternalViewers();
+    }
     this.setState({
-      assessmentResources,
-      assignmentResources,
-      associatedContentAssignmentResources,
-      associatedContentAssignmentHrefsSet,
-      discussionResources,
-      resourceMap,
-      fileResources,
-      isLoaded: true,
-      moduleItems,
-      modules,
-      otherResources,
-      pageResources,
-      resources,
-      resourceIdsByHrefMap,
-      rightsDescription,
-      showcaseResources,
-      title,
-      schema,
-      schemaVersion
+      ...result,
+      externalViewers,
+      isLoaded: true
     });
   }
 
@@ -355,16 +309,18 @@ export default class CommonCartridge extends Component {
                         {this.state.discussionResources.length > 0 && (
                           <NavLink className="MenuItem" to="/discussions">
                             <Trans>
-                              Discussions (
-                              {this.state.discussionResources.length})
+                              {`Discussions (${
+                                this.state.discussionResources.length
+                              })`}
                             </Trans>
                           </NavLink>
                         )}
                         {this.state.assessmentResources.length > 0 && (
                           <NavLink className="MenuItem" to="/assessments">
                             <Trans>
-                              Assessments (
-                              {this.state.assessmentResources.length})
+                              {`Assessments (${
+                                this.state.assessmentResources.length
+                              })`}
                             </Trans>
                           </NavLink>
                         )}
@@ -396,6 +352,11 @@ export default class CommonCartridge extends Component {
                                   {this.setActiveNavLink(null)}
                                   <Resource
                                     getTextByPath={this.getTextByPath}
+                                    externalViewer={this.state.externalViewers.get(
+                                      this.state.showcaseResources[0].getAttribute(
+                                        "identifier"
+                                      )
+                                    )}
                                     identifier={this.state.showcaseResources[0].getAttribute(
                                       "identifier"
                                     )}
@@ -405,13 +366,17 @@ export default class CommonCartridge extends Component {
                                     resourceIdsByHrefMap={
                                       this.state.resourceIdsByHrefMap
                                     }
-                                    src={this.props.src}
                                   />
                                 </React.Fragment>
                               ) : this.state.showcaseResources.length === 1 ? (
                                 <React.Fragment>
                                   {this.setActiveNavLink("/")}
                                   <Resource
+                                    externalViewer={this.state.externalViewers.get(
+                                      this.state.showcaseResources[0].getAttribute(
+                                        "identifier"
+                                      )
+                                    )}
                                     getTextByPath={this.getTextByPath}
                                     identifier={this.state.showcaseResources[0].getAttribute(
                                       "identifier"
@@ -423,7 +388,6 @@ export default class CommonCartridge extends Component {
                                       this.state.resourceIdsByHrefMap
                                     }
                                     allItemsPath={this.activeNavLink}
-                                    src={this.props.src}
                                   />
                                 </React.Fragment>
                               ) : (
@@ -456,6 +420,9 @@ export default class CommonCartridge extends Component {
                               <Resource
                                 allItemsPath={this.activeNavLink}
                                 basepath={this.state.basepath}
+                                externalViewer={this.state.externalViewers.get(
+                                  match.params.identifier
+                                )}
                                 getBlobByPath={this.getBlobByPath}
                                 getTextByPath={this.getTextByPath}
                                 getUrlForPath={this.getUrlForPath}
@@ -469,7 +436,6 @@ export default class CommonCartridge extends Component {
                                   this.state.resourceIdsByHrefMap
                                 }
                                 resourceMap={this.state.resourceMap}
-                                src={this.props.src}
                               />
                             </React.Fragment>
                           )}
@@ -505,7 +471,6 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.assessmentResources}
-                                src={this.props.src}
                               />
                             </React.Fragment>
                           )}
@@ -522,7 +487,6 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.pageResources}
-                                src={this.props.src}
                               />
                             </React.Fragment>
                           )}
@@ -539,7 +503,6 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.discussionResources}
-                                src={this.props.src}
                               />
                             </React.Fragment>
                           )}
@@ -555,7 +518,6 @@ export default class CommonCartridge extends Component {
                                 resources={this.state.fileResources}
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
-                                src={this.props.src}
                               />
                             </React.Fragment>
                           )}
@@ -581,7 +543,6 @@ export default class CommonCartridge extends Component {
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
-                                src={this.props.src}
                               />
                             </React.Fragment>
                           )}

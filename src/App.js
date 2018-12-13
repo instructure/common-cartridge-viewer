@@ -163,9 +163,9 @@ export default class App extends Component {
             {this.props.cartridge != null && (
               <Router>
                 <CommonCartridge
+                  cartridge={this.state.cartridge || this.state.file}
                   compact={this.props.compact}
                   onHistoryChange={this.handleHistoryChange}
-                  src={this.state.cartridge || this.state.file}
                 />
               </Router>
             )}
@@ -174,9 +174,8 @@ export default class App extends Component {
               <Router>
                 <CommonCartridge
                   compact={this.props.compact}
-                  onHistoryChange={this.handleHistoryChange}
-                  src="droppedFile"
                   file={this.state.file}
+                  onHistoryChange={this.handleHistoryChange}
                 />
               </Router>
             )}

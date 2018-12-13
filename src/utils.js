@@ -4,6 +4,8 @@ import { t } from "@lingui/macro";
 
 const zip = window.zip;
 
+export const pipe = (g, f) => x => f(g(x));
+
 export function getReaderFromXHR(url) {
   const request = new XMLHttpRequest();
   const promise = new Promise((resolve, reject) => {
@@ -91,15 +93,16 @@ export function getExtension(uri) {
 }
 
 function $text(document, selector) {
-  const node = document.querySelector(
-    "metadata > lom > general > title > string"
-  );
+  const node = document.querySelector(selector);
   return node && node.textContent;
 }
 
-export function getResourcesFromXml(xml) {
+export function parseXml(xml) {
   const parser = new DOMParser();
-  const manifest = parser.parseFromString(xml, "text/xml");
+  return parser.parseFromString(xml, "text/xml");
+}
+
+export function parseManifestDocument(manifest) {
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
   const schemaVersion = $text(manifest, "metadata > schemaversion");
@@ -237,25 +240,32 @@ export function getResourcesFromXml(xml) {
   const moduleItems = modules.reduce((state, module) => {
     return state.concat(module.items.filter(item => item.href != null));
   }, []);
+  const externalViewersFileNode = manifest.querySelector(
+    `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
+  );
+  const hasExternalViewers =
+    externalViewersFileNode && externalViewersFileNode.getAttribute("href");
+
   return {
     assessmentResources,
     assignmentResources,
-    associatedContentAssignmentResources,
     associatedContentAssignmentHrefsSet,
+    associatedContentAssignmentResources,
     discussionResources,
-    resourceMap,
     fileResources,
+    hasExternalViewers,
     moduleItems,
     modules,
     otherResources,
     pageResources,
-    resources,
     resourceIdsByHrefMap,
+    resourceMap,
+    resources,
     rightsDescription,
-    showcaseResources,
-    title,
     schema,
-    schemaVersion
+    schemaVersion,
+    showcaseResources,
+    title
   };
 }
 

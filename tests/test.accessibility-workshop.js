@@ -5,6 +5,8 @@ fixture`Accessibility Workshop cartridge`.page`http://localhost:5000/`;
 test("Pages", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .expect(Selector("a").withText("Pages").exists)
+    .ok()
     .click(Selector("a").withText("Pages"))
     .expect(Selector("a").withText("The Time is Now").exists)
     .ok()
@@ -19,7 +21,11 @@ test("Pages", async t => {
 test("Substition token (IMS-CC-FILEBASE)", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .expect(Selector("a").withText("Pages").exists)
+    .ok()
     .click(Selector("a").withText("Pages"))
+    .expect(Selector("a").withText("The Time is Now").exists)
+    .ok()
     .click(Selector("a").withText("The Time is Now"))
     .expect(Selector("h2").withText("Accessibility is the Law"))
     .ok()
@@ -36,8 +42,14 @@ test("Substition token (IMS-CC-FILEBASE)", async t => {
 test("Substition token (WIKI_REFERENCE)", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .expect(Selector("a").withText("Pages"))
+    .ok()
     .click(Selector("a").withText("Pages"))
+    .expect(Selector("a").withText("The Time is Now"))
+    .ok()
     .click(Selector("a").withText("The Time is Now"))
+    .expect(Selector("a").withText("on this page"))
+    .ok()
     .click(Selector("a").withText("on this page"))
     .expect(
       Selector("h1").withText(`RTC Accessibilty Advisory Committee`).exists
@@ -62,6 +74,8 @@ test("Discussions", async t => {
 test("Files", async t => {
   await t
     .click(Selector("a").withText("Ally: Accessibility Workshop"))
+    .expect(Selector("a").withText("Files").exists)
+    .ok()
     .click(Selector("a").withText("Files"))
     .expect(
       Selector("div").withText("web_resources/Ally Accessibility Checklist.pdf")
