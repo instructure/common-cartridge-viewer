@@ -28,16 +28,16 @@ test("Previous link on last page works", async t => {
   const previousButton = Selector("span")
     .withText("Previous")
     .parent("a");
-  const titleH1 = Selector("h1");
+  const button = Selector("button");
 
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
       "http://localhost:5000/test-cartridges/cartridge-1/imsmanifest.xml"
-    )}#/resources/i694d024f7e7bb0de4335817c9d4649f1`
+    )}#/resources/i20d994c705d4f2bf05a753e922547b06`
   );
   await t.expect(nextButton.exists).notOk();
   await t.click(previousButton);
-  await t.expect(titleH1.textContent).contains("First Module Discussion 1");
+  await t.expect(button.textContent).contains("Download sample-document.pdf");
 });
 
 test("All Items link works", async t => {

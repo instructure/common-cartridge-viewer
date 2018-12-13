@@ -44,7 +44,7 @@ test("Quiz Items work", async t => {
 });
 
 test("File Items work", async t => {
-  const itemCss = ".ExpandCollapseList-item:nth-of-type(3)";
+  const itemCss = ".ExpandCollapseList-item:nth-of-type(9)";
   const title = `photo.jpg`;
   await t
     .expect(Selector(`${itemCss} svg[name='IconPaperclip']`).exists)
@@ -55,7 +55,7 @@ test("File Items work", async t => {
 });
 
 test("Wiki Page Items work", async t => {
-  const itemCss = ".ExpandCollapseList-item:nth-of-type(4)";
+  const itemCss = ".ExpandCollapseList-item:nth-of-type(3)";
   const title = "First Module Wiki Page 1";
   await t
     .expect(Selector(`${itemCss} svg[name='IconDocument']`).exists)
@@ -66,7 +66,7 @@ test("Wiki Page Items work", async t => {
 });
 
 test("Discussion Items work", async t => {
-  const itemCss = ".ExpandCollapseList-item:nth-of-type(5)";
+  const itemCss = ".ExpandCollapseList-item:nth-of-type(4)";
   const title = "First Module Discussion 1";
   await t
     .expect(Selector(`${itemCss} svg[name='IconDiscussion']`).exists)
@@ -77,13 +77,13 @@ test("Discussion Items work", async t => {
 });
 
 test("Text Headers work", async t => {
-  const itemCss = ".ExpandCollapseList-item:nth-of-type(6)";
+  const itemCss = ".ExpandCollapseList-item:nth-of-type(5)";
   const title = "First Module Text Header 1";
   await t.expect(Selector(`${itemCss} h3`).withText(title).exists).ok();
 });
 
 test("External URL's work", async t => {
-  const itemCss = ".ExpandCollapseList-item:nth-of-type(7)";
+  const itemCss = ".ExpandCollapseList-item:nth-of-type(6)";
   const title = "First Module External URL 1";
   await t
     .expect(Selector(`${itemCss} svg[name='IconExternalLink']`).exists)

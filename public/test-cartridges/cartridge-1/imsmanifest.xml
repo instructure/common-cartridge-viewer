@@ -37,9 +37,6 @@
           <item identifier="i115b5cd9f1266b1f2919150dd0638e2c" identifierref="i4f68489bc67fcd24fdda99053591adb1">
             <title>First Module Quiz 1</title>
           </item>
-          <item identifier="ib9e9d751c5934866aeee701374169741" identifierref="i20d994c705d4f2bf05a753e922547b06">
-            <title>photo.jpg</title>
-          </item>
           <item identifier="ic3d0c9660163ce6258425cf0a961b7ca" identifierref="i0c940bd995254e5f0bf694dc5aaea005">
             <title>First Module Wiki Page 1</title>
           </item>
@@ -52,8 +49,14 @@
           <item identifier="id5b96ad031a656e6ee45724fb718ebb5" identifierref="i694d024f7e7bb0de4335817c9d4649f1">
             <title>First Module External URL 1</title>
           </item>
+          <item identifier="fbac4bef75744d02b353abc6451e2b16" identifierref="fbac4bef75744d02b353abc6451e2b16">
+            <title>Sample Document</title>
+          </item>
           <item identifier="idc1d64e13995c74b24959e8e309d0cba" identifierref="i2a43afb3f81390abba3db9c894444d1d">
             <title>First Module AnalyTics Beta External Tool</title>
+          </item>
+          <item identifier="ib9e9d751c5934866aeee701374169741" identifierref="i20d994c705d4f2bf05a753e922547b06">
+            <title>photo.jpg</title>
           </item>
         </item>
       </item>
@@ -66,6 +69,7 @@
       <file href="course_settings/assignment_groups.xml"/>
       <file href="course_settings/files_meta.xml"/>
       <file href="course_settings/media_tracks.xml"/>
+      <file href="course_settings/external_viewers.xml" />
       <file href="course_settings/canvas_export.txt"/>
     </resource>
     <resource identifier="i0c940bd995254e5f0bf694dc5aaea005" type="webcontent" href="wiki_content/first-module-wiki-page-1.html">
@@ -103,6 +107,9 @@
     </resource>
     <resource type="webcontent" identifier="i20d994c705d4f2bf05a753e922547b06" href="web_resources/photo.jpg">
       <file href="web_resources/photo.jpg"/>
+    </resource>
+    <resource type="webcontent" identifier="fbac4bef75744d02b353abc6451e2b16" href="web_resources/sample-document.pdf">
+      <file href="web_resources/sample-document.pdf"/>
     </resource>
   </resources>
 </manifest>

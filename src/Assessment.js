@@ -46,11 +46,10 @@ export default class Assessment extends Component {
 
     const questionComponents = items.map((item, index) => {
       const type = item.metadata.get("cc_profile");
-
       const material = item.mattextNode && item.mattextNode.textContent;
 
       return (
-        <I18n>
+        <I18n key={index}>
           {({ i18n }) => (
             <View
               key={index}

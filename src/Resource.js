@@ -1,7 +1,10 @@
 import { basename } from "path";
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { resourceTypes } from "./constants";
+import {
+  resourceTypes,
+  DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED
+} from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
@@ -146,7 +149,6 @@ export default class Resource extends Component {
   };
 
   renderResourceDocument = resource => {
-    let componentToRender;
     const href = getResourceHref(resource);
     const filename = basename(href);
     const extension = getExtension(href).toLowerCase();
@@ -229,9 +231,22 @@ export default class Resource extends Component {
       )
     };
 
-    const webComponents = {
-      image: <Image getUrlForPath={this.props.getUrlForPath} href={href} />,
-      html: (
+    const isImage =
+      type === resourceTypes.WEB_CONTENT &&
+      ["png", "jpg", "gif", "webp"].includes(extension);
+    const isWikiContent =
+      type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
+    const isDocumentWithPreview =
+      type === resourceTypes.WEB_CONTENT &&
+      DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED.includes(extension);
+
+    let componentToRender;
+    if (isImage) {
+      componentToRender = (
+        <Image getUrlForPath={this.props.getUrlForPath} href={href} />
+      );
+    } else if (isWikiContent) {
+      componentToRender = (
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
@@ -248,31 +263,32 @@ export default class Resource extends Component {
           src={this.props.src}
           type="text/html"
         />
-      )
-    };
-
-    const downloadComponent = (
-      <Billboard
-        size="medium"
-        message={`Download ${filename}`}
-        onClick={this.handleDownload}
-        hero={size => <IconDownload size={size} />}
-      />
-    );
-
-    if (type === resourceTypes.WEB_CONTENT) {
-      if (["png", "jpg", "gif", "webp"].includes(extension)) {
-        componentToRender = webComponents["image"];
-      } else if (["html", "htm"].includes(extension)) {
-        componentToRender = webComponents["html"];
-      }
-    }
-
-    if (componentToRender == null) {
+      );
+    } else if (isDocumentWithPreview) {
+      // TODO: Use <DocumentPreview />
+      componentToRender = (
+        <div>
+          <Billboard
+            hero={size => <IconDownload size={size} />}
+            message={`Download ${filename}`}
+            onClick={this.handleDownload}
+            size="medium"
+          />
+        </div>
+      );
+    } else if (components[type] != null) {
       componentToRender = components[type];
+    } else {
+      componentToRender = (
+        <Billboard
+          hero={size => <IconDownload size={size} />}
+          message={`Download ${filename}`}
+          onClick={this.handleDownload}
+          size="medium"
+        />
+      );
     }
-
-    return componentToRender ? componentToRender : downloadComponent;
+    return componentToRender;
   };
 
   render() {
@@ -303,12 +319,16 @@ export default class Resource extends Component {
             </FlexItem>
             <FlexItem padding="small" grow={true} align="center">
               <Flex justifyItems="center">
-                {this.props.allItemsPath && this.renderAllItemsButton()}
+                <FlexItem>
+                  {this.props.allItemsPath && this.renderAllItemsButton()}
+                </FlexItem>
               </Flex>
             </FlexItem>
             <FlexItem padding="small" width="14rem">
               <Flex justifyItems="end">
-                {nextItem && this.renderNextButton(nextItem)}
+                <FlexItem>
+                  {nextItem && this.renderNextButton(nextItem)}
+                </FlexItem>
               </Flex>
             </FlexItem>
           </Flex>

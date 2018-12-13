@@ -35,3 +35,23 @@ export const submissionTypes = {
   ON_PAPER: "on_paper",
   NONE: "none"
 };
+
+export const DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED = [
+  "doc",
+  "docx",
+  "odf",
+  "odg",
+  "odp",
+  "ods",
+  "odt",
+  "pdf",
+  "ppt",
+  "pptx",
+  "rtf",
+  "sxc",
+  "sxi",
+  "sxw",
+  "xlsx",
+  "xls",
+  "txt"
+];
