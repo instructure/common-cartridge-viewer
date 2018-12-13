@@ -18,6 +18,7 @@
     "lodash": "^4.17.10",
     "pretty-bytes": "^5.1.0",
     "query-string-es5": "^6.1.4",
+    "react-github-corner": "^2.3.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.1"
   },

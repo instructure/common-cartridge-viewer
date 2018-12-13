@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/instructure/common-cartridge-viewer.svg?branch=master)](https://travis-ci.org/instructure/common-cartridge-viewer)
+
 View Common Cartridges in the browser.
 
 ## Development
@@ -48,6 +50,7 @@ such that our i18n package (linguijs) can detect and translate them.
 For strings that are a child in a react component, use the `<Trans>` tag.
 
 Example:
+
 ```javascript
 import { Trans } from @lingui/macro
 ...
@@ -58,9 +61,10 @@ import { Trans } from @lingui/macro
 
 For strings that are html attributes or passed into a component as props, the
 component must be wrapped in an `<I18n>` tag, and render props used to make i18n()
-available.  Then strings should be wrapped as: ```i18n._(t`This is a translated string`)```.
+available. Then strings should be wrapped as: `` i18n._(t`This is a translated string`) ``.
 
 Example:
+
 ```javascript
 import { I18n } from "@lingui/react";
 import { t } from "@lingui/macro";
@@ -80,6 +84,7 @@ For strings that exist outside of a react component (ex: utils functions) import
 the i18n configuration from index.js and then proceed as described above.
 
 Example:
+
 ```javascript
 import { i18n } from "./index";
 import { t } from "@lingui/macro";
