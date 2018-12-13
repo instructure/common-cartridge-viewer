@@ -28,7 +28,7 @@ test("Previous link on last page works", async t => {
   const previousButton = Selector("span")
     .withText("Previous")
     .parent("a");
-  const button = Selector("button");
+  const spinner = Selector(".DocumentPreview--loading");
 
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
@@ -37,7 +37,7 @@ test("Previous link on last page works", async t => {
   );
   await t.expect(nextButton.exists).notOk();
   await t.click(previousButton);
-  await t.expect(button.textContent).contains("Download sample-document.pdf");
+  await t.expect(spinner.exists).ok();
 });
 
 test("All Items link works", async t => {

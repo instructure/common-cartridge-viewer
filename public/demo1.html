@@ -1,22 +1,55 @@
 <html>
+  <head>
+    <style>
+      .container {
+        padding: 0;
+        margin: 0;
+        display: flex;
+      }
 
-<head>
-  <style>
-    .container {
-      padding: 0;
-      margin: 0;
-      display: flex;
-    }
+      iframe {
+        border: 0;
+        flex: 1;
+      }
+    </style>
+  </head>
 
-    iframe {
-      border: 0;
-      flex: 1;
-    }
-  </style>
-</head>
-
-<body class="container">
-  <iframe sandbox="allow-scripts allow-same-origin" src="/?src=https://dl2ge9eav9ucb.cloudfront.net/facc0607309246638c298c6a1b01abcf.imscc"></iframe>
-</body>
-
+  <body class="container">
+    <iframe
+      sandbox="allow-scripts allow-same-origin"
+      src="/?manifest=/test-cartridges/cartridge-1/imsmanifest.xml"
+    ></iframe>
+    <script>
+      const iframe = document.querySelector("iframe");
+      window.addEventListener(
+        "message",
+        event => {
+          if (event.data == null || event.data[0] !== "{") {
+            return;
+          }
+          let request;
+          try {
+            request = JSON.parse(event.data);
+          } catch (error) {
+            console.warn("Error parsing data from postMessage");
+            return;
+          }
+          if (request.type !== "externalViewerRequest") {
+            return;
+          }
+          // simulating media preprocessor
+          setTimeout(() => {
+            iframe.contentWindow.postMessage(
+              JSON.stringify({
+                type: "externalViewerResponse",
+                body: { url: "/example-viewer.html" }
+              }),
+              "*"
+            );
+          }, 1500);
+        },
+        false
+      );
+    </script>
+  </body>
 </html>
