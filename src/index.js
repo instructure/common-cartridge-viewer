@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "@instructure/ui-themes/lib/canvas";
 import "./index.css";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
+import * as serviceWorker from "./serviceWorker";
 import { setupI18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import catalogEn from "./locales/en/messages.js";
@@ -28,4 +28,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-registerServiceWorker();
+serviceWorker.register();
