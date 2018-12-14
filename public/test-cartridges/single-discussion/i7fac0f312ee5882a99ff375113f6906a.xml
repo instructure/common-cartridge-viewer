@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topicMeta identifier="i7fac0f312ee5882a99ff375113f6906a" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <topic_id>ibbb015ec7bc96eade4c64ae68cb21494</topic_id>
+  <title>Test discussion</title>
+  <delayed_post_at>2018-09-05T06:00:00</delayed_post_at>
+  <lock_at>2019-01-26T06:59:59</lock_at>
+  <position/>
+  <attachment_identifierref>i4770a30c7a3d91a6bf7029013e5e2d96</attachment_identifierref>
+  <type>topic</type>
+  <discussion_type>threaded</discussion_type>
+  <require_initial_post>true</require_initial_post>
+  <has_group_category>false</has_group_category>
+  <workflow_state>active</workflow_state>
+  <module_locked>false</module_locked>
+  <allow_rating>true</allow_rating>
+  <only_graders_can_rate>false</only_graders_can_rate>
+  <sort_by_rating>false</sort_by_rating>
+  <todo_date/>
+</topicMeta>

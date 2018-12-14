@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="icc16454176b28467d5eaeb311a7a107d" xmlns="http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource" xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest" xmlns:cpx="http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lomresource_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lommanifest_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_cpextensionv1p2_v1p0.xsd">
+  <metadata>
+    <schema>IMS Common Cartridge</schema>
+    <schemaversion>1.3.0</schemaversion>
+    <lomimscc:lom>
+      <lomimscc:general>
+        <lomimscc:title>
+          <lomimscc:string>My test</lomimscc:string>
+        </lomimscc:title>
+      </lomimscc:general>
+      <lomimscc:lifeCycle>
+        <lomimscc:contribute>
+          <lomimscc:date>
+            <lomimscc:dateTime>2018-09-14</lomimscc:dateTime>
+          </lomimscc:date>
+        </lomimscc:contribute>
+      </lomimscc:lifeCycle>
+      <lomimscc:rights>
+        <lomimscc:copyrightAndOtherRestrictions>
+          <lomimscc:value>yes</lomimscc:value>
+        </lomimscc:copyrightAndOtherRestrictions>
+        <lomimscc:description>
+          <lomimscc:string>Private (Copyrighted) - http://en.wikipedia.org/wiki/Copyright</lomimscc:string>
+        </lomimscc:description>
+      </lomimscc:rights>
+    </lomimscc:lom>
+  </metadata>
+  <organizations>
+    <organization identifier="org_1" structure="rooted-hierarchy">
+      <item identifier="LearningModules">
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="i1df71e5dc5307ca91998f80fc71275e7" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="course_settings/canvas_export.txt">
+      <file href="course_settings/module_meta.xml"/>
+      <file href="course_settings/assignment_groups.xml"/>
+      <file href="course_settings/files_meta.xml"/>
+      <file href="course_settings/canvas_export.txt"/>
+    </resource>
+    <resource identifier="i2102a7fa93b29226774949298626719d" type="assignment_xmlv1p0" href="i2102a7fa93b29226774949298626719d/assignment.xml">
+      <file href="i2102a7fa93b29226774949298626719d/assignment.xml"/>
+    </resource>
+    <resource identifier="i2102a7fa93b29226774949298626719d_fallback" type="webcontent">
+      <cpx:variant identifier="i2102a7fa93b29226774949298626719d_variant" identifierref="i2102a7fa93b29226774949298626719d">
+        <cpx:metadata/>
+      </cpx:variant>
+      <file href="i2102a7fa93b29226774949298626719d/assignment.html"/>
+    </resource>
+  </resources>
+</manifest>

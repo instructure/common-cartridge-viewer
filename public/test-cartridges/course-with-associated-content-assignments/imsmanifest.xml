@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="ibbda01143f25e9e620f4e33958079fb5" xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource" xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lomresource_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p1/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p1/LOM/ccv1p1_lommanifest_v1p0.xsd">
+  <metadata>
+    <schema>IMS Common Cartridge</schema>
+    <schemaversion>1.1.0</schemaversion>
+    <lomimscc:lom>
+      <lomimscc:general>
+        <lomimscc:title>
+          <lomimscc:string>DocViewer</lomimscc:string>
+        </lomimscc:title>
+      </lomimscc:general>
+      <lomimscc:lifeCycle>
+        <lomimscc:contribute>
+          <lomimscc:date>
+            <lomimscc:dateTime>2018-12-03</lomimscc:dateTime>
+          </lomimscc:date>
+        </lomimscc:contribute>
+      </lomimscc:lifeCycle>
+      <lomimscc:rights>
+        <lomimscc:copyrightAndOtherRestrictions>
+          <lomimscc:value>yes</lomimscc:value>
+        </lomimscc:copyrightAndOtherRestrictions>
+        <lomimscc:description>
+          <lomimscc:string>Private (Copyrighted) - http://en.wikipedia.org/wiki/Copyright</lomimscc:string>
+        </lomimscc:description>
+      </lomimscc:rights>
+    </lomimscc:lom>
+  </metadata>
+  <organizations>
+    <organization identifier="org_1" structure="rooted-hierarchy">
+      <item identifier="LearningModules">
+        <item identifier="ie1dc79258b6987758d5a042ec3131ef4">
+          <title>Some Assignments</title>
+          <item identifier="i1becaa2dc64ef648f4f93e1859c503dd" identifierref="i082d21cb1c9d8a6639d6f76f29cd5416">
+            <title>Published Assignment</title>
+          </item>
+          <item identifier="i39bfe70d8f96bc65183195571de5d92b" identifierref="ic0ab5c031b3cc8071f1023ae0bf34d2c">
+            <title>Unpublished Assignment</title>
+          </item>
+          <item identifier="i159319c8513b2c0f2e29bde7d9b942eb" identifierref="i9dede821e375f4888540a2095824f51e">
+            <title>New Quiz</title>
+          </item>
+        </item>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="i7575ceab3006af57664cdd130c2cb041" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="course_settings/canvas_export.txt">
+      <file href="course_settings/course_settings.xml"/>
+      <file href="course_settings/module_meta.xml"/>
+      <file href="course_settings/assignment_groups.xml"/>
+      <file href="course_settings/learning_outcomes.xml"/>
+      <file href="course_settings/files_meta.xml"/>
+      <file href="course_settings/media_tracks.xml"/>
+      <file href="course_settings/canvas_export.txt"/>
+    </resource>
+    <resource identifier="i691472bc7e9d470687402f5d7745875e" type="webcontent" href="wiki_content/learning.html">
+      <file href="wiki_content/learning.html"/>
+    </resource>
+    <resource identifier="i082d21cb1c9d8a6639d6f76f29cd5416" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i082d21cb1c9d8a6639d6f76f29cd5416/published-assignment.html">
+      <file href="i082d21cb1c9d8a6639d6f76f29cd5416/published-assignment.html"/>
+      <file href="i082d21cb1c9d8a6639d6f76f29cd5416/assignment_settings.xml"/>
+    </resource>
+    <resource identifier="ic0ab5c031b3cc8071f1023ae0bf34d2c" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="ic0ab5c031b3cc8071f1023ae0bf34d2c/unpublished-assignment.html">
+      <file href="ic0ab5c031b3cc8071f1023ae0bf34d2c/unpublished-assignment.html"/>
+      <file href="ic0ab5c031b3cc8071f1023ae0bf34d2c/assignment_settings.xml"/>
+    </resource>
+    <resource identifier="i2c43fc457bfae3dc3e2379cbd11e1c01" type="imsdt_xmlv1p1">
+      <file href="i2c43fc457bfae3dc3e2379cbd11e1c01.xml"/>
+      <dependency identifierref="i2d2420e53aaf53f5ac4a4495e0c8cb70"/>
+    </resource>
+    <resource identifier="i2d2420e53aaf53f5ac4a4495e0c8cb70" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i2d2420e53aaf53f5ac4a4495e0c8cb70.xml">
+      <file href="i2d2420e53aaf53f5ac4a4495e0c8cb70.xml"/>
+    </resource>
+    <resource identifier="icda4b91d1087d577fdc9d23598d6e337" type="imsdt_xmlv1p1">
+      <file href="icda4b91d1087d577fdc9d23598d6e337.xml"/>
+      <dependency identifierref="i3234c7340f8a8c14e4ebef7e39b3ba0c"/>
+    </resource>
+    <resource identifier="i3234c7340f8a8c14e4ebef7e39b3ba0c" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i3234c7340f8a8c14e4ebef7e39b3ba0c.xml">
+      <file href="i3234c7340f8a8c14e4ebef7e39b3ba0c.xml"/>
+    </resource>
+    <resource identifier="i5f9776df71a14dccd47ad69c05baba9d" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="non_cc_assessments/i5f9776df71a14dccd47ad69c05baba9d.xml.qti">
+      <file href="non_cc_assessments/i5f9776df71a14dccd47ad69c05baba9d.xml.qti"/>
+    </resource>
+    <resource identifier="i9dede821e375f4888540a2095824f51e" type="imsqti_xmlv1p2/imscc_xmlv1p1/assessment">
+      <file href="i9dede821e375f4888540a2095824f51e/assessment_qti.xml"/>
+      <dependency identifierref="icc89681ea9ad845e69a533543c3b1034"/>
+    </resource>
+    <resource identifier="icc89681ea9ad845e69a533543c3b1034" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i9dede821e375f4888540a2095824f51e/assessment_meta.xml">
+      <file href="i9dede821e375f4888540a2095824f51e/assessment_meta.xml"/>
+      <file href="non_cc_assessments/i9dede821e375f4888540a2095824f51e.xml.qti"/>
+    </resource>
+    <resource type="webcontent" identifier="i4fb8ac263620615ac7660c7d37f60946" href="web_resources/sample-document.pdf">
+      <file href="web_resources/sample-document.pdf"/>
+    </resource>
+    <resource identifier="i26165b7522cbd29c030b1b69e1ecd7ee" type="imsbasiclti_xmlv1p0">
+      <file href="i26165b7522cbd29c030b1b69e1ecd7ee.xml"/>
+    </resource>
+    <resource identifier="i9dc5b9334db8488fdfb6da5db2560e64" type="imsbasiclti_xmlv1p0">
+      <file href="i9dc5b9334db8488fdfb6da5db2560e64.xml"/>
+    </resource>
+  </resources>
+</manifest>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<learningOutcomes xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <learningOutcome identifier="i03db83e86dcd0c7a5f4f39b7274bf028">
+    <title>New Outcome</title>
+    <description>&lt;p&gt;New Outcome Description&lt;/p&gt;</description>
+    <calculation_method>decaying_average</calculation_method>
+    <calculation_int>65</calculation_int>
+    <points_possible>5.0</points_possible>
+    <mastery_points>3.0</mastery_points>
+    <ratings>
+      <rating>
+        <description>Exceeds Expectations</description>
+        <points>5.0</points>
+      </rating>
+      <rating>
+        <description>Meets Expectations</description>
+        <points>3.0</points>
+      </rating>
+      <rating>
+        <description>Does Not Meet Expectations</description>
+        <points>0.0</points>
+      </rating>
+    </ratings>
+  </learningOutcome>
+</learningOutcomes>
