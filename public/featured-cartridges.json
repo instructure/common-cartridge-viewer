@@ -1,5 +1,5 @@
 [
-  ["Test course", "/test-cartridges/cartridge-1/imsmanifest.xml"],
+  ["Test course", "/test-cartridges/course-1/imsmanifest.xml"],
   [
     "Single discussion (with attachment)",
     "/test-cartridges/single-discussion/imsmanifest.xml"
