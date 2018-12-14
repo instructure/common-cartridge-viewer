@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <module identifier="ie1dc79258b6987758d5a042ec3131ef4">
+    <title>Some Assignments</title>
+    <workflow_state>active</workflow_state>
+    <position>2</position>
+    <require_sequential_progress>false</require_sequential_progress>
+    <locked>false</locked>
+    <items>
+      <item identifier="i1becaa2dc64ef648f4f93e1859c503dd">
+        <content_type>Assignment</content_type>
+        <workflow_state>active</workflow_state>
+        <title>Published Assignment</title>
+        <identifierref>i082d21cb1c9d8a6639d6f76f29cd5416</identifierref>
+        <position>1</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="i39bfe70d8f96bc65183195571de5d92b">
+        <content_type>Assignment</content_type>
+        <workflow_state>active</workflow_state>
+        <title>Unpublished Assignment</title>
+        <identifierref>ic0ab5c031b3cc8071f1023ae0bf34d2c</identifierref>
+        <position>2</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+      <item identifier="i159319c8513b2c0f2e29bde7d9b942eb">
+        <content_type>Quizzes::Quiz</content_type>
+        <workflow_state>active</workflow_state>
+        <title>New Quiz</title>
+        <identifierref>i9dede821e375f4888540a2095824f51e</identifierref>
+        <position>3</position>
+        <new_tab/>
+        <indent>0</indent>
+      </item>
+    </items>
+  </module>
+</modules>

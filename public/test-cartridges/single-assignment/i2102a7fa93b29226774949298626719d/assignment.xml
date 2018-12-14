@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignment identifier="i2102a7fa93b29226774949298626719d" xmlns="http://www.imsglobal.org/xsd/imscc_extensions/assignment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscc_extensions/assignment http://www.imsglobal.org/profile/cc/cc_extensions/cc_extresource_assignmentv1p0_v1p0.xsd">
+  <title>Assignment</title>
+  <text texttype="text/html">&lt;p&gt;&lt;strong&gt;Etiam rutrum diam purus,&lt;/strong&gt; quis gravida tellus egestas vel. Fusce tincidunt gravida dolor et laoreet. Morbi luctus neque ut augue euismod, et aliquam est malesuada.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%;" border="1"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="width: 50%;"&gt;&lt;img src="https://farm8.static.flickr.com/7393/27842782201_de9f5ece72.jpg" alt="Double Trouble" width="333" height="500"&gt;&lt;/td&gt;
+&lt;td style="width: 50%; text-align: center;"&gt;
+&lt;h3&gt;Table test!&lt;/h3&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Maecenas vestibulum ipsum et erat pulvinar imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce placerat tempus sapien. Suspendisse posuere nulla non nunc sodales, in condimentum ipsum ultricies. Nunc tristique nibh nec tellus tempus, ac accumsan est molestie.&lt;span&gt; &lt;/span&gt;&lt;/p&gt;</text>
+  <gradable points_possible="10.0">true</gradable>
+  <submission_formats>
+    <format type="html"/>
+    <format type="url"/>
+  </submission_formats>
+  <extensions>
+    <assignment identifier="i2102a7fa93b29226774949298626719d_canvas" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+      <title>Assignment</title>
+      <due_at>2018-09-30T05:59:59</due_at>
+      <lock_at>2018-09-30T05:59:59</lock_at>
+      <unlock_at>2018-09-13T06:00:00</unlock_at>
+      <module_locked>false</module_locked>
+      <all_day_date>2018-09-29</all_day_date>
+      <peer_reviews_due_at>2018-09-30T05:59:59</peer_reviews_due_at>
+      <workflow_state>published</workflow_state>
+      <assignment_overrides>
+      </assignment_overrides>
+      <has_group_category>false</has_group_category>
+      <points_possible>10.0</points_possible>
+      <grading_type>points</grading_type>
+      <all_day>true</all_day>
+      <submission_types>online_text_entry,online_url</submission_types>
+      <position>2</position>
+      <turnitin_enabled>false</turnitin_enabled>
+      <vericite_enabled>false</vericite_enabled>
+      <peer_review_count>0</peer_review_count>
+      <peer_reviews>false</peer_reviews>
+      <automatic_peer_reviews>false</automatic_peer_reviews>
+      <moderated_grading>false</moderated_grading>
+      <anonymous_peer_reviews>false</anonymous_peer_reviews>
+      <grade_group_students_individually>false</grade_group_students_individually>
+      <freeze_on_copy>false</freeze_on_copy>
+      <omit_from_final_grade>false</omit_from_final_grade>
+      <intra_group_peer_reviews>false</intra_group_peer_reviews>
+      <only_visible_to_overrides>false</only_visible_to_overrides>
+      <post_to_sis>false</post_to_sis>
+    </assignment>
+  </extensions>
+</assignment>
