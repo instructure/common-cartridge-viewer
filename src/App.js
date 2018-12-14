@@ -13,6 +13,7 @@ import { HashRouter as Router } from "react-router-dom";
 import { getExtension } from "./utils";
 import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
+import GithubCorner from "react-github-corner";
 
 export default class App extends Component {
   constructor(props) {
@@ -79,7 +80,7 @@ export default class App extends Component {
       )
     );
 
-    const hasSourceOrContent =
+    const hasNoSource =
       this.state.cartridge == null &&
       this.state.file == null &&
       this.props.manifest == null;
@@ -88,8 +89,9 @@ export default class App extends Component {
       <I18n>
         {({ i18n }) => (
           <View as="div" margin="medium">
-            {hasSourceOrContent && (
+            {hasNoSource && (
               <React.Fragment>
+                <GithubCorner href="https://github.com/instructure/common-cartridge-viewer" />
                 <View as="div" margin="large">
                   <FileDrop
                     accept={[".imscc", ".zip"]}
