@@ -22,6 +22,7 @@ import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
 import { getExtension, getResourceHref } from "./utils";
 import { Trans } from "@lingui/macro";
+import DocumentPreview from "./DocumentPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 
 export default class Resource extends Component {
@@ -238,7 +239,8 @@ export default class Resource extends Component {
       type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
     const isDocumentWithPreview =
       type === resourceTypes.WEB_CONTENT &&
-      DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED.includes(extension);
+      DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED.includes(extension) &&
+      this.props.externalViewer != null;
 
     let componentToRender;
     if (isImage) {
@@ -265,16 +267,8 @@ export default class Resource extends Component {
         />
       );
     } else if (isDocumentWithPreview) {
-      // TODO: Use <DocumentPreview />
       componentToRender = (
-        <div>
-          <Billboard
-            hero={size => <IconDownload size={size} />}
-            message={`Download ${filename}`}
-            onClick={this.handleDownload}
-            size="medium"
-          />
-        </div>
+        <DocumentPreview externalViewer={this.props.externalViewer} />
       );
     } else if (components[type] != null) {
       componentToRender = components[type];
