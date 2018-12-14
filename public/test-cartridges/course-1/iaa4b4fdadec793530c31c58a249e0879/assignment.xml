@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignment identifier="iaa4b4fdadec793530c31c58a249e0879" xmlns="http://www.imsglobal.org/xsd/imscc_extensions/assignment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscc_extensions/assignment http://www.imsglobal.org/profile/cc/cc_extensions/cc_extresource_assignmentv1p0_v1p0.xsd">
+  <title>Assignment with Internal and External Links</title>
+  <text texttype="text/html">&lt;p&gt;
+ this is an internal wiki page:
+ &lt;a
+ title="wiki sample"
+ href="%24WIKI_REFERENCE%24/pages/wiki-sample"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/pages/wiki-sample"
+ data-api-returntype="Page"
+ &gt;wiki sample&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal assignment:
+ &lt;a
+ title="Docviewer Assignment"
+ href="%24CANVAS_OBJECT_REFERENCE%24/assignments/i707c6a79c3028096074a363cef73b7cd"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/assignments/327"
+ data-api-returntype="Assignment"
+ &gt;Docviewer Assignment&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal quiz:
+ &lt;a
+ title="Basic Quiz"
+ href="%24CANVAS_OBJECT_REFERENCE%24/quizzes/i2b45e01249a5b877ae97664ecf5e3578"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/quizzes/103"
+ data-api-returntype="Quiz"
+ &gt;Basic Quiz&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal announcement:
+ &lt;a
+ title="Google RCE Announcement"
+ href="%24CANVAS_OBJECT_REFERENCE%24/discussion_topics/i8399ced2c28fbff3ca462d9ac62807a3"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/discussion_topics/153"
+ data-api-returntype="Discussion"
+ &gt;Google RCE Announcement&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal discussion:
+ &lt;a
+ title="Simple Discussion"
+ href="%24CANVAS_OBJECT_REFERENCE%24/discussion_topics/i965e5311e92837f1ae9ed78689f650ed"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/discussion_topics/165"
+ data-api-returntype="Discussion"
+ &gt;Simple Discussion&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal module:
+ &lt;a
+ title="api mod 1"
+ href="%24CANVAS_OBJECT_REFERENCE%24/modules/ib41aa6c7da921b25ef4b1f3d50ad1a8c"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/modules/90"
+ data-api-returntype="Module"
+ &gt;api mod 1&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal course document:
+ &lt;a
+ class="instructure_file_link instructure_scribd_file"
+ title="Sample Document .pdf"
+ href="%24IMS-CC-FILEBASE%24/sample-document.pdf?canvas_download=1&amp;amp;canvas_qs_wrap=1"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/files/50"
+ data-api-returntype="File"
+ &gt;sample-document.pdf&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;
+ this is an internal course image:
+ &lt;a
+ class="instructure_file_link instructure_image_thumbnail"
+ title="photo.jpg"
+ href="%24IMS-CC-FILEBASE%24/photo.jpg?canvas_download=1&amp;amp;canvas_qs_wrap=1"
+ data-api-endpoint="https://lorprod.instructure.com/api/v1/courses/2/files/15"
+ data-api-returntype="File"
+ &gt;photo.jpg&lt;/a
+ &gt;
+ &lt;/p&gt;
+ &lt;p&gt;THIS is an external link to &lt;a href="http://google.com"&gt;google&lt;/a&gt;&lt;/p&gt;</text>
+  <gradable points_possible="10.0">true</gradable>
+  <submission_formats>
+    <format type="file"/>
+  </submission_formats>
+  <extensions>
+    <assignment identifier="iaa4b4fdadec793530c31c58a249e0879_canvas" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+      <title>Assignment with Internal and External Links</title>
+      <due_at/>
+      <lock_at/>
+      <unlock_at/>
+      <module_locked>false</module_locked>
+      <workflow_state>published</workflow_state>
+      <assignment_overrides>
+      </assignment_overrides>
+      <has_group_category>false</has_group_category>
+      <points_possible>10.0</points_possible>
+      <grading_type>points</grading_type>
+      <all_day>false</all_day>
+      <submission_types>online_upload</submission_types>
+      <position>47</position>
+      <turnitin_enabled>false</turnitin_enabled>
+      <vericite_enabled>false</vericite_enabled>
+      <peer_review_count>0</peer_review_count>
+      <peer_reviews>false</peer_reviews>
+      <automatic_peer_reviews>false</automatic_peer_reviews>
+      <anonymous_peer_reviews>false</anonymous_peer_reviews>
+      <grade_group_students_individually>false</grade_group_students_individually>
+      <freeze_on_copy>false</freeze_on_copy>
+      <omit_from_final_grade>false</omit_from_final_grade>
+      <intra_group_peer_reviews>false</intra_group_peer_reviews>
+      <only_visible_to_overrides>false</only_visible_to_overrides>
+      <post_to_sis>false</post_to_sis>
+      <moderated_grading>false</moderated_grading>
+      <grader_count>0</grader_count>
+      <grader_comments_visible_to_graders>true</grader_comments_visible_to_graders>
+      <anonymous_grading>false</anonymous_grading>
+      <graders_anonymous_to_graders>false</graders_anonymous_to_graders>
+      <grader_names_visible_to_final_grader>true</grader_names_visible_to_final_grader>
+      <anonymous_instructor_annotations>false</anonymous_instructor_annotations>
+    </assignment>
+  </extensions>
+</assignment>

@@ -58,6 +58,9 @@
           <item identifier="ib9e9d751c5934866aeee701374169741" identifierref="i20d994c705d4f2bf05a753e922547b06">
             <title>photo.jpg</title>
           </item>
+          <item identifier="ib9e9d751c5934866aeee701374164321" identifierref="iaa4b4fdadec793530c31c58a249e0879">
+            <title>Assignment with internal links</title>
+          </item>
         </item>
       </item>
     </organization>
@@ -110,6 +113,25 @@
     </resource>
     <resource type="webcontent" identifier="fbac4bef75744d02b353abc6451e2b16" href="web_resources/sample-document.pdf">
       <file href="web_resources/sample-document.pdf"/>
+    </resource>
+
+    <resource identifier="iaa4b4fdadec793530c31c58a249e0879" type="assignment_xmlv1p0" href="iaa4b4fdadec793530c31c58a249e0879/assignment.xml">
+      <file href="iaa4b4fdadec793530c31c58a249e0879/assignment.xml"/>
+    </resource>
+    <resource identifier="iaa4b4fdadec793530c31c58a249e0879_fallback" type="webcontent">
+      <cpx:variant identifier="iaa4b4fdadec793530c31c58a249e0879_variant" identifierref="iaa4b4fdadec793530c31c58a249e0879">
+        <cpx:metadata/>
+      </cpx:variant>
+      <file href="iaa4b4fdadec793530c31c58a249e0879/assignment-with-internal-and-external-links.html"/>
+    </resource>
+    <resource type="webcontent" identifier="i87324fe31c5869a53c06c0fea158506d" href="web_resources/sample-document.pdf">
+      <file href="web_resources/sample-document.pdf"/>
+    </resource>
+    <resource type="webcontent" identifier="ieb9934f0a533d35dea38cc9cb87f26a2" href="web_resources/photo.jpg">
+      <file href="web_resources/photo.jpg"/>
+    </resource>
+    <resource type="webcontent" identifier="i1f4fc3f7049fa09157a195fc3538f184" href="web_resources/Kalimba.mp3">
+      <file href="web_resources/Kalimba.mp3"/>
     </resource>
   </resources>
 </manifest>

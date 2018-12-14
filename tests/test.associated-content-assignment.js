@@ -82,7 +82,9 @@ test("Associated-content assignment items can be clicked from assignment list vi
 });
 
 fixture`Associated-content assignments (loaded w/ src)`
-  .page`http://localhost:5000/?src=https://s3.amazonaws.com/public-imscc/COURSE-with-associated-content-assignments.imscc#/`;
+  .page`http://localhost:5000/?manifest=${encodeURIComponent(
+  "/test-cartridges/course-with-associated-content-assignments/imsmanifest.xml"
+)}#/`;
 
 test("Associated-content assignment items display correctly", async t => {
   await t

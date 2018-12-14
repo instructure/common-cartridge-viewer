@@ -2,7 +2,7 @@ import { Selector } from "testcafe";
 
 fixture`External Tool Items`
   .page`http://localhost:5000/?manifest=${encodeURIComponent(
-  "http://localhost:5000/test-cartridges/course-1/imsmanifest.xml"
+  "/test-cartridges/course-1/imsmanifest.xml"
 )}#/`;
 
 test("External tools show up correctly in Module list", async t => {

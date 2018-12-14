@@ -2,7 +2,7 @@ import { Selector } from "testcafe";
 
 fixture`Course with 1 module (has all item types)`
   .page`http://localhost:5000/?manifest=${encodeURIComponent(
-  "http://localhost:5000/test-cartridges/course-1/imsmanifest.xml"
+  "/test-cartridges/course-1/imsmanifest.xml"
 )}#/`;
 
 test("Module Title is displayed", async t => {
