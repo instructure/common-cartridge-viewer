@@ -36,7 +36,7 @@ export default (number, options) => {
     );
   }
 
-  options = Object.assign({}, options);
+  options = { ...options };
 
   if (options.signed && number === 0) {
     return " 0 B";

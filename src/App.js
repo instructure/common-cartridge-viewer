@@ -103,9 +103,9 @@ export default class App extends Component {
                     }}
                     label={
                       <Billboard
-                        heading={i18n._(t`View a Common Cartridge (.imscc)`)}
+                        heading={i18n._(t`Common Cartridge Viewer`)}
                         message={i18n._(
-                          t`Drag and drop, or click to browse your computer`
+                          t`Drag and drop the cartridge, or click to browse your computer.`
                         )}
                         hero={<IconZipped />}
                       />

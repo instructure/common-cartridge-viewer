@@ -17,13 +17,13 @@
   <body class="container">
     <iframe
       sandbox="allow-scripts allow-same-origin"
-      src="/?manifest=/test-cartridges/cartridge-1/imsmanifest.xml"
+      src="/?manifest=/test-cartridges/course-1/imsmanifest.xml"
     ></iframe>
     <script>
       const iframe = document.querySelector("iframe");
       window.addEventListener(
         "message",
-        event => {
+        function(event) {
           if (event.data == null || event.data[0] !== "{") {
             return;
           }
@@ -38,7 +38,7 @@
             return;
           }
           // simulating media preprocessor
-          setTimeout(() => {
+          setTimeout(function() {
             iframe.contentWindow.postMessage(
               JSON.stringify({
                 type: "externalViewerResponse",
