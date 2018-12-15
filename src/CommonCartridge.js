@@ -35,6 +35,7 @@ import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 import PreviewUnavailable from "./PreviewUnavailable";
+import Unavailable from "./Unavailable";
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
 
@@ -51,6 +52,7 @@ export default class CommonCartridge extends Component {
       discussions: [],
       entries: [],
       entryMap: new Map(),
+      errorLoading: null,
       externalViewers: new Map(),
       files: [],
       isCartridgeRemotelyExpanded: this.props.manifest != null,
@@ -75,9 +77,15 @@ export default class CommonCartridge extends Component {
 
   getEntriesFromManifest = () => {
     fetch(this.props.manifest)
-      .then(response => response.text())
-      .then(xml => {
-        this.loadResources(xml);
+      .then(response => {
+        if (response.ok === false) {
+          throw new Error();
+        }
+        return response.text();
+      })
+      .then(xml => this.loadResources(xml))
+      .catch(error => {
+        this.setState({ errorLoading: true });
       });
   };
 
@@ -103,8 +111,12 @@ export default class CommonCartridge extends Component {
       this.props.cartridge
     );
     request.addEventListener("progress", this.handleLoadProgress);
-    const entries = await getEntriesPromise;
-    this.setState({ entries }, () => this.loadEntries());
+    try {
+      const entries = await getEntriesPromise;
+      this.setState({ entries }, () => this.loadEntries());
+    } catch (error) {
+      this.setState({ errorLoading: true });
+    }
   }
 
   async getEntriesFromDroppedFile() {
@@ -124,8 +136,15 @@ export default class CommonCartridge extends Component {
     );
 
     if (manifestEntry != null) {
-      const xml = await getTextFromEntry(manifestEntry);
-      this.loadResources(xml);
+      let xml;
+      try {
+        xml = await getTextFromEntry(manifestEntry);
+      } catch (error) {
+        this.setState({ errorLoading: true });
+      }
+      if (xml != null) {
+        this.loadResources(xml);
+      }
     }
   }
 
@@ -196,6 +215,10 @@ export default class CommonCartridge extends Component {
     const manifest = parseXml(xml);
     const moduleMeta = await this.getModuleMeta();
     const result = await parseManifestDocument(manifest, { moduleMeta });
+    if (result.resources.length === 0) {
+      this.setState({ errorLoading: true });
+      return;
+    }
     let externalViewers = new Map();
     if (result.hasExternalViewers) {
       externalViewers = await this.getExternalViewers();
@@ -208,6 +231,21 @@ export default class CommonCartridge extends Component {
   }
 
   render() {
+    if (this.state.errorLoading === true) {
+      return (
+        <I18n>
+          {({ i18n }) => (
+            <Unavailable
+              heading={i18n._(t`Failed to load resource`)}
+              subHeading={i18n._(
+                t`We had a problem loading the Common Cartridge`
+              )}
+            />
+          )}
+        </I18n>
+      );
+    }
+
     if (this.state.isLoaded === false) {
       return (
         <I18n>
