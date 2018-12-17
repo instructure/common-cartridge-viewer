@@ -1,12 +1,12 @@
 import { Selector } from "testcafe";
 
-fixture`Quizz with all question types`
+fixture`Quiz with all question types`
   .page`http://localhost:5000/?manifest=${encodeURIComponent(
   "/test-cartridges/all-question-types/imsmanifest.xml"
 )}#/`;
 
-test("Resourde loaded as quizz", async t => {
-  await t.expect(Selector(".resource-label").withText(`Quizz`).exists).ok();
+test("Resourde loaded as quiz", async t => {
+  await t.expect(Selector(".resource-label").withText(`Quiz`).exists).ok();
 });
 
 test("Quizzes types are shown", async t => {
@@ -18,6 +18,22 @@ test("Quizzes types are shown", async t => {
     .expect(Selector('*[data-uid="Pill"]').withText("Multiple response").exists)
     .ok()
     .expect(Selector('*[data-uid="Pill"]').withText("Essay").exists)
+    .ok();
+});
+
+test("Quiz correct answer is shown", async t => {
+  const questions = await Selector(".assessment-questions li");
+  const multipleChoiceQuestion = await questions.withText("Multiple choice");
+
+  // check that the answer to the multiple choice question is the one with the number 3:
+  await t
+    .expect(
+      multipleChoiceQuestion
+        .find("svg")
+        .parent()
+        .sibling()
+        .withText("3")
+    )
     .ok();
 });
 

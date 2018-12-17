@@ -161,7 +161,7 @@ export default class Assessment extends Component {
             <Icon color="primary-inverse" />
           </div>
           <span>
-            <Trans>Quizz</Trans>
+            <Trans>Quiz</Trans>
           </span>
         </div>
 
