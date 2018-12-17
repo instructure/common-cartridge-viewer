@@ -116,6 +116,18 @@ export default class RichContent extends Component {
       );
     }
 
+    {
+      const links = Array.from(fragment.querySelectorAll("a[href]"));
+      await Promise.all(
+        links
+          .filter(link => link.host !== window.location.host)
+          .map(async link => {
+            link.setAttribute("target", `_blank`);
+            link.setAttribute("rel", "noopener noreferrer");
+          })
+      );
+    }
+
     const isCartridgeFile = img =>
       img.getAttribute("src") &&
       (img.getAttribute("src").indexOf(CC_FILE_PREFIX_OLD) > -1 ||
