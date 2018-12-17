@@ -13,7 +13,7 @@ test("Next link on first page works", async t => {
 
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
-      "http://localhost:5000/test-cartridges/course-1/imsmanifest.xml"
+      "/test-cartridges/course-1/imsmanifest.xml"
     )}#/resources/i7aff7e807cbf2c3be5ca6fc0733ff0a8`
   );
   await t.expect(previousButton.exists).notOk();
@@ -28,24 +28,21 @@ test("Previous link on last page works", async t => {
   const previousButton = Selector("span")
     .withText("Previous")
     .parent("a");
-  const externalToolMessage = Selector("span").withText(
-    "External Tool Content Can't be Previewed"
-  );
 
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
-      "http://localhost:5000/test-cartridges/course-1/imsmanifest.xml"
-    )}#/resources/i20d994c705d4f2bf05a753e922547b06`
+      "/test-cartridges/course-1/imsmanifest.xml"
+    )}#/resources/iaa4b4fdadec793530c31c58a249e0879`
   );
   await t.expect(nextButton.exists).notOk();
   await t.click(previousButton);
-  await t.expect(externalToolMessage.exists).ok();
+  await t.expect(Selector("h1").withText("photo.jpg").exists).ok();
 });
 
 test("All Items link works", async t => {
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
-      "http://localhost:5000/test-cartridges/course-1/imsmanifest.xml"
+      "/test-cartridges/course-1/imsmanifest.xml"
     )}#/resources/i694d024f7e7bb0de4335817c9d4649f1`
   );
 

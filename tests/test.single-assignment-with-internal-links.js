@@ -1,5 +1,7 @@
 import { Selector } from "testcafe";
-const courseUrl = `http://localhost:5000/?manifest=https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/single-assignment-with-internal-and-external-links/imsmanifest.xml`;
+const courseUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
+  "/test-cartridges/course-1/imsmanifest.xml"
+)}#/resources/iaa4b4fdadec793530c31c58a249e0879`;
 fixture`Single assignment cartridge (with attachment)`.page`${courseUrl}`;
 
 test("Description is displayed with links", async t => {
