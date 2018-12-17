@@ -165,7 +165,13 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     });
   const fileResources = resources
     .filter(is(resourceTypes.WEB_CONTENT))
-    .filter(node => node.querySelector("file"));
+    .filter(node => node.querySelector("file"))
+    .filter(
+      node =>
+        typeof node.getAttribute("href") === "string" &&
+        node.getAttribute("href").startsWith("web_resources/")
+    );
+
   const assessmentResources = resources
     .filter(is(resourceTypes.ASSESSMENT_CONTENT))
     .filter(node => node.querySelector("file"));
