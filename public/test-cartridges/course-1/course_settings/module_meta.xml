@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<modules xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+<modules xmlns="http://canvas.instructure.com/xsd/cccv1p0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
   <module identifier="i02ce3f13d96fb86be0bfcbecfc2e42ed">
     <title>First Module</title>
     <workflow_state>unpublished</workflow_state>
@@ -78,6 +79,15 @@
         <url>https://canvas-analytics-iad-prod.inscloudgate.net/lti_check_teacher_performance</url>
         <global_identifierref>138</global_identifierref>
         <position>8</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+      <item identifier="icaec87d897e6b152b5ea0279c20ff9e8">
+        <content_type>Attachment</content_type>
+        <workflow_state>active</workflow_state>
+        <title>The First Measured Century: 1930-1960 (60:00)</title>
+        <identifierref>ie51764b374b71d85aef92a2fa25368ef</identifierref>
+        <position>9</position>
         <new_tab>false</new_tab>
         <indent>0</indent>
       </item>

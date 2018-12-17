@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<manifest identifier="ife6c3152cbc3f055b596a033fad66b4c" xmlns="http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1" xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource" xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest" xmlns:cpx="http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lomresource_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lommanifest_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_cpextensionv1p2_v1p0.xsd">
+<manifest identifier="ife6c3152cbc3f055b596a033fad66b4c" 
+  xmlns="http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1" 
+  xmlns:lom="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource" 
+  xmlns:lomimscc="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest" 
+  xmlns:cpx="http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/imsccv1p3/LOM/resource http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lomresource_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_v1p1 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_imscp_v1p2_v1p0.xsd http://ltsc.ieee.org/xsd/imsccv1p3/LOM/manifest http://www.imsglobal.org/profile/cc/ccv1p3/LOM/ccv1p3_lommanifest_v1p0.xsd http://www.imsglobal.org/xsd/imsccv1p3/imscp_extensionv1p2 http://www.imsglobal.org/profile/cc/ccv1p3/ccv1p3_cpextensionv1p2_v1p0.xsd">
   <metadata>
     <schema>IMS Common Cartridge</schema>
     <schemaversion>1.3.0</schemaversion>
@@ -61,6 +66,9 @@
           <item identifier="ib9e9d751c5934866aeee701374164321" identifierref="iaa4b4fdadec793530c31c58a249e0879">
             <title>Assignment with internal links</title>
           </item>
+          <item identifier="icaec87d897e6b152b5ea0279c20ff9e8" identifierref="ie51764b374b71d85aef92a2fa25368ef">
+            <title>The First Measured Century: 1930-1960 (60:00)</title>
+          </item>
         </item>
       </item>
     </organization>
@@ -74,6 +82,9 @@
       <file href="course_settings/media_tracks.xml"/>
       <file href="course_settings/external_viewers.xml" />
       <file href="course_settings/canvas_export.txt"/>
+    </resource>
+    <resource type="webcontent" identifier="ie51764b374b71d85aef92a2fa25368ef" href="web_resources/CourseFiles/_assoc/672C021605644FDFBEAC13BE37E326B2/The_First_Measured_Century__1930-1960__60_00_.html">
+      <file href="web_resources/CourseFiles/_assoc/672C021605644FDFBEAC13BE37E326B2/The_First_Measured_Century__1930-1960__60_00_.html"/>
     </resource>
     <resource identifier="i0c940bd995254e5f0bf694dc5aaea005" type="webcontent" href="wiki_content/first-module-wiki-page-1.html">
       <file href="wiki_content/first-module-wiki-page-1.html"/>

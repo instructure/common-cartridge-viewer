@@ -1,7 +1,8 @@
 import {
   resourceTypes,
   submissionTypes,
-  moduleMetaContentTypes
+  moduleMetaContentTypes,
+  WIKI_CONTENT_HREF_PREFIX
 } from "./constants";
 import { i18n } from "./index";
 import { t } from "@lingui/macro";
@@ -157,10 +158,10 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     .filter(node => node.querySelector("file"))
     // needs filter to filter out dependencies
     .filter(node => {
-      const extension = getExtension(
-        node.querySelector("file").getAttribute("href")
+      const href = node.getAttribute("href");
+      return (
+        typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
       );
-      return ["html", "htm"].includes(extension);
     });
   const fileResources = resources
     .filter(is(resourceTypes.WEB_CONTENT))

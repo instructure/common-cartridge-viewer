@@ -32,11 +32,16 @@ test("Previous link on last page works", async t => {
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
       "/test-cartridges/course-1/imsmanifest.xml"
-    )}#/resources/iaa4b4fdadec793530c31c58a249e0879`
+    )}#/resources/ie51764b374b71d85aef92a2fa25368ef`
   );
   await t.expect(nextButton.exists).notOk();
   await t.click(previousButton);
-  await t.expect(Selector("h1").withText("photo.jpg").exists).ok();
+  await t
+    .expect(
+      Selector("h1").withText("Assignment with Internal and External Links")
+        .exists
+    )
+    .ok();
 });
 
 test("All Items link works", async t => {
@@ -48,4 +53,16 @@ test("All Items link works", async t => {
 
   await t.click(Selector("a").withText("All Items"));
   await t.expect(Selector("div").withText("First Module").exists).ok();
+});
+
+fixture`Content Navigation sidebar links`;
+
+test("Sidebar link for Pages displays correct number of wiki pages", async t => {
+  const pagesSidebarLink = Selector("a").withExactText("Pages (1)");
+  await t.navigateTo(
+    `http://localhost:5000/?manifest=${encodeURIComponent(
+      "http://localhost:5000/test-cartridges/course-1/imsmanifest.xml"
+    )}#/`
+  );
+  await t.expect(pagesSidebarLink.exists).ok();
 });
