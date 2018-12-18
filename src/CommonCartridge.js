@@ -188,7 +188,7 @@ export default class CommonCartridge extends Component {
     this.activeNavLink = link;
   };
 
-  getExternalViewers = async () => {
+  getExternalViewers = async resourceIdsByHrefMap => {
     const xml = await this.getTextByPath(
       "course_settings/external_viewers.xml"
     );
@@ -197,6 +197,19 @@ export default class CommonCartridge extends Component {
     if (document == null) return;
     const externalViewers = new Map();
     Array.from(document.querySelectorAll("externalViewer")).forEach(node => {
+      const resourceId = resourceIdsByHrefMap.get(node.getAttribute("path"));
+      if (resourceId != null) {
+        externalViewers.set(resourceId, {
+          service: node.getAttribute("service"),
+          id: node.getAttribute("id")
+        });
+      } else {
+        console.warn(
+          `Entry ${node.getAttribute(
+            "path"
+          )} not associated in cartridge to any resource`
+        );
+      }
       externalViewers.set(node.getAttribute("identifier"), {
         service: node.getAttribute("service"),
         service_id: node.getAttribute("service-id")
@@ -221,7 +234,9 @@ export default class CommonCartridge extends Component {
     }
     let externalViewers = new Map();
     if (result.hasExternalViewers) {
-      externalViewers = await this.getExternalViewers();
+      externalViewers = await this.getExternalViewers(
+        result.resourceIdsByHrefMap
+      );
     }
     this.setState({
       ...result,
