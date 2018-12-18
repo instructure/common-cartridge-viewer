@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import { questionTypes } from "./constants";
 import RichContent from "./RichContent";
-import FormFieldGroup from "@instructure/ui-forms/lib/components/FormFieldGroup";
-import FormField from "@instructure/ui-forms/lib/components/FormField";
 import Icon from "@instructure/ui-icons/lib/Line/IconQuiz";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import View from "@instructure/ui-layout/lib/components/View";
 import Pill from "@instructure/ui-elements/lib/components/Pill";
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
+import { Trans } from "@lingui/macro";
+import Grid, {
+  GridCol,
+  GridRow
+} from "@instructure/ui-layout/lib/components/Grid";
+import IconCheckMark from "@instructure/ui-icons/lib/Line/IconCheckMark";
 
 export default class Assessment extends Component {
   render() {
     const doc = this.props.doc;
+
     const assessmentNode = doc.querySelector("assessment");
     if (assessmentNode == null) {
       // Not yet loaded
@@ -37,81 +40,112 @@ export default class Assessment extends Component {
         "presentation > material > mattext"
       );
 
+      let responses = [];
+      const conditions = itemNode.querySelectorAll(
+        'resprocessing respcondition[continue="No"] conditionvar > *'
+      );
+
+      conditions.forEach(condition => {
+        switch (condition.tagName) {
+          case "and":
+            condition
+              .querySelectorAll(":scope > varresult, :scope > varequal")
+              .forEach(result => responses.push(result.textContent));
+            break;
+          case "other":
+            break;
+          default:
+            responses.push(condition.textContent);
+            break;
+        }
+      });
+
+      const options = Array.from(
+        itemNode.querySelectorAll("presentation > response_lid response_label")
+      ).map(response => {
+        let id = response.getAttribute("ident");
+        return {
+          id,
+          text: response.querySelector("mattext").textContent,
+          valid: responses.includes(id)
+        };
+      });
+
       return {
         ident,
         metadata,
-        mattextNode
+        mattextNode,
+        options
       };
     });
+
+    const showQuizzesAnswers = !window.location.href.includes("hide-responses");
 
     const questionComponents = items.map((item, index) => {
       const type = item.metadata.get("cc_profile");
       const material = item.mattextNode && item.mattextNode.textContent;
 
       return (
-        <I18n key={index}>
-          {({ i18n }) => (
-            <View
-              key={index}
-              as="li"
-              padding="small none"
-              background="default"
-              borderWidth="small none none none"
-            >
-              {type === questionTypes.MULTIPLE_CHOICE ? (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`Multiple choice`)}
-                />
-              ) : type === questionTypes.MULTIPLE_RESPONSE ? (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`Multiple response`)}
-                />
-              ) : type === questionTypes.TRUEFALSE ? (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`True / false`)}
-                />
-              ) : type === questionTypes.FILL_IN_THE_BLANK ? (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`Fill in the blank`)}
-                />
-              ) : type === questionTypes.PATTERN_MATCH ? (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`Pattern match`)}
-                />
-              ) : type === questionTypes.ESSAY ? (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`Essay`)}
-                />
-              ) : (
-                <Pill
-                  variant="success"
-                  margin="0 0 small"
-                  text={i18n._(t`Other type`)}
-                />
-              )}
-
-              {material && (
-                <RichContent
-                  getUrlForPath={this.props.getUrlForPath}
-                  html={material}
-                  resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-                />
-              )}
-            </View>
+        <View
+          key={index}
+          as="li"
+          padding="none none small"
+          background="default"
+          borderWidth="none"
+        >
+          {material && (
+            <RichContent
+              getUrlForPath={this.props.getUrlForPath}
+              html={material}
+              padding="none"
+              margin="none"
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+            />
           )}
-        </I18n>
+
+          {type === questionTypes.MULTIPLE_CHOICE && (
+            <Pill margin="0 0 small" text={<Trans>Multiple choice</Trans>} />
+          )}
+          {type === questionTypes.MULTIPLE_RESPONSE && (
+            <Pill margin="0 0 small" text={<Trans>Multiple response</Trans>} />
+          )}
+          {type === questionTypes.TRUEFALSE && (
+            <Pill margin="0 0 small" text={<Trans>True / false</Trans>} />
+          )}
+          {type === questionTypes.FILL_IN_THE_BLANK && (
+            <Pill margin="0 0 small" text={<Trans>Fill in the blank</Trans>} />
+          )}
+          {type === questionTypes.PATTERN_MATCH && (
+            <Pill margin="0 0 small" text={<Trans>Pattern match</Trans>} />
+          )}
+          {type === questionTypes.ESSAY && (
+            <Pill margin="0 0 small" text={<Trans>Essay</Trans>} />
+          )}
+
+          {showQuizzesAnswers && (
+            <div className="question-answers">
+              <Grid vAlign="middle" colSpacing="none">
+                <GridRow>
+                  <GridCol width={5}>
+                    {item.options &&
+                      item.options.map(option => (
+                        <Grid vAlign="middle" colSpacing="none">
+                          <GridRow>
+                            <GridCol width={1}>
+                              {option.valid && (
+                                <IconCheckMark color="success" />
+                              )}
+                            </GridCol>
+                            <GridCol>{option.text}</GridCol>
+                          </GridRow>
+                        </Grid>
+                      ))}
+                  </GridCol>
+                </GridRow>
+              </Grid>
+            </div>
+          )}
+        </View>
       );
     });
 
@@ -127,7 +161,7 @@ export default class Assessment extends Component {
             <Icon color="primary-inverse" />
           </div>
           <span>
-            <Trans>Assessment</Trans>
+            <Trans>Quiz</Trans>
           </span>
         </div>
 
@@ -135,26 +169,30 @@ export default class Assessment extends Component {
           {title}
         </Heading>
 
-        {/* {metadata.has("qmd_assessmenttype") && (
-            <div>
-              <div>Type</div>
-              <div>{metadata.get("qmd_assessmenttype")}</div>
-            </div>
-          )} */}
-
-        <FormFieldGroup id="assessmentfields" description="">
+        <Grid vAlign="middle" colSpacing="none">
           {metadata.has("cc_maxattempts") && (
-            <FormField id="maxattempts" label="Max attempts">
-              <Text>{metadata.get("cc_maxattempts")}</Text>
-            </FormField>
+            <GridRow>
+              <GridCol width={2}>
+                <Text weight="bold">
+                  <Trans>Max attempts</Trans>
+                </Text>
+              </GridCol>
+              <GridCol>{metadata.get("cc_maxattempts")}</GridCol>
+            </GridRow>
           )}
-        </FormFieldGroup>
+          {/* {metadata.has("qmd_assessmenttype") && (
+            <GridRow>
+              <GridCol width={2}>Type</div>
+              <GridCol>{metadata.get("qmd_assessmenttype")}</GridCol>
+            </GridRow>
+          )} */}
+        </Grid>
 
-        <Heading level="h2" margin="medium 0 small">
+        <Heading level="h3" margin="medium 0 small">
           <Trans>Questions</Trans>
         </Heading>
-
-        <ul className="assessment-questions">{questionComponents}</ul>
+        <hr />
+        <ol className="assessment-questions">{questionComponents}</ol>
       </React.Fragment>
     );
   }

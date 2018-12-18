@@ -379,9 +379,9 @@ export default class CommonCartridge extends Component {
                           </NavLink>
                         )}
                         {this.state.assessmentResources.length > 0 && (
-                          <NavLink className="MenuItem" to="/assessments">
+                          <NavLink className="MenuItem" to="/quizzes">
                             <Trans>
-                              {`Assessments (${
+                              {`Quizzes (${
                                 this.state.assessmentResources.length
                               })`}
                             </Trans>
@@ -525,10 +525,10 @@ export default class CommonCartridge extends Component {
 
                         <Route
                           exact
-                          path="/assessments"
+                          path="/quizzes"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/assignments")}
+                              {this.setActiveNavLink("/quizzes")}
                               <AssessmentList
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}

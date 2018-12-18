@@ -40,7 +40,7 @@ export default class AssessmentList extends Component {
       <div className="Cartridge-content-inner">
         <Heading level="h1">
           <ScreenReaderContent>
-            <Trans>Assessments</Trans>
+            <Trans>Quizzes</Trans>
           </ScreenReaderContent>
         </Heading>
         <ul className="Assessments ExpandCollapseList">{listItems}</ul>
