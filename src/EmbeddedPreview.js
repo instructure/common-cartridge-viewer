@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Spinner from "@instructure/ui-elements/lib/components/Spinner";
 import { I18n } from "@lingui/react";
-import { t } from "@lingui/macro";
+import { Trans, t } from "@lingui/macro";
+import { getExtension } from "./utils";
 
-export default class DocumentPreview extends Component {
+export default class EmbeddedPreview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      embeddedViewerSrc: null,
+      embeddedViewerSrc: "",
       isLoading: true
     };
   }
@@ -28,7 +29,6 @@ export default class DocumentPreview extends Component {
   }
 
   handleMessage = event => {
-    console.debug(event);
     if (event.data == null || event.data[0] !== "{") {
       return;
     }
@@ -48,10 +48,11 @@ export default class DocumentPreview extends Component {
   };
 
   render() {
+    const extension = getExtension(this.state.embeddedViewerSrc);
     return (
-      <div className="DocumentPreview">
+      <div className="EmbeddedPreview">
         {this.state.isLoading && (
-          <div className="DocumentPreview--loading">
+          <div className="EmbeddedPreview--loading">
             <I18n>
               {({ i18n }) => (
                 <Spinner
@@ -63,14 +64,34 @@ export default class DocumentPreview extends Component {
             </I18n>
           </div>
         )}
-        {this.state.embeddedViewerSrc != null && (
+        {this.state.embeddedViewerSrc && (
           <I18n>
-            {({ i18n }) => (
-              <iframe
-                title={i18n._(t`Media viewer`)}
-                src={this.state.embeddedViewerSrc}
-              />
-            )}
+            {({ i18n }) =>
+              ["mp3"].includes(extension) ? (
+                <audio controls title={i18n._(t`Media viewer`)}>
+                  <source src={this.state.embeddedViewerSrc} type="audio/mp3" />
+                  <Trans>
+                    Your browser doesn't support HTML5 audio. Here is a{" "}
+                    <a href={this.state.embeddedViewerSrc}>link to the audio</a>{" "}
+                    instead.
+                  </Trans>
+                </audio>
+              ) : ["mp4"].includes(extension) ? (
+                <video controls title={i18n._(t`Media viewer`)}>
+                  <source src={this.state.embeddedViewerSrc} type="video/mp4" />
+                  <Trans>
+                    Your browser doesn't support HTML5 video. Here is a{" "}
+                    <a href={this.state.embeddedViewerSrc}>link to the audio</a>{" "}
+                    instead.
+                  </Trans>
+                </video>
+              ) : (
+                <iframe
+                  title={i18n._(t`Media viewer`)}
+                  src={this.state.embeddedViewerSrc}
+                />
+              )
+            }
           </I18n>
         )}
       </div>

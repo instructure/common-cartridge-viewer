@@ -37,6 +37,36 @@ export const submissionTypes = {
   NONE: "none"
 };
 
+export const NOTORIOUS_EXTENSIONS_SUPPORTED = [
+  "3gp",
+  "3gp",
+  "aac",
+  "aiff",
+  "asf",
+  "avi",
+  "flac",
+  "flv",
+  "m4v",
+  "mka",
+  "mkv",
+  "mov",
+  "mp3",
+  "mp3",
+  "mp4",
+  "mp4",
+  "mpeg",
+  "mpg",
+  "ogg",
+  "swf",
+  "swf",
+  "wav",
+  "wav",
+  "webm",
+  "webm",
+  "wma",
+  "wmv"
+];
+
 export const DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED = [
   "doc",
   "docx",

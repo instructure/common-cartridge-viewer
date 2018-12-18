@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
   resourceTypes,
-  DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED
+  DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
+  NOTORIOUS_EXTENSIONS_SUPPORTED
 } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
@@ -22,7 +23,7 @@ import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
 import { getExtension, getResourceHref } from "./utils";
 import { Trans } from "@lingui/macro";
-import DocumentPreview from "./DocumentPreview";
+import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 
 export default class Resource extends Component {
@@ -243,7 +244,10 @@ export default class Resource extends Component {
       type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
     const isDocumentWithPreview =
       type === resourceTypes.WEB_CONTENT &&
-      DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED.includes(extension) &&
+      [
+        ...DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
+        ...NOTORIOUS_EXTENSIONS_SUPPORTED
+      ].includes(extension) &&
       this.props.externalViewer != null;
 
     let componentToRender;
@@ -272,7 +276,7 @@ export default class Resource extends Component {
       );
     } else if (isDocumentWithPreview) {
       componentToRender = (
-        <DocumentPreview externalViewer={this.props.externalViewer} />
+        <EmbeddedPreview externalViewer={this.props.externalViewer} />
       );
     } else if (components[type] != null) {
       componentToRender = components[type];

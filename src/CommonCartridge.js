@@ -210,10 +210,6 @@ export default class CommonCartridge extends Component {
           )} not associated in cartridge to any resource`
         );
       }
-      externalViewers.set(node.getAttribute("identifier"), {
-        service: node.getAttribute("service"),
-        service_id: node.getAttribute("service-id")
-      });
     });
     return externalViewers;
   };
@@ -483,6 +479,7 @@ export default class CommonCartridge extends Component {
                               <Resource
                                 allItemsPath={this.activeNavLink}
                                 basepath={this.state.basepath}
+                                externalViewers={this.state.externalViewers}
                                 externalViewer={this.state.externalViewers.get(
                                   match.params.identifier
                                 )}
