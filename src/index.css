@@ -180,3 +180,7 @@ h3 {
   height: 400px;
   border: 0 none;
 }
+
+.navigation-link {
+  float: left;
+}

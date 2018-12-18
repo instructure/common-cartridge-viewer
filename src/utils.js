@@ -2,7 +2,8 @@ import {
   resourceTypes,
   submissionTypes,
   moduleMetaContentTypes,
-  WIKI_CONTENT_HREF_PREFIX
+  WIKI_CONTENT_HREF_PREFIX,
+  MODULE_LIST
 } from "./constants";
 import { i18n } from "./index";
 import { t } from "@lingui/macro";
@@ -240,7 +241,8 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
               return {
                 title,
                 type: resourceTypes.EXTERNAL_TOOL,
-                href: "#/external/tool"
+                href: `#/external/tool/${identifierref}`,
+                identifierref
               };
             }
           }
@@ -357,4 +359,15 @@ export function getAssignmentListResources(resources) {
         }
       )
     }));
+}
+
+export function getPreviousAndNextItems(moduleItems, href) {
+  const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
+  const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
+  const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
+  return [previousItem, nextItem];
+}
+
+export function isButtonNavigationEnabled(location) {
+  return location && location.state && location.state.from === MODULE_LIST;
 }

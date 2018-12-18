@@ -475,7 +475,7 @@ export default class CommonCartridge extends Component {
                         <Route
                           exact
                           path="/resources/:identifier"
-                          render={({ match }) => (
+                          render={({ match, location }) => (
                             <React.Fragment>
                               {this.activeNavLink === undefined &&
                                 !showcaseSingleResource &&
@@ -499,6 +499,7 @@ export default class CommonCartridge extends Component {
                                   this.state.resourceIdsByHrefMap
                                 }
                                 resourceMap={this.state.resourceMap}
+                                location={location}
                               />
                             </React.Fragment>
                           )}
@@ -614,15 +615,25 @@ export default class CommonCartridge extends Component {
                         <Route
                           exact
                           path="/course/navigation"
-                          render={({ match }) => (
-                            <CourseNavigationUnavailable />
+                          render={({ match, location }) => (
+                            <CourseNavigationUnavailable
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              location={location}
+                            />
                           )}
                         />
 
                         <Route
                           exact
-                          path="/external/tool"
-                          render={({ match }) => <PreviewUnavailable />}
+                          path="/external/tool/:identifier"
+                          render={({ match, location }) => (
+                            <PreviewUnavailable
+                              moduleItems={this.state.moduleItems}
+                              identifier={match.params.identifier}
+                              location={location}
+                            />
+                          )}
                         />
                       </Switch>
 

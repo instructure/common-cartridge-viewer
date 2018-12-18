@@ -5,13 +5,9 @@ import {
   resourceTypes,
   DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED
 } from "./constants";
-import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
-import Button from "@instructure/ui-buttons/lib/components/Button";
-import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
-import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
@@ -20,10 +16,15 @@ import Discussion from "./Discussion";
 import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
-import { getExtension, getResourceHref } from "./utils";
-import { Trans } from "@lingui/macro";
+import {
+  getExtension,
+  getResourceHref,
+  getPreviousAndNextItems,
+  isButtonNavigationEnabled
+} from "./utils";
 import DocumentPreview from "./DocumentPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
+import NavigationButtonContainer from "./NavigationButtonContainer";
 
 export default class Resource extends Component {
   static propTypes = {
@@ -80,77 +81,12 @@ export default class Resource extends Component {
     this.previousButton = node;
   };
 
-  setAllItemsButton = node => {
-    this.allItemsButton = node;
-  };
-
   handleNextButtonPressed = () => {
     this.nextButton && this.nextButton.click();
   };
 
   handlePreviousButtonPressed = () => {
     this.previousButton && this.previousButton.click();
-  };
-
-  handleAllItemsButtonPressed = () => {
-    this.allItemsButton.click();
-  };
-
-  makeNavigationButtonHrefFromModule = module =>
-    module.type === resourceTypes.EXTERNAL_TOOL
-      ? "/external/tool"
-      : `/resources/${module.identifierref || module.identifier}`;
-
-  renderPreviousButton = previousItem => {
-    return (
-      <div className="previous-link">
-        <Tooltip variant="inverse" tip={previousItem.title} placement="end">
-          <Button
-            to={this.makeNavigationButtonHrefFromModule(previousItem)}
-            variant="ghost"
-            as={RouterLink}
-            innerRef={this.setPreviousButton}
-            onClick={this.handlePreviousButtonPressed}
-          >
-            <Trans>Previous</Trans>
-          </Button>
-        </Tooltip>
-      </div>
-    );
-  };
-
-  renderNextButton = nextItem => {
-    return (
-      <div className="next-link">
-        <Tooltip variant="inverse" tip={nextItem.title} placement="start">
-          <Button
-            to={this.makeNavigationButtonHrefFromModule(nextItem)}
-            variant="ghost"
-            as={RouterLink}
-            innerRef={this.setNextButton}
-            onClick={this.handleNextButtonPressed}
-          >
-            <Trans>Next</Trans>
-          </Button>
-        </Tooltip>
-      </div>
-    );
-  };
-
-  renderAllItemsButton = () => {
-    return (
-      <Tooltip variant="inverse" tip="All Items" placement="bottom">
-        <Button
-          to={this.props.allItemsPath}
-          variant="ghost"
-          as={RouterLink}
-          innerRef={this.setAllItemsButton}
-          onClick={this.handleAllItemsButtonPressed}
-        >
-          <Trans>All Items</Trans>
-        </Button>
-      </Tooltip>
-    );
   };
 
   renderResourceDocument = resource => {
@@ -294,7 +230,13 @@ export default class Resource extends Component {
     const { moduleItems } = this.props;
 
     if (resource == null) {
-      return <ResourceUnavailable />;
+      return (
+        <ResourceUnavailable
+          moduleItems={moduleItems}
+          identifier={this.props.identifier}
+          location={this.props.location}
+        />
+      );
     }
 
     if (resource.getAttribute("identifierref") != null) {
@@ -304,32 +246,20 @@ export default class Resource extends Component {
     }
 
     const href = getResourceHref(resource);
-    const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
-    const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
-    const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
+    const [previousItem, nextItem] = getPreviousAndNextItems(moduleItems, href);
+    const buttonNavigationEnabled = isButtonNavigationEnabled(
+      this.props.location
+    );
 
     return (
       <React.Fragment>
         <div>
-          <Flex margin="0 0 medium">
-            <FlexItem padding="small" width="14rem">
-              {previousItem && this.renderPreviousButton(previousItem)}
-            </FlexItem>
-            <FlexItem padding="small" grow={true} align="center">
-              <Flex justifyItems="center">
-                <FlexItem>
-                  {this.props.allItemsPath && this.renderAllItemsButton()}
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-            <FlexItem padding="small" width="14rem">
-              <Flex justifyItems="end">
-                <FlexItem>
-                  {nextItem && this.renderNextButton(nextItem)}
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-          </Flex>
+          <NavigationButtonContainer
+            buttonNavigationEnabled={buttonNavigationEnabled}
+            previousItem={previousItem}
+            nextItem={nextItem}
+            location={this.props.location}
+          />
         </div>
         <div
           style={{
