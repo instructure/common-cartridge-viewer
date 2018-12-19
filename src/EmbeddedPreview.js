@@ -20,7 +20,7 @@ export default class EmbeddedPreview extends Component {
           type: "externalViewerRequest",
           body: this.props.externalViewer
         }),
-        "*"
+        window.parent.location.origin
       );
     }
   }
