@@ -191,7 +191,7 @@ export default class Assessment extends Component {
         <Heading level="h3" margin="medium 0 small">
           <Trans>Questions</Trans>
         </Heading>
-        <hr />
+        <hr aria-hidden="true" />
         <ol className="assessment-questions">{questionComponents}</ol>
       </React.Fragment>
     );
