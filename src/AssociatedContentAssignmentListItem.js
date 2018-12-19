@@ -63,6 +63,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
         description={this.state.workflowState}
         points={this.state.pointsPossible}
         workflowState={this.state.workflowState}
+        from={this.props.from}
       />
     );
   }

@@ -57,7 +57,13 @@ export default class FileListItem extends Component {
             <IconPaperclip color={iconColor} />
           </span>
           <div style={{ flex: 1 }}>
-            <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
+            <Link
+              as={RouterLink}
+              to={{
+                pathname: `resources/${this.props.identifier}`,
+                state: { from: this.props.from }
+              }}
+            >
               {this.props.title ||
                 this.state.title.replace(/^(web_resources\/)/, "")}
             </Link>
