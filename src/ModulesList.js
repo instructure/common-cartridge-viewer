@@ -188,7 +188,7 @@ export default class ModulesList extends Component {
 
         return (
           <li className="Module" key={index}>
-            <Heading level="h3" id={`modules/${identifier}`}>
+            <Heading level="h2" id={`modules/${identifier}`}>
               <div style={{ padding: "12px 0 6px 0" }}>{title}</div>
             </Heading>
 
