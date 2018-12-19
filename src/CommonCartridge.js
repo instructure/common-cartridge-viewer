@@ -456,16 +456,18 @@ export default class CommonCartridge extends Component {
                               ) : (
                                 <React.Fragment>
                                   {this.setActiveNavLink("/")}
-                                  <ModulesList
-                                    getTextByPath={this.getTextByPath}
-                                    associatedContentAssignmentHrefsSet={
-                                      this.state
-                                        .associatedContentAssignmentHrefsSet
-                                    }
-                                    moduleItems={this.state.moduleItems}
-                                    modules={this.state.modules}
-                                    match={match}
-                                  />
+                                  <ul>
+                                    <ModulesList
+                                      getTextByPath={this.getTextByPath}
+                                      associatedContentAssignmentHrefsSet={
+                                        this.state
+                                          .associatedContentAssignmentHrefsSet
+                                      }
+                                      moduleItems={this.state.moduleItems}
+                                      modules={this.state.modules}
+                                      match={match}
+                                    />
+                                  </ul>
                                 </React.Fragment>
                               )}
                             </React.Fragment>
