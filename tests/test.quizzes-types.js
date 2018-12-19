@@ -3,7 +3,7 @@ import { Selector } from "testcafe";
 fixture`Quiz with all question types`
   .page`http://localhost:5000/?manifest=/test-cartridges/all-question-types/imsmanifest.xml#/`;
 
-test("Resourde loads as quiz", async t => {
+test("Resource loads as quiz", async t => {
   await t.expect(Selector(".resource-label").withText("QUIZ").exists).ok();
   await t.expect(Selector(".MenuItem").withText("Quizzes (1)").exists).ok();
 });

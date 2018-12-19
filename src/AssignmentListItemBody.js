@@ -15,7 +15,13 @@ export default class AssignmentListItemBody extends PureComponent {
             <IconAssignment color={this.props.iconColor} />
           </span>
           <div style={{ flex: 1 }}>
-            <Link as={RouterLink} to={`resources/${this.props.identifier}`}>
+            <Link
+              as={RouterLink}
+              to={{
+                pathname: `resources/${this.props.identifier}`,
+                state: { from: this.props.from }
+              }}
+            >
               {this.props.title}
             </Link>
           </div>

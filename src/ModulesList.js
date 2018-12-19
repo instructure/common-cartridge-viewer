@@ -3,7 +3,11 @@ import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Link from "@instructure/ui-elements/lib/components/Link";
 
-import { resourceTypes, WIKI_CONTENT_HREF_PREFIX } from "./constants";
+import {
+  resourceTypes,
+  WIKI_CONTENT_HREF_PREFIX,
+  MODULE_LIST
+} from "./constants";
 import NavLink from "./NavLink";
 import AssignmentListItem from "./AssignmentListItem";
 import AssessmentListItem from "./AssessmentListItem";
@@ -49,6 +53,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
+                from={MODULE_LIST}
               />
             );
           }
@@ -63,6 +68,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
+                from={MODULE_LIST}
               />
             );
           }
@@ -81,6 +87,7 @@ export default class ModulesList extends Component {
                   item={item}
                   key={index}
                   src={this.props.src}
+                  from={MODULE_LIST}
                 />
               );
             }
@@ -96,6 +103,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
+                from={MODULE_LIST}
               />
             );
           }
@@ -110,6 +118,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
+                from={MODULE_LIST}
               />
             );
           }
@@ -124,6 +133,7 @@ export default class ModulesList extends Component {
                 metadata={item.metadata}
                 src={this.props.src}
                 title={item.title}
+                from={MODULE_LIST}
               />
             );
           }
@@ -134,12 +144,20 @@ export default class ModulesList extends Component {
                 key={index}
                 identifier={item.identifierref}
                 item={item}
+                from={MODULE_LIST}
               />
             );
           }
 
           if (item.type === resourceTypes.EXTERNAL_TOOL) {
-            return <ExternalToolListItem key={index} item={item} />;
+            return (
+              <ExternalToolListItem
+                key={index}
+                item={item}
+                identifier={item.identifierref}
+                from={MODULE_LIST}
+              />
+            );
           }
 
           return (
