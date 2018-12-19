@@ -6,7 +6,7 @@ fixture`Course with 1 module (has all item types)`
 )}#/`;
 
 test("Module Title is displayed", async t => {
-  await t.expect(Selector(".Module h3").withText(`First Module`).exists).ok();
+  await t.expect(Selector(".Module h2").withText(`First Module`).exists).ok();
 });
 
 test("Assignment Items work", async t => {

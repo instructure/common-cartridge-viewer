@@ -32,7 +32,7 @@ export default class ModulesList extends Component {
             return (
               <li key={index} className="ExpandCollapseList-item">
                 <div className="ExpandCollapseList-item-inner">
-                  <h3>{item.title}</h3>
+                  <h2>{item.title}</h2>
                 </div>
               </li>
             );
