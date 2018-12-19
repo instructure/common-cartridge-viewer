@@ -443,7 +443,6 @@ export default class CommonCartridge extends Component {
                                 </React.Fragment>
                               ) : (
                                 <React.Fragment>
-                                  {this.setActiveNavLink("/")}
                                   <ul>
                                     <ModulesList
                                       getTextByPath={this.getTextByPath}
