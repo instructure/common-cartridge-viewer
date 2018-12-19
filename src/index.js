@@ -3,7 +3,8 @@ import "whatwg-fetch";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import "@instructure/ui-themes/lib/canvas";
+import theme from "@instructure/ui-themes/lib/canvas";
+import highContrastTheme from "@instructure/ui-themes/lib/canvas/high-contrast";
 import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
@@ -19,6 +20,16 @@ const queryString = require("query-string-es5"); // has issue with module import
 const parsedQueryString = queryString.parse(window.location.search);
 
 export const i18n = setupI18n({ language: "en", catalogs: catalogs });
+
+const highContrastEnabled =
+  typeof parsedQueryString["high-contrast"] !== "undefined";
+
+if (highContrastEnabled) {
+  highContrastTheme.use();
+  import("./high-contrast.css");
+} else {
+  theme.use();
+}
 
 ReactDOM.render(
   <I18nProvider i18n={i18n}>
