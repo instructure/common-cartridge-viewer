@@ -5,6 +5,7 @@ export const CANVAS_OBJECT_REFERENCE = "%24CANVAS_OBJECT_REFERENCE%24";
 export const CANVAS_COURSE_REFERENCE = "%24CANVAS_COURSE_REFERENCE%24";
 export const WIKI_CONTENT_HREF_PREFIX = "wiki_content";
 export const ASSOCIATED_CONTENT_ASSIGNMENT_TITLE_PREFIX_REGEX = /(^Assignment: )/;
+export const MODULE_LIST = "module_list";
 
 export const resourceTypes = {
   ASSESSMENT_CONTENT: "imsqti_xmlv1p2/imscc_xmlv1p1/assessment",
@@ -36,6 +37,36 @@ export const submissionTypes = {
   ON_PAPER: "on_paper",
   NONE: "none"
 };
+
+export const NOTORIOUS_EXTENSIONS_SUPPORTED = [
+  "3gp",
+  "3gp",
+  "aac",
+  "aiff",
+  "asf",
+  "avi",
+  "flac",
+  "flv",
+  "m4v",
+  "mka",
+  "mkv",
+  "mov",
+  "mp3",
+  "mp3",
+  "mp4",
+  "mp4",
+  "mpeg",
+  "mpg",
+  "ogg",
+  "swf",
+  "swf",
+  "wav",
+  "wav",
+  "webm",
+  "webm",
+  "wma",
+  "wmv"
+];
 
 export const DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED = [
   "doc",

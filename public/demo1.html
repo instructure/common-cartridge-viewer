@@ -24,28 +24,52 @@
       window.addEventListener(
         "message",
         function(event) {
-          if (event.data == null || event.data[0] !== "{") {
+          if (event.data == null) {
             return;
           }
           let request;
-          try {
-            request = JSON.parse(event.data);
-          } catch (error) {
-            console.warn("Error parsing data from postMessage");
+          if (
+            event.data &&
+            typeof event.data === "string" &&
+            event.data[0] === "{"
+          ) {
+            try {
+              request = JSON.parse(event.data);
+            } catch (error) {
+              console.warn("Error parsing data from postMessage");
+              return;
+            }
+          } else if (typeof event.data === "object") {
+            request = event.data;
+          } else {
             return;
           }
+
           if (request.type !== "externalViewerRequest") {
             return;
           }
           // simulating media preprocessor
           setTimeout(function() {
-            iframe.contentWindow.postMessage(
-              JSON.stringify({
-                type: "externalViewerResponse",
-                body: { url: "/example-viewer.html" }
-              }),
-              "*"
-            );
+            if (request.body.service === "docviewer") {
+              iframe.contentWindow.postMessage(
+                JSON.stringify({
+                  type: "externalViewerResponse",
+                  body: { url: "/example-viewer.html" }
+                }),
+                "*"
+              );
+            } else if (request.body.service === "notorious") {
+              iframe.contentWindow.postMessage(
+                JSON.stringify({
+                  type: "externalViewerResponse",
+                  body: {
+                    url:
+                      "https://archive.org/download/testmp3testfile/mpthreetest.mp3"
+                  }
+                }),
+                "*"
+              );
+            }
           }, 1500);
         },
         false

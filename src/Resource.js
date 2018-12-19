@@ -1,9 +1,10 @@
 import { basename } from "path";
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import {
   resourceTypes,
-  DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED
+  DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
+  NOTORIOUS_EXTENSIONS_SUPPORTED,
+  MODULE_LIST
 } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
@@ -22,14 +23,11 @@ import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
 import { getExtension, getResourceHref } from "./utils";
 import { Trans } from "@lingui/macro";
-import DocumentPreview from "./DocumentPreview";
+import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
+import PreviewUnavailable from "./PreviewUnavailable";
 
 export default class Resource extends Component {
-  static propTypes = {
-    allItemsPath: PropTypes.string
-  };
-
   constructor(props) {
     super(props);
     this.state = {
@@ -80,10 +78,6 @@ export default class Resource extends Component {
     this.previousButton = node;
   };
 
-  setAllItemsButton = node => {
-    this.allItemsButton = node;
-  };
-
   handleNextButtonPressed = () => {
     this.nextButton && this.nextButton.click();
   };
@@ -92,13 +86,9 @@ export default class Resource extends Component {
     this.previousButton && this.previousButton.click();
   };
 
-  handleAllItemsButtonPressed = () => {
-    this.allItemsButton.click();
-  };
-
   makeNavigationButtonHrefFromModule = module =>
     module.type === resourceTypes.EXTERNAL_TOOL
-      ? "/external/tool"
+      ? `/external/tool/${module.identifierref || module.identifier}`
       : `/resources/${module.identifierref || module.identifier}`;
 
   renderPreviousButton = previousItem => {
@@ -106,7 +96,10 @@ export default class Resource extends Component {
       <div className="previous-link">
         <Tooltip variant="inverse" tip={previousItem.title} placement="end">
           <Button
-            to={this.makeNavigationButtonHrefFromModule(previousItem)}
+            to={{
+              pathname: this.makeNavigationButtonHrefFromModule(previousItem),
+              state: this.props.location.state
+            }}
             variant="ghost"
             as={RouterLink}
             innerRef={this.setPreviousButton}
@@ -124,7 +117,10 @@ export default class Resource extends Component {
       <div className="next-link">
         <Tooltip variant="inverse" tip={nextItem.title} placement="start">
           <Button
-            to={this.makeNavigationButtonHrefFromModule(nextItem)}
+            to={{
+              pathname: this.makeNavigationButtonHrefFromModule(nextItem),
+              state: this.props.location.state
+            }}
             variant="ghost"
             as={RouterLink}
             innerRef={this.setNextButton}
@@ -134,22 +130,6 @@ export default class Resource extends Component {
           </Button>
         </Tooltip>
       </div>
-    );
-  };
-
-  renderAllItemsButton = () => {
-    return (
-      <Tooltip variant="inverse" tip="All Items" placement="bottom">
-        <Button
-          to={this.props.allItemsPath}
-          variant="ghost"
-          as={RouterLink}
-          innerRef={this.setAllItemsButton}
-          onClick={this.handleAllItemsButtonPressed}
-        >
-          <Trans>All Items</Trans>
-        </Button>
-      </Tooltip>
     );
   };
 
@@ -243,7 +223,10 @@ export default class Resource extends Component {
       type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
     const isDocumentWithPreview =
       type === resourceTypes.WEB_CONTENT &&
-      DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED.includes(extension) &&
+      [
+        ...DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
+        ...NOTORIOUS_EXTENSIONS_SUPPORTED
+      ].includes(extension) &&
       this.props.externalViewer != null;
 
     let componentToRender;
@@ -272,7 +255,7 @@ export default class Resource extends Component {
       );
     } else if (isDocumentWithPreview) {
       componentToRender = (
-        <DocumentPreview externalViewer={this.props.externalViewer} />
+        <EmbeddedPreview externalViewer={this.props.externalViewer} />
       );
     } else if (components[type] != null) {
       componentToRender = components[type];
@@ -289,43 +272,57 @@ export default class Resource extends Component {
     return componentToRender;
   };
 
-  render() {
-    let resource = this.props.resourceMap.get(this.props.identifier);
-    const { moduleItems } = this.props;
-
-    if (resource == null) {
-      return <ResourceUnavailable />;
-    }
-
+  deriveResourceHref = resource => {
     if (resource.getAttribute("identifierref") != null) {
       resource = this.props.resourceMap.get(
         resource.getAttribute("identifierref")
       );
     }
 
-    const href = getResourceHref(resource);
+    return getResourceHref(resource);
+  };
+
+  render() {
+    let resource = this.props.resourceMap.get(this.props.identifier);
+    const { moduleItems } = this.props;
+    const isExternalToolPath =
+      this.props.location &&
+      this.props.location.pathname &&
+      this.props.location.pathname.startsWith("/external/tool");
+    const moduleItem = this.props.moduleItems.find(
+      moduleItem => moduleItem.identifierref === this.props.identifier
+    );
+
+    const isValidExternalToolResource =
+      isExternalToolPath && moduleItem !== undefined;
+
+    if (resource == null && isValidExternalToolResource === false) {
+      return <ResourceUnavailable />;
+    }
+
+    const href = resource ? this.deriveResourceHref(resource) : moduleItem.href;
     const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
-
+    const navigationButtonsEnabled =
+      this.props.location &&
+      this.props.location.state &&
+      this.props.location.state.from === MODULE_LIST;
     return (
       <React.Fragment>
         <div>
           <Flex margin="0 0 medium">
             <FlexItem padding="small" width="14rem">
-              {previousItem && this.renderPreviousButton(previousItem)}
+              {navigationButtonsEnabled &&
+                previousItem &&
+                this.renderPreviousButton(previousItem)}
             </FlexItem>
-            <FlexItem padding="small" grow={true} align="center">
-              <Flex justifyItems="center">
-                <FlexItem>
-                  {this.props.allItemsPath && this.renderAllItemsButton()}
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-            <FlexItem padding="small" width="14rem">
+            <FlexItem padding="small" width="14rem" grow={true}>
               <Flex justifyItems="end">
                 <FlexItem>
-                  {nextItem && this.renderNextButton(nextItem)}
+                  {navigationButtonsEnabled &&
+                    nextItem &&
+                    this.renderNextButton(nextItem)}
                 </FlexItem>
               </Flex>
             </FlexItem>
@@ -336,7 +333,11 @@ export default class Resource extends Component {
             clear: "both"
           }}
         >
-          {this.renderResourceDocument(resource)}
+          {isValidExternalToolResource ? (
+            <PreviewUnavailable />
+          ) : (
+            this.renderResourceDocument(resource)
+          )}
         </div>
       </React.Fragment>
     );

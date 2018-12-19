@@ -16,7 +16,13 @@ export default class ExternalToolListItem extends Component {
           </div>
 
           <div style={{ flex: 1 }}>
-            <Link as={NavLink} to={`external/tool`}>
+            <Link
+              as={NavLink}
+              to={{
+                pathname: `external/tool/${this.props.identifier}`,
+                state: { from: this.props.from }
+              }}
+            >
               <span>{this.props.item.title || <Trans>Untitled</Trans>}</span>
             </Link>
           </div>

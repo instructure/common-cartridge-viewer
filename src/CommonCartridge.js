@@ -34,7 +34,6 @@ import waitingWristWatch from "./images/waiting-wrist-watch.svg";
 import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
-import PreviewUnavailable from "./PreviewUnavailable";
 import Unavailable from "./Unavailable";
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
@@ -184,10 +183,6 @@ export default class CommonCartridge extends Component {
     this.setState({ loadProgress: event });
   };
 
-  setActiveNavLink = link => {
-    this.activeNavLink = link;
-  };
-
   getExternalViewers = async resourceIdsByHrefMap => {
     const xml = await this.getTextByPath(
       "course_settings/external_viewers.xml"
@@ -210,10 +205,6 @@ export default class CommonCartridge extends Component {
           )} not associated in cartridge to any resource`
         );
       }
-      externalViewers.set(node.getAttribute("identifier"), {
-        service: node.getAttribute("service"),
-        service_id: node.getAttribute("service-id")
-      });
     });
     return externalViewers;
   };
@@ -412,7 +403,6 @@ export default class CommonCartridge extends Component {
                             <React.Fragment>
                               {showcaseSingleResource !== null ? (
                                 <React.Fragment>
-                                  {this.setActiveNavLink(null)}
                                   <Resource
                                     getTextByPath={this.getTextByPath}
                                     externalViewer={this.state.externalViewers.get(
@@ -433,7 +423,6 @@ export default class CommonCartridge extends Component {
                                 </React.Fragment>
                               ) : this.state.showcaseResources.length === 1 ? (
                                 <React.Fragment>
-                                  {this.setActiveNavLink("/")}
                                   <Resource
                                     externalViewer={this.state.externalViewers.get(
                                       this.state.showcaseResources[0].getAttribute(
@@ -450,7 +439,6 @@ export default class CommonCartridge extends Component {
                                     resourceIdsByHrefMap={
                                       this.state.resourceIdsByHrefMap
                                     }
-                                    allItemsPath={this.activeNavLink}
                                   />
                                 </React.Fragment>
                               ) : (
@@ -477,14 +465,11 @@ export default class CommonCartridge extends Component {
                         <Route
                           exact
                           path="/resources/:identifier"
-                          render={({ match }) => (
+                          render={({ match, location }) => (
                             <React.Fragment>
-                              {this.activeNavLink === undefined &&
-                                !showcaseSingleResource &&
-                                this.setActiveNavLink("/")}
                               <Resource
-                                allItemsPath={this.activeNavLink}
                                 basepath={this.state.basepath}
+                                externalViewers={this.state.externalViewers}
                                 externalViewer={this.state.externalViewers.get(
                                   match.params.identifier
                                 )}
@@ -501,6 +486,7 @@ export default class CommonCartridge extends Component {
                                   this.state.resourceIdsByHrefMap
                                 }
                                 resourceMap={this.state.resourceMap}
+                                location={location}
                               />
                             </React.Fragment>
                           )}
@@ -511,7 +497,6 @@ export default class CommonCartridge extends Component {
                           path="/modules/:module"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/")}
                               <ModulesList
                                 getTextByPath={this.getTextByPath}
                                 associatedContentAssignmentHrefsSet={
@@ -530,7 +515,6 @@ export default class CommonCartridge extends Component {
                           path="/quizzes"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/quizzes")}
                               <AssessmentList
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}
@@ -546,7 +530,6 @@ export default class CommonCartridge extends Component {
                           path="/pages"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/pages")}
                               <WikiContentList
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}
@@ -562,7 +545,6 @@ export default class CommonCartridge extends Component {
                           path="/discussions"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/discussions")}
                               <DiscussionList
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}
@@ -578,7 +560,6 @@ export default class CommonCartridge extends Component {
                           path="/files"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/files")}
                               <FileList
                                 resources={this.state.fileResources}
                                 moduleItems={this.state.moduleItems}
@@ -593,7 +574,6 @@ export default class CommonCartridge extends Component {
                           path="/assignments"
                           render={({ match }) => (
                             <React.Fragment>
-                              {this.setActiveNavLink("/assignments")}
                               <AssignmentList
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}
@@ -623,8 +603,32 @@ export default class CommonCartridge extends Component {
 
                         <Route
                           exact
-                          path="/external/tool"
-                          render={({ match }) => <PreviewUnavailable />}
+                          path="/external/tool/:identifier"
+                          render={({ match, location }) => (
+                            <React.Fragment>
+                              <Resource
+                                basepath={this.state.basepath}
+                                externalViewers={this.state.externalViewers}
+                                externalViewer={this.state.externalViewers.get(
+                                  match.params.identifier
+                                )}
+                                getBlobByPath={this.getBlobByPath}
+                                getTextByPath={this.getTextByPath}
+                                getUrlForPath={this.getUrlForPath}
+                                identifier={match.params.identifier}
+                                isCartridgeRemotelyExpanded={
+                                  this.state.isCartridgeRemotelyExpanded
+                                }
+                                moduleItems={this.state.moduleItems}
+                                modules={this.state.modules}
+                                resourceIdsByHrefMap={
+                                  this.state.resourceIdsByHrefMap
+                                }
+                                resourceMap={this.state.resourceMap}
+                                location={location}
+                              />
+                            </React.Fragment>
+                          )}
                         />
                       </Switch>
 

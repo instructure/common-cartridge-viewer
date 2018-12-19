@@ -240,7 +240,8 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
               return {
                 title,
                 type: resourceTypes.EXTERNAL_TOOL,
-                href: "#/external/tool"
+                href: `#/external/tool/${identifierref}`,
+                identifierref
               };
             }
           }
