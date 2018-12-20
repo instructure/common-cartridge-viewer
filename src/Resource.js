@@ -310,7 +310,7 @@ export default class Resource extends Component {
       this.props.location.state.from === MODULE_LIST;
     return (
       <React.Fragment>
-        <div>
+        {navigationButtonsEnabled && (previousItem || nextItem) && (
           <Flex margin="0 0 medium">
             <FlexItem padding="small" width="14rem">
               {navigationButtonsEnabled &&
@@ -327,12 +327,9 @@ export default class Resource extends Component {
               </Flex>
             </FlexItem>
           </Flex>
-        </div>
-        <div
-          style={{
-            clear: "both"
-          }}
-        >
+        )}
+
+        <div style={{ clear: "both" }}>
           {isValidExternalToolResource ? (
             <PreviewUnavailable />
           ) : (
