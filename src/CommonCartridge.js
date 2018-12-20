@@ -64,7 +64,22 @@ export default class CommonCartridge extends Component {
     };
   }
 
+  handleDocumentKeydown = event => {
+    if (event.code !== "Enter") return;
+    const wasLinkTriggered = event.target.nodeName === "A";
+    if (wasLinkTriggered === false) return;
+    setTimeout(() => {
+      const isFocusInMain = this.mainRef.contains(document.activeElement);
+      const isFocusOnLink =
+        document.activeElement && document.activeElement.nodeName === "A";
+      if (isFocusInMain === false && isFocusOnLink === false) {
+        this.mainRef.focus();
+      }
+    }, 0);
+  };
+
   componentDidMount() {
+    document.addEventListener("keydown", this.handleDocumentKeydown);
     if (this.props.file != null) {
       this.getEntriesFromDroppedFile();
     } else if (this.props.cartridge != null) {
@@ -392,8 +407,10 @@ export default class CommonCartridge extends Component {
                   <GridCol width={showcaseSingleResource !== null ? 12 : 10}>
                     <View
                       as="main"
+                      elementRef={ref => (this.mainRef = ref)}
                       margin={this.props.compact ? "none" : "small"}
                       background="default"
+                      tabIndex="-1"
                     >
                       <Switch>
                         <Route
