@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import IconDocument from "@instructure/ui-icons/lib/Line/IconDocument";
-import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
-import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
+import WorkflowStateIcon from "./WorkflowStateIcon";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { basename } from "path";
 
@@ -70,14 +69,7 @@ export default class WikiContentListItem extends Component {
             </Link>
           </div>
           {this.state.workflowState != null && (
-            <div className="ExpandCollapseList-item-workflow-state">
-              {this.state.workflowState === "unpublished" && (
-                <IconUnpublished color={iconColor} />
-              )}
-              {["published", "active"].includes(this.state.workflowState) && (
-                <IconPublish color={iconColor} />
-              )}
-            </div>
+            <WorkflowStateIcon workflowState={this.state.workflowState} />
           )}
         </div>
       </li>

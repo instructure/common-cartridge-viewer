@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import IconDiscussion from "@instructure/ui-icons/lib/Line/IconDiscussion";
-import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
-import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
+import WorkflowStateIcon from "./WorkflowStateIcon";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { Trans } from "@lingui/macro";
 
@@ -78,14 +77,7 @@ export default class DiscussionListItem extends Component {
           )}
 
           {this.state.workflowState != null && (
-            <div className="ExpandCollapseList-item-workflow-state">
-              {this.state.workflowState === "unpublished" && (
-                <IconUnpublished color={iconColor} />
-              )}
-              {["published", "active"].includes(this.state.workflowState) && (
-                <IconPublish color={iconColor} />
-              )}
-            </div>
+            <WorkflowStateIcon workflowState={this.state.workflowState} />
           )}
         </div>
       </li>
