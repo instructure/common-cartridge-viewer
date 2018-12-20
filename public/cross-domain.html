@@ -13,11 +13,11 @@
       }
     </style>
   </head>
-
   <body class="container">
     <iframe
-      sandbox="allow-scripts allow-same-origin"
-      src="/?manifest=/test-cartridges/course-1/imsmanifest.xml"
+      referrerpolicy="no-referrer"
+      sandbox="allow-same-origin allow-scripts allow-popups"
+      src="http://localhost:3000/?manifest=/test-cartridges/course-1/imsmanifest.xml"
     ></iframe>
     <script>
       const iframe = document.querySelector("iframe");
