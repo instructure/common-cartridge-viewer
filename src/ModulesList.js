@@ -93,7 +93,7 @@ export default class ModulesList extends Component {
             }
           }
 
-          if (item.type === resourceTypes.ASSESSMENT_CONTENT ||  item.type === resourceTypes.CANVAS_ASSESTMENT_CONTENT) {
+          if (item.type === resourceTypes.ASSESSMENT_CONTENT) {
             return (
               <AssessmentListItem
                 dependencyHrefs={item.dependencyHrefs}
