@@ -129,7 +129,7 @@ export default class Assessment extends Component {
                   <GridCol width={5}>
                     {item.options &&
                       item.options.map(option => (
-                        <Grid vAlign="middle" colSpacing="none">
+                        <Grid key={option.id} vAlign="middle" colSpacing="none">
                           <GridRow>
                             <GridCol width={1}>
                               {option.valid && (
