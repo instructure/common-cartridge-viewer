@@ -1,0 +1,6 @@
+.MenuItem.active,
+.MenuItem:active {
+  color: #0770a3;
+  border-left: 3px solid #0770a3;
+  text-decoration: underline;
+}
