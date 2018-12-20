@@ -165,6 +165,22 @@ export default class Resource extends Component {
           type="text/xml"
         />
       ),
+      [resourceTypes.CANVAS_ASSESTMENT_CONTENT]: (
+        <EntryDocument
+          getTextByPath={this.props.getTextByPath}
+          href={href}
+          render={doc => (
+            <Assessment
+              getTextByPath={this.props.getTextByPath}
+              getUrlForPath={this.props.getUrlForPath}
+              doc={doc}
+              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+            />
+          )}
+          src={this.props.src}
+          type="text/xml"
+        />
+      ),
       [resourceTypes.ASSIGNMENT]: (
         <EntryDocument
           getTextByPath={this.props.getTextByPath}

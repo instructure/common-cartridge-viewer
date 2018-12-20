@@ -134,6 +134,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     .filter(isNot(resourceTypes.ASSIGNMENT))
     .filter(isNot(resourceTypes.ASSOCIATED_CONTENT))
     .filter(isNot(resourceTypes.ASSESSMENT_CONTENT))
+    .filter(isNot(resourceTypes.CANVAS_ASSESTMENT_CONTENT))
     .filter(isNot(resourceTypes.WEB_CONTENT));
   const discussionResources = resources
     .filter(is(resourceTypes.DISCUSSION_TOPIC))
@@ -175,6 +176,29 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
   const assessmentResources = resources
     .filter(is(resourceTypes.ASSESSMENT_CONTENT))
     .filter(node => node.querySelector("file"));
+
+  const canvasAssessmentResources = resources
+    .filter(node => 
+      node.getAttribute("href")
+      && node.getAttribute("href").includes("assessment_meta")
+      && is(resourceTypes.CANVAS_ASSESTMENT_CONTENT)
+    )
+    .filter(node => node.querySelector("file"));
+
+  if(canvasAssessmentResources.length > 0) {
+    // Since we have custom canvas assessments, replace the corresponding
+    // assesment file with the canvas one so we display all of the content
+    // (questions) available instead of only the IMSCC supported ones.
+    assessmentResources.map(resource => {
+      const [identifier] = resource.querySelector("file").getAttribute("href").split("/")
+      const canvasFile = canvasAssessmentResources.map(resource => 
+        resource.querySelector('file[href*="non_cc_assessment"]')  
+      ).filter(file => file.getAttribute('href').includes(identifier))
+      
+      canvasFile && resource.querySelector("file").setAttribute("href", canvasFile[0].getAttribute("href"))
+    })
+  }
+
   const assignmentResources = resources
     .filter(is(resourceTypes.ASSIGNMENT))
     .filter(node => node.querySelector("file"));
