@@ -49,7 +49,6 @@ export default class Discussion extends Component {
           html={descriptionHtml}
           getUrlForPath={this.props.getUrlForPath}
           resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-          courseNavAvailabilityByType={this.props.courseNavAvailabilityByType}
         />
 
         {attachments.length > 0 && (

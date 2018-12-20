@@ -5,7 +5,8 @@ import {
   CC_FILE_PREFIX_OLD,
   WIKI_REFERENCE,
   CANVAS_COURSE_REFERENCE,
-  CANVAS_OBJECT_REFERENCE
+  CANVAS_OBJECT_REFERENCE,
+  resourceTypeToHref
 } from "./constants";
 import Text from "@instructure/ui-elements/lib/components/Text";
 
@@ -86,15 +87,8 @@ export default class RichContent extends Component {
           )
           .map(async link => {
             const resourceType = link.getAttribute("title");
-            const courseNavigationIsAvailable =
-              this.props.courseNavAvailabilityByType[resourceType] &&
-              this.props.courseNavAvailabilityByType[resourceType]
-                .isAvailable === true;
-            if (courseNavigationIsAvailable) {
-              link.setAttribute(
-                "href",
-                this.props.courseNavAvailabilityByType[resourceType].href
-              );
+            if (typeof resourceTypeToHref[resourceType] === "string") {
+              link.setAttribute("href", resourceTypeToHref[resourceType]);
             } else {
               link.setAttribute("href", `#/course/navigation`);
             }

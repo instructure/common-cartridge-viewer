@@ -159,9 +159,6 @@ export default class Resource extends Component {
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              courseNavAvailabilityByType={
-                this.props.courseNavAvailabilityByType
-              }
             />
           )}
           src={this.props.src}
@@ -178,9 +175,6 @@ export default class Resource extends Component {
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              courseNavAvailabilityByType={
-                this.props.courseNavAvailabilityByType
-              }
             />
           )}
           src={this.props.src}
@@ -198,9 +192,6 @@ export default class Resource extends Component {
               doc={doc}
               identifier={this.props.identifier}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              courseNavAvailabilityByType={
-                this.props.courseNavAvailabilityByType
-              }
             />
           )}
           src={this.props.src}
@@ -217,9 +208,6 @@ export default class Resource extends Component {
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              courseNavAvailabilityByType={
-                this.props.courseNavAvailabilityByType
-              }
             />
           )}
           src={this.props.src}
@@ -259,9 +247,6 @@ export default class Resource extends Component {
               getUrlForPath={this.props.getUrlForPath}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
               resourceMap={this.props.resourceMap}
-              courseNavAvailabilityByType={
-                this.props.courseNavAvailabilityByType
-              }
             />
           )}
           src={this.props.src}

@@ -98,3 +98,12 @@ export const moduleMetaContentTypes = {
   EXTERNAL_URL: "ExternalUrl",
   CONTENT_EXTERNAL_TOOL: "ContextExternalTool"
 };
+
+export const resourceTypeToHref = {
+  Modules: "#/",
+  Assignments: "#/assignments",
+  Pages: "#/pages",
+  Discussions: "#/discussions",
+  Quizzes: "#/quizzes",
+  Files: "#/files"
+};

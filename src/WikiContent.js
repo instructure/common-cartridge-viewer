@@ -36,7 +36,6 @@ export default class WikiContent extends Component {
           getUrlForPath={this.props.getUrlForPath}
           html={html}
           resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-          courseNavAvailabilityByType={this.props.courseNavAvailabilityByType}
         />
       </React.Fragment>
     );

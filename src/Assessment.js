@@ -100,9 +100,6 @@ export default class Assessment extends Component {
               padding="none"
               margin="none"
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-              courseNavAvailabilityByType={
-                this.props.courseNavAvailabilityByType
-              }
             />
           )}
 

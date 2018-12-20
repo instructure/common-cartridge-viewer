@@ -317,32 +317,6 @@ export default class CommonCartridge extends Component {
       this.state.associatedContentAssignmentResources.length
     );
 
-    const courseNavAvailabilityByType = {
-      Modules: {
-        isAvailable: this.state.modules.length > 0,
-        href: "#/"
-      },
-      Assignments: {
-        isAvailable: numberOfAssignments > 0,
-        href: "#/assignments"
-      },
-      Pages: {
-        isAvailable: this.state.pageResources.length > 0,
-        href: "#/pages"
-      },
-      Discussions: {
-        isAvailable: this.state.discussionResources.length > 0,
-        href: "#/discussions"
-      },
-      Quizzes: {
-        isAvailable: this.state.assessmentResources.length > 0,
-        href: "#/quizzes"
-      },
-      Files: {
-        isAvailable: this.state.fileResources.length > 0,
-        href: "#/files"
-      }
-    };
     return (
       <I18n>
         {({ i18n }) => (
@@ -445,9 +419,6 @@ export default class CommonCartridge extends Component {
                                     resourceIdsByHrefMap={
                                       this.state.resourceIdsByHrefMap
                                     }
-                                    courseNavAvailabilityByType={
-                                      courseNavAvailabilityByType
-                                    }
                                   />
                                 </React.Fragment>
                               ) : this.state.showcaseResources.length === 1 ? (
@@ -467,9 +438,6 @@ export default class CommonCartridge extends Component {
                                     resourceMap={this.state.resourceMap}
                                     resourceIdsByHrefMap={
                                       this.state.resourceIdsByHrefMap
-                                    }
-                                    courseNavAvailabilityByType={
-                                      courseNavAvailabilityByType
                                     }
                                   />
                                 </React.Fragment>
@@ -518,9 +486,6 @@ export default class CommonCartridge extends Component {
                                 }
                                 resourceMap={this.state.resourceMap}
                                 location={location}
-                                courseNavAvailabilityByType={
-                                  courseNavAvailabilityByType
-                                }
                               />
                             </React.Fragment>
                           )}
@@ -547,84 +512,104 @@ export default class CommonCartridge extends Component {
                         <Route
                           exact
                           path="/quizzes"
-                          render={({ match }) => (
-                            <React.Fragment>
-                              <AssessmentList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.assessmentResources}
-                              />
-                            </React.Fragment>
-                          )}
+                          render={({ match }) =>
+                            this.state.assessmentResources.length > 0 ? (
+                              <React.Fragment>
+                                <AssessmentList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.assessmentResources}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
                         />
 
                         <Route
                           exact
                           path="/pages"
-                          render={({ match }) => (
-                            <React.Fragment>
-                              <WikiContentList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.pageResources}
-                              />
-                            </React.Fragment>
-                          )}
+                          render={({ match }) =>
+                            this.state.pageResources.length > 0 ? (
+                              <React.Fragment>
+                                <WikiContentList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.pageResources}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
                         />
 
                         <Route
                           exact
                           path="/discussions"
-                          render={({ match }) => (
-                            <React.Fragment>
-                              <DiscussionList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.discussionResources}
-                              />
-                            </React.Fragment>
-                          )}
+                          render={({ match }) =>
+                            this.state.discussionResources.length > 0 ? (
+                              <React.Fragment>
+                                <DiscussionList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.discussionResources}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
                         />
 
                         <Route
                           exact
                           path="/files"
-                          render={({ match }) => (
-                            <React.Fragment>
-                              <FileList
-                                resources={this.state.fileResources}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                              />
-                            </React.Fragment>
-                          )}
+                          render={({ match }) =>
+                            this.state.fileResources.length > 0 ? (
+                              <React.Fragment>
+                                <FileList
+                                  resources={this.state.fileResources}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
                         />
 
                         <Route
                           exact
                           path="/assignments"
-                          render={({ match }) => (
-                            <React.Fragment>
-                              <AssignmentList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.assignmentResources}
-                              />
-                              <AssociatedContentAssignmentList
-                                resources={
-                                  this.state
-                                    .associatedContentAssignmentResources
-                                }
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                              />
-                            </React.Fragment>
-                          )}
+                          render={({ match }) =>
+                            numberOfAssignments > 0 ? (
+                              <React.Fragment>
+                                <AssignmentList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.assignmentResources}
+                                />
+                                <AssociatedContentAssignmentList
+                                  resources={
+                                    this.state
+                                      .associatedContentAssignmentResources
+                                  }
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
                         />
 
                         <Route
@@ -660,9 +645,6 @@ export default class CommonCartridge extends Component {
                                 }
                                 resourceMap={this.state.resourceMap}
                                 location={location}
-                                courseNavAvailabilityByType={
-                                  courseNavAvailabilityByType
-                                }
                               />
                             </React.Fragment>
                           )}
