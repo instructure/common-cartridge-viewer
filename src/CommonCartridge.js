@@ -317,6 +317,32 @@ export default class CommonCartridge extends Component {
       this.state.associatedContentAssignmentResources.length
     );
 
+    const courseNavAvailabilityByType = {
+      Modules: {
+        isAvailable: this.state.modules.length > 0,
+        href: "#/"
+      },
+      Assignments: {
+        isAvailable: numberOfAssignments > 0,
+        href: "#/assignments"
+      },
+      Pages: {
+        isAvailable: this.state.pageResources.length > 0,
+        href: "#/pages"
+      },
+      Discussions: {
+        isAvailable: this.state.discussionResources.length > 0,
+        href: "#/discussions"
+      },
+      Quizzes: {
+        isAvailable: this.state.assessmentResources.length > 0,
+        href: "#/quizzes"
+      },
+      Files: {
+        isAvailable: this.state.fileResources.length > 0,
+        href: "#/files"
+      }
+    };
     return (
       <I18n>
         {({ i18n }) => (
@@ -419,6 +445,9 @@ export default class CommonCartridge extends Component {
                                     resourceIdsByHrefMap={
                                       this.state.resourceIdsByHrefMap
                                     }
+                                    courseNavAvailabilityByType={
+                                      courseNavAvailabilityByType
+                                    }
                                   />
                                 </React.Fragment>
                               ) : this.state.showcaseResources.length === 1 ? (
@@ -438,6 +467,9 @@ export default class CommonCartridge extends Component {
                                     resourceMap={this.state.resourceMap}
                                     resourceIdsByHrefMap={
                                       this.state.resourceIdsByHrefMap
+                                    }
+                                    courseNavAvailabilityByType={
+                                      courseNavAvailabilityByType
                                     }
                                   />
                                 </React.Fragment>
@@ -486,6 +518,9 @@ export default class CommonCartridge extends Component {
                                 }
                                 resourceMap={this.state.resourceMap}
                                 location={location}
+                                courseNavAvailabilityByType={
+                                  courseNavAvailabilityByType
+                                }
                               />
                             </React.Fragment>
                           )}
@@ -625,6 +660,9 @@ export default class CommonCartridge extends Component {
                                 }
                                 resourceMap={this.state.resourceMap}
                                 location={location}
+                                courseNavAvailabilityByType={
+                                  courseNavAvailabilityByType
+                                }
                               />
                             </React.Fragment>
                           )}

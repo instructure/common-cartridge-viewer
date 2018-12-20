@@ -51,6 +51,7 @@ export default class Assignment extends Component {
         getUrlForPath={this.props.getUrlForPath}
         resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
         attachments={attachments}
+        courseNavAvailabilityByType={this.props.courseNavAvailabilityByType}
       />
     );
   }

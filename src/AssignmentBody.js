@@ -57,6 +57,9 @@ export default class AssignmentBody extends PureComponent {
               html={this.props.descriptionHtml}
               getUrlForPath={this.props.getUrlForPath}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+              courseNavAvailabilityByType={
+                this.props.courseNavAvailabilityByType
+              }
             />
           )}
 

@@ -85,7 +85,19 @@ export default class RichContent extends Component {
               pagesCourseNavigation.test(link.getAttribute("href"))
           )
           .map(async link => {
-            link.setAttribute("href", `#/course/navigation`);
+            const resourceType = link.getAttribute("title");
+            const courseNavigationIsAvailable =
+              this.props.courseNavAvailabilityByType[resourceType] &&
+              this.props.courseNavAvailabilityByType[resourceType]
+                .isAvailable === true;
+            if (courseNavigationIsAvailable) {
+              link.setAttribute(
+                "href",
+                this.props.courseNavAvailabilityByType[resourceType].href
+              );
+            } else {
+              link.setAttribute("href", `#/course/navigation`);
+            }
           })
       );
     }
