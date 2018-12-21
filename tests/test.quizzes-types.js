@@ -18,6 +18,18 @@ test("Quizzes types are shown", async t => {
     .expect(questions.withText("MULTIPLE RESPONSE").exists)
     .ok()
     .expect(questions.withText("ESSAY").exists)
+    .ok()
+    .expect(questions.withText("MULTIPLE DROPDOWNS").exists)
+    .ok()
+    .expect(questions.withText("MATCH QUESTIONS").exists)
+    .ok()
+    .expect(questions.withText("NUMERICAL").exists)
+    .ok()
+    .expect(questions.withText("CALCULATED").exists)
+    .ok()
+    .expect(questions.withText("TEXT ONLY").exists)
+    .ok()
+    .expect(questions.withText("FILE UPLOAD").exists)
     .ok();
 });
 
@@ -38,17 +50,17 @@ test("Quiz correct answer is shown", async t => {
 });
 
 test("when hide-responses flag is set in the url, quizzes responses are hidden", async t => {
-  const assesstmentQuestions = Selector(".question-answers");
+  const assessmentQuestions = Selector(".question-answers");
   await t.navigateTo(
     `http://localhost:5000/?manifest=${encodeURIComponent(
       "/test-cartridges/all-question-types/imsmanifest.xml"
     )}#/`
   );
-  await t.expect(assesstmentQuestions.exists);
+  await t.expect(assessmentQuestions.exists);
   await t.navigateTo(
     `http://localhost:5000/?hide-responses&manifest=${encodeURIComponent(
       "/test-cartridges/all-question-types/imsmanifest.xml"
     )}#/`
   );
-  await t.expect(assesstmentQuestions.exists).notOk();
+  await t.expect(assessmentQuestions.exists).notOk();
 });

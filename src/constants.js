@@ -13,6 +13,7 @@ export const resourceTypes = {
   ASSOCIATED_CONTENT:
     "associatedcontent/imscc_xmlv1p1/learning-application-resource",
   BLTI: "imsbasiclti_xmlv1p0",
+  CANVAS_ASSESTMENT_CONTENT: 'associatedcontent/imscc_xmlv1p1/learning-application-resource',
   DISCUSSION_TOPIC: "imsdt_xmlv1p1",
   EXTERNAL_TOOL: "external_tool",
   QUESTION_BANK: "imsqti_xmlv1p2/imscc_xmlv1p1/question-bank",
@@ -20,13 +21,21 @@ export const resourceTypes = {
   WEB_LINK: "imswl_xmlv1p1"
 };
 
+
 export const questionTypes = {
-  ESSAY: "cc.essay.v0p1",
-  FILL_IN_THE_BLANK: "cc.fib.v0p1",
-  MULTIPLE_CHOICE: "cc.multiple_choice.v0p1",
-  MULTIPLE_RESPONSE: "cc.multiple_response.v0p1",
-  PATTERN_MATCH: "cc.pattern_match.v0p1",
-  TRUEFALSE: "cc.true_false.v0p1"
+  ESSAY: ["essay_question", "cc.essay.v0p1"],
+  FILL_IN_THE_BLANK: ["cc.fib.v0p1"],
+  MULTIPLE_CHOICE: ["multiple_choice_question", "cc.multiple_choice.v0p1"],
+  MULTIPLE_RESPONSE: ["multiple_answers_question", "cc.multiple_response.v0p1"],
+  PATTERN_MATCH: ["cc.pattern_match.v0p1"],
+  TRUEFALSE: ["true_false_question", "cc.true_false.v0p1"],
+  // Canvas specific types:
+  MULTIPLE_DROPDOWN: ["multiple_dropdowns_question"],
+  MATCH_QUESTION: ["matching_question"],
+  NUMERICAL: ["numerical_question"],
+  CALCULATED: ["calculated_question"],
+  TEXT_ONLY: ["text_only_question"],
+  FILE_UPLOAD: ["file_upload_question"]
 };
 
 export const submissionTypes = {
