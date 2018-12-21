@@ -23,7 +23,7 @@ test("Quizzes types are shown", async t => {
     .ok()
     .expect(questions.withText("MATCH QUESTIONS").exists)
     .ok()
-    .expect(questions.withText("NUMUERICAL").exists)
+    .expect(questions.withText("NUMERICAL").exists)
     .ok()
     .expect(questions.withText("CALCULATED").exists)
     .ok()
