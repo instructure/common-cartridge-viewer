@@ -117,27 +117,21 @@ test("Course Navigation", async t => {
     .expect(assignments.exists)
     .ok()
     .click(assignments)
-    .expect(courseNavigationWarning.exists)
-    .ok()
-    .expect(courseNavigationSubWarning.exists)
+    .expect(Selector("a").withText("Published Assignment").exists)
     .ok()
     // pages
     .navigateTo(assignmentUrl)
     .expect(pages.exists)
     .ok()
     .click(pages)
-    .expect(courseNavigationWarning.exists)
-    .ok()
-    .expect(courseNavigationSubWarning.exists)
+    .expect(Selector("a").withText("Learning").exists)
     .ok()
     // discussions
     .navigateTo(assignmentUrl)
     .expect(discussions.exists)
     .ok()
     .click(discussions)
-    .expect(courseNavigationWarning.exists)
-    .ok()
-    .expect(courseNavigationSubWarning.exists)
+    .expect(Selector("a").withText("Discuss This").exists)
     .ok()
     // syllabus
     .navigateTo(assignmentUrl)
@@ -162,18 +156,16 @@ test("Course Navigation", async t => {
     .expect(quizzes.exists)
     .ok()
     .click(quizzes)
-    .expect(courseNavigationWarning.exists)
-    .ok()
-    .expect(courseNavigationSubWarning.exists)
+    .expect(Selector("a").withText("New Quiz").exists)
     .ok()
     // files
     .navigateTo(assignmentUrl)
     .expect(files.exists)
     .ok()
     .click(files)
-    .expect(courseNavigationWarning.exists)
-    .ok()
-    .expect(courseNavigationSubWarning.exists)
+    .expect(
+      Selector("a").withText("annotated-bold-font-test.pptx (1).pdf").exists
+    )
     .ok()
     // collaborations
     .navigateTo(assignmentUrl)
@@ -207,8 +199,6 @@ test("Course Navigation", async t => {
     .expect(modules.exists)
     .ok()
     .click(modules)
-    .expect(courseNavigationWarning.exists)
-    .ok()
-    .expect(courseNavigationSubWarning.exists)
+    .expect(Selector("div").withText("Some Assignments").exists)
     .ok();
 });
