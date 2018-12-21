@@ -723,6 +723,45 @@
         </item>
       </section>
       <item ident="icc924a4c2d9523e1e6e16665819de377" title="Tell me what you think">
+        <itemmetadata>
+          <qtimetadata>
+            <qtimetadatafield>
+              <fieldlabel>question_type</fieldlabel>
+              <fieldentry>essay_question</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>points_possible</fieldlabel>
+              <fieldentry>1.0</fieldentry>
+            </qtimetadatafield>
+            <qtimetadatafield>
+              <fieldlabel>assessment_question_identifierref</fieldlabel>
+              <fieldentry>i5ccb43157aa894608ffdeb23aace604a</fieldentry>
+            </qtimetadatafield>
+          </qtimetadata>
+        </itemmetadata>
+        <presentation>
+          <material>
+            <mattext texttype="text/html">&lt;div&gt;
+&lt;p&gt;Write an Essay. Any Essay&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://lorprod.instructure.com/users/2/files/1018/preview?verifier=iSyXwZyPP4yMa5717i8ZqrwgPCK7AfrGXJtRZtIW" alt="profile.jpg" width="128" height="128"&gt;&lt;/p&gt;
+&lt;/div&gt;</mattext>
+          </material>
+          <response_str ident="response1" rcardinality="Single">
+            <render_fib>
+              <response_label ident="answer1" rshuffle="No"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes>
+            <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+          </outcomes>
+          <respcondition continue="No">
+            <conditionvar>
+              <other/>
+            </conditionvar>
+          </respcondition>
+        </resprocessing>
       </item>
       <item ident="i784d755a96e4e8c53f76c6252c48f0d2" title="JUST TEXT">
         <itemmetadata>

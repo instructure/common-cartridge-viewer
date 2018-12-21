@@ -19,17 +19,17 @@ test("Quizzes types are shown", async t => {
     .ok()
     .expect(questions.withText("ESSAY").exists)
     .ok()
-    expect(questions.withText("MULTIPLE DROPDOWNS").exists)
+    .expect(questions.withText("MULTIPLE DROPDOWNS").exists)
     .ok()
-    expect(questions.withText("MATCH QUESTIONS").exists)
+    .expect(questions.withText("MATCH QUESTIONS").exists)
     .ok()
-    expect(questions.withText("NUMUERICAL").exists)
+    .expect(questions.withText("NUMUERICAL").exists)
     .ok()
-    expect(questions.withText("CALCULATED").exists)
+    .expect(questions.withText("CALCULATED").exists)
     .ok()
-    expect(questions.withText("TEXT ONLY").exists)
+    .expect(questions.withText("TEXT ONLY").exists)
     .ok()
-    expect(questions.withText("FILE UPLOAD").exists)
+    .expect(questions.withText("FILE UPLOAD").exists)
     .ok();
 });
 
