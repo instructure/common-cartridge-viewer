@@ -18,6 +18,18 @@ test("Quizzes types are shown", async t => {
     .expect(questions.withText("MULTIPLE RESPONSE").exists)
     .ok()
     .expect(questions.withText("ESSAY").exists)
+    .ok()
+    expect(questions.withText("MULTIPLE DROPDOWNS").exists)
+    .ok()
+    expect(questions.withText("MATCH QUESTIONS").exists)
+    .ok()
+    expect(questions.withText("NUMUERICAL").exists)
+    .ok()
+    expect(questions.withText("CALCULATED").exists)
+    .ok()
+    expect(questions.withText("TEXT ONLY").exists)
+    .ok()
+    expect(questions.withText("FILE UPLOAD").exists)
     .ok();
 });
 
