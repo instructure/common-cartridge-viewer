@@ -46,27 +46,37 @@ export default class Assessment extends Component {
       // Select all of the conditions var that the respcondition is empty
       // or has a continue attribute === "No"
 
-      Array.from(
-        itemNode.querySelectorAll('resprocessing respcondition')
-      ).filter(respcondition =>
-        !respcondition.getAttribute("continue")
-        || respcondition.getAttribute("continue") === "No"
-      ).map(rescondition => (conditions = conditions.concat(
-          Array.from(rescondition.querySelectorAll("conditionvar > *"))
-        ))
-      );
+      Array.from(itemNode.querySelectorAll("resprocessing respcondition"))
+        .filter(
+          respcondition =>
+            !respcondition.getAttribute("continue") ||
+            respcondition.getAttribute("continue") === "No"
+        )
+        .map(
+          rescondition =>
+            (conditions = conditions.concat(
+              Array.from(rescondition.querySelectorAll("conditionvar > *"))
+            ))
+        );
 
-      conditions.map(condition => {
+      conditions.forEach(condition => {
         switch (condition.tagName) {
           case "and":
             condition
               .querySelectorAll(":scope > varresult, :scope > varequal")
-              .forEach(result => (responses[result.textContent] = result.getAttribute("respident")));
+              .forEach(
+                result =>
+                  (responses[result.textContent] = result.getAttribute(
+                    "respident"
+                  ))
+              );
             break;
           case "other":
             break;
           default:
-            responses[condition.textContent] = condition.getAttribute("respident")
+            responses[condition.textContent] = condition.getAttribute(
+              "respident"
+            );
             break;
         }
       });
@@ -77,13 +87,17 @@ export default class Assessment extends Component {
         let response_lid_id = response_lid.getAttribute("ident");
         return {
           id: response_lid_id,
-          name: response_lid.querySelector('mattext').textContent,
-          responses: Array.from(response_lid.querySelectorAll("response_label")).map(response => {
+          name: response_lid.querySelector("mattext").textContent,
+          responses: Array.from(
+            response_lid.querySelectorAll("response_label")
+          ).map(response => {
             let response_id = response.getAttribute("ident");
             return {
               id: response_id,
               text: response.querySelector("mattext").textContent,
-              valid: response_id in responses && responses[response_id] === response_lid_id
+              valid:
+                response_id in responses &&
+                responses[response_id] === response_lid_id
             };
           })
         };
@@ -100,7 +114,8 @@ export default class Assessment extends Component {
     const showQuizzesAnswers = !window.location.href.includes("hide-responses");
 
     const questionComponents = items.map((item, index) => {
-      const type = item.metadata.get("question_type") || item.metadata.get("cc_profile");
+      const type =
+        item.metadata.get("question_type") || item.metadata.get("cc_profile");
       const material = item.mattextNode && item.mattextNode.textContent;
 
       return (
@@ -165,25 +180,28 @@ export default class Assessment extends Component {
                   <GridCol width={item.options.length > 1 ? 8 : 5}>
                     <Grid vAlign="middle" margin="none" colSpacing="none">
                       <GridRow>
-                      {item.options &&
-                        item.options.map(optionGroup => 
-                        <GridCol key={optionGroup.id}>
-                          {item.options.length > 1
-                            && <Text lineHeight="double" weight="bold">{optionGroup.name}</Text>}
-                          <Grid vAlign="middle" colSpacing="none">
-                            {optionGroup.responses.map(
-                              option => <GridRow rowSpacing="none" key={option.id}>
-                                <GridCol width={1}>
-                                  {option.valid && (
-                                    <IconCheckMark color="success" />
-                                  )}
-                                </GridCol>
-                                <GridCol>{option.text}</GridCol>
-                              </GridRow>
-                            )}
-                          </Grid>
-                        </GridCol>
-                      )}
+                        {item.options &&
+                          item.options.map(optionGroup => (
+                            <GridCol key={optionGroup.id}>
+                              {item.options.length > 1 && (
+                                <Text lineHeight="double" weight="bold">
+                                  {optionGroup.name}
+                                </Text>
+                              )}
+                              <Grid vAlign="middle" colSpacing="none">
+                                {optionGroup.responses.map(option => (
+                                  <GridRow rowSpacing="none" key={option.id}>
+                                    <GridCol width={1}>
+                                      {option.valid && (
+                                        <IconCheckMark color="success" />
+                                      )}
+                                    </GridCol>
+                                    <GridCol>{option.text}</GridCol>
+                                  </GridRow>
+                                ))}
+                              </Grid>
+                            </GridCol>
+                          ))}
                       </GridRow>
                     </Grid>
                   </GridCol>
