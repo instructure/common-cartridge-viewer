@@ -32,7 +32,10 @@ export default class AssignmentListItemBody extends PureComponent {
           )}
 
           {this.props.workflowState != null && (
-            <WorkflowStateIcon workflowState={this.props.workflowState} />
+            <WorkflowStateIcon
+              workflowState={this.props.workflowState}
+              resourceTitle={this.props.title}
+            />
           )}
         </div>
       </li>

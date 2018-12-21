@@ -7,7 +7,8 @@ import PropTypes from "prop-types";
 
 export default class WorkflowStateIcon extends PureComponent {
   static propTypes = {
-    workflowState: PropTypes.oneOf(["unpublished", "published", "active"])
+    workflowState: PropTypes.oneOf(["unpublished", "published", "active"]),
+    resourceTitle: PropTypes.string
   };
 
   renderWorkflowStateIcon = () => {
@@ -17,7 +18,7 @@ export default class WorkflowStateIcon extends PureComponent {
       return (
         <React.Fragment>
           <ScreenReaderContent>
-            <Trans>Unpublished</Trans>
+            <Trans>{this.props.resourceTitle} is unpublished </Trans>
           </ScreenReaderContent>
           <IconUnpublished color="secondary" />
         </React.Fragment>
@@ -26,7 +27,7 @@ export default class WorkflowStateIcon extends PureComponent {
       return (
         <React.Fragment>
           <ScreenReaderContent>
-            <Trans>Published</Trans>
+            <Trans>{this.props.resourceTitle} is published </Trans>
           </ScreenReaderContent>
           <IconPublish color="success" />
         </React.Fragment>

@@ -43,6 +43,8 @@ export default class FileListItem extends Component {
       return null;
     }
 
+    const title = this.state.title.replace(/^(web_resources\/)/, "");
+
     const isPublished =
       this.state.intendedEndUserRoles.size === 0 ||
       this.state.intendedEndUserRoles.has("Learner");
@@ -63,8 +65,7 @@ export default class FileListItem extends Component {
                 state: { from: this.props.from }
               }}
             >
-              {this.props.title ||
-                this.state.title.replace(/^(web_resources\/)/, "")}
+              {this.props.title || title}
             </Link>
           </div>
 
@@ -76,6 +77,7 @@ export default class FileListItem extends Component {
 
           <WorkflowStateIcon
             workflowState={isPublished ? "published" : "unpublished"}
+            resourceTitle={title}
           />
         </div>
       </li>

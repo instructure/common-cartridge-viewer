@@ -69,7 +69,10 @@ export default class WikiContentListItem extends Component {
             </Link>
           </div>
           {this.state.workflowState != null && (
-            <WorkflowStateIcon workflowState={this.state.workflowState} />
+            <WorkflowStateIcon
+              workflowState={this.state.workflowState}
+              resourceTitle={this.state.title}
+            />
           )}
         </div>
       </li>
