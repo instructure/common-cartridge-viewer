@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import IconPaperclip from "@instructure/ui-icons/lib/Line/IconPaperclip";
-import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
-import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
+import WorkflowStateIcon from "./WorkflowStateIcon";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { Trans } from "@lingui/macro";
 
@@ -44,6 +43,8 @@ export default class FileListItem extends Component {
       return null;
     }
 
+    const title = this.state.title.replace(/^(web_resources\/)/, "");
+
     const isPublished =
       this.state.intendedEndUserRoles.size === 0 ||
       this.state.intendedEndUserRoles.has("Learner");
@@ -64,8 +65,7 @@ export default class FileListItem extends Component {
                 state: { from: this.props.from }
               }}
             >
-              {this.props.title ||
-                this.state.title.replace(/^(web_resources\/)/, "")}
+              {this.props.title || title}
             </Link>
           </div>
 
@@ -75,10 +75,10 @@ export default class FileListItem extends Component {
             </div>
           )}
 
-          <div className="ExpandCollapseList-item-workflow-state">
-            {isPublished === false && <IconUnpublished color={iconColor} />}
-            {isPublished && <IconPublish color={iconColor} />}
-          </div>
+          <WorkflowStateIcon
+            workflowState={isPublished ? "published" : "unpublished"}
+            resourceTitle={title}
+          />
         </div>
       </li>
     );

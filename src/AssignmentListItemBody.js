@@ -1,10 +1,9 @@
 import React, { PureComponent } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import IconAssignment from "@instructure/ui-icons/lib/Line/IconAssignment";
-import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
-import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { Trans } from "@lingui/macro";
+import WorkflowStateIcon from "./WorkflowStateIcon";
 
 export default class AssignmentListItemBody extends PureComponent {
   render() {
@@ -33,14 +32,10 @@ export default class AssignmentListItemBody extends PureComponent {
           )}
 
           {this.props.workflowState != null && (
-            <div className="ExpandCollapseList-item-workflow-state">
-              {this.props.workflowState === "unpublished" && (
-                <IconUnpublished color={this.props.iconColor} />
-              )}
-              {["published", "active"].includes(this.props.workflowState) && (
-                <IconPublish color={this.props.iconColor} />
-              )}
-            </div>
+            <WorkflowStateIcon
+              workflowState={this.props.workflowState}
+              resourceTitle={this.props.title}
+            />
           )}
         </div>
       </li>
