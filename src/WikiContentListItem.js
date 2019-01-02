@@ -23,6 +23,15 @@ export default class WikiContentListItem extends Component {
   async componentDidMount() {
     const path = this.props.href.substr(1);
     const xml = await this.props.getTextByPath(path);
+    if (xml === null) {
+      this.setState({
+        isLoading: false,
+        title: "Error: Resource Not Found",
+        workflowState: "unpublished",
+        resourceNotFound: true
+      });
+      return;
+    }
     const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/html");
     const itemTitle = this.props.item != null && this.props.item.title;
@@ -51,6 +60,10 @@ export default class WikiContentListItem extends Component {
       ? "success"
       : "secondary";
 
+    const pathname = this.state.resourceNotFound
+      ? `resources/unavailable`
+      : `resources/${this.props.identifier}`;
+
     return (
       <li className="ExpandCollapseList-item">
         <div className="ExpandCollapseList-item-inner">
@@ -61,7 +74,7 @@ export default class WikiContentListItem extends Component {
             <Link
               as={RouterLink}
               to={{
-                pathname: `resources/${this.props.identifier}`,
+                pathname,
                 state: { from: this.props.from }
               }}
             >

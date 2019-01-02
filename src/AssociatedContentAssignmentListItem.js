@@ -18,6 +18,16 @@ export default class AssociatedContentAssignmentListItem extends Component {
     const parser = new DOMParser();
     const path = this.props.href.substr(1);
     const assignmentXml = await this.props.getTextByPath(path);
+    if (assignmentXml === null) {
+      this.setState({
+        isLoading: false,
+        title: "Error: Resource Not Found",
+        pointsPossible: "N/A",
+        workflowState: "unpublished",
+        resourceNotFound: true
+      });
+      return;
+    }
     const doc = parser.parseFromString(assignmentXml, "text/xml");
     const title =
       doc.querySelector("title") &&
@@ -64,6 +74,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
         points={this.state.pointsPossible}
         workflowState={this.state.workflowState}
         from={this.props.from}
+        resourceNotFound={this.state.resourceNotFound}
       />
     );
   }
