@@ -18,6 +18,16 @@ export default class DiscussionListItem extends Component {
   async componentDidMount() {
     const path = this.props.href.substr(1);
     const xml = await this.props.getTextByPath(path);
+    if (xml === null) {
+      this.setState({
+        isLoading: false,
+        title: "Error: Resource Not Found",
+        points: "N/A",
+        workflowState: "unpublished",
+        resourceNotFound: true
+      });
+      return;
+    }
     const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/xml");
     const title = doc.querySelector("title").textContent;
@@ -51,6 +61,10 @@ export default class DiscussionListItem extends Component {
       ? "success"
       : "secondary";
 
+    const pathname = this.state.resourceNotFound
+      ? `resources/unavailable`
+      : `resources/${this.props.identifier}`;
+
     return (
       <li className="ExpandCollapseList-item">
         <div className="ExpandCollapseList-item-inner">
@@ -62,7 +76,7 @@ export default class DiscussionListItem extends Component {
             <Link
               as={RouterLink}
               to={{
-                pathname: `resources/${this.props.identifier}`,
+                pathname,
                 state: { from: this.props.from }
               }}
             >

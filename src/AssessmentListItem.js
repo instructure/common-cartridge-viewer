@@ -20,6 +20,17 @@ export default class AssessmentListItem extends Component {
     const parser = new DOMParser();
     const path = this.props.href.substr(1);
     const xml = await this.props.getTextByPath(path);
+    if (xml === null) {
+      this.setState({
+        isLoading: false,
+        title: "Error: Resource Not Found",
+        points: "N/A",
+        questionCount: 0,
+        workflowState: "unpublished",
+        resourceNotFound: true
+      });
+      return;
+    }
     const doc = parser.parseFromString(xml, "text/xml");
     const depPath = this.props.dependencyHrefs[0];
     const depXml = await this.props.getTextByPath(depPath);
@@ -55,6 +66,10 @@ export default class AssessmentListItem extends Component {
       ? "success"
       : "secondary";
 
+    const pathname = this.state.resourceNotFound
+      ? `resources/unavailable`
+      : `resources/${this.props.identifier}`;
+
     return (
       <li className="ExpandCollapseList-item">
         <div className="ExpandCollapseList-item-inner">
@@ -66,7 +81,7 @@ export default class AssessmentListItem extends Component {
               <Link
                 as={RouterLink}
                 to={{
-                  pathname: `resources/${this.props.identifier}`,
+                  pathname,
                   state: { from: this.props.from }
                 }}
               >

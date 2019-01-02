@@ -183,7 +183,9 @@ export default class CommonCartridge extends Component {
   getTextByPath = path =>
     this.state.isCartridgeRemotelyExpanded
       ? fetch(`${this.state.basepath}/${path}`)
-          .then(response => response.text())
+          .then(response => {
+            return response.ok ? response.text() : null;
+          })
           .catch(err => null)
       : this.state.entryMap.has(path)
       ? getTextFromEntry(this.state.entryMap.get(path))

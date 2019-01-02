@@ -15,11 +15,20 @@ export default class AssignmentListItem extends Component {
   async componentDidMount() {
     const path = this.props.href.substr(1);
     const xml = await this.props.getTextByPath(path);
+    if (xml === null) {
+      this.setState({
+        isLoading: false,
+        title: "Error: Resource Not Found",
+        points: "N/A",
+        workflowState: "unpublished",
+        resourceNotFound: true
+      });
+      return;
+    }
     const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/xml");
     const title =
       doc.querySelector("title") && doc.querySelector("title").textContent;
-    const description = doc.querySelector("text").textContent;
     const gradableNode = doc.querySelector("gradable");
     const points =
       gradableNode &&
@@ -35,7 +44,6 @@ export default class AssignmentListItem extends Component {
     this.setState({
       isLoading: false,
       title,
-      description,
       points,
       workflowState
     });
@@ -55,10 +63,10 @@ export default class AssignmentListItem extends Component {
         iconColor={iconColor}
         identifier={this.props.identifier}
         title={this.state.title}
-        description={this.state.workflowState}
         points={this.state.points}
         workflowState={this.state.workflowState}
         from={this.props.from}
+        resourceNotFound={this.state.resourceNotFound}
       />
     );
   }
