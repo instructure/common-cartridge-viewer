@@ -4,7 +4,7 @@ import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReade
 import { getResourceHref } from "./utils";
 import DiscussionListItem from "./DiscussionListItem";
 import { Trans } from "@lingui/macro";
-
+import Paginate from "./Paginate";
 export default class DiscussionList extends Component {
   render() {
     const resources = this.props.resources.map(node => ({
@@ -41,7 +41,9 @@ export default class DiscussionList extends Component {
             <Trans>Discussions</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Discussions ExpandCollapseList">{listItems}</ul>
+        <ul className="Discussions ExpandCollapseList">
+          <Paginate listItems={listItems} location={this.props.location} />
+        </ul>
       </div>
     );
   }

@@ -32,6 +32,7 @@ import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 import Unavailable from "./Unavailable";
+const queryString = require("query-string");
 
 const ONE_MEG_IN_BYTES = 1000000;
 
@@ -362,6 +363,8 @@ export default class CommonCartridge extends Component {
       this.state.associatedContentAssignmentResources.length
     );
 
+    const startIndexQuery = queryString.stringify({ startIndex: 0 });
+
     return (
       <I18n>
         {({ i18n }) => (
@@ -393,19 +396,37 @@ export default class CommonCartridge extends Component {
                         </NavLink>
                       )}
                       {numberOfAssignments > 0 && (
-                        <NavLink className="MenuItem" to="/assignments">
+                        <NavLink
+                          className="MenuItem"
+                          to={{
+                            pathname: "/assignments",
+                            search: startIndexQuery
+                          }}
+                        >
                           <Trans>Assignments ({numberOfAssignments})</Trans>
                         </NavLink>
                       )}
                       {this.state.pageResources.length > 0 && (
-                        <NavLink className="MenuItem" to="/pages">
+                        <NavLink
+                          className="MenuItem"
+                          to={{
+                            pathname: "/pages",
+                            search: startIndexQuery
+                          }}
+                        >
                           <Trans>
                             Pages ({this.state.pageResources.length})
                           </Trans>
                         </NavLink>
                       )}
                       {this.state.discussionResources.length > 0 && (
-                        <NavLink className="MenuItem" to="/discussions">
+                        <NavLink
+                          className="MenuItem"
+                          to={{
+                            pathname: "/discussions",
+                            search: startIndexQuery
+                          }}
+                        >
                           <Trans>
                             {`Discussions (${
                               this.state.discussionResources.length
@@ -414,7 +435,13 @@ export default class CommonCartridge extends Component {
                         </NavLink>
                       )}
                       {this.state.assessmentResources.length > 0 && (
-                        <NavLink className="MenuItem" to="/quizzes">
+                        <NavLink
+                          className="MenuItem"
+                          to={{
+                            pathname: "/quizzes",
+                            search: startIndexQuery
+                          }}
+                        >
                           <Trans>
                             {`Quizzes (${
                               this.state.assessmentResources.length
@@ -423,7 +450,13 @@ export default class CommonCartridge extends Component {
                         </NavLink>
                       )}
                       {this.state.fileResources.length > 0 && (
-                        <NavLink className="MenuItem" to="/files">
+                        <NavLink
+                          className="MenuItem"
+                          to={{
+                            pathname: "/files",
+                            search: startIndexQuery
+                          }}
+                        >
                           <Trans>
                             Files ({this.state.fileResources.length})
                           </Trans>

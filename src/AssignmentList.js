@@ -4,6 +4,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import AssignmentListItem from "./AssignmentListItem";
 import { getAssignmentListResources } from "./utils";
+import Paginate from "./Paginate";
 
 export default class AssignmentList extends Component {
   render() {
@@ -34,7 +35,9 @@ export default class AssignmentList extends Component {
             <Trans>Assignments</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Assignments ExpandCollapseList">{listItems}</ul>
+        <ul className="Assignments ExpandCollapseList">
+          <Paginate listItems={listItems} location={this.props.location} />
+        </ul>
       </div>
     );
   }

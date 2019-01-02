@@ -49,11 +49,19 @@ test("Associated-content assignment list displays correctly", async t => {
   await t
     .expect(Selector("a").withText("Alice: Lab 1").exists)
     .ok({ timeout: 20000 })
-    .expect(Selector("a").withText("Little Bits Lab 2: Projects").exists)
+    .expect(
+      Selector("a").withText("Assignment submission: Lab Resources").exists
+    )
     .ok()
-    .expect(Selector("a").withText("Scratch Lab 3: Motion").exists)
+    .expect(
+      Selector("a").withText("Assignment Submission: Robot Electronic Devices")
+        .exists
+    )
     .ok()
-    .expect(Selector("a").withText("Starter: About Me").exists)
+    .expect(
+      Selector("a").withText("Career Technical Student Organizations (CTSO)")
+        .exists
+    )
     .ok();
 });
 

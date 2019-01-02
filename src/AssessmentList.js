@@ -4,6 +4,7 @@ import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReade
 import AssessmentListItem from "./AssessmentListItem";
 import { getResourceHref } from "./utils";
 import { Trans } from "@lingui/macro";
+import Paginate from "./Paginate";
 
 export default class AssessmentList extends Component {
   render() {
@@ -43,7 +44,9 @@ export default class AssessmentList extends Component {
             <Trans>Quizzes</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Assessments ExpandCollapseList">{listItems}</ul>
+        <ul className="Assessments ExpandCollapseList">
+          <Paginate listItems={listItems} location={this.props.location} />
+        </ul>
       </div>
     );
   }

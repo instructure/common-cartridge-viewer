@@ -3,6 +3,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import FileListItem from "./FileListItem";
 import { Trans } from "@lingui/macro";
+import Paginate from "./Paginate";
 
 export default class FileList extends Component {
   render() {
@@ -38,7 +39,9 @@ export default class FileList extends Component {
             <Trans>Files</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Files ExpandCollapseList">{listItems}</ul>
+        <ul className="Files ExpandCollapseList">
+          <Paginate listItems={listItems} location={this.props.location} />
+        </ul>
       </div>
     );
   }
