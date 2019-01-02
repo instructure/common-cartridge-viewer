@@ -42,25 +42,28 @@ export default class CommonCartridge extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      assignments: [],
-      assessments: [],
+      assignmentResources: [],
+      associatedContentAssignmentResources: [],
+      assessmentResources: [],
       basepath:
         this.props.manifest != null
           ? this.props.manifest.split("/imsmanifest.xml").slice(0, -1)
           : null,
-      discussions: [],
+      discussionResources: [],
       entries: [],
       entryMap: new Map(),
       errorLoading: null,
       externalViewers: new Map(),
-      files: [],
+      fileResources: [],
       isCartridgeRemotelyExpanded: this.props.manifest != null,
       isLoaded: false,
       loadProgress: {},
       modules: [],
+      otherResources: [],
       pageResources: [],
       resourceIdsByHrefMap: new Map(),
-      otherResources: []
+      showcaseResources: [],
+      showcaseSingleResource: null
     };
   }
 
@@ -117,6 +120,27 @@ export default class CommonCartridge extends Component {
       );
     } else if (this.props.file != null && this.props.file !== prevProps.file) {
       this.getEntriesFromDroppedFile();
+    }
+
+    const isOnEmptyModulesPage =
+      this.state.showcaseSingleResource == null &&
+      this.state.modules.length === 0 &&
+      window.location.hash === "#/";
+    if (isOnEmptyModulesPage && this.state.showcaseResources.length > 1) {
+      if (
+        this.state.assignmentResources.length > 0 ||
+        this.state.associatedContentAssignmentResources.length > 0
+      ) {
+        window.location.hash = "#/assignments";
+      } else if (this.state.pageResources.length > 0) {
+        window.location.hash = "#/pages";
+      } else if (this.state.discussionResources.length > 0) {
+        window.location.hash = "#/discussions";
+      } else if (this.state.assessmentResources.length > 0) {
+        window.location.hash = "#/quizzes";
+      } else if (this.state.fileResources.length > 0) {
+        window.location.hash = "#/files";
+      }
     }
   }
 
@@ -246,10 +270,23 @@ export default class CommonCartridge extends Component {
         result.resourceIdsByHrefMap
       );
     }
+
+    let showcaseSingleResource = null;
+    if (result.resources.length === 1) {
+      showcaseSingleResource = result.resources[0];
+    } else if (
+      this.props.compact &&
+      result.modules.length === 0 &&
+      result.showcaseResources.length === 1
+    ) {
+      showcaseSingleResource = this.state.showcaseResources[0];
+    }
+
     this.setState({
       ...result,
       externalViewers,
-      isLoaded: true
+      isLoaded: true,
+      showcaseSingleResource
     });
   }
 
@@ -317,18 +354,6 @@ export default class CommonCartridge extends Component {
       );
     }
 
-    let showcaseSingleResource = null;
-
-    if (this.state.resources.length === 1) {
-      showcaseSingleResource = this.state.resources[0];
-    } else if (
-      this.props.compact &&
-      this.state.modules.length === 0 &&
-      this.state.showcaseResources.length === 1
-    ) {
-      showcaseSingleResource = this.state.showcaseResources[0];
-    }
-
     const numberOfAssignments = Math.max(
       this.state.assignmentResources.length,
       this.state.associatedContentAssignmentResources.length
@@ -357,7 +382,7 @@ export default class CommonCartridge extends Component {
             <div style={{ marginTop: this.props.compact ? "0" : "12px" }}>
               <Grid>
                 <GridRow padding="small">
-                  {showcaseSingleResource === null && (
+                  {this.state.showcaseSingleResource === null && (
                     <GridCol width={2}>
                       <nav>
                         {this.state.modules.length > 0 && (
@@ -406,7 +431,9 @@ export default class CommonCartridge extends Component {
                     </GridCol>
                   )}
 
-                  <GridCol width={showcaseSingleResource !== null ? 12 : 10}>
+                  <GridCol
+                    width={this.state.showcaseSingleResource !== null ? 12 : 10}
+                  >
                     <View
                       as="main"
                       elementRef={ref => (this.mainRef = ref)}
@@ -420,7 +447,7 @@ export default class CommonCartridge extends Component {
                           path="/"
                           render={({ match }) => (
                             <React.Fragment>
-                              {showcaseSingleResource !== null ? (
+                              {this.state.showcaseSingleResource !== null ? (
                                 <React.Fragment>
                                   <Resource
                                     getTextByPath={this.getTextByPath}
