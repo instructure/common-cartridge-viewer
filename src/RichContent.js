@@ -25,6 +25,7 @@ export default class RichContent extends Component {
 
   async update() {
     const fragment = DOMPurify.sanitize(this.props.html, {
+      ADD_TAGS: ["iframe"],
       RETURN_DOM_FRAGMENT: true,
       RETURN_DOM_IMPORT: true
     });
