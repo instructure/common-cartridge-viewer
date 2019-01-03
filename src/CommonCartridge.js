@@ -271,16 +271,12 @@ export default class CommonCartridge extends Component {
       );
     }
 
-    let showcaseSingleResource = null;
-    if (result.resources.length === 1) {
-      showcaseSingleResource = result.resources[0];
-    } else if (
+    const showcaseSingleResource =
       this.props.compact &&
       result.modules.length === 0 &&
       result.showcaseResources.length === 1
-    ) {
-      showcaseSingleResource = this.state.showcaseResources[0];
-    }
+        ? this.state.showcaseResources[0]
+        : null;
 
     this.setState({
       ...result,
