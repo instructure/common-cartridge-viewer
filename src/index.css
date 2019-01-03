@@ -182,6 +182,10 @@ h3 {
   margin: 80px 0;
 }
 
+.RichContent iframe {
+  border: 0 none;
+}
+
 .EmbeddedPreview iframe {
   width: 100%;
   height: 800px;

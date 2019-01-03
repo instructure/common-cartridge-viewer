@@ -151,6 +151,14 @@ test("Associated-content assignment items can be clicked from assignment list vi
 });
 
 fixture`Associated-content external tools`
+  .page`http://localhost:5000/?manifest=/test-cartridges/course-with-associated-content-assignments/imsmanifest.xml#/resources/i691472bc7e9d470687402f5d7745875e`;
+
+test("iframe is not disallowed from rich content", async t => {
+  const iframe = Selector(".RichContent iframe");
+  await t.expect(iframe.exists).ok();
+});
+
+fixture`Associated-content external tools`
   .page`http://localhost:5000/?src=https://s3-us-west-2.amazonaws.com/cartridges-for-commons-preview/course_with_lti_quiz_and_google_cloud_assignment.imscc#/`;
 
 test("Displays 'Preview not available' for external tool content", async t => {
