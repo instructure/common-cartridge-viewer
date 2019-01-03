@@ -6,7 +6,7 @@
     <lomimscc:lom>
       <lomimscc:general>
         <lomimscc:title>
-          <lomimscc:string>Single Page Cartridge</lomimscc:string>
+          <lomimscc:string>Cartridge With Multiple Pages</lomimscc:string>
         </lomimscc:title>
       </lomimscc:general>
       <lomimscc:lifeCycle>
@@ -40,8 +40,11 @@
       <file href="course_settings/media_tracks.xml"/>
       <file href="course_settings/canvas_export.txt"/>
     </resource>
-    <resource identifier="i21fcf1e322b1d8263285fb6012b2b46c" type="webcontent" href="wiki_content/our-purpose.html">
-      <file href="wiki_content/our-purpose.html"/>
+    <resource identifier="i21fcf1e322b1d8263285fb6012b2b46c" type="webcontent" href="wiki_content/first-page.html">
+      <file href="wiki_content/first-page.html"/>
+    </resource>
+    <resource identifier="b21fcf1e322b1d8263285fb6012b2b46c" type="webcontent" href="wiki_content/second-page.html">
+      <file href="wiki_content/second-page.html"/>
     </resource>
   </resources>
 </manifest>
