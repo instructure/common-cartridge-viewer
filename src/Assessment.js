@@ -196,7 +196,17 @@ export default class Assessment extends Component {
                                         <IconCheckMark color="success" />
                                       )}
                                     </GridCol>
-                                    <GridCol>{option.text}</GridCol>
+                                    <GridCol>
+                                      <RichContent
+                                        getUrlForPath={this.props.getUrlForPath}
+                                        html={option.text}
+                                        padding="none"
+                                        margin="none"
+                                        resourceIdsByHrefMap={
+                                          this.props.resourceIdsByHrefMap
+                                        }
+                                      />
+                                    </GridCol>
                                   </GridRow>
                                 ))}
                               </Grid>
