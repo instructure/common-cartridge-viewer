@@ -89,6 +89,7 @@ export default class EmbeddedPreview extends Component {
                 <iframe
                   title={i18n._(t`Media viewer`)}
                   src={this.state.embeddedViewerSrc}
+                  allowfullscreen
                 />
               )
             }
