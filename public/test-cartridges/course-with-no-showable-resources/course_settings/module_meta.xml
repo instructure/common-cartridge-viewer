@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modules xmlns="http://canvas.instructure.com/xsd/cccv1p0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <module identifier="i2b6da92f0b703841167edb892f1e85ca">
+    <title>testing</title>
+    <workflow_state>active</workflow_state>
+    <position>1</position>
+    <require_sequential_progress>false</require_sequential_progress>
+    <locked>false</locked>
+    <items>
+      <item identifier="i456b793818c90af94a546994158c40fc">
+        <content_type>ContextExternalTool</content_type>
+        <workflow_state>active</workflow_state>
+        <title>Copy of xmenusers</title>
+        <identifierref>i10141bca582382952697a91f30d353e4</identifierref>
+        <url>https://example.com</url>
+        <global_identifierref>93</global_identifierref>
+        <position>1</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+      <item identifier="iee470eb73bc1a1dbba418d0beb768aaa">
+        <content_type>ContextExternalTool</content_type>
+        <workflow_state>active</workflow_state>
+        <title>Monthly budget</title>
+        <identifierref>ia40d8825e156aa1b88ec57be63892883</identifierref>
+        <url>https://example.com</url>
+        <global_identifierref>128</global_identifierref>
+        <position>2</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+      <item identifier="id8abcc0dd82ee0df7b77a30f3e1a5193">
+        <content_type>ContextExternalTool</content_type>
+        <workflow_state>active</workflow_state>
+        <title>Project proposal</title>
+        <identifierref>ia40d8825e156aa1b88ec57be63892883</identifierref>
+        <url>https://example.com</url>
+        <global_identifierref>128</global_identifierref>
+        <position>3</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+      <item identifier="i85716914654ae32e36a4dc691e16d214">
+        <content_type>ContextExternalTool</content_type>
+        <workflow_state>unpublished</workflow_state>
+        <title>slash/filename</title>
+        <identifierref>ia40d8825e156aa1b88ec57be63892883</identifierref>
+        <url>https://example.com</url>
+        <global_identifierref>128</global_identifierref>
+        <position>4</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+      <item identifier="ie5b30f520c304992c212dde4428bf6dd">
+        <content_type>ContextExternalTool</content_type>
+        <workflow_state>unpublished</workflow_state>
+        <title>Slides template orange</title>
+        <identifierref>ia40d8825e156aa1b88ec57be63892883</identifierref>
+        <url>https://example.com</url>
+        <global_identifierref>128</global_identifierref>
+        <position>5</position>
+        <new_tab>false</new_tab>
+        <indent>0</indent>
+      </item>
+    </items>
+  </module>
+</modules>
