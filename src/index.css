@@ -43,8 +43,8 @@ body {
 
 .MenuItem.active,
 .MenuItem:active {
-  color: #008ee2;
-  border-left: 3px solid #008ee2;
+  color: rgb(37, 120, 203);
+  border-left: 3px solid rgb(37, 120, 203);
 }
 
 /* temporary */

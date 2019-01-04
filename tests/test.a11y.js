@@ -3,7 +3,7 @@ import { Selector } from "testcafe";
 fixture`A11y requirements`;
 
 test("High-contrast style support", async t => {
-  const NORMAL_THEME_LINK_RGB = "rgb(0, 142, 226)";
+  const NORMAL_THEME_LINK_RGB = "rgb(37, 120, 203)";
   const HIGH_CONTRAST_THEME_LINK_RGB = "rgb(7, 112, 163)";
 
   await t.navigateTo(
@@ -30,7 +30,9 @@ test("High-contrast style support", async t => {
     .eql(
       NORMAL_THEME_LINK_RGB,
       "Normal contrast module links display proper color"
-    )
+    );
+
+  await t
     .expect(normalThemeNavigationLinkSnapshot.style.color)
     .eql(
       NORMAL_THEME_LINK_RGB,
@@ -56,7 +58,9 @@ test("High-contrast style support", async t => {
     .eql(
       HIGH_CONTRAST_THEME_LINK_RGB,
       "High contrast module links display proper color"
-    )
+    );
+
+  await t
     .expect(highContrastThemeNavigationLinkSnapshot.style.color)
     .eql(
       HIGH_CONTRAST_THEME_LINK_RGB,
