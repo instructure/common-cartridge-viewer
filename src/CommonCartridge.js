@@ -452,6 +452,7 @@ export default class CommonCartridge extends Component {
                                         "identifier"
                                       )
                                     )}
+                                    getUrlForPath={this.getUrlForPath}
                                     identifier={this.state.showcaseResources[0].getAttribute(
                                       "identifier"
                                     )}
@@ -472,6 +473,7 @@ export default class CommonCartridge extends Component {
                                       )
                                     )}
                                     getTextByPath={this.getTextByPath}
+                                    getUrlForPath={this.getUrlForPath}
                                     identifier={this.state.showcaseResources[0].getAttribute(
                                       "identifier"
                                     )}
