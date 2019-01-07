@@ -218,7 +218,7 @@ export default class Resource extends Component {
 
     const isImage =
       type === resourceTypes.WEB_CONTENT &&
-      ["png", "jpg", "gif", "webp"].includes(extension);
+      ["png", "jpg", "jpeg", "gif", "webp"].includes(extension);
     const isWikiContent =
       type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
     const isDocumentWithPreview =
