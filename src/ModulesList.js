@@ -198,6 +198,6 @@ export default class ModulesList extends Component {
       }
     );
 
-    return moduleComponents;
+    return <ul className="ModuleList">{moduleComponents}</ul>;
   }
 }
