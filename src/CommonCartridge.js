@@ -36,6 +36,8 @@ import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 import Unavailable from "./Unavailable";
 
+const ONE_MEG_IN_BYTES = 1000000;
+
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
 
 export default class CommonCartridge extends Component {
@@ -303,10 +305,18 @@ export default class CommonCartridge extends Component {
     }
 
     if (this.state.isLoaded === false) {
+      const isLarge =
+        this.state.loadProgress &&
+        this.state.loadProgress.total &&
+        this.state.loadProgress.total > 2 * ONE_MEG_IN_BYTES;
+      const isTakingAwhile =
+        this.state.loadProgress &&
+        this.state.loadProgress.timestamp &&
+        this.state.loadProgress.timestamp > 2000;
       return (
         <I18n>
           {({ i18n }) => (
-            <div className="delayed-appearance">
+            <div className={isLarge || isTakingAwhile ? "fade-in" : "hidden"}>
               <View as="div" margin="small" padding="large" textAlign="center">
                 <Billboard
                   size="medium"

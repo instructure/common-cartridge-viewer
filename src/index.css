@@ -144,7 +144,7 @@ h3 {
   font-size: 1.8rem;
 }
 
-@-webkit-keyframes delayed-appearance {
+@-webkit-keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -156,11 +156,8 @@ h3 {
   }
 }
 
-@keyframes delayed-appearance {
+@keyframes fade-in {
   0% {
-    opacity: 0;
-  }
-  90% {
     opacity: 0;
   }
   100% {
@@ -168,9 +165,13 @@ h3 {
   }
 }
 
-.delayed-appearance {
-  -webkit-animation: delayed-appearance 0.5s 1;
-  animation: delayed-appearance 0.5s 1;
+.fade-in {
+  -webkit-animation: fade-in 0.5s 1;
+  animation: fade-in 0.5s 1;
+}
+
+.hidden {
+  display: none;
 }
 
 .submission-format:not(:last-of-type)::after {
