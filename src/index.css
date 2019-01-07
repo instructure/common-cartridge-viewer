@@ -191,3 +191,8 @@ h3 {
   height: 800px;
   border: 0 none;
 }
+
+.EmbeddedPreview--video,
+.EmbeddedPreview--audio {
+  max-width: 100%;
+}

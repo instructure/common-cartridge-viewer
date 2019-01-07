@@ -68,7 +68,11 @@ export default class EmbeddedPreview extends Component {
           <I18n>
             {({ i18n }) =>
               ["mp3"].includes(extension) ? (
-                <audio controls title={i18n._(t`Media viewer`)}>
+                <audio
+                  className="EmbeddedPreview--audio"
+                  controls
+                  title={i18n._(t`Media viewer`)}
+                >
                   <source src={this.state.embeddedViewerSrc} type="audio/mp3" />
                   <Trans>
                     Your browser doesn't support HTML5 audio. Here is a{" "}
@@ -77,7 +81,11 @@ export default class EmbeddedPreview extends Component {
                   </Trans>
                 </audio>
               ) : ["mp4"].includes(extension) ? (
-                <video controls title={i18n._(t`Media viewer`)}>
+                <video
+                  className="EmbeddedPreview--video"
+                  controls
+                  title={i18n._(t`Media viewer`)}
+                >
                   <source src={this.state.embeddedViewerSrc} type="video/mp4" />
                   <Trans>
                     Your browser doesn't support HTML5 video. Here is a{" "}
