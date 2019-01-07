@@ -596,7 +596,7 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/quizzes"
-                        render={({ match }) =>
+                        render={({ match, location }) =>
                           this.state.assessmentResources.length > 0 ? (
                             <React.Fragment>
                               <AssessmentList
@@ -604,6 +604,7 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.assessmentResources}
+                                location={location}
                               />
                             </React.Fragment>
                           ) : (
@@ -615,7 +616,7 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/pages"
-                        render={({ match }) =>
+                        render={({ match, location }) =>
                           this.state.pageResources.length > 0 ? (
                             <React.Fragment>
                               <WikiContentList
@@ -623,6 +624,7 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.pageResources}
+                                location={location}
                               />
                             </React.Fragment>
                           ) : (
@@ -634,7 +636,7 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/discussions"
-                        render={({ match }) =>
+                        render={({ match, location }) =>
                           this.state.discussionResources.length > 0 ? (
                             <React.Fragment>
                               <DiscussionList
@@ -642,6 +644,7 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.discussionResources}
+                                location={location}
                               />
                             </React.Fragment>
                           ) : (
@@ -653,13 +656,14 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/files"
-                        render={({ match }) =>
+                        render={({ match, location }) =>
                           this.state.fileResources.length > 0 ? (
                             <React.Fragment>
                               <FileList
                                 resources={this.state.fileResources}
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
+                                location={location}
                               />
                             </React.Fragment>
                           ) : (
@@ -671,7 +675,7 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/assignments"
-                        render={({ match }) =>
+                        render={({ match, location }) =>
                           numberOfAssignments > 0 ? (
                             <React.Fragment>
                               <AssignmentList
@@ -679,6 +683,7 @@ export default class CommonCartridge extends Component {
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
                                 resources={this.state.assignmentResources}
+                                location={location}
                               />
                               <AssociatedContentAssignmentList
                                 resources={
@@ -688,6 +693,7 @@ export default class CommonCartridge extends Component {
                                 getTextByPath={this.getTextByPath}
                                 moduleItems={this.state.moduleItems}
                                 resourceMap={this.state.resourceMap}
+                                location={location}
                               />
                             </React.Fragment>
                           ) : (

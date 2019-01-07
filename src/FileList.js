@@ -39,9 +39,11 @@ export default class FileList extends Component {
             <Trans>Files</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Files ExpandCollapseList">
-          <Paginate listItems={listItems} location={this.props.location} />
-        </ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Files"
+        />
       </div>
     );
   }

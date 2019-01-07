@@ -61,9 +61,11 @@ export default class WikiContentList extends Component {
             <Trans>Wiki content</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Discussions ExpandCollapseList">
-          <Paginate listItems={listItems} location={this.props.location} />
-        </ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Discussions"
+        />
       </div>
     );
   }

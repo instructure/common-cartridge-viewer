@@ -7,7 +7,7 @@ import Pagination, {
 } from "@instructure/ui-pagination/es/components/Pagination";
 const queryString = require("query-string");
 
-const NUMBER_OF_ITEMS_TO_SHOW = 15;
+const NUMBER_OF_ITEMS_TO_SHOW = 100;
 const NUMBER_OF_PAGINATION_BUTTONS_TO_RENDER = 4;
 export default class Paginate extends Component {
   componentDidMount() {
@@ -77,7 +77,11 @@ export default class Paginate extends Component {
       this.props.listItems.length / NUMBER_OF_ITEMS_TO_SHOW
     );
     if (numberOfPages === 1) {
-      return this.props.listItems;
+      return (
+        <ul className={`${this.props.classNames} ExpandCollapseList`}>
+          {this.props.listItems}
+        </ul>
+      );
     }
     const currentPage = Math.ceil(
       this.state.currentStartIndex / NUMBER_OF_ITEMS_TO_SHOW
@@ -99,10 +103,6 @@ export default class Paginate extends Component {
 
     return (
       <React.Fragment>
-        {this.props.listItems.slice(
-          this.state.currentStartIndex,
-          this.state.currentStartIndex + NUMBER_OF_ITEMS_TO_SHOW
-        )}
         <I18n>
           {({ i18n }) => (
             <Pagination
@@ -116,6 +116,12 @@ export default class Paginate extends Component {
             </Pagination>
           )}
         </I18n>
+        <ul className={`${this.props.classNames} ExpandCollapseList`}>
+          {this.props.listItems.slice(
+            this.state.currentStartIndex,
+            this.state.currentStartIndex + NUMBER_OF_ITEMS_TO_SHOW
+          )}
+        </ul>
       </React.Fragment>
     );
   }

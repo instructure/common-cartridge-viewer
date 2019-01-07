@@ -35,9 +35,11 @@ export default class AssignmentList extends Component {
             <Trans>Assignments</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Assignments ExpandCollapseList">
-          <Paginate listItems={listItems} location={this.props.location} />
-        </ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Assignments"
+        />
       </div>
     );
   }

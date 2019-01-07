@@ -41,9 +41,11 @@ export default class DiscussionList extends Component {
             <Trans>Discussions</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Discussions ExpandCollapseList">
-          <Paginate listItems={listItems} location={this.props.location} />
-        </ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Discussions"
+        />
       </div>
     );
   }

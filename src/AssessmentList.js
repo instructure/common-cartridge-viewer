@@ -44,9 +44,11 @@ export default class AssessmentList extends Component {
             <Trans>Quizzes</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Assessments ExpandCollapseList">
-          <Paginate listItems={listItems} location={this.props.location} />
-        </ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Assessments"
+        />
       </div>
     );
   }
