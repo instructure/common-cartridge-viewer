@@ -47,7 +47,7 @@ body {
   border-left: 3px solid rgb(37, 120, 203);
 }
 
-/* temporary */
+ul.ModuleList,
 ul.unstyled-list,
 ul.ExpandCollapseList {
   list-style: none;
