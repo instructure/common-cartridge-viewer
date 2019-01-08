@@ -4,6 +4,7 @@ import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReade
 import { WIKI_CONTENT_HREF_PREFIX } from "./constants";
 import WikiContentListItem from "./WikiContentListItem";
 import { Trans } from "@lingui/macro";
+import Paginate from "./Paginate";
 
 export default class WikiContentList extends Component {
   render() {
@@ -60,7 +61,11 @@ export default class WikiContentList extends Component {
             <Trans>Wiki content</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Discussions ExpandCollapseList">{listItems}</ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Discussions"
+        />
       </div>
     );
   }

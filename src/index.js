@@ -16,7 +16,7 @@ const catalogs = {
   en: catalogEn
 };
 
-const queryString = require("query-string-es5"); // has issue with module import
+const queryString = require("query-string"); // has issue with module import
 const parsedQueryString = queryString.parse(window.location.search);
 
 export const i18n = setupI18n({ language: "en", catalogs: catalogs });

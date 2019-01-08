@@ -4,6 +4,7 @@ import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReade
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
 import { getAssignmentListResources } from "./utils";
 import { Trans } from "@lingui/macro";
+import Paginate from "./Paginate";
 
 export default class AssociatedContentAssignmentList extends Component {
   render() {
@@ -34,7 +35,11 @@ export default class AssociatedContentAssignmentList extends Component {
             <Trans>Assignments</Trans>
           </ScreenReaderContent>
         </Heading>
-        <ul className="Assignments ExpandCollapseList">{listItems}</ul>
+        <Paginate
+          listItems={listItems}
+          location={this.props.location}
+          classNames="Assignments"
+        />
       </div>
     );
   }
