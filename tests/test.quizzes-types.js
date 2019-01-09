@@ -5,7 +5,6 @@ fixture`Quiz with all question types`
 
 test("Resource loads as quiz", async t => {
   await t.expect(Selector(".resource-label").withText("QUIZ").exists).ok();
-  await t.expect(Selector(".MenuItem").withText("Quizzes (1)").exists).ok();
 });
 
 test("Quizzes types are shown", async t => {

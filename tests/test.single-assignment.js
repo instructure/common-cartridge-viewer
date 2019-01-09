@@ -1,18 +1,20 @@
 import { Selector } from "testcafe";
 
-fixture`Single assignment cartridge (with attachment)`
+fixture`Single assignment cartridge`
   .page`http://localhost:5000/?manifest=${encodeURIComponent(
   "/test-cartridges/single-assignment/imsmanifest.xml"
 )}`;
 
-test("Header, Nav and assignment is displayed", async t => {
+test("Header and assignment is displayed", async t => {
   await t
     .expect(Selector("h1").withText(`Assignment`).exists)
     .ok()
-    .expect(Selector("nav").exists)
-    .ok()
     .expect(Selector("header").exists)
     .ok();
+});
+
+test("Nav is hidden", async t => {
+  await t.expect(Selector("nav").exists).notOk();
 });
 
 fixture`Single assignment cartridge (with attachment, compact)`

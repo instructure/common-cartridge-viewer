@@ -5,11 +5,9 @@ fixture`Single page cartridge`
   "/test-cartridges/single-page/imsmanifest.xml"
 )}`;
 
-test("Header and Nav is displayed", async t => {
+test("Header and assignment is displayed", async t => {
   await t
     .expect(Selector("h1").withText(`Our Purpose`).exists)
-    .ok()
-    .expect(Selector("nav").exists)
     .ok()
     .expect(Selector("header").exists)
     .ok();
@@ -28,8 +26,8 @@ test("Header and Nav is hidden", async t => {
   await t
     .expect(Selector("h1").withText(`Our Purpose`).exists)
     .ok()
-    .expect(Selector("nav").exists)
-    .notOk()
     .expect(Selector("header").exists)
+    .notOk()
+    .expect(Selector("nav").exists)
     .notOk();
 });

@@ -13,7 +13,8 @@ test("Header, Content, Nav, and Files are displayed", async t => {
     .ok()
     .expect(Selector("header").exists)
     .ok()
-    .expect(Selector("a.MenuItem").withText("Files (1)").exists);
+    .expect(Selector("a.MenuItem").withText("Files (1)").exists)
+    .ok();
 });
 
 test("Discussion attachment links are displayed", async t => {
@@ -31,12 +32,10 @@ fixture`Single discussion cartridge (with attachment, compact)`
   "/test-cartridges/single-discussion/imsmanifest.xml"
 )}`;
 
-test("Header and Nav is hidden", async t => {
+test("Header is hidden", async t => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()
-    .expect(Selector("nav").exists)
-    .notOk()
     .expect(Selector("header").exists)
     .notOk();
 });

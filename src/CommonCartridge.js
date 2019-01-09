@@ -272,9 +272,9 @@ export default class CommonCartridge extends Component {
     }
 
     const showcaseSingleResource =
-      this.props.compact &&
       result.modules.length === 0 &&
-      result.showcaseResources.length === 1
+      result.showcaseResources.length === 1 &&
+      result.fileResources.length === 0
         ? this.state.showcaseResources[0]
         : null;
 
