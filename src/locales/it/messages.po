@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:183
 msgid "(unidentified)"
 msgstr "(non identificato)"
 
@@ -37,7 +37,7 @@ msgstr "(non identificato)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "Valutazioni ({0})"
 
-#: src/AssignmentBody.js:23
+#: src/AssignmentBody.js:34
 msgid "Assignment"
 msgstr "Compito"
 
@@ -48,13 +48,13 @@ msgstr "Compiti"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Compiti ({0})"
+#~ msgstr "Compiti ({0})<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:470
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Compiti ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:66
+#: src/AssignmentBody.js:77
 #: src/Discussion.js:57
 msgid "Attachments"
 msgstr "Allegati"
@@ -83,6 +83,10 @@ msgstr ""
 msgid "Course navigation links are only available within a Canvas course."
 msgstr ""
 
+#: src/AssignmentBody.js:118
+msgid "Criteria"
+msgstr ""
+
 #: src/Discussion.js:40
 msgid "Discussion"
 msgstr "Discussione"
@@ -93,11 +97,16 @@ msgstr "Discussioni"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "Discussioni ( {0})"
+#~ msgstr "Discussioni ( {0})<<<<<<< HEAD"
+
+#: src/CommonCartridge.js:494
+msgid "Discussions ({0} )"
+msgstr ""
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
-msgstr "Discussioni ({0})"
+#: src/CommonCartridge.js:469
+#~ msgid "Discussions ({0})"
+#~ msgstr "Discussioni ({0})"
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -121,9 +130,9 @@ msgstr "Anteprima non disponibile per il contenuto dello strumento esterno"
 
 #: src/WebLink.js:29
 msgid "External link"
-msgstr "Link esterno"
+msgstr "Link esterno<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:359
 msgid "Failed to load resource"
 msgstr ""
 
@@ -133,9 +142,9 @@ msgstr ""
 
 #: src/FileList.js:39
 msgid "Files"
-msgstr "File"
+msgstr "File<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:521
 msgid "Files ({0})"
 msgstr "File ({0})"
 
@@ -154,19 +163,19 @@ msgstr "Per utilizzare questa risorsa in Canvas, deve essere installato lo strum
 #: src/EmbeddedPreview.js:59
 #: src/Image.js:37
 msgid "Loading"
-msgstr "Caricamento"
+msgstr "Caricamento<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:385
 msgid "Loading Cartridge"
-msgstr "Caricamento cartuccia"
+msgstr "Caricamento cartuccia<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:402
 msgid "Loading completion"
 msgstr "Caricamento completato"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
@@ -176,9 +185,9 @@ msgstr ""
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:459
 msgid "Modules ({0})"
 msgstr "Moduli ({0})"
 
@@ -194,7 +203,7 @@ msgstr "Scelta multipla"
 msgid "Multiple response"
 msgstr "Risposta multipla"
 
-#: src/Resource.js:129
+#: src/Resource.js:130
 msgid "Next"
 msgstr "Successivo"
 
@@ -216,9 +225,9 @@ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
-msgstr "Pagina"
+msgstr "Pagina<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:481
 msgid "Pages ({0})"
 msgstr "Pagine ({0})"
 
@@ -226,11 +235,11 @@ msgstr "Pagine ({0})"
 msgid "Pattern match"
 msgstr "Corrispondenza motivo"
 
-#: src/AssignmentBody.js:48
+#: src/AssignmentBody.js:59
 msgid "Points"
 msgstr "Punti"
 
-#: src/Resource.js:108
+#: src/Resource.js:109
 msgid "Previous"
 msgstr "Precedente"
 
@@ -238,9 +247,13 @@ msgstr "Precedente"
 msgid "Previous Page"
 msgstr ""
 
+#: src/AssignmentBody.js:129
+msgid "Pts"
+msgstr ""
+
 #: src/Assessment.js:272
 msgid "Questions"
-msgstr "Domande"
+msgstr "Domande<<<<<<< HEAD"
 
 #: src/Assessment.js:244
 msgid "Quiz"
@@ -248,11 +261,19 @@ msgstr ""
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:508
 msgid "Quizzes ({0})"
 msgstr ""
+
+#: src/CommonCartridge.js:376
+#~ msgid "Quizzes ({numberOfAssessment})"
+#~ msgstr ""
+
+#: src/AssignmentBody.js:126
+msgid "Ratings"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -262,15 +283,15 @@ msgstr ""
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:35
+#: src/AssignmentBody.js:46
 msgid "Submitting"
 msgstr "Invio"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:393
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Questo può richiedere un po’ di tempo in base alla dimensione della cartuccia."
 
@@ -278,13 +299,17 @@ msgstr "Questo può richiedere un po’ di tempo in base alla dimensione della c
 msgid "This resource is not included in the package."
 msgstr ""
 
+#: src/AssignmentBody.js:160
+msgid "Total points:"
+msgstr ""
+
 #: src/Assessment.js:146
 msgid "True / false"
-msgstr "Vero/falso"
+msgstr "Vero/falso<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:382
+#: src/CommonCartridge.js:446
 #: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/ModulesList.js:182
 #: src/WebLink.js:36
 #: src/WebLinkListItem.js:30
 #: src/utils.js:250
@@ -305,17 +330,17 @@ msgstr "Visualizzare cartucce Common nel browser. Non richiede alcuna elaborazio
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
-msgstr "Visualizza origine in Github"
+msgstr "Visualizza origine in Github<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:361
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
-msgstr "Contenuto Wiki"
+msgstr "Contenuto Wiki<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:444
 msgid "You are here:"
 msgstr "Sei qui:"
 
@@ -333,7 +358,11 @@ msgstr "un caricamento di file"
 
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (CORS abilitato)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS abilitato)<<<<<<< HEAD======="
+
+#: src/AssignmentBody.js:141
+msgid "pts"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/AssessmentListItem.js:93
 msgid "{0} Questions"
@@ -352,12 +381,12 @@ msgstr ""
 #: src/DiscussionListItem.js:89
 #: src/FileListItem.js:74
 msgid "{0} points"
-msgstr "{0} punti"
+msgstr "{0} punti<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:411
 msgid "{0}%"
-msgstr "{0}%"
+msgstr "{0}%<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:405
 msgid "{0}% loaded"
 msgstr "{0}% caricato"

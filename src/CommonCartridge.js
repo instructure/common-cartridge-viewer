@@ -250,6 +250,42 @@ export default class CommonCartridge extends Component {
     this.setState({ loadProgress: event });
   };
 
+  getRubrics = async () => {
+    const xml = await this.getTextByPath("course_settings/rubrics.xml");
+    if (xml == null) return;
+    const document = parseXml(xml);
+    if (document == null) return;
+    const rubrics = new Map();
+
+    Array.from(document.querySelectorAll("rubric")).forEach(node => {
+      rubrics.set(node.getAttribute("identifier"), {
+        title: node.querySelector("title").textContent,
+        pointsPossible: node.querySelector("points_possible").textContent,
+        criteria: Array.from(node.querySelectorAll("criterion")).map(
+          criterion => {
+            return {
+              id: criterion.querySelector("criterion_id").textContent,
+              description: criterion.querySelector("description").textContent,
+              points: criterion.querySelector("points").textContent,
+              ratings: Array.from(criterion.querySelectorAll("rating")).map(
+                rating => {
+                  return {
+                    id: rating.querySelector("id").textContent,
+                    description: rating.querySelector("description")
+                      .textContent,
+                    points: rating.querySelector("points").textContent
+                  };
+                }
+              )
+            };
+          }
+        )
+      });
+    });
+
+    return rubrics;
+  };
+
   getExternalViewers = async resourceIdsByHrefMap => {
     const xml = await this.getTextByPath(
       "course_settings/external_viewers.xml"
@@ -296,6 +332,8 @@ export default class CommonCartridge extends Component {
       );
     }
 
+    const rubrics = await this.getRubrics();
+
     const showcaseSingleResource =
       result.modules.length === 0 &&
       result.showcaseResources.length === 1 &&
@@ -306,6 +344,7 @@ export default class CommonCartridge extends Component {
     this.setState({
       ...result,
       externalViewers,
+      rubrics,
       isLoaded: true,
       showcaseSingleResource
     });
@@ -527,6 +566,7 @@ export default class CommonCartridge extends Component {
                                     this.state.resourceIdsByHrefMap
                                   }
                                   location={location}
+                                  rubrics={this.state.rubrics}
                                 />
                               </React.Fragment>
                             ) : this.state.showcaseResources.length === 1 ? (
@@ -549,6 +589,7 @@ export default class CommonCartridge extends Component {
                                     this.state.resourceIdsByHrefMap
                                   }
                                   location={location}
+                                  rubrics={this.state.rubrics}
                                 />
                               </React.Fragment>
                             ) : (
@@ -595,6 +636,7 @@ export default class CommonCartridge extends Component {
                               }
                               resourceMap={this.state.resourceMap}
                               location={location}
+                              rubrics={this.state.rubrics}
                             />
                           </React.Fragment>
                         )}
@@ -759,6 +801,7 @@ export default class CommonCartridge extends Component {
                               }
                               resourceMap={this.state.resourceMap}
                               location={location}
+                              rubrics={this.state.rubrics}
                             />
                           </React.Fragment>
                         )}

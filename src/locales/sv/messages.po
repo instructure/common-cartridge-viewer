@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:183
 msgid "(unidentified)"
 msgstr "(ej identifierad)"
 
@@ -37,7 +37,7 @@ msgstr "(ej identifierad)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "Bedömningar ({0})"
 
-#: src/AssignmentBody.js:23
+#: src/AssignmentBody.js:34
 msgid "Assignment"
 msgstr "Uppgift"
 
@@ -48,13 +48,13 @@ msgstr "Uppgifter"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Uppgifter ({0})"
+#~ msgstr "Uppgifter ({0})<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:470
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Uppgifter ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:66
+#: src/AssignmentBody.js:77
 #: src/Discussion.js:57
 msgid "Attachments"
 msgstr "Bilagor"
@@ -83,6 +83,10 @@ msgstr ""
 msgid "Course navigation links are only available within a Canvas course."
 msgstr ""
 
+#: src/AssignmentBody.js:118
+msgid "Criteria"
+msgstr ""
+
 #: src/Discussion.js:40
 msgid "Discussion"
 msgstr "Diskussion"
@@ -93,11 +97,16 @@ msgstr "Discussions"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "Diskussioner ( {0})"
+#~ msgstr "Diskussioner ( {0})<<<<<<< HEAD"
+
+#: src/CommonCartridge.js:494
+msgid "Discussions ({0} )"
+msgstr ""
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
-msgstr "Diskussioner ({0})"
+#: src/CommonCartridge.js:469
+#~ msgid "Discussions ({0})"
+#~ msgstr "Diskussioner ({0})"
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -121,9 +130,9 @@ msgstr "Innehåll i extern verktyg kan inte förhandsvisas"
 
 #: src/WebLink.js:29
 msgid "External link"
-msgstr "Extern länk"
+msgstr "Extern länk<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:359
 msgid "Failed to load resource"
 msgstr ""
 
@@ -133,9 +142,9 @@ msgstr ""
 
 #: src/FileList.js:39
 msgid "Files"
-msgstr "Filer"
+msgstr "Filer<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:521
 msgid "Files ({0})"
 msgstr "Filer ({0})"
 
@@ -154,19 +163,19 @@ msgstr "Det externa verktyget måste installeras för att du ska kunna använda 
 #: src/EmbeddedPreview.js:59
 #: src/Image.js:37
 msgid "Loading"
-msgstr "Läser in"
+msgstr "Läser in<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:385
 msgid "Loading Cartridge"
-msgstr "Läser in patron"
+msgstr "Läser in patron<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:402
 msgid "Loading completion"
 msgstr "Inläsning slutförd"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
@@ -176,9 +185,9 @@ msgstr ""
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:459
 msgid "Modules ({0})"
 msgstr "Moduler ({0})"
 
@@ -194,7 +203,7 @@ msgstr "Flerval"
 msgid "Multiple response"
 msgstr "Flera svar"
 
-#: src/Resource.js:129
+#: src/Resource.js:130
 msgid "Next"
 msgstr "Nästa"
 
@@ -216,9 +225,9 @@ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
-msgstr "Sida"
+msgstr "Sida<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:481
 msgid "Pages ({0})"
 msgstr "Sidor ({0})"
 
@@ -226,11 +235,11 @@ msgstr "Sidor ({0})"
 msgid "Pattern match"
 msgstr "Mönstermatchning"
 
-#: src/AssignmentBody.js:48
+#: src/AssignmentBody.js:59
 msgid "Points"
 msgstr "Poäng"
 
-#: src/Resource.js:108
+#: src/Resource.js:109
 msgid "Previous"
 msgstr "Föregående"
 
@@ -238,9 +247,13 @@ msgstr "Föregående"
 msgid "Previous Page"
 msgstr ""
 
+#: src/AssignmentBody.js:129
+msgid "Pts"
+msgstr ""
+
 #: src/Assessment.js:272
 msgid "Questions"
-msgstr "Frågor"
+msgstr "Frågor<<<<<<< HEAD"
 
 #: src/Assessment.js:244
 msgid "Quiz"
@@ -248,11 +261,19 @@ msgstr ""
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:508
 msgid "Quizzes ({0})"
 msgstr ""
+
+#: src/CommonCartridge.js:376
+#~ msgid "Quizzes ({numberOfAssessment})"
+#~ msgstr ""
+
+#: src/AssignmentBody.js:126
+msgid "Ratings"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -262,15 +283,15 @@ msgstr ""
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:35
+#: src/AssignmentBody.js:46
 msgid "Submitting"
 msgstr "Lämnar in"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:393
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Detta kan ta lite tid beroende på patronens storlek."
 
@@ -278,13 +299,17 @@ msgstr "Detta kan ta lite tid beroende på patronens storlek."
 msgid "This resource is not included in the package."
 msgstr ""
 
+#: src/AssignmentBody.js:160
+msgid "Total points:"
+msgstr ""
+
 #: src/Assessment.js:146
 msgid "True / false"
-msgstr "Sant/falskt"
+msgstr "Sant/falskt<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:382
+#: src/CommonCartridge.js:446
 #: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/ModulesList.js:182
 #: src/WebLink.js:36
 #: src/WebLinkListItem.js:30
 #: src/utils.js:250
@@ -305,17 +330,17 @@ msgstr "Visa Common Cartridge i webbläsaren. Kräver inte behandling på server
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
-msgstr "Visa källa på Github"
+msgstr "Visa källa på Github<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:361
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
-msgstr "Wiki-innehåll"
+msgstr "Wiki-innehåll<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:444
 msgid "You are here:"
 msgstr "Du är här:"
 
@@ -333,7 +358,11 @@ msgstr "en filuppladdning"
 
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (CORS-aktiverad)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS-aktiverad)<<<<<<< HEAD======="
+
+#: src/AssignmentBody.js:141
+msgid "pts"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/AssessmentListItem.js:93
 msgid "{0} Questions"
@@ -352,12 +381,12 @@ msgstr ""
 #: src/DiscussionListItem.js:89
 #: src/FileListItem.js:74
 msgid "{0} points"
-msgstr "{0} poäng"
+msgstr "{0} poäng<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:411
 msgid "{0}%"
-msgstr "{0}%"
+msgstr "{0}%<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:405
 msgid "{0}% loaded"
 msgstr "{0}% har lästs in"

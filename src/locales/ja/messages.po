@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:183
 msgid "(unidentified)"
 msgstr "(未確認)"
 
@@ -37,7 +37,7 @@ msgstr "(未確認)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "アセスメント ({0})"
 
-#: src/AssignmentBody.js:23
+#: src/AssignmentBody.js:34
 msgid "Assignment"
 msgstr "課題"
 
@@ -48,13 +48,13 @@ msgstr "課題"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "課題 ({0})"
+#~ msgstr "課題 ({0})<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:470
 msgid "Assignments ({numberOfAssignments})"
 msgstr "課題 ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:66
+#: src/AssignmentBody.js:77
 #: src/Discussion.js:57
 msgid "Attachments"
 msgstr "添付ファイル"
@@ -83,6 +83,10 @@ msgstr ""
 msgid "Course navigation links are only available within a Canvas course."
 msgstr ""
 
+#: src/AssignmentBody.js:118
+msgid "Criteria"
+msgstr ""
+
 #: src/Discussion.js:40
 msgid "Discussion"
 msgstr "ディスカッション"
@@ -93,11 +97,16 @@ msgstr "ディスカッション"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "ディスカッション ( {0})"
+#~ msgstr "ディスカッション ( {0})<<<<<<< HEAD"
+
+#: src/CommonCartridge.js:494
+msgid "Discussions ({0} )"
+msgstr ""
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
-msgstr "ディスカッション ({0})"
+#: src/CommonCartridge.js:469
+#~ msgid "Discussions ({0})"
+#~ msgstr "ディスカッション ({0})"
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -121,9 +130,9 @@ msgstr "外部ツールのコンテンツをプレビューできません"
 
 #: src/WebLink.js:29
 msgid "External link"
-msgstr "外部リンク"
+msgstr "外部リンク<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:359
 msgid "Failed to load resource"
 msgstr ""
 
@@ -133,9 +142,9 @@ msgstr ""
 
 #: src/FileList.js:39
 msgid "Files"
-msgstr "ファイル"
+msgstr "ファイル<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:521
 msgid "Files ({0})"
 msgstr "ファイル ({0})"
 
@@ -154,19 +163,19 @@ msgstr "Canvas 内でこのリソースを使用するには、外部ツール�
 #: src/EmbeddedPreview.js:59
 #: src/Image.js:37
 msgid "Loading"
-msgstr "読み込み中"
+msgstr "読み込み中<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:385
 msgid "Loading Cartridge"
-msgstr "カートリッジ読み込み中"
+msgstr "カートリッジ読み込み中<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:402
 msgid "Loading completion"
 msgstr "読み込み完了"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
@@ -176,9 +185,9 @@ msgstr ""
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:459
 msgid "Modules ({0})"
 msgstr "モジュール ({0})"
 
@@ -194,7 +203,7 @@ msgstr "複数選択肢"
 msgid "Multiple response"
 msgstr "複数の回答"
 
-#: src/Resource.js:129
+#: src/Resource.js:130
 msgid "Next"
 msgstr "次"
 
@@ -216,9 +225,9 @@ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
-msgstr "ページ"
+msgstr "ページ<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:481
 msgid "Pages ({0})"
 msgstr "ページ ({0})"
 
@@ -226,11 +235,11 @@ msgstr "ページ ({0})"
 msgid "Pattern match"
 msgstr "パターンマッチ"
 
-#: src/AssignmentBody.js:48
+#: src/AssignmentBody.js:59
 msgid "Points"
 msgstr "ポイント"
 
-#: src/Resource.js:108
+#: src/Resource.js:109
 msgid "Previous"
 msgstr "前"
 
@@ -238,9 +247,13 @@ msgstr "前"
 msgid "Previous Page"
 msgstr ""
 
+#: src/AssignmentBody.js:129
+msgid "Pts"
+msgstr ""
+
 #: src/Assessment.js:272
 msgid "Questions"
-msgstr "質問"
+msgstr "質問<<<<<<< HEAD"
 
 #: src/Assessment.js:244
 msgid "Quiz"
@@ -248,11 +261,19 @@ msgstr ""
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:508
 msgid "Quizzes ({0})"
 msgstr ""
+
+#: src/CommonCartridge.js:376
+#~ msgid "Quizzes ({numberOfAssessment})"
+#~ msgstr ""
+
+#: src/AssignmentBody.js:126
+msgid "Ratings"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -262,15 +283,15 @@ msgstr ""
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:35
+#: src/AssignmentBody.js:46
 msgid "Submitting"
 msgstr "提出しています"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:393
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "カートリッジのサイズに応じて、これには時間がかかることがあります。"
 
@@ -278,13 +299,17 @@ msgstr "カートリッジのサイズに応じて、これには時間がかか
 msgid "This resource is not included in the package."
 msgstr ""
 
+#: src/AssignmentBody.js:160
+msgid "Total points:"
+msgstr ""
+
 #: src/Assessment.js:146
 msgid "True / false"
-msgstr "正/誤"
+msgstr "正/誤<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:382
+#: src/CommonCartridge.js:446
 #: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/ModulesList.js:182
 #: src/WebLink.js:36
 #: src/WebLinkListItem.js:30
 #: src/utils.js:250
@@ -305,17 +330,17 @@ msgstr "ブラウザで共通のカートリッジを表示します。 サー�
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
-msgstr "Github のソースを表示"
+msgstr "Github のソースを表示<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:361
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
-msgstr "Wiki コンテンツ"
+msgstr "Wiki コンテンツ<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:444
 msgid "You are here:"
 msgstr "あなたの現在地："
 
@@ -333,7 +358,11 @@ msgstr "ファイルのアップロード"
 
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (CORS 有効)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS 有効)<<<<<<< HEAD======="
+
+#: src/AssignmentBody.js:141
+msgid "pts"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/AssessmentListItem.js:93
 msgid "{0} Questions"
@@ -352,12 +381,12 @@ msgstr ""
 #: src/DiscussionListItem.js:89
 #: src/FileListItem.js:74
 msgid "{0} points"
-msgstr "{0} 点"
+msgstr "{0} 点<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:411
 msgid "{0}%"
-msgstr "{0}%"
+msgstr "{0}%<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:405
 msgid "{0}% loaded"
 msgstr "{0}% 読み込み済み"

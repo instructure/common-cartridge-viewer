@@ -210,4 +210,19 @@ main:focus {
 a,
 main {
   outline: 2px solid transparent !important;
+table {
+  width: 100%;
+  border-radius: 5px;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #b4b4b4;
+}
+
+th,
+td {
+  padding: 0.5rem 1rem;
 }

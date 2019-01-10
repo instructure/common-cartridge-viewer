@@ -37,6 +37,18 @@ export default class Assignment extends Component {
         : 0;
     const labelColor = "#AD4AA0";
 
+    // Check for rubrics
+    const rubricIdent = assignmentNode.querySelector("rubric_identifierref");
+    let rubric = null;
+
+    if (
+      rubricIdent &&
+      this.props.rubrics &&
+      this.props.rubrics.has(rubricIdent.textContent)
+    ) {
+      rubric = this.props.rubrics.get(rubricIdent.textContent);
+    }
+
     return !!externalToolNode ? (
       PreviewUnavailable()
     ) : (
@@ -51,6 +63,7 @@ export default class Assignment extends Component {
         getUrlForPath={this.props.getUrlForPath}
         resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
         attachments={attachments}
+        rubric={rubric}
       />
     );
   }

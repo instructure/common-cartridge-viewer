@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:183
 msgid "(unidentified)"
 msgstr "（无法识别）"
 
@@ -37,7 +37,7 @@ msgstr "（无法识别）"
 #~ msgid "Assessments ({0})"
 #~ msgstr "评估 ({0})"
 
-#: src/AssignmentBody.js:23
+#: src/AssignmentBody.js:34
 msgid "Assignment"
 msgstr "作业"
 
@@ -48,13 +48,13 @@ msgstr "作业"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "作业 ({0})"
+#~ msgstr "作业 ({0})<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:470
 msgid "Assignments ({numberOfAssignments})"
 msgstr "作业 ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:66
+#: src/AssignmentBody.js:77
 #: src/Discussion.js:57
 msgid "Attachments"
 msgstr "附件"
@@ -83,6 +83,10 @@ msgstr ""
 msgid "Course navigation links are only available within a Canvas course."
 msgstr ""
 
+#: src/AssignmentBody.js:118
+msgid "Criteria"
+msgstr ""
+
 #: src/Discussion.js:40
 msgid "Discussion"
 msgstr "讨论"
@@ -93,11 +97,16 @@ msgstr "讨论"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "讨论 ( {0})"
+#~ msgstr "讨论 ( {0})<<<<<<< HEAD"
+
+#: src/CommonCartridge.js:494
+msgid "Discussions ({0} )"
+msgstr ""
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
-msgstr "讨论 ({0})"
+#: src/CommonCartridge.js:469
+#~ msgid "Discussions ({0})"
+#~ msgstr "讨论 ({0})"
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -121,9 +130,9 @@ msgstr "无法预览外部工具内容"
 
 #: src/WebLink.js:29
 msgid "External link"
-msgstr "外部链接"
+msgstr "外部链接<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:359
 msgid "Failed to load resource"
 msgstr ""
 
@@ -133,9 +142,9 @@ msgstr ""
 
 #: src/FileList.js:39
 msgid "Files"
-msgstr "文件"
+msgstr "文件<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:521
 msgid "Files ({0})"
 msgstr "文件({0})"
 
@@ -154,19 +163,19 @@ msgstr "要在 Canvas 中使用此资源，必须安装外部工具。"
 #: src/EmbeddedPreview.js:59
 #: src/Image.js:37
 msgid "Loading"
-msgstr "正在加载"
+msgstr "正在加载<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:385
 msgid "Loading Cartridge"
-msgstr "正在加载 Cartridge"
+msgstr "正在加载 Cartridge<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:402
 msgid "Loading completion"
 msgstr "加载完成"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
@@ -176,9 +185,9 @@ msgstr ""
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:459
 msgid "Modules ({0})"
 msgstr "单元 ({0})"
 
@@ -194,7 +203,7 @@ msgstr "多选"
 msgid "Multiple response"
 msgstr "多个答案"
 
-#: src/Resource.js:129
+#: src/Resource.js:130
 msgid "Next"
 msgstr "下一步"
 
@@ -216,9 +225,9 @@ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
-msgstr "页面"
+msgstr "页面<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:481
 msgid "Pages ({0})"
 msgstr "页面 ({0})"
 
@@ -226,11 +235,11 @@ msgstr "页面 ({0})"
 msgid "Pattern match"
 msgstr "样式匹配"
 
-#: src/AssignmentBody.js:48
+#: src/AssignmentBody.js:59
 msgid "Points"
 msgstr "得分"
 
-#: src/Resource.js:108
+#: src/Resource.js:109
 msgid "Previous"
 msgstr "上一个"
 
@@ -238,9 +247,13 @@ msgstr "上一个"
 msgid "Previous Page"
 msgstr ""
 
+#: src/AssignmentBody.js:129
+msgid "Pts"
+msgstr ""
+
 #: src/Assessment.js:272
 msgid "Questions"
-msgstr "问题"
+msgstr "问题<<<<<<< HEAD"
 
 #: src/Assessment.js:244
 msgid "Quiz"
@@ -248,11 +261,19 @@ msgstr ""
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:508
 msgid "Quizzes ({0})"
 msgstr ""
+
+#: src/CommonCartridge.js:376
+#~ msgid "Quizzes ({numberOfAssessment})"
+#~ msgstr ""
+
+#: src/AssignmentBody.js:126
+msgid "Ratings"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -262,15 +283,15 @@ msgstr ""
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:35
+#: src/AssignmentBody.js:46
 msgid "Submitting"
 msgstr "提交"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:393
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "这可能需要一些时间，具体取决于 cartridge 的大小。"
 
@@ -278,13 +299,17 @@ msgstr "这可能需要一些时间，具体取决于 cartridge 的大小。"
 msgid "This resource is not included in the package."
 msgstr ""
 
+#: src/AssignmentBody.js:160
+msgid "Total points:"
+msgstr ""
+
 #: src/Assessment.js:146
 msgid "True / false"
-msgstr "对/错"
+msgstr "对/错<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:382
+#: src/CommonCartridge.js:446
 #: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/ModulesList.js:182
 #: src/WebLink.js:36
 #: src/WebLinkListItem.js:30
 #: src/utils.js:250
@@ -305,17 +330,17 @@ msgstr "在浏览器中查看 Common Cartridge。要求无服务器在运行处�
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
-msgstr "在 Github 上查看源"
+msgstr "在 Github 上查看源<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:361
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
-msgstr "Wiki 内容"
+msgstr "Wiki 内容<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:444
 msgid "You are here:"
 msgstr "您在此处："
 
@@ -333,7 +358,11 @@ msgstr "一份上传文件"
 
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc（启用 CORS）"
+msgstr "https://www.yourdomain.com/cartridge.imscc（启用 CORS）<<<<<<< HEAD======="
+
+#: src/AssignmentBody.js:141
+msgid "pts"
+msgstr ">>>>>>> Rubrics for assignments"
 
 #: src/AssessmentListItem.js:93
 msgid "{0} Questions"
@@ -352,12 +381,12 @@ msgstr ""
 #: src/DiscussionListItem.js:89
 #: src/FileListItem.js:74
 msgid "{0} points"
-msgstr "{0} 分"
+msgstr "{0} 分<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:411
 msgid "{0}%"
-msgstr "{0}%"
+msgstr "{0}%<<<<<<< HEAD"
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:405
 msgid "{0}% loaded"
 msgstr "已加载{0}%"
