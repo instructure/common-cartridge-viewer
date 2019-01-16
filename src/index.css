@@ -197,3 +197,7 @@ h3 {
 .EmbeddedPreview--audio {
   max-width: 100%;
 }
+
+.Assessment--IconCheckMark {
+  min-width: 32px;
+}

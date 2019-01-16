@@ -179,7 +179,7 @@ export default class Assessment extends Component {
                 <GridRow>
                   <GridCol width={item.options.length > 1 ? 8 : 5}>
                     <Grid vAlign="middle" margin="none" colSpacing="none">
-                      <GridRow>
+                      <GridRow startAt={null}>
                         {item.options &&
                           item.options.map(optionGroup => (
                             <GridCol key={optionGroup.id}>
@@ -191,10 +191,16 @@ export default class Assessment extends Component {
                               <Grid vAlign="middle" colSpacing="none">
                                 {optionGroup.responses.map(option => (
                                   <GridRow rowSpacing="none" key={option.id}>
-                                    <GridCol width={1}>
-                                      {option.valid && (
-                                        <IconCheckMark color="success" />
-                                      )}
+                                    <GridCol width="auto">
+                                      <IconCheckMark
+                                        color="success"
+                                        className="Assessment--IconCheckMark"
+                                        style={{
+                                          visibility: option.valid
+                                            ? "visible"
+                                            : "hidden"
+                                        }}
+                                      />
                                     </GridCol>
                                     <GridCol>
                                       <RichContent
