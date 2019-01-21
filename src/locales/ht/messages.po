@@ -5,7 +5,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Language: it\n"
+"Language: ht\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: \n"
@@ -15,173 +15,173 @@ msgstr ""
 
 #: src/ModulesList.js:156
 msgid "(unidentified)"
-msgstr "(non identificato)"
+msgstr "(non idantifye)"
 
 #: src/Resource.js:144
 msgid "All Items"
-msgstr "Tutti gli elementi"
+msgstr "Tout Eleman"
 
 #: src/Assessment.js:131
 msgid "Assessment"
-msgstr "Valutazione"
+msgstr "Evalyasyon"
 
 #: src/AssessmentList.js:43
 msgid "Assessments"
-msgstr "Valutazioni"
+msgstr "Evalyasyon"
 
 #: src/CommonCartridge.js:364
 msgid "Assessments ( {0})"
-msgstr "Valutazioni ( {0})"
+msgstr "Evalyasyon ( {0})"
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "Valutazioni ({0})"
+#~ msgstr "Evalyasyon ({0})"
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
-msgstr "Compito"
+msgstr "Sesyon"
 
 #: src/AssignmentList.js:34
 #: src/AssociatedContentAssignmentList.js:34
 msgid "Assignments"
-msgstr "Compiti"
+msgstr "Sesyon"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Compiti ({0})"
+#~ msgstr "Sesyon ({0})"
 
 #: src/CommonCartridge.js:344
 msgid "Assignments ({numberOfAssignments})"
-msgstr "Compiti ({numberOfAssignments})"
+msgstr "Sesyon ({numberOfAssignments})"
 
 #: src/AssignmentBody.js:66
 #: src/Discussion.js:57
 msgid "Attachments"
-msgstr "Allegati"
+msgstr "Atachman"
 
 #: src/App.js:109
 msgid "Cartridge"
-msgstr "Cartuccia"
+msgstr "Katouch"
 
 #: src/WebLink.js:40
 msgid "Click here to open link in new window"
-msgstr "Fai clic qui per aprire il link in una nuova finestra"
+msgstr "Klike la pou ka ouvri lyen nan yon nouvo fenèt"
 
 #: src/Discussion.js:40
 msgid "Discussion"
-msgstr "Discussione"
+msgstr "Diskisyon"
 
 #: src/DiscussionList.js:41
 msgid "Discussions"
-msgstr "Discussioni"
+msgstr "Diskisyon"
 
 #: src/CommonCartridge.js:356
 msgid "Discussions ( {0})"
-msgstr "Discussioni ( {0})"
+msgstr "Diskisyon ( {0})"
 
 #: src/CommonCartridge.js:344
 #~ msgid "Discussions ({0})"
-#~ msgstr "Discussioni ({0})"
+#~ msgstr "Diskisyon ({0})"
 
 #: src/App.js:95
 msgid "Drag and drop, or click to browse your computer"
-msgstr "Trascina la selezione o fai clic per cercare nel tuo computer"
+msgstr "Deplase oswa klike pou ka navige sou òdinatè w la."
 
 #: src/Assessment.js:96
 msgid "Essay"
-msgstr "Saggio"
+msgstr "Redaksyon"
 
 #: src/App.js:135
 msgid "Examples"
-msgstr "Esempi"
+msgstr "Egzanp"
 
 #: src/PreviewUnavailable.js:18
 msgid "External Tool Content Can't be Previewed"
-msgstr "Anteprima non disponibile per il contenuto dello strumento esterno"
+msgstr "Paka wè Apèsi de Kontni Zouti Ekstèn yo "
 
 #: src/WebLink.js:29
 msgid "External link"
-msgstr "Link esterno"
+msgstr "Lyen Ekstèn"
 
 #: src/FileList.js:38
 msgid "Files"
-msgstr "File"
+msgstr "Fichye"
 
 #: src/CommonCartridge.js:372
 msgid "Files ({0})"
-msgstr "File ({0})"
+msgstr "Fichye ({0})"
 
 #: src/Assessment.js:84
 msgid "Fill in the blank"
-msgstr "Riempi gli spazi vuoti"
+msgstr "Ranpli espas vid"
 
 #: src/Image.js:55
 msgid "Image"
-msgstr "Immagine"
+msgstr "Imaj"
 
 #: src/PreviewUnavailable.js:23
 msgid "In order to use this resource in Canvas, the external tool must be installed."
-msgstr "Per utilizzare questa risorsa in Canvas, deve essere installato lo strumento esterno."
+msgstr "Pou w kapab itilize resous sa a ssssou Canvas, zouti ekstèn nan dwe enstale."
 
 #: src/Image.js:37
 msgid "Loading"
-msgstr "Caricamento"
+msgstr "Chajman"
 
 #: src/CommonCartridge.js:254
 msgid "Loading Cartridge"
-msgstr "Caricamento cartuccia"
+msgstr "Chajman Katouch"
 
 #: src/CommonCartridge.js:271
 msgid "Loading completion"
-msgstr "Caricamento completato"
+msgstr "Fen chajman"
 
 #: src/CommonCartridge.js:339
 msgid "Modules ({0})"
-msgstr "Moduli ({0})"
+msgstr "Modil ({0})"
 
 #: src/Assessment.js:66
 msgid "Multiple choice"
-msgstr "Scelta multipla"
+msgstr "Plizyè chwa"
 
 #: src/Assessment.js:72
 msgid "Multiple response"
-msgstr "Risposta multipla"
+msgstr "Plizyè repons"
 
 #: src/Resource.js:127
 msgid "Next"
-msgstr "Successivo"
+msgstr "Pwochen"
 
 #: src/Resource.js:287
 msgid "Not found"
-msgstr "Non trovato"
+msgstr "Entwouvab"
 
 #: src/Assessment.js:102
 msgid "Other type"
-msgstr "Altro tipo"
+msgstr "Lòt tipp"
 
 #: src/WikiContent.js:25
 msgid "Page"
-msgstr "Pagina"
+msgstr "Paj"
 
 #: src/CommonCartridge.js:349
 msgid "Pages ({0})"
-msgstr "Pagine ({0})"
+msgstr "Paj ({0})"
 
 #: src/Assessment.js:90
 msgid "Pattern match"
-msgstr "Corrispondenza motivo"
+msgstr "Korespondans modèl"
 
 #: src/AssignmentBody.js:48
 msgid "Points"
-msgstr "Punti"
+msgstr "Pwen"
 
 #: src/Resource.js:109
 msgid "Previous"
-msgstr "Precedente"
+msgstr "Anvan"
 
 #: src/Assessment.js:155
 msgid "Questions"
-msgstr "Domande"
+msgstr "Kesyon"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -189,15 +189,15 @@ msgstr "Domande"
 
 #: src/AssignmentBody.js:35
 msgid "Submitting"
-msgstr "Invio"
+msgstr "Soumisyon"
 
 #: src/CommonCartridge.js:262
 msgid "This may take some time depending on the size of the cartridge."
-msgstr "Questo può richiedere un po’ di tempo in base alla dimensione della cartuccia."
+msgstr "Sa ka pran ti tan sa depan de gwosè katouch la."
 
 #: src/Assessment.js:78
 msgid "True / false"
-msgstr "Vero/falso"
+msgstr "Vrè / fo"
 
 #: src/CommonCartridge.js:325
 #: src/ModulesList.js:155
@@ -205,50 +205,50 @@ msgstr "Vero/falso"
 #: src/WebLinkListItem.js:24
 #: src/utils.js:203
 msgid "Untitled"
-msgstr "Senza titolo"
+msgstr "San tit"
 
 #: src/App.js:121
 msgid "View"
-msgstr "Visualizza"
+msgstr "Afiche"
 
 #: src/App.js:128
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
-msgstr "Visualizzare cartucce Common nel browser. Non richiede alcuna elaborazione lato server."
+msgstr "Afiche Katouch Komen yo nan navigatè a. Li pa bezwen okenn tretman nan sèvè."
 
 #: src/App.js:93
 msgid "View a Common Cartridge (.imscc)"
-msgstr "Visualizza una cartuccia Common (.imscc)"
+msgstr "Afiche yon Katouch Komen (.imscc)"
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
-msgstr "Visualizza origine in Github"
+msgstr "Afiche sous nan Github"
 
 #: src/WikiContentList.js:60
 msgid "Wiki content"
-msgstr "Contenuto Wiki"
+msgstr "Kontni Wiki"
 
 #: src/CommonCartridge.js:323
 msgid "You are here:"
-msgstr "Sei qui:"
+msgstr "Ou la a:"
 
 #: src/utils.js:272
 msgid "a file upload"
-msgstr "un caricamento di file"
+msgstr "yon fichye transfè"
 
 #: src/App.js:114
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (CORS abilitato)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS aktive)"
 
 #: src/AssessmentListItem.js:73
 msgid "{0} Questions"
-msgstr "{0} domande"
+msgstr "{0} Kesyon"
 
 #: src/AssessmentListItem.js:80
 #: src/AssignmentListItemBody.js:25
 #: src/DiscussionListItem.js:70
 #: src/FileListItem.js:68
 msgid "{0} points"
-msgstr "{0} punti"
+msgstr "{0} pwen"
 
 #: src/CommonCartridge.js:280
 msgid "{0}%"
@@ -256,4 +256,4 @@ msgstr "{0}%"
 
 #: src/CommonCartridge.js:274
 msgid "{0}% loaded"
-msgstr "{0}% caricato"
+msgstr "{0}% chaje"
