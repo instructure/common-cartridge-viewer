@@ -1,4 +1,4 @@
-﻿msgid ""
+msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -13,25 +13,25 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:156
+#: src/ModulesList.js:179
 msgid "(unidentified)"
 msgstr "(uidentificeret)"
 
 #: src/Resource.js:144
-msgid "All Items"
-msgstr "Alle elementer"
+#~ msgid "All Items"
+#~ msgstr "Alle elementer"
 
 #: src/Assessment.js:131
-msgid "Assessment"
-msgstr "Bedømmelse"
+#~ msgid "Assessment"
+#~ msgstr "Bedømmelse"
 
 #: src/AssessmentList.js:43
-msgid "Assessments"
-msgstr "Vurderinger"
+#~ msgid "Assessments"
+#~ msgstr "Vurderinger"
 
 #: src/CommonCartridge.js:364
-msgid "Assessments ( {0})"
-msgstr "Vurderinger ( {0})"
+#~ msgid "Assessments ( {0})"
+#~ msgstr "Vurderinger ( {0})"
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
@@ -41,8 +41,8 @@ msgstr "Vurderinger ( {0})"
 msgid "Assignment"
 msgstr "Opgave"
 
-#: src/AssignmentList.js:34
-#: src/AssociatedContentAssignmentList.js:34
+#: src/AssignmentList.js:35
+#: src/AssociatedContentAssignmentList.js:35
 msgid "Assignments"
 msgstr "Opgaver"
 
@@ -50,7 +50,7 @@ msgstr "Opgaver"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Opgaver ({0})"
 
-#: src/CommonCartridge.js:344
+#: src/CommonCartridge.js:406
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Opgaver ({numberOfAssignments})"
 
@@ -59,13 +59,29 @@ msgstr "Opgaver ({numberOfAssignments})"
 msgid "Attachments"
 msgstr "Vedhæftede filer"
 
-#: src/App.js:109
+#: src/Assessment.js:167
+msgid "Calculated"
+msgstr ""
+
+#: src/App.js:122
 msgid "Cartridge"
 msgstr "Cartridge"
 
 #: src/WebLink.js:40
 msgid "Click here to open link in new window"
 msgstr "Klik her for at åbne linket i et nyt vindue"
+
+#: src/App.js:106
+msgid "Common Cartridge Viewer"
+msgstr ""
+
+#: src/CourseNavigationUnavailable.js:11
+msgid "Course Navigation Cannot Be Previewed"
+msgstr ""
+
+#: src/CourseNavigationUnavailable.js:13
+msgid "Course navigation links are only available within a Canvas course."
+msgstr ""
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -76,26 +92,30 @@ msgid "Discussions"
 msgstr "Diskussioner"
 
 #: src/CommonCartridge.js:356
-msgid "Discussions ( {0})"
-msgstr "Diskussioner ( {0})"
+#~ msgid "Discussions ( {0})"
+#~ msgstr "Diskussioner ( {0})"
 
-#: src/CommonCartridge.js:344
-#~ msgid "Discussions ({0})"
-#~ msgstr "Diskussioner ({0})"
+#: src/CommonCartridge.js:430
+msgid "Discussions ({0})"
+msgstr "Diskussioner ({0})"
+
+#: src/App.js:108
+msgid "Drag and drop the cartridge, or click to browse your computer."
+msgstr ""
 
 #: src/App.js:95
-msgid "Drag and drop, or click to browse your computer"
-msgstr "Træk og slip eller klik for at browse din computer"
+#~ msgid "Drag and drop, or click to browse your computer"
+#~ msgstr "Træk og slip eller klik for at browse din computer"
 
-#: src/Assessment.js:96
+#: src/Assessment.js:155
 msgid "Essay"
 msgstr "Opgave"
 
-#: src/App.js:135
+#: src/App.js:148
 msgid "Examples"
 msgstr "Eksempler"
 
-#: src/PreviewUnavailable.js:18
+#: src/PreviewUnavailable.js:11
 msgid "External Tool Content Can't be Previewed"
 msgstr "Eksternt værktøjsindhold kan ikke forhåndsvises"
 
@@ -103,15 +123,23 @@ msgstr "Eksternt værktøjsindhold kan ikke forhåndsvises"
 msgid "External link"
 msgstr "Eksternt link"
 
-#: src/FileList.js:38
+#: src/CommonCartridge.js:295
+msgid "Failed to load resource"
+msgstr ""
+
+#: src/Assessment.js:173
+msgid "File Upload"
+msgstr ""
+
+#: src/FileList.js:39
 msgid "Files"
 msgstr "Filer"
 
-#: src/CommonCartridge.js:372
+#: src/CommonCartridge.js:456
 msgid "Files ({0})"
 msgstr "Filer ({0})"
 
-#: src/Assessment.js:84
+#: src/Assessment.js:149
 msgid "Fill in the blank"
 msgstr "Udfyld de tomme felter"
 
@@ -119,55 +147,82 @@ msgstr "Udfyld de tomme felter"
 msgid "Image"
 msgstr "Billede"
 
-#: src/PreviewUnavailable.js:23
+#: src/PreviewUnavailable.js:13
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "For at kunne bruge denne ressource i Canvas skal det eksterne værktøj installeres."
 
+#: src/EmbeddedPreview.js:59
 #: src/Image.js:37
 msgid "Loading"
 msgstr "Indlæser"
 
-#: src/CommonCartridge.js:254
+#: src/CommonCartridge.js:321
 msgid "Loading Cartridge"
 msgstr "Indlæser Cartridge"
 
-#: src/CommonCartridge.js:271
+#: src/CommonCartridge.js:338
 msgid "Loading completion"
 msgstr "Indlæser færdiggørelse"
 
-#: src/CommonCartridge.js:339
+#: src/Assessment.js:161
+msgid "Match Questions"
+msgstr ""
+
+#: src/Assessment.js:257
+msgid "Max attempts"
+msgstr ""
+
+#: src/EmbeddedPreview.js:74
+#: src/EmbeddedPreview.js:87
+#: src/EmbeddedPreview.js:98
+msgid "Media viewer"
+msgstr ""
+
+#: src/CommonCartridge.js:395
 msgid "Modules ({0})"
 msgstr "Moduler ({0})"
 
-#: src/Assessment.js:66
+#: src/Assessment.js:158
+msgid "Multiple Dropdowns"
+msgstr ""
+
+#: src/Assessment.js:140
 msgid "Multiple choice"
 msgstr "Flere valg"
 
-#: src/Assessment.js:72
+#: src/Assessment.js:143
 msgid "Multiple response"
 msgstr "Flere svar"
 
-#: src/Resource.js:127
+#: src/Resource.js:129
 msgid "Next"
 msgstr "Næste"
 
+#: src/Paginate.js:112
+msgid "Next Page"
+msgstr ""
+
 #: src/Resource.js:287
-msgid "Not found"
-msgstr "Ikke fundet"
+#~ msgid "Not found"
+#~ msgstr "Ikke fundet"
+
+#: src/Assessment.js:164
+msgid "Numerical"
+msgstr ""
 
 #: src/Assessment.js:102
-msgid "Other type"
-msgstr "Anden type"
+#~ msgid "Other type"
+#~ msgstr "Anden type"
 
 #: src/WikiContent.js:25
 msgid "Page"
 msgstr "Side"
 
-#: src/CommonCartridge.js:349
+#: src/CommonCartridge.js:417
 msgid "Pages ({0})"
 msgstr "Sider ({0})"
 
-#: src/Assessment.js:90
+#: src/Assessment.js:152
 msgid "Pattern match"
 msgstr "Mønster-match"
 
@@ -175,13 +230,33 @@ msgstr "Mønster-match"
 msgid "Points"
 msgstr "Point"
 
-#: src/Resource.js:109
+#: src/Resource.js:108
 msgid "Previous"
 msgstr "Forrige"
 
-#: src/Assessment.js:155
+#: src/Paginate.js:113
+msgid "Previous Page"
+msgstr ""
+
+#: src/Assessment.js:272
 msgid "Questions"
 msgstr "Spørgsmål"
+
+#: src/Assessment.js:244
+msgid "Quiz"
+msgstr ""
+
+#: src/AssessmentList.js:44
+msgid "Quizzes"
+msgstr ""
+
+#: src/CommonCartridge.js:443
+msgid "Quizzes ({0})"
+msgstr ""
+
+#: src/ResourceUnavailable.js:11
+msgid "Resource Unavailable"
+msgstr ""
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -191,69 +266,98 @@ msgstr "Spørgsmål"
 msgid "Submitting"
 msgstr "Afleverer"
 
-#: src/CommonCartridge.js:262
+#: src/Assessment.js:170
+msgid "Text only"
+msgstr ""
+
+#: src/CommonCartridge.js:329
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Dette kan tage lidt tid afhængigt af Cartridge-størrelsen."
 
-#: src/Assessment.js:78
+#: src/ResourceUnavailable.js:12
+msgid "This resource is not included in the package."
+msgstr ""
+
+#: src/Assessment.js:146
 msgid "True / false"
 msgstr "Sandt / falsk"
 
-#: src/CommonCartridge.js:325
-#: src/ModulesList.js:155
+#: src/CommonCartridge.js:382
+#: src/ExternalToolListItem.js:26
+#: src/ModulesList.js:178
 #: src/WebLink.js:36
-#: src/WebLinkListItem.js:24
-#: src/utils.js:203
+#: src/WebLinkListItem.js:30
+#: src/utils.js:250
 msgid "Untitled"
 msgstr "Uden titel"
 
-#: src/App.js:121
+#: src/App.js:134
 msgid "View"
 msgstr "Vis"
 
-#: src/App.js:128
+#: src/App.js:141
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
 msgstr "Se Common Cartridge i browseren. Kræver ingen behandling på server-siden."
 
 #: src/App.js:93
-msgid "View a Common Cartridge (.imscc)"
-msgstr "Se en Common Cartridge (.imscc)"
+#~ msgid "View a Common Cartridge (.imscc)"
+#~ msgstr "Se en Common Cartridge (.imscc)"
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
 msgstr "Se kilde på Github"
 
-#: src/WikiContentList.js:60
+#: src/CommonCartridge.js:297
+msgid "We had a problem loading the Common Cartridge"
+msgstr ""
+
+#: src/WikiContentList.js:61
 msgid "Wiki content"
 msgstr "Wiki-indhold"
 
-#: src/CommonCartridge.js:323
+#: src/CommonCartridge.js:380
 msgid "You are here:"
 msgstr "Du er her:"
 
-#: src/utils.js:272
+#: src/EmbeddedPreview.js:77
+msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
+msgstr ""
+
+#: src/EmbeddedPreview.js:90
+msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
+msgstr ""
+
+#: src/utils.js:352
 msgid "a file upload"
 msgstr "en filoverførsel"
 
-#: src/App.js:114
+#: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 
-#: src/AssessmentListItem.js:73
+#: src/AssessmentListItem.js:93
 msgid "{0} Questions"
 msgstr "{0} spørgsmål"
 
-#: src/AssessmentListItem.js:80
-#: src/AssignmentListItemBody.js:25
-#: src/DiscussionListItem.js:70
-#: src/FileListItem.js:68
+#: src/WorkflowStateIcon.js:30
+msgid "{0} is published"
+msgstr ""
+
+#: src/WorkflowStateIcon.js:21
+msgid "{0} is unpublished"
+msgstr ""
+
+#: src/AssessmentListItem.js:100
+#: src/AssignmentListItemBody.js:33
+#: src/DiscussionListItem.js:89
+#: src/FileListItem.js:74
 msgid "{0} points"
 msgstr "{0} point"
 
-#: src/CommonCartridge.js:280
+#: src/CommonCartridge.js:347
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:274
+#: src/CommonCartridge.js:341
 msgid "{0}% loaded"
 msgstr "{0}% indlæst"
