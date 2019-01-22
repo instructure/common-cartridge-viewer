@@ -428,9 +428,7 @@ export default class CommonCartridge extends Component {
                           }}
                         >
                           <Trans>
-                            {`Discussions (${
-                              this.state.discussionResources.length
-                            })`}
+                            Discussions (${this.state.discussionResources.length})
                           </Trans>
                         </NavLink>
                       )}
@@ -443,9 +441,7 @@ export default class CommonCartridge extends Component {
                           }}
                         >
                           <Trans>
-                            {`Quizzes (${
-                              this.state.assessmentResources.length
-                            })`}
+                            Quizzes ({this.state.assessmentResources.length})
                           </Trans>
                         </NavLink>
                       )}
