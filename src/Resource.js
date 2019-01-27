@@ -31,7 +31,8 @@ export default class Resource extends Component {
     super(props);
     this.state = {
       isLoaded: false,
-      isNotFound: false
+      isNotFound: false,
+      embeddedPreviewFailed: false
     };
   }
 
@@ -224,7 +225,8 @@ export default class Resource extends Component {
         ...DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
         ...NOTORIOUS_EXTENSIONS_SUPPORTED
       ].includes(extension) &&
-      this.props.externalViewer != null;
+      this.props.externalViewer != null &&
+      !this.state.embeddedPreviewFailed;
 
     let componentToRender;
     if (isImage) {
@@ -252,7 +254,12 @@ export default class Resource extends Component {
       );
     } else if (isDocumentWithPreview) {
       componentToRender = (
-        <EmbeddedPreview externalViewer={this.props.externalViewer} />
+        <EmbeddedPreview
+          onFail={() => (
+            this.setState({embeddedPreviewFailed: true})
+          )}
+          externalViewer={this.props.externalViewer}
+        />
       );
     } else if (components[type] != null) {
       componentToRender = components[type];
@@ -298,6 +305,7 @@ export default class Resource extends Component {
     const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
+
     return (
       <React.Fragment>
         {this.props.isModuleItem && (previousItem || nextItem) && (

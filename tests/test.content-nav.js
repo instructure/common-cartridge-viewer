@@ -66,7 +66,7 @@ test("Previous and Next work with external tool items", async t => {
     .expect(previousButton.exists)
     .ok()
     .click(previousButton)
-    .expect(Selector("div").withAttribute("data-uid", "Spinner").exists)
+    .expect(Selector("span").withText("Download sample-document.pdf").exists)
     .ok();
 });
 
