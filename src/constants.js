@@ -132,11 +132,9 @@ export const AVAILABLE_LOCALES = {
   "fr-ca": () =>
     import(/* webpackChunkName: "fr_CA" */ "./locales/fr_CA/messages.js"),
   fr: () => import(/* webpackChunkName: "fr" */ "./locales/fr/messages.js"),
-  ht: () => import(/* webpackChunkName: "ht" */ "./locales/ht/messages.js"),
   is: () => import(/* webpackChunkName: "is" */ "./locales/is/messages.js"),
   it: () => import(/* webpackChunkName: "it" */ "./locales/it/messages.js"),
   ja: () => import(/* webpackChunkName: "ja" */ "./locales/ja/messages.js"),
-  mi: () => import(/* webpackChunkName: "mi" */ "./locales/mi/messages.js"),
   "nb-no": () =>
     import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
   nb: () => import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
