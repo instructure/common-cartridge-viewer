@@ -20,7 +20,7 @@ export const i18n = setupI18n({});
 const rawLocale = parsedQueryString["locale"];
 const locale = AVAILABLE_LOCALES[rawLocale] ? rawLocale : "en";
 i18n.activate(locale);
-const messages = AVAILABLE_LOCALES[locale]().then(messages => {
+AVAILABLE_LOCALES[locale]().then(messages => {
   const catalogs = {};
   catalogs[locale] = messages;
   i18n.load(catalogs);
