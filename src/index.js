@@ -10,16 +10,21 @@ import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { setupI18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
-import catalogEn from "./locales/en/messages.js";
-
-const catalogs = {
-  en: catalogEn
-};
+import { AVAILABLE_LOCALES } from "./constants";
 
 const queryString = require("query-string"); // has issue with module import
 const parsedQueryString = queryString.parse(window.location.search);
 
-export const i18n = setupI18n({ language: "en", catalogs: catalogs });
+export const i18n = setupI18n({});
+
+const rawLocale = parsedQueryString["locale"];
+const locale = AVAILABLE_LOCALES[rawLocale] ? rawLocale : "en";
+i18n.activate(locale);
+AVAILABLE_LOCALES[locale]().then(messages => {
+  const catalogs = {};
+  catalogs[locale] = messages;
+  i18n.load(catalogs);
+});
 
 const highContrastEnabled =
   typeof parsedQueryString["high-contrast"] !== "undefined";
