@@ -152,35 +152,17 @@ export default class App extends Component {
               </React.Fragment>
             )}
 
-            {this.props.manifest != null && (
-              <Router>
-                <CommonCartridge
-                  compact={this.props.compact}
-                  onHistoryChange={this.handleHistoryChange}
-                  manifest={this.props.manifest}
-                />
-              </Router>
-            )}
-
-            {this.props.cartridge != null && (
-              <Router>
-                <CommonCartridge
-                  cartridge={this.state.cartridge || this.state.file}
-                  compact={this.props.compact}
-                  onHistoryChange={this.handleHistoryChange}
-                />
-              </Router>
-            )}
-
-            {this.state.file != null && (
-              <Router>
-                <CommonCartridge
-                  compact={this.props.compact}
-                  file={this.state.file}
-                  onHistoryChange={this.handleHistoryChange}
-                />
-              </Router>
-            )}
+            <Router>
+              <CommonCartridge
+                manifest={this.props.manifest}
+                cartridge={this.state.cartridge || this.state.file}
+                file={this.state.file}
+                compact={this.props.compact}
+                onHistoryChange={this.handleHistoryChange}
+                onPreviewFailure={this.handlePreviewFailure}
+                previewType={this.state.previewType}
+              />
+            </Router>
           </View>
         )}
       </I18n>

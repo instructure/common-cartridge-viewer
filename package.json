@@ -37,7 +37,8 @@
     "test-chrome": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
     "test-firefox": "testcafe firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
     "test-safari": "testcafe safari ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
-    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\""
+    "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "test-headless": "testcafe chrome:headless,firefox:headless ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\""
   },
   "husky": {
     "hooks": {
