@@ -63,7 +63,15 @@ export default class CommonCartridge extends Component {
       pageResources: [],
       resourceIdsByHrefMap: new Map(),
       showcaseResources: [],
-      showcaseSingleResource: null
+      showcaseSingleResource: null,
+      previewType:
+        this.props.manifest != null
+          ? "manifest" // prefer manifest
+          : this.props.cartridge != null
+          ? "cartridge" // fall back to cartridge
+          : this.props.file != null
+          ? "file"
+          : null
     };
   }
 
@@ -81,15 +89,19 @@ export default class CommonCartridge extends Component {
     }, 0);
   };
 
+  getEntriesFromPreviewType = () => {
+    if (this.state.previewType === "manifest") {
+      this.getEntriesFromManifest();
+    } else if (this.state.previewType === "cartridge") {
+      this.getEntriesFromExternalImscc();
+    } else if (this.state.previewType === "file") {
+      this.getEntriesFromDroppedFile();
+    }
+  };
+
   componentDidMount() {
     document.addEventListener("keydown", this.handleDocumentKeydown);
-    if (this.props.file != null) {
-      this.getEntriesFromDroppedFile();
-    } else if (this.props.cartridge != null) {
-      this.getEntriesFromExternalImscc();
-    } else if (this.props.manifest != null) {
-      this.getEntriesFromManifest();
-    }
+    this.getEntriesFromPreviewType();
   }
 
   getEntriesFromManifest = () => {
@@ -102,11 +114,25 @@ export default class CommonCartridge extends Component {
       })
       .then(xml => this.loadResources(xml))
       .catch(error => {
-        this.setState({ errorLoading: true });
+        const canAttemptCartridgeFallBack =
+          this.state.previewType === "manifest" && this.props.cartridge != null;
+        if (canAttemptCartridgeFallBack) {
+          this.setState({
+            previewType: "cartridge",
+            basepath: null,
+            isCartridgeRemotelyExpanded: false
+          });
+        } else {
+          this.setState({ errorLoading: true });
+        }
       });
   };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.previewType !== prevState.previewType) {
+      this.getEntriesFromPreviewType();
+      return;
+    }
     if (
       this.props.cartridge !== prevProps.cartridge &&
       this.props.file == null
@@ -261,8 +287,7 @@ export default class CommonCartridge extends Component {
     const moduleMeta = await this.getModuleMeta();
     const result = await parseManifestDocument(manifest, { moduleMeta });
     if (result.resources.length === 0) {
-      this.setState({ errorLoading: true });
-      return;
+      throw new Error();
     }
     let externalViewers = new Map();
     if (result.hasExternalViewers) {
@@ -428,7 +453,8 @@ export default class CommonCartridge extends Component {
                           }}
                         >
                           <Trans>
-                            Discussions ({this.state.discussionResources.length})
+                            Discussions ({this.state.discussionResources.length}
+                            )
                           </Trans>
                         </NavLink>
                       )}
