@@ -4,3 +4,13 @@
   border-left: 3px solid #0770a3;
   text-decoration: underline;
 }
+
+a:focus,
+main:focus {
+  outline: 2px solid #0770a3 !important;
+}
+
+a,
+main {
+  outline: 2px solid transparent !important;
+}
