@@ -201,3 +201,13 @@ h3 {
 .Assessment--IconCheckMark {
   min-width: 32px;
 }
+
+a:focus,
+main:focus {
+  outline: 2px solid #008ee2 !important;
+}
+
+a,
+main {
+  outline: 2px solid transparent !important;
+}
