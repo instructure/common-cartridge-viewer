@@ -453,8 +453,7 @@ export default class CommonCartridge extends Component {
                           }}
                         >
                           <Trans>
-                            Discussions ({this.state.discussionResources.length}
-                            )
+                            Discussions ({this.state.discussionResources.length})
                           </Trans>
                         </NavLink>
                       )}
