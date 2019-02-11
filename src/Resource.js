@@ -26,6 +26,7 @@ import { Trans } from "@lingui/macro";
 import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 import PreviewUnavailable from "./PreviewUnavailable";
+const queryString = require("query-string");
 
 export default class Resource extends Component {
   constructor(props) {
@@ -98,7 +99,7 @@ export default class Resource extends Component {
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(previousItem),
-              state: this.props.location.state
+              search: this.props.location.search
             }}
             variant="ghost"
             as={RouterLink}
@@ -119,7 +120,7 @@ export default class Resource extends Component {
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(nextItem),
-              state: this.props.location.state
+              search: this.props.location.search
             }}
             variant="ghost"
             as={RouterLink}
@@ -304,10 +305,8 @@ export default class Resource extends Component {
     const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
-    const navigationButtonsEnabled =
-      this.props.location &&
-      this.props.location.state &&
-      this.props.location.state.from === MODULE_LIST;
+    const query = queryString.parse(this.props.location.search);
+    const navigationButtonsEnabled = query.from === MODULE_LIST;
     return (
       <React.Fragment>
         {navigationButtonsEnabled && (previousItem || nextItem) && (

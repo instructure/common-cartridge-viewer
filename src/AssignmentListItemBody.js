@@ -21,7 +21,7 @@ export default class AssignmentListItemBody extends PureComponent {
               as={RouterLink}
               to={{
                 pathname,
-                state: { from: this.props.from }
+                search: this.props.search
               }}
             >
               {this.props.title}

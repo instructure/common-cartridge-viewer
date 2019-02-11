@@ -62,7 +62,7 @@ export default class FileListItem extends Component {
               as={RouterLink}
               to={{
                 pathname: `resources/${this.props.identifier}`,
-                state: { from: this.props.from }
+                search: this.props.search
               }}
             >
               {this.props.title || title}

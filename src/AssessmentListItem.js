@@ -82,7 +82,7 @@ export default class AssessmentListItem extends Component {
                 as={RouterLink}
                 to={{
                   pathname,
-                  state: { from: this.props.from }
+                  search: this.props.search
                 }}
               >
                 {this.state.title}

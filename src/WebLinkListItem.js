@@ -24,7 +24,7 @@ export default class WebLinkListItem extends Component {
                 as={NavLink}
                 to={{
                   pathname: `resources/${this.props.identifier}`,
-                  state: { from: this.props.from }
+                  search: this.props.search
                 }}
               >
                 <span>{this.props.item.title || <Trans>Untitled</Trans>}</span>

@@ -65,7 +65,7 @@ export default class AssignmentListItem extends Component {
         title={this.state.title}
         points={this.state.points}
         workflowState={this.state.workflowState}
-        from={this.props.from}
+        search={this.props.search}
         resourceNotFound={this.state.resourceNotFound}
       />
     );
