@@ -1,4 +1,7 @@
-import { Selector } from "testcafe";
+import { Selector, ClientFunction } from "testcafe";
+
+const browserBack = ClientFunction(() => window.history.back());
+const browserForward = ClientFunction(() => window.history.forward());
 
 fixture`Content Navigation links (Next & Previous)`;
 
@@ -228,6 +231,73 @@ test("Previous link on last page works", async t => {
       Selector("h1").withText("Assignment with Internal and External Links")
         .exists
     )
+    .ok();
+});
+
+test("Previous and Next buttons show up after using the 'back' browser button", async t => {
+  const nextButton = Selector("span")
+    .withText("Next")
+    .parent("a");
+  const previousButton = Selector("span")
+    .withText("Previous")
+    .parent("a");
+  const firstModuleQuiz1 = Selector("a").withText("First Module Quiz 1");
+  const firstModuleQuiz1Header = Selector("h1").withText("First Module Quiz 1");
+  const firstModuleWikiPage1Header = Selector("h1").withText(
+    "First Module Wiki Page 1"
+  );
+  await t.navigateTo(
+    `http://localhost:5000/?manifest=${encodeURIComponent(
+      "/test-cartridges/course-1/imsmanifest.xml"
+    )}#/`
+  );
+
+  await t
+    .click(firstModuleQuiz1)
+    .click(nextButton)
+    .expect(firstModuleWikiPage1Header.exists)
+    .ok();
+
+  await browserBack();
+
+  await t
+    .expect(firstModuleQuiz1Header.exists)
+    .ok()
+    .expect(nextButton.exists)
+    .ok()
+    .expect(previousButton.exists)
+    .ok();
+});
+
+test("Previous and Next buttons show up after using the 'forward' browser button", async t => {
+  const nextButton = Selector("span")
+    .withText("Next")
+    .parent("a");
+  const previousButton = Selector("span")
+    .withText("Previous")
+    .parent("a");
+  const firstModuleQuiz1 = Selector("a").withText("First Module Quiz 1");
+  const firstModuleQuiz1Header = Selector("h1").withText("First Module Quiz 1");
+  await t.navigateTo(
+    `http://localhost:5000/?manifest=${encodeURIComponent(
+      "/test-cartridges/course-1/imsmanifest.xml"
+    )}#/`
+  );
+
+  await t
+    .click(firstModuleQuiz1)
+    .expect(firstModuleQuiz1Header.exists)
+    .ok();
+
+  await browserBack();
+  await browserForward();
+
+  await t
+    .expect(firstModuleQuiz1Header.exists)
+    .ok()
+    .expect(nextButton.exists)
+    .ok()
+    .expect(previousButton.exists)
     .ok();
 });
 

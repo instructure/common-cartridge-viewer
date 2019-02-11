@@ -20,9 +20,13 @@ import { Trans } from "@lingui/macro";
 import { getAssignmentSettingsHref } from "./utils.js";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
 import ExternalToolListItem from "./ExternalToolListItem";
+const queryString = require("query-string");
 
 export default class ModulesList extends Component {
   render() {
+    const query = queryString.parse(this.props.location.search);
+    query.from = MODULE_LIST;
+    const search = queryString.stringify(query);
     const moduleComponents = this.props.modules.map(
       ({ title, ref, items, identifier }, index) => {
         const itemComponents = items.map((item, index) => {
@@ -53,7 +57,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }
@@ -68,7 +72,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }
@@ -87,7 +91,7 @@ export default class ModulesList extends Component {
                   item={item}
                   key={index}
                   src={this.props.src}
-                  from={MODULE_LIST}
+                  search={search}
                 />
               );
             }
@@ -103,7 +107,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }
@@ -118,7 +122,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }
@@ -133,7 +137,7 @@ export default class ModulesList extends Component {
                 metadata={item.metadata}
                 src={this.props.src}
                 title={item.title}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }
@@ -144,7 +148,7 @@ export default class ModulesList extends Component {
                 key={index}
                 identifier={item.identifierref}
                 item={item}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }
@@ -155,7 +159,7 @@ export default class ModulesList extends Component {
                 key={index}
                 item={item}
                 identifier={item.identifierref}
-                from={MODULE_LIST}
+                search={search}
               />
             );
           }

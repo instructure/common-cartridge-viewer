@@ -453,7 +453,8 @@ export default class CommonCartridge extends Component {
                           }}
                         >
                           <Trans>
-                            Discussions ({this.state.discussionResources.length})
+                            Discussions ({this.state.discussionResources.length}
+                            )
                           </Trans>
                         </NavLink>
                       )}
@@ -504,7 +505,7 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/"
-                        render={({ match }) => (
+                        render={({ match, location }) => (
                           <React.Fragment>
                             {this.state.showcaseSingleResource !== null ? (
                               <React.Fragment>
@@ -525,6 +526,7 @@ export default class CommonCartridge extends Component {
                                   resourceIdsByHrefMap={
                                     this.state.resourceIdsByHrefMap
                                   }
+                                  location={location}
                                 />
                               </React.Fragment>
                             ) : this.state.showcaseResources.length === 1 ? (
@@ -546,6 +548,7 @@ export default class CommonCartridge extends Component {
                                   resourceIdsByHrefMap={
                                     this.state.resourceIdsByHrefMap
                                   }
+                                  location={location}
                                 />
                               </React.Fragment>
                             ) : (
@@ -559,6 +562,7 @@ export default class CommonCartridge extends Component {
                                   moduleItems={this.state.moduleItems}
                                   modules={this.state.modules}
                                   match={match}
+                                  location={location}
                                 />
                               </React.Fragment>
                             )}
@@ -599,7 +603,7 @@ export default class CommonCartridge extends Component {
                       <Route
                         exact
                         path="/modules/:module"
-                        render={({ match }) => (
+                        render={({ match, location }) => (
                           <React.Fragment>
                             <ModulesList
                               getTextByPath={this.getTextByPath}
@@ -609,6 +613,7 @@ export default class CommonCartridge extends Component {
                               moduleItems={this.state.moduleItems}
                               modules={this.state.modules}
                               match={match}
+                              location={location}
                             />
                           </React.Fragment>
                         )}
