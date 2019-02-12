@@ -210,6 +210,8 @@ main:focus {
 a,
 main {
   outline: 2px solid transparent !important;
+}
+
 table {
   width: 100%;
   border-radius: 5px;
