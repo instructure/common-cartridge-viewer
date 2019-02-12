@@ -8,13 +8,13 @@ import Text from "@instructure/ui-elements/es/components/Text";
 
 export default class AssignmentBody extends PureComponent {
   getRubricRatingsColSpan = () => {
-    let colspan = 1;
+    let colSpan = 1;
 
     this.props.rubric.criteria.forEach(criteria => {
-      if (criteria.ratings.length > colspan) colspan = criteria.ratings.length;
+      if (criteria.ratings.length > colSpan) colSpan = criteria.ratings.length;
     });
 
-    return colspan;
+    return colSpan;
   };
 
   render() {
@@ -106,7 +106,7 @@ export default class AssignmentBody extends PureComponent {
                     align="left"
                     scope="col"
                     style={{ borderBottom: "none" }}
-                    colspan={this.getRubricRatingsColSpan() + 2}
+                    colSpan={this.getRubricRatingsColSpan() + 2}
                   >
                     <Text size="large" weight="bold" lineHeight="double">
                       {this.props.rubric.title}
@@ -120,7 +120,7 @@ export default class AssignmentBody extends PureComponent {
                   <th
                     align="left"
                     scope="col"
-                    colspan={this.getRubricRatingsColSpan()}
+                    colSpan={this.getRubricRatingsColSpan()}
                     style={{ border: "none" }}
                   >
                     <Trans>Ratings</Trans>
@@ -135,8 +135,8 @@ export default class AssignmentBody extends PureComponent {
                   return (
                     <tr key={criteria.id}>
                       <td>{criteria.description}</td>
-                      {criteria.ratings.map(rating => (
-                        <td>
+                      {criteria.ratings.map((rating, i) => (
+                        <td key={`criteria-${i}`}>
                           <Text as="div">
                             {rating.points} <Trans>pts</Trans>
                           </Text>
@@ -153,7 +153,7 @@ export default class AssignmentBody extends PureComponent {
                   <th
                     align="right"
                     scope="col"
-                    colspan={this.getRubricRatingsColSpan() + 1}
+                    colSpan={this.getRubricRatingsColSpan() + 1}
                     style={{ borderRight: "none" }}
                   >
                     <Text weight="bold" lineHeight="double">
