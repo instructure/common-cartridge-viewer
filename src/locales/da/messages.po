@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:175
 msgid "(unidentified)"
 msgstr "(uidentificeret)"
 
@@ -50,7 +50,7 @@ msgstr "Opgaver"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Opgaver ({0})"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Opgaver ({numberOfAssignments})"
 
@@ -96,8 +96,12 @@ msgstr "Diskussioner"
 #~ msgstr "Diskussioner ( {0})"
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
-msgstr "Diskussioner ({0})"
+#~ msgid "Discussions ({0})"
+#~ msgstr "Diskussioner ({0})"
+
+#: src/CommonCartridge.js:455
+msgid "Discussions ({length})"
+msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -123,7 +127,7 @@ msgstr "Eksternt værktøjsindhold kan ikke forhåndsvises"
 msgid "External link"
 msgstr "Eksternt link"
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:320
 msgid "Failed to load resource"
 msgstr ""
 
@@ -135,7 +139,7 @@ msgstr ""
 msgid "Files"
 msgstr "Filer"
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:484
 msgid "Files ({0})"
 msgstr "Filer ({0})"
 
@@ -156,11 +160,11 @@ msgstr "For at kunne bruge denne ressource i Canvas skal det eksterne værktøj 
 msgid "Loading"
 msgstr "Indlæser"
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:346
 msgid "Loading Cartridge"
 msgstr "Indlæser Cartridge"
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:363
 msgid "Loading completion"
 msgstr "Indlæser færdiggørelse"
 
@@ -178,7 +182,7 @@ msgstr ""
 msgid "Media viewer"
 msgstr ""
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:420
 msgid "Modules ({0})"
 msgstr "Moduler ({0})"
 
@@ -194,7 +198,7 @@ msgstr "Flere valg"
 msgid "Multiple response"
 msgstr "Flere svar"
 
-#: src/Resource.js:129
+#: src/Resource.js:126
 msgid "Next"
 msgstr "Næste"
 
@@ -218,7 +222,7 @@ msgstr ""
 msgid "Page"
 msgstr "Side"
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:442
 msgid "Pages ({0})"
 msgstr "Sider ({0})"
 
@@ -230,7 +234,7 @@ msgstr "Mønster-match"
 msgid "Points"
 msgstr "Point"
 
-#: src/Resource.js:108
+#: src/Resource.js:106
 msgid "Previous"
 msgstr "Forrige"
 
@@ -250,7 +254,7 @@ msgstr ""
 msgid "Quizzes"
 msgstr ""
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
 msgstr ""
 
@@ -270,7 +274,7 @@ msgstr "Afleverer"
 msgid "Text only"
 msgstr ""
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Dette kan tage lidt tid afhængigt af Cartridge-størrelsen."
 
@@ -282,11 +286,11 @@ msgstr ""
 msgid "True / false"
 msgstr "Sandt / falsk"
 
-#: src/CommonCartridge.js:382
-#: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/CommonCartridge.js:407
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
 #: src/WebLink.js:36
-#: src/WebLinkListItem.js:30
+#: src/WebLinkListItem.js:31
 #: src/utils.js:250
 msgid "Untitled"
 msgstr "Uden titel"
@@ -307,7 +311,7 @@ msgstr "Se Common Cartridge i browseren. Kræver ingen behandling på server-sid
 msgid "View source on Github"
 msgstr "Se kilde på Github"
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
@@ -315,7 +319,7 @@ msgstr ""
 msgid "Wiki content"
 msgstr "Wiki-indhold"
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:405
 msgid "You are here:"
 msgstr "Du er her:"
 
@@ -335,7 +339,7 @@ msgstr "en filoverførsel"
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 
-#: src/AssessmentListItem.js:93
+#: src/AssessmentListItem.js:94
 msgid "{0} Questions"
 msgstr "{0} spørgsmål"
 
@@ -347,17 +351,17 @@ msgstr ""
 msgid "{0} is unpublished"
 msgstr ""
 
-#: src/AssessmentListItem.js:100
-#: src/AssignmentListItemBody.js:33
-#: src/DiscussionListItem.js:89
-#: src/FileListItem.js:74
+#: src/AssessmentListItem.js:101
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:90
+#: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} point"
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:372
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:366
 msgid "{0}% loaded"
 msgstr "{0}% indlæst"
