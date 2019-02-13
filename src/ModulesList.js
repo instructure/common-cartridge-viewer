@@ -3,11 +3,7 @@ import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Link from "@instructure/ui-elements/lib/components/Link";
 
-import {
-  resourceTypes,
-  WIKI_CONTENT_HREF_PREFIX,
-  MODULE_LIST
-} from "./constants";
+import { resourceTypes, WIKI_CONTENT_HREF_PREFIX } from "./constants";
 import NavLink from "./NavLink";
 import AssignmentListItem from "./AssignmentListItem";
 import AssessmentListItem from "./AssessmentListItem";
@@ -20,13 +16,9 @@ import { Trans } from "@lingui/macro";
 import { getAssignmentSettingsHref } from "./utils.js";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
 import ExternalToolListItem from "./ExternalToolListItem";
-const queryString = require("query-string");
 
 export default class ModulesList extends Component {
   render() {
-    const query = queryString.parse(this.props.location.search);
-    query.from = MODULE_LIST;
-    const search = queryString.stringify(query);
     const moduleComponents = this.props.modules.map(
       ({ title, ref, items, identifier }, index) => {
         const itemComponents = items.map((item, index) => {
@@ -57,7 +49,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                search={search}
+                isModuleItem={true}
               />
             );
           }
@@ -72,7 +64,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                search={search}
+                isModuleItem={true}
               />
             );
           }
@@ -91,7 +83,7 @@ export default class ModulesList extends Component {
                   item={item}
                   key={index}
                   src={this.props.src}
-                  search={search}
+                  isModuleItem={true}
                 />
               );
             }
@@ -107,7 +99,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                search={search}
+                isModuleItem={true}
               />
             );
           }
@@ -122,7 +114,7 @@ export default class ModulesList extends Component {
                 item={item}
                 key={index}
                 src={this.props.src}
-                search={search}
+                isModuleItem={true}
               />
             );
           }
@@ -137,7 +129,7 @@ export default class ModulesList extends Component {
                 metadata={item.metadata}
                 src={this.props.src}
                 title={item.title}
-                search={search}
+                isModuleItem={true}
               />
             );
           }
@@ -148,7 +140,7 @@ export default class ModulesList extends Component {
                 key={index}
                 identifier={item.identifierref}
                 item={item}
-                search={search}
+                isModuleItem={true}
               />
             );
           }
@@ -159,7 +151,7 @@ export default class ModulesList extends Component {
                 key={index}
                 item={item}
                 identifier={item.identifierref}
-                search={search}
+                isModuleItem={true}
               />
             );
           }

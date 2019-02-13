@@ -3,8 +3,7 @@ import React, { Component } from "react";
 import {
   resourceTypes,
   DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
-  NOTORIOUS_EXTENSIONS_SUPPORTED,
-  MODULE_LIST
+  NOTORIOUS_EXTENSIONS_SUPPORTED
 } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
@@ -26,7 +25,6 @@ import { Trans } from "@lingui/macro";
 import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 import PreviewUnavailable from "./PreviewUnavailable";
-const queryString = require("query-string");
 
 export default class Resource extends Component {
   constructor(props) {
@@ -88,8 +86,8 @@ export default class Resource extends Component {
   };
 
   makeNavigationButtonHrefFromModule = module =>
-    module.type === resourceTypes.EXTERNAL_TOOL
-      ? `/external/tool/${module.identifierref || module.identifier}`
+    this.props.isModuleItem
+      ? `/module-items/${module.identifierref || module.identifier}`
       : `/resources/${module.identifierref || module.identifier}`;
 
   renderPreviousButton = previousItem => {
@@ -98,8 +96,7 @@ export default class Resource extends Component {
         <Tooltip variant="inverse" tip={previousItem.title} placement="end">
           <Button
             to={{
-              pathname: this.makeNavigationButtonHrefFromModule(previousItem),
-              search: this.props.location.search
+              pathname: this.makeNavigationButtonHrefFromModule(previousItem)
             }}
             variant="ghost"
             as={RouterLink}
@@ -119,8 +116,7 @@ export default class Resource extends Component {
         <Tooltip variant="inverse" tip={nextItem.title} placement="start">
           <Button
             to={{
-              pathname: this.makeNavigationButtonHrefFromModule(nextItem),
-              search: this.props.location.search
+              pathname: this.makeNavigationButtonHrefFromModule(nextItem)
             }}
             variant="ghost"
             as={RouterLink}
@@ -286,16 +282,13 @@ export default class Resource extends Component {
   render() {
     let resource = this.props.resourceMap.get(this.props.identifier);
     const { moduleItems } = this.props;
-    const isExternalToolPath =
-      this.props.location &&
-      this.props.location.pathname &&
-      this.props.location.pathname.startsWith("/external/tool");
     const moduleItem = this.props.moduleItems.find(
       moduleItem => moduleItem.identifierref === this.props.identifier
     );
 
     const isValidExternalToolResource =
-      isExternalToolPath && moduleItem !== undefined;
+      moduleItem !== undefined &&
+      moduleItem.type === resourceTypes.EXTERNAL_TOOL;
 
     if (resource == null && isValidExternalToolResource === false) {
       return <ResourceUnavailable />;
@@ -305,21 +298,19 @@ export default class Resource extends Component {
     const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
-    const query = queryString.parse(this.props.location.search);
-    const navigationButtonsEnabled = query.from === MODULE_LIST;
     return (
       <React.Fragment>
-        {navigationButtonsEnabled && (previousItem || nextItem) && (
+        {this.props.isModuleItem && (previousItem || nextItem) && (
           <Flex margin="0 0 medium">
             <FlexItem padding="small" width="14rem">
-              {navigationButtonsEnabled &&
+              {this.props.isModuleItem &&
                 previousItem &&
                 this.renderPreviousButton(previousItem)}
             </FlexItem>
             <FlexItem padding="small" width="14rem" grow={true}>
               <Flex justifyItems="end">
                 <FlexItem>
-                  {navigationButtonsEnabled &&
+                  {this.props.isModuleItem &&
                     nextItem &&
                     this.renderNextButton(nextItem)}
                 </FlexItem>

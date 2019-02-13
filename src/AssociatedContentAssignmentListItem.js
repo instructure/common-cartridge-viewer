@@ -73,8 +73,8 @@ export default class AssociatedContentAssignmentListItem extends Component {
         description={this.state.workflowState}
         points={this.state.pointsPossible}
         workflowState={this.state.workflowState}
-        search={this.props.search}
         resourceNotFound={this.state.resourceNotFound}
+        isModuleItem={this.props.isModuleItem}
       />
     );
   }

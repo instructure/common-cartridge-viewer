@@ -62,6 +62,8 @@ export default class WikiContentListItem extends Component {
 
     const pathname = this.state.resourceNotFound
       ? `resources/unavailable`
+      : this.props.isModuleItem
+      ? `module-items/${this.props.identifier}`
       : `resources/${this.props.identifier}`;
 
     return (
@@ -74,8 +76,7 @@ export default class WikiContentListItem extends Component {
             <Link
               as={RouterLink}
               to={{
-                pathname,
-                search: this.props.search
+                pathname
               }}
             >
               {this.state.title || basename(this.props.href)}
