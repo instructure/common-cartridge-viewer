@@ -602,6 +602,36 @@ export default class CommonCartridge extends Component {
 
                       <Route
                         exact
+                        path="/module-items/:identifier"
+                        render={({ match, location }) => (
+                          <React.Fragment>
+                            <Resource
+                              basepath={this.state.basepath}
+                              externalViewers={this.state.externalViewers}
+                              externalViewer={this.state.externalViewers.get(
+                                match.params.identifier
+                              )}
+                              getBlobByPath={this.getBlobByPath}
+                              getTextByPath={this.getTextByPath}
+                              getUrlForPath={this.getUrlForPath}
+                              identifier={match.params.identifier}
+                              isCartridgeRemotelyExpanded={
+                                this.state.isCartridgeRemotelyExpanded
+                              }
+                              moduleItems={this.state.moduleItems}
+                              modules={this.state.modules}
+                              resourceIdsByHrefMap={
+                                this.state.resourceIdsByHrefMap
+                              }
+                              resourceMap={this.state.resourceMap}
+                              isModuleItem={true}
+                            />
+                          </React.Fragment>
+                        )}
+                      />
+
+                      <Route
+                        exact
                         path="/modules/:module"
                         render={({ match, location }) => (
                           <React.Fragment>
@@ -732,36 +762,6 @@ export default class CommonCartridge extends Component {
                         exact
                         path="/course/navigation"
                         render={({ match }) => <CourseNavigationUnavailable />}
-                      />
-
-                      <Route
-                        exact
-                        path="/external/tool/:identifier"
-                        render={({ match, location }) => (
-                          <React.Fragment>
-                            <Resource
-                              basepath={this.state.basepath}
-                              externalViewers={this.state.externalViewers}
-                              externalViewer={this.state.externalViewers.get(
-                                match.params.identifier
-                              )}
-                              getBlobByPath={this.getBlobByPath}
-                              getTextByPath={this.getTextByPath}
-                              getUrlForPath={this.getUrlForPath}
-                              identifier={match.params.identifier}
-                              isCartridgeRemotelyExpanded={
-                                this.state.isCartridgeRemotelyExpanded
-                              }
-                              moduleItems={this.state.moduleItems}
-                              modules={this.state.modules}
-                              resourceIdsByHrefMap={
-                                this.state.resourceIdsByHrefMap
-                              }
-                              resourceMap={this.state.resourceMap}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        )}
                       />
                     </Switch>
 

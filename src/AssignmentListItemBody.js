@@ -9,6 +9,8 @@ export default class AssignmentListItemBody extends PureComponent {
   render() {
     const pathname = this.props.resourceNotFound
       ? `resources/unavailable`
+      : this.props.isModuleItem
+      ? `module-items/${this.props.identifier}`
       : `resources/${this.props.identifier}`;
     return (
       <li className="ExpandCollapseList-item">
@@ -20,8 +22,7 @@ export default class AssignmentListItemBody extends PureComponent {
             <Link
               as={RouterLink}
               to={{
-                pathname,
-                search: this.props.search
+                pathname
               }}
             >
               {this.props.title}
