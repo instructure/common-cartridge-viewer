@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ru\n"
@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/ModulesList.js:175
 msgid "(unidentified)"
@@ -19,23 +19,23 @@ msgstr "(неопределенный)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr "Все элементы"
+#~ msgstr ""
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr "Тестирование"
+#~ msgstr ""
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr "Тестирования"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr "Тестирования ( {0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "Тестирования ({0})"
+#~ msgstr ""
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Задания"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Задания ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
@@ -61,7 +61,7 @@ msgstr "Вложения"
 
 #: src/Assessment.js:167
 msgid "Calculated"
-msgstr ""
+msgstr "Рассчитанный"
 
 #: src/App.js:122
 msgid "Cartridge"
@@ -73,15 +73,15 @@ msgstr "Нажмите здесь, чтобы открыть ссылку в н�
 
 #: src/App.js:106
 msgid "Common Cartridge Viewer"
-msgstr ""
+msgstr "Общее средство просмотра Cartridge"
 
 #: src/CourseNavigationUnavailable.js:11
 msgid "Course Navigation Cannot Be Previewed"
-msgstr ""
+msgstr "Предпросмотр навигации по курсу невозможен"
 
 #: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
-msgstr ""
+msgstr "Ссылки на навигацию по курсу доступны только в курсе Canvas."
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -93,11 +93,15 @@ msgstr "Обсуждения"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "Обсуждения ( {0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
-#~ msgstr "Обсуждения ({0})"
+#~ msgstr "Дискуссии ({0})"
 
 #: src/CommonCartridge.js:455
 msgid "Discussions ({length})"
@@ -105,11 +109,11 @@ msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
-msgstr ""
+msgstr "Перетащите и бросьте картридж или щелкните для просмотра папок своего компьютера."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr "Перетащите или щелкните, чтобы просмотреть свой компьютер"
+#~ msgstr ""
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -129,11 +133,11 @@ msgstr "Внешняя ссылка"
 
 #: src/CommonCartridge.js:320
 msgid "Failed to load resource"
-msgstr ""
+msgstr "Не удалось загрузить ресурс"
 
 #: src/Assessment.js:173
 msgid "File Upload"
-msgstr ""
+msgstr "Отправка файла"
 
 #: src/FileList.js:39
 msgid "Files"
@@ -170,17 +174,17 @@ msgstr "Завершение загрузки"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "Совместить вопросы"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
-msgstr ""
+msgstr "Макс число попыток"
 
 #: src/EmbeddedPreview.js:74
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "Средство просмотра мультимедиа"
 
 #: src/CommonCartridge.js:420
 msgid "Modules ({0})"
@@ -188,7 +192,7 @@ msgstr "Модули ({0})"
 
 #: src/Assessment.js:158
 msgid "Multiple Dropdowns"
-msgstr ""
+msgstr "Несколько раскрывающихся списков"
 
 #: src/Assessment.js:140
 msgid "Multiple choice"
@@ -204,19 +208,19 @@ msgstr "Далее"
 
 #: src/Paginate.js:112
 msgid "Next Page"
-msgstr ""
+msgstr "Следующая страница"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr "Не найдено"
+#~ msgstr ""
 
 #: src/Assessment.js:164
 msgid "Numerical"
-msgstr ""
+msgstr "Числовой"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr "Другой тип"
+#~ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -240,7 +244,7 @@ msgstr "Предыдущий"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
-msgstr ""
+msgstr "Предыдущая страница"
 
 #: src/Assessment.js:272
 msgid "Questions"
@@ -248,19 +252,19 @@ msgstr "Вопросы"
 
 #: src/Assessment.js:244
 msgid "Quiz"
-msgstr ""
+msgstr "Тест"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "Тесты"
 
 #: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
-msgstr ""
+msgstr "Тесты ({0})"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
-msgstr ""
+msgstr "Ресурс недоступен"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -272,7 +276,7 @@ msgstr "Отправка"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "Только текст"
 
 #: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
@@ -280,7 +284,7 @@ msgstr "Это может занять некоторое время в зави
 
 #: src/ResourceUnavailable.js:12
 msgid "This resource is not included in the package."
-msgstr ""
+msgstr "Этот ресурс не включен в пакет."
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -305,7 +309,7 @@ msgstr "Просмотр общих картриджей в браузере. Н
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr "Посмотреть общий картридж (.imscc)"
+#~ msgstr ""
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -313,7 +317,7 @@ msgstr "Просмотреть источник на Github"
 
 #: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
-msgstr ""
+msgstr "Возникла проблема с загрузкой общего картриджа"
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
@@ -325,11 +329,11 @@ msgstr "Вы находитесь здесь:"
 
 #: src/EmbeddedPreview.js:77
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Ваш браузер не поддерживает HTML5-аудио. Это <0>ссылка на аудио</0> в качестве альтернативы."
 
 #: src/EmbeddedPreview.js:90
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Ваш браузер не поддерживает HTML5-видео. Это <0>ссылка на аудио</0> в качестве альтернативы."
 
 #: src/utils.js:352
 msgid "a file upload"
@@ -345,11 +349,11 @@ msgstr "{0} вопросов"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
-msgstr ""
+msgstr "{0} опубликовано"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr ""
+msgstr "Публикация {0} отменена"
 
 #: src/AssessmentListItem.js:101
 #: src/AssignmentListItemBody.js:34

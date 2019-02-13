@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: nb\n"
@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/ModulesList.js:175
 msgid "(unidentified)"
@@ -19,23 +19,23 @@ msgstr "(Ikke identifisert)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr "Alle elementer"
+#~ msgstr ""
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr "Vurdering"
+#~ msgstr ""
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr "Vurderinger"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr "Vurderinger ( {0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "Vurderinger ({0})"
+#~ msgstr ""
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Oppgaver"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Oppgaver ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
@@ -61,7 +61,7 @@ msgstr "Vedlegg"
 
 #: src/Assessment.js:167
 msgid "Calculated"
-msgstr ""
+msgstr "Regnet ut"
 
 #: src/App.js:122
 msgid "Cartridge"
@@ -73,15 +73,15 @@ msgstr "Trykk her for å åpne lenke i nytt vindu"
 
 #: src/App.js:106
 msgid "Common Cartridge Viewer"
-msgstr ""
+msgstr "Common Cartridge viser"
 
 #: src/CourseNavigationUnavailable.js:11
 msgid "Course Navigation Cannot Be Previewed"
-msgstr ""
+msgstr "Navigering på emner kan ikke forhåndsvises"
 
 #: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
-msgstr ""
+msgstr "Lenken til navigering på emner er kun tilgjengelig innen et Canvas-emne."
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -93,7 +93,11 @@ msgstr "Diskusjoner"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "Diskusjoner ( {0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
@@ -105,11 +109,11 @@ msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
-msgstr ""
+msgstr "Dra og slipp Cartridge, eller klikk for å søke på datamaskinen din."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr "Dra og slipp, eller trykk for å bla i din datamaskin"
+#~ msgstr ""
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -129,11 +133,11 @@ msgstr "Ekstern lenke"
 
 #: src/CommonCartridge.js:320
 msgid "Failed to load resource"
-msgstr ""
+msgstr "Mislyktes ved opplasting av ressurs"
 
 #: src/Assessment.js:173
 msgid "File Upload"
-msgstr ""
+msgstr "Filopplasting"
 
 #: src/FileList.js:39
 msgid "Files"
@@ -170,17 +174,17 @@ msgstr "Laster ferdig"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "Match spørsmål"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
-msgstr ""
+msgstr "Maks forsøk"
 
 #: src/EmbeddedPreview.js:74
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "Medieviser"
 
 #: src/CommonCartridge.js:420
 msgid "Modules ({0})"
@@ -188,7 +192,7 @@ msgstr "Moduler ({0})"
 
 #: src/Assessment.js:158
 msgid "Multiple Dropdowns"
-msgstr ""
+msgstr "Flere nedtrekksmenyer"
 
 #: src/Assessment.js:140
 msgid "Multiple choice"
@@ -204,19 +208,19 @@ msgstr "Neste"
 
 #: src/Paginate.js:112
 msgid "Next Page"
-msgstr ""
+msgstr "Neste side"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr "Ikke funnet"
+#~ msgstr ""
 
 #: src/Assessment.js:164
 msgid "Numerical"
-msgstr ""
+msgstr "Numerisk"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr "Annen type"
+#~ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -240,7 +244,7 @@ msgstr "Forrige"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
-msgstr ""
+msgstr "Forrige side"
 
 #: src/Assessment.js:272
 msgid "Questions"
@@ -248,19 +252,19 @@ msgstr "Spørsmål"
 
 #: src/Assessment.js:244
 msgid "Quiz"
-msgstr ""
+msgstr "Test"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "Tester"
 
 #: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
-msgstr ""
+msgstr "Tester ({0})"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
-msgstr ""
+msgstr "Ressurs utilgjengelig"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -272,7 +276,7 @@ msgstr "Må leveres"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "Kun tekst"
 
 #: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
@@ -280,7 +284,7 @@ msgstr "Dette kan ta litt tid, avhengig av størrelsen på Cartridge."
 
 #: src/ResourceUnavailable.js:12
 msgid "This resource is not included in the package."
-msgstr ""
+msgstr "Denne ressursen er ikke inkludert i pakken."
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -305,7 +309,7 @@ msgstr "Vis Common Cartridge i en nettleser. Krever ingen behandling fra server-
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr "Vis en Common Cartridge (.imscc)"
+#~ msgstr ""
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -313,7 +317,7 @@ msgstr "Vis Github-kilde"
 
 #: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
-msgstr ""
+msgstr "Vi har et problem med å laste Common Cartridge"
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
@@ -325,11 +329,11 @@ msgstr "Du er her:"
 
 #: src/EmbeddedPreview.js:77
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Din nettleser støtter ikke HTML5 audio. Her er en <0>lenke til audio</0> i stedet."
 
 #: src/EmbeddedPreview.js:90
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Din nettleser støtter ikke HTML5 video. Her er en <0>lenke til audio</0> i stedet."
 
 #: src/utils.js:352
 msgid "a file upload"
@@ -345,11 +349,11 @@ msgstr "{0} spørsmål"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
-msgstr ""
+msgstr "{0} er publisert"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr ""
+msgstr "{0} er ikke publisert"
 
 #: src/AssessmentListItem.js:101
 #: src/AssignmentListItemBody.js:34

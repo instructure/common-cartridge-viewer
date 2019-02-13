@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: pl\n"
@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/ModulesList.js:175
 msgid "(unidentified)"
@@ -19,23 +19,23 @@ msgstr "(niezidentyfikowano)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr "Wszystkie pozycje"
+#~ msgstr ""
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr "Test"
+#~ msgstr ""
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr "Testy"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr "Testy ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "Testy ({0})"
+#~ msgstr ""
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Zadania"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Zadania ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
@@ -61,7 +61,7 @@ msgstr "Załączniki"
 
 #: src/Assessment.js:167
 msgid "Calculated"
-msgstr ""
+msgstr "Obliczono"
 
 #: src/App.js:122
 msgid "Cartridge"
@@ -73,15 +73,15 @@ msgstr "Kliknij tutaj, aby otworzyć łącze w nowym oknie"
 
 #: src/App.js:106
 msgid "Common Cartridge Viewer"
-msgstr ""
+msgstr "Przeglądarka Common Cartridge Viewer"
 
 #: src/CourseNavigationUnavailable.js:11
 msgid "Course Navigation Cannot Be Previewed"
-msgstr ""
+msgstr "Nie można wyświetlić podglądu nawigacji kursu"
 
 #: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
-msgstr ""
+msgstr "Łącza nawigacyjne kursu są dostępne tylko w ramach kursu Canvas."
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -93,7 +93,11 @@ msgstr "Dyskusje"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "Dyskusje ({0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
@@ -105,11 +109,11 @@ msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
-msgstr ""
+msgstr "Przeciągnij i upuść wkład lub kliknij, aby przeglądać komputer."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr "Przeciągnij i upuść lub kliknij, aby przeglądać komputer"
+#~ msgstr ""
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -129,11 +133,11 @@ msgstr "Łącze zewnętrzne"
 
 #: src/CommonCartridge.js:320
 msgid "Failed to load resource"
-msgstr ""
+msgstr "Nie udało się załadować zasobu"
 
 #: src/Assessment.js:173
 msgid "File Upload"
-msgstr ""
+msgstr "Prześlij plik"
 
 #: src/FileList.js:39
 msgid "Files"
@@ -170,17 +174,17 @@ msgstr "Zakończono wczytywanie"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "Dopasuj pytania"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
-msgstr ""
+msgstr "Maks. liczba prób"
 
 #: src/EmbeddedPreview.js:74
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "Przeglądarka multimediów"
 
 #: src/CommonCartridge.js:420
 msgid "Modules ({0})"
@@ -188,7 +192,7 @@ msgstr "Moduły ({0})"
 
 #: src/Assessment.js:158
 msgid "Multiple Dropdowns"
-msgstr ""
+msgstr "Listy wielokrotnego wyboru"
 
 #: src/Assessment.js:140
 msgid "Multiple choice"
@@ -204,19 +208,19 @@ msgstr "Następny"
 
 #: src/Paginate.js:112
 msgid "Next Page"
-msgstr ""
+msgstr "Następna strona"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr "Nie znaleziono"
+#~ msgstr ""
 
 #: src/Assessment.js:164
 msgid "Numerical"
-msgstr ""
+msgstr "Numerycznie"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr "Inny typ"
+#~ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -240,7 +244,7 @@ msgstr "Poprzednie"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
-msgstr ""
+msgstr "Poprzednia strona"
 
 #: src/Assessment.js:272
 msgid "Questions"
@@ -248,19 +252,19 @@ msgstr "Pytania"
 
 #: src/Assessment.js:244
 msgid "Quiz"
-msgstr ""
+msgstr "Quiz"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "Testy"
 
 #: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
-msgstr ""
+msgstr "Testy ({0})"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
-msgstr ""
+msgstr "Zasób niedostępny"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -272,7 +276,7 @@ msgstr "Przesyłanie"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "Tylko tekst"
 
 #: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
@@ -280,7 +284,7 @@ msgstr "Może to trochę potrwać; zależy od rozmiaru wkładu."
 
 #: src/ResourceUnavailable.js:12
 msgid "This resource is not included in the package."
-msgstr ""
+msgstr "Ten zasobów nie jest zawarty w tym pakiecie."
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -305,7 +309,7 @@ msgstr "Wyświetl typowe wkłady w tej przeglądarce. Nie wymaga przetwarzania p
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr "Wyświetl typowy wkład (.imscc)"
+#~ msgstr ""
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -313,7 +317,7 @@ msgstr "Wyświetl źródło na Github"
 
 #: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
-msgstr ""
+msgstr "Wystąpił problem z wczytaniem Common Cartridge."
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
@@ -325,11 +329,11 @@ msgstr "Jesteś tutaj:"
 
 #: src/EmbeddedPreview.js:77
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Twoja przeglądarka nie obsługuje audio HTML5. Oto <0>łącze do audio</0>."
 
 #: src/EmbeddedPreview.js:90
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Twoja przeglądarka nie obsługuje wideo HTML5. Oto <0>łącze do wideo</0>."
 
 #: src/utils.js:352
 msgid "a file upload"
@@ -345,11 +349,11 @@ msgstr "Pytania: {0}"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
-msgstr ""
+msgstr "{0} jest opublikowane"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr ""
+msgstr "{0} nie jest opublikowane"
 
 #: src/AssessmentListItem.js:101
 #: src/AssignmentListItemBody.js:34
