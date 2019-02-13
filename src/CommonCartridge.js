@@ -452,10 +452,12 @@ export default class CommonCartridge extends Component {
                             search: startIndexQuery
                           }}
                         >
-                          <Trans>
-                            Discussions ({this.state.discussionResources.length}
-                            )
-                          </Trans>
+                          <Trans
+                            id="Discussions ({length})"
+                            values={{
+                              length: this.state.discussionResources.length
+                            }}
+                          />
                         </NavLink>
                       )}
                       {this.state.assessmentResources.length > 0 && (

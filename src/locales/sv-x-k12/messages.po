@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:175
 msgid "(unidentified)"
 msgstr ""
 
@@ -50,7 +50,7 @@ msgstr ""
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
 msgstr ""
 
@@ -96,7 +96,11 @@ msgstr ""
 #~ msgstr ""
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
+#~ msgid "Discussions ({0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:455
+msgid "Discussions ({length})"
 msgstr ""
 
 #: src/App.js:108
@@ -123,7 +127,7 @@ msgstr ""
 msgid "External link"
 msgstr ""
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:320
 msgid "Failed to load resource"
 msgstr ""
 
@@ -135,7 +139,7 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:484
 msgid "Files ({0})"
 msgstr ""
 
@@ -156,11 +160,11 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:346
 msgid "Loading Cartridge"
 msgstr ""
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:363
 msgid "Loading completion"
 msgstr ""
 
@@ -178,7 +182,7 @@ msgstr ""
 msgid "Media viewer"
 msgstr ""
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:420
 msgid "Modules ({0})"
 msgstr ""
 
@@ -194,7 +198,7 @@ msgstr ""
 msgid "Multiple response"
 msgstr ""
 
-#: src/Resource.js:129
+#: src/Resource.js:126
 msgid "Next"
 msgstr ""
 
@@ -218,7 +222,7 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:442
 msgid "Pages ({0})"
 msgstr ""
 
@@ -230,7 +234,7 @@ msgstr ""
 msgid "Points"
 msgstr ""
 
-#: src/Resource.js:108
+#: src/Resource.js:106
 msgid "Previous"
 msgstr ""
 
@@ -250,7 +254,7 @@ msgstr ""
 msgid "Quizzes"
 msgstr ""
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
 msgstr ""
 
@@ -274,7 +278,7 @@ msgstr ""
 msgid "Text only"
 msgstr ""
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
 msgstr ""
 
@@ -286,11 +290,11 @@ msgstr ""
 msgid "True / false"
 msgstr ""
 
-#: src/CommonCartridge.js:382
-#: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/CommonCartridge.js:407
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
 #: src/WebLink.js:36
-#: src/WebLinkListItem.js:30
+#: src/WebLinkListItem.js:31
 #: src/utils.js:250
 msgid "Untitled"
 msgstr ""
@@ -311,7 +315,7 @@ msgstr ""
 msgid "View source on Github"
 msgstr ""
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
@@ -319,7 +323,7 @@ msgstr ""
 msgid "Wiki content"
 msgstr ""
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:405
 msgid "You are here:"
 msgstr ""
 
@@ -339,7 +343,7 @@ msgstr ""
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr ""
 
-#: src/AssessmentListItem.js:93
+#: src/AssessmentListItem.js:94
 msgid "{0} Questions"
 msgstr ""
 
@@ -351,17 +355,17 @@ msgstr ""
 msgid "{0} is unpublished"
 msgstr ""
 
-#: src/AssessmentListItem.js:100
-#: src/AssignmentListItemBody.js:33
-#: src/DiscussionListItem.js:89
-#: src/FileListItem.js:74
+#: src/AssessmentListItem.js:101
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:90
+#: src/FileListItem.js:75
 msgid "{0} points"
 msgstr ""
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:372
 msgid "{0}%"
 msgstr ""
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:366
 msgid "{0}% loaded"
 msgstr ""

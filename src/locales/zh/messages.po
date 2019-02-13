@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: src/ModulesList.js:179
+#: src/ModulesList.js:175
 msgid "(unidentified)"
 msgstr "（无法识别）"
 
@@ -50,7 +50,7 @@ msgstr "作业"
 #~ msgid "Assignments ({0})"
 #~ msgstr "作业 ({0})"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
 msgstr "作业 ({numberOfAssignments})"
 
@@ -96,8 +96,12 @@ msgstr "讨论"
 #~ msgstr "讨论 ( {0})"
 
 #: src/CommonCartridge.js:430
-msgid "Discussions ({0})"
-msgstr "讨论 ({0})"
+#~ msgid "Discussions ({0})"
+#~ msgstr "讨论 ({0})"
+
+#: src/CommonCartridge.js:455
+msgid "Discussions ({length})"
+msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -123,7 +127,7 @@ msgstr "无法预览外部工具内容"
 msgid "External link"
 msgstr "外部链接"
 
-#: src/CommonCartridge.js:295
+#: src/CommonCartridge.js:320
 msgid "Failed to load resource"
 msgstr ""
 
@@ -135,7 +139,7 @@ msgstr ""
 msgid "Files"
 msgstr "文件"
 
-#: src/CommonCartridge.js:456
+#: src/CommonCartridge.js:484
 msgid "Files ({0})"
 msgstr "文件({0})"
 
@@ -156,11 +160,11 @@ msgstr "要在 Canvas 中使用此资源，必须安装外部工具。"
 msgid "Loading"
 msgstr "正在加载"
 
-#: src/CommonCartridge.js:321
+#: src/CommonCartridge.js:346
 msgid "Loading Cartridge"
 msgstr "正在加载 Cartridge"
 
-#: src/CommonCartridge.js:338
+#: src/CommonCartridge.js:363
 msgid "Loading completion"
 msgstr "加载完成"
 
@@ -178,7 +182,7 @@ msgstr ""
 msgid "Media viewer"
 msgstr ""
 
-#: src/CommonCartridge.js:395
+#: src/CommonCartridge.js:420
 msgid "Modules ({0})"
 msgstr "单元 ({0})"
 
@@ -194,7 +198,7 @@ msgstr "多选"
 msgid "Multiple response"
 msgstr "多个答案"
 
-#: src/Resource.js:129
+#: src/Resource.js:126
 msgid "Next"
 msgstr "下一步"
 
@@ -218,7 +222,7 @@ msgstr ""
 msgid "Page"
 msgstr "页面"
 
-#: src/CommonCartridge.js:417
+#: src/CommonCartridge.js:442
 msgid "Pages ({0})"
 msgstr "页面 ({0})"
 
@@ -230,7 +234,7 @@ msgstr "样式匹配"
 msgid "Points"
 msgstr "得分"
 
-#: src/Resource.js:108
+#: src/Resource.js:106
 msgid "Previous"
 msgstr "上一个"
 
@@ -250,7 +254,7 @@ msgstr ""
 msgid "Quizzes"
 msgstr ""
 
-#: src/CommonCartridge.js:443
+#: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
 msgstr ""
 
@@ -270,7 +274,7 @@ msgstr "提交"
 msgid "Text only"
 msgstr ""
 
-#: src/CommonCartridge.js:329
+#: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "这可能需要一些时间，具体取决于 cartridge 的大小。"
 
@@ -282,11 +286,11 @@ msgstr ""
 msgid "True / false"
 msgstr "对/错"
 
-#: src/CommonCartridge.js:382
-#: src/ExternalToolListItem.js:26
-#: src/ModulesList.js:178
+#: src/CommonCartridge.js:407
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
 #: src/WebLink.js:36
-#: src/WebLinkListItem.js:30
+#: src/WebLinkListItem.js:31
 #: src/utils.js:250
 msgid "Untitled"
 msgstr "无标题"
@@ -307,7 +311,7 @@ msgstr "在浏览器中查看 Common Cartridge。要求无服务器在运行处�
 msgid "View source on Github"
 msgstr "在 Github 上查看源"
 
-#: src/CommonCartridge.js:297
+#: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
@@ -315,7 +319,7 @@ msgstr ""
 msgid "Wiki content"
 msgstr "Wiki 内容"
 
-#: src/CommonCartridge.js:380
+#: src/CommonCartridge.js:405
 msgid "You are here:"
 msgstr "您在此处："
 
@@ -335,7 +339,7 @@ msgstr "一份上传文件"
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc（启用 CORS）"
 
-#: src/AssessmentListItem.js:93
+#: src/AssessmentListItem.js:94
 msgid "{0} Questions"
 msgstr "{0} 个问题"
 
@@ -347,17 +351,17 @@ msgstr ""
 msgid "{0} is unpublished"
 msgstr ""
 
-#: src/AssessmentListItem.js:100
-#: src/AssignmentListItemBody.js:33
-#: src/DiscussionListItem.js:89
-#: src/FileListItem.js:74
+#: src/AssessmentListItem.js:101
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:90
+#: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} 分"
 
-#: src/CommonCartridge.js:347
+#: src/CommonCartridge.js:372
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:341
+#: src/CommonCartridge.js:366
 msgid "{0}% loaded"
 msgstr "已加载{0}%"
