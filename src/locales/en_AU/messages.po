@@ -37,7 +37,7 @@ msgstr "(unidentified)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "Assessments ({0})"
 
-#: src/AssignmentBody.js:23
+#: src/AssignmentBody.js:34
 msgid "Assignment"
 msgstr "Assignment"
 
@@ -50,11 +50,11 @@ msgstr "Assignments"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Assignments ({0})"
 
-#: src/CommonCartridge.js:431
+#: src/CommonCartridge.js:470
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Assignments ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:66
+#: src/AssignmentBody.js:77
 #: src/Discussion.js:57
 msgid "Attachments"
 msgstr "Attachments"
@@ -83,6 +83,10 @@ msgstr ""
 msgid "Course navigation links are only available within a Canvas course."
 msgstr ""
 
+#: src/AssignmentBody.js:118
+msgid "Criteria"
+msgstr ""
+
 #: src/Discussion.js:40
 msgid "Discussion"
 msgstr "Discussion"
@@ -99,7 +103,7 @@ msgstr "Discussions"
 #~ msgid "Discussions ({0})"
 #~ msgstr "Discussions ({0})"
 
-#: src/CommonCartridge.js:455
+#: src/CommonCartridge.js:494
 msgid "Discussions ({length})"
 msgstr ""
 
@@ -127,7 +131,7 @@ msgstr "External Tool Content Can't be Previewed"
 msgid "External link"
 msgstr "External link"
 
-#: src/CommonCartridge.js:320
+#: src/CommonCartridge.js:359
 msgid "Failed to load resource"
 msgstr ""
 
@@ -139,7 +143,7 @@ msgstr ""
 msgid "Files"
 msgstr "Files"
 
-#: src/CommonCartridge.js:484
+#: src/CommonCartridge.js:523
 msgid "Files ({0})"
 msgstr "Files ({0})"
 
@@ -160,11 +164,11 @@ msgstr "In order to use this resource in Canvas, the external tool must be insta
 msgid "Loading"
 msgstr "Loading"
 
-#: src/CommonCartridge.js:346
+#: src/CommonCartridge.js:385
 msgid "Loading Cartridge"
 msgstr "Loading Cartridge"
 
-#: src/CommonCartridge.js:363
+#: src/CommonCartridge.js:402
 msgid "Loading completion"
 msgstr "Loading completion"
 
@@ -182,7 +186,7 @@ msgstr ""
 msgid "Media viewer"
 msgstr ""
 
-#: src/CommonCartridge.js:420
+#: src/CommonCartridge.js:459
 msgid "Modules ({0})"
 msgstr "Modules ({0})"
 
@@ -222,7 +226,7 @@ msgstr ""
 msgid "Page"
 msgstr "Page"
 
-#: src/CommonCartridge.js:442
+#: src/CommonCartridge.js:481
 msgid "Pages ({0})"
 msgstr "Pages ({0})"
 
@@ -230,7 +234,7 @@ msgstr "Pages ({0})"
 msgid "Pattern match"
 msgstr "Pattern match"
 
-#: src/AssignmentBody.js:48
+#: src/AssignmentBody.js:59
 msgid "Points"
 msgstr "Points"
 
@@ -240,6 +244,10 @@ msgstr "Previous"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
+msgstr ""
+
+#: src/AssignmentBody.js:129
+msgid "Pts"
 msgstr ""
 
 #: src/Assessment.js:272
@@ -254,8 +262,12 @@ msgstr ""
 msgid "Quizzes"
 msgstr ""
 
-#: src/CommonCartridge.js:471
+#: src/CommonCartridge.js:510
 msgid "Quizzes ({0})"
+msgstr ""
+
+#: src/AssignmentBody.js:126
+msgid "Ratings"
 msgstr ""
 
 #: src/ResourceUnavailable.js:11
@@ -266,7 +278,7 @@ msgstr ""
 #~ msgid "Submission formats"
 #~ msgstr "Submission formats"
 
-#: src/AssignmentBody.js:35
+#: src/AssignmentBody.js:46
 msgid "Submitting"
 msgstr "Submitting"
 
@@ -274,7 +286,7 @@ msgstr "Submitting"
 msgid "Text only"
 msgstr ""
 
-#: src/CommonCartridge.js:354
+#: src/CommonCartridge.js:393
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "This may take some time depending on the size of the cartridge."
 
@@ -282,11 +294,15 @@ msgstr "This may take some time depending on the size of the cartridge."
 msgid "This resource is not included in the package."
 msgstr ""
 
+#: src/AssignmentBody.js:160
+msgid "Total points:"
+msgstr ""
+
 #: src/Assessment.js:146
 msgid "True / false"
 msgstr "True / false"
 
-#: src/CommonCartridge.js:407
+#: src/CommonCartridge.js:446
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
 #: src/WebLink.js:36
@@ -311,7 +327,7 @@ msgstr "View Common Cartridges in the browser. Requires no server-side processin
 msgid "View source on Github"
 msgstr "View source on Github"
 
-#: src/CommonCartridge.js:322
+#: src/CommonCartridge.js:361
 msgid "We had a problem loading the Common Cartridge"
 msgstr ""
 
@@ -319,7 +335,7 @@ msgstr ""
 msgid "Wiki content"
 msgstr "Wiki content"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:444
 msgid "You are here:"
 msgstr "You are here:"
 
@@ -338,6 +354,10 @@ msgstr "a file upload"
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+
+#: src/AssignmentBody.js:141
+msgid "pts"
+msgstr ""
 
 #: src/AssessmentListItem.js:94
 msgid "{0} Questions"
@@ -358,10 +378,10 @@ msgstr ""
 msgid "{0} points"
 msgstr "{0} points"
 
-#: src/CommonCartridge.js:372
+#: src/CommonCartridge.js:411
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:366
+#: src/CommonCartridge.js:405
 msgid "{0}% loaded"
 msgstr "{0}% loaded"

@@ -23,6 +23,19 @@ export default class Assignment extends Component {
           .replace(CC_FILE_PREFIX, "web_resources")
       )
     );
+
+    // Check for rubrics
+    const rubricIdent = assignmentNode.querySelector("rubric_identifierref");
+    let rubric = null;
+
+    if (
+      rubricIdent &&
+      this.props.rubrics &&
+      this.props.rubrics.has(rubricIdent.textContent)
+    ) {
+      rubric = this.props.rubrics.get(rubricIdent.textContent);
+    }
+
     const submissionFormats = assignmentNode.querySelector("submission_types")
       .textContent;
     const externalToolNode = doc.querySelector(
@@ -51,6 +64,7 @@ export default class Assignment extends Component {
         getUrlForPath={this.props.getUrlForPath}
         resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
         attachments={attachments}
+        rubric={rubric}
       />
     );
   }

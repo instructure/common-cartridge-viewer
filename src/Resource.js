@@ -172,6 +172,7 @@ export default class Resource extends Component {
               getUrlForPath={this.props.getUrlForPath}
               doc={doc}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+              rubrics={this.props.rubrics || false}
             />
           )}
           src={this.props.src}
