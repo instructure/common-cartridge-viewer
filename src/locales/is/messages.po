@@ -5,7 +5,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Language: is\n"
+"Language: en\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: \n"
@@ -35,7 +35,7 @@ msgstr "(óþekkt)"
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "Möt ({0})"
+#~ msgstr ""
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Verkefni"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Verkefni ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
@@ -95,9 +95,13 @@ msgstr "Umræður"
 #~ msgid "Discussions ( {0})"
 #~ msgstr "Umræður ( {0})"
 
-#: src/CommonCartridge.js:430
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:344
 #~ msgid "Discussions ({0})"
-#~ msgstr "Umræður ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:455
 msgid "Discussions ({length})"

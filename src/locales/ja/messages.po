@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ja\n"
@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/ModulesList.js:175
 msgid "(unidentified)"
@@ -19,23 +19,23 @@ msgstr "(未確認)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr "すべてのアイテム"
+#~ msgstr ""
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr "アセスメント"
+#~ msgstr ""
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr "アセスメント"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr "アセスメント ( {0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "アセスメント ({0})"
+#~ msgstr ""
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "課題"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "課題 ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
@@ -61,7 +61,7 @@ msgstr "添付ファイル"
 
 #: src/Assessment.js:167
 msgid "Calculated"
-msgstr ""
+msgstr "計算済み"
 
 #: src/App.js:122
 msgid "Cartridge"
@@ -73,15 +73,15 @@ msgstr "ここをクリックして新しいウィンドウでリンクを開く
 
 #: src/App.js:106
 msgid "Common Cartridge Viewer"
-msgstr ""
+msgstr "共通のカートリッジビューア"
 
 #: src/CourseNavigationUnavailable.js:11
 msgid "Course Navigation Cannot Be Previewed"
-msgstr ""
+msgstr "コースナビゲーションをプレビューできない"
 
 #: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
-msgstr ""
+msgstr "コースナビゲーションリンクは、Canvas コース内でのみ利用できます。"
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -93,7 +93,11 @@ msgstr "ディスカッション"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "ディスカッション ( {0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
@@ -105,11 +109,11 @@ msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
-msgstr ""
+msgstr "カートリッジをドラッグアンドドロップ、またはクリックしてコンピュータを参照"
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr "ドラッグアンドドロップまたはクリックしてコンピュータを参照"
+#~ msgstr ""
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -129,11 +133,11 @@ msgstr "外部リンク"
 
 #: src/CommonCartridge.js:320
 msgid "Failed to load resource"
-msgstr ""
+msgstr "リソース読み込みに失敗"
 
 #: src/Assessment.js:173
 msgid "File Upload"
-msgstr ""
+msgstr "ファイルのアップロード"
 
 #: src/FileList.js:39
 msgid "Files"
@@ -170,17 +174,17 @@ msgstr "読み込み完了"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "質問を合わせる"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
-msgstr ""
+msgstr "最大試行回数"
 
 #: src/EmbeddedPreview.js:74
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "メディアビューア"
 
 #: src/CommonCartridge.js:420
 msgid "Modules ({0})"
@@ -188,7 +192,7 @@ msgstr "モジュール ({0})"
 
 #: src/Assessment.js:158
 msgid "Multiple Dropdowns"
-msgstr ""
+msgstr "複数ドロップダウン"
 
 #: src/Assessment.js:140
 msgid "Multiple choice"
@@ -204,19 +208,19 @@ msgstr "次"
 
 #: src/Paginate.js:112
 msgid "Next Page"
-msgstr ""
+msgstr "次のページ"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr "見つかりません"
+#~ msgstr ""
 
 #: src/Assessment.js:164
 msgid "Numerical"
-msgstr ""
+msgstr "数"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr "その他のタイプ"
+#~ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -240,7 +244,7 @@ msgstr "前"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
-msgstr ""
+msgstr "前のページ"
 
 #: src/Assessment.js:272
 msgid "Questions"
@@ -248,19 +252,19 @@ msgstr "質問"
 
 #: src/Assessment.js:244
 msgid "Quiz"
-msgstr ""
+msgstr "クイズ"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "クイズ"
 
 #: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
-msgstr ""
+msgstr "クイズ ({0})"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
-msgstr ""
+msgstr "リソースを利用できません"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -272,7 +276,7 @@ msgstr "提出しています"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "テキストのみ"
 
 #: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
@@ -280,7 +284,7 @@ msgstr "カートリッジのサイズに応じて、これには時間がかか
 
 #: src/ResourceUnavailable.js:12
 msgid "This resource is not included in the package."
-msgstr ""
+msgstr "このリソースはパッケージに含まれていません。"
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -305,7 +309,7 @@ msgstr "ブラウザで共通のカートリッジを表示します。 サー�
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr "共通カートリッジ（.imscc）を表示する"
+#~ msgstr ""
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -313,7 +317,7 @@ msgstr "Github のソースを表示"
 
 #: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
-msgstr ""
+msgstr "共通のカートリッジ読み込み中に問題がありました。"
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
@@ -325,11 +329,11 @@ msgstr "あなたの現在地："
 
 #: src/EmbeddedPreview.js:77
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "あなたのブラウザはHTML5オーディオをサポートしていません。代わりに、音声への<0>リンク</0>はこちらです。"
 
 #: src/EmbeddedPreview.js:90
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "お使いのブラウザはHTML5ビデオをサポートしていません。代わりに、音声への<0>リンク</0>はこちらです。"
 
 #: src/utils.js:352
 msgid "a file upload"
@@ -345,11 +349,11 @@ msgstr "{0}の質問"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
-msgstr ""
+msgstr "{0}は公開されています"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr ""
+msgstr "{0}は非公開です"
 
 #: src/AssessmentListItem.js:101
 #: src/AssignmentListItemBody.js:34

@@ -5,17 +5,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
-"Language: fr\n"
+"Language: sl\n"
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: src/ModulesList.js:175
 msgid "(unidentified)"
-msgstr "(Non identifié)"
+msgstr "(neznano)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
@@ -39,12 +39,12 @@ msgstr "(Non identifié)"
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
-msgstr "Travaux"
+msgstr "Naloga"
 
 #: src/AssignmentList.js:35
 #: src/AssociatedContentAssignmentList.js:35
 msgid "Assignments"
-msgstr "Devoirs"
+msgstr "Naloge:"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
@@ -52,44 +52,44 @@ msgstr "Devoirs"
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
-msgstr "Devoirs ({numberOfAssignments})"
+msgstr "Naloge ({numberOfAssignments})"
 
 #: src/AssignmentBody.js:66
 #: src/Discussion.js:57
 msgid "Attachments"
-msgstr "Pièces jointes"
+msgstr "Priloge"
 
 #: src/Assessment.js:167
 msgid "Calculated"
-msgstr "Calculé"
+msgstr "Izračunano"
 
 #: src/App.js:122
 msgid "Cartridge"
-msgstr "Cartouche"
+msgstr "Kartuša"
 
 #: src/WebLink.js:40
 msgid "Click here to open link in new window"
-msgstr "Cliquez ici pour ouvrir le lien dans une nouvelle fenêtre"
+msgstr "Kliknite tukaj, da povezavo odprete v novem oknu"
 
 #: src/App.js:106
 msgid "Common Cartridge Viewer"
-msgstr "Visionneuse de Common Cartridge"
+msgstr "Pregledovalnik Common Cartridge"
 
 #: src/CourseNavigationUnavailable.js:11
 msgid "Course Navigation Cannot Be Previewed"
-msgstr "La navigation dans le cours ne peut pas être prévisualisée"
+msgstr "Meni okna za prikaz predmeta ne omogoča predogleda"
 
 #: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
-msgstr "Les liens de navigation de cours ne sont disponibles qu’à l’intérieur d’un cours Canvas."
+msgstr "Povezave menija okna za prikaz predmeta so na voljo samo v predmetu Canvas."
 
 #: src/Discussion.js:40
 msgid "Discussion"
-msgstr "Discussion"
+msgstr "Razprava"
 
 #: src/DiscussionList.js:41
 msgid "Discussions"
-msgstr "Discussions"
+msgstr "Razprave"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
@@ -101,7 +101,7 @@ msgstr "Discussions"
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
-#~ msgstr "Discussions ({0})"
+#~ msgstr "Razprave ({0})"
 
 #: src/CommonCartridge.js:455
 msgid "Discussions ({length})"
@@ -109,7 +109,7 @@ msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
-msgstr "Glissez-déposez la cartouche ou cliquez pour parcourir votre ordinateur."
+msgstr "Za brskanje po računalniku povlecite in spustite kartušo ali pa kliknite."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
@@ -117,98 +117,98 @@ msgstr "Glissez-déposez la cartouche ou cliquez pour parcourir votre ordinateur
 
 #: src/Assessment.js:155
 msgid "Essay"
-msgstr "Essai"
+msgstr "Esej"
 
 #: src/App.js:148
 msgid "Examples"
-msgstr "Exemples"
+msgstr "Primeri"
 
 #: src/PreviewUnavailable.js:11
 msgid "External Tool Content Can't be Previewed"
-msgstr "Le contenu de l’outil externe ne peut pas être prévisualisé"
+msgstr "Predogled vsebine zunanjega orodja ni mogoč"
 
 #: src/WebLink.js:29
 msgid "External link"
-msgstr "Lien externe"
+msgstr "Zunanja povezava"
 
 #: src/CommonCartridge.js:320
 msgid "Failed to load resource"
-msgstr "Impossible de charger la ressource"
+msgstr "Nalaganje vira ni uspelo"
 
 #: src/Assessment.js:173
 msgid "File Upload"
-msgstr "Envoi de fichier"
+msgstr "Nalaganje datotek"
 
 #: src/FileList.js:39
 msgid "Files"
-msgstr "Fichiers"
+msgstr "Datoteke"
 
 #: src/CommonCartridge.js:484
 msgid "Files ({0})"
-msgstr "Fichiers ({0})"
+msgstr "Datoteke ({0})"
 
 #: src/Assessment.js:149
 msgid "Fill in the blank"
-msgstr "Remplissez les blancs"
+msgstr "Izpolnite neizpolnjena polja"
 
 #: src/Image.js:55
 msgid "Image"
-msgstr "Image"
+msgstr "Slika"
 
 #: src/PreviewUnavailable.js:13
 msgid "In order to use this resource in Canvas, the external tool must be installed."
-msgstr "L’outil externe doit être installé pour pouvoir utiliser cette ressource dans Canvas."
+msgstr "Za uporabo tega vira v sistemu Canvas je treba namestiti zunanje orodje."
 
 #: src/EmbeddedPreview.js:59
 #: src/Image.js:37
 msgid "Loading"
-msgstr "Chargement"
+msgstr "Nalaganje"
 
 #: src/CommonCartridge.js:346
 msgid "Loading Cartridge"
-msgstr "Chargement de la cartouche"
+msgstr "Nalaganje kartuše"
 
 #: src/CommonCartridge.js:363
 msgid "Loading completion"
-msgstr "Terminaison du chargement"
+msgstr "Nalaganje je zaključeno"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr "Questions de jumelage"
+msgstr "Vprašanja z ujemanjem"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
-msgstr "Tentatives maximales"
+msgstr "Največje št. poskusov"
 
 #: src/EmbeddedPreview.js:74
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr "Visionneuse de médias"
+msgstr "Pregledovalnik medijev"
 
 #: src/CommonCartridge.js:420
 msgid "Modules ({0})"
-msgstr "Modules ({0})"
+msgstr "Moduli ({0})"
 
 #: src/Assessment.js:158
 msgid "Multiple Dropdowns"
-msgstr "Plusieurs listes déroulantes"
+msgstr "Več spustnih menijev"
 
 #: src/Assessment.js:140
 msgid "Multiple choice"
-msgstr "Choix multiple"
+msgstr "Več izborov"
 
 #: src/Assessment.js:143
 msgid "Multiple response"
-msgstr "Réponse multiple"
+msgstr "Več odgovorov"
 
 #: src/Resource.js:126
 msgid "Next"
-msgstr "Suivant"
+msgstr "Naprej"
 
 #: src/Paginate.js:112
 msgid "Next Page"
-msgstr "Page suivante"
+msgstr "Naslednja stran"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
@@ -216,7 +216,7 @@ msgstr "Page suivante"
 
 #: src/Assessment.js:164
 msgid "Numerical"
-msgstr "Numérique"
+msgstr "Številčno"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
@@ -224,47 +224,47 @@ msgstr "Numérique"
 
 #: src/WikiContent.js:25
 msgid "Page"
-msgstr "Page"
+msgstr "Stran"
 
 #: src/CommonCartridge.js:442
 msgid "Pages ({0})"
-msgstr "Pages ({0})"
+msgstr "Strani ({0})"
 
 #: src/Assessment.js:152
 msgid "Pattern match"
-msgstr "Correspondance de schéma"
+msgstr "Ustreznost vzorca"
 
 #: src/AssignmentBody.js:48
 msgid "Points"
-msgstr "Points"
+msgstr "Točke"
 
 #: src/Resource.js:106
 msgid "Previous"
-msgstr "Précédent"
+msgstr "Nazaj"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
-msgstr "Page précédente"
+msgstr "Prejšnja stran"
 
 #: src/Assessment.js:272
 msgid "Questions"
-msgstr "Questions"
+msgstr "Vprašanja"
 
 #: src/Assessment.js:244
 msgid "Quiz"
-msgstr "Questionnaire"
+msgstr "Kviz"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr "Questionnaires"
+msgstr "Kvizi"
 
 #: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
-msgstr "Questionnaires ({0})"
+msgstr "Kvizi ({0})"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
-msgstr "Ressource indisponible"
+msgstr "Vir ni na voljo."
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -272,23 +272,23 @@ msgstr "Ressource indisponible"
 
 #: src/AssignmentBody.js:35
 msgid "Submitting"
-msgstr "Soumission en cours"
+msgstr "Pošiljanje ..."
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr "Texte seulement"
+msgstr "Le besedilo"
 
 #: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
-msgstr "Ceci peut prendre un certain temps en fonction de la taille de la cartouche."
+msgstr "To lahko nekaj časa traja, odvisno od velikosti kartuše."
 
 #: src/ResourceUnavailable.js:12
 msgid "This resource is not included in the package."
-msgstr "Cette ressource n’est pas incluse dans le forfait."
+msgstr "Ta vir ni vključen v paket."
 
 #: src/Assessment.js:146
 msgid "True / false"
-msgstr "Vrai / Faux"
+msgstr "Resnično/neresnično"
 
 #: src/CommonCartridge.js:407
 #: src/ExternalToolListItem.js:27
@@ -297,15 +297,15 @@ msgstr "Vrai / Faux"
 #: src/WebLinkListItem.js:31
 #: src/utils.js:250
 msgid "Untitled"
-msgstr "Sans titre"
+msgstr "Brez naslova"
 
 #: src/App.js:134
 msgid "View"
-msgstr "Afficher"
+msgstr "Ogled"
 
 #: src/App.js:141
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
-msgstr "Afficher les cartouches communes dans le navigateur. Ne nécessite aucun traitement au niveau du serveur."
+msgstr "Ogled Common Cartridge v brskalniku. Ne zahteva obdelave na strani strežnika."
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
@@ -313,59 +313,59 @@ msgstr "Afficher les cartouches communes dans le navigateur. Ne nécessite aucun
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
-msgstr "Afficher source sur Github"
+msgstr "Prikaži vir na Github"
 
 #: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
-msgstr "Un problème est survenu lors du chargement de Common Cartridge"
+msgstr "Prišlo je do težave z nalaganjem Common Cartridge"
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
-msgstr "Contenu Wiki"
+msgstr "Vsebina Wiki"
 
 #: src/CommonCartridge.js:405
 msgid "You are here:"
-msgstr "Vous êtes ici :"
+msgstr "Ste tukaj:"
 
 #: src/EmbeddedPreview.js:77
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
-msgstr "Votre navigateur ne supporte pas l’audio HTML5. Veuillez suivre ce lien <0>vers l’audio</0> à la place."
+msgstr "Vaš brskalnik ne podpira zvoka HTML5. Namesto tega lahko <0>do zvočnega zapisa dostopate s te povezave</0>."
 
 #: src/EmbeddedPreview.js:90
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr "Votre navigateur ne supporte pas la vidéo HTML5. Veuillez suivre ce lien <0>vers l’audio</0> à la place."
+msgstr "Vaš brskalnik ne podpira zvoka HTML5. Namesto tega lahko <0>do zvočnega zapisa dostopate s te povezave</0>."
 
 #: src/utils.js:352
 msgid "a file upload"
-msgstr "un téléchargement de fichier"
+msgstr "nalaganje datoteke"
 
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (CORS activé)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS omogočen)"
 
 #: src/AssessmentListItem.js:94
 msgid "{0} Questions"
-msgstr "{0} questions"
+msgstr "{0} Vprašanja"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
-msgstr "{0} est publié(e)"
+msgstr "{0} je objavljen"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr "{0} n’est pas publié(e)"
+msgstr "{0} je neobljavljen"
 
 #: src/AssessmentListItem.js:101
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
-msgstr "{0} points"
+msgstr "{0} točk"
 
 #: src/CommonCartridge.js:372
 msgid "{0}%"
-msgstr "{0}%"
+msgstr "{0} %"
 
 #: src/CommonCartridge.js:366
 msgid "{0}% loaded"
-msgstr "{0}% chargement"
+msgstr "{0} % naloženo"

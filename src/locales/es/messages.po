@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: es\n"
@@ -11,7 +11,7 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/ModulesList.js:175
 msgid "(unidentified)"
@@ -19,23 +19,23 @@ msgstr "(no identificado)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr "Todos los elementos"
+#~ msgstr ""
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr "Evaluación"
+#~ msgstr ""
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr "Evaluaciones"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr "Evaluaciones ( {0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr "Evaluaciones ({0})"
+#~ msgstr ""
 
 #: src/AssignmentBody.js:23
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Tareas"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr "Tareas ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:431
 msgid "Assignments ({numberOfAssignments})"
@@ -61,7 +61,7 @@ msgstr "Archivos adjuntos"
 
 #: src/Assessment.js:167
 msgid "Calculated"
-msgstr ""
+msgstr "Calculado"
 
 #: src/App.js:122
 msgid "Cartridge"
@@ -73,15 +73,15 @@ msgstr "Haga clic aquí para abrir el enlace en una ventana nueva"
 
 #: src/App.js:106
 msgid "Common Cartridge Viewer"
-msgstr ""
+msgstr "Visualizador de Common Cartridge"
 
 #: src/CourseNavigationUnavailable.js:11
 msgid "Course Navigation Cannot Be Previewed"
-msgstr ""
+msgstr "La Navegación del curso no puede previsualizarse"
 
 #: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
-msgstr ""
+msgstr "Los enlaces de la Navegación del curso solo están disponibles dentro de un curso de Canvas."
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -93,7 +93,11 @@ msgstr "Foros"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr "Foros ( {0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
@@ -105,11 +109,11 @@ msgstr ""
 
 #: src/App.js:108
 msgid "Drag and drop the cartridge, or click to browse your computer."
-msgstr ""
+msgstr "Arrastre y suelte el cartucho o haga clic para buscar en su computadora."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr "Arrastre y suelte, o haga clic para buscar en su computadora"
+#~ msgstr ""
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -121,7 +125,7 @@ msgstr "Ejemplos"
 
 #: src/PreviewUnavailable.js:11
 msgid "External Tool Content Can't be Previewed"
-msgstr "El contenido externo de la herramienta no puede verse previamente"
+msgstr "El contenido de la herramienta externa no puede previsualizarse"
 
 #: src/WebLink.js:29
 msgid "External link"
@@ -129,11 +133,11 @@ msgstr "Enlace externo"
 
 #: src/CommonCartridge.js:320
 msgid "Failed to load resource"
-msgstr ""
+msgstr "No se pudo cargar el recurso"
 
 #: src/Assessment.js:173
 msgid "File Upload"
-msgstr ""
+msgstr "Carga del archivo"
 
 #: src/FileList.js:39
 msgid "Files"
@@ -170,17 +174,17 @@ msgstr "Finalización de la carga"
 
 #: src/Assessment.js:161
 msgid "Match Questions"
-msgstr ""
+msgstr "Unir preguntas"
 
 #: src/Assessment.js:257
 msgid "Max attempts"
-msgstr ""
+msgstr "Intentos máximos"
 
 #: src/EmbeddedPreview.js:74
 #: src/EmbeddedPreview.js:87
 #: src/EmbeddedPreview.js:98
 msgid "Media viewer"
-msgstr ""
+msgstr "Visualizador de medios"
 
 #: src/CommonCartridge.js:420
 msgid "Modules ({0})"
@@ -188,7 +192,7 @@ msgstr "Módulos ({0})"
 
 #: src/Assessment.js:158
 msgid "Multiple Dropdowns"
-msgstr ""
+msgstr "Listas desplegables múltiples"
 
 #: src/Assessment.js:140
 msgid "Multiple choice"
@@ -204,19 +208,19 @@ msgstr "Siguiente"
 
 #: src/Paginate.js:112
 msgid "Next Page"
-msgstr ""
+msgstr "Próxima página"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr "No se encontró"
+#~ msgstr ""
 
 #: src/Assessment.js:164
 msgid "Numerical"
-msgstr ""
+msgstr "Numérico"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr "Otro tipo"
+#~ msgstr ""
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -240,7 +244,7 @@ msgstr "Anterior"
 
 #: src/Paginate.js:113
 msgid "Previous Page"
-msgstr ""
+msgstr "Página anterior"
 
 #: src/Assessment.js:272
 msgid "Questions"
@@ -248,19 +252,19 @@ msgstr "Preguntas"
 
 #: src/Assessment.js:244
 msgid "Quiz"
-msgstr ""
+msgstr "Evaluación"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr ""
+msgstr "Evaluaciones"
 
 #: src/CommonCartridge.js:471
 msgid "Quizzes ({0})"
-msgstr ""
+msgstr "Evaluaciones ({0})"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
-msgstr ""
+msgstr "El recurso no está disponible"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
@@ -272,7 +276,7 @@ msgstr "Presentando"
 
 #: src/Assessment.js:170
 msgid "Text only"
-msgstr ""
+msgstr "Solo texto"
 
 #: src/CommonCartridge.js:354
 msgid "This may take some time depending on the size of the cartridge."
@@ -280,7 +284,7 @@ msgstr "Esto puede llevar algún tiempo según el tamaño del cartucho."
 
 #: src/ResourceUnavailable.js:12
 msgid "This resource is not included in the package."
-msgstr ""
+msgstr "El recurso no se incluye en el paquete."
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -305,7 +309,7 @@ msgstr "Ver Common Cartridges en el navegador. No necesita procesamiento del lad
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr "Ver Common Cartridge (.imscc)"
+#~ msgstr ""
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -313,7 +317,7 @@ msgstr "Ver fuente en Github"
 
 #: src/CommonCartridge.js:322
 msgid "We had a problem loading the Common Cartridge"
-msgstr ""
+msgstr "Tuvimos un problema al cargar el Common Cartridge."
 
 #: src/WikiContentList.js:61
 msgid "Wiki content"
@@ -325,11 +329,11 @@ msgstr "Usted está aquí:"
 
 #: src/EmbeddedPreview.js:77
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Su navegador no admite audio de HTML5. Aquí le brindamos un <0>enlace al archivo de audio</0>."
 
 #: src/EmbeddedPreview.js:90
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr ""
+msgstr "Su navegador no admite video de HTML5. Aquí le brindamos un <0>enlace al archivo de audio</0>."
 
 #: src/utils.js:352
 msgid "a file upload"
@@ -337,7 +341,7 @@ msgstr "una carga de archivo"
 
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (Se permite el Intercambio de recursos de origen cruzado [Cross-Origin Resource Sharing,CORS]"
+msgstr "https://www.yourdomain.com/cartridge.imscc (Se permite el Intercambio de recursos de origen cruzado [Cross-Origin Resource Sharing, CORS]"
 
 #: src/AssessmentListItem.js:94
 msgid "{0} Questions"
@@ -345,11 +349,11 @@ msgstr "{0} Preguntas"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
-msgstr ""
+msgstr "{0} está publicado"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr ""
+msgstr "{0} está sin publicar"
 
 #: src/AssessmentListItem.js:101
 #: src/AssignmentListItemBody.js:34
