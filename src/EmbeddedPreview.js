@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import Spinner from "@instructure/ui-elements/lib/components/Spinner";
+
 import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import { getExtension } from "./utils";
@@ -30,6 +32,7 @@ export default class EmbeddedPreview extends Component {
 
   handleMessage = event => {
     if (event.data == null || event.data[0] !== "{") {
+      this.props.onFail();
       return;
     }
     let response;
@@ -37,9 +40,11 @@ export default class EmbeddedPreview extends Component {
       response = JSON.parse(event.data);
     } catch (error) {
       console.warn("Error parsing data from postMessage");
+      this.props.onFail();
       return;
     }
     if (response.type !== "externalViewerResponse") {
+      this.props.onFail();
       return;
     }
     if (response.body.url) {
