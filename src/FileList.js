@@ -19,7 +19,7 @@ export default class FileList extends Component {
       });
 
     const listItems = fileResources.map(
-      ({ dependencyHrefs, href, identifier }, index) => {
+      ({ dependencyHrefs, href, identifier, metadata }, index) => {
         return (
           <FileListItem
             dependencyHrefs={dependencyHrefs}
@@ -27,6 +27,7 @@ export default class FileList extends Component {
             identifier={identifier}
             key={index}
             src={this.props.src}
+            metadata={metadata}
           />
         );
       }

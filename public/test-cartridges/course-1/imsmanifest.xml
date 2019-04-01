@@ -141,5 +141,34 @@
     <resource type="webcontent" identifier="i1f4fc3f7049fa09157a195fc3538f184" href="web_resources/sample.mp3">
       <file href="web_resources/sample.mp3"/>
     </resource>
+    <resource type="webcontent" identifier="publisheddocument" href="web_resources/published-document.pdf">
+      <file href="web_resources/published-document.pdf"/>
+    </resource>
+    <resource type="webcontent" identifier="publisheddocument" href="web_resources/published-document-2.pdf">
+      <metadata>
+        <lom:lom>
+          <lom:educational>
+            <lom:intendedEndUserRole>
+              <lom:source>IMSGLC_CC_Rolesv1p1</lom:source>
+              <lom:value>Learner</lom:value>
+            </lom:intendedEndUserRole>
+          </lom:educational>
+        </lom:lom>
+      </metadata>
+      <file href="web_resources/published-document-2.pdf"/>
+    </resource>
+    <resource type="webcontent" identifier="unpublisheddocument2" href="web_resources/unpublished-document.pdf">
+      <metadata>
+        <lom:lom>
+          <lom:educational>
+            <lom:intendedEndUserRole>
+              <lom:source>IMSGLC_CC_Rolesv1p1</lom:source>
+              <lom:value>Instructor</lom:value>
+            </lom:intendedEndUserRole>
+          </lom:educational>
+        </lom:lom>
+      </metadata>
+      <file href="web_resources/unpublished-document.pdf"/>
+    </resource>
   </resources>
 </manifest>
