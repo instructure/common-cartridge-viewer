@@ -4,8 +4,19 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
 import RichContent from "./RichContent";
 import { Trans } from "@lingui/macro";
+import Text from "@instructure/ui-elements/es/components/Text";
 
 export default class AssignmentBody extends PureComponent {
+  getRubricRatingsColSpan = () => {
+    let colSpan = 1;
+
+    this.props.rubric.criteria.forEach(criteria => {
+      if (criteria.ratings.length > colSpan) colSpan = criteria.ratings.length;
+    });
+
+    return colSpan;
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -84,6 +95,77 @@ export default class AssignmentBody extends PureComponent {
                 );
               })}
             </ul>
+          </React.Fragment>
+        )}
+        {this.props.rubric && (
+          <React.Fragment>
+            <table title={this.props.rubric.title}>
+              <thead>
+                <tr>
+                  <th
+                    align="left"
+                    scope="col"
+                    style={{ borderBottom: "none" }}
+                    colSpan={this.getRubricRatingsColSpan() + 2}
+                  >
+                    <Text size="large" weight="bold" lineHeight="double">
+                      {this.props.rubric.title}
+                    </Text>
+                  </th>
+                </tr>
+                <tr>
+                  <th align="left" scope="col" style={{ border: "none" }}>
+                    <Trans>Criteria</Trans>
+                  </th>
+                  <th
+                    align="left"
+                    scope="col"
+                    colSpan={this.getRubricRatingsColSpan()}
+                    style={{ border: "none" }}
+                  >
+                    <Trans>Ratings</Trans>
+                  </th>
+                  <th align="left" scope="col" style={{ border: "none" }}>
+                    <Trans>Pts</Trans>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.rubric.criteria.map(criteria => {
+                  return (
+                    <tr key={criteria.id}>
+                      <td>{criteria.description}</td>
+                      {criteria.ratings.map((rating, i) => (
+                        <td key={`criteria-${i}`}>
+                          <Text as="div">
+                            {rating.points} <Trans>pts</Trans>
+                          </Text>
+                          <Text as="div">{rating.description}</Text>
+                        </td>
+                      ))}
+                      <td align="center">{criteria.points}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th
+                    align="right"
+                    scope="col"
+                    colSpan={this.getRubricRatingsColSpan() + 1}
+                    style={{ borderRight: "none" }}
+                  >
+                    <Text weight="bold" lineHeight="double">
+                      <Trans>Total points:</Trans>
+                    </Text>
+                  </th>
+                  <th scope="col" style={{ borderLeft: "none" }}>
+                    {this.props.rubric.pointsPossible}
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
           </React.Fragment>
         )}
       </React.Fragment>

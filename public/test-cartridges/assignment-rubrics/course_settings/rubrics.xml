@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rubrics xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <rubric identifier="iedba309259524cbe71078cc260f65804">
+    <read_only>false</read_only>
+    <title>Some Rubric</title>
+    <reusable>false</reusable>
+    <public>false</public>
+    <points_possible>5.0</points_possible>
+    <hide_score_total>false</hide_score_total>
+    <free_form_criterion_comments>false</free_form_criterion_comments>
+    <criteria>
+      <criterion>
+        <criterion_id>_4743</criterion_id>
+        <points>5.0</points>
+        <description>Description of criterion</description>
+        <ratings>
+          <rating>
+            <description>Full Marks</description>
+            <points>5.0</points>
+            <criterion_id>_4743</criterion_id>
+            <id>blank</id>
+          </rating>
+          <rating>
+            <description>No Marks</description>
+            <points>0.0</points>
+            <criterion_id>_4743</criterion_id>
+            <id>blank_2</id>
+          </rating>
+        </ratings>
+      </criterion>
+    </criteria>
+  </rubric>
+</rubrics>

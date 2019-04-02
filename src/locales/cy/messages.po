@@ -37,7 +37,7 @@ msgstr "(anhysbys)"
 #~ msgid "Assessments ({0})"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:23
+#: src/AssignmentBody.js:34
 msgid "Assignment"
 msgstr "Aseiniad"
 
@@ -50,11 +50,11 @@ msgstr "Aseiniadau"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:431
+#: src/CommonCartridge.js:470
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Aseiniadau ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:66
+#: src/AssignmentBody.js:77
 #: src/Discussion.js:57
 msgid "Attachments"
 msgstr "Atodiadau"
@@ -83,6 +83,10 @@ msgstr "Does dim modd rhagweld y ddewislen Crwydro'r Cwrs"
 msgid "Course navigation links are only available within a Canvas course."
 msgstr "Dim ond o fewn cwrs Canvas y mae dolenni crwydro'r cwrs ar gael."
 
+#: src/AssignmentBody.js:118
+msgid "Criteria"
+msgstr ""
+
 #: src/Discussion.js:40
 msgid "Discussion"
 msgstr "Trafodaeth"
@@ -103,7 +107,7 @@ msgstr "Trafodaethau"
 #~ msgid "Discussions ({0})"
 #~ msgstr "Trafodaethau ({0})"
 
-#: src/CommonCartridge.js:455
+#: src/CommonCartridge.js:494
 msgid "Discussions ({length})"
 msgstr ""
 
@@ -131,7 +135,7 @@ msgstr "Does dim modd gweld rhagolwg o gynnwys adnodd allanol"
 msgid "External link"
 msgstr "Dolen allanol"
 
-#: src/CommonCartridge.js:320
+#: src/CommonCartridge.js:359
 msgid "Failed to load resource"
 msgstr "Wedi methu llwytho adnodd"
 
@@ -143,7 +147,7 @@ msgstr "Llwytho Ffeil i Fyny"
 msgid "Files"
 msgstr "Ffeiliau"
 
-#: src/CommonCartridge.js:484
+#: src/CommonCartridge.js:523
 msgid "Files ({0})"
 msgstr "Ffeiliau ({0})"
 
@@ -164,11 +168,11 @@ msgstr "Er mwyn defnyddio’r adnodd hwn yn Canvas, rhaid i’r adnodd allanol f
 msgid "Loading"
 msgstr "Wrthi’n llwytho"
 
-#: src/CommonCartridge.js:346
+#: src/CommonCartridge.js:385
 msgid "Loading Cartridge"
 msgstr "Wrthi’n llwytho cetrisen"
 
-#: src/CommonCartridge.js:363
+#: src/CommonCartridge.js:402
 msgid "Loading completion"
 msgstr "Cwblhau llwytho"
 
@@ -186,7 +190,7 @@ msgstr "Nifer mwyaf o ymgeisiau"
 msgid "Media viewer"
 msgstr "Dangosydd Cyfryngau"
 
-#: src/CommonCartridge.js:420
+#: src/CommonCartridge.js:459
 msgid "Modules ({0})"
 msgstr "Modiwlau ({0})"
 
@@ -226,7 +230,7 @@ msgstr "Rhifol"
 msgid "Page"
 msgstr "Tudalen"
 
-#: src/CommonCartridge.js:442
+#: src/CommonCartridge.js:481
 msgid "Pages ({0})"
 msgstr "Tudalennau ({0})"
 
@@ -234,7 +238,7 @@ msgstr "Tudalennau ({0})"
 msgid "Pattern match"
 msgstr "Patrwm yn cyfateb"
 
-#: src/AssignmentBody.js:48
+#: src/AssignmentBody.js:59
 msgid "Points"
 msgstr "Pwynt"
 
@@ -245,6 +249,10 @@ msgstr "Blaenorol"
 #: src/Paginate.js:113
 msgid "Previous Page"
 msgstr "Tudalen Flaenorol"
+
+#: src/AssignmentBody.js:129
+msgid "Pts"
+msgstr ""
 
 #: src/Assessment.js:272
 msgid "Questions"
@@ -258,9 +266,13 @@ msgstr "Cwis"
 msgid "Quizzes"
 msgstr "Cwisiau"
 
-#: src/CommonCartridge.js:471
+#: src/CommonCartridge.js:510
 msgid "Quizzes ({0})"
 msgstr "Cwisiau ({0})"
+
+#: src/AssignmentBody.js:126
+msgid "Ratings"
+msgstr ""
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -270,7 +282,7 @@ msgstr "Adnodd ddim ar gael"
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:35
+#: src/AssignmentBody.js:46
 msgid "Submitting"
 msgstr "Wrthi'n Cyflwyno"
 
@@ -278,7 +290,7 @@ msgstr "Wrthi'n Cyflwyno"
 msgid "Text only"
 msgstr "Testun yn unig"
 
-#: src/CommonCartridge.js:354
+#: src/CommonCartridge.js:393
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Fe allai hyn gymryd peth amser, gan ddibynnu ar faint y Cetrisen."
 
@@ -286,11 +298,15 @@ msgstr "Fe allai hyn gymryd peth amser, gan ddibynnu ar faint y Cetrisen."
 msgid "This resource is not included in the package."
 msgstr "Nid yw'r adnodd hwn wedi’i gynnwys yn y pecyn."
 
+#: src/AssignmentBody.js:160
+msgid "Total points:"
+msgstr ""
+
 #: src/Assessment.js:146
 msgid "True / false"
 msgstr "Gwir / ffug"
 
-#: src/CommonCartridge.js:407
+#: src/CommonCartridge.js:446
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
 #: src/WebLink.js:36
@@ -315,7 +331,7 @@ msgstr "Gweld Common Cartridge yn y porwr. Does dim angen prosesu ar ochr y gwei
 msgid "View source on Github"
 msgstr "Gweld Ffynhonnell ar Github"
 
-#: src/CommonCartridge.js:322
+#: src/CommonCartridge.js:361
 msgid "We had a problem loading the Common Cartridge"
 msgstr "Problem wrth lwytho'r Common Cartridge"
 
@@ -323,7 +339,7 @@ msgstr "Problem wrth lwytho'r Common Cartridge"
 msgid "Wiki content"
 msgstr "Cynnwys Wiki"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:444
 msgid "You are here:"
 msgstr "Rydych chi yma:"
 
@@ -342,6 +358,10 @@ msgstr "ffeil wedi’i llwytho i fyny"
 #: src/App.js:127
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS wedi’i alluogi)"
+
+#: src/AssignmentBody.js:141
+msgid "pts"
+msgstr ""
 
 #: src/AssessmentListItem.js:94
 msgid "{0} Questions"
@@ -362,10 +382,10 @@ msgstr "Heb gyhoeddi {0}"
 msgid "{0} points"
 msgstr "{0} pwynt"
 
-#: src/CommonCartridge.js:372
+#: src/CommonCartridge.js:411
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:366
+#: src/CommonCartridge.js:405
 msgid "{0}% loaded"
 msgstr "{0}% wedi llwytho"
