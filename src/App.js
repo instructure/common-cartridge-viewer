@@ -9,6 +9,8 @@ import TextInput from "@instructure/ui-forms/lib/components/TextInput";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import View from "@instructure/ui-layout/lib/components/View";
+import Responsive from "@instructure/ui-layout/lib/components/Responsive";
+
 import { HashRouter as Router } from "react-router-dom";
 import { getExtension } from "./utils";
 import { I18n } from "@lingui/react";
@@ -88,82 +90,94 @@ export default class App extends Component {
     return (
       <I18n>
         {({ i18n }) => (
-          <View as="div" margin="medium">
-            {hasNoSource && (
-              <React.Fragment>
-                <GithubCorner href="https://github.com/instructure/common-cartridge-viewer" />
-                <View as="div" margin="large">
-                  <FileDrop
-                    accept={[".imscc", ".zip"]}
-                    onDropAccepted={files => {
-                      this.setState({ file: files[0] });
-                    }}
-                    onDropRejected={file => {
-                      console.error("file rejected");
-                    }}
-                    label={
-                      <Billboard
-                        heading={i18n._(t`Common Cartridge Viewer`)}
-                        message={i18n._(
-                          t`Drag and drop the cartridge, or click to browse your computer.`
-                        )}
-                        hero={<IconZipped />}
-                      />
-                    }
-                  />
-                </View>
-                <form onSubmit={this.handleSubmit}>
-                  <Flex justifyItems="center" margin="medium none large">
-                    <FlexItem>
-                      <TextInput
-                        inputRef={input => (this.inputRef = input)}
+          <Responsive
+            query={{
+              small: { maxWidth: "510px" },
+              large: { minWidth: "550px" }
+            }}
+            props={{
+              small: { margin: "" },
+              large: { margin: "medium" }
+            }}
+            render={(props, matches) => (
+              <View as="div" {...props}>
+                {hasNoSource && (
+                  <React.Fragment>
+                    <GithubCorner href="https://github.com/instructure/common-cartridge-viewer" />
+                    <View as="div" margin="large">
+                      <FileDrop
+                        accept={[".imscc", ".zip"]}
+                        onDropAccepted={files => {
+                          this.setState({ file: files[0] });
+                        }}
+                        onDropRejected={file => {
+                          console.error("file rejected");
+                        }}
                         label={
-                          <ScreenReaderContent>
-                            <Trans>Cartridge</Trans>
-                          </ScreenReaderContent>
+                          <Billboard
+                            heading={i18n._(t`Common Cartridge Viewer`)}
+                            message={i18n._(
+                              t`Drag and drop the cartridge, or click to browse your computer.`
+                            )}
+                            hero={<IconZipped />}
+                          />
                         }
-                        name="src"
-                        placeholder={i18n._(
-                          t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`
-                        )}
-                        width="30rem"
                       />
-                    </FlexItem>
-                    <FlexItem padding="0 0 0 x-small">
-                      <Button type="submit" variant="primary">
-                        <Trans>View</Trans>
-                      </Button>
-                    </FlexItem>
-                  </Flex>
-                </form>
+                    </View>
+                    <form onSubmit={this.handleSubmit}>
+                      <Flex justifyItems="center" margin="medium none large">
+                        <FlexItem>
+                          <TextInput
+                            inputRef={input => (this.inputRef = input)}
+                            label={
+                              <ScreenReaderContent>
+                                <Trans>Cartridge</Trans>
+                              </ScreenReaderContent>
+                            }
+                            name="src"
+                            placeholder={i18n._(
+                              t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`
+                            )}
+                            width="30rem"
+                          />
+                        </FlexItem>
+                        <FlexItem padding="0 0 0 x-small">
+                          <Button type="submit" variant="primary">
+                            <Trans>View</Trans>
+                          </Button>
+                        </FlexItem>
+                      </Flex>
+                    </form>
 
-                <p>
-                  <Trans>
-                    View Common Cartridges in the browser. Requires no
-                    server-side processing.
-                  </Trans>
-                </p>
+                    <p>
+                      <Trans>
+                        View Common Cartridges in the browser. Requires no
+                        server-side processing.
+                      </Trans>
+                    </p>
 
-                <Heading level="h2">
-                  <Trans>Examples</Trans>
-                </Heading>
+                    <Heading level="h2">
+                      <Trans>Examples</Trans>
+                    </Heading>
 
-                <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
-              </React.Fragment>
+                    <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
+                  </React.Fragment>
+                )}
+
+                <Router>
+                  <CommonCartridge
+                    manifest={this.props.manifest}
+                    cartridge={this.state.cartridge || this.state.file}
+                    file={this.state.file}
+                    compact={this.props.compact}
+                    onHistoryChange={this.handleHistoryChange}
+                    onPreviewFailure={this.handlePreviewFailure}
+                    previewType={this.state.previewType}
+                  />
+                </Router>
+              </View>
             )}
-
-            <Router>
-              <CommonCartridge
-                manifest={this.props.manifest}
-                cartridge={this.state.cartridge || this.state.file}
-                file={this.state.file}
-                compact={this.props.compact}
-                onHistoryChange={this.handleHistoryChange}
-                onPreviewFailure={this.handlePreviewFailure}
-                previewType={this.state.previewType}
-              />
-            </Router>
-          </View>
+          />
         )}
       </I18n>
     );

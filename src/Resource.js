@@ -256,9 +256,7 @@ export default class Resource extends Component {
     } else if (isDocumentWithPreview) {
       componentToRender = (
         <EmbeddedPreview
-          onFail={() => (
-            this.setState({embeddedPreviewFailed: true})
-          )}
+          onFail={() => this.setState({ embeddedPreviewFailed: true })}
           externalViewer={this.props.externalViewer}
         />
       );
@@ -311,7 +309,7 @@ export default class Resource extends Component {
       <React.Fragment>
         {this.props.isModuleItem && (previousItem || nextItem) && (
           <Flex margin="0 0 medium">
-            <FlexItem padding="small" width="14rem">
+            <FlexItem padding="small">
               {this.props.isModuleItem &&
                 previousItem &&
                 this.renderPreviousButton(previousItem)}

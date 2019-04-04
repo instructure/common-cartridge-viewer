@@ -32,6 +32,8 @@ import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 import Unavailable from "./Unavailable";
+import Responsive from "@instructure/ui-layout/lib/components/Responsive";
+
 const queryString = require("query-string");
 
 const ONE_MEG_IN_BYTES = 1000000;
@@ -379,43 +381,57 @@ export default class CommonCartridge extends Component {
         <I18n>
           {({ i18n }) => (
             <div className={isLarge || isTakingAwhile ? "fade-in" : "hidden"}>
-              <View as="div" margin="small" padding="large" textAlign="center">
-                <Billboard
-                  size="medium"
-                  heading={i18n._(t`Loading Cartridge`)}
-                  hero={size => (
-                    <img
-                      alt=""
-                      style={{ width: "125px", height: "80px" }}
-                      src={waitingWristWatch}
-                    />
-                  )}
-                  message={i18n._(t`
+              <Responsive
+                query={{
+                  small: { maxWidth: "510px" },
+                  large: { minWidth: "550px" }
+                }}
+                props={{
+                  small: { margin: "", padding: "" },
+                  large: { margin: "small", padding: "large" }
+                }}
+                render={props => (
+                  <View {...props} as="div" textAlign="center">
+                    <Billboard
+                      size="medium"
+                      heading={i18n._(t`Loading Cartridge`)}
+                      hero={size => (
+                        <img
+                          alt=""
+                          style={{ width: "125px", height: "80px" }}
+                          src={waitingWristWatch}
+                        />
+                      )}
+                      message={i18n._(t`
                       This may take some time depending on the size of the
                       cartridge.
                     `)}
-                />
+                    />
 
-                <Progress
-                  variant="bar"
-                  animateOnMount
-                  label={i18n._(t`Loading completion`)}
-                  formatValueText={(valueNow, valueMax) =>
-                    i18n._(
-                      t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
-                    )
-                  }
-                  formatDisplayedValue={(valueNow, valueMax) => (
-                    <Text>
-                      <pre>
-                        {i18n._(t`${Math.floor((valueNow / valueMax) * 100)}%`)}
-                      </pre>
-                    </Text>
-                  )}
-                  valueNow={this.state.loadProgress.loaded}
-                  valueMax={this.state.loadProgress.total}
-                />
-              </View>
+                    <Progress
+                      variant="bar"
+                      animateOnMount
+                      label={i18n._(t`Loading completion`)}
+                      formatValueText={(valueNow, valueMax) =>
+                        i18n._(
+                          t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
+                        )
+                      }
+                      formatDisplayedValue={(valueNow, valueMax) => (
+                        <Text>
+                          <pre>
+                            {i18n._(
+                              t`${Math.floor((valueNow / valueMax) * 100)}%`
+                            )}
+                          </pre>
+                        </Text>
+                      )}
+                      valueNow={this.state.loadProgress.loaded}
+                      valueMax={this.state.loadProgress.total}
+                    />
+                  </View>
+                )}
+              />
             </div>
           )}
         </I18n>
