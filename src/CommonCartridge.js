@@ -556,7 +556,6 @@ export default class CommonCartridge extends Component {
                     elementRef={ref => (this.mainRef = ref)}
                     margin={this.props.compact ? "none" : "small"}
                     background="default"
-                    tabIndex="-1"
                   >
                     <Switch>
                       <Route
