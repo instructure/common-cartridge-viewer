@@ -11,7 +11,6 @@ import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
-import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
@@ -308,22 +307,14 @@ export default class Resource extends Component {
     return (
       <React.Fragment>
         {this.props.isModuleItem && (previousItem || nextItem) && (
-          <Flex margin="0 0 medium">
-            <FlexItem padding="small">
-              {this.props.isModuleItem &&
-                previousItem &&
-                this.renderPreviousButton(previousItem)}
-            </FlexItem>
-            <FlexItem padding="small" width="14rem" grow={true}>
-              <Flex justifyItems="end">
-                <FlexItem>
-                  {this.props.isModuleItem &&
-                    nextItem &&
-                    this.renderNextButton(nextItem)}
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-          </Flex>
+          <div className="Resource--navButtons">
+            {this.props.isModuleItem &&
+              previousItem &&
+              this.renderPreviousButton(previousItem)}
+            {this.props.isModuleItem &&
+              nextItem &&
+              this.renderNextButton(nextItem)}
+          </div>
         )}
 
         <div tabIndex="0" aria-live="true" style={{ clear: "both" }}>
