@@ -317,7 +317,7 @@ export default class Resource extends Component {
           </div>
         )}
 
-        <div tabIndex="0" aria-live="true" style={{ clear: "both" }}>
+        <div tabIndex="0" aria-live="polite" style={{ clear: "both" }}>
           {isValidExternalToolResource ? (
             <PreviewUnavailable />
           ) : (
