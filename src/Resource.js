@@ -11,6 +11,7 @@ import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
+import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
@@ -304,18 +305,21 @@ export default class Resource extends Component {
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
 
+    const renderNextPrevButtons =
+      this.props.isModuleItem && (previousItem || nextItem);
+
+    const nextPrevButtons = (
+      <div className="Resource--navButtons">
+        {this.props.isModuleItem &&
+          previousItem &&
+          this.renderPreviousButton(previousItem)}
+        {this.props.isModuleItem && nextItem && this.renderNextButton(nextItem)}
+      </div>
+    );
+
     return (
       <React.Fragment>
-        {this.props.isModuleItem && (previousItem || nextItem) && (
-          <div className="Resource--navButtons">
-            {this.props.isModuleItem &&
-              previousItem &&
-              this.renderPreviousButton(previousItem)}
-            {this.props.isModuleItem &&
-              nextItem &&
-              this.renderNextButton(nextItem)}
-          </div>
-        )}
+        {renderNextPrevButtons && nextPrevButtons}
 
         <div tabIndex="0" aria-live="polite" style={{ clear: "both" }}>
           {isValidExternalToolResource ? (
@@ -324,6 +328,10 @@ export default class Resource extends Component {
             this.renderResourceDocument(resource)
           )}
         </div>
+
+        <ScreenReaderContent>
+          {renderNextPrevButtons && nextPrevButtons}
+        </ScreenReaderContent>
       </React.Fragment>
     );
   }
