@@ -91,10 +91,11 @@ export default class Resource extends Component {
       ? `/module-items/${module.identifierref || module.identifier}`
       : `/resources/${module.identifierref || module.identifier}`;
 
-  renderPreviousButton = previousItem => {
+  renderPreviousButton = (previousItem, withTooltip) => {
+    let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
       <div className="previous-link">
-        <Tooltip variant="inverse" tip={previousItem.title} placement="end">
+        <Tip variant="inverse" tip={previousItem.title} placement="end">
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(previousItem)
@@ -106,15 +107,16 @@ export default class Resource extends Component {
           >
             <Trans>Previous</Trans>
           </Button>
-        </Tooltip>
+        </Tip>
       </div>
     );
   };
 
-  renderNextButton = nextItem => {
+  renderNextButton = (nextItem, withTooltip) => {
+    let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
       <div className="next-link">
-        <Tooltip variant="inverse" tip={nextItem.title} placement="start">
+        <Tip variant="inverse" tip={nextItem.title} placement="start">
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(nextItem)
@@ -126,7 +128,7 @@ export default class Resource extends Component {
           >
             <Trans>Next</Trans>
           </Button>
-        </Tooltip>
+        </Tip>
       </div>
     );
   };
@@ -308,18 +310,20 @@ export default class Resource extends Component {
     const renderNextPrevButtons =
       this.props.isModuleItem && (previousItem || nextItem);
 
-    const nextPrevButtons = (
+    const nextPrevButtons = withTooltip => (
       <div className="Resource--navButtons">
         {this.props.isModuleItem &&
           previousItem &&
-          this.renderPreviousButton(previousItem)}
-        {this.props.isModuleItem && nextItem && this.renderNextButton(nextItem)}
+          this.renderPreviousButton(previousItem, withTooltip)}
+        {this.props.isModuleItem &&
+          nextItem &&
+          this.renderNextButton(nextItem, withTooltip)}
       </div>
     );
 
     return (
       <React.Fragment>
-        {renderNextPrevButtons && nextPrevButtons}
+        {renderNextPrevButtons && nextPrevButtons(true)}
 
         <div tabIndex="0" aria-live="polite" style={{ clear: "both" }}>
           {isValidExternalToolResource ? (
@@ -330,7 +334,7 @@ export default class Resource extends Component {
         </div>
 
         <ScreenReaderContent>
-          {renderNextPrevButtons && nextPrevButtons}
+          {renderNextPrevButtons && nextPrevButtons(false)}
         </ScreenReaderContent>
       </React.Fragment>
     );
