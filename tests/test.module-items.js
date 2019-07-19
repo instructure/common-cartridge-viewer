@@ -10,12 +10,13 @@ test("Module Title is displayed", async t => {
 });
 
 test("Assignment Items work", async t => {
+  const IconAssignment = Selector(
+    ".ExpandCollapseList-item:nth-of-type(1) svg[name='IconAssignment']"
+  );
+
+  await IconAssignment;
   await t
-    .expect(
-      Selector(
-        ".ExpandCollapseList-item:nth-of-type(1) svg[name='IconAssignment']"
-      ).exists
-    )
+    .expect(IconAssignment.exists)
     .ok()
     .click(
       Selector(".ExpandCollapseList-item:nth-of-type(1) a").withText(
@@ -29,6 +30,7 @@ test("Assignment Items work", async t => {
 test("Quiz Items work", async t => {
   const itemCss = ".ExpandCollapseList-item:nth-of-type(2)";
   const title = `First Module Quiz 1`;
+
   await t
     .expect(Selector(`${itemCss} svg[name='IconQuiz']`).exists)
     .ok()
