@@ -35,6 +35,7 @@ test("Pages", async t => {
 
 test("Assignments", async t => {
   const assignmentUrl = Selector("a").withText("Published Assignment");
+  await assignmentUrl;
   await t
     .expect(assignmentUrl.exists)
     .ok()
