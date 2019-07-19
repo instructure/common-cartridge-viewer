@@ -59,6 +59,7 @@ test("File Items work", async t => {
 test("Wiki Page Items work", async t => {
   const itemCss = ".ExpandCollapseList-item:nth-of-type(3)";
   const title = "First Module Wiki Page 1";
+  await Selector(itemCss);
   await t
     .expect(Selector(`${itemCss} svg[name='IconDocument']`).exists)
     .ok()
