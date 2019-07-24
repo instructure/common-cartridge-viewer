@@ -4,8 +4,10 @@ fixture`Associated-content assignments (loaded w/ manifest)`
   .page`http://localhost:5000/?manifest=https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/caleblorcruxcourse-export-big/imsmanifest.xml#/`;
 
 test("Associated-content assignment items display correctly", async t => {
+  const aboutMe = Selector("a").withText("Starter: About Me");
+  await aboutMe;
   await t
-    .expect(Selector("a").withText("Starter: About Me").exists)
+    .expect(aboutMe.exists)
     .ok({ timeout: 20000 })
     .expect(
       Selector("a").withText("Robot System Components Lab 1: Overview").exists
