@@ -83,7 +83,7 @@ test("Text Headers work", async t => {
   const itemCss = ".ExpandCollapseList-item:nth-of-type(5)";
   const title = "First Module Text Header 1";
   const item = Selector(`${itemCss} h3`).withText(title);
-  await Selector(item);
+  await item;
   await t.expect(item.exists).ok();
 });
 
