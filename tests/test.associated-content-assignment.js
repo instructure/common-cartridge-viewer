@@ -174,6 +174,7 @@ fixture`Associated-content external tools`
 
 test("Displays 'Preview not available' for external tool content", async t => {
   const assignmentsNav = Selector("a").withText("Assignments (2)");
+  await assignmentsNav;
   await t
     .expect(Selector("header").exists)
     .ok()
