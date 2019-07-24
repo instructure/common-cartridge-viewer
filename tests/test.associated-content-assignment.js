@@ -19,6 +19,7 @@ test("Associated-content assignment items display correctly", async t => {
 
 test("Associated-content assignment items can be clicked", async t => {
   const aboutMeAssignment = Selector("a").withText("Starter: About Me");
+  await aboutMeAssignment;
   await t
     .expect(aboutMeAssignment.exists)
     .ok({ timeout: 20000 })
