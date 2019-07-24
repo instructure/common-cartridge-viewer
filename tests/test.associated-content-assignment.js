@@ -200,8 +200,10 @@ fixture`Web content with a external tool`
 
 test("Displays 'Preview not available' when web content is an external tool", async t => {
   const assignmentsNav = Selector("a").withText("Assignments (2)");
+  const header = Selector("header");
+  await header;
   await t
-    .expect(Selector("header").exists)
+    .expect(header.exists)
     .ok()
     .click(assignmentsNav);
 
