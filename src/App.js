@@ -91,12 +91,11 @@ export default class App extends Component {
       <I18n>
         {({ i18n }) => (
           <Responsive
+            match="media"
             query={{
-              small: { maxWidth: "510px" },
-              large: { minWidth: "550px" }
+              large: { minWidth: "600px" }
             }}
             props={{
-              small: { margin: "" },
               large: { margin: "medium" }
             }}
             render={(props, matches) => (
