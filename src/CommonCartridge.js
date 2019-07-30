@@ -386,7 +386,7 @@ export default class CommonCartridge extends Component {
             <div className={isLarge || isTakingAwhile ? "fade-in" : "hidden"}>
               <Responsive
                 query={{
-                  large: { minWidth: "550px" }
+                  large: { minWidth: "600px" }
                 }}
                 props={{
                   large: { margin: "small", padding: "large" }
