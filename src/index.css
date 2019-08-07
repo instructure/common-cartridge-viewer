@@ -228,3 +228,106 @@ th,
 td {
   padding: 0.5rem 1rem;
 }
+
+@media screen and (max-width: 550px) {
+  .MenuItem {
+    padding-left: 6px;
+  }
+}
+
+/* 
+  CSS Grid styles for the cartridge view
+  and hamburger menu for mobile
+*/
+
+.CommonCartridge--view {
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 200px 1fr;
+}
+
+.CommonCartridge--view.single-resource {
+  grid-template-columns: 1fr;
+}
+
+.CommonCartridge--view nav {
+  padding-top: 20px;
+}
+
+.Resource--navButtons {
+  display: grid;
+  padding: 10px 0 30px 0;
+  grid-template-columns: auto auto;
+  grid-template-areas: "prev next";
+  justify-content: space-between;
+  align-content: space-between;
+}
+
+.previous-link {
+  grid-area: prev;
+}
+
+.next-link {
+  grid-area: next;
+}
+
+#CommonCartridge--navToggle,
+.CommonCartridge--view nav label,
+#NavTrigger {
+  display: none;
+}
+
+.CommonCartridge--view nav .open,
+.CommonCartridge--view nav .close {
+  position: absolute;
+  top: 7px;
+  left: 8px;
+}
+
+@media screen and (max-width: 550px) {
+  .CommonCartridge--view nav {
+    padding: 0;
+  }
+
+  .CommonCartridge--view {
+    grid-template-columns: 1fr;
+  }
+
+  header ol {
+    margin-left: 45px !important;
+  }
+
+  .Resource--navButtons {
+    padding-top: 0;
+  }
+
+  .CommonCartridge--view nav .open {
+    display: block;
+  }
+
+  #NavTrigger:checked + .open {
+    display: none;
+  }
+
+  .navLinks {
+    padding: 0 10px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    opacity: 0;
+  }
+
+  #NavTrigger:checked + .open + .navLinks + .close {
+    display: block;
+  }
+
+  #NavTrigger:checked + .open + .navLinks {
+    padding: 10px;
+    max-height: 100vh;
+    opacity: 1;
+  }
+}
+
+.CommonCartridge--content {
+  overflow: auto;
+}

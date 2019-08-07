@@ -4,8 +4,10 @@ fixture`Associated-content assignments (loaded w/ manifest)`
   .page`http://localhost:5000/?manifest=https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/caleblorcruxcourse-export-big/imsmanifest.xml#/`;
 
 test("Associated-content assignment items display correctly", async t => {
+  const aboutMe = Selector("a").withText("Starter: About Me");
+  await aboutMe;
   await t
-    .expect(Selector("a").withText("Starter: About Me").exists)
+    .expect(aboutMe.exists)
     .ok({ timeout: 20000 })
     .expect(
       Selector("a").withText("Robot System Components Lab 1: Overview").exists
@@ -19,6 +21,7 @@ test("Associated-content assignment items display correctly", async t => {
 
 test("Associated-content assignment items can be clicked", async t => {
   const aboutMeAssignment = Selector("a").withText("Starter: About Me");
+  await aboutMeAssignment;
   await t
     .expect(aboutMeAssignment.exists)
     .ok({ timeout: 20000 })
@@ -171,6 +174,7 @@ fixture`Associated-content external tools`
 
 test("Displays 'Preview not available' for external tool content", async t => {
   const assignmentsNav = Selector("a").withText("Assignments (2)");
+  await assignmentsNav;
   await t
     .expect(Selector("header").exists)
     .ok()
@@ -196,8 +200,10 @@ fixture`Web content with a external tool`
 
 test("Displays 'Preview not available' when web content is an external tool", async t => {
   const assignmentsNav = Selector("a").withText("Assignments (2)");
+  const header = Selector("header");
+  await header;
   await t
-    .expect(Selector("header").exists)
+    .expect(header.exists)
     .ok()
     .click(assignmentsNav);
 

@@ -8,7 +8,6 @@ import Breadcrumb, {
   BreadcrumbLink
 } from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
-import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
 import {
   blobToDataUrl,
   getBlobFromEntry,
@@ -32,6 +31,12 @@ import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 import Unavailable from "./Unavailable";
+import Responsive from "@instructure/ui-layout/lib/components/Responsive";
+import IconOpen from "@instructure/ui-icons/lib/Solid/IconHamburger";
+import IconClose from "@instructure/ui-icons/lib/Solid/IconX";
+
+import Button from "@instructure/ui-buttons/lib/components/Button";
+
 const queryString = require("query-string");
 
 const ONE_MEG_IN_BYTES = 1000000;
@@ -379,43 +384,55 @@ export default class CommonCartridge extends Component {
         <I18n>
           {({ i18n }) => (
             <div className={isLarge || isTakingAwhile ? "fade-in" : "hidden"}>
-              <View as="div" margin="small" padding="large" textAlign="center">
-                <Billboard
-                  size="medium"
-                  heading={i18n._(t`Loading Cartridge`)}
-                  hero={size => (
-                    <img
-                      alt=""
-                      style={{ width: "125px", height: "80px" }}
-                      src={waitingWristWatch}
-                    />
-                  )}
-                  message={i18n._(t`
+              <Responsive
+                query={{
+                  large: { minWidth: "600px" }
+                }}
+                props={{
+                  large: { margin: "small", padding: "large" }
+                }}
+                render={props => (
+                  <View {...props} as="div" textAlign="center">
+                    <Billboard
+                      size="medium"
+                      heading={i18n._(t`Loading Cartridge`)}
+                      hero={size => (
+                        <img
+                          alt=""
+                          style={{ width: "125px", height: "80px" }}
+                          src={waitingWristWatch}
+                        />
+                      )}
+                      message={i18n._(t`
                       This may take some time depending on the size of the
                       cartridge.
                     `)}
-                />
+                    />
 
-                <Progress
-                  variant="bar"
-                  animateOnMount
-                  label={i18n._(t`Loading completion`)}
-                  formatValueText={(valueNow, valueMax) =>
-                    i18n._(
-                      t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
-                    )
-                  }
-                  formatDisplayedValue={(valueNow, valueMax) => (
-                    <Text>
-                      <pre>
-                        {i18n._(t`${Math.floor((valueNow / valueMax) * 100)}%`)}
-                      </pre>
-                    </Text>
-                  )}
-                  valueNow={this.state.loadProgress.loaded}
-                  valueMax={this.state.loadProgress.total}
-                />
-              </View>
+                    <Progress
+                      variant="bar"
+                      animateOnMount
+                      label={i18n._(t`Loading completion`)}
+                      formatValueText={(valueNow, valueMax) =>
+                        i18n._(
+                          t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
+                        )
+                      }
+                      formatDisplayedValue={(valueNow, valueMax) => (
+                        <Text>
+                          <pre>
+                            {i18n._(
+                              t`${Math.floor((valueNow / valueMax) * 100)}%`
+                            )}
+                          </pre>
+                        </Text>
+                      )}
+                      valueNow={this.state.loadProgress.loaded}
+                      valueMax={this.state.loadProgress.total}
+                    />
+                  </View>
+                )}
+              />
             </div>
           )}
         </I18n>
@@ -428,6 +445,9 @@ export default class CommonCartridge extends Component {
     );
 
     const startIndexQuery = queryString.stringify({ startIndex: 0 });
+    const singleResourceView =
+      this.state.showcaseSingleResource ||
+      this.state.showcaseResources.length === 1;
 
     return (
       <I18n>
@@ -449,382 +469,398 @@ export default class CommonCartridge extends Component {
               </View>
             )}
 
-            <div style={{ marginTop: this.props.compact ? "0" : "12px" }}>
-              <Flex>
-                {this.state.showcaseSingleResource === null && (
-                  <FlexItem align="start" shrink>
-                    <nav>
-                      {this.state.modules.length > 0 && (
-                        <NavLink exact className="MenuItem" to="/">
-                          <Trans>Modules ({this.state.modules.length})</Trans>
-                        </NavLink>
-                      )}
-                      {numberOfAssignments > 0 && (
-                        <NavLink
-                          className="MenuItem"
-                          to={{
-                            pathname: "/assignments",
-                            search: startIndexQuery
+            <div
+              className={[
+                "CommonCartridge--view",
+                singleResourceView ? "single-resource" : null
+              ]
+                .join(" ")
+                .trim()}
+            >
+              {this.state.showcaseSingleResource === null && (
+                <nav>
+                  <input type="checkbox" id="NavTrigger" name="NavTrigger" />
+                  <Button
+                    as="label"
+                    variant="ghost"
+                    buttonRef={ref =>
+                      ref &&
+                      ref.classList.add("open") &
+                        ref.setAttribute("for", "NavTrigger")
+                    }
+                    margin="0 x-small 0 0"
+                    icon={IconOpen}
+                  />
+                  <div className="navLinks">
+                    {this.state.modules.length > 0 && (
+                      <NavLink exact className="MenuItem" to="/">
+                        <Trans>Modules ({this.state.modules.length})</Trans>
+                      </NavLink>
+                    )}
+                    {numberOfAssignments > 0 && (
+                      <NavLink
+                        className="MenuItem"
+                        to={{
+                          pathname: "/assignments",
+                          search: startIndexQuery
+                        }}
+                      >
+                        <Trans>Assignments ({numberOfAssignments})</Trans>
+                      </NavLink>
+                    )}
+                    {this.state.pageResources.length > 0 && (
+                      <NavLink
+                        className="MenuItem"
+                        to={{
+                          pathname: "/pages",
+                          search: startIndexQuery
+                        }}
+                      >
+                        <Trans>Pages ({this.state.pageResources.length})</Trans>
+                      </NavLink>
+                    )}
+                    {this.state.discussionResources.length > 0 && (
+                      <NavLink
+                        className="MenuItem"
+                        to={{
+                          pathname: "/discussions",
+                          search: startIndexQuery
+                        }}
+                      >
+                        <Trans
+                          id="Discussions ({length})"
+                          values={{
+                            length: this.state.discussionResources.length
                           }}
-                        >
-                          <Trans>Assignments ({numberOfAssignments})</Trans>
-                        </NavLink>
-                      )}
-                      {this.state.pageResources.length > 0 && (
-                        <NavLink
-                          className="MenuItem"
-                          to={{
-                            pathname: "/pages",
-                            search: startIndexQuery
-                          }}
-                        >
-                          <Trans>
-                            Pages ({this.state.pageResources.length})
-                          </Trans>
-                        </NavLink>
-                      )}
-                      {this.state.discussionResources.length > 0 && (
-                        <NavLink
-                          className="MenuItem"
-                          to={{
-                            pathname: "/discussions",
-                            search: startIndexQuery
-                          }}
-                        >
-                          <Trans
-                            id="Discussions ({length})"
-                            values={{
-                              length: this.state.discussionResources.length
-                            }}
-                          />
-                        </NavLink>
-                      )}
-                      {this.state.assessmentResources.length > 0 && (
-                        <NavLink
-                          className="MenuItem"
-                          to={{
-                            pathname: "/quizzes",
-                            search: startIndexQuery
-                          }}
-                        >
-                          <Trans>
-                            Quizzes ({this.state.assessmentResources.length})
-                          </Trans>
-                        </NavLink>
-                      )}
-                      {this.state.fileResources.length > 0 && (
-                        <NavLink
-                          className="MenuItem"
-                          to={{
-                            pathname: "/files",
-                            search: startIndexQuery
-                          }}
-                        >
-                          <Trans>
-                            Files ({this.state.fileResources.length})
-                          </Trans>
-                        </NavLink>
-                      )}
-                    </nav>
-                  </FlexItem>
-                )}
+                        />
+                      </NavLink>
+                    )}
+                    {this.state.assessmentResources.length > 0 && (
+                      <NavLink
+                        className="MenuItem"
+                        to={{
+                          pathname: "/quizzes",
+                          search: startIndexQuery
+                        }}
+                      >
+                        <Trans>
+                          Quizzes ({this.state.assessmentResources.length})
+                        </Trans>
+                      </NavLink>
+                    )}
+                    {this.state.fileResources.length > 0 && (
+                      <NavLink
+                        className="MenuItem"
+                        to={{
+                          pathname: "/files",
+                          search: startIndexQuery
+                        }}
+                      >
+                        <Trans>Files ({this.state.fileResources.length})</Trans>
+                      </NavLink>
+                    )}
+                  </div>
+                  <Button
+                    as="label"
+                    variant="ghost"
+                    buttonRef={ref =>
+                      ref &&
+                      ref.classList.add("close") &
+                        ref.setAttribute("for", "NavTrigger")
+                    }
+                    margin="0 x-small 0 0"
+                    icon={IconClose}
+                  />
+                </nav>
+              )}
 
-                <FlexItem
-                  align="start"
-                  width={this.state.showcaseSingleResource !== null ? 12 : 10}
-                  grow
-                  margin="0 0 0 medium"
+              <div className="CommonCartridge--content">
+                <View
+                  as="main"
+                  elementRef={ref => (this.mainRef = ref)}
+                  margin={this.props.compact ? "none" : "small"}
+                  background="default"
                 >
-                  <View
-                    as="main"
-                    elementRef={ref => (this.mainRef = ref)}
-                    margin={this.props.compact ? "none" : "small"}
-                    background="default"
-                    tabIndex="-1"
-                  >
-                    <Switch>
-                      <Route
-                        exact
-                        path="/"
-                        render={({ match, location }) => (
-                          <React.Fragment>
-                            {this.state.showcaseSingleResource !== null ? (
-                              <React.Fragment>
-                                <Resource
-                                  getTextByPath={this.getTextByPath}
-                                  externalViewer={this.state.externalViewers.get(
-                                    this.state.showcaseResources[0].getAttribute(
-                                      "identifier"
-                                    )
-                                  )}
-                                  getUrlForPath={this.getUrlForPath}
-                                  identifier={this.state.showcaseResources[0].getAttribute(
+                  <Switch>
+                    <Route
+                      exact
+                      path="/"
+                      render={({ match, location }) => (
+                        <React.Fragment>
+                          {this.state.showcaseSingleResource !== null ? (
+                            <React.Fragment>
+                              <Resource
+                                getTextByPath={this.getTextByPath}
+                                externalViewer={this.state.externalViewers.get(
+                                  this.state.showcaseResources[0].getAttribute(
                                     "identifier"
-                                  )}
-                                  moduleItems={this.state.moduleItems}
-                                  modules={this.state.modules}
-                                  resourceMap={this.state.resourceMap}
-                                  resourceIdsByHrefMap={
-                                    this.state.resourceIdsByHrefMap
-                                  }
-                                  location={location}
-                                  rubrics={this.state.rubrics}
-                                />
-                              </React.Fragment>
-                            ) : this.state.showcaseResources.length === 1 ? (
-                              <React.Fragment>
-                                <Resource
-                                  externalViewer={this.state.externalViewers.get(
-                                    this.state.showcaseResources[0].getAttribute(
-                                      "identifier"
-                                    )
-                                  )}
-                                  getTextByPath={this.getTextByPath}
-                                  getUrlForPath={this.getUrlForPath}
-                                  identifier={this.state.showcaseResources[0].getAttribute(
-                                    "identifier"
-                                  )}
-                                  moduleItems={this.state.moduleItems}
-                                  modules={this.state.modules}
-                                  resourceMap={this.state.resourceMap}
-                                  resourceIdsByHrefMap={
-                                    this.state.resourceIdsByHrefMap
-                                  }
-                                  location={location}
-                                  rubrics={this.state.rubrics}
-                                />
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                <ModulesList
-                                  getTextByPath={this.getTextByPath}
-                                  associatedContentAssignmentHrefsSet={
-                                    this.state
-                                      .associatedContentAssignmentHrefsSet
-                                  }
-                                  moduleItems={this.state.moduleItems}
-                                  modules={this.state.modules}
-                                  match={match}
-                                  location={location}
-                                />
-                              </React.Fragment>
-                            )}
-                          </React.Fragment>
-                        )}
-                      />
-
-                      <Route
-                        exact
-                        path="/resources/:identifier"
-                        render={({ match, location }) => (
-                          <React.Fragment>
-                            <Resource
-                              basepath={this.state.basepath}
-                              externalViewers={this.state.externalViewers}
-                              externalViewer={this.state.externalViewers.get(
-                                match.params.identifier
-                              )}
-                              getBlobByPath={this.getBlobByPath}
-                              getTextByPath={this.getTextByPath}
-                              getUrlForPath={this.getUrlForPath}
-                              identifier={match.params.identifier}
-                              isCartridgeRemotelyExpanded={
-                                this.state.isCartridgeRemotelyExpanded
-                              }
-                              moduleItems={this.state.moduleItems}
-                              modules={this.state.modules}
-                              resourceIdsByHrefMap={
-                                this.state.resourceIdsByHrefMap
-                              }
-                              resourceMap={this.state.resourceMap}
-                              location={location}
-                              rubrics={this.state.rubrics}
-                            />
-                          </React.Fragment>
-                        )}
-                      />
-
-                      <Route
-                        exact
-                        path="/module-items/:identifier"
-                        render={({ match, location }) => (
-                          <React.Fragment>
-                            <Resource
-                              basepath={this.state.basepath}
-                              externalViewers={this.state.externalViewers}
-                              externalViewer={this.state.externalViewers.get(
-                                match.params.identifier
-                              )}
-                              getBlobByPath={this.getBlobByPath}
-                              getTextByPath={this.getTextByPath}
-                              getUrlForPath={this.getUrlForPath}
-                              identifier={match.params.identifier}
-                              isCartridgeRemotelyExpanded={
-                                this.state.isCartridgeRemotelyExpanded
-                              }
-                              moduleItems={this.state.moduleItems}
-                              modules={this.state.modules}
-                              resourceIdsByHrefMap={
-                                this.state.resourceIdsByHrefMap
-                              }
-                              resourceMap={this.state.resourceMap}
-                              isModuleItem={true}
-                              rubrics={this.state.rubrics}
-                            />
-                          </React.Fragment>
-                        )}
-                      />
-
-                      <Route
-                        exact
-                        path="/modules/:module"
-                        render={({ match, location }) => (
-                          <React.Fragment>
-                            <ModulesList
-                              getTextByPath={this.getTextByPath}
-                              associatedContentAssignmentHrefsSet={
-                                this.state.associatedContentAssignmentHrefsSet
-                              }
-                              moduleItems={this.state.moduleItems}
-                              modules={this.state.modules}
-                              match={match}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        )}
-                      />
-
-                      <Route
-                        exact
-                        path="/quizzes"
-                        render={({ match, location }) =>
-                          this.state.assessmentResources.length > 0 ? (
-                            <React.Fragment>
-                              <AssessmentList
-                                getTextByPath={this.getTextByPath}
+                                  )
+                                )}
+                                getUrlForPath={this.getUrlForPath}
+                                identifier={this.state.showcaseResources[0].getAttribute(
+                                  "identifier"
+                                )}
                                 moduleItems={this.state.moduleItems}
+                                modules={this.state.modules}
                                 resourceMap={this.state.resourceMap}
-                                resources={this.state.assessmentResources}
-                                location={location}
-                              />
-                            </React.Fragment>
-                          ) : (
-                            <CourseNavigationUnavailable />
-                          )
-                        }
-                      />
-
-                      <Route
-                        exact
-                        path="/pages"
-                        render={({ match, location }) =>
-                          this.state.pageResources.length > 0 ? (
-                            <React.Fragment>
-                              <WikiContentList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.pageResources}
-                                location={location}
-                              />
-                            </React.Fragment>
-                          ) : (
-                            <CourseNavigationUnavailable />
-                          )
-                        }
-                      />
-
-                      <Route
-                        exact
-                        path="/discussions"
-                        render={({ match, location }) =>
-                          this.state.discussionResources.length > 0 ? (
-                            <React.Fragment>
-                              <DiscussionList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.discussionResources}
-                                location={location}
-                              />
-                            </React.Fragment>
-                          ) : (
-                            <CourseNavigationUnavailable />
-                          )
-                        }
-                      />
-
-                      <Route
-                        exact
-                        path="/files"
-                        render={({ match, location }) =>
-                          this.state.fileResources.length > 0 ? (
-                            <React.Fragment>
-                              <FileList
-                                resources={this.state.fileResources}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                location={location}
-                              />
-                            </React.Fragment>
-                          ) : (
-                            <CourseNavigationUnavailable />
-                          )
-                        }
-                      />
-
-                      <Route
-                        exact
-                        path="/assignments"
-                        render={({ match, location }) =>
-                          numberOfAssignments > 0 ? (
-                            <React.Fragment>
-                              <AssignmentList
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
-                                resources={this.state.assignmentResources}
-                                location={location}
-                              />
-                              <AssociatedContentAssignmentList
-                                resources={
-                                  this.state
-                                    .associatedContentAssignmentResources
+                                resourceIdsByHrefMap={
+                                  this.state.resourceIdsByHrefMap
                                 }
-                                getTextByPath={this.getTextByPath}
-                                moduleItems={this.state.moduleItems}
-                                resourceMap={this.state.resourceMap}
                                 location={location}
+                                rubrics={this.state.rubrics}
+                              />
+                            </React.Fragment>
+                          ) : this.state.showcaseResources.length === 1 ? (
+                            <React.Fragment>
+                              <Resource
+                                externalViewer={this.state.externalViewers.get(
+                                  this.state.showcaseResources[0].getAttribute(
+                                    "identifier"
+                                  )
+                                )}
+                                getTextByPath={this.getTextByPath}
+                                getUrlForPath={this.getUrlForPath}
+                                identifier={this.state.showcaseResources[0].getAttribute(
+                                  "identifier"
+                                )}
+                                moduleItems={this.state.moduleItems}
+                                modules={this.state.modules}
+                                resourceMap={this.state.resourceMap}
+                                resourceIdsByHrefMap={
+                                  this.state.resourceIdsByHrefMap
+                                }
+                                location={location}
+                                rubrics={this.state.rubrics}
                               />
                             </React.Fragment>
                           ) : (
-                            <CourseNavigationUnavailable />
-                          )
-                        }
-                      />
-
-                      <Route
-                        exact
-                        path="/course/navigation"
-                        render={({ match }) => <CourseNavigationUnavailable />}
-                      />
-                    </Switch>
+                            <React.Fragment>
+                              <ModulesList
+                                getTextByPath={this.getTextByPath}
+                                associatedContentAssignmentHrefsSet={
+                                  this.state.associatedContentAssignmentHrefsSet
+                                }
+                                moduleItems={this.state.moduleItems}
+                                modules={this.state.modules}
+                                match={match}
+                                location={location}
+                              />
+                            </React.Fragment>
+                          )}
+                        </React.Fragment>
+                      )}
+                    />
 
                     <Route
-                      path="*"
-                      render={({ match, history }) => {
-                        return (
-                          <RouterObserver
-                            match={match}
-                            history={history}
-                            onHistoryChange={this.handleHistoryChange}
+                      exact
+                      path="/resources/:identifier"
+                      render={({ match, location }) => (
+                        <React.Fragment>
+                          <Resource
+                            basepath={this.state.basepath}
+                            externalViewers={this.state.externalViewers}
+                            externalViewer={this.state.externalViewers.get(
+                              match.params.identifier
+                            )}
+                            getBlobByPath={this.getBlobByPath}
+                            getTextByPath={this.getTextByPath}
+                            getUrlForPath={this.getUrlForPath}
+                            identifier={match.params.identifier}
+                            isCartridgeRemotelyExpanded={
+                              this.state.isCartridgeRemotelyExpanded
+                            }
+                            moduleItems={this.state.moduleItems}
+                            modules={this.state.modules}
+                            resourceIdsByHrefMap={
+                              this.state.resourceIdsByHrefMap
+                            }
+                            resourceMap={this.state.resourceMap}
+                            location={location}
+                            rubrics={this.state.rubrics}
                           />
-                        );
-                      }}
+                        </React.Fragment>
+                      )}
                     />
-                  </View>
-                </FlexItem>
-              </Flex>
+
+                    <Route
+                      exact
+                      path="/module-items/:identifier"
+                      render={({ match, location }) => (
+                        <React.Fragment>
+                          <Resource
+                            basepath={this.state.basepath}
+                            externalViewers={this.state.externalViewers}
+                            externalViewer={this.state.externalViewers.get(
+                              match.params.identifier
+                            )}
+                            getBlobByPath={this.getBlobByPath}
+                            getTextByPath={this.getTextByPath}
+                            getUrlForPath={this.getUrlForPath}
+                            identifier={match.params.identifier}
+                            isCartridgeRemotelyExpanded={
+                              this.state.isCartridgeRemotelyExpanded
+                            }
+                            moduleItems={this.state.moduleItems}
+                            modules={this.state.modules}
+                            resourceIdsByHrefMap={
+                              this.state.resourceIdsByHrefMap
+                            }
+                            resourceMap={this.state.resourceMap}
+                            isModuleItem={true}
+                            rubrics={this.state.rubrics}
+                          />
+                        </React.Fragment>
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/modules/:module"
+                      render={({ match, location }) => (
+                        <React.Fragment>
+                          <ModulesList
+                            getTextByPath={this.getTextByPath}
+                            associatedContentAssignmentHrefsSet={
+                              this.state.associatedContentAssignmentHrefsSet
+                            }
+                            moduleItems={this.state.moduleItems}
+                            modules={this.state.modules}
+                            match={match}
+                            location={location}
+                          />
+                        </React.Fragment>
+                      )}
+                    />
+
+                    <Route
+                      exact
+                      path="/quizzes"
+                      render={({ match, location }) =>
+                        this.state.assessmentResources.length > 0 ? (
+                          <React.Fragment>
+                            <AssessmentList
+                              getTextByPath={this.getTextByPath}
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              resources={this.state.assessmentResources}
+                              location={location}
+                            />
+                          </React.Fragment>
+                        ) : (
+                          <CourseNavigationUnavailable />
+                        )
+                      }
+                    />
+
+                    <Route
+                      exact
+                      path="/pages"
+                      render={({ match, location }) =>
+                        this.state.pageResources.length > 0 ? (
+                          <React.Fragment>
+                            <WikiContentList
+                              getTextByPath={this.getTextByPath}
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              resources={this.state.pageResources}
+                              location={location}
+                            />
+                          </React.Fragment>
+                        ) : (
+                          <CourseNavigationUnavailable />
+                        )
+                      }
+                    />
+
+                    <Route
+                      exact
+                      path="/discussions"
+                      render={({ match, location }) =>
+                        this.state.discussionResources.length > 0 ? (
+                          <React.Fragment>
+                            <DiscussionList
+                              getTextByPath={this.getTextByPath}
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              resources={this.state.discussionResources}
+                              location={location}
+                            />
+                          </React.Fragment>
+                        ) : (
+                          <CourseNavigationUnavailable />
+                        )
+                      }
+                    />
+
+                    <Route
+                      exact
+                      path="/files"
+                      render={({ match, location }) =>
+                        this.state.fileResources.length > 0 ? (
+                          <React.Fragment>
+                            <FileList
+                              resources={this.state.fileResources}
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              location={location}
+                            />
+                          </React.Fragment>
+                        ) : (
+                          <CourseNavigationUnavailable />
+                        )
+                      }
+                    />
+
+                    <Route
+                      exact
+                      path="/assignments"
+                      render={({ match, location }) =>
+                        numberOfAssignments > 0 ? (
+                          <React.Fragment>
+                            <AssignmentList
+                              getTextByPath={this.getTextByPath}
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              resources={this.state.assignmentResources}
+                              location={location}
+                            />
+                            <AssociatedContentAssignmentList
+                              resources={
+                                this.state.associatedContentAssignmentResources
+                              }
+                              getTextByPath={this.getTextByPath}
+                              moduleItems={this.state.moduleItems}
+                              resourceMap={this.state.resourceMap}
+                              location={location}
+                            />
+                          </React.Fragment>
+                        ) : (
+                          <CourseNavigationUnavailable />
+                        )
+                      }
+                    />
+
+                    <Route
+                      exact
+                      path="/course/navigation"
+                      render={({ match }) => <CourseNavigationUnavailable />}
+                    />
+                  </Switch>
+
+                  <Route
+                    path="*"
+                    render={({ match, history }) => {
+                      return (
+                        <RouterObserver
+                          match={match}
+                          history={history}
+                          onHistoryChange={this.handleHistoryChange}
+                        />
+                      );
+                    }}
+                  />
+                </View>
+              </div>
             </div>
           </React.Fragment>
         )}

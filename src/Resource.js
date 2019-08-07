@@ -11,7 +11,7 @@ import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
 import Button from "@instructure/ui-buttons/lib/components/Button";
 import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
-import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
+import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
@@ -91,10 +91,11 @@ export default class Resource extends Component {
       ? `/module-items/${module.identifierref || module.identifier}`
       : `/resources/${module.identifierref || module.identifier}`;
 
-  renderPreviousButton = previousItem => {
+  renderPreviousButton = (previousItem, withTooltip) => {
+    let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
       <div className="previous-link">
-        <Tooltip variant="inverse" tip={previousItem.title} placement="end">
+        <Tip variant="inverse" tip={previousItem.title} placement="end">
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(previousItem)
@@ -106,15 +107,16 @@ export default class Resource extends Component {
           >
             <Trans>Previous</Trans>
           </Button>
-        </Tooltip>
+        </Tip>
       </div>
     );
   };
 
-  renderNextButton = nextItem => {
+  renderNextButton = (nextItem, withTooltip) => {
+    let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
       <div className="next-link">
-        <Tooltip variant="inverse" tip={nextItem.title} placement="start">
+        <Tip variant="inverse" tip={nextItem.title} placement="start">
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(nextItem)
@@ -126,7 +128,7 @@ export default class Resource extends Component {
           >
             <Trans>Next</Trans>
           </Button>
-        </Tooltip>
+        </Tip>
       </div>
     );
   };
@@ -256,9 +258,7 @@ export default class Resource extends Component {
     } else if (isDocumentWithPreview) {
       componentToRender = (
         <EmbeddedPreview
-          onFail={() => (
-            this.setState({embeddedPreviewFailed: true})
-          )}
+          onFail={() => this.setState({ embeddedPreviewFailed: true })}
           externalViewer={this.props.externalViewer}
         />
       );
@@ -307,34 +307,35 @@ export default class Resource extends Component {
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
 
+    const renderNextPrevButtons =
+      this.props.isModuleItem && (previousItem || nextItem);
+
+    const nextPrevButtons = withTooltip => (
+      <div className="Resource--navButtons">
+        {this.props.isModuleItem &&
+          previousItem &&
+          this.renderPreviousButton(previousItem, withTooltip)}
+        {this.props.isModuleItem &&
+          nextItem &&
+          this.renderNextButton(nextItem, withTooltip)}
+      </div>
+    );
+
     return (
       <React.Fragment>
-        {this.props.isModuleItem && (previousItem || nextItem) && (
-          <Flex margin="0 0 medium">
-            <FlexItem padding="small" width="14rem">
-              {this.props.isModuleItem &&
-                previousItem &&
-                this.renderPreviousButton(previousItem)}
-            </FlexItem>
-            <FlexItem padding="small" width="14rem" grow={true}>
-              <Flex justifyItems="end">
-                <FlexItem>
-                  {this.props.isModuleItem &&
-                    nextItem &&
-                    this.renderNextButton(nextItem)}
-                </FlexItem>
-              </Flex>
-            </FlexItem>
-          </Flex>
-        )}
+        {renderNextPrevButtons && nextPrevButtons(true)}
 
-        <div style={{ clear: "both" }}>
+        <div tabIndex="0" aria-live="polite" style={{ clear: "both" }}>
           {isValidExternalToolResource ? (
             <PreviewUnavailable />
           ) : (
             this.renderResourceDocument(resource)
           )}
         </div>
+
+        <ScreenReaderContent>
+          {renderNextPrevButtons && nextPrevButtons(false)}
+        </ScreenReaderContent>
       </React.Fragment>
     );
   }

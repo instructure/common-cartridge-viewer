@@ -7,6 +7,7 @@ test("Files", async t => {
   const fileLink = Selector("a").withText(
     "annotated-bold-font-test.pptx (1).pdf"
   );
+  await fileLink;
   await t
     .expect(fileLink.exists)
     .ok()
@@ -21,6 +22,7 @@ test("Files", async t => {
 
 test("Pages", async t => {
   const pageLink = Selector("a").withText("Learning");
+  await pageLink;
   await t
     .expect(pageLink.exists)
     .ok()
@@ -33,6 +35,7 @@ test("Pages", async t => {
 
 test("Assignments", async t => {
   const assignmentUrl = Selector("a").withText("Published Assignment");
+  await assignmentUrl;
   await t
     .expect(assignmentUrl.exists)
     .ok()
@@ -45,6 +48,7 @@ test("Assignments", async t => {
 
 test("Quizzes", async t => {
   const quizLink = Selector("a").withText("New Quiz");
+  await quizLink;
   await t
     .expect(quizLink.exists)
     .ok()
@@ -57,6 +61,7 @@ test("Quizzes", async t => {
 
 test("Announcements", async t => {
   const announcementLink = Selector("a").withText("Announcement");
+  await announcementLink;
   await t
     .expect(announcementLink.exists)
     .ok()
@@ -69,6 +74,7 @@ test("Announcements", async t => {
 
 test("Discussions", async t => {
   const discussionLink = Selector("a").withText("Discuss This");
+  await discussionLink;
   await t
     .expect(discussionLink.exists)
     .ok()
@@ -81,6 +87,7 @@ test("Discussions", async t => {
 
 test("Modules", async t => {
   const moduleLink = Selector("a").withText("Some Assignments");
+  await moduleLink;
   await t
     .expect(moduleLink.exists)
     .ok()
