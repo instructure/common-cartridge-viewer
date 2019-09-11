@@ -6,18 +6,20 @@ fixture`Single assignment cartridge (with attachment)`.page`${courseUrl}`;
 
 test("Description is displayed with links", async t => {
   const richContentLink = Selector(".RichContent a");
-  await t.expect(Selector(richContentLink).withText(`wiki sample`).exists);
-  await t.expect(
-    Selector(richContentLink).withText(`Docviewer Assignment`).exists
-  );
-  await t.expect(Selector(richContentLink).withText(`Basic Quiz`).exists);
-  await t.expect(
-    Selector(richContentLink).withText(`Google RCE Announcement`).exists
-  );
-  await t.expect(
-    Selector(richContentLink).withText(`Simple Discussion`).exists
-  );
-  await t.expect(Selector(richContentLink).withText(`api mod 1`).exists);
+  await t.expect(Selector(richContentLink).withText(`wiki sample`).exists).ok();
+  await t
+    .expect(Selector(richContentLink).withText(`Docviewer Assignment`).exists)
+    .ok();
+  await t.expect(Selector(richContentLink).withText(`Basic Quiz`).exists).ok();
+  await t
+    .expect(
+      Selector(richContentLink).withText(`Google RCE Announcement`).exists
+    )
+    .ok();
+  await t
+    .expect(Selector(richContentLink).withText(`Simple Discussion`).exists)
+    .ok();
+  await t.expect(Selector(richContentLink).withText(`api mod 1`).exists).ok();
 });
 
 test("Unavailable resource links show proper message", async t => {
