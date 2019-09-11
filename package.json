@@ -60,7 +60,7 @@
     "lint-staged": "^8.1.0",
     "prettier": "1.15.3",
     "superstatic": "^6.0.4",
-    "testcafe": "^0.21.1"
+    "testcafe": "latest"
   },
   "browserslist": [
     "last 2 version",
