@@ -90,7 +90,7 @@ test("Modules", async t => {
   await moduleLink;
   await t
     .expect(moduleLink.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(moduleLink)
     .expect(Selector("div").withText("Some Assignments").exists)
     .ok()

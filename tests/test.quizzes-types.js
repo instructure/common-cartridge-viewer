@@ -55,7 +55,7 @@ test("when hide-responses flag is set in the url, quizzes responses are hidden",
       "/test-cartridges/all-question-types/imsmanifest.xml"
     )}#/`
   );
-  await t.expect(assessmentQuestions.exists);
+  await t.expect(assessmentQuestions.exists).ok();
   await t.navigateTo(
     `http://localhost:5000/?hide-responses&manifest=${encodeURIComponent(
       "/test-cartridges/all-question-types/imsmanifest.xml"

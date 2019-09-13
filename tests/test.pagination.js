@@ -2,9 +2,8 @@ import { Selector } from "testcafe";
 
 fixture`Pagination`;
 
-const baseUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
-  "https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/caleblorcruxcourse-export-big/imsmanifest.xml"
-)}#/`;
+const baseUrl =
+  "http://localhost:5000/?manifest=https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/caleblorcruxcourse-export-big/imsmanifest.xml#/";
 const paginationButtonSelector = Selector("a").withAttribute(
   "data-uid",
   "Button PaginationButton"

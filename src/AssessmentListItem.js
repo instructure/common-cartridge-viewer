@@ -42,7 +42,7 @@ export default class AssessmentListItem extends Component {
       depDoc && depDoc.querySelector("quiz > assignment > points_possible");
     const points =
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
-    const questionCount = doc.querySelectorAll("assessment > section > item")
+    const questionCount = doc.querySelectorAll("assessment section > item")
       .length;
     const workflowStateNode =
       depDoc && depDoc.querySelector("quiz > assignment > workflow_state");
