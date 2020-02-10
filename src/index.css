@@ -56,7 +56,7 @@ ul.ExpandCollapseList {
 }
 
 ol.assessment-questions {
-  padding: 0 1rem;
+  padding: 0 40px;
 }
 
 .unstyled-list li {
@@ -235,7 +235,7 @@ td {
   }
 }
 
-/* 
+/*
   CSS Grid styles for the cartridge view
   and hamburger menu for mobile
 */
