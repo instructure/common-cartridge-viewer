@@ -50,7 +50,7 @@ msgstr "Uppgifter"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:470
+#: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Uppgifter ({numberOfAssignments})"
 
@@ -63,7 +63,7 @@ msgstr "Bilagor"
 msgid "Calculated"
 msgstr "Beräknad"
 
-#: src/App.js:122
+#: src/App.js:133
 msgid "Cartridge"
 msgstr "Patron"
 
@@ -71,7 +71,7 @@ msgstr "Patron"
 msgid "Click here to open link in new window"
 msgstr "Klicka här för att öppna länken i ett nytt fönster"
 
-#: src/App.js:106
+#: src/App.js:117
 msgid "Common Cartridge Viewer"
 msgstr "Common Cartridge Viewer"
 
@@ -107,11 +107,11 @@ msgstr "Discussions"
 #~ msgid "Discussions ({0})"
 #~ msgstr "Diskussioner ({0})"
 
-#: src/CommonCartridge.js:494
+#: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
 msgstr ""
 
-#: src/App.js:108
+#: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
 msgstr "Dra och släpp patronen, eller klicka för att söka i din dator."
 
@@ -123,7 +123,7 @@ msgstr "Dra och släpp patronen, eller klicka för att söka i din dator."
 msgid "Essay"
 msgstr "Uppsats"
 
-#: src/App.js:148
+#: src/App.js:159
 msgid "Examples"
 msgstr "Exempel"
 
@@ -135,7 +135,7 @@ msgstr "Innehåll i extern verktyg kan inte förhandsvisas"
 msgid "External link"
 msgstr "Extern länk"
 
-#: src/CommonCartridge.js:359
+#: src/CommonCartridge.js:364
 msgid "Failed to load resource"
 msgstr "Det gick inte att läsa in resursen"
 
@@ -143,11 +143,11 @@ msgstr "Det gick inte att läsa in resursen"
 msgid "File Upload"
 msgstr "Filuppladdning"
 
-#: src/FileList.js:39
+#: src/FileList.js:40
 msgid "Files"
 msgstr "Filer"
 
-#: src/CommonCartridge.js:523
+#: src/CommonCartridge.js:559
 msgid "Files ({0})"
 msgstr "Filer ({0})"
 
@@ -163,16 +163,16 @@ msgstr "Bild"
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "Det externa verktyget måste installeras för att du ska kunna använda den här resursen i Canvas."
 
-#: src/EmbeddedPreview.js:59
+#: src/EmbeddedPreview.js:64
 #: src/Image.js:37
 msgid "Loading"
 msgstr "Läser in"
 
-#: src/CommonCartridge.js:385
+#: src/CommonCartridge.js:398
 msgid "Loading Cartridge"
 msgstr "Läser in patron"
 
-#: src/CommonCartridge.js:402
+#: src/CommonCartridge.js:415
 msgid "Loading completion"
 msgstr "Inläsning slutförd"
 
@@ -184,13 +184,13 @@ msgstr "Matcha frågor"
 msgid "Max attempts"
 msgstr "Max.antal försök"
 
-#: src/EmbeddedPreview.js:74
-#: src/EmbeddedPreview.js:87
-#: src/EmbeddedPreview.js:98
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
 msgid "Media viewer"
 msgstr "Media-visningsverktyg"
 
-#: src/CommonCartridge.js:459
+#: src/CommonCartridge.js:497
 msgid "Modules ({0})"
 msgstr "Moduler ({0})"
 
@@ -206,7 +206,7 @@ msgstr "Flerval"
 msgid "Multiple response"
 msgstr "Flera svar"
 
-#: src/Resource.js:126
+#: src/Resource.js:129
 msgid "Next"
 msgstr "Nästa"
 
@@ -230,7 +230,7 @@ msgstr "Numerisk"
 msgid "Page"
 msgstr "Sida"
 
-#: src/CommonCartridge.js:481
+#: src/CommonCartridge.js:519
 msgid "Pages ({0})"
 msgstr "Sidor ({0})"
 
@@ -242,7 +242,7 @@ msgstr "Mönstermatchning"
 msgid "Points"
 msgstr "Poäng"
 
-#: src/Resource.js:106
+#: src/Resource.js:108
 msgid "Previous"
 msgstr "Föregående"
 
@@ -266,7 +266,7 @@ msgstr "Quiz"
 msgid "Quizzes"
 msgstr "Frågor/frågesporter"
 
-#: src/CommonCartridge.js:510
+#: src/CommonCartridge.js:546
 msgid "Quizzes ({0})"
 msgstr "Quiz ({0})"
 
@@ -290,7 +290,7 @@ msgstr "Lämnar in"
 msgid "Text only"
 msgstr "Endast text"
 
-#: src/CommonCartridge.js:393
+#: src/CommonCartridge.js:406
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Detta kan ta lite tid beroende på patronens storlek."
 
@@ -306,7 +306,7 @@ msgstr ""
 msgid "True / false"
 msgstr "Sant/falskt"
 
-#: src/CommonCartridge.js:446
+#: src/CommonCartridge.js:466
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
 #: src/WebLink.js:36
@@ -315,11 +315,11 @@ msgstr "Sant/falskt"
 msgid "Untitled"
 msgstr "Namnlös"
 
-#: src/App.js:134
+#: src/App.js:145
 msgid "View"
 msgstr "Visa"
 
-#: src/App.js:141
+#: src/App.js:152
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
 msgstr "Visa Common Cartridge i webbläsaren. Kräver inte behandling på servern."
 
@@ -331,7 +331,7 @@ msgstr "Visa Common Cartridge i webbläsaren. Kräver inte behandling på server
 msgid "View source on Github"
 msgstr "Visa källa på Github"
 
-#: src/CommonCartridge.js:361
+#: src/CommonCartridge.js:366
 msgid "We had a problem loading the Common Cartridge"
 msgstr "Det gick inte att läsa in Common Cartridge"
 
@@ -339,15 +339,15 @@ msgstr "Det gick inte att läsa in Common Cartridge"
 msgid "Wiki content"
 msgstr "Wiki-innehåll"
 
-#: src/CommonCartridge.js:444
+#: src/CommonCartridge.js:464
 msgid "You are here:"
 msgstr "Du är här:"
 
-#: src/EmbeddedPreview.js:77
+#: src/EmbeddedPreview.js:82
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
 msgstr "Din webbläsare stöder inte HTML5-ljud. Du får här en <0>länk till ljudet</0> istället."
 
-#: src/EmbeddedPreview.js:90
+#: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "Din webbläsare stöder inte HTML5-video. Du får här en <0>länk till ljudet</0> istället."
 
@@ -355,7 +355,7 @@ msgstr "Din webbläsare stöder inte HTML5-video. Du får här en <0>länk till 
 msgid "a file upload"
 msgstr "en filuppladdning"
 
-#: src/App.js:127
+#: src/App.js:138
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS-aktiverad)"
 
@@ -364,8 +364,8 @@ msgid "pts"
 msgstr ""
 
 #: src/AssessmentListItem.js:94
-msgid "{0} Questions"
-msgstr "{0} Frågor"
+#~ msgid "{0} Questions"
+#~ msgstr "{0} Frågor"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -375,17 +375,21 @@ msgstr "{0} har publicerats"
 msgid "{0} is unpublished"
 msgstr "{0} har inte publicerats"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:111
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} poäng"
 
-#: src/CommonCartridge.js:411
+#: src/AssessmentListItem.js:101
+msgid "{0} question(s) / {1} assigned"
+msgstr ""
+
+#: src/CommonCartridge.js:425
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:418
 msgid "{0}% loaded"
 msgstr "{0}% har lästs in"

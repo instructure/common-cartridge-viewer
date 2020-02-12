@@ -50,7 +50,7 @@ msgstr "作業列表"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:470
+#: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
 msgstr "作業列表（{numberOfAssignments}）"
 
@@ -63,7 +63,7 @@ msgstr "附件"
 msgid "Calculated"
 msgstr "已計算"
 
-#: src/App.js:122
+#: src/App.js:133
 msgid "Cartridge"
 msgstr "Cartridge"
 
@@ -71,7 +71,7 @@ msgstr "Cartridge"
 msgid "Click here to open link in new window"
 msgstr "按此於新視窗內開啟連結"
 
-#: src/App.js:106
+#: src/App.js:117
 msgid "Common Cartridge Viewer"
 msgstr "Common Cartridge 檢視工具"
 
@@ -107,11 +107,11 @@ msgstr "討論區"
 #~ msgid "Discussions ({0})"
 #~ msgstr "討論區（{0}）"
 
-#: src/CommonCartridge.js:494
+#: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
 msgstr ""
 
-#: src/App.js:108
+#: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
 msgstr "拖放或點擊 cartridge 以瀏覽您的電腦。"
 
@@ -123,7 +123,7 @@ msgstr "拖放或點擊 cartridge 以瀏覽您的電腦。"
 msgid "Essay"
 msgstr "論文"
 
-#: src/App.js:148
+#: src/App.js:159
 msgid "Examples"
 msgstr "範例"
 
@@ -135,7 +135,7 @@ msgstr "不能預覽外部工具內容"
 msgid "External link"
 msgstr "外部連結"
 
-#: src/CommonCartridge.js:359
+#: src/CommonCartridge.js:364
 msgid "Failed to load resource"
 msgstr "未能載入資源"
 
@@ -143,11 +143,11 @@ msgstr "未能載入資源"
 msgid "File Upload"
 msgstr "檔案上載"
 
-#: src/FileList.js:39
+#: src/FileList.js:40
 msgid "Files"
 msgstr "檔案"
 
-#: src/CommonCartridge.js:523
+#: src/CommonCartridge.js:559
 msgid "Files ({0})"
 msgstr "檔案（{0}）"
 
@@ -163,16 +163,16 @@ msgstr "圖像"
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "必須安裝外部工具以在 Canvas 內使用此資源。"
 
-#: src/EmbeddedPreview.js:59
+#: src/EmbeddedPreview.js:64
 #: src/Image.js:37
 msgid "Loading"
 msgstr "正在載入"
 
-#: src/CommonCartridge.js:385
+#: src/CommonCartridge.js:398
 msgid "Loading Cartridge"
 msgstr "正在載入 Cartridge"
 
-#: src/CommonCartridge.js:402
+#: src/CommonCartridge.js:415
 msgid "Loading completion"
 msgstr "完成載入"
 
@@ -184,13 +184,13 @@ msgstr "配對問題"
 msgid "Max attempts"
 msgstr "最多嘗試次數"
 
-#: src/EmbeddedPreview.js:74
-#: src/EmbeddedPreview.js:87
-#: src/EmbeddedPreview.js:98
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
 msgid "Media viewer"
 msgstr "媒體檢視工具"
 
-#: src/CommonCartridge.js:459
+#: src/CommonCartridge.js:497
 msgid "Modules ({0})"
 msgstr "單元（{0}）"
 
@@ -206,7 +206,7 @@ msgstr "多項選擇"
 msgid "Multiple response"
 msgstr "多項回答"
 
-#: src/Resource.js:126
+#: src/Resource.js:129
 msgid "Next"
 msgstr "下一個"
 
@@ -230,7 +230,7 @@ msgstr "數字"
 msgid "Page"
 msgstr "頁面"
 
-#: src/CommonCartridge.js:481
+#: src/CommonCartridge.js:519
 msgid "Pages ({0})"
 msgstr "頁面（{0}）"
 
@@ -242,7 +242,7 @@ msgstr "類近題型"
 msgid "Points"
 msgstr "分數"
 
-#: src/Resource.js:106
+#: src/Resource.js:108
 msgid "Previous"
 msgstr "上一個"
 
@@ -266,7 +266,7 @@ msgstr "測驗"
 msgid "Quizzes"
 msgstr "測驗"
 
-#: src/CommonCartridge.js:510
+#: src/CommonCartridge.js:546
 msgid "Quizzes ({0})"
 msgstr "測驗（{0}）"
 
@@ -290,7 +290,7 @@ msgstr "提交"
 msgid "Text only"
 msgstr "僅限文字"
 
-#: src/CommonCartridge.js:393
+#: src/CommonCartridge.js:406
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "這可能需要一些時間，所需時間取決於 Cartridge 的大小。"
 
@@ -306,7 +306,7 @@ msgstr ""
 msgid "True / false"
 msgstr "正確/錯誤"
 
-#: src/CommonCartridge.js:446
+#: src/CommonCartridge.js:466
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
 #: src/WebLink.js:36
@@ -315,11 +315,11 @@ msgstr "正確/錯誤"
 msgid "Untitled"
 msgstr "無標題"
 
-#: src/App.js:134
+#: src/App.js:145
 msgid "View"
 msgstr "檢視"
 
-#: src/App.js:141
+#: src/App.js:152
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
 msgstr "在瀏覽器內檢視 Common Cartridge。不需伺服器側處理。"
 
@@ -331,7 +331,7 @@ msgstr "在瀏覽器內檢視 Common Cartridge。不需伺服器側處理。"
 msgid "View source on Github"
 msgstr "在 Github 檢視資源"
 
-#: src/CommonCartridge.js:361
+#: src/CommonCartridge.js:366
 msgid "We had a problem loading the Common Cartridge"
 msgstr "載入 Common Cartridge 時出現問題。"
 
@@ -339,15 +339,15 @@ msgstr "載入 Common Cartridge 時出現問題。"
 msgid "Wiki content"
 msgstr "維基內容"
 
-#: src/CommonCartridge.js:444
+#: src/CommonCartridge.js:464
 msgid "You are here:"
 msgstr "您在此："
 
-#: src/EmbeddedPreview.js:77
+#: src/EmbeddedPreview.js:82
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
 msgstr "您的瀏覽器不支援 HTML5 音訊。請使用此<0>音訊連結</0>。 "
 
-#: src/EmbeddedPreview.js:90
+#: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "您的瀏覽器不支援 HTML5 視頻。請使用此<0>音訊連結</0>。"
 
@@ -355,7 +355,7 @@ msgstr "您的瀏覽器不支援 HTML5 視頻。請使用此<0>音訊連結</0>�
 msgid "a file upload"
 msgstr "檔案上載"
 
-#: src/App.js:127
+#: src/App.js:138
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc（已啟用 CORS）"
 
@@ -364,8 +364,8 @@ msgid "pts"
 msgstr ""
 
 #: src/AssessmentListItem.js:94
-msgid "{0} Questions"
-msgstr "{0} 個問題"
+#~ msgid "{0} Questions"
+#~ msgstr "{0} 個問題"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -375,17 +375,21 @@ msgstr "已發佈 {0}"
 msgid "{0} is unpublished"
 msgstr "未發佈 {0}"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:111
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} 分"
 
-#: src/CommonCartridge.js:411
+#: src/AssessmentListItem.js:101
+msgid "{0} question(s) / {1} assigned"
+msgstr ""
+
+#: src/CommonCartridge.js:425
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:418
 msgid "{0}% loaded"
 msgstr "已載入 {0}%"
