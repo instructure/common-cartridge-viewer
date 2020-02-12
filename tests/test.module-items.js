@@ -36,7 +36,7 @@ test("Quiz Items work", async t => {
     .ok()
     .expect(
       Selector(`${itemCss} div.ExpandCollapseList-item-details`).withText(
-        `1 Questions`
+        `1 Question`
       ).exists
     )
     .ok()
