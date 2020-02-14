@@ -100,7 +100,7 @@ fixture`Associated-content assignments (loaded w/ src)`
 test("Associated-content assignment items display correctly", async t => {
   await t
     .expect(Selector("a").withText("Published Assignment").exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .expect(Selector("a").withText("Unpublished Assignment").exists)
     .ok();
 });
@@ -109,12 +109,12 @@ test("Associated-content assignment items can be clicked", async t => {
   const publishedAssignment = Selector("a").withText("Published Assignment");
   await t
     .expect(publishedAssignment.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(publishedAssignment);
 
   await t
     .expect(Selector("h1").withText("Published Assignment").exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .expect(Selector("div").withText("Submitting: Nothing").exists)
     .ok()
     .expect(Selector("div").withText("Points: 0").exists)
@@ -127,12 +127,12 @@ test("Associated-content assignment list displays correctly", async t => {
   const assignmentsNav = Selector("a").withText("Assignments (2)");
   await t
     .expect(assignmentsNav.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(assignmentsNav);
 
   await t
     .expect(Selector("a").withText("Published Assignment").exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .expect(Selector("a").withText("Unpublished Assignment").exists)
     .ok();
 });
@@ -141,7 +141,7 @@ test("Associated-content assignment items can be clicked from assignment list vi
   const assignmentsNav = Selector("a").withText("Assignments (2)");
   await t
     .expect(assignmentsNav.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(assignmentsNav);
 
   const unpublishedAssignment = Selector("a").withText(
@@ -149,12 +149,12 @@ test("Associated-content assignment items can be clicked from assignment list vi
   );
   await t
     .expect(unpublishedAssignment.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(unpublishedAssignment);
 
   await t
     .expect(Selector("h1").withText("Unpublished Assignment").exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .expect(Selector("div").withText("Submitting: on paper").exists)
     .ok()
     .expect(Selector("div").withText("Points: 1").exists)
@@ -166,7 +166,7 @@ fixture`Associated-content external tools`
 
 test("iframe is not disallowed from rich content", async t => {
   const iframe = Selector(".RichContent iframe");
-  await t.expect(iframe.exists).ok();
+  await t.expect(iframe.exists).ok({ timeout: 20000 });
 });
 
 fixture`Associated-content external tools`
@@ -177,7 +177,7 @@ test("Displays 'Preview not available' for external tool content", async t => {
   await assignmentsNav;
   await t
     .expect(Selector("header").exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(assignmentsNav);
 
   const externalGoogleDriveLTI = Selector("a").withText(
@@ -185,14 +185,14 @@ test("Displays 'Preview not available' for external tool content", async t => {
   );
   await t
     .expect(externalGoogleDriveLTI.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(externalGoogleDriveLTI);
 
   await t
     .expect(
       Selector("span").withText("External Tool Content Can't be Previewed")
     )
-    .ok();
+    .ok({ timeout: 20000 });
 });
 
 fixture`Web content with a external tool`
@@ -204,7 +204,7 @@ test("Displays 'Preview not available' when web content is an external tool", as
   await header;
   await t
     .expect(header.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(assignmentsNav);
 
   const externalGoogleDriveLTI = Selector("a").withText(
@@ -212,12 +212,12 @@ test("Displays 'Preview not available' when web content is an external tool", as
   );
   await t
     .expect(externalGoogleDriveLTI.exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .click(externalGoogleDriveLTI);
 
   await t
     .expect(
       Selector("span").withText("External Tool Content Can't be Previewed")
     )
-    .ok();
+    .ok({ timeout: 20000 });
 });

@@ -4,20 +4,16 @@ fixture`Mitigate Preview Failure`;
 
 const goodManifestUrlAndGoodImsccUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
   "/test-cartridges/course-1/imsmanifest.xml"
-)}&cartridge=${encodeURIComponent(
-  "http://s3.amazonaws.com/public-imscc/single-page.imscc"
-)}`;
+)}&cartridge=${encodeURIComponent("/test-cartridges/single-page.imscc")}`;
 
 const badManifestUrlAndGoodImsccUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
   "/test-cartridges/course-1/imsmanifestDOESNOTEXIST.xml"
-)}&cartridge=${encodeURIComponent(
-  "http://s3.amazonaws.com/public-imscc/single-page.imscc"
-)}`;
+)}&cartridge=${encodeURIComponent("/test-cartridges/single-page.imscc")}`;
 
 const badManifestUrlAndBadImsccUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
   "/test-cartridges/course-1/imsmanifestDOESNOTEXIST.xml"
 )}&cartridge=${encodeURIComponent(
-  "http://s3.amazonaws.com/public-imscc/single-pageDOESNOTEXIST.imscc"
+  "/test-cartridges/single-pageDOESNOTEXIST.imscc"
 )}`;
 
 test("Manifest is preferred preview type", async t => {

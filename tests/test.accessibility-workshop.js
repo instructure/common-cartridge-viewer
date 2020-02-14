@@ -1,10 +1,12 @@
 import { Selector } from "testcafe";
 
-fixture`Accessibility Workshop cartridge`.page`http://localhost:5000/`;
+fixture`Accessibility Workshop cartridge`
+  .page`http://localhost:5000/?cartridge=${encodeURIComponent(
+  "/test-cartridges/allyworkshop.imscc"
+)}#/`;
 
 test("Pages", async t => {
   await t
-    .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .expect(Selector("a").withText("Pages").exists)
     .ok({ timeout: 20000 })
     .click(Selector("a").withText("Pages"))
@@ -20,7 +22,6 @@ test("Pages", async t => {
 
 test("Substition token (IMS-CC-FILEBASE)", async t => {
   await t
-    .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .expect(Selector("a").withText("Pages").exists)
     .ok({ timeout: 20000 })
     .click(Selector("a").withText("Pages"))
@@ -41,7 +42,6 @@ test("Substition token (IMS-CC-FILEBASE)", async t => {
 
 test("Substition token (WIKI_REFERENCE)", async t => {
   await t
-    .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .expect(Selector("a").withText("Pages"))
     .ok({ timeout: 20000 })
     .click(Selector("a").withText("Pages"))
@@ -59,7 +59,6 @@ test("Substition token (WIKI_REFERENCE)", async t => {
 
 test("Discussions", async t => {
   await t
-    .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .click(Selector("a").withText("Discussions"))
     .expect(Selector("a").withText("Accessibility in your life").exists)
     .ok({ timeout: 20000 })
@@ -73,7 +72,6 @@ test("Discussions", async t => {
 
 test("Files", async t => {
   await t
-    .click(Selector("a").withText("Ally: Accessibility Workshop"))
     .expect(Selector("a").withText("Files").exists)
     .ok({ timeout: 20000 })
     .click(Selector("a").withText("Files"))

@@ -44,11 +44,20 @@ export default class AssessmentListItem extends Component {
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
     const questionCount = doc.querySelectorAll("assessment section > item")
       .length;
-    let assignedQuestionCount = Array.from(
-      doc.querySelectorAll("assessment section section selection_number")
-    ).reduce((prev, curr) => prev + parseInt(curr.textContent), 0);
-    if (isNaN(assignedQuestionCount)) {
-      assignedQuestionCount = 0;
+    let assignedQuestionCount = 0;
+    const selectionNumbers = doc.querySelectorAll(
+      "assessment section section selection_number"
+    );
+    if (selectionNumbers.length === 0) {
+      assignedQuestionCount = questionCount;
+    } else {
+      assignedQuestionCount = Array.from(selectionNumbers).reduce(
+        (prev, curr) => prev + parseInt(curr.textContent),
+        0
+      );
+      if (isNaN(assignedQuestionCount)) {
+        assignedQuestionCount = questionCount;
+      }
     }
     const workflowStateNode =
       depDoc && depDoc.querySelector("quiz > assignment > workflow_state");

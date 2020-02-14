@@ -17,7 +17,7 @@ test("Pagination works on lists with > 100 items", async t => {
   await t
     .navigateTo(`${baseUrl}files`)
     .expect(activePaginationButtonSelector.withText("1").exists)
-    .ok()
+    .ok({ timeout: 20000 })
     .expect(
       Selector("a").withText("Robot Components 4 Best Solutions-help.pptx")
         .exists

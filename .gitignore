@@ -33,3 +33,5 @@ TODO.md
 /src/locales/_build/
 /src/locales/**.json
 messages.js
+
+/tests/screenshots/2*

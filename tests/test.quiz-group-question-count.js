@@ -6,7 +6,7 @@ fixture`Quiz-group-question-count`
 test("Questions-under-groups-are-counted", async t => {
   const quiz1 = Selector(
     `li.ExpandCollapseList-item:nth-child(1) .ExpandCollapseList-item-details`
-  ).withText("5 question");
+  ).withText("5 question(s) / 3 assigned");
   const quiz2 = Selector(
     `li.ExpandCollapseList-item:nth-child(2) .ExpandCollapseList-item-details`
   ).withText("3 question");
