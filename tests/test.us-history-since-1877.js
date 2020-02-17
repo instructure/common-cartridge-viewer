@@ -7,7 +7,6 @@ fixture`US History Since 1877`
 
 test("Organization item titles show for pages", async t => {
   await t
-    .wait(3000)
     .expect(Selector("h2").withText("Main Repository").exists)
     .ok("Header shows", { timeout: 20000 })
     .expect(Selector("a").withText(`The First Measured Century`).exists, "bar")
@@ -22,7 +21,6 @@ test("Organization item titles show for pages", async t => {
 
 test("Web link", async t => {
   await t
-    .wait(3000)
     .click(Selector("a").withText("Gumbo"))
     .expect(Selector("span").withText("EXTERNAL LINK").exists)
     .ok()
@@ -36,7 +34,6 @@ test("Web link", async t => {
 
 test("Web link", async t => {
   await t
-    .wait(3000)
     .expect(Selector("h2").withText("Main Repository").exists)
     .ok("Header shows", { timeout: 20000 })
     .expect(Selector("a").withText(`The First Measured Century`).exists, "bar")
