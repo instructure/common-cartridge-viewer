@@ -52,7 +52,7 @@ export default class AssessmentListItem extends Component {
       assignedQuestionCount = questionCount;
     } else {
       assignedQuestionCount = Array.from(selectionNumbers).reduce(
-        (prev, curr) => prev + parseInt(curr.textContent),
+        (prev, curr) => prev + Number(curr.textContent),
         0
       );
       if (isNaN(assignedQuestionCount)) {
