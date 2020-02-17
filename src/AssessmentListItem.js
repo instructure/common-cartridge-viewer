@@ -44,6 +44,21 @@ export default class AssessmentListItem extends Component {
       pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
     const questionCount = doc.querySelectorAll("assessment section > item")
       .length;
+    let assignedQuestionCount = 0;
+    const selectionNumbers = doc.querySelectorAll(
+      "assessment section section selection_number"
+    );
+    if (selectionNumbers.length === 0) {
+      assignedQuestionCount = questionCount;
+    } else {
+      assignedQuestionCount = Array.from(selectionNumbers).reduce(
+        (prev, curr) => prev + Number(curr.textContent),
+        0
+      );
+      if (isNaN(assignedQuestionCount)) {
+        assignedQuestionCount = questionCount;
+      }
+    }
     const workflowStateNode =
       depDoc && depDoc.querySelector("quiz > assignment > workflow_state");
     const workflowState = workflowStateNode && workflowStateNode.textContent;
@@ -53,6 +68,7 @@ export default class AssessmentListItem extends Component {
       title,
       points,
       questionCount,
+      assignedQuestionCount,
       workflowState
     });
   }
@@ -91,7 +107,10 @@ export default class AssessmentListItem extends Component {
             </div>
             {this.state.questionCount > 0 && (
               <div className="ExpandCollapseList-item-details">
-                <Trans>{this.state.questionCount} Questions</Trans>
+                <Trans>
+                  {this.state.questionCount} question(s) /{" "}
+                  {this.state.assignedQuestionCount} assigned
+                </Trans>
               </div>
             )}
           </div>

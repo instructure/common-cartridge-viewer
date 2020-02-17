@@ -50,7 +50,7 @@ msgstr "課題"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:470
+#: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
 msgstr "課題 ({numberOfAssignments})"
 
@@ -63,7 +63,7 @@ msgstr "添付ファイル"
 msgid "Calculated"
 msgstr "計算済み"
 
-#: src/App.js:122
+#: src/App.js:133
 msgid "Cartridge"
 msgstr "カートリッジ"
 
@@ -71,7 +71,7 @@ msgstr "カートリッジ"
 msgid "Click here to open link in new window"
 msgstr "ここをクリックして新しいウィンドウでリンクを開く"
 
-#: src/App.js:106
+#: src/App.js:117
 msgid "Common Cartridge Viewer"
 msgstr "共通のカートリッジビューア"
 
@@ -107,11 +107,11 @@ msgstr "ディスカッション"
 #~ msgid "Discussions ({0})"
 #~ msgstr "ディスカッション ({0})"
 
-#: src/CommonCartridge.js:494
+#: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
 msgstr ""
 
-#: src/App.js:108
+#: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
 msgstr "カートリッジをドラッグアンドドロップ、またはクリックしてコンピュータを参照"
 
@@ -123,7 +123,7 @@ msgstr "カートリッジをドラッグアンドドロップ、またはクリ
 msgid "Essay"
 msgstr "エッセイ（小論文）"
 
-#: src/App.js:148
+#: src/App.js:159
 msgid "Examples"
 msgstr "例"
 
@@ -135,7 +135,7 @@ msgstr "外部ツールのコンテンツをプレビューできません"
 msgid "External link"
 msgstr "外部リンク"
 
-#: src/CommonCartridge.js:359
+#: src/CommonCartridge.js:364
 msgid "Failed to load resource"
 msgstr "リソース読み込みに失敗"
 
@@ -143,11 +143,11 @@ msgstr "リソース読み込みに失敗"
 msgid "File Upload"
 msgstr "ファイルのアップロード"
 
-#: src/FileList.js:39
+#: src/FileList.js:40
 msgid "Files"
 msgstr "ファイル"
 
-#: src/CommonCartridge.js:523
+#: src/CommonCartridge.js:559
 msgid "Files ({0})"
 msgstr "ファイル ({0})"
 
@@ -163,16 +163,16 @@ msgstr "画像"
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "Canvas 内でこのリソースを使用するには、外部ツールをインストールする必要があります。"
 
-#: src/EmbeddedPreview.js:59
+#: src/EmbeddedPreview.js:64
 #: src/Image.js:37
 msgid "Loading"
 msgstr "読み込み中"
 
-#: src/CommonCartridge.js:385
+#: src/CommonCartridge.js:398
 msgid "Loading Cartridge"
 msgstr "カートリッジ読み込み中"
 
-#: src/CommonCartridge.js:402
+#: src/CommonCartridge.js:415
 msgid "Loading completion"
 msgstr "読み込み完了"
 
@@ -184,13 +184,13 @@ msgstr "質問を合わせる"
 msgid "Max attempts"
 msgstr "最大試行回数"
 
-#: src/EmbeddedPreview.js:74
-#: src/EmbeddedPreview.js:87
-#: src/EmbeddedPreview.js:98
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
 msgid "Media viewer"
 msgstr "メディアビューア"
 
-#: src/CommonCartridge.js:459
+#: src/CommonCartridge.js:497
 msgid "Modules ({0})"
 msgstr "モジュール ({0})"
 
@@ -206,7 +206,7 @@ msgstr "複数選択肢"
 msgid "Multiple response"
 msgstr "複数の回答"
 
-#: src/Resource.js:126
+#: src/Resource.js:129
 msgid "Next"
 msgstr "次"
 
@@ -230,7 +230,7 @@ msgstr "数"
 msgid "Page"
 msgstr "ページ"
 
-#: src/CommonCartridge.js:481
+#: src/CommonCartridge.js:519
 msgid "Pages ({0})"
 msgstr "ページ ({0})"
 
@@ -242,7 +242,7 @@ msgstr "パターンマッチ"
 msgid "Points"
 msgstr "ポイント"
 
-#: src/Resource.js:106
+#: src/Resource.js:108
 msgid "Previous"
 msgstr "前"
 
@@ -266,7 +266,7 @@ msgstr "クイズ"
 msgid "Quizzes"
 msgstr "クイズ"
 
-#: src/CommonCartridge.js:510
+#: src/CommonCartridge.js:546
 msgid "Quizzes ({0})"
 msgstr "クイズ ({0})"
 
@@ -290,7 +290,7 @@ msgstr "提出しています"
 msgid "Text only"
 msgstr "テキストのみ"
 
-#: src/CommonCartridge.js:393
+#: src/CommonCartridge.js:406
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "カートリッジのサイズに応じて、これには時間がかかることがあります。"
 
@@ -306,7 +306,7 @@ msgstr ""
 msgid "True / false"
 msgstr "正/誤"
 
-#: src/CommonCartridge.js:446
+#: src/CommonCartridge.js:466
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
 #: src/WebLink.js:36
@@ -315,11 +315,11 @@ msgstr "正/誤"
 msgid "Untitled"
 msgstr "無題"
 
-#: src/App.js:134
+#: src/App.js:145
 msgid "View"
 msgstr "表示"
 
-#: src/App.js:141
+#: src/App.js:152
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
 msgstr "ブラウザで共通のカートリッジを表示します。 サーバー側の処理は不要です。"
 
@@ -331,7 +331,7 @@ msgstr "ブラウザで共通のカートリッジを表示します。 サー�
 msgid "View source on Github"
 msgstr "Github のソースを表示"
 
-#: src/CommonCartridge.js:361
+#: src/CommonCartridge.js:366
 msgid "We had a problem loading the Common Cartridge"
 msgstr "共通のカートリッジ読み込み中に問題がありました。"
 
@@ -339,15 +339,15 @@ msgstr "共通のカートリッジ読み込み中に問題がありました。
 msgid "Wiki content"
 msgstr "Wiki コンテンツ"
 
-#: src/CommonCartridge.js:444
+#: src/CommonCartridge.js:464
 msgid "You are here:"
 msgstr "あなたの現在地："
 
-#: src/EmbeddedPreview.js:77
+#: src/EmbeddedPreview.js:82
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
 msgstr "あなたのブラウザはHTML5オーディオをサポートしていません。代わりに、音声への<0>リンク</0>はこちらです。"
 
-#: src/EmbeddedPreview.js:90
+#: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "お使いのブラウザはHTML5ビデオをサポートしていません。代わりに、音声への<0>リンク</0>はこちらです。"
 
@@ -355,7 +355,7 @@ msgstr "お使いのブラウザはHTML5ビデオをサポートしていませ�
 msgid "a file upload"
 msgstr "ファイルのアップロード"
 
-#: src/App.js:127
+#: src/App.js:138
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS 有効)"
 
@@ -364,8 +364,8 @@ msgid "pts"
 msgstr ""
 
 #: src/AssessmentListItem.js:94
-msgid "{0} Questions"
-msgstr "{0}の質問"
+#~ msgid "{0} Questions"
+#~ msgstr "{0}の質問"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -375,17 +375,21 @@ msgstr "{0}は公開されています"
 msgid "{0} is unpublished"
 msgstr "{0}は非公開です"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:111
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} 点"
 
-#: src/CommonCartridge.js:411
+#: src/AssessmentListItem.js:101
+msgid "{0} question(s) / {1} assigned"
+msgstr ""
+
+#: src/CommonCartridge.js:425
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:418
 msgid "{0}% loaded"
 msgstr "{0}% 読み込み済み"

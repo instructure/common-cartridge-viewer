@@ -7,7 +7,7 @@ test("High-contrast style support", async t => {
   const HIGH_CONTRAST_THEME_LINK_RGB = "rgb(7, 112, 163)";
 
   await t.navigateTo(
-    "http://localhost:5000/?manifest=http://localhost:5000/test-cartridges/course-1/imsmanifest.xml#/"
+    "http://localhost:5000/?manifest=/test-cartridges/course-1/imsmanifest.xml#/"
   );
   const normalThemeModuleLink = Selector("a").withText(
     "First Module Assignment 1"
@@ -38,7 +38,7 @@ test("High-contrast style support", async t => {
     );
 
   await t.navigateTo(
-    "http://localhost:5000/?high-contrast&manifest=http://localhost:5000/test-cartridges/course-1/imsmanifest.xml#/"
+    "http://localhost:5000/?high-contrast&manifest=/test-cartridges/course-1/imsmanifest.xml#/"
   );
 
   const highContrastThemeModuleLink = Selector("a").withText(
