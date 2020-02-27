@@ -249,25 +249,9 @@ export default class Assessment extends Component {
           {title}
         </Heading>
 
-        <Grid vAlign="middle" colSpacing="none">
-          {metadata.has("cc_maxattempts") && (
-            <GridRow>
-              <GridCol width={2}>
-                <Text weight="bold">
-                  <Trans>Max attempts</Trans>
-                </Text>
-              </GridCol>
-              <GridCol>{metadata.get("cc_maxattempts")}</GridCol>
-            </GridRow>
-          )}
-          {/* {metadata.has("qmd_assessmenttype") && (
-            <GridRow>
-              <GridCol width={2}>Type</div>
-              <GridCol>{metadata.get("qmd_assessmenttype")}</GridCol>
-            </GridRow>
-          )} */}
-        </Grid>
-
+        <Text weight="bold">
+          <Trans>Max attempts</Trans>: {metadata.get("cc_maxattempts")}
+        </Text>
         <Heading level="h3" margin="medium 0 small">
           <Trans>Questions</Trans>
         </Heading>
