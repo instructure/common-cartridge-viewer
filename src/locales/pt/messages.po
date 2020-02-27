@@ -50,7 +50,7 @@ msgstr "Tarefas"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:470
+#: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Tarefas ({numberOfAssignments})"
 
@@ -63,7 +63,7 @@ msgstr "Anexos"
 msgid "Calculated"
 msgstr "Calculado"
 
-#: src/App.js:122
+#: src/App.js:133
 msgid "Cartridge"
 msgstr "Cartucho"
 
@@ -71,7 +71,7 @@ msgstr "Cartucho"
 msgid "Click here to open link in new window"
 msgstr "Clique aqui para abrir a ligação em uma nova janela"
 
-#: src/App.js:106
+#: src/App.js:117
 msgid "Common Cartridge Viewer"
 msgstr "Visualizador de Cartucho Common"
 
@@ -107,11 +107,11 @@ msgstr "Discussões"
 #~ msgid "Discussions ({0})"
 #~ msgstr "Discussões ({0})"
 
-#: src/CommonCartridge.js:494
+#: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
 msgstr ""
 
-#: src/App.js:108
+#: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
 msgstr "Arraste e solte o cartucho ou clique para navegar no seu computador."
 
@@ -123,7 +123,7 @@ msgstr "Arraste e solte o cartucho ou clique para navegar no seu computador."
 msgid "Essay"
 msgstr "Redação"
 
-#: src/App.js:148
+#: src/App.js:159
 msgid "Examples"
 msgstr "Exemplos"
 
@@ -135,7 +135,7 @@ msgstr "O conteúdo da ferramenta externa não pode ser visualizado"
 msgid "External link"
 msgstr "Ligação externa"
 
-#: src/CommonCartridge.js:359
+#: src/CommonCartridge.js:364
 msgid "Failed to load resource"
 msgstr "Falha ao carregar recurso"
 
@@ -143,11 +143,11 @@ msgstr "Falha ao carregar recurso"
 msgid "File Upload"
 msgstr "Carregar de arquivos"
 
-#: src/FileList.js:39
+#: src/FileList.js:40
 msgid "Files"
 msgstr "Ficheiros"
 
-#: src/CommonCartridge.js:523
+#: src/CommonCartridge.js:559
 msgid "Files ({0})"
 msgstr "Ficheiros ({0})"
 
@@ -163,16 +163,16 @@ msgstr "Imagem"
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "Para usar este recurso no Canvas, a ferramenta externa deve estar instalada."
 
-#: src/EmbeddedPreview.js:59
+#: src/EmbeddedPreview.js:64
 #: src/Image.js:37
 msgid "Loading"
 msgstr "A carregar"
 
-#: src/CommonCartridge.js:385
+#: src/CommonCartridge.js:398
 msgid "Loading Cartridge"
 msgstr "A carregar Cartucho"
 
-#: src/CommonCartridge.js:402
+#: src/CommonCartridge.js:415
 msgid "Loading completion"
 msgstr "Conclusão do carregamento"
 
@@ -184,13 +184,13 @@ msgstr "Perguntas sobre jogos"
 msgid "Max attempts"
 msgstr "Tentativas máximas"
 
-#: src/EmbeddedPreview.js:74
-#: src/EmbeddedPreview.js:87
-#: src/EmbeddedPreview.js:98
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
 msgid "Media viewer"
 msgstr "Visualizador de mídia"
 
-#: src/CommonCartridge.js:459
+#: src/CommonCartridge.js:497
 msgid "Modules ({0})"
 msgstr "Módulos ({0})"
 
@@ -206,7 +206,7 @@ msgstr "Múltipla escolha"
 msgid "Multiple response"
 msgstr "Resposta Múltipla"
 
-#: src/Resource.js:126
+#: src/Resource.js:129
 msgid "Next"
 msgstr "Próximo"
 
@@ -230,7 +230,7 @@ msgstr "Numérico"
 msgid "Page"
 msgstr "Página"
 
-#: src/CommonCartridge.js:481
+#: src/CommonCartridge.js:519
 msgid "Pages ({0})"
 msgstr "Páginas ({0})"
 
@@ -242,7 +242,7 @@ msgstr "Jogo padrão"
 msgid "Points"
 msgstr "Pontos"
 
-#: src/Resource.js:106
+#: src/Resource.js:108
 msgid "Previous"
 msgstr "Anterior"
 
@@ -266,7 +266,7 @@ msgstr "Teste"
 msgid "Quizzes"
 msgstr "Testes"
 
-#: src/CommonCartridge.js:510
+#: src/CommonCartridge.js:546
 msgid "Quizzes ({0})"
 msgstr "Testes ({0})"
 
@@ -290,7 +290,7 @@ msgstr "A enviar"
 msgid "Text only"
 msgstr "Somente texto"
 
-#: src/CommonCartridge.js:393
+#: src/CommonCartridge.js:406
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Isso pode levar algum tempo, dependendo do tamanho do cartucho."
 
@@ -306,7 +306,7 @@ msgstr ""
 msgid "True / false"
 msgstr "Verdadeiro / falso"
 
-#: src/CommonCartridge.js:446
+#: src/CommonCartridge.js:466
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
 #: src/WebLink.js:36
@@ -315,11 +315,11 @@ msgstr "Verdadeiro / falso"
 msgid "Untitled"
 msgstr "Sem título"
 
-#: src/App.js:134
+#: src/App.js:145
 msgid "View"
 msgstr "Ver"
 
-#: src/App.js:141
+#: src/App.js:152
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
 msgstr "Ver Cartuchos Common no navegador. Não requer processamento no lado do servidor."
 
@@ -331,7 +331,7 @@ msgstr "Ver Cartuchos Common no navegador. Não requer processamento no lado do 
 msgid "View source on Github"
 msgstr "Ver fonte no Github"
 
-#: src/CommonCartridge.js:361
+#: src/CommonCartridge.js:366
 msgid "We had a problem loading the Common Cartridge"
 msgstr "Ocorreu um problema ao carregar o cartucho comum"
 
@@ -339,15 +339,15 @@ msgstr "Ocorreu um problema ao carregar o cartucho comum"
 msgid "Wiki content"
 msgstr "Conteúdo wiki"
 
-#: src/CommonCartridge.js:444
+#: src/CommonCartridge.js:464
 msgid "You are here:"
 msgstr "Você está aqui:"
 
-#: src/EmbeddedPreview.js:77
+#: src/EmbeddedPreview.js:82
 msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
 msgstr "Seu navegador não suporta áudio HTML5. Aqui está uma <0>ligação para o áudio</0>."
 
-#: src/EmbeddedPreview.js:90
+#: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "Seu navegador não suporta vídeo em HTML5. Aqui está uma <0>ligação para o áudio</0>."
 
@@ -355,7 +355,7 @@ msgstr "Seu navegador não suporta vídeo em HTML5. Aqui está uma <0>ligação 
 msgid "a file upload"
 msgstr "um envio de ficheiro"
 
-#: src/App.js:127
+#: src/App.js:138
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS ativado)"
 
@@ -364,8 +364,8 @@ msgid "pts"
 msgstr ""
 
 #: src/AssessmentListItem.js:94
-msgid "{0} Questions"
-msgstr "{0} Questões"
+#~ msgid "{0} Questions"
+#~ msgstr "{0} Questões"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -375,17 +375,21 @@ msgstr "{0} é publicado"
 msgid "{0} is unpublished"
 msgstr "{0} não é publicado"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:111
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} pontos"
 
-#: src/CommonCartridge.js:411
+#: src/AssessmentListItem.js:101
+msgid "{0} question(s) / {1} assigned"
+msgstr ""
+
+#: src/CommonCartridge.js:425
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:418
 msgid "{0}% loaded"
 msgstr "{0}% carregado"
