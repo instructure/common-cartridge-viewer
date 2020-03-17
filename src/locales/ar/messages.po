@@ -19,23 +19,23 @@ msgstr "(غير معرّف)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr ""
+#~ msgstr "All Items"
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr ""
+#~ msgstr "Assessment"
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr ""
+#~ msgstr "Assessments"
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr ""
+#~ msgstr "Assessments ( {0})"
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr ""
+#~ msgstr "Assessments ({0})"
 
 #: src/AssignmentBody.js:34
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "المهام"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr ""
+#~ msgstr "Assignments ({0})"
 
 #: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
@@ -85,7 +85,7 @@ msgstr "ارتباطات تنقل المساق متاحة فقط داخل مسا
 
 #: src/AssignmentBody.js:118
 msgid "Criteria"
-msgstr ""
+msgstr "المعايير"
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -97,19 +97,19 @@ msgstr "النقاشات"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr ""
+#~ msgstr "Discussions ( {0})"
 
 #: src/CommonCartridge.js:455
 #~ msgid "Discussions ({0} )"
-#~ msgstr ""
+#~ msgstr "Discussions ({0} )"
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
-#~ msgstr "النقاشات ({0})"
+#~ msgstr "Discussions ({0})"
 
 #: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
-msgstr ""
+msgstr "النقاشات ({length})"
 
 #: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -117,7 +117,7 @@ msgstr "اسحب الـ cartridge وأفلتها أو انقر لاستعراض 
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr ""
+#~ msgstr "Drag and drop, or click to browse your computer"
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -180,7 +180,7 @@ msgstr "إكمال التحميل"
 msgid "Match Questions"
 msgstr "مطابقة الأسئلة"
 
-#: src/Assessment.js:257
+#: src/Assessment.js:253
 msgid "Max attempts"
 msgstr "الحد الأقصى للمحاولات"
 
@@ -216,7 +216,7 @@ msgstr "الصفحة التالية"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr ""
+#~ msgstr "Not found"
 
 #: src/Assessment.js:164
 msgid "Numerical"
@@ -224,7 +224,7 @@ msgstr "رقمي"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr ""
+#~ msgstr "Other type"
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -252,9 +252,9 @@ msgstr "الصفحة السابقة"
 
 #: src/AssignmentBody.js:129
 msgid "Pts"
-msgstr ""
+msgstr "النقاط"
 
-#: src/Assessment.js:272
+#: src/Assessment.js:256
 msgid "Questions"
 msgstr "الأسئلة"
 
@@ -264,7 +264,7 @@ msgstr "الاختبار الموجز"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
-msgstr "اختبارات موجزة"
+msgstr "الاختبارات الموجزة"
 
 #: src/CommonCartridge.js:546
 msgid "Quizzes ({0})"
@@ -272,7 +272,7 @@ msgstr "اختبارات موجزة ({0})"
 
 #: src/AssignmentBody.js:126
 msgid "Ratings"
-msgstr ""
+msgstr "التصنيفات"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -280,7 +280,7 @@ msgstr "مورد غير متوفر"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
-#~ msgstr ""
+#~ msgstr "Submission formats"
 
 #: src/AssignmentBody.js:46
 msgid "Submitting"
@@ -300,7 +300,7 @@ msgstr "هذا المورد غير متضمن في الحزمة."
 
 #: src/AssignmentBody.js:160
 msgid "Total points:"
-msgstr ""
+msgstr "إجمالي النقاط:"
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -321,13 +321,11 @@ msgstr "عرض"
 
 #: src/App.js:152
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
-msgstr ""
-"عرض Common Cartridges في المستعرض.\n"
-"لا تتطلب معالجة جانب الخادم."
+msgstr "عرض Common Cartridges في المستعرض. لا تتطلب معالجة جانب الخادم."
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr ""
+#~ msgstr "View a Common Cartridge (.imscc)"
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -363,11 +361,11 @@ msgstr "https://www.yourdomain.com/cartridge.imscc (تمكين مشاركة ال
 
 #: src/AssignmentBody.js:141
 msgid "pts"
-msgstr ""
+msgstr "النقاط"
 
 #: src/AssessmentListItem.js:94
 #~ msgid "{0} Questions"
-#~ msgstr "{0} من الأسئلة"
+#~ msgstr "{0} Questions"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -377,16 +375,16 @@ msgstr "تم نشر {0}"
 msgid "{0} is unpublished"
 msgstr "تم إلغاء نشر {0}"
 
-#: src/AssessmentListItem.js:111
+#: src/AssessmentListItem.js:120
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} من النقاط"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:110
 msgid "{0} question(s) / {1} assigned"
-msgstr ""
+msgstr "تم تعيين {0} سؤال (أسئلة) / {1}"
 
 #: src/CommonCartridge.js:425
 msgid "{0}%"

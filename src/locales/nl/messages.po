@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: nl\n"
@@ -19,23 +19,23 @@ msgstr "(niet-geïdentificeerd)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr ""
+#~ msgstr "All Items"
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr ""
+#~ msgstr "Assessment"
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr ""
+#~ msgstr "Assessments"
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr ""
+#~ msgstr "Assessments ( {0})"
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr ""
+#~ msgstr "Assessments ({0})"
 
 #: src/AssignmentBody.js:34
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Opdrachten"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr ""
+#~ msgstr "Assignments ({0})"
 
 #: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
@@ -85,7 +85,7 @@ msgstr "Links van Cursusnavigatie zijn alleen beschikbaar in een Canvas-cursus."
 
 #: src/AssignmentBody.js:118
 msgid "Criteria"
-msgstr ""
+msgstr "Criterium"
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -97,19 +97,19 @@ msgstr "Discussies"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr ""
+#~ msgstr "Discussions ( {0})"
 
 #: src/CommonCartridge.js:455
 #~ msgid "Discussions ({0} )"
-#~ msgstr ""
+#~ msgstr "Discussions ({0} )"
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
-#~ msgstr "Discussies ({0})"
+#~ msgstr "Discussions ({0})"
 
 #: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
-msgstr ""
+msgstr "Discussies ({length})"
 
 #: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -117,7 +117,7 @@ msgstr "Sleep de cartridge of klik om je computer te doorzoeken."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr ""
+#~ msgstr "Drag and drop, or click to browse your computer"
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -153,7 +153,7 @@ msgstr "Bestanden ({0})"
 
 #: src/Assessment.js:149
 msgid "Fill in the blank"
-msgstr "Lege velden invullen"
+msgstr "Leeg veld invullen"
 
 #: src/Image.js:55
 msgid "Image"
@@ -180,7 +180,7 @@ msgstr "Laden wordt voltooid"
 msgid "Match Questions"
 msgstr "Vragen vergelijken"
 
-#: src/Assessment.js:257
+#: src/Assessment.js:253
 msgid "Max attempts"
 msgstr "Max. aantal pogingen"
 
@@ -216,7 +216,7 @@ msgstr "Volgende pagina"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr ""
+#~ msgstr "Not found"
 
 #: src/Assessment.js:164
 msgid "Numerical"
@@ -224,7 +224,7 @@ msgstr "Numeriek"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr ""
+#~ msgstr "Other type"
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -252,9 +252,9 @@ msgstr "Vorige pagina"
 
 #: src/AssignmentBody.js:129
 msgid "Pts"
-msgstr ""
+msgstr "Punten"
 
-#: src/Assessment.js:272
+#: src/Assessment.js:256
 msgid "Questions"
 msgstr "Vragen"
 
@@ -272,7 +272,7 @@ msgstr "Toetsen ({0})"
 
 #: src/AssignmentBody.js:126
 msgid "Ratings"
-msgstr ""
+msgstr "Beoordelingen"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -280,7 +280,7 @@ msgstr "Bron niet beschikbaar"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
-#~ msgstr ""
+#~ msgstr "Submission formats"
 
 #: src/AssignmentBody.js:46
 msgid "Submitting"
@@ -300,7 +300,7 @@ msgstr "Deze resource is niet in het pakket inbegrepen."
 
 #: src/AssignmentBody.js:160
 msgid "Total points:"
-msgstr ""
+msgstr "Totaal aantal punten:"
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -317,7 +317,7 @@ msgstr "Zonder titel"
 
 #: src/App.js:145
 msgid "View"
-msgstr "Weergeven"
+msgstr "Bekijken"
 
 #: src/App.js:152
 msgid "View Common Cartridges in the browser. Requires no server-side processing."
@@ -325,7 +325,7 @@ msgstr "Bekijk Common Cartridges in de browser. Hiervoor is geen verwerking aan 
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr ""
+#~ msgstr "View a Common Cartridge (.imscc)"
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -361,11 +361,11 @@ msgstr "https://www.yourdomain.com/cartridge.imscc (CORS ingeschakeld)"
 
 #: src/AssignmentBody.js:141
 msgid "pts"
-msgstr ""
+msgstr "ptn"
 
 #: src/AssessmentListItem.js:94
 #~ msgid "{0} Questions"
-#~ msgstr "{0} vragen"
+#~ msgstr "{0} Questions"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -373,18 +373,18 @@ msgstr "{0} is gepubliceerd"
 
 #: src/WorkflowStateIcon.js:21
 msgid "{0} is unpublished"
-msgstr "{0} is niet (meer) gepubliceerd"
+msgstr "{0} is niet gepubliceerd"
 
-#: src/AssessmentListItem.js:111
+#: src/AssessmentListItem.js:120
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} punten"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:110
 msgid "{0} question(s) / {1} assigned"
-msgstr ""
+msgstr "{0} vraag/vragen / {1} toegewezen"
 
 #: src/CommonCartridge.js:425
 msgid "{0}%"

@@ -180,7 +180,7 @@ msgstr "Loading completion"
 msgid "Match Questions"
 msgstr "Match Questions"
 
-#: src/Assessment.js:257
+#: src/Assessment.js:253
 msgid "Max attempts"
 msgstr "Max attempts"
 
@@ -254,7 +254,7 @@ msgstr "Previous Page"
 msgid "Pts"
 msgstr "Pts"
 
-#: src/Assessment.js:272
+#: src/Assessment.js:256
 msgid "Questions"
 msgstr "Questions"
 
@@ -375,14 +375,14 @@ msgstr "{0} is published"
 msgid "{0} is unpublished"
 msgstr "{0} is unpublished"
 
-#: src/AssessmentListItem.js:111
+#: src/AssessmentListItem.js:120
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} points"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:110
 msgid "{0} question(s) / {1} assigned"
 msgstr "{0} question(s) / {1} assigned"
 

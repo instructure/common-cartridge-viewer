@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: pl\n"
@@ -19,23 +19,23 @@ msgstr "(niezidentyfikowano)"
 
 #: src/Resource.js:144
 #~ msgid "All Items"
-#~ msgstr ""
+#~ msgstr "All Items"
 
 #: src/Assessment.js:131
 #~ msgid "Assessment"
-#~ msgstr ""
+#~ msgstr "Assessment"
 
 #: src/AssessmentList.js:43
 #~ msgid "Assessments"
-#~ msgstr ""
+#~ msgstr "Assessments"
 
 #: src/CommonCartridge.js:364
 #~ msgid "Assessments ( {0})"
-#~ msgstr ""
+#~ msgstr "Assessments ( {0})"
 
 #: src/CommonCartridge.js:352
 #~ msgid "Assessments ({0})"
-#~ msgstr ""
+#~ msgstr "Assessments ({0})"
 
 #: src/AssignmentBody.js:34
 msgid "Assignment"
@@ -48,7 +48,7 @@ msgstr "Zadania"
 
 #: src/CommonCartridge.js:330
 #~ msgid "Assignments ({0})"
-#~ msgstr ""
+#~ msgstr "Assignments ({0})"
 
 #: src/CommonCartridge.js:508
 msgid "Assignments ({numberOfAssignments})"
@@ -85,7 +85,7 @@ msgstr "Łącza nawigacyjne kursu są dostępne tylko w ramach kursu Canvas."
 
 #: src/AssignmentBody.js:118
 msgid "Criteria"
-msgstr ""
+msgstr "Kryteria"
 
 #: src/Discussion.js:40
 msgid "Discussion"
@@ -97,19 +97,19 @@ msgstr "Dyskusje"
 
 #: src/CommonCartridge.js:356
 #~ msgid "Discussions ( {0})"
-#~ msgstr ""
+#~ msgstr "Discussions ( {0})"
 
 #: src/CommonCartridge.js:455
 #~ msgid "Discussions ({0} )"
-#~ msgstr ""
+#~ msgstr "Discussions ({0} )"
 
 #: src/CommonCartridge.js:430
 #~ msgid "Discussions ({0})"
-#~ msgstr "Dyskusje ({0})"
+#~ msgstr "Discussions ({0})"
 
 #: src/CommonCartridge.js:530
 msgid "Discussions ({length})"
-msgstr ""
+msgstr "Dyskusje ({length})"
 
 #: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
@@ -117,7 +117,7 @@ msgstr "Przeciągnij i upuść wkład lub kliknij, aby przeglądać komputer."
 
 #: src/App.js:95
 #~ msgid "Drag and drop, or click to browse your computer"
-#~ msgstr ""
+#~ msgstr "Drag and drop, or click to browse your computer"
 
 #: src/Assessment.js:155
 msgid "Essay"
@@ -180,7 +180,7 @@ msgstr "Zakończono wczytywanie"
 msgid "Match Questions"
 msgstr "Dopasuj pytania"
 
-#: src/Assessment.js:257
+#: src/Assessment.js:253
 msgid "Max attempts"
 msgstr "Maks. liczba prób"
 
@@ -216,7 +216,7 @@ msgstr "Następna strona"
 
 #: src/Resource.js:287
 #~ msgid "Not found"
-#~ msgstr ""
+#~ msgstr "Not found"
 
 #: src/Assessment.js:164
 msgid "Numerical"
@@ -224,7 +224,7 @@ msgstr "Numerycznie"
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
-#~ msgstr ""
+#~ msgstr "Other type"
 
 #: src/WikiContent.js:25
 msgid "Page"
@@ -252,9 +252,9 @@ msgstr "Poprzednia strona"
 
 #: src/AssignmentBody.js:129
 msgid "Pts"
-msgstr ""
+msgstr "Pkt"
 
-#: src/Assessment.js:272
+#: src/Assessment.js:256
 msgid "Questions"
 msgstr "Pytania"
 
@@ -272,7 +272,7 @@ msgstr "Testy ({0})"
 
 #: src/AssignmentBody.js:126
 msgid "Ratings"
-msgstr ""
+msgstr "Punktacje"
 
 #: src/ResourceUnavailable.js:11
 msgid "Resource Unavailable"
@@ -280,7 +280,7 @@ msgstr "Zasób niedostępny"
 
 #: src/Assignment.js:61
 #~ msgid "Submission formats"
-#~ msgstr ""
+#~ msgstr "Submission formats"
 
 #: src/AssignmentBody.js:46
 msgid "Submitting"
@@ -300,7 +300,7 @@ msgstr "Ten zasobów nie jest zawarty w tym pakiecie."
 
 #: src/AssignmentBody.js:160
 msgid "Total points:"
-msgstr ""
+msgstr "Łączna liczba punktów:"
 
 #: src/Assessment.js:146
 msgid "True / false"
@@ -325,7 +325,7 @@ msgstr "Wyświetl typowe wkłady w tej przeglądarce. Nie wymaga przetwarzania p
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
-#~ msgstr ""
+#~ msgstr "View a Common Cartridge (.imscc)"
 
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
@@ -361,11 +361,11 @@ msgstr "https://www.yourdomain.com/cartridge.imscc (włączono CORS)"
 
 #: src/AssignmentBody.js:141
 msgid "pts"
-msgstr ""
+msgstr "pkt"
 
 #: src/AssessmentListItem.js:94
 #~ msgid "{0} Questions"
-#~ msgstr "Pytania: {0}"
+#~ msgstr "{0} Questions"
 
 #: src/WorkflowStateIcon.js:30
 msgid "{0} is published"
@@ -375,16 +375,16 @@ msgstr "{0} jest opublikowane"
 msgid "{0} is unpublished"
 msgstr "{0} nie jest opublikowane"
 
-#: src/AssessmentListItem.js:111
+#: src/AssessmentListItem.js:120
 #: src/AssignmentListItemBody.js:34
 #: src/DiscussionListItem.js:90
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} punkty"
 
-#: src/AssessmentListItem.js:101
+#: src/AssessmentListItem.js:110
 msgid "{0} question(s) / {1} assigned"
-msgstr ""
+msgstr "{0} pytania / {1} przydzielone"
 
 #: src/CommonCartridge.js:425
 msgid "{0}%"
