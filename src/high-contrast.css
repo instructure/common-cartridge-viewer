@@ -14,3 +14,18 @@ a,
 main {
   outline: 2px solid transparent !important;
 }
+
+:root {
+  /** Resource type colors **/
+  --color-course: #0770a3;
+  --color-document: #0770a3;
+  --color-module: #127a1b;
+  --color-image: #127a1b;
+  --color-audio: #66189d;
+  --color-discussion: #66189d;
+  --color-video: #c23c0d;
+  --color-page: #c23c0d;
+  --color-quiz: #d01a19;
+  --color-assignment: #b8309e;
+  --color-external-link: #ad4aa0;
+}

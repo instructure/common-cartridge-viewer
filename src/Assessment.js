@@ -229,15 +229,10 @@ export default class Assessment extends Component {
       );
     });
 
-    const labelColor = "#A1403E";
-
     return (
       <React.Fragment>
-        <div className="resource-label" style={{ color: labelColor }}>
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: labelColor }}
-          >
+        <div className="resource-label font-color type-quiz">
+          <div className="resource-label-icon background-color type-quiz">
             <Icon color="primary-inverse" />
           </div>
           <span>

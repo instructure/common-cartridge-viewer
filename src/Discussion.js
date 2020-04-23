@@ -25,15 +25,11 @@ export default class Discussion extends Component {
           .replace(CC_FILE_PREFIX, "web_resources")
       )
     );
-    const labelColor = "#6f2562";
 
     return (
       <React.Fragment>
-        <div className="resource-label" style={{ color: labelColor }}>
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: labelColor }}
-          >
+        <div className="resource-label font-color type-discussion_topic">
+          <div className="resource-label-icon background-color type-discussion_topic">
             <Icon color="primary-inverse" />
           </div>
           <span>

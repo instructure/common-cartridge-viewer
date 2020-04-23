@@ -48,7 +48,6 @@ export default class Assignment extends Component {
       gradableNode.getAttribute("points_possible")
         ? parseFloat(gradableNode.getAttribute("points_possible"))
         : 0;
-    const labelColor = "#AD4AA0";
 
     return !!externalToolNode ? (
       PreviewUnavailable()
@@ -56,7 +55,6 @@ export default class Assignment extends Component {
       <AssignmentBody
         title={title}
         descriptionHtml={descriptionHtml}
-        labelColor={labelColor}
         pointsPossible={points}
         submissionFormats={generateFriendlyStringFromSubmissionFormats(
           submissionFormats

@@ -6,6 +6,7 @@ import ReactDOM from "react-dom";
 import theme from "@instructure/ui-themes/lib/canvas";
 import highContrastTheme from "@instructure/ui-themes/lib/canvas/high-contrast";
 import "./index.css";
+import "./resource-type-colors.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { setupI18n } from "@lingui/core";

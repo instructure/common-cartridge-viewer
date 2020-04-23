@@ -331,3 +331,18 @@ td {
 .CommonCartridge--content {
   overflow: auto;
 }
+
+:root {
+  /** Resource type colors **/
+  --color-course: #008ee2;
+  --color-document: #008ee2;
+  --color-module: #00ac18;
+  --color-image: #00ac18;
+  --color-audio: #66189d;
+  --color-discussion: #66189d;
+  --color-video: #fc5e13;
+  --color-page: #fc5e13;
+  --color-quiz: #ee0612;
+  --color-assignment: #bf32a4;
+  --color-external-link: #ad4aa0;
+}

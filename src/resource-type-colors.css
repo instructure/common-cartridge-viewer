@@ -1,0 +1,67 @@
+.font-color.type-assignment {
+  color: var(--color-assignment);
+}
+.font-color.type-audio {
+  color: var(--color-audio);
+}
+.font-color.type-discussion_topic {
+  color: var(--color-discussion);
+}
+.font-color.type-course {
+  color: var(--color-course);
+}
+.font-color.type-document {
+  color: var(--color-document);
+}
+.font-color.type-image {
+  color: var(--color-image);
+}
+.font-color.type-module {
+  color: var(--color-module);
+}
+.font-color.type-page {
+  color: var(--color-page);
+}
+.font-color.type-quiz {
+  color: var(--color-quiz);
+}
+.font-color.type-video {
+  color: var(--color-video);
+}
+.font-color.type-external_link {
+  color: var(--color-external-link);
+}
+
+.background-color.type-assignment {
+  background-color: var(--color-assignment);
+}
+.background-color.type-audio {
+  background-color: var(--color-audio);
+}
+.background-color.type-discussion_topic {
+  background-color: var(--color-discussion);
+}
+.background-color.type-course {
+  background-color: var(--color-course);
+}
+.background-color.type-document {
+  background-color: var(--color-document);
+}
+.background-color.type-image {
+  background-color: var(--color-image);
+}
+.background-color.type-module {
+  background-color: var(--color-module);
+}
+.background-color.type-page {
+  background-color: var(--color-page);
+}
+.background-color.type-quiz {
+  background-color: var(--color-quiz);
+}
+.background-color.type-video {
+  background-color: var(--color-video);
+}
+.background-color.type-external_link {
+  background-color: var(--color-external-link);
+}
