@@ -12,17 +12,13 @@ export default class WebLink extends Component {
       return null;
     }
     const href = doc.querySelector("url").getAttribute("href");
-    const labelColor = "#AD4AA0";
 
     return (
       <I18n>
         {({ i18n }) => (
           <div>
-            <div className="resource-label" style={{ color: labelColor }}>
-              <div
-                className="resource-label-icon"
-                style={{ backgroundColor: labelColor }}
-              >
+            <div className="resource-label font-color type-external_link">
+              <div className="resource-label-icon background-color type-external_link">
                 <Icon color="primary-inverse" />
               </div>
               <span>

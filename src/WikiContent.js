@@ -10,15 +10,11 @@ export default class WikiContent extends Component {
     const title =
       doc.querySelector("title") && doc.querySelector("title").textContent;
     const html = doc.body ? doc.body.innerHTML : ""; // doc.body.innerHTML;
-    const labelColor = "#8A6240";
 
     return (
       <React.Fragment>
-        <div className="resource-label" style={{ color: labelColor }}>
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: labelColor }}
-          >
+        <div className="resource-label font-color type-page">
+          <div className="resource-label-icon background-color type-page">
             <Icon color="primary-inverse" />
           </div>
           <span>

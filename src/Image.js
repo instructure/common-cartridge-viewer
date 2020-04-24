@@ -40,15 +40,10 @@ export default class Image extends Component {
       );
     }
 
-    const labelColor = "#AD4AA0";
-
     return (
       <div className="RichContent">
-        <div className="resource-label" style={{ color: labelColor }}>
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: labelColor }}
-          >
+        <div className="resource-label font-color type-image">
+          <div className="resource-label-icon background-color type-image">
             <Icon color="primary-inverse" />
           </div>
           <span>

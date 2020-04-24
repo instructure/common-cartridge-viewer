@@ -49,7 +49,6 @@ export default class AssociatedContentAssignment extends Component {
     const descriptionHtml = doc.querySelector("body").innerHTML;
 
     const isExternalTool = !!this.state.externalToolNode;
-    const labelColor = "#AD4AA0";
 
     return isExternalTool ? (
       PreviewUnavailable()
@@ -57,7 +56,6 @@ export default class AssociatedContentAssignment extends Component {
       <AssignmentBody
         title={title}
         descriptionHtml={descriptionHtml}
-        labelColor={labelColor}
         pointsPossible={this.state.pointsPossible}
         submissionFormats={this.state.submissionFormats}
         getTextByPath={this.props.getTextByPath}

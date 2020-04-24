@@ -20,14 +20,8 @@ export default class AssignmentBody extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <div
-          className="resource-label"
-          style={{ color: this.props.labelColor }}
-        >
-          <div
-            className="resource-label-icon"
-            style={{ backgroundColor: this.props.labelColor }}
-          >
+        <div className="resource-label font-color type-assignment">
+          <div className="resource-label-icon background-color type-assignment">
             <Icon color="primary-inverse" />
           </div>
           <span>
