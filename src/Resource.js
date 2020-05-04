@@ -196,7 +196,7 @@ export default class Resource extends Component {
             />
           )}
           src={this.props.src}
-          type="text/xml"
+          type="text/html"
         />
       ),
       [resourceTypes.DISCUSSION_TOPIC]: (
