@@ -28,7 +28,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
       });
       return;
     }
-    const doc = parser.parseFromString(assignmentXml, "text/xml");
+    const doc = parser.parseFromString(assignmentXml, "text/html");
     const title =
       doc.querySelector("title") &&
       doc
@@ -38,7 +38,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
           ""
         );
 
-    const settingsXml = this.props.getTextByPath(
+    const settingsXml = await this.props.getTextByPath(
       getAssignmentSettingsHref(this.props.identifier)
     );
     const settings = parser.parseFromString(settingsXml, "text/xml");
