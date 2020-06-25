@@ -287,6 +287,7 @@ td {
 @media screen and (max-width: 550px) {
   .CommonCartridge--view nav {
     padding: 0;
+    min-height: 50px;
   }
 
   .CommonCartridge--view {
@@ -322,7 +323,7 @@ td {
   }
 
   #NavTrigger:checked + .open + .navLinks {
-    padding: 10px;
+    padding: 50px 10px 10px 10px;
     max-height: 100vh;
     opacity: 1;
   }
