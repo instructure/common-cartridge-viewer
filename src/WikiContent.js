@@ -3,12 +3,12 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconDocument";
 import RichContent from "./RichContent";
 import { Trans } from "@lingui/macro";
+import { getOptionalTextContent } from "./utils";
 
 export default class WikiContent extends Component {
   render() {
     const doc = this.props.doc;
-    const title =
-      doc.querySelector("title") && doc.querySelector("title").textContent;
+    const title = getOptionalTextContent(doc, "title");
     const html = doc.body ? doc.body.innerHTML : ""; // doc.body.innerHTML;
 
     return (

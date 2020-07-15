@@ -4,6 +4,7 @@ import IconDiscussion from "@instructure/ui-icons/lib/Line/IconDiscussion";
 import WorkflowStateIcon from "./WorkflowStateIcon";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { Trans } from "@lingui/macro";
+import { getOptionalTextContent } from "./utils";
 
 export default class DiscussionListItem extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class DiscussionListItem extends Component {
     }
     const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/xml");
-    const title = doc.querySelector("title").textContent;
+    const title = getOptionalTextContent(doc, "title");
     const depPath = this.props.dependencyHrefs[0];
     const depXml = await this.props.getTextByPath(depPath);
     const depDoc = parser.parseFromString(depXml, "text/xml");

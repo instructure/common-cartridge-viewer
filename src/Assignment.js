@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
-import { generateFriendlyStringFromSubmissionFormats } from "./utils";
+import {
+  generateFriendlyStringFromSubmissionFormats,
+  getOptionalTextContent
+} from "./utils";
 import AssignmentBody from "./AssignmentBody";
 import PreviewUnavailable from "./PreviewUnavailable";
 
@@ -12,8 +15,8 @@ export default class Assignment extends Component {
       // Not yet loaded
       return null;
     }
-    const title = assignmentNode.querySelector("title").textContent;
-    const descriptionHtml = assignmentNode.querySelector("text").textContent;
+    const title = getOptionalTextContent(assignmentNode, "title");
+    const descriptionHtml = getOptionalTextContent(assignmentNode, "text");
     const attachments = Array.from(
       doc.querySelectorAll("assignment > attachments > attachment")
     ).map(node =>

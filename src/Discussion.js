@@ -5,6 +5,7 @@ import RichContent from "./RichContent";
 import { basename } from "path";
 import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
 import { Trans } from "@lingui/macro";
+import { getOptionalTextContent } from "./utils";
 
 export default class Discussion extends Component {
   render() {
@@ -14,8 +15,8 @@ export default class Discussion extends Component {
       // Not yet loaded
       return null;
     }
-    const title = topicNode.querySelector("title").textContent;
-    const descriptionHtml = topicNode.querySelector("text").textContent;
+    const title = getOptionalTextContent(topicNode, "title");
+    const descriptionHtml = getOptionalTextContent(topicNode, "text");
     const attachments = Array.from(
       doc.querySelectorAll("topic > attachments > attachment")
     ).map(node =>
