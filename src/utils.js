@@ -102,6 +102,11 @@ function $text(document, selector) {
   return node && node.textContent;
 }
 
+export const getOptionalTextContent = (node, selector) => {
+  const queriedNode = node.querySelector(selector);
+  return queriedNode ? queriedNode.textContent : "";
+};
+
 export function parseXml(xml) {
   const parser = new DOMParser();
   return parser.parseFromString(xml, "text/xml");
@@ -240,7 +245,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
   )
     .filter(item => item.querySelector("title"))
     .map(item => {
-      const title = item.querySelector("title").textContent;
+      const title = getOptionalTextContent(item, "title");
       const moduleIdentifier = item.getAttribute("identifier");
       const itemNodes = Array.from(item.querySelectorAll("item"));
       const items = itemNodes.map(item => {

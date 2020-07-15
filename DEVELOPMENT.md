@@ -10,6 +10,11 @@ environment variable to make them pass
 yarn run build
 yarn test
 ```
+If you modify a test cartridge, you have to run the 
+```bash
+yarn run build
+```
+again.
 
 ## Internationalization
 
