@@ -120,7 +120,7 @@ export default class CommonCartridge extends Component {
       })
       .then(xml => this.loadResources(xml))
       .catch(error => {
-        const canAttemptCartridgeFallBack =
+        /*  const canAttemptCartridgeFallBack =
           this.state.previewType === "manifest" && this.props.cartridge != null;
         if (canAttemptCartridgeFallBack) {
           this.setState({
@@ -130,7 +130,8 @@ export default class CommonCartridge extends Component {
           });
         } else {
           this.setState({ errorLoading: true });
-        }
+        }*/
+        console.log(error);
       });
   };
 
