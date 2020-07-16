@@ -15,7 +15,8 @@ import {
   getEntriesFromXHR,
   getTextFromEntry,
   parseManifestDocument,
-  parseXml
+  parseXml,
+  getOptionalTextContent
 } from "./utils.js";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
@@ -244,21 +245,21 @@ export default class CommonCartridge extends Component {
 
     Array.from(document.querySelectorAll("rubric")).forEach(node => {
       rubrics.set(node.getAttribute("identifier"), {
-        title: node.querySelector("title").textContent,
-        pointsPossible: node.querySelector("points_possible").textContent,
+        title: getOptionalTextContent(node, "title"),
+        pointsPossible: getOptionalTextContent(node, "points_possible"),
         criteria: Array.from(node.querySelectorAll("criterion")).map(
           criterion => {
             return {
-              id: criterion.querySelector("criterion_id").textContent,
-              description: criterion.querySelector("description").textContent,
-              points: criterion.querySelector("points").textContent,
+              id: getOptionalTextContent(criterion, "criterion_id"),
+              description: getOptionalTextContent(criterion, "description"),
+              points: getOptionalTextContent(criterion, "points"),
               ratings: Array.from(criterion.querySelectorAll("rating")).map(
                 rating => {
                   return {
-                    id: rating.querySelector("id").textContent,
+                    id: getOptionalTextContent(rating, "id"),
                     description: rating.querySelector("description")
                       .textContent,
-                    points: rating.querySelector("points").textContent
+                    points: getOptionalTextContent(rating, "points")
                   };
                 }
               )

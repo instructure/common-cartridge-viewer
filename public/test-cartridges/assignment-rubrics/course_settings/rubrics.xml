@@ -5,7 +5,6 @@
     <title>Some Rubric</title>
     <reusable>false</reusable>
     <public>false</public>
-    <points_possible>5.0</points_possible>
     <hide_score_total>false</hide_score_total>
     <free_form_criterion_comments>false</free_form_criterion_comments>
     <criteria>

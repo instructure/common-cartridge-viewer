@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AssignmentListItemBody from "./AssignmentListItemBody";
+import { getOptionalTextContent } from "./utils";
 
 export default class AssignmentListItem extends Component {
   constructor(props) {
@@ -27,8 +28,7 @@ export default class AssignmentListItem extends Component {
     }
     const parser = new DOMParser();
     const doc = parser.parseFromString(xml, "text/xml");
-    const title =
-      doc.querySelector("title") && doc.querySelector("title").textContent;
+    const title = getOptionalTextContent(doc, "title");
     const gradableNode = doc.querySelector("gradable");
     const points =
       gradableNode &&

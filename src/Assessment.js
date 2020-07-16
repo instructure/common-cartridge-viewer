@@ -12,6 +12,7 @@ import Grid, {
   GridRow
 } from "@instructure/ui-layout/lib/components/Grid";
 import IconCheckMark from "@instructure/ui-icons/lib/Line/IconCheckMark";
+import { getOptionalTextContent } from "./utils";
 
 export default class Assessment extends Component {
   render() {
@@ -87,14 +88,14 @@ export default class Assessment extends Component {
         let response_lid_id = response_lid.getAttribute("ident");
         return {
           id: response_lid_id,
-          name: response_lid.querySelector("mattext").textContent,
+          name: getOptionalTextContent(response_lid, "mattext"),
           responses: Array.from(
             response_lid.querySelectorAll("response_label")
           ).map(response => {
             let response_id = response.getAttribute("ident");
             return {
               id: response_id,
-              text: response.querySelector("mattext").textContent,
+              text: getOptionalTextContent(response, "mattext"),
               valid:
                 response_id in responses &&
                 responses[response_id] === response_lid_id
