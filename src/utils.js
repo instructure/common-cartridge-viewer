@@ -204,7 +204,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
         .map(resource =>
           resource.querySelector('file[href*="non_cc_assessment"]')
         )
-        .filter(file => file.getAttribute("href").includes(identifier));
+        .filter(file => file && file.getAttribute("href").includes(identifier));
 
       canvasFile &&
         resource
