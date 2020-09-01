@@ -265,11 +265,19 @@ export default class Resource extends Component {
     } else if (components[type] != null) {
       componentToRender = components[type];
     } else {
+      const expanded = this.props.isCartridgeRemotelyExpanded;
+      let filePath = undefined;
+      if (expanded) {
+        const resource = this.props.resourceMap.get(this.props.identifier);
+        filePath = `${this.props.basepath}/${getResourceHref(resource)}`;
+      }
       componentToRender = (
         <Billboard
           hero={size => <IconDownload size={size} />}
           message={`Download ${filename}`}
-          onClick={this.handleDownload}
+          elementRef={el => el && el.setAttribute("target", "_blank")}
+          href={filePath}
+          onClick={!expanded && this.handleDownload}
           size="medium"
         />
       );
