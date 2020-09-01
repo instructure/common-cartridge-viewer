@@ -55,16 +55,8 @@ export default class Resource extends Component {
     }
   };
 
-  handleDownload = async () => {
-    const resource = this.props.resourceMap.get(this.props.identifier);
-    const path = getResourceHref(resource);
-    saveAs(
-      this.props.isCartridgeRemotelyExpanded
-        ? `${this.props.basepath}/${path}`
-        : await this.props.getBlobByPath(path),
-      basename(path)
-    );
-  };
+  handleDownload = async path =>
+    saveAs(await this.props.getBlobByPath(path), basename(path));
 
   componentWillUnmount() {
     document.body.removeEventListener("keydown", this.handleKeyDown);
@@ -266,10 +258,11 @@ export default class Resource extends Component {
       componentToRender = components[type];
     } else {
       const expanded = this.props.isCartridgeRemotelyExpanded;
+      const resource = this.props.resourceMap.get(this.props.identifier);
+      const path = getResourceHref(resource);
       let filePath = undefined;
       if (expanded) {
-        const resource = this.props.resourceMap.get(this.props.identifier);
-        filePath = `${this.props.basepath}/${getResourceHref(resource)}`;
+        filePath = `${this.props.basepath}/${path}`;
       }
       componentToRender = (
         <Billboard
@@ -277,7 +270,7 @@ export default class Resource extends Component {
           message={`Download ${filename}`}
           elementRef={el => el && el.setAttribute("target", "_blank")}
           href={filePath}
-          onClick={!expanded && this.handleDownload}
+          onClick={expanded ? undefined : () => this.handleDownload(path)}
           size="medium"
         />
       );
