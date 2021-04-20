@@ -3,7 +3,11 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconDiscussion";
 import RichContent from "./RichContent";
 import { basename } from "path";
-import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
+import {
+  CC_FILE_PREFIX,
+  CC_FILE_PREFIX_DECODED,
+  CC_FILE_PREFIX_OLD
+} from "./constants";
 import { Trans } from "@lingui/macro";
 import { getOptionalTextContent } from "./utils";
 
@@ -24,6 +28,7 @@ export default class Discussion extends Component {
         encodeURIComponent(node.getAttribute("href"))
           .replace(CC_FILE_PREFIX_OLD, "web_resources")
           .replace(CC_FILE_PREFIX, "web_resources")
+          .replace(CC_FILE_PREFIX_DECODED, "web_resources")
       )
     );
 

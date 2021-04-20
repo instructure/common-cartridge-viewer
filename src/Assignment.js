@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { CC_FILE_PREFIX, CC_FILE_PREFIX_OLD } from "./constants";
+import {
+  CC_FILE_PREFIX,
+  CC_FILE_PREFIX_OLD,
+  CC_FILE_PREFIX_DECODED
+} from "./constants";
 import {
   generateFriendlyStringFromSubmissionFormats,
   getOptionalTextContent
@@ -24,6 +28,7 @@ export default class Assignment extends Component {
         encodeURIComponent(node.getAttribute("href"))
           .replace(CC_FILE_PREFIX_OLD, "web_resources")
           .replace(CC_FILE_PREFIX, "web_resources")
+          .replace(CC_FILE_PREFIX_DECODED, "web_resources")
       )
     );
 
