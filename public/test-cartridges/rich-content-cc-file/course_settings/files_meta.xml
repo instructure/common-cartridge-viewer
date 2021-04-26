@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fileMeta xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <folders>
+    <folder path="Quiz Files">
+      <hidden>true</hidden>
+    </folder>
+    <folder path="Quiz Files/5d381f40ff0b44d9b854fde6042ab8df_740">
+      <hidden>true</hidden>
+    </folder>
+    <folder path="Quiz Files/5d381f40ff0b44d9b854fde6042ab8df_740/course_settings">
+      <hidden>true</hidden>
+    </folder>
+  </folders>
+  <files>
+    <file identifier="i57f57a3b1e07229be43ec32017eda5de">
+      <usage_rights use_justification="own_copyright">
+        <license>private</license>
+      </usage_rights>
+    </file>
+  </files>
+</fileMeta>

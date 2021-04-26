@@ -1,5 +1,6 @@
 export const CC_FILE_PREFIX = "%24IMS-CC-FILEBASE%24";
 export const CC_FILE_PREFIX_OLD = "%24IMS_CC_FILEBASE%24"; // mistaken, replaced, but supported: https://github.com/instructure/canvas-lms/commit/d1b508676bf2713cdb09bed7145899728b102ac7
+export const CC_FILE_PREFIX_DECODED = "$IMS-CC-FILEBASE$";
 export const WIKI_REFERENCE = "%24WIKI_REFERENCE%24";
 export const CANVAS_OBJECT_REFERENCE = "%24CANVAS_OBJECT_REFERENCE%24";
 export const CANVAS_COURSE_REFERENCE = "%24CANVAS_COURSE_REFERENCE%24";
