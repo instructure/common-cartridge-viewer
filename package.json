@@ -14,7 +14,7 @@
     "@instructure/ui-themes": "^5.37.0",
     "@instructure/ui-tree-browser": "^5.37.0",
     "@lingui/react": "^2.7.2",
-    "dompurify": "^1.0.4",
+    "dompurify": "^2.0.17",
     "file-saver": "^2.0.0",
     "lodash": "^4.17.10",
     "pretty-bytes": "^5.1.0",
