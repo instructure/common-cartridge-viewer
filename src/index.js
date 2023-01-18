@@ -3,6 +3,9 @@ import "whatwg-fetch";
 
 import React from "react";
 import ReactDOM from "react-dom";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
+
 import theme from "@instructure/ui-themes/lib/canvas";
 import highContrastTheme from "@instructure/ui-themes/lib/canvas/high-contrast";
 import "./index.css";
@@ -36,6 +39,12 @@ if (highContrastEnabled) {
 } else {
   theme.use();
 }
+
+Sentry.init({
+  dsn: process.env.REACT_APP_SENTRY_DSN,
+  integrations: [new BrowserTracing()],
+  tracesSampleRate: 0.2
+});
 
 ReactDOM.render(
   <I18nProvider i18n={i18n}>

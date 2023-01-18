@@ -162,7 +162,6 @@ export default class App extends Component {
                     <ul style={{ marginBottom: "12px" }}>{cartridges}</ul>
                   </React.Fragment>
                 )}
-
                 <Router>
                   <CommonCartridge
                     manifest={this.props.manifest}
