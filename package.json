@@ -18,7 +18,7 @@
     "@sentry/tracing": "^7.31.1",
     "dompurify": "^1.0.4",
     "file-saver": "^2.0.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "pretty-bytes": "^5.1.0",
     "query-string": "5",
     "react": "^16.7.0",
