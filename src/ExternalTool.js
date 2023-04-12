@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import oauth from "oauth-sign";
 
-// import iFrameResize from "iframe-resizer/js/iframeResizer";
+import iFrameResize from "iframe-resizer/js/iframeResizer";
 
 export default class ExternalTool extends Component {
   componentDidMount() {
     document.getElementById("ltiForm" + this.props.itemId).submit();
-    // iFrameResize(
-    //   { log: true, checkOrigin: false },
-    //   "#ltiFrame" + this.props.itemId
-    // );
+    iFrameResize(
+      { log: true, checkOrigin: false },
+      "#ltiFrame" + this.props.itemId
+    );
   }
 
   ltiParams() {
