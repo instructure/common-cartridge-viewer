@@ -5,6 +5,9 @@ import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
 import RichContent from "./RichContent";
 import { Trans } from "@lingui/macro";
 import Text from "@instructure/ui-elements/es/components/Text";
+import createDOMPurify from "dompurify";
+import ExternalTool from "./ExternalTool";
+const DOMPurify = createDOMPurify(window);
 
 export default class AssignmentBody extends PureComponent {
   getRubricRatingsColSpan = () => {
@@ -15,6 +18,19 @@ export default class AssignmentBody extends PureComponent {
     });
 
     return colSpan;
+  };
+
+  getLtiExternalToolUrl = () => {
+    const fragment = DOMPurify.sanitize(this.props.descriptionHtml, {
+      ADD_TAGS: ["external_tool_url"],
+      RETURN_DOM_FRAGMENT: true,
+      RETURN_DOM_IMPORT: true
+    });
+
+    const externalToolUrl = fragment.querySelector("external_tool_url");
+    if (externalToolUrl) {
+      return externalToolUrl.textContent;
+    }
   };
 
   render() {
@@ -64,6 +80,12 @@ export default class AssignmentBody extends PureComponent {
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
             />
           )}
+
+        {this.getLtiExternalToolUrl() && (
+          <React.Fragment>
+            <ExternalTool launchUrl={this.getLtiExternalToolUrl()} />
+          </React.Fragment>
+        )}
 
         {this.props.attachments && this.props.attachments.length > 0 && (
           <React.Fragment>
