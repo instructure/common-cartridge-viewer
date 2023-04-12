@@ -32,7 +32,7 @@ const highContrastEnabled =
 
 if (highContrastEnabled) {
   highContrastTheme.use();
-  import("./high-contrast.css");
+  // import("./high-contrast.css");
 } else {
   theme.use();
 }
