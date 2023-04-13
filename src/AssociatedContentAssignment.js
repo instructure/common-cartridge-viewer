@@ -48,11 +48,7 @@ export default class AssociatedContentAssignment extends Component {
       );
     const descriptionHtml = doc.querySelector("body").innerHTML;
 
-    const isExternalTool = !!this.state.externalToolNode;
-
-    return isExternalTool ? (
-      PreviewUnavailable()
-    ) : (
+    return (
       <AssignmentBody
         title={title}
         descriptionHtml={descriptionHtml}

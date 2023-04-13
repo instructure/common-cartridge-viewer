@@ -25,6 +25,7 @@ import { Trans } from "@lingui/macro";
 import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 import PreviewUnavailable from "./PreviewUnavailable";
+import ExternalToolResource from "./ExternalToolResource";
 
 export default class Resource extends Component {
   constructor(props) {
@@ -188,6 +189,17 @@ export default class Resource extends Component {
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
               contextTitle={this.props.contextTitle}
             />
+          )}
+          src={this.props.src}
+          type="text/html"
+        />
+      ),
+      [resourceTypes.BASIC_LTI]: (
+        <EntryDocument
+          getTextByPath={this.props.getTextByPath}
+          href={href}
+          render={doc => (
+            <ExternalToolResource {...this.props} resource={resource} />
           )}
           src={this.props.src}
           type="text/html"
