@@ -29,16 +29,7 @@ export default class ModulesList extends Component {
             return (
               <li key={index} className="ExpandCollapseList-item">
                 <div className="ExpandCollapseList-item-inner">
-                  <Link
-                    as={NavLink}
-                    to={{
-                      pathname: item.isModuleItem
-                        ? `module-items/${item.identifierref}`
-                        : `resources/${item.identifierref}`
-                    }}
-                  >
-                    <h3>{item.title}</h3>
-                  </Link>
+                  {this.renderHeading(item)}
                 </div>
               </li>
             );
@@ -168,8 +159,6 @@ export default class ModulesList extends Component {
                   identifier={item.identifierref}
                   isModuleItem={true}
                 />
-
-                {/*<ExternalTool launchUrl={item.href} itemId={item.identifier} />*/}
               </Fragment>
             );
           }
@@ -213,5 +202,24 @@ export default class ModulesList extends Component {
     );
 
     return <ul className="ModuleList">{moduleComponents}</ul>;
+  }
+
+  renderHeading(item) {
+    if (item.identifierref !== undefined) {
+      return (
+        <Link
+          as={NavLink}
+          to={{
+            pathname: item.isModuleItem
+              ? `module-items/${item.identifierref}`
+              : `resources/${item.identifierref}`
+          }}
+        >
+          <h3>{item.title}</h3>
+        </Link>
+      );
+    } else {
+      return <h3>{item.title}</h3>;
+    }
   }
 }
