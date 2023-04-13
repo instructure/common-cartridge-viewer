@@ -20,7 +20,8 @@ export const resourceTypes = {
   EXTERNAL_TOOL: "external_tool",
   QUESTION_BANK: "imsqti_xmlv1p2/imscc_xmlv1p1/question-bank",
   WEB_CONTENT: "webcontent",
-  WEB_LINK: "imswl_xmlv1p1"
+  WEB_LINK: "imswl_xmlv1p1",
+  BASIC_LTI: "imsbasiclti_xmlv1p3"
 };
 
 export const questionTypes = {

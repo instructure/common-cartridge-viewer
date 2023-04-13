@@ -57,9 +57,7 @@ export default class Assignment extends Component {
         ? parseFloat(gradableNode.getAttribute("points_possible"))
         : 0;
 
-    return !!externalToolNode ? (
-      PreviewUnavailable()
-    ) : (
+    return (
       <AssignmentBody
         title={title}
         descriptionHtml={descriptionHtml}
