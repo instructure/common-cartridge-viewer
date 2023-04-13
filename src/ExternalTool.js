@@ -64,6 +64,7 @@ export default class ExternalTool extends Component {
           src="about:blank"
           width="100%"
           height="500px"
+          frameBorder="0"
           name={"ltiFrame" + this.props.itemId}
           id={"ltiFrame" + this.props.itemId}
           title="LTI Frame"
