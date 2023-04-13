@@ -71,6 +71,7 @@ export default class Assignment extends Component {
         resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
         attachments={attachments}
         rubric={rubric}
+        contextTitle={this.props.contextTitle}
       />
     );
   }

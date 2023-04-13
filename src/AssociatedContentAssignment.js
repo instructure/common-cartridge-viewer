@@ -61,6 +61,7 @@ export default class AssociatedContentAssignment extends Component {
         getTextByPath={this.props.getTextByPath}
         getUrlForPath={this.props.getUrlForPath}
         resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+        contextTitle={this.props.contextTitle}
       />
     );
   }

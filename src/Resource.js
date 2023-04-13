@@ -168,6 +168,7 @@ export default class Resource extends Component {
               doc={doc}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
               rubrics={this.props.rubrics || false}
+              contextTitle={this.props.contextTitle}
             />
           )}
           src={this.props.src}
@@ -185,6 +186,7 @@ export default class Resource extends Component {
               doc={doc}
               identifier={this.props.identifier}
               resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+              contextTitle={this.props.contextTitle}
             />
           )}
           src={this.props.src}

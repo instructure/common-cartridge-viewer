@@ -29,7 +29,7 @@ export default class ExternalTool extends Component {
       oauth_version: "1.0",
       // Strongmind Custom Parameters
       user_id: 1,
-      context_title: "",
+      context_title: this.props.contextTitle || "Missing Context Title",
       resource_link_title:
         this.props.resourceLinkTitle || "Missing Resource Link Title",
       lis_person_name_family: "FamilyName",
