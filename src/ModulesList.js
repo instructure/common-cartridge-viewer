@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Link from "@instructure/ui-elements/lib/components/Link";
@@ -16,6 +16,7 @@ import { Trans } from "@lingui/macro";
 import { getAssignmentSettingsHref } from "./utils.js";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
 import ExternalToolListItem from "./ExternalToolListItem";
+import ExternalTool from "./ExternalTool";
 
 export default class ModulesList extends Component {
   render() {
@@ -28,7 +29,16 @@ export default class ModulesList extends Component {
             return (
               <li key={index} className="ExpandCollapseList-item">
                 <div className="ExpandCollapseList-item-inner">
-                  <h3>{item.title}</h3>
+                  <Link
+                    as={NavLink}
+                    to={{
+                      pathname: item.isModuleItem
+                        ? `module-items/${item.identifierref}`
+                        : `resources/${item.identifierref}`
+                    }}
+                  >
+                    <h3>{item.title}</h3>
+                  </Link>
                 </div>
               </li>
             );
@@ -145,14 +155,22 @@ export default class ModulesList extends Component {
             );
           }
 
-          if (item.type === resourceTypes.EXTERNAL_TOOL) {
+          if (
+            item.type === resourceTypes.EXTERNAL_TOOL ||
+            item.type === resourceTypes.BASIC_LTI
+          ) {
+            // debugger;
             return (
-              <ExternalToolListItem
-                key={index}
-                item={item}
-                identifier={item.identifierref}
-                isModuleItem={true}
-              />
+              <Fragment>
+                <ExternalToolListItem
+                  key={index}
+                  item={item}
+                  identifier={item.identifierref}
+                  isModuleItem={true}
+                />
+
+                {/*<ExternalTool launchUrl={item.href} itemId={item.identifier} />*/}
+              </Fragment>
             );
           }
 
