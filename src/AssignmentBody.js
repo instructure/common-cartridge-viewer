@@ -83,7 +83,10 @@ export default class AssignmentBody extends PureComponent {
 
         {this.getLtiExternalToolUrl() && (
           <React.Fragment>
-            <ExternalTool launchUrl={this.getLtiExternalToolUrl()} />
+            <ExternalTool
+              launchUrl={this.getLtiExternalToolUrl()}
+              resourceLinkTitle={this.props.title}
+            />
           </React.Fragment>
         )}
 
