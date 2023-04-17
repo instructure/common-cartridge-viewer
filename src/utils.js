@@ -206,8 +206,6 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
         node.getAttribute("href").startsWith("course_settings/syllabus")
     );
 
-  console.log("syllabusResources: ", syllabusResources);
-
   const assessmentResources = resources
     .filter(is(resourceTypes.ASSESSMENT_CONTENT))
     .filter(node => node.querySelector("file"));
@@ -268,9 +266,9 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     discussionResources,
     assessmentResources,
     assignmentResources,
-    associatedContentAssignmentResources,
-    syllabusResources
+    associatedContentAssignmentResources
   );
+
   const modules = Array.from(
     manifest.querySelectorAll("organizations > organization > item > item")
   )
@@ -342,7 +340,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
       return { title, identifier: moduleIdentifier, items };
     })
     .filter(module => module != null);
-  console.log("modules ", modules);
+
   const syllabusModuleItem = {
     dependencyHrefs: [],
     href: "course_settings/syllabus",
@@ -351,17 +349,18 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     title: i18n._(t`Syllabus`),
     type: resourceTypes.WEB_CONTENT
   };
+
   const syllabusModule = {
     identifier: "syllabus",
     items: [syllabusModuleItem],
     title: i18n._(t`Syllabus`)
   };
   modules.unshift(syllabusModule);
+
   const moduleItems = modules.reduce((state, module) => {
     return state.concat(module.items.filter(item => item.href != null));
   }, []);
-  console.log("syllabusModuleItem", syllabusModuleItem);
-  console.log("moduleItems", moduleItems);
+
   const externalViewersFileNode = manifest.querySelector(
     `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
   );
@@ -373,7 +372,6 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     assignmentResources,
     associatedContentAssignmentHrefsSet,
     associatedContentAssignmentResources,
-    syllabusResources,
     discussionResources,
     fileResources,
     hasExternalViewers,
