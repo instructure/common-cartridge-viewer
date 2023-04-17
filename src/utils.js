@@ -146,80 +146,6 @@ function addSyllabusToModules(syllabusResources, modules) {
   }
 }
 
-function getModules(manifest, moduleMeta) {
-  return Array.from(
-    manifest.querySelectorAll("organizations > organization > item > item")
-  )
-    .filter(item => item.querySelector("title"))
-    .map(item => {
-      const title = getOptionalTextContent(item, "title");
-      const moduleIdentifier = item.getAttribute("identifier");
-      const itemNodes = Array.from(item.querySelectorAll("item"));
-      const items = itemNodes.map(item => {
-        const identifier = item.getAttribute("identifier");
-        const title = item.querySelector("title")
-          ? item.querySelector("title").textContent
-          : i18n._(t`Untitled`);
-        const identifierref = item.getAttribute("identifierref");
-        if (identifierref == null) {
-          return { title };
-        }
-        const resource = manifest.querySelector(
-          `resource[identifier="${identifierref}"]`
-        );
-        if (resource == null) {
-          if (moduleMeta) {
-            const moduleNode = moduleMeta.querySelector(
-              `modules > module[identifier="${moduleIdentifier}"]`
-            );
-            const moduleMetaItem = Array.from(
-              moduleNode.querySelectorAll("items > item")
-            ).find(item => item.getAttribute("identifier") === identifierref);
-            const moduleMetaItemContentType = moduleMetaItem
-              ? $text(moduleMetaItem, "content_type")
-              : "";
-            const isExternalTool =
-              moduleMetaItemContentType ===
-              moduleMetaContentTypes.CONTENT_EXTERNAL_TOOL;
-            if (isExternalTool) {
-              return {
-                title,
-                type: resourceTypes.EXTERNAL_TOOL,
-                href: `#/resources/${identifierref}`,
-                identifierref
-              };
-            }
-          }
-          return {
-            title
-          };
-        }
-        const type = resource.getAttribute("type");
-        const href = getResourceHref(resource);
-        const dependencyHrefs = Array.from(
-          resource.querySelectorAll("dependency")
-        ).map(node => {
-          const identifier = node.getAttribute("identifierref");
-          const resource = manifest.querySelector(
-            `resource[identifier="${identifier}"]`
-          );
-          return getResourceHref(resource);
-        });
-        return {
-          dependencyHrefs,
-          href,
-          identifier,
-          identifierref,
-          title,
-          type
-        };
-      });
-
-      return { title, identifier: moduleIdentifier, items };
-    })
-    .filter(module => module != null);
-}
-
 export function parseManifestDocument(manifest, { moduleMeta }) {
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
@@ -228,6 +154,75 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     manifest,
     "metadata > lom > rights > description"
   );
+  const {
+    resources,
+    resourceMap,
+    resourceIdsByHrefMap,
+    otherResources,
+    discussionResources,
+    pageResources,
+    fileResources,
+    syllabusResources,
+    assessmentResources,
+    assignmentResources,
+    associatedContentAssignmentResources,
+    associatedContentAssignmentHrefsSet
+  } = getResourcesFromManifest(manifest);
+
+  const showcaseResources = [].concat(
+    pageResources,
+    discussionResources,
+    assessmentResources,
+    assignmentResources,
+    associatedContentAssignmentResources
+  );
+
+  const modules = getModules(manifest, moduleMeta);
+
+  addSyllabusToModules(syllabusResources, modules);
+
+  const moduleItems = modules.reduce((state, module) => {
+    return state.concat(module.items.filter(item => item.href != null));
+  }, []);
+
+  const externalViewersFileNode = manifest.querySelector(
+    `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
+  );
+  const hasExternalViewers =
+    externalViewersFileNode && externalViewersFileNode.getAttribute("href");
+
+  return {
+    assessmentResources,
+    assignmentResources,
+    associatedContentAssignmentHrefsSet,
+    associatedContentAssignmentResources,
+    discussionResources,
+    fileResources,
+    hasExternalViewers,
+    moduleItems,
+    modules,
+    otherResources,
+    pageResources,
+    resourceIdsByHrefMap,
+    resourceMap,
+    resources,
+    rightsDescription,
+    schema,
+    schemaVersion,
+    showcaseResources,
+    title
+  };
+}
+
+function is(type) {
+  return resource => resource.getAttribute("type") === type;
+}
+
+function isNot(type) {
+  return resource => resource.getAttribute("type") !== type;
+}
+
+function getResourcesFromManifest(manifest) {
   const resources = Array.from(
     manifest.querySelectorAll("resources > resource")
   );
@@ -350,58 +345,94 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
         .getAttribute("href")
     )
   );
-
-  const showcaseResources = [].concat(
-    pageResources,
-    discussionResources,
-    assessmentResources,
-    assignmentResources,
-    associatedContentAssignmentResources
-  );
-
-  const modules = getModules(manifest, moduleMeta);
-
-  addSyllabusToModules(syllabusResources, modules);
-
-  const moduleItems = modules.reduce((state, module) => {
-    return state.concat(module.items.filter(item => item.href != null));
-  }, []);
-
-  const externalViewersFileNode = manifest.querySelector(
-    `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
-  );
-  const hasExternalViewers =
-    externalViewersFileNode && externalViewersFileNode.getAttribute("href");
-
   return {
+    resources,
+    resourceMap,
+    resourceIdsByHrefMap,
+    otherResources,
+    discussionResources,
+    pageResources,
+    fileResources,
+    syllabusResources,
     assessmentResources,
     assignmentResources,
-    associatedContentAssignmentHrefsSet,
     associatedContentAssignmentResources,
-    discussionResources,
-    fileResources,
-    hasExternalViewers,
-    moduleItems,
-    modules,
-    otherResources,
-    pageResources,
-    resourceIdsByHrefMap,
-    resourceMap,
-    resources,
-    rightsDescription,
-    schema,
-    schemaVersion,
-    showcaseResources,
-    title
+    associatedContentAssignmentHrefsSet
   };
 }
 
-function is(type) {
-  return resource => resource.getAttribute("type") === type;
-}
+function getModules(manifest, moduleMeta) {
+  return Array.from(
+    manifest.querySelectorAll("organizations > organization > item > item")
+  )
+    .filter(item => item.querySelector("title"))
+    .map(item => {
+      const title = getOptionalTextContent(item, "title");
+      const moduleIdentifier = item.getAttribute("identifier");
+      const itemNodes = Array.from(item.querySelectorAll("item"));
+      const items = itemNodes.map(item => {
+        const identifier = item.getAttribute("identifier");
+        const title = item.querySelector("title")
+          ? item.querySelector("title").textContent
+          : i18n._(t`Untitled`);
+        const identifierref = item.getAttribute("identifierref");
+        if (identifierref == null) {
+          return { title };
+        }
+        const resource = manifest.querySelector(
+          `resource[identifier="${identifierref}"]`
+        );
+        if (resource == null) {
+          if (moduleMeta) {
+            const moduleNode = moduleMeta.querySelector(
+              `modules > module[identifier="${moduleIdentifier}"]`
+            );
+            const moduleMetaItem = Array.from(
+              moduleNode.querySelectorAll("items > item")
+            ).find(item => item.getAttribute("identifier") === identifierref);
+            const moduleMetaItemContentType = moduleMetaItem
+              ? $text(moduleMetaItem, "content_type")
+              : "";
+            const isExternalTool =
+              moduleMetaItemContentType ===
+              moduleMetaContentTypes.CONTENT_EXTERNAL_TOOL;
+            if (isExternalTool) {
+              return {
+                title,
+                type: resourceTypes.EXTERNAL_TOOL,
+                href: `#/resources/${identifierref}`,
+                identifierref
+              };
+            }
+          }
+          return {
+            title
+          };
+        }
+        const type = resource.getAttribute("type");
+        const href = getResourceHref(resource);
+        const dependencyHrefs = Array.from(
+          resource.querySelectorAll("dependency")
+        ).map(node => {
+          const identifier = node.getAttribute("identifierref");
+          const resource = manifest.querySelector(
+            `resource[identifier="${identifier}"]`
+          );
+          return getResourceHref(resource);
+        });
+        return {
+          dependencyHrefs,
+          href,
+          identifier,
+          identifierref,
+          title,
+          type
+        };
+      });
 
-function isNot(type) {
-  return resource => resource.getAttribute("type") !== type;
+      return { title, identifier: moduleIdentifier, items };
+    })
+    .filter(module => module != null);
 }
 
 export function generateFriendlyStringFromSubmissionFormats(submissionType) {
