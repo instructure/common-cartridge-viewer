@@ -248,31 +248,9 @@ function getResourcesFromManifest(manifest) {
   const discussionResources = resources
     .filter(is(resourceTypes.DISCUSSION_TOPIC))
     .filter(node => node.querySelector("file"));
-  const pageResources = resources
-    .filter(is(resourceTypes.WEB_CONTENT))
-    .filter(node => {
-      const isFallback = node.getAttribute("identifier").endsWith("_fallback");
-      if (isFallback) {
-        const identifier = node
-          .getAttribute("identifier")
-          .split("_fallback")[0];
-        const resource = manifest.querySelector(
-          `resource[identifier="${identifier}"]`
-        );
-        if (resource != null) {
-          return false;
-        }
-      }
-      return true;
-    })
-    .filter(node => node.querySelector("file"))
-    // needs filter to filter out dependencies
-    .filter(node => {
-      const href = node.getAttribute("href");
-      return (
-        typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
-      );
-    });
+
+  const pageResources = getPageResources();
+
   const fileResources = resources
     .filter(is(resourceTypes.WEB_CONTENT))
     .filter(node => node.querySelector("file"))
@@ -359,6 +337,38 @@ function getResourcesFromManifest(manifest) {
     associatedContentAssignmentResources,
     associatedContentAssignmentHrefsSet
   };
+
+  function getPageResources() {
+    return (
+      resources
+        .filter(is(resourceTypes.WEB_CONTENT))
+        .filter(node => {
+          const isFallback = node
+            .getAttribute("identifier")
+            .endsWith("_fallback");
+          if (isFallback) {
+            const identifier = node
+              .getAttribute("identifier")
+              .split("_fallback")[0];
+            const resource = manifest.querySelector(
+              `resource[identifier="${identifier}"]`
+            );
+            if (resource != null) {
+              return false;
+            }
+          }
+          return true;
+        })
+        .filter(node => node.querySelector("file"))
+        // needs filter to filter out dependencies
+        .filter(node => {
+          const href = node.getAttribute("href");
+          return (
+            typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
+          );
+        })
+    );
+  }
 }
 
 function getModules(manifest, moduleMeta) {
