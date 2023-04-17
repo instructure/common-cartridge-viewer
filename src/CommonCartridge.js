@@ -337,7 +337,6 @@ export default class CommonCartridge extends Component {
         result.resourceIdsByHrefMap
       );
     }
-    console.log("result", result);
     const rubrics = await this.getRubrics();
 
     const showcaseSingleResource =
