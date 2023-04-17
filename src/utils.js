@@ -134,6 +134,75 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     manifest,
     "metadata > lom > rights > description"
   );
+  const {
+    resources,
+    resourceMap,
+    resourceIdsByHrefMap,
+    otherResources,
+    discussionResources,
+    pageResources,
+    fileResources,
+    syllabusResources,
+    assessmentResources,
+    assignmentResources,
+    associatedContentAssignmentResources,
+    associatedContentAssignmentHrefsSet
+  } = getResourcesFromManifest(manifest);
+
+  const showcaseResources = [].concat(
+    pageResources,
+    discussionResources,
+    assessmentResources,
+    assignmentResources,
+    associatedContentAssignmentResources
+  );
+
+  const modules = getModules(manifest, moduleMeta);
+
+  addSyllabusToModules(syllabusResources, modules);
+
+  const moduleItems = modules.reduce((state, module) => {
+    return state.concat(module.items.filter(item => item.href != null));
+  }, []);
+
+  const externalViewersFileNode = manifest.querySelector(
+    `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
+  );
+  const hasExternalViewers =
+    externalViewersFileNode && externalViewersFileNode.getAttribute("href");
+
+  return {
+    assessmentResources,
+    assignmentResources,
+    associatedContentAssignmentHrefsSet,
+    associatedContentAssignmentResources,
+    discussionResources,
+    fileResources,
+    hasExternalViewers,
+    moduleItems,
+    modules,
+    otherResources,
+    pageResources,
+    resourceIdsByHrefMap,
+    resourceMap,
+    resources,
+    rightsDescription,
+    schema,
+    schemaVersion,
+    showcaseResources,
+    title
+  };
+}
+
+function is(type) {
+  return resource => resource.getAttribute("type") === type;
+}
+
+function isNot(type) {
+  return resource => resource.getAttribute("type") !== type;
+}
+
+function getResourcesFromManifest(manifest) {
   const resources = Array.from(
     manifest.querySelectorAll("resources > resource")
   );
@@ -159,31 +228,9 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
   const discussionResources = resources
     .filter(is(resourceTypes.DISCUSSION_TOPIC))
     .filter(node => node.querySelector("file"));
-  const pageResources = resources
-    .filter(is(resourceTypes.WEB_CONTENT))
-    .filter(node => {
-      const isFallback = node.getAttribute("identifier").endsWith("_fallback");
-      if (isFallback) {
-        const identifier = node
-          .getAttribute("identifier")
-          .split("_fallback")[0];
-        const resource = manifest.querySelector(
-          `resource[identifier="${identifier}"]`
-        );
-        if (resource != null) {
-          return false;
-        }
-      }
-      return true;
-    })
-    .filter(node => node.querySelector("file"))
-    // needs filter to filter out dependencies
-    .filter(node => {
-      const href = node.getAttribute("href");
-      return (
-        typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
-      );
-    });
+
+  const pageResources = getPageResources();
+
   const fileResources = resources
     .filter(is(resourceTypes.WEB_CONTENT))
     .filter(node => node.querySelector("file"))
@@ -256,16 +303,56 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
         .getAttribute("href")
     )
   );
-
-  const showcaseResources = [].concat(
-    pageResources,
+  return {
+    resources,
+    resourceMap,
+    resourceIdsByHrefMap,
+    otherResources,
     discussionResources,
+    pageResources,
+    fileResources,
+    syllabusResources,
     assessmentResources,
     assignmentResources,
-    associatedContentAssignmentResources
-  );
+    associatedContentAssignmentResources,
+    associatedContentAssignmentHrefsSet
+  };
 
-  const modules = Array.from(
+  function getPageResources() {
+    return (
+      resources
+        .filter(is(resourceTypes.WEB_CONTENT))
+        .filter(node => {
+          const isFallback = node
+            .getAttribute("identifier")
+            .endsWith("_fallback");
+          if (isFallback) {
+            const identifier = node
+              .getAttribute("identifier")
+              .split("_fallback")[0];
+            const resource = manifest.querySelector(
+              `resource[identifier="${identifier}"]`
+            );
+            if (resource != null) {
+              return false;
+            }
+          }
+          return true;
+        })
+        .filter(node => node.querySelector("file"))
+        // needs filter to filter out dependencies
+        .filter(node => {
+          const href = node.getAttribute("href");
+          return (
+            typeof href === "string" && href.includes(WIKI_CONTENT_HREF_PREFIX)
+          );
+        })
+    );
+  }
+}
+
+function getModules(manifest, moduleMeta) {
+  return Array.from(
     manifest.querySelectorAll("organizations > organization > item > item")
   )
     .filter(item => item.querySelector("title"))
@@ -336,62 +423,26 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
       return { title, identifier: moduleIdentifier, items };
     })
     .filter(module => module != null);
-
-  const syllabusModuleItem = {
-    dependencyHrefs: [],
-    href: "course_settings/syllabus",
-    identifier: syllabusResources[0].getAttribute("identifier"),
-    identifierref: syllabusResources[0].getAttribute("identifier"),
-    title: i18n._(t`Syllabus`),
-    type: resourceTypes.WEB_CONTENT
-  };
-
-  const syllabusModule = {
-    identifier: "syllabus",
-    items: [syllabusModuleItem],
-    title: i18n._(t`Syllabus`)
-  };
-  modules.unshift(syllabusModule);
-
-  const moduleItems = modules.reduce((state, module) => {
-    return state.concat(module.items.filter(item => item.href != null));
-  }, []);
-
-  const externalViewersFileNode = manifest.querySelector(
-    `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
-  );
-  const hasExternalViewers =
-    externalViewersFileNode && externalViewersFileNode.getAttribute("href");
-
-  return {
-    assessmentResources,
-    assignmentResources,
-    associatedContentAssignmentHrefsSet,
-    associatedContentAssignmentResources,
-    discussionResources,
-    fileResources,
-    hasExternalViewers,
-    moduleItems,
-    modules,
-    otherResources,
-    pageResources,
-    resourceIdsByHrefMap,
-    resourceMap,
-    resources,
-    rightsDescription,
-    schema,
-    schemaVersion,
-    showcaseResources,
-    title
-  };
 }
 
-function is(type) {
-  return resource => resource.getAttribute("type") === type;
-}
+function addSyllabusToModules(syllabusResources, modules) {
+  if (syllabusResources.length > 0) {
+    const syllabusModuleItem = {
+      dependencyHrefs: [],
+      href: "course_settings/syllabus",
+      identifier: syllabusResources[0].getAttribute("identifier"),
+      identifierref: syllabusResources[0].getAttribute("identifier"),
+      title: i18n._(t`Syllabus`),
+      type: resourceTypes.WEB_CONTENT
+    };
 
-function isNot(type) {
-  return resource => resource.getAttribute("type") !== type;
+    const syllabusModule = {
+      identifier: "syllabus",
+      items: [syllabusModuleItem],
+      title: i18n._(t`Syllabus`)
+    };
+    modules.unshift(syllabusModule);
+  }
 }
 
 export function generateFriendlyStringFromSubmissionFormats(submissionType) {
