@@ -107,7 +107,8 @@ export const moduleMetaContentTypes = {
   DISCUSSION_TOPIC: "DiscussionTopic",
   CONTEXT_MODULE_SUBHEADER: "ContextModuleSubHeade",
   EXTERNAL_URL: "ExternalUrl",
-  CONTENT_EXTERNAL_TOOL: "ContextExternalTool"
+  CONTENT_EXTERNAL_TOOL: "ContextExternalTool",
+  SYLLABUS: "Syllabus"
 };
 
 export const resourceTypeToHref = {

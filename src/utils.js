@@ -127,6 +127,7 @@ export function parseXml(xml) {
 }
 
 export function parseManifestDocument(manifest, { moduleMeta }) {
+  console.log("Manifest: ", manifest);
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
   const schemaVersion = $text(manifest, "metadata > schemaversion");
@@ -136,6 +137,10 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
   );
   const resources = Array.from(
     manifest.querySelectorAll("resources > resource")
+  );
+  console.log(
+    "resources of type WEB_CONTENT:",
+    resources.filter(is(resourceTypes.WEB_CONTENT))
   );
   const resourceMap = new Map(
     resources.map(resource => [resource.getAttribute("identifier"), resource])
@@ -191,6 +196,17 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
         typeof node.getAttribute("href") === "string" &&
         node.getAttribute("href").startsWith("web_resources/")
     );
+
+  const syllabusResources = resources
+    .filter(is(resourceTypes.WEB_CONTENT))
+    .filter(node => node.querySelector("file"))
+    .filter(
+      node =>
+        typeof node.getAttribute("href") === "string" &&
+        node.getAttribute("href").startsWith("course_settings/syllabus")
+    );
+
+  console.log("syllabusResources: ", syllabusResources);
 
   const assessmentResources = resources
     .filter(is(resourceTypes.ASSESSMENT_CONTENT))
