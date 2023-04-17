@@ -127,6 +127,7 @@ export function parseXml(xml) {
 }
 
 export function parseManifestDocument(manifest, { moduleMeta }) {
+  console.log("Manifest: ", manifest);
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
   const schemaVersion = $text(manifest, "metadata > schemaversion");
@@ -136,6 +137,10 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
   );
   const resources = Array.from(
     manifest.querySelectorAll("resources > resource")
+  );
+  console.log(
+    "resources of type WEB_CONTENT:",
+    resources.filter(is(resourceTypes.WEB_CONTENT))
   );
   const resourceMap = new Map(
     resources.map(resource => [resource.getAttribute("identifier"), resource])
@@ -190,6 +195,15 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
       node =>
         typeof node.getAttribute("href") === "string" &&
         node.getAttribute("href").startsWith("web_resources/")
+    );
+
+  const syllabusResources = resources
+    .filter(is(resourceTypes.WEB_CONTENT))
+    .filter(node => node.querySelector("file"))
+    .filter(
+      node =>
+        typeof node.getAttribute("href") === "string" &&
+        node.getAttribute("href").startsWith("course_settings/syllabus")
     );
 
   const assessmentResources = resources
@@ -254,6 +268,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     assignmentResources,
     associatedContentAssignmentResources
   );
+
   const modules = Array.from(
     manifest.querySelectorAll("organizations > organization > item > item")
   )
@@ -326,9 +341,26 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
     })
     .filter(module => module != null);
 
+  const syllabusModuleItem = {
+    dependencyHrefs: [],
+    href: "course_settings/syllabus",
+    identifier: syllabusResources[0].getAttribute("identifier"),
+    identifierref: syllabusResources[0].getAttribute("identifier"),
+    title: i18n._(t`Syllabus`),
+    type: resourceTypes.WEB_CONTENT
+  };
+
+  const syllabusModule = {
+    identifier: "syllabus",
+    items: [syllabusModuleItem],
+    title: i18n._(t`Syllabus`)
+  };
+  modules.unshift(syllabusModule);
+
   const moduleItems = modules.reduce((state, module) => {
     return state.concat(module.items.filter(item => item.href != null));
   }, []);
+
   const externalViewersFileNode = manifest.querySelector(
     `resource[href="course_settings/canvas_export.txt"] file[href="course_settings/external_viewers.xml"]`
   );
