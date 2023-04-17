@@ -126,26 +126,6 @@ export function parseXml(xml) {
   return parser.parseFromString(xml, "text/xml");
 }
 
-function addSyllabusToModules(syllabusResources, modules) {
-  if (syllabusResources.length > 0) {
-    const syllabusModuleItem = {
-      dependencyHrefs: [],
-      href: "course_settings/syllabus",
-      identifier: syllabusResources[0].getAttribute("identifier"),
-      identifierref: syllabusResources[0].getAttribute("identifier"),
-      title: i18n._(t`Syllabus`),
-      type: resourceTypes.WEB_CONTENT
-    };
-
-    const syllabusModule = {
-      identifier: "syllabus",
-      items: [syllabusModuleItem],
-      title: i18n._(t`Syllabus`)
-    };
-    modules.unshift(syllabusModule);
-  }
-}
-
 export function parseManifestDocument(manifest, { moduleMeta }) {
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
@@ -220,6 +200,26 @@ function is(type) {
 
 function isNot(type) {
   return resource => resource.getAttribute("type") !== type;
+}
+
+function addSyllabusToModules(syllabusResources, modules) {
+  if (syllabusResources.length > 0) {
+    const syllabusModuleItem = {
+      dependencyHrefs: [],
+      href: "course_settings/syllabus",
+      identifier: syllabusResources[0].getAttribute("identifier"),
+      identifierref: syllabusResources[0].getAttribute("identifier"),
+      title: i18n._(t`Syllabus`),
+      type: resourceTypes.WEB_CONTENT
+    };
+
+    const syllabusModule = {
+      identifier: "syllabus",
+      items: [syllabusModuleItem],
+      title: i18n._(t`Syllabus`)
+    };
+    modules.unshift(syllabusModule);
+  }
 }
 
 function getResourcesFromManifest(manifest) {
