@@ -202,26 +202,6 @@ function isNot(type) {
   return resource => resource.getAttribute("type") !== type;
 }
 
-function addSyllabusToModules(syllabusResources, modules) {
-  if (syllabusResources.length > 0) {
-    const syllabusModuleItem = {
-      dependencyHrefs: [],
-      href: "course_settings/syllabus",
-      identifier: syllabusResources[0].getAttribute("identifier"),
-      identifierref: syllabusResources[0].getAttribute("identifier"),
-      title: i18n._(t`Syllabus`),
-      type: resourceTypes.WEB_CONTENT
-    };
-
-    const syllabusModule = {
-      identifier: "syllabus",
-      items: [syllabusModuleItem],
-      title: i18n._(t`Syllabus`)
-    };
-    modules.unshift(syllabusModule);
-  }
-}
-
 function getResourcesFromManifest(manifest) {
   const resources = Array.from(
     manifest.querySelectorAll("resources > resource")
@@ -443,6 +423,26 @@ function getModules(manifest, moduleMeta) {
       return { title, identifier: moduleIdentifier, items };
     })
     .filter(module => module != null);
+}
+
+function addSyllabusToModules(syllabusResources, modules) {
+  if (syllabusResources.length > 0) {
+    const syllabusModuleItem = {
+      dependencyHrefs: [],
+      href: "course_settings/syllabus",
+      identifier: syllabusResources[0].getAttribute("identifier"),
+      identifierref: syllabusResources[0].getAttribute("identifier"),
+      title: i18n._(t`Syllabus`),
+      type: resourceTypes.WEB_CONTENT
+    };
+
+    const syllabusModule = {
+      identifier: "syllabus",
+      items: [syllabusModuleItem],
+      title: i18n._(t`Syllabus`)
+    };
+    modules.unshift(syllabusModule);
+  }
 }
 
 export function generateFriendlyStringFromSubmissionFormats(submissionType) {
