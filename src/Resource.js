@@ -105,6 +105,27 @@ export default class Resource extends Component {
     );
   };
 
+  renderPrintButton = withTooltip => {
+    let Tip = withTooltip ? Tooltip : React.Fragment;
+    return (
+      <div className="print-link">
+        <Tip variant="inverse" tip="Print PDF" placement="print">
+          <Button
+            to={{
+              pathname: "#"
+            }}
+            variant="ghost"
+            // as={RouterLink}
+            // innerRef={this.setPreviousButton}
+            // onClick={this.handlePreviousButtonPressed}
+          >
+            <Trans>Print</Trans>
+          </Button>
+        </Tip>
+      </div>
+    );
+  };
+
   renderNextButton = (nextItem, withTooltip) => {
     let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
@@ -330,6 +351,7 @@ export default class Resource extends Component {
         {this.props.isModuleItem &&
           previousItem &&
           this.renderPreviousButton(previousItem, withTooltip)}
+        {this.props.isModuleItem && this.renderPrintButton(withTooltip)}
         {this.props.isModuleItem &&
           nextItem &&
           this.renderNextButton(nextItem, withTooltip)}

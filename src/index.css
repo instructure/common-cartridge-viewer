@@ -258,13 +258,17 @@ td {
   display: grid;
   padding: 10px 0 30px 0;
   grid-template-columns: auto auto;
-  grid-template-areas: "prev next";
+  grid-template-areas: "prev print next";
   justify-content: space-between;
   align-content: space-between;
 }
 
 .previous-link {
   grid-area: prev;
+}
+
+.print-link {
+  grid-area: print;
 }
 
 .next-link {
