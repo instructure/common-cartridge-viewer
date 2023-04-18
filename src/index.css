@@ -258,7 +258,7 @@ td {
   display: grid;
   padding: 10px 0 30px 0;
   grid-template-columns: auto auto;
-  grid-template-areas: "prev print next";
+  grid-template-areas: "prev next";
   justify-content: space-between;
   align-content: space-between;
 }
@@ -268,7 +268,8 @@ td {
 }
 
 .print-link {
-  grid-area: print;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .next-link {
