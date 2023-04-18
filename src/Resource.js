@@ -110,17 +110,23 @@ export default class Resource extends Component {
     return (
       <div className="print-link">
         <Tip variant="inverse" tip="Print PDF" placement="print">
-          <Button
-            to={{
-              pathname: "#"
-            }}
-            variant="ghost"
-            // as={RouterLink}
-            // innerRef={this.setPreviousButton}
-            // onClick={this.handlePreviousButtonPressed}
-          >
-            <Trans>Print</Trans>
-          </Button>
+          <button type="button" className="sm-btn sm-btn-tertiary">
+            <i className="fa-light fa-file-pdf" />
+            <p>Print</p>
+          </button>
+          {/*<Button*/}
+          {/*  to={{*/}
+          {/*    pathname: "#"*/}
+          {/*  }}*/}
+          {/*  variant="ghost"*/}
+          {/*  // as={RouterLink}*/}
+          {/*  // innerRef={this.setPreviousButton}*/}
+          {/*  // onClick={this.handlePreviousButtonPressed}*/}
+          {/*>*/}
+          {/*  <i className="fa-regular fa-file-pdf"></i>*/}
+          {/*  <Trans>Print</Trans>*/}
+
+          {/*</Button>*/}
         </Tip>
       </div>
     );
@@ -351,7 +357,7 @@ export default class Resource extends Component {
         {this.props.isModuleItem &&
           previousItem &&
           this.renderPreviousButton(previousItem, withTooltip)}
-        {this.props.isModuleItem && this.renderPrintButton(withTooltip)}
+
         {this.props.isModuleItem &&
           nextItem &&
           this.renderNextButton(nextItem, withTooltip)}
@@ -360,6 +366,7 @@ export default class Resource extends Component {
 
     return (
       <React.Fragment>
+        {this.renderPrintButton(true)}
         {renderNextPrevButtons && nextPrevButtons(true)}
 
         <div tabIndex="0" aria-live="polite" style={{ clear: "both" }}>
