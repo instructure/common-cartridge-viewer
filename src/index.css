@@ -267,6 +267,11 @@ td {
   grid-area: prev;
 }
 
+.print-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .next-link {
   grid-area: next;
 }
