@@ -55,8 +55,28 @@ export default class Resource extends Component {
     }
   };
 
-  handleDownload = async path =>
+  handleDownload = async path => {
+    const blob = await this.props.getBlobByPath(path);
+    const bn = basename(path);
+    console.log({ path, blob, bn });
     saveAs(await this.props.getBlobByPath(path), basename(path));
+  };
+
+  triggerDownload = (filepath, filename) => {
+    const link = document.createElement("a");
+    link.style.display = "none";
+    link.href = filepath;
+    link.download = filename;
+
+    document.body.appendChild(link);
+    link.dispatchEvent(
+      new MouseEvent("click", {
+        ctrlKey: true,
+        metaKey: true
+      })
+    );
+    link.remove();
+  };
 
   componentWillUnmount() {
     document.body.removeEventListener("keydown", this.handleKeyDown);
@@ -264,6 +284,7 @@ export default class Resource extends Component {
       if (expanded) {
         filePath = `${this.props.basepath}/${path}`;
       }
+      console.log({ expanded, filePath, filename, path });
       componentToRender = (
         <Billboard
           hero={size => <IconDownload size={size} />}
