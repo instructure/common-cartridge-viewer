@@ -21,6 +21,12 @@ npm run build # populates locale data
 npm start
 ```
 
+## Quick start with docker compose
+
+```bash
+docker compose build && docker compose up -d
+```
+
 ## Usage examples
 
 ### Load an extracted cartridge
