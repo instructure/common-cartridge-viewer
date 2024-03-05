@@ -15,9 +15,15 @@ View Common Cartridges in the browser. Methods:
 ```bash
 git clone https://github.com/instructure/common-cartridge-viewer.git
 cd common-cartridge-viewer
-yarn
-yarn run build # populates locale data
-yarn start
+npm install
+npm run build # populates locale data
+npm start
+```
+
+## Quick start with docker compose
+
+```bash
+docker compose build && docker compose up -d
 ```
 
 ## Usage examples
