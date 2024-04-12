@@ -17,6 +17,13 @@ const zip = window.zip;
 
 export const pipe = (g, f) => x => f(g(x));
 
+export function mathJaxTypeset() {
+  if (typeof MathJax !== "undefined") {
+    // eslint-disable-next-line no-undef
+    MathJax.typesetPromise();
+  }
+}
+
 export function getReaderFromXHR(url) {
   const request = new XMLHttpRequest();
   const promise = new Promise((resolve, reject) => {

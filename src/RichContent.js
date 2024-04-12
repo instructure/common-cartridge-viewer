@@ -10,7 +10,7 @@ import {
   CANVAS_OBJECT_REFERENCE,
   resourceTypeToHref
 } from "./constants";
-import { getFileResourcePath } from "./utils";
+import { getFileResourcePath, mathJaxTypeset } from "./utils";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import _ from "lodash";
 
@@ -169,6 +169,7 @@ export default class RichContent extends Component {
     if (this.contentNode) {
       this.contentNode.appendChild(fragment);
     }
+    setTimeout(mathJaxTypeset, 0);
   }
 
   setContentRef = node => {
