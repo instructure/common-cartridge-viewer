@@ -25,6 +25,7 @@ import { Trans } from "@lingui/macro";
 import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 import PreviewUnavailable from "./PreviewUnavailable";
+import MathJax from "mathjax3-react";
 
 export default class Resource extends Component {
   constructor(props) {
@@ -337,6 +338,10 @@ export default class Resource extends Component {
         <ScreenReaderContent>
           {renderNextPrevButtons && nextPrevButtons(false)}
         </ScreenReaderContent>
+
+        <MathJax.Provider>
+          <MathJax.Html html={""} />
+        </MathJax.Provider>
       </React.Fragment>
     );
   }

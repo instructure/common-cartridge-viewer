@@ -15,6 +15,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import { setupI18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import { AVAILABLE_LOCALES } from "./constants";
+import "./high-contrast.css";
 
 const queryString = require("query-string"); // has issue with module import
 const parsedQueryString = queryString.parse(window.location.search);
@@ -35,7 +36,6 @@ const highContrastEnabled =
 
 if (highContrastEnabled) {
   highContrastTheme.use();
-  import("./high-contrast.css");
 } else {
   theme.use();
 }
