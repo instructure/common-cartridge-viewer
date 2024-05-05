@@ -214,7 +214,16 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
 
   const assessmentResources = resources
     .filter(is(resourceTypes.ASSESSMENT_CONTENT))
-    .filter(node => node.querySelector("file"));
+    .map(node => {
+      if (!node.querySelector("file")) {
+        // add missing file node for canvas_cc generated resources
+        const fileNode = document.createElement("file");
+        const href = node.getAttribute("identifier") + "/assessment_qti.xml";
+        fileNode.setAttribute("href", href);
+        node.appendChild(fileNode);
+      }
+      return node;
+    });
 
   const canvasAssessmentResources = resources
     .filter(

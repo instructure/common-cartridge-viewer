@@ -40,6 +40,9 @@
           <item identifier="i159319c8513b2c0f2e29bde7d9b942eb" identifierref="i9dede821e375f4888540a2095824f51e">
             <title>New Quiz</title>
           </item>
+          <item identifier="be249b9d7edb92e2f0c2b3158c913951i" identifierref="e15f4285902a0458884f573e128eded9i">
+            <title>Other Quiz</title>
+          </item>
         </item>
       </item>
     </organization>
@@ -89,6 +92,13 @@
     <resource identifier="icc89681ea9ad845e69a533543c3b1034" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="i9dede821e375f4888540a2095824f51e/assessment_meta.xml">
       <file href="i9dede821e375f4888540a2095824f51e/assessment_meta.xml"/>
       <file href="non_cc_assessments/i9dede821e375f4888540a2095824f51e.xml.qti"/>
+    </resource>
+    <resource identifier="e15f4285902a0458884f573e128eded9i" type="imsqti_xmlv1p2/imscc_xmlv1p1/assessment">
+      <dependency identifierref="icc89681ea9ad845e69a533543c3b1034"/>
+    </resource>
+    <resource identifier="icc89681ea9ad845e69a533543c3b1034" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="e15f4285902a0458884f573e128eded9i/assessment_meta.xml">
+      <file href="e15f4285902a0458884f573e128eded9i/assessment_meta.xml"/>
+      <file href="non_cc_assessments/e15f4285902a0458884f573e128eded9i.xml.qti"/>
     </resource>
     <resource type="webcontent" identifier="i4fb8ac263620615ac7660c7d37f60946" href="web_resources/sample-document.pdf">
       <file href="web_resources/sample-document.pdf"/>
