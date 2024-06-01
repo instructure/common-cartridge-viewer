@@ -157,7 +157,8 @@ export default class RichContent extends Component {
         const relativePath = src
           .replace(CC_FILE_PREFIX_OLD, "web_resources")
           .replace(CC_FILE_PREFIX, "web_resources")
-          .replace(CC_FILE_PREFIX_DECODED, "web_resources");
+          .replace(CC_FILE_PREFIX_DECODED, "web_resources")
+          .replace("web_resources/files", "web_resources");
         const url = await this.props.getUrlForPath(relativePath);
         if (url != null) {
           img.setAttribute("src", url);
