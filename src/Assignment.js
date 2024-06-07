@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import {
-  CC_FILE_PREFIX,
-  CC_FILE_PREFIX_OLD,
-  CC_FILE_PREFIX_DECODED
-} from "./constants";
-import {
   generateFriendlyStringFromSubmissionFormats,
+  getFileResourcePath,
   getOptionalTextContent
 } from "./utils";
 import AssignmentBody from "./AssignmentBody";
@@ -23,14 +19,7 @@ export default class Assignment extends Component {
     const descriptionHtml = getOptionalTextContent(assignmentNode, "text");
     const attachments = Array.from(
       doc.querySelectorAll("assignment > attachments > attachment")
-    ).map(node =>
-      decodeURIComponent(
-        encodeURIComponent(node.getAttribute("href"))
-          .replace(CC_FILE_PREFIX_OLD, "web_resources")
-          .replace(CC_FILE_PREFIX, "web_resources")
-          .replace(CC_FILE_PREFIX_DECODED, "web_resources")
-      )
-    );
+    ).map(node => getFileResourcePath(node.getAttribute("href"), true));
 
     // Check for rubrics
     const rubricIdent = assignmentNode.querySelector("rubric_identifierref");

@@ -62,5 +62,8 @@
       </metadata>
       <file href="web_resources/Uploaded Media/border copy.png"/>
     </resource>
+    <resource type="webcontent" identifier="6a1a5568a66550affe98c5bcc6c0aff11" href="web_resources/shapes.jpg">
+      <file href="web_resources/shapes.jpg"/>
+    </resource>
   </resources>
 </manifest>
