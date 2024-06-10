@@ -2,6 +2,12 @@ import {
   resourceTypes,
   submissionTypes,
   moduleMetaContentTypes,
+  CC_FILE_PREFIX,
+  CC_FILE_PREFIX_OLD,
+  CC_FILE_PREFIX_DECODED,
+  CC_FILE_OLDFIX_DECODED,
+  WEB_RESOURCES,
+  WEB_RSC_FILES,
   WIKI_CONTENT_HREF_PREFIX
 } from "./constants";
 import { i18n } from "./index";
@@ -77,6 +83,16 @@ export async function blobToDataUrl(blob) {
     };
     reader.readAsDataURL(blob);
   });
+}
+
+export function getFileResourcePath(href, recode = false) {
+  const path = recode ? decodeURIComponent(encodeURIComponent(href)) : href;
+  return path
+    .replace(CC_FILE_PREFIX_OLD, WEB_RESOURCES)
+    .replace(CC_FILE_PREFIX, WEB_RESOURCES)
+    .replace(CC_FILE_OLDFIX_DECODED, WEB_RESOURCES)
+    .replace(CC_FILE_PREFIX_DECODED, WEB_RESOURCES)
+    .replace(WEB_RSC_FILES, WEB_RESOURCES);
 }
 
 export function getResourceHref(resource) {

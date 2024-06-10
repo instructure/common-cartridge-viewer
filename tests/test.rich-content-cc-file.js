@@ -15,3 +15,14 @@ test("Image with $IMS-CC-FILEBASE$ is visible", async t => {
     )
     .ok();
 });
+
+test("Image with %24IMS_CC_FILEBASE%24/files is visible", async t => {
+  await t
+    .expect(
+      Selector("img").withAttribute(
+        "src",
+        "/test-cartridges/rich-content-cc-file/web_resources/shapes.jpg"
+      ).exists
+    )
+    .ok();
+});

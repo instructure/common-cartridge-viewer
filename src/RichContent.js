@@ -3,12 +3,14 @@ import createDOMPurify from "dompurify";
 import {
   CC_FILE_PREFIX,
   CC_FILE_PREFIX_OLD,
+  CC_FILE_OLDFIX_DECODED,
   CC_FILE_PREFIX_DECODED,
   WIKI_REFERENCE,
   CANVAS_COURSE_REFERENCE,
   CANVAS_OBJECT_REFERENCE,
   resourceTypeToHref
 } from "./constants";
+import { getFileResourcePath } from "./utils";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import _ from "lodash";
 
@@ -103,6 +105,9 @@ export default class RichContent extends Component {
       const links = Array.from(fragment.querySelectorAll("a[href]"));
       const fileExpOld = RegExp(`${CC_FILE_PREFIX_OLD}/(.*)`);
       const fileExp = RegExp(`${CC_FILE_PREFIX}/(.*)`);
+      const fileOldDecoded = RegExp(
+        `${_.escapeRegExp(CC_FILE_OLDFIX_DECODED)}/(.*)`
+      );
       const fileExpDecoded = RegExp(
         `${_.escapeRegExp(CC_FILE_PREFIX_DECODED)}/(.*)`
       );
@@ -113,15 +118,13 @@ export default class RichContent extends Component {
             link =>
               fileExpOld.test(link.getAttribute("href")) ||
               fileExp.test(link.getAttribute("href")) ||
+              fileOldDecoded.test(link.getAttribute("href")) ||
               fileExpDecoded.test(link.getAttribute("href"))
           )
           .map(async link => {
-            const resourceHref = link
-              .getAttribute("href")
-              .replace(CC_FILE_PREFIX_OLD, "web_resources")
-              .replace(CC_FILE_PREFIX, "web_resources")
-              .replace(CC_FILE_PREFIX_DECODED, "web_resources")
-              .replace(queryStringExp, "");
+            const resourceHref = getFileResourcePath(
+              link.getAttribute("href")
+            ).replace(queryStringExp, "");
             const resourceId = this.props.resourceIdsByHrefMap.get(
               decodeURIComponent(resourceHref)
             );
@@ -146,6 +149,7 @@ export default class RichContent extends Component {
       img.getAttribute("src") &&
       (img.getAttribute("src").indexOf(CC_FILE_PREFIX_OLD) > -1 ||
         img.getAttribute("src").indexOf(CC_FILE_PREFIX) > -1 ||
+        img.getAttribute("src").indexOf(CC_FILE_OLDFIX_DECODED) > -1 ||
         img.getAttribute("src").indexOf(CC_FILE_PREFIX_DECODED) > -1);
     const images = Array.from(fragment.querySelectorAll("img")).filter(
       isCartridgeFile
@@ -154,10 +158,7 @@ export default class RichContent extends Component {
     await Promise.all(
       images.map(async img => {
         const src = img.getAttribute("src").split("?")[0];
-        const relativePath = src
-          .replace(CC_FILE_PREFIX_OLD, "web_resources")
-          .replace(CC_FILE_PREFIX, "web_resources")
-          .replace(CC_FILE_PREFIX_DECODED, "web_resources");
+        const relativePath = getFileResourcePath(src);
         const url = await this.props.getUrlForPath(relativePath);
         if (url != null) {
           img.setAttribute("src", url);
