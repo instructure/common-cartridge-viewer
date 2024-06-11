@@ -54,6 +54,8 @@ export default class RichContent extends Component {
           ) {
             const resourceId = this.props.resourceIdsByHrefMap.get(href);
             link.setAttribute("href", `#/resources/${resourceId}`);
+          } else if (slug) {
+            link.setAttribute("href", `#/resources/${slug}`);
           } else {
             link.setAttribute("href", `#/resources/unavailable`);
           }

@@ -46,5 +46,6 @@
     <resource identifier="b21fcf1e322b1d8263285fb6012b2b46c" type="webcontent" href="wiki_content/second-page.html">
       <file href="wiki_content/second-page.html"/>
     </resource>
+    <resource identifier="c64b2b2106bf5823628d1b223e1fcf12i" type="webcontent" href="wiki_content/third-page.html"/>
   </resources>
 </manifest>
