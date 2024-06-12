@@ -8,10 +8,12 @@ fixture`Course with multiple pages but no modules`
 test("Both page titles are displayed", async t => {
   await t.expect(Selector("li").withText(`First Page`).exists).ok();
   await t.expect(Selector("li").withText(`Second Page`).exists).ok();
+  await t.expect(Selector("li").withText(`Third Page`).exists).ok();
 });
 
 test("Link between pages", async t => {
   await t
+    .click(Selector("a").withText("Pages (3)"))
     .expect(Selector("a").withText("Second Page").exists)
     .ok()
     .click(Selector("a").withText("Second Page"))
