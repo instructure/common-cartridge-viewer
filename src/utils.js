@@ -125,6 +125,15 @@ function $text(document, selector) {
   return node && node.textContent;
 }
 
+const addMissingFileNode = (node, dupes) => {
+  const href = node.getAttribute("href");
+  if (!node.hasChildNodes() && !dupes.has(href)) {
+    const fileNode = document.createElement("file");
+    fileNode.setAttribute("href", href);
+    node.appendChild(fileNode);
+  }
+};
+
 export const getOptionalTextContent = (node, selector) => {
   const queriedNode = node.querySelector(selector);
   return queriedNode ? queriedNode.textContent : "";
@@ -136,6 +145,7 @@ export function parseXml(xml) {
 }
 
 export function parseManifestDocument(manifest, { moduleMeta }) {
+  const dupes = new Set();
   const title = $text(manifest, "metadata > lom > general > title > string");
   const schema = $text(manifest, "metadata > schema");
   const schemaVersion = $text(manifest, "metadata > schemaversion");
@@ -182,6 +192,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
           return false;
         }
       }
+      addMissingFileNode(node, dupes);
       return true;
     })
     .filter(node => node.querySelector("file"))
