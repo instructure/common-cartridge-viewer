@@ -9,3 +9,15 @@ test("Both page titles are displayed", async t => {
   await t.expect(Selector("li").withText(`First Page`).exists).ok();
   await t.expect(Selector("li").withText(`Second Page`).exists).ok();
 });
+
+test("Link between pages", async t => {
+  await t
+    .expect(Selector("a").withText("Second Page").exists)
+    .ok()
+    .click(Selector("a").withText("Second Page"))
+    .expect(Selector("h1").withText("Second Page").exists)
+    .ok()
+    .click(Selector("a").withText("Third Page"))
+    .expect(Selector("h1").withText("Third Page").exists)
+    .ok();
+});
