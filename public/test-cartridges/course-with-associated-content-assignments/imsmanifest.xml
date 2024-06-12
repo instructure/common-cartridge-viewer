@@ -94,9 +94,10 @@
       <file href="non_cc_assessments/i9dede821e375f4888540a2095824f51e.xml.qti"/>
     </resource>
     <resource identifier="e15f4285902a0458884f573e128eded9i" type="imsqti_xmlv1p2/imscc_xmlv1p1/assessment">
-      <dependency identifierref="icc89681ea9ad845e69a533543c3b1034"/>
+      <!-- missing assessment_qti.xml file node -->
+      <dependency identifierref="4301b3c345335a96e548da9ae18698cci"/>
     </resource>
-    <resource identifier="icc89681ea9ad845e69a533543c3b1034" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="e15f4285902a0458884f573e128eded9i/assessment_meta.xml">
+    <resource identifier="4301b3c345335a96e548da9ae18698cci" type="associatedcontent/imscc_xmlv1p1/learning-application-resource" href="e15f4285902a0458884f573e128eded9i/assessment_meta.xml">
       <file href="e15f4285902a0458884f573e128eded9i/assessment_meta.xml"/>
       <file href="non_cc_assessments/e15f4285902a0458884f573e128eded9i.xml.qti"/>
     </resource>
