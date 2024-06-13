@@ -16,6 +16,7 @@
     "@lingui/react": "^2.7.2",
     "@sentry/react": "^7.31.1",
     "@sentry/tracing": "^7.31.1",
+    "babel-polyfill": "^6.26.0",
     "dompurify": "2.2.3",
     "file-saver": "^2.0.0",
     "lodash": "^4.17.10",
