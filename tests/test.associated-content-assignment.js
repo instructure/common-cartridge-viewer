@@ -97,6 +97,26 @@ fixture`Associated-content assignments (loaded w/ src)`
   "/test-cartridges/course-with-associated-content-assignments/imsmanifest.xml"
 )}#/`;
 
+test("Associated-content quiz with assessment_qti.xml display correctly", async t => {
+  await t
+    .click(Selector("a").withText("Quizzes"))
+    .expect(Selector("a").withText("New Quiz").exists)
+    .ok()
+    .click(Selector("a").withText("New Quiz"))
+    .expect(Selector("h3").withText("Questions").exists)
+    .ok();
+});
+
+test("Associated-content quiz missing assessment_qti.xml display correctly", async t => {
+  await t
+    .click(Selector("a").withText("Quizzes"))
+    .expect(Selector("a").withText("Other Quiz").exists)
+    .ok()
+    .click(Selector("a").withText("Other Quiz"))
+    .expect(Selector("h3").withText("Questions").exists)
+    .ok();
+});
+
 test("Associated-content assignment items display correctly", async t => {
   await t
     .expect(Selector("a").withText("Published Assignment").exists)
