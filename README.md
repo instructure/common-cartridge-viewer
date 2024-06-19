@@ -15,9 +15,10 @@ View Common Cartridges in the browser. Methods:
 ```bash
 git clone https://github.com/instructure/common-cartridge-viewer.git
 cd common-cartridge-viewer
-yarn
-yarn run build # populates locale data
-yarn start
+export NODE_OPTIONS=--openssl-legacy-provider
+npm ci
+npm run build # populates locale data
+npm start
 ```
 
 ## Usage examples
