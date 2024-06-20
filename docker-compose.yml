@@ -9,6 +9,8 @@ services:
     volumes:
       - .:/usr/src/app
       - ccv_node_modules:/usr/src/app/node_modules
+    ports:
+      - "3300:3300"
 
 volumes:
   ccv_node_modules: {}
