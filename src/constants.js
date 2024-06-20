@@ -3,6 +3,7 @@ export const CC_FILE_PREFIX_OLD = "%24IMS_CC_FILEBASE%24"; // mistaken, replaced
 export const CC_FILE_PREFIX_DECODED = decodeURIComponent(CC_FILE_PREFIX);
 export const CC_FILE_OLDFIX_DECODED = decodeURIComponent(CC_FILE_PREFIX_OLD);
 export const WIKI_REFERENCE = "%24WIKI_REFERENCE%24";
+export const WIKI_REFERENCE_DECODED = decodeURIComponent(WIKI_REFERENCE);
 export const CANVAS_OBJECT_REFERENCE = "%24CANVAS_OBJECT_REFERENCE%24";
 export const CANVAS_COURSE_REFERENCE = "%24CANVAS_COURSE_REFERENCE%24";
 export const WIKI_CONTENT_HREF_PREFIX = "wiki_content";
