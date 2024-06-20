@@ -35,6 +35,7 @@ const highContrastEnabled =
 
 if (highContrastEnabled) {
   highContrastTheme.use();
+  // eslint-disable-next-line no-unused-expressions
   import("./high-contrast.css");
 } else {
   theme.use();
