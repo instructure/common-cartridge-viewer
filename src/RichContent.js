@@ -6,6 +6,7 @@ import {
   CC_FILE_OLDFIX_DECODED,
   CC_FILE_PREFIX_DECODED,
   WIKI_REFERENCE,
+  WIKI_REFERENCE_DECODED,
   CANVAS_COURSE_REFERENCE,
   CANVAS_OBJECT_REFERENCE,
   resourceTypeToHref
@@ -37,11 +38,22 @@ export default class RichContent extends Component {
     const pagesCourseNavigation = RegExp(`${WIKI_REFERENCE}/pages/$`);
     {
       const wikiExp = RegExp(`${WIKI_REFERENCE}/(pages)/(.*)`);
-      const links = Array.from(fragment.querySelectorAll("a[href]")).filter(
-        link =>
-          wikiExp.test(link.getAttribute("href")) &&
-          pagesCourseNavigation.test(link.getAttribute("href")) === false
-      );
+      const links = Array.from(fragment.querySelectorAll("a[href]"))
+        .map(link => {
+          const href = link.getAttribute("href");
+          if (href.includes(WIKI_REFERENCE_DECODED)) {
+            link.setAttribute(
+              "href",
+              href.replace(WIKI_REFERENCE_DECODED, WIKI_REFERENCE)
+            );
+          }
+          return link;
+        })
+        .filter(
+          link =>
+            wikiExp.test(link.getAttribute("href")) &&
+            pagesCourseNavigation.test(link.getAttribute("href")) === false
+        );
       await Promise.all(
         links.map(async link => {
           const slug = (link.getAttribute("href") || "")
