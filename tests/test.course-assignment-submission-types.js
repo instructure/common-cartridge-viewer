@@ -46,7 +46,7 @@ test("Assignment with missing submission type", async t => {
     .expect(Selector("h1").withText(missingType).exists)
     .ok()
     .expect(Selector("div").withText("Submitting:").exists)
-    .notOk()
+    .ok()
     .expect(Selector("div").withText("Points:").exists)
     .ok();
 });

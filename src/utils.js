@@ -397,8 +397,6 @@ function isNot(type) {
 }
 
 export function generateFriendlyStringFromSubmissionFormats(submissionType) {
-  if (submissionType === null) return null;
-
   const submissionTypeLabels = {
     [submissionTypes.ONLINE_UPLOAD]: i18n._(t`a file upload`),
     [submissionTypes.ONLINE_TEXT_ENTRY]: i18n._(`a text entry box`),
@@ -407,6 +405,9 @@ export function generateFriendlyStringFromSubmissionFormats(submissionType) {
     [submissionTypes.ON_PAPER]: i18n._(`on paper`),
     [submissionTypes.NONE]: i18n._(`Nothing`)
   };
+
+  if (submissionType === null)
+    return submissionTypeLabels[submissionTypes.NONE];
 
   const SUBMISSION_TYPE_JOIN_STRING = i18n._(`, or `);
 
