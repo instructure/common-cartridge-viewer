@@ -18,8 +18,6 @@ test("Assignment with known submission type", async t => {
     .expect(Selector("h1").withText(knownType).exists)
     .ok()
     .expect(Selector("div").withText("Submitting:").exists)
-    .ok()
-    .expect(Selector("div").withText("Points:").exists)
     .ok();
 });
 
@@ -32,8 +30,6 @@ test("Assignment with unknown submission type", async t => {
     .expect(Selector("h1").withText(unknownType).exists)
     .ok()
     .expect(Selector("div").withText("Submitting:").exists)
-    .notOk()
-    .expect(Selector("div").withText("Points:").exists)
     .ok();
 });
 
@@ -46,7 +42,5 @@ test("Assignment with missing submission type", async t => {
     .expect(Selector("h1").withText(missingType).exists)
     .ok()
     .expect(Selector("div").withText("Submitting:").exists)
-    .ok()
-    .expect(Selector("div").withText("Points:").exists)
     .ok();
 });

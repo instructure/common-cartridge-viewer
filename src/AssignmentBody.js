@@ -32,20 +32,19 @@ export default class AssignmentBody extends PureComponent {
         <Heading level="h1" margin="0 0 small">
           {this.props.title}
         </Heading>
-        {this.props.submissionFormats &&
-          this.props.submissionFormats.length > 0 && (
-            <React.Fragment>
-              <div style={{ marginTop: "12px", marginBottom: "12px" }}>
-                <span style={{ fontWeight: "bold" }}>
-                  <Trans>Submitting</Trans>
-                </span>
-                :{" "}
-                <span className="submission-format">
-                  {this.props.submissionFormats}
-                </span>
-              </div>
-            </React.Fragment>
-          )}
+        {this.props.submissionFormats !== null && (
+          <React.Fragment>
+            <div style={{ marginTop: "12px", marginBottom: "12px" }}>
+              <span style={{ fontWeight: "bold" }}>
+                <Trans>Submitting</Trans>
+              </span>
+              :{" "}
+              <span className="submission-format">
+                {this.props.submissionFormats}
+              </span>
+            </div>
+          </React.Fragment>
+        )}
 
         {this.props.pointsPossible != null && (
           <div>
