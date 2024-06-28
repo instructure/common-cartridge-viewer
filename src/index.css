@@ -246,10 +246,6 @@ td {
   grid-template-columns: 200px 1fr;
 }
 
-.CommonCartridge--view.single-resource {
-  grid-template-columns: 1fr;
-}
-
 .CommonCartridge--view nav {
   padding-top: 20px;
 }
