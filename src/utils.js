@@ -406,6 +406,9 @@ export function generateFriendlyStringFromSubmissionFormats(submissionType) {
     [submissionTypes.NONE]: i18n._(`Nothing`)
   };
 
+  if (submissionType === null)
+    return submissionTypeLabels[submissionTypes.NONE];
+
   const SUBMISSION_TYPE_JOIN_STRING = i18n._(`, or `);
 
   const submissionTypeToSubmissionLabel = submissionType =>
