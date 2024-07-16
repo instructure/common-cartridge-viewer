@@ -446,6 +446,9 @@ export default class CommonCartridge extends Component {
     );
 
     const startIndexQuery = queryString.stringify({ startIndex: 0 });
+    const singleResourceView =
+      this.state.showcaseSingleResource ||
+      this.state.showcaseResources.length === 1;
 
     return (
       <I18n>
@@ -467,7 +470,14 @@ export default class CommonCartridge extends Component {
               </View>
             )}
 
-            <div className="CommonCartridge--view">
+            <div
+              className={[
+                "CommonCartridge--view",
+                singleResourceView ? "single-resource" : null
+              ]
+                .join(" ")
+                .trim()}
+            >
               {this.state.showcaseSingleResource === null && (
                 <nav>
                   <input type="checkbox" id="NavTrigger" name="NavTrigger" />
