@@ -344,7 +344,7 @@ export default class CommonCartridge extends Component {
       result.modules.length === 0 &&
       result.showcaseResources.length === 1 &&
       result.fileResources.length === 0
-        ? this.state.showcaseResources[0]
+        ? result.showcaseResources[0]
         : null;
 
     this.setState({
@@ -446,9 +446,6 @@ export default class CommonCartridge extends Component {
     );
 
     const startIndexQuery = queryString.stringify({ startIndex: 0 });
-    const singleResourceView =
-      this.state.showcaseSingleResource ||
-      this.state.showcaseResources.length === 1;
 
     return (
       <I18n>
@@ -473,7 +470,7 @@ export default class CommonCartridge extends Component {
             <div
               className={[
                 "CommonCartridge--view",
-                singleResourceView ? "single-resource" : null
+                this.state.showcaseSingleResource ? "single-resource" : null
               ]
                 .join(" ")
                 .trim()}
