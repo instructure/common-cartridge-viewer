@@ -344,7 +344,7 @@ export default class CommonCartridge extends Component {
       result.modules.length === 0 &&
       result.showcaseResources.length === 1 &&
       result.fileResources.length === 0
-        ? this.state.showcaseResources[0]
+        ? result.showcaseResources[0]
         : null;
 
     this.setState({
@@ -467,7 +467,14 @@ export default class CommonCartridge extends Component {
               </View>
             )}
 
-            <div className="CommonCartridge--view">
+            <div
+              className={[
+                "CommonCartridge--view",
+                this.state.showcaseSingleResource ? "single-resource" : null
+              ]
+                .join(" ")
+                .trim()}
+            >
               {this.state.showcaseSingleResource === null && (
                 <nav>
                   <input type="checkbox" id="NavTrigger" name="NavTrigger" />
