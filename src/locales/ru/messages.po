@@ -37,7 +37,7 @@ msgstr "(неопределенный)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "Assessments ({0})"
 
-#: src/AssignmentBody.js:34
+#: src/AssignmentBody.js:28
 msgid "Assignment"
 msgstr "Задание"
 
@@ -50,16 +50,16 @@ msgstr "Задания"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Assignments ({0})"
 
-#: src/CommonCartridge.js:508
+#: src/CommonCartridge.js:506
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Задания ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:77
-#: src/Discussion.js:57
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
 msgid "Attachments"
 msgstr "Вложения"
 
-#: src/Assessment.js:167
+#: src/Assessment.js:172
 msgid "Calculated"
 msgstr "Рассчитанный"
 
@@ -67,7 +67,11 @@ msgstr "Рассчитанный"
 msgid "Cartridge"
 msgstr "Cartridge"
 
-#: src/WebLink.js:40
+#: src/Assessment.js:251
+msgid "Classic Quiz"
+msgstr ""
+
+#: src/WebLink.js:36
 msgid "Click here to open link in new window"
 msgstr "Нажмите здесь, чтобы открыть ссылку в новом окне"
 
@@ -83,11 +87,11 @@ msgstr "Предпросмотр навигации по курсу невозм
 msgid "Course navigation links are only available within a Canvas course."
 msgstr "Ссылки на навигацию по курсу доступны только в курсе Canvas."
 
-#: src/AssignmentBody.js:118
+#: src/AssignmentBody.js:112
 msgid "Criteria"
 msgstr "Критерий"
 
-#: src/Discussion.js:40
+#: src/Discussion.js:30
 msgid "Discussion"
 msgstr "Обсуждение"
 
@@ -107,7 +111,7 @@ msgstr "Обсуждения"
 #~ msgid "Discussions ({0})"
 #~ msgstr "Discussions ({0})"
 
-#: src/CommonCartridge.js:530
+#: src/CommonCartridge.js:528
 msgid "Discussions ({length})"
 msgstr "Дискуссии ({length})"
 
@@ -119,7 +123,7 @@ msgstr "Перетащите и бросьте картридж или щелк�
 #~ msgid "Drag and drop, or click to browse your computer"
 #~ msgstr "Drag and drop, or click to browse your computer"
 
-#: src/Assessment.js:155
+#: src/Assessment.js:160
 msgid "Essay"
 msgstr "Тест"
 
@@ -131,15 +135,15 @@ msgstr "Примеры"
 msgid "External Tool Content Can't be Previewed"
 msgstr "Контент внешнего инструмента не может быть предварительно просмотрен"
 
-#: src/WebLink.js:29
+#: src/WebLink.js:25
 msgid "External link"
 msgstr "Внешняя ссылка"
 
-#: src/CommonCartridge.js:364
+#: src/CommonCartridge.js:365
 msgid "Failed to load resource"
 msgstr "Не удалось загрузить ресурс"
 
-#: src/Assessment.js:173
+#: src/Assessment.js:178
 msgid "File Upload"
 msgstr "Отправка файла"
 
@@ -147,15 +151,15 @@ msgstr "Отправка файла"
 msgid "Files"
 msgstr "Файлы"
 
-#: src/CommonCartridge.js:559
+#: src/CommonCartridge.js:557
 msgid "Files ({0})"
 msgstr "Файлы ({0})"
 
-#: src/Assessment.js:149
+#: src/Assessment.js:154
 msgid "Fill in the blank"
 msgstr "Заполните пустое место"
 
-#: src/Image.js:55
+#: src/Image.js:50
 msgid "Image"
 msgstr "Изображение"
 
@@ -168,19 +172,19 @@ msgstr "Чтобы использовать этот ресурс в Canvas, н�
 msgid "Loading"
 msgstr "Загрузка"
 
-#: src/CommonCartridge.js:398
+#: src/CommonCartridge.js:399
 msgid "Loading Cartridge"
 msgstr "Загружается Cartridge"
 
-#: src/CommonCartridge.js:415
+#: src/CommonCartridge.js:416
 msgid "Loading completion"
 msgstr "Завершение загрузки"
 
-#: src/Assessment.js:161
+#: src/Assessment.js:166
 msgid "Match Questions"
 msgstr "Совместить вопросы"
 
-#: src/Assessment.js:253
+#: src/Assessment.js:261
 msgid "Max attempts"
 msgstr "Макс число попыток"
 
@@ -190,23 +194,27 @@ msgstr "Макс число попыток"
 msgid "Media viewer"
 msgstr "Средство просмотра мультимедиа"
 
-#: src/CommonCartridge.js:497
+#: src/CommonCartridge.js:495
 msgid "Modules ({0})"
 msgstr "Модули ({0})"
 
-#: src/Assessment.js:158
+#: src/Assessment.js:163
 msgid "Multiple Dropdowns"
 msgstr "Несколько раскрывающихся списков"
 
-#: src/Assessment.js:140
+#: src/Assessment.js:145
 msgid "Multiple choice"
 msgstr "Множественный выбор"
 
-#: src/Assessment.js:143
+#: src/Assessment.js:148
 msgid "Multiple response"
 msgstr "Множественный ответ"
 
-#: src/Resource.js:129
+#: src/Assessment.js:249
+msgid "New Quizzes"
+msgstr ""
+
+#: src/Resource.js:121
 msgid "Next"
 msgstr "Далее"
 
@@ -218,7 +226,7 @@ msgstr "Следующая страница"
 #~ msgid "Not found"
 #~ msgstr "Not found"
 
-#: src/Assessment.js:164
+#: src/Assessment.js:169
 msgid "Numerical"
 msgstr "Числовой"
 
@@ -226,23 +234,23 @@ msgstr "Числовой"
 #~ msgid "Other type"
 #~ msgstr "Other type"
 
-#: src/WikiContent.js:25
+#: src/WikiContent.js:21
 msgid "Page"
 msgstr "Страница"
 
-#: src/CommonCartridge.js:519
+#: src/CommonCartridge.js:517
 msgid "Pages ({0})"
 msgstr "Страницы ({0})"
 
-#: src/Assessment.js:152
+#: src/Assessment.js:157
 msgid "Pattern match"
 msgstr "Сопоставление с образцом"
 
-#: src/AssignmentBody.js:59
+#: src/AssignmentBody.js:53
 msgid "Points"
 msgstr "Баллы"
 
-#: src/Resource.js:108
+#: src/Resource.js:100
 msgid "Previous"
 msgstr "Предыдущий"
 
@@ -250,27 +258,27 @@ msgstr "Предыдущий"
 msgid "Previous Page"
 msgstr "Предыдущая страница"
 
-#: src/AssignmentBody.js:129
+#: src/AssignmentBody.js:123
 msgid "Pts"
 msgstr "Баллы"
 
-#: src/Assessment.js:256
+#: src/Assessment.js:264
 msgid "Questions"
 msgstr "Вопросы"
 
 #: src/Assessment.js:244
-msgid "Quiz"
-msgstr "Тест"
+#~ msgid "Quiz"
+#~ msgstr "Тест"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
 msgstr "Тесты"
 
-#: src/CommonCartridge.js:546
+#: src/CommonCartridge.js:544
 msgid "Quizzes ({0})"
 msgstr "Тесты ({0})"
 
-#: src/AssignmentBody.js:126
+#: src/AssignmentBody.js:120
 msgid "Ratings"
 msgstr "Оценки"
 
@@ -282,15 +290,15 @@ msgstr "Ресурс недоступен"
 #~ msgid "Submission formats"
 #~ msgstr "Submission formats"
 
-#: src/AssignmentBody.js:46
+#: src/AssignmentBody.js:40
 msgid "Submitting"
 msgstr "Отправка"
 
-#: src/Assessment.js:170
+#: src/Assessment.js:175
 msgid "Text only"
 msgstr "Только текст"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:407
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Это может занять некоторое время в зависимости от размера картриджа."
 
@@ -298,20 +306,20 @@ msgstr "Это может занять некоторое время в зави
 msgid "This resource is not included in the package."
 msgstr "Этот ресурс не включен в пакет."
 
-#: src/AssignmentBody.js:160
+#: src/AssignmentBody.js:154
 msgid "Total points:"
 msgstr "Общее количество баллов:"
 
-#: src/Assessment.js:146
+#: src/Assessment.js:151
 msgid "True / false"
 msgstr "Верно / Неверно"
 
-#: src/CommonCartridge.js:466
+#: src/CommonCartridge.js:464
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
-#: src/WebLink.js:36
+#: src/WebLink.js:32
 #: src/WebLinkListItem.js:31
-#: src/utils.js:250
+#: src/utils.js:299
 msgid "Untitled"
 msgstr "Без названия"
 
@@ -331,7 +339,7 @@ msgstr "Просмотр общих картриджей в браузере. Н
 msgid "View source on Github"
 msgstr "Просмотреть источник на Github"
 
-#: src/CommonCartridge.js:366
+#: src/CommonCartridge.js:367
 msgid "We had a problem loading the Common Cartridge"
 msgstr "Возникла проблема с загрузкой общего картриджа"
 
@@ -339,7 +347,7 @@ msgstr "Возникла проблема с загрузкой общего к�
 msgid "Wiki content"
 msgstr "Контент Wiki"
 
-#: src/CommonCartridge.js:464
+#: src/CommonCartridge.js:462
 msgid "You are here:"
 msgstr "Вы находитесь здесь:"
 
@@ -351,7 +359,7 @@ msgstr "Ваш браузер не поддерживает HTML5-аудио. Э
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "Ваш браузер не поддерживает HTML5-видео. Это <0>ссылка на аудио</0> в качестве альтернативы."
 
-#: src/utils.js:352
+#: src/utils.js:401
 msgid "a file upload"
 msgstr "загрузка файла"
 
@@ -359,7 +367,7 @@ msgstr "загрузка файла"
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS включен)"
 
-#: src/AssignmentBody.js:141
+#: src/AssignmentBody.js:135
 msgid "pts"
 msgstr "баллы"
 
@@ -375,21 +383,21 @@ msgstr "{0} опубликовано"
 msgid "{0} is unpublished"
 msgstr "Публикация {0} отменена"
 
-#: src/AssessmentListItem.js:120
+#: src/AssessmentListItem.js:129
 #: src/AssignmentListItemBody.js:34
-#: src/DiscussionListItem.js:90
+#: src/DiscussionListItem.js:91
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} баллов"
 
-#: src/AssessmentListItem.js:110
+#: src/AssessmentListItem.js:119
 msgid "{0} question(s) / {1} assigned"
 msgstr "{0} вопрос(-/ов) / {1} задан(-о)"
 
-#: src/CommonCartridge.js:425
+#: src/CommonCartridge.js:426
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:418
+#: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% загружено"

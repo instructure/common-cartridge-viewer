@@ -37,7 +37,7 @@ msgstr "(óþekkt)"
 #~ msgid "Assessments ({0})"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:34
+#: src/AssignmentBody.js:28
 msgid "Assignment"
 msgstr "Verkefni"
 
@@ -50,16 +50,16 @@ msgstr "Verkefni"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:508
+#: src/CommonCartridge.js:506
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Verkefni ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:77
-#: src/Discussion.js:57
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
 msgid "Attachments"
 msgstr "Viðhengi"
 
-#: src/Assessment.js:167
+#: src/Assessment.js:172
 msgid "Calculated"
 msgstr "Reiknað út"
 
@@ -67,7 +67,11 @@ msgstr "Reiknað út"
 msgid "Cartridge"
 msgstr "Hylki"
 
-#: src/WebLink.js:40
+#: src/Assessment.js:251
+msgid "Classic Quiz"
+msgstr ""
+
+#: src/WebLink.js:36
 msgid "Click here to open link in new window"
 msgstr "Smelltu hér til að opna hlekk í nýjum glugga"
 
@@ -83,11 +87,11 @@ msgstr "Ekki er hægt að forskoða yfirlit námskeiðs"
 msgid "Course navigation links are only available within a Canvas course."
 msgstr "Yfirlitstenglar námskeiðs eru aðeins tiltækir innan Canvas námskeiðs."
 
-#: src/AssignmentBody.js:118
+#: src/AssignmentBody.js:112
 msgid "Criteria"
 msgstr "Viðmiðun"
 
-#: src/Discussion.js:40
+#: src/Discussion.js:30
 msgid "Discussion"
 msgstr "Umræða"
 
@@ -107,7 +111,7 @@ msgstr "Umræður"
 #~ msgid "Discussions ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:530
+#: src/CommonCartridge.js:528
 msgid "Discussions ({length})"
 msgstr "Umræður ({length})"
 
@@ -119,7 +123,7 @@ msgstr "Dragðu og slepptu hylkinu, eða smelltu til að vafra í tölvunni."
 #~ msgid "Drag and drop, or click to browse your computer"
 #~ msgstr ""
 
-#: src/Assessment.js:155
+#: src/Assessment.js:160
 msgid "Essay"
 msgstr "Ritgerðarspurning"
 
@@ -131,15 +135,15 @@ msgstr "Dæmi"
 msgid "External Tool Content Can't be Previewed"
 msgstr "Ekki er hægt að forskoða efni ytra verkfæris"
 
-#: src/WebLink.js:29
+#: src/WebLink.js:25
 msgid "External link"
 msgstr "Utanaðkomandi tengill"
 
-#: src/CommonCartridge.js:364
+#: src/CommonCartridge.js:365
 msgid "Failed to load resource"
 msgstr "Ekki tókst að sækja hjálparefni"
 
-#: src/Assessment.js:173
+#: src/Assessment.js:178
 msgid "File Upload"
 msgstr "Hlaða upp skrá"
 
@@ -147,15 +151,15 @@ msgstr "Hlaða upp skrá"
 msgid "Files"
 msgstr "Skrár"
 
-#: src/CommonCartridge.js:559
+#: src/CommonCartridge.js:557
 msgid "Files ({0})"
 msgstr "Skrár ({0})"
 
-#: src/Assessment.js:149
+#: src/Assessment.js:154
 msgid "Fill in the blank"
 msgstr "Fylltu inn í eyðuna"
 
-#: src/Image.js:55
+#: src/Image.js:50
 msgid "Image"
 msgstr "Mynd"
 
@@ -168,19 +172,19 @@ msgstr "Til þess að nota þetta hjálparefni í Canvas þarf að setja upp ytr
 msgid "Loading"
 msgstr "Sæki"
 
-#: src/CommonCartridge.js:398
+#: src/CommonCartridge.js:399
 msgid "Loading Cartridge"
 msgstr "Hleð inn hylki"
 
-#: src/CommonCartridge.js:415
+#: src/CommonCartridge.js:416
 msgid "Loading completion"
 msgstr "Hleð inn fullnustu"
 
-#: src/Assessment.js:161
+#: src/Assessment.js:166
 msgid "Match Questions"
 msgstr "Para spurningar"
 
-#: src/Assessment.js:253
+#: src/Assessment.js:261
 msgid "Max attempts"
 msgstr "Hámark tilrauna"
 
@@ -190,23 +194,27 @@ msgstr "Hámark tilrauna"
 msgid "Media viewer"
 msgstr "Margmiðlunarefnis skoðari"
 
-#: src/CommonCartridge.js:497
+#: src/CommonCartridge.js:495
 msgid "Modules ({0})"
 msgstr "Eining ({0})"
 
-#: src/Assessment.js:158
+#: src/Assessment.js:163
 msgid "Multiple Dropdowns"
 msgstr "Fjölfellilistar"
 
-#: src/Assessment.js:140
+#: src/Assessment.js:145
 msgid "Multiple choice"
 msgstr "Fjölval"
 
-#: src/Assessment.js:143
+#: src/Assessment.js:148
 msgid "Multiple response"
 msgstr "Fjölsvar"
 
-#: src/Resource.js:129
+#: src/Assessment.js:249
+msgid "New Quizzes"
+msgstr ""
+
+#: src/Resource.js:121
 msgid "Next"
 msgstr "Næsti"
 
@@ -218,7 +226,7 @@ msgstr "Næsta síða"
 #~ msgid "Not found"
 #~ msgstr ""
 
-#: src/Assessment.js:164
+#: src/Assessment.js:169
 msgid "Numerical"
 msgstr "Tölulegur"
 
@@ -226,23 +234,23 @@ msgstr "Tölulegur"
 #~ msgid "Other type"
 #~ msgstr ""
 
-#: src/WikiContent.js:25
+#: src/WikiContent.js:21
 msgid "Page"
 msgstr "Síða"
 
-#: src/CommonCartridge.js:519
+#: src/CommonCartridge.js:517
 msgid "Pages ({0})"
 msgstr "Síður ({0})"
 
-#: src/Assessment.js:152
+#: src/Assessment.js:157
 msgid "Pattern match"
 msgstr "Mynstursamsvörun"
 
-#: src/AssignmentBody.js:59
+#: src/AssignmentBody.js:53
 msgid "Points"
 msgstr "Punktar"
 
-#: src/Resource.js:108
+#: src/Resource.js:100
 msgid "Previous"
 msgstr "Fyrri"
 
@@ -250,27 +258,27 @@ msgstr "Fyrri"
 msgid "Previous Page"
 msgstr "Fyrri síða"
 
-#: src/AssignmentBody.js:129
+#: src/AssignmentBody.js:123
 msgid "Pts"
 msgstr "Punktar"
 
-#: src/Assessment.js:256
+#: src/Assessment.js:264
 msgid "Questions"
 msgstr "Spurningar"
 
 #: src/Assessment.js:244
-msgid "Quiz"
-msgstr "Próf"
+#~ msgid "Quiz"
+#~ msgstr "Próf"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
 msgstr "Próf"
 
-#: src/CommonCartridge.js:546
+#: src/CommonCartridge.js:544
 msgid "Quizzes ({0})"
 msgstr "Próf -({0})"
 
-#: src/AssignmentBody.js:126
+#: src/AssignmentBody.js:120
 msgid "Ratings"
 msgstr "Matsstig"
 
@@ -282,15 +290,15 @@ msgstr "Hjálparefni ótiltækt"
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:46
+#: src/AssignmentBody.js:40
 msgid "Submitting"
 msgstr "Legg fram"
 
-#: src/Assessment.js:170
+#: src/Assessment.js:175
 msgid "Text only"
 msgstr "Aðeins texti"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:407
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Þetta getur tekið smá tíma en það fer eftir stærð hylkisins."
 
@@ -298,20 +306,20 @@ msgstr "Þetta getur tekið smá tíma en það fer eftir stærð hylkisins."
 msgid "This resource is not included in the package."
 msgstr "Þetta hjálparefni er ekki innifalið í pakkanum."
 
-#: src/AssignmentBody.js:160
+#: src/AssignmentBody.js:154
 msgid "Total points:"
 msgstr "Heildar punktar:"
 
-#: src/Assessment.js:146
+#: src/Assessment.js:151
 msgid "True / false"
 msgstr "Rétt/rangt"
 
-#: src/CommonCartridge.js:466
+#: src/CommonCartridge.js:464
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
-#: src/WebLink.js:36
+#: src/WebLink.js:32
 #: src/WebLinkListItem.js:31
-#: src/utils.js:250
+#: src/utils.js:299
 msgid "Untitled"
 msgstr "Án titils"
 
@@ -331,7 +339,7 @@ msgstr "Skoða Common Cartridges í vafranum. Krefst engrar vinnslu miðlaramegi
 msgid "View source on Github"
 msgstr "Skoða uppruna á Github"
 
-#: src/CommonCartridge.js:366
+#: src/CommonCartridge.js:367
 msgid "We had a problem loading the Common Cartridge"
 msgstr "Vandamál kom upp við að sækja Common Cartridge"
 
@@ -339,7 +347,7 @@ msgstr "Vandamál kom upp við að sækja Common Cartridge"
 msgid "Wiki content"
 msgstr "Wiki efni"
 
-#: src/CommonCartridge.js:464
+#: src/CommonCartridge.js:462
 msgid "You are here:"
 msgstr "Þú ert hérna:"
 
@@ -351,7 +359,7 @@ msgstr "Vafrinn þinn styður ekki HTML5 hljóð. Hérna er <0>hlekkur á hljó�
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "Vafrinn þinn styður ekki HTML5 myndband. Hérna er <0>hlekkur á hljóðið</0> í staðinn."
 
-#: src/utils.js:352
+#: src/utils.js:401
 msgid "a file upload"
 msgstr "upphleðsla skrár"
 
@@ -359,7 +367,7 @@ msgstr "upphleðsla skrár"
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 
-#: src/AssignmentBody.js:141
+#: src/AssignmentBody.js:135
 msgid "pts"
 msgstr "punktar"
 
@@ -375,21 +383,21 @@ msgstr "{0} er birt"
 msgid "{0} is unpublished"
 msgstr "{0} er óbirt"
 
-#: src/AssessmentListItem.js:120
+#: src/AssessmentListItem.js:129
 #: src/AssignmentListItemBody.js:34
-#: src/DiscussionListItem.js:90
+#: src/DiscussionListItem.js:91
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} punktar"
 
-#: src/AssessmentListItem.js:110
+#: src/AssessmentListItem.js:119
 msgid "{0} question(s) / {1} assigned"
 msgstr "{0} spurning(ar) / {1} úthlutað"
 
-#: src/CommonCartridge.js:425
+#: src/CommonCartridge.js:426
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:418
+#: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% hlaðið"

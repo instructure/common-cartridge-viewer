@@ -37,7 +37,7 @@ msgstr "(niet-geïdentificeerd)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "Assessments ({0})"
 
-#: src/AssignmentBody.js:34
+#: src/AssignmentBody.js:28
 msgid "Assignment"
 msgstr "Opdracht"
 
@@ -50,16 +50,16 @@ msgstr "Opdrachten"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Assignments ({0})"
 
-#: src/CommonCartridge.js:508
+#: src/CommonCartridge.js:506
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Opdrachten ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:77
-#: src/Discussion.js:57
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
 msgid "Attachments"
 msgstr "Bijlagen"
 
-#: src/Assessment.js:167
+#: src/Assessment.js:172
 msgid "Calculated"
 msgstr "Berekend"
 
@@ -67,7 +67,11 @@ msgstr "Berekend"
 msgid "Cartridge"
 msgstr "Cartridge"
 
-#: src/WebLink.js:40
+#: src/Assessment.js:251
+msgid "Classic Quiz"
+msgstr ""
+
+#: src/WebLink.js:36
 msgid "Click here to open link in new window"
 msgstr "Klik hier om de link in een nieuw venster te openen"
 
@@ -83,11 +87,11 @@ msgstr "Er kan geen voorbeeld worden weergegeven met Cursusnavigatie"
 msgid "Course navigation links are only available within a Canvas course."
 msgstr "Links van Cursusnavigatie zijn alleen beschikbaar in een Canvas-cursus."
 
-#: src/AssignmentBody.js:118
+#: src/AssignmentBody.js:112
 msgid "Criteria"
 msgstr "Criterium"
 
-#: src/Discussion.js:40
+#: src/Discussion.js:30
 msgid "Discussion"
 msgstr "Discussie"
 
@@ -107,7 +111,7 @@ msgstr "Discussies"
 #~ msgid "Discussions ({0})"
 #~ msgstr "Discussions ({0})"
 
-#: src/CommonCartridge.js:530
+#: src/CommonCartridge.js:528
 msgid "Discussions ({length})"
 msgstr "Discussies ({length})"
 
@@ -119,7 +123,7 @@ msgstr "Sleep de cartridge of klik om je computer te doorzoeken."
 #~ msgid "Drag and drop, or click to browse your computer"
 #~ msgstr "Drag and drop, or click to browse your computer"
 
-#: src/Assessment.js:155
+#: src/Assessment.js:160
 msgid "Essay"
 msgstr "Verhandeling"
 
@@ -131,15 +135,15 @@ msgstr "Voorbeelden"
 msgid "External Tool Content Can't be Previewed"
 msgstr "Kan geen voorbeeld weergeven van de inhoud van de externe tool"
 
-#: src/WebLink.js:29
+#: src/WebLink.js:25
 msgid "External link"
 msgstr "Externe link"
 
-#: src/CommonCartridge.js:364
+#: src/CommonCartridge.js:365
 msgid "Failed to load resource"
 msgstr "Laden van resource mislukt"
 
-#: src/Assessment.js:173
+#: src/Assessment.js:178
 msgid "File Upload"
 msgstr "Bestand uploaden"
 
@@ -147,15 +151,15 @@ msgstr "Bestand uploaden"
 msgid "Files"
 msgstr "Bestanden"
 
-#: src/CommonCartridge.js:559
+#: src/CommonCartridge.js:557
 msgid "Files ({0})"
 msgstr "Bestanden ({0})"
 
-#: src/Assessment.js:149
+#: src/Assessment.js:154
 msgid "Fill in the blank"
 msgstr "Leeg veld invullen"
 
-#: src/Image.js:55
+#: src/Image.js:50
 msgid "Image"
 msgstr "Afbeelding"
 
@@ -168,19 +172,19 @@ msgstr "Om deze bron in Canvas te kunnen gebruiken, moet de externe tool worden 
 msgid "Loading"
 msgstr "Bezig met laden"
 
-#: src/CommonCartridge.js:398
+#: src/CommonCartridge.js:399
 msgid "Loading Cartridge"
 msgstr "Cartridge wordt geladen"
 
-#: src/CommonCartridge.js:415
+#: src/CommonCartridge.js:416
 msgid "Loading completion"
 msgstr "Laden wordt voltooid"
 
-#: src/Assessment.js:161
+#: src/Assessment.js:166
 msgid "Match Questions"
 msgstr "Vragen vergelijken"
 
-#: src/Assessment.js:253
+#: src/Assessment.js:261
 msgid "Max attempts"
 msgstr "Max. aantal pogingen"
 
@@ -190,23 +194,27 @@ msgstr "Max. aantal pogingen"
 msgid "Media viewer"
 msgstr "Mediaviewer"
 
-#: src/CommonCartridge.js:497
+#: src/CommonCartridge.js:495
 msgid "Modules ({0})"
 msgstr "Modules ({0})"
 
-#: src/Assessment.js:158
+#: src/Assessment.js:163
 msgid "Multiple Dropdowns"
 msgstr "Meerdere vervolgkeuzelijsten"
 
-#: src/Assessment.js:140
+#: src/Assessment.js:145
 msgid "Multiple choice"
 msgstr "Meerkeuze"
 
-#: src/Assessment.js:143
+#: src/Assessment.js:148
 msgid "Multiple response"
 msgstr "Meerdere antwoorden"
 
-#: src/Resource.js:129
+#: src/Assessment.js:249
+msgid "New Quizzes"
+msgstr ""
+
+#: src/Resource.js:121
 msgid "Next"
 msgstr "Volgende"
 
@@ -218,7 +226,7 @@ msgstr "Volgende pagina"
 #~ msgid "Not found"
 #~ msgstr "Not found"
 
-#: src/Assessment.js:164
+#: src/Assessment.js:169
 msgid "Numerical"
 msgstr "Numeriek"
 
@@ -226,23 +234,23 @@ msgstr "Numeriek"
 #~ msgid "Other type"
 #~ msgstr "Other type"
 
-#: src/WikiContent.js:25
+#: src/WikiContent.js:21
 msgid "Page"
 msgstr "Pagina"
 
-#: src/CommonCartridge.js:519
+#: src/CommonCartridge.js:517
 msgid "Pages ({0})"
 msgstr "Pagina's ({0})"
 
-#: src/Assessment.js:152
+#: src/Assessment.js:157
 msgid "Pattern match"
 msgstr "Patroonovereenkomst"
 
-#: src/AssignmentBody.js:59
+#: src/AssignmentBody.js:53
 msgid "Points"
 msgstr "Punten"
 
-#: src/Resource.js:108
+#: src/Resource.js:100
 msgid "Previous"
 msgstr "Vorige"
 
@@ -250,27 +258,27 @@ msgstr "Vorige"
 msgid "Previous Page"
 msgstr "Vorige pagina"
 
-#: src/AssignmentBody.js:129
+#: src/AssignmentBody.js:123
 msgid "Pts"
 msgstr "Punten"
 
-#: src/Assessment.js:256
+#: src/Assessment.js:264
 msgid "Questions"
 msgstr "Vragen"
 
 #: src/Assessment.js:244
-msgid "Quiz"
-msgstr "Toets"
+#~ msgid "Quiz"
+#~ msgstr "Toets"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
 msgstr "Toetsen"
 
-#: src/CommonCartridge.js:546
+#: src/CommonCartridge.js:544
 msgid "Quizzes ({0})"
 msgstr "Toetsen ({0})"
 
-#: src/AssignmentBody.js:126
+#: src/AssignmentBody.js:120
 msgid "Ratings"
 msgstr "Beoordelingen"
 
@@ -282,15 +290,15 @@ msgstr "Bron niet beschikbaar"
 #~ msgid "Submission formats"
 #~ msgstr "Submission formats"
 
-#: src/AssignmentBody.js:46
+#: src/AssignmentBody.js:40
 msgid "Submitting"
 msgstr "In te leveren"
 
-#: src/Assessment.js:170
+#: src/Assessment.js:175
 msgid "Text only"
 msgstr "Alleen tekst"
 
-#: src/CommonCartridge.js:406
+#: src/CommonCartridge.js:407
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "Dit kan even duren, afhankelijk van de grootte van de cartridge."
 
@@ -298,20 +306,20 @@ msgstr "Dit kan even duren, afhankelijk van de grootte van de cartridge."
 msgid "This resource is not included in the package."
 msgstr "Deze resource is niet in het pakket inbegrepen."
 
-#: src/AssignmentBody.js:160
+#: src/AssignmentBody.js:154
 msgid "Total points:"
 msgstr "Totaal aantal punten:"
 
-#: src/Assessment.js:146
+#: src/Assessment.js:151
 msgid "True / false"
 msgstr "Waar/Onwaar"
 
-#: src/CommonCartridge.js:466
+#: src/CommonCartridge.js:464
 #: src/ExternalToolListItem.js:27
 #: src/ModulesList.js:174
-#: src/WebLink.js:36
+#: src/WebLink.js:32
 #: src/WebLinkListItem.js:31
-#: src/utils.js:250
+#: src/utils.js:299
 msgid "Untitled"
 msgstr "Zonder titel"
 
@@ -331,7 +339,7 @@ msgstr "Bekijk Common Cartridges in de browser. Hiervoor is geen verwerking aan 
 msgid "View source on Github"
 msgstr "Bron bekijken op Github"
 
-#: src/CommonCartridge.js:366
+#: src/CommonCartridge.js:367
 msgid "We had a problem loading the Common Cartridge"
 msgstr "Er is een probleem met het laden van de Common Cartridge"
 
@@ -339,7 +347,7 @@ msgstr "Er is een probleem met het laden van de Common Cartridge"
 msgid "Wiki content"
 msgstr "Wiki-inhoud"
 
-#: src/CommonCartridge.js:464
+#: src/CommonCartridge.js:462
 msgid "You are here:"
 msgstr "Je bent hier:"
 
@@ -351,7 +359,7 @@ msgstr "Je browser biedt geen ondersteuning voor HTML5-audio. Hier is een <0>lin
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "Je browser biedt geen ondersteuning voor HTML5-video. Hier is een <0>link naar de audio</0>."
 
-#: src/utils.js:352
+#: src/utils.js:401
 msgid "a file upload"
 msgstr "een bestandsupload"
 
@@ -359,7 +367,7 @@ msgstr "een bestandsupload"
 msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
 msgstr "https://www.yourdomain.com/cartridge.imscc (CORS ingeschakeld)"
 
-#: src/AssignmentBody.js:141
+#: src/AssignmentBody.js:135
 msgid "pts"
 msgstr "ptn"
 
@@ -375,21 +383,21 @@ msgstr "{0} is gepubliceerd"
 msgid "{0} is unpublished"
 msgstr "{0} is niet gepubliceerd"
 
-#: src/AssessmentListItem.js:120
+#: src/AssessmentListItem.js:129
 #: src/AssignmentListItemBody.js:34
-#: src/DiscussionListItem.js:90
+#: src/DiscussionListItem.js:91
 #: src/FileListItem.js:75
 msgid "{0} points"
 msgstr "{0} punten"
 
-#: src/AssessmentListItem.js:110
+#: src/AssessmentListItem.js:119
 msgid "{0} question(s) / {1} assigned"
 msgstr "{0} vraag/vragen / {1} toegewezen"
 
-#: src/CommonCartridge.js:425
+#: src/CommonCartridge.js:426
 msgid "{0}%"
 msgstr "{0}%"
 
-#: src/CommonCartridge.js:418
+#: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% geladen"
