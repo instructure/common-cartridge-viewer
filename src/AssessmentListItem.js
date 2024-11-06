@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import IconQuiz from "@instructure/ui-icons/lib/Line/IconQuiz";
+import ClassicQuizIcon from "@instructure/ui-icons/lib/Line/IconQuiz";
+import QuizzesNextIcon from "@instructure/ui-icons/lib/Solid/IconQuiz";
 import WorkflowStateIcon from "./WorkflowStateIcon";
 import Link from "@instructure/ui-elements/lib/components/Link";
 import { Trans } from "@lingui/macro";
@@ -27,7 +28,8 @@ export default class AssessmentListItem extends Component {
         points: "N/A",
         questionCount: 0,
         workflowState: "unpublished",
-        resourceNotFound: true
+        resourceNotFound: true,
+        isFromQuizzesNext: false
       });
       return;
     }
@@ -35,9 +37,11 @@ export default class AssessmentListItem extends Component {
     const depPath = this.props.dependencyHrefs[0];
     const depXml = await this.props.getTextByPath(depPath);
     const depDoc = parser.parseFromString(depXml, "text/xml");
-    const title =
-      doc.querySelector("assessment") &&
-      doc.querySelector("assessment").getAttribute("title");
+    const assessmentNode = doc.querySelector("assessment");
+    const title = assessmentNode && assessmentNode.getAttribute("title");
+    const isFromQuizzesNext = !!(
+      assessmentNode && assessmentNode.getAttribute("external_assignment_id")
+    );
     const pointsPossibleNode =
       depDoc && depDoc.querySelector("quiz > assignment > points_possible");
     const points =
@@ -69,7 +73,8 @@ export default class AssessmentListItem extends Component {
       points,
       questionCount,
       assignedQuestionCount,
-      workflowState
+      workflowState,
+      isFromQuizzesNext
     });
   }
 
@@ -92,7 +97,11 @@ export default class AssessmentListItem extends Component {
       <li className="ExpandCollapseList-item">
         <div className="ExpandCollapseList-item-inner">
           <span className="resource-icon">
-            <IconQuiz color={iconColor} />
+            {this.state.isFromQuizzesNext ? (
+              <QuizzesNextIcon color={iconColor} />
+            ) : (
+              <ClassicQuizIcon color={iconColor} />
+            )}
           </span>
           <div style={{ flex: 1 }}>
             <div>

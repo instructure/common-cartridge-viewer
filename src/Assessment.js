@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Heading from "@instructure/ui-elements/lib/components/Heading";
 import { questionTypes } from "./constants";
 import RichContent from "./RichContent";
-import Icon from "@instructure/ui-icons/lib/Line/IconQuiz";
+import ClassicQuizIcon from "@instructure/ui-icons/lib/Line/IconQuiz";
+import QuizzesNextIcon from "@instructure/ui-icons/lib/Solid/IconQuiz";
 import Text from "@instructure/ui-elements/lib/components/Text";
 import View from "@instructure/ui-layout/lib/components/View";
 import Pill from "@instructure/ui-elements/lib/components/Pill";
@@ -24,6 +25,9 @@ export default class Assessment extends Component {
       return null;
     }
     const title = assessmentNode.getAttribute("title");
+    const isFromQuizzesNext = !!assessmentNode.getAttribute(
+      "external_assignment_id"
+    );
     const metadata = getMetadataFields(
       assessmentNode.parentNode.querySelector("assessment > qtimetadata")
     );
@@ -234,10 +238,18 @@ export default class Assessment extends Component {
       <React.Fragment>
         <div className="resource-label font-color type-quiz">
           <div className="resource-label-icon background-color type-quiz">
-            <Icon color="primary-inverse" />
+            {isFromQuizzesNext ? (
+              <QuizzesNextIcon color="primary-inverse" />
+            ) : (
+              <ClassicQuizIcon color="primary-inverse" />
+            )}
           </div>
           <span>
-            <Trans>Quiz</Trans>
+            {isFromQuizzesNext ? (
+              <Trans>New Quizzes</Trans>
+            ) : (
+              <Trans>Classic Quiz</Trans>
+            )}
           </span>
         </div>
 
