@@ -1,4 +1,4 @@
-﻿msgid ""
+msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Cartridge"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr "اختبار موجز تقليدي"
+msgstr ""
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "استجابة من متعدد"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr "الاختبارات الموجزة الجديدة"
+msgstr ""
 
 #: src/Resource.js:121
 msgid "Next"
@@ -268,7 +268,7 @@ msgstr "الأسئلة"
 
 #: src/Assessment.js:244
 #~ msgid "Quiz"
-#~ msgstr "Quiz"
+#~ msgstr "الاختبار الموجز"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
@@ -401,4 +401,3 @@ msgstr "{0}%"
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "تم تحميل {0}%"
-

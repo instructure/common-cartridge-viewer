@@ -1,4 +1,4 @@
-﻿msgid ""
+msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Cartucho"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr "Examen clásico"
+msgstr ""
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Respuesta múltiple"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr "Nuevos exámenes"
+msgstr ""
 
 #: src/Resource.js:121
 msgid "Next"
@@ -268,7 +268,7 @@ msgstr "Preguntas"
 
 #: src/Assessment.js:244
 #~ msgid "Quiz"
-#~ msgstr "Exám"
+#~ msgstr "Evaluación"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
@@ -369,7 +369,7 @@ msgstr "https://www.yourdomain.com/cartridge.imscc (Se permite el Intercambio de
 
 #: src/AssignmentBody.js:135
 msgid "pts"
-msgstr "ptos."
+msgstr "pts"
 
 #: src/AssessmentListItem.js:94
 #~ msgid "{0} Questions"
@@ -401,4 +401,3 @@ msgstr "{0}%"
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% cargado"
-

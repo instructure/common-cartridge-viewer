@@ -1,4 +1,4 @@
-﻿msgid ""
+msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Kartuša"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr "Klasični kviz"
+msgstr ""
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Več odgovorov"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr "Novi kvizi"
+msgstr ""
 
 #: src/Resource.js:121
 msgid "Next"
@@ -401,4 +401,3 @@ msgstr "{0} %"
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0} % naloženo"
-
