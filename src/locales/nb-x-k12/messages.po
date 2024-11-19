@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Eske"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Klassiske quiz"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Flere svar"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Nye quizer"
 
 #: src/Resource.js:121
 msgid "Next"
@@ -244,7 +244,7 @@ msgstr "Sider ({0})"
 
 #: src/Assessment.js:157
 msgid "Pattern match"
-msgstr "Pattern Match"
+msgstr "Samsvarende mønster"
 
 #: src/AssignmentBody.js:53
 msgid "Points"
@@ -396,8 +396,9 @@ msgstr "{0} spørsmål / {1} tildelt"
 
 #: src/CommonCartridge.js:426
 msgid "{0}%"
-msgstr "{0}%"
+msgstr "{0} %"
 
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
-msgstr "{0}% lastet"
+msgstr "{0} % lastet"
+
