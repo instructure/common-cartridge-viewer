@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Cartuccia"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Quiz classico"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Risposta multipla"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Nuovi quiz"
 
 #: src/Resource.js:121
 msgid "Next"
@@ -401,3 +401,4 @@ msgstr "{0}%"
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% caricato"
+

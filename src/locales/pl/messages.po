@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr ""
 "POT-Creation-Date: 2018-12-04 10:02-0700\n"
 "Mime-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "Wkład"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Classic Quiz"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Wiele odpowiedzi"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Testy New Quizzes"
 
 #: src/Resource.js:121
 msgid "Next"
@@ -357,7 +357,7 @@ msgstr "Twoja przeglądarka nie obsługuje audio HTML5. Oto <0>łącze do audio<
 
 #: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
-msgstr "Twoja przeglądarka nie obsługuje wideo HTML5. Oto <0>łącze do wideo</0>."
+msgstr "Twoja przeglądarka nie obsługuje wideo HTML5. Oto <0>łącze do audio</0>."
 
 #: src/utils.js:401
 msgid "a file upload"
@@ -401,3 +401,4 @@ msgstr "{0}%"
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% wczytano"
+
