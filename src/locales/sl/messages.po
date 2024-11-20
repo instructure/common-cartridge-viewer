@@ -69,7 +69,7 @@ msgstr "Kartuša"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Klasični kviz"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Več odgovorov"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Novi kvizi"
 
 #: src/Resource.js:121
 msgid "Next"
