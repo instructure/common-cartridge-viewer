@@ -69,7 +69,7 @@ msgstr "Cartridge"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "傳統測驗"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "多項回答"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "新測驗"
 
 #: src/Resource.js:121
 msgid "Next"

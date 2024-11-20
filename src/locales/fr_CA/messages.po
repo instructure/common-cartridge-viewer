@@ -69,7 +69,7 @@ msgstr "Cartouche"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Questionnaire classique"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Réponses multiples"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Nouveaux questionnaires"
 
 #: src/Resource.js:121
 msgid "Next"

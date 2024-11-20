@@ -69,7 +69,7 @@ msgstr "Cartucho"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Examen clásico"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Respuesta múltiple"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Nuevos exámenes"
 
 #: src/Resource.js:121
 msgid "Next"
@@ -268,7 +268,7 @@ msgstr "Preguntas"
 
 #: src/Assessment.js:244
 #~ msgid "Quiz"
-#~ msgstr "Evaluación"
+#~ msgstr "Exám"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
@@ -369,7 +369,7 @@ msgstr "https://www.yourdomain.com/cartridge.imscc (Se permite el Intercambio de
 
 #: src/AssignmentBody.js:135
 msgid "pts"
-msgstr "pts"
+msgstr "ptos."
 
 #: src/AssessmentListItem.js:94
 #~ msgid "{0} Questions"

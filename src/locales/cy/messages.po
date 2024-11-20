@@ -69,7 +69,7 @@ msgstr "Cetrisen"
 
 #: src/Assessment.js:251
 msgid "Classic Quiz"
-msgstr ""
+msgstr "Cwis Clasurol"
 
 #: src/WebLink.js:36
 msgid "Click here to open link in new window"
@@ -212,7 +212,7 @@ msgstr "Mwy nag un ymateb"
 
 #: src/Assessment.js:249
 msgid "New Quizzes"
-msgstr ""
+msgstr "Cwisiau Newydd"
 
 #: src/Resource.js:121
 msgid "Next"
@@ -268,7 +268,7 @@ msgstr "Cwestiwn"
 
 #: src/Assessment.js:244
 #~ msgid "Quiz"
-#~ msgstr "Cwis"
+#~ msgstr "Quiz"
 
 #: src/AssessmentList.js:44
 msgid "Quizzes"
