@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2018-12-04 10:02-0700\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ca\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/ModulesList.js:175
+msgid "(unidentified)"
+msgstr "(no identificat)"
+
+#: src/Resource.js:144
+#~ msgid "All Items"
+#~ msgstr "All Items"
+
+#: src/Assessment.js:131
+#~ msgid "Assessment"
+#~ msgstr "Assessment"
+
+#: src/AssessmentList.js:43
+#~ msgid "Assessments"
+#~ msgstr "Assessments"
+
+#: src/CommonCartridge.js:364
+#~ msgid "Assessments ( {0})"
+#~ msgstr "Assessments ( {0})"
+
+#: src/CommonCartridge.js:352
+#~ msgid "Assessments ({0})"
+#~ msgstr "Assessments ({0})"
+
+#: src/AssignmentBody.js:28
+msgid "Assignment"
+msgstr "Tasca"
+
+#: src/AssignmentList.js:35
+#: src/AssociatedContentAssignmentList.js:35
+msgid "Assignments"
+msgstr "Tasques"
+
+#: src/CommonCartridge.js:330
+#~ msgid "Assignments ({0})"
+#~ msgstr ""
+
+#: src/CommonCartridge.js:506
+msgid "Assignments ({numberOfAssignments})"
+msgstr "Tasques ({numberOfAssignments})"
+
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
+msgid "Attachments"
+msgstr "Fitxers adjunts"
+
+#: src/Assessment.js:172
+msgid "Calculated"
+msgstr "Calculat"
+
+#: src/App.js:133
+msgid "Cartridge"
+msgstr "Cartutx"
+
+#: src/Assessment.js:251
+msgid "Classic Quiz"
+msgstr "Prova clàssica"
+
+#: src/WebLink.js:36
+msgid "Click here to open link in new window"
+msgstr "Feu clic aquí per obrir l'enllaç en una finestra nova"
+
+#: src/App.js:117
+msgid "Common Cartridge Viewer"
+msgstr "Usuari observador de Common Cartridge"
+
+#: src/CourseNavigationUnavailable.js:11
+msgid "Course Navigation Cannot Be Previewed"
+msgstr "No es pot fer cap visualització prèvia de la navegació del curs"
+
+#: src/CourseNavigationUnavailable.js:13
+msgid "Course navigation links are only available within a Canvas course."
+msgstr "Els enllaços de la navegació del curs només estan disponibles dins d'un curs de Canvas."
+
+#: src/AssignmentBody.js:112
+msgid "Criteria"
+msgstr "Criteris"
+
+#: src/Discussion.js:30
+msgid "Discussion"
+msgstr "Debat"
+
+#: src/DiscussionList.js:41
+msgid "Discussions"
+msgstr "Debats"
+
+#: src/CommonCartridge.js:356
+#~ msgid "Discussions ( {0})"
+#~ msgstr "Discussions ( {0})"
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr "Discussions ({0} )"
+
+#: src/CommonCartridge.js:430
+#~ msgid "Discussions ({0})"
+#~ msgstr "Discussions ({0})"
+
+#: src/CommonCartridge.js:528
+msgid "Discussions ({length})"
+msgstr "Debats ({length})"
+
+#: src/App.js:119
+msgid "Drag and drop the cartridge, or click to browse your computer."
+msgstr "Arrossegueu i deixeu anar el cartutx o feu clic per explorar l'ordinador."
+
+#: src/App.js:95
+#~ msgid "Drag and drop, or click to browse your computer"
+#~ msgstr "Drag and drop, or click to browse your computer"
+
+#: src/Assessment.js:160
+msgid "Essay"
+msgstr "Assaig"
+
+#: src/App.js:159
+msgid "Examples"
+msgstr "Exemples"
+
+#: src/PreviewUnavailable.js:11
+msgid "External Tool Content Can't be Previewed"
+msgstr "No es pot fer cap visualització prèvia del contingut de l'eina externa"
+
+#: src/WebLink.js:25
+msgid "External link"
+msgstr "Enllaç extern"
+
+#: src/CommonCartridge.js:365
+msgid "Failed to load resource"
+msgstr "No s'ha pogut carregar el recurs"
+
+#: src/Assessment.js:178
+msgid "File Upload"
+msgstr "Penjada de fitxer"
+
+#: src/FileList.js:40
+msgid "Files"
+msgstr "Fitxers"
+
+#: src/CommonCartridge.js:557
+msgid "Files ({0})"
+msgstr "Fitxers ({0})"
+
+#: src/Assessment.js:154
+msgid "Fill in the blank"
+msgstr "Omple els espais en blanc"
+
+#: src/Image.js:50
+msgid "Image"
+msgstr "Imatge"
+
+#: src/PreviewUnavailable.js:13
+msgid "In order to use this resource in Canvas, the external tool must be installed."
+msgstr "Per tal d'utilitzar aquest recurs a Canvas, s'ha d'instal·lar l'eina externa."
+
+#: src/EmbeddedPreview.js:64
+#: src/Image.js:37
+msgid "Loading"
+msgstr "S'està carregant"
+
+#: src/CommonCartridge.js:399
+msgid "Loading Cartridge"
+msgstr "S'està carregant el cartutx"
+
+#: src/CommonCartridge.js:416
+msgid "Loading completion"
+msgstr "S'ha completat la càrrega"
+
+#: src/Assessment.js:166
+msgid "Match Questions"
+msgstr "Aparella les preguntes"
+
+#: src/Assessment.js:261
+msgid "Max attempts"
+msgstr "Nombre màxim d'intents"
+
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
+msgid "Media viewer"
+msgstr "Usuari observador d'elements multimèdia"
+
+#: src/CommonCartridge.js:495
+msgid "Modules ({0})"
+msgstr "Mòduls ({0})"
+
+#: src/Assessment.js:163
+msgid "Multiple Dropdowns"
+msgstr "Menús desplegables múltiples"
+
+#: src/Assessment.js:145
+msgid "Multiple choice"
+msgstr "Elecció múltiple"
+
+#: src/Assessment.js:148
+msgid "Multiple response"
+msgstr "Resposta múltiple"
+
+#: src/Assessment.js:249
+msgid "New Quizzes"
+msgstr "Proves noves"
+
+#: src/Resource.js:121
+msgid "Next"
+msgstr "Següent"
+
+#: src/Paginate.js:112
+msgid "Next Page"
+msgstr "Pàgina següent"
+
+#: src/Resource.js:287
+#~ msgid "Not found"
+#~ msgstr "Not found"
+
+#: src/Assessment.js:169
+msgid "Numerical"
+msgstr "Numèric"
+
+#: src/Assessment.js:102
+#~ msgid "Other type"
+#~ msgstr "Other type"
+
+#: src/WikiContent.js:21
+msgid "Page"
+msgstr "Pàgina"
+
+#: src/CommonCartridge.js:517
+msgid "Pages ({0})"
+msgstr "Pàgines ({0})"
+
+#: src/Assessment.js:157
+msgid "Pattern match"
+msgstr "Coincidència de patró"
+
+#: src/AssignmentBody.js:53
+msgid "Points"
+msgstr "Punts"
+
+#: src/Resource.js:100
+msgid "Previous"
+msgstr "Anterior"
+
+#: src/Paginate.js:113
+msgid "Previous Page"
+msgstr "Pàgina anterior"
+
+#: src/AssignmentBody.js:123
+msgid "Pts"
+msgstr "Punts"
+
+#: src/Assessment.js:264
+msgid "Questions"
+msgstr "Preguntes"
+
+#: src/Assessment.js:244
+#~ msgid "Quiz"
+#~ msgstr "Quiz"
+
+#: src/AssessmentList.js:44
+msgid "Quizzes"
+msgstr "Qüestionaris"
+
+#: src/CommonCartridge.js:544
+msgid "Quizzes ({0})"
+msgstr "Qüestionaris ({0})"
+
+#: src/AssignmentBody.js:120
+msgid "Ratings"
+msgstr "Classificacions"
+
+#: src/ResourceUnavailable.js:11
+msgid "Resource Unavailable"
+msgstr "Recurs no disponible"
+
+#: src/Assignment.js:61
+#~ msgid "Submission formats"
+#~ msgstr "Submission formats"
+
+#: src/AssignmentBody.js:40
+msgid "Submitting"
+msgstr "S'està entregant"
+
+#: src/Assessment.js:175
+msgid "Text only"
+msgstr "Només text"
+
+#: src/CommonCartridge.js:407
+msgid "This may take some time depending on the size of the cartridge."
+msgstr "Aquesta acció pot tardar un temps en funció de la mida del cartutx."
+
+#: src/ResourceUnavailable.js:12
+msgid "This resource is not included in the package."
+msgstr "Aquest recurs no està inclòs al paquet."
+
+#: src/AssignmentBody.js:154
+msgid "Total points:"
+msgstr "Punts totals:"
+
+#: src/Assessment.js:151
+msgid "True / false"
+msgstr "Cert o fals"
+
+#: src/CommonCartridge.js:464
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
+#: src/WebLink.js:32
+#: src/WebLinkListItem.js:31
+#: src/utils.js:299
+msgid "Untitled"
+msgstr "Sense títol"
+
+#: src/App.js:145
+msgid "View"
+msgstr "Mostra"
+
+#: src/App.js:152
+msgid "View Common Cartridges in the browser. Requires no server-side processing."
+msgstr "Consulteu Common Cartridges a l'explorador. No cal que el servidor dugui a terme cap processament."
+
+#: src/App.js:93
+#~ msgid "View a Common Cartridge (.imscc)"
+#~ msgstr "View a Common Cartridge (.imscc)"
+
+#: src/GitHubCorner.js:14
+msgid "View source on Github"
+msgstr "Mostra l'origen a Github"
+
+#: src/CommonCartridge.js:367
+msgid "We had a problem loading the Common Cartridge"
+msgstr "Hem tingut un problema en carregar Common Cartridge"
+
+#: src/WikiContentList.js:61
+msgid "Wiki content"
+msgstr "Contingut de Wiki"
+
+#: src/CommonCartridge.js:462
+msgid "You are here:"
+msgstr "Sou aquí:"
+
+#: src/EmbeddedPreview.js:82
+msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
+msgstr "Aquest explorador no admet so en format HTML5. Com a alternativa, aquí teniu un <0>enllaç al fitxer de so</0>."
+
+#: src/EmbeddedPreview.js:95
+msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
+msgstr "Aquest explorador no admet vídeo en format HTML5. Com a alternativa, aquí teniu un <0>enllaç al fitxer de so</0>."
+
+#: src/utils.js:401
+msgid "a file upload"
+msgstr "càrrega d'un fitxer"
+
+#: src/App.js:138
+msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (amb CORS activat)"
+
+#: src/AssignmentBody.js:135
+msgid "pts"
+msgstr "punts"
+
+#: src/AssessmentListItem.js:94
+#~ msgid "{0} Questions"
+#~ msgstr ""
+
+#: src/WorkflowStateIcon.js:30
+msgid "{0} is published"
+msgstr "{0} s'ha publicat"
+
+#: src/WorkflowStateIcon.js:21
+msgid "{0} is unpublished"
+msgstr "{0} no s'ha publicat"
+
+#: src/AssessmentListItem.js:129
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:91
+#: src/FileListItem.js:75
+msgid "{0} points"
+msgstr "{0} punts"
+
+#: src/AssessmentListItem.js:119
+msgid "{0} question(s) / {1} assigned"
+msgstr "{0} pregunta(es) / {1} assignada(es)"
+
+#: src/CommonCartridge.js:426
+msgid "{0}%"
+msgstr "{0} %"
+
+#: src/CommonCartridge.js:419
+msgid "{0}% loaded"
+msgstr "{0} % carregat"
