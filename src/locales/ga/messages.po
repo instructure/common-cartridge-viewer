@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2018-12-04 10:02-0700\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: ga\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=5; plural=(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4);\n"
+
+#: src/ModulesList.js:175
+msgid "(unidentified)"
+msgstr "(neamhaitheanta)"
+
+#: src/Resource.js:144
+#~ msgid "All Items"
+#~ msgstr "All Items"
+
+#: src/Assessment.js:131
+#~ msgid "Assessment"
+#~ msgstr "Assessment"
+
+#: src/AssessmentList.js:43
+#~ msgid "Assessments"
+#~ msgstr "Assessments"
+
+#: src/CommonCartridge.js:364
+#~ msgid "Assessments ( {0})"
+#~ msgstr "Assessments ( {0})"
+
+#: src/CommonCartridge.js:352
+#~ msgid "Assessments ({0})"
+#~ msgstr "Assessments ({0})"
+
+#: src/AssignmentBody.js:28
+msgid "Assignment"
+msgstr "Tasc"
+
+#: src/AssignmentList.js:35
+#: src/AssociatedContentAssignmentList.js:35
+msgid "Assignments"
+msgstr "Tascanna"
+
+#: src/CommonCartridge.js:330
+#~ msgid "Assignments ({0})"
+#~ msgstr "Assignments ({0})"
+
+#: src/CommonCartridge.js:506
+msgid "Assignments ({numberOfAssignments})"
+msgstr "Tascanna ({numberOfAssignments})"
+
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
+msgid "Attachments"
+msgstr "Ceangaltáin"
+
+#: src/Assessment.js:172
+msgid "Calculated"
+msgstr "Ríofa"
+
+#: src/App.js:133
+msgid "Cartridge"
+msgstr "Cartús"
+
+#: src/Assessment.js:251
+msgid "Classic Quiz"
+msgstr "Quiz Clasaiceach"
+
+#: src/WebLink.js:36
+msgid "Click here to open link in new window"
+msgstr "Cliceáil anseo chun an nasc a oscailt i bhfuinneog nua"
+
+#: src/App.js:117
+msgid "Common Cartridge Viewer"
+msgstr "Amharcóir Cartúis Coiteann"
+
+#: src/CourseNavigationUnavailable.js:11
+msgid "Course Navigation Cannot Be Previewed"
+msgstr "Ní Féidir Réamhamharc ar Nascleanúint Cúrsa"
+
+#: src/CourseNavigationUnavailable.js:13
+msgid "Course navigation links are only available within a Canvas course."
+msgstr "Níl naisc nascleanúna cúrsa ar fáil ach laistigh de chúrsa Canvas."
+
+#: src/AssignmentBody.js:112
+msgid "Criteria"
+msgstr "Critéir"
+
+#: src/Discussion.js:30
+msgid "Discussion"
+msgstr "Fóram"
+
+#: src/DiscussionList.js:41
+msgid "Discussions"
+msgstr "Fóraim"
+
+#: src/CommonCartridge.js:356
+#~ msgid "Discussions ( {0})"
+#~ msgstr "Fóraim ( {0})"
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr "Fóraim ({0} )"
+
+#: src/CommonCartridge.js:430
+#~ msgid "Discussions ({0})"
+#~ msgstr "Fóraim ({0})"
+
+#: src/CommonCartridge.js:528
+msgid "Discussions ({length})"
+msgstr "Fóraim ({length})"
+
+#: src/App.js:119
+msgid "Drag and drop the cartridge, or click to browse your computer."
+msgstr "Tarraing agus scaoil an cartús, nó cliceáil chun brabhsáil do ríomhaire."
+
+#: src/App.js:95
+#~ msgid "Drag and drop, or click to browse your computer"
+#~ msgstr "Drag and drop, or click to browse your computer"
+
+#: src/Assessment.js:160
+msgid "Essay"
+msgstr "Aiste"
+
+#: src/App.js:159
+msgid "Examples"
+msgstr "Samplaí"
+
+#: src/PreviewUnavailable.js:11
+msgid "External Tool Content Can't be Previewed"
+msgstr "Ní féidir Ábhar Uirlis Sheachtrach a Réamhamhairc"
+
+#: src/WebLink.js:25
+msgid "External link"
+msgstr "Nasc seachtrach"
+
+#: src/CommonCartridge.js:365
+msgid "Failed to load resource"
+msgstr "Theip ar an acmhainn a lódáil"
+
+#: src/Assessment.js:178
+msgid "File Upload"
+msgstr "Uaslódáil Comhad"
+
+#: src/FileList.js:40
+msgid "Files"
+msgstr "Comhaid"
+
+#: src/CommonCartridge.js:557
+msgid "Files ({0})"
+msgstr "Comhaid ({0})"
+
+#: src/Assessment.js:154
+msgid "Fill in the blank"
+msgstr "Líon isteach an bhearna"
+
+#: src/Image.js:50
+msgid "Image"
+msgstr "Íomhá"
+
+#: src/PreviewUnavailable.js:13
+msgid "In order to use this resource in Canvas, the external tool must be installed."
+msgstr "Chun an acmhainn seo a úsáid i gCanvas, ní mór an uirlis sheachtrach a shuiteáil."
+
+#: src/EmbeddedPreview.js:64
+#: src/Image.js:37
+msgid "Loading"
+msgstr "Ag lódáil"
+
+#: src/CommonCartridge.js:399
+msgid "Loading Cartridge"
+msgstr "Cartúis á Lódáil"
+
+#: src/CommonCartridge.js:416
+msgid "Loading completion"
+msgstr "Críochnú lódála"
+
+#: src/Assessment.js:166
+msgid "Match Questions"
+msgstr "Meaitseáil Ceisteanna"
+
+#: src/Assessment.js:261
+msgid "Max attempts"
+msgstr "Iarrachtaí uasta"
+
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
+msgid "Media viewer"
+msgstr "Breathnóir meáin"
+
+#: src/CommonCartridge.js:495
+msgid "Modules ({0})"
+msgstr "Modúil ({0})"
+
+#: src/Assessment.js:163
+msgid "Multiple Dropdowns"
+msgstr "Cláir anuas Iolracha"
+
+#: src/Assessment.js:145
+msgid "Multiple choice"
+msgstr "Rogha iolrach"
+
+#: src/Assessment.js:148
+msgid "Multiple response"
+msgstr "Freagra iolrach"
+
+#: src/Assessment.js:249
+msgid "New Quizzes"
+msgstr "Quizeanna Nua"
+
+#: src/Resource.js:121
+msgid "Next"
+msgstr "Ar aghaidh"
+
+#: src/Paginate.js:112
+msgid "Next Page"
+msgstr "An Chéad Leathanach Eile"
+
+#: src/Resource.js:287
+#~ msgid "Not found"
+#~ msgstr "Níor aimsíodh"
+
+#: src/Assessment.js:169
+msgid "Numerical"
+msgstr "Uimhriúil"
+
+#: src/Assessment.js:102
+#~ msgid "Other type"
+#~ msgstr "Other type"
+
+#: src/WikiContent.js:21
+msgid "Page"
+msgstr "Leathanach"
+
+#: src/CommonCartridge.js:517
+msgid "Pages ({0})"
+msgstr "Leathanaigh ({0})"
+
+#: src/Assessment.js:157
+msgid "Pattern match"
+msgstr "Meaitseáil patrún"
+
+#: src/AssignmentBody.js:53
+msgid "Points"
+msgstr "Pointí"
+
+#: src/Resource.js:100
+msgid "Previous"
+msgstr "Roimhe Seo"
+
+#: src/Paginate.js:113
+msgid "Previous Page"
+msgstr "Leathanach Roimhe Seo"
+
+#: src/AssignmentBody.js:123
+msgid "Pts"
+msgstr "Pointí"
+
+#: src/Assessment.js:264
+msgid "Questions"
+msgstr "Ceisteanna"
+
+#: src/Assessment.js:244
+#~ msgid "Quiz"
+#~ msgstr "Quiz"
+
+#: src/AssessmentList.js:44
+msgid "Quizzes"
+msgstr "Quizeanna"
+
+#: src/CommonCartridge.js:544
+msgid "Quizzes ({0})"
+msgstr "Quizeanna ({0})"
+
+#: src/AssignmentBody.js:120
+msgid "Ratings"
+msgstr "Rátálacha"
+
+#: src/ResourceUnavailable.js:11
+msgid "Resource Unavailable"
+msgstr "Níl Acmhainn ar fáil"
+
+#: src/Assignment.js:61
+#~ msgid "Submission formats"
+#~ msgstr "Submission formats"
+
+#: src/AssignmentBody.js:40
+msgid "Submitting"
+msgstr "Ag cur isteach"
+
+#: src/Assessment.js:175
+msgid "Text only"
+msgstr "Téacs amháin"
+
+#: src/CommonCartridge.js:407
+msgid "This may take some time depending on the size of the cartridge."
+msgstr "Féadfaidh sé seo roinnt ama a ghlacadh ag brath ar thomhas an cartúis."
+
+#: src/ResourceUnavailable.js:12
+msgid "This resource is not included in the package."
+msgstr "Níl an acmhainn seo san áireamh sa phacáiste."
+
+#: src/AssignmentBody.js:154
+msgid "Total points:"
+msgstr "Iomlán na bpointí:"
+
+#: src/Assessment.js:151
+msgid "True / false"
+msgstr "Fíor / bréagach"
+
+#: src/CommonCartridge.js:464
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
+#: src/WebLink.js:32
+#: src/WebLinkListItem.js:31
+#: src/utils.js:299
+msgid "Untitled"
+msgstr "Gan teideal"
+
+#: src/App.js:145
+msgid "View"
+msgstr "Féach"
+
+#: src/App.js:152
+msgid "View Common Cartridges in the browser. Requires no server-side processing."
+msgstr "Féach ar Cartúis Choiteann sa bhrabhsálaí. Níl aon phróiseáil ag teastáil ó thaobh an fhreastalaí."
+
+#: src/App.js:93
+#~ msgid "View a Common Cartridge (.imscc)"
+#~ msgstr "View a Common Cartridge (.imscc)"
+
+#: src/GitHubCorner.js:14
+msgid "View source on Github"
+msgstr "Féach ar an bhfoinse ar Github"
+
+#: src/CommonCartridge.js:367
+msgid "We had a problem loading the Common Cartridge"
+msgstr "Bhí fadhb againn an Cartús Coiteann a lódáil"
+
+#: src/WikiContentList.js:61
+msgid "Wiki content"
+msgstr "Ábhar Wiki"
+
+#: src/CommonCartridge.js:462
+msgid "You are here:"
+msgstr "Tá tú anseo:"
+
+#: src/EmbeddedPreview.js:82
+msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
+msgstr "Ní thacaíonn do bhrabhsálaí le fuaim HTML5. Seo chugaibh a <0>nasc chuig an fhuaim</0> ina ionad."
+
+#: src/EmbeddedPreview.js:95
+msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
+msgstr "Ní thacaíonn do bhrabhsálaí le físeán HTML5. Seo chugaibh a <0>nasc chuig an fhuaim</0> ina ionad."
+
+#: src/utils.js:401
+msgid "a file upload"
+msgstr "comhad a uaslódáil"
+
+#: src/App.js:138
+msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS cumasaithe)"
+
+#: src/AssignmentBody.js:135
+msgid "pts"
+msgstr "pte"
+
+#: src/AssessmentListItem.js:94
+#~ msgid "{0} Questions"
+#~ msgstr "{0} Questions"
+
+#: src/WorkflowStateIcon.js:30
+msgid "{0} is published"
+msgstr "Tá {0} foilsithe"
+
+#: src/WorkflowStateIcon.js:21
+msgid "{0} is unpublished"
+msgstr "Tá {0} neamhfhoilsithe"
+
+#: src/AssessmentListItem.js:129
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:91
+#: src/FileListItem.js:75
+msgid "{0} points"
+msgstr "{0} pointe"
+
+#: src/AssessmentListItem.js:119
+msgid "{0} question(s) / {1} assigned"
+msgstr "{0} ceist(eanna) / {1} sannta"
+
+#: src/CommonCartridge.js:426
+msgid "{0}%"
+msgstr "{0}%"
+
+#: src/CommonCartridge.js:419
+msgid "{0}% loaded"
+msgstr "{0}% lodáilte"

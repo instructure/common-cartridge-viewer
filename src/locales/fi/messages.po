@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2018-12-04 10:02-0700\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: fi\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/ModulesList.js:175
+msgid "(unidentified)"
+msgstr "(tunnistamaton)"
+
+#: src/Resource.js:144
+#~ msgid "All Items"
+#~ msgstr "All Items"
+
+#: src/Assessment.js:131
+#~ msgid "Assessment"
+#~ msgstr "Assessment"
+
+#: src/AssessmentList.js:43
+#~ msgid "Assessments"
+#~ msgstr "Assessments"
+
+#: src/CommonCartridge.js:364
+#~ msgid "Assessments ( {0})"
+#~ msgstr "Assessments ( {0})"
+
+#: src/CommonCartridge.js:352
+#~ msgid "Assessments ({0})"
+#~ msgstr "Assessments ({0})"
+
+#: src/AssignmentBody.js:28
+msgid "Assignment"
+msgstr "Tehtävä"
+
+#: src/AssignmentList.js:35
+#: src/AssociatedContentAssignmentList.js:35
+msgid "Assignments"
+msgstr "Tehtävät"
+
+#: src/CommonCartridge.js:330
+#~ msgid "Assignments ({0})"
+#~ msgstr "Assignments ({0})"
+
+#: src/CommonCartridge.js:506
+msgid "Assignments ({numberOfAssignments})"
+msgstr "Tehtävät ({numberOfAssignments})"
+
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
+msgid "Attachments"
+msgstr "Liitteet"
+
+#: src/Assessment.js:172
+msgid "Calculated"
+msgstr "Laskettu"
+
+#: src/App.js:133
+msgid "Cartridge"
+msgstr "Cartridge"
+
+#: src/Assessment.js:251
+msgid "Classic Quiz"
+msgstr "Klassinen testi"
+
+#: src/WebLink.js:36
+msgid "Click here to open link in new window"
+msgstr "Napsauta tästä avataksesi linkki uudessa ikkunassa"
+
+#: src/App.js:117
+msgid "Common Cartridge Viewer"
+msgstr "Common Cartridge -katselulaite"
+
+#: src/CourseNavigationUnavailable.js:11
+msgid "Course Navigation Cannot Be Previewed"
+msgstr "Kurssin navigointia ei voida esikatsella"
+
+#: src/CourseNavigationUnavailable.js:13
+msgid "Course navigation links are only available within a Canvas course."
+msgstr "Kurssin navigointilinkit ovat saatavissa vain Canvas-kurssilla."
+
+#: src/AssignmentBody.js:112
+msgid "Criteria"
+msgstr "Kriteerit"
+
+#: src/Discussion.js:30
+msgid "Discussion"
+msgstr "Keskustelu"
+
+#: src/DiscussionList.js:41
+msgid "Discussions"
+msgstr "Keskustelut"
+
+#: src/CommonCartridge.js:356
+#~ msgid "Discussions ( {0})"
+#~ msgstr "Discussions ( {0})"
+
+#: src/CommonCartridge.js:455
+#~ msgid "Discussions ({0} )"
+#~ msgstr "Discussions ({0} )"
+
+#: src/CommonCartridge.js:430
+#~ msgid "Discussions ({0})"
+#~ msgstr "Discussions ({0})"
+
+#: src/CommonCartridge.js:528
+msgid "Discussions ({length})"
+msgstr "Keskustelut ({length})"
+
+#: src/App.js:119
+msgid "Drag and drop the cartridge, or click to browse your computer."
+msgstr "Vedä ja pudota cartridge tai napsauta selataksesi tietokoneellasi"
+
+#: src/App.js:95
+#~ msgid "Drag and drop, or click to browse your computer"
+#~ msgstr "Drag and drop, or click to browse your computer"
+
+#: src/Assessment.js:160
+msgid "Essay"
+msgstr "Kirjoitelma"
+
+#: src/App.js:159
+msgid "Examples"
+msgstr "Esimerkkejä"
+
+#: src/PreviewUnavailable.js:11
+msgid "External Tool Content Can't be Previewed"
+msgstr "Ulkoista työkalun sisältöä ei voida esikatsella"
+
+#: src/WebLink.js:25
+msgid "External link"
+msgstr "Ulkoinen linkki"
+
+#: src/CommonCartridge.js:365
+msgid "Failed to load resource"
+msgstr "Resurssin lataus epäonnistui"
+
+#: src/Assessment.js:178
+msgid "File Upload"
+msgstr "Tiedoston lataus"
+
+#: src/FileList.js:40
+msgid "Files"
+msgstr "Tiedostot"
+
+#: src/CommonCartridge.js:557
+msgid "Files ({0})"
+msgstr "Tiedostot ({0})"
+
+#: src/Assessment.js:154
+msgid "Fill in the blank"
+msgstr "Täytä tyhjä kohta"
+
+#: src/Image.js:50
+msgid "Image"
+msgstr "Kuva"
+
+#: src/PreviewUnavailable.js:13
+msgid "In order to use this resource in Canvas, the external tool must be installed."
+msgstr "Jotta voisit käyttää tätä resurssia Canvasissa, ulkoinen työkalu täytyy asentaa."
+
+#: src/EmbeddedPreview.js:64
+#: src/Image.js:37
+msgid "Loading"
+msgstr "Ladataan"
+
+#: src/CommonCartridge.js:399
+msgid "Loading Cartridge"
+msgstr "Ladataan Cartridgea"
+
+#: src/CommonCartridge.js:416
+msgid "Loading completion"
+msgstr "Ladataan päätöstä"
+
+#: src/Assessment.js:166
+msgid "Match Questions"
+msgstr "Täsmää kysymykset"
+
+#: src/Assessment.js:261
+msgid "Max attempts"
+msgstr "Maksimimäärä yrityksiä"
+
+#: src/EmbeddedPreview.js:79
+#: src/EmbeddedPreview.js:92
+#: src/EmbeddedPreview.js:103
+msgid "Media viewer"
+msgstr "Tietovälineen katseluohjelma"
+
+#: src/CommonCartridge.js:495
+msgid "Modules ({0})"
+msgstr "Moduulit ({0})"
+
+#: src/Assessment.js:163
+msgid "Multiple Dropdowns"
+msgstr "Useita pudotusvalikoita"
+
+#: src/Assessment.js:145
+msgid "Multiple choice"
+msgstr "Monivalinta"
+
+#: src/Assessment.js:148
+msgid "Multiple response"
+msgstr "Useita vastauksia"
+
+#: src/Assessment.js:249
+msgid "New Quizzes"
+msgstr "Uudet testit"
+
+#: src/Resource.js:121
+msgid "Next"
+msgstr "Seuraava"
+
+#: src/Paginate.js:112
+msgid "Next Page"
+msgstr "Seuraava sivu"
+
+#: src/Resource.js:287
+#~ msgid "Not found"
+#~ msgstr "Not found"
+
+#: src/Assessment.js:169
+msgid "Numerical"
+msgstr "Numeerinen"
+
+#: src/Assessment.js:102
+#~ msgid "Other type"
+#~ msgstr "Other type"
+
+#: src/WikiContent.js:21
+msgid "Page"
+msgstr "Sivu"
+
+#: src/CommonCartridge.js:517
+msgid "Pages ({0})"
+msgstr "Sivut ({0})"
+
+#: src/Assessment.js:157
+msgid "Pattern match"
+msgstr "Mallin täsmäys"
+
+#: src/AssignmentBody.js:53
+msgid "Points"
+msgstr "Pistettä"
+
+#: src/Resource.js:100
+msgid "Previous"
+msgstr "Edellinen"
+
+#: src/Paginate.js:113
+msgid "Previous Page"
+msgstr "Edellinen sivu"
+
+#: src/AssignmentBody.js:123
+msgid "Pts"
+msgstr "Pts"
+
+#: src/Assessment.js:264
+msgid "Questions"
+msgstr "Kysymykset"
+
+#: src/Assessment.js:244
+#~ msgid "Quiz"
+#~ msgstr "Quiz"
+
+#: src/AssessmentList.js:44
+msgid "Quizzes"
+msgstr "Tietovisat"
+
+#: src/CommonCartridge.js:544
+msgid "Quizzes ({0})"
+msgstr "Tietovisat ({0})"
+
+#: src/AssignmentBody.js:120
+msgid "Ratings"
+msgstr "Arvostelut"
+
+#: src/ResourceUnavailable.js:11
+msgid "Resource Unavailable"
+msgstr "Resurssi ei ole saatavissa"
+
+#: src/Assignment.js:61
+#~ msgid "Submission formats"
+#~ msgstr "Submission formats"
+
+#: src/AssignmentBody.js:40
+msgid "Submitting"
+msgstr "Lähetetään"
+
+#: src/Assessment.js:175
+msgid "Text only"
+msgstr "Vain teksti"
+
+#: src/CommonCartridge.js:407
+msgid "This may take some time depending on the size of the cartridge."
+msgstr "Tämä saattaa kestää jonkin aikaa patruunan koosta riippuen."
+
+#: src/ResourceUnavailable.js:12
+msgid "This resource is not included in the package."
+msgstr "Tämä resurssi ei sisälly pakettiin."
+
+#: src/AssignmentBody.js:154
+msgid "Total points:"
+msgstr "Pisteitä yhteensä:"
+
+#: src/Assessment.js:151
+msgid "True / false"
+msgstr "Tosi/Epätosi"
+
+#: src/CommonCartridge.js:464
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
+#: src/WebLink.js:32
+#: src/WebLinkListItem.js:31
+#: src/utils.js:299
+msgid "Untitled"
+msgstr "Nimetön"
+
+#: src/App.js:145
+msgid "View"
+msgstr "Näytä"
+
+#: src/App.js:152
+msgid "View Common Cartridges in the browser. Requires no server-side processing."
+msgstr "Tarkastele Common Cartridges selaimessa. Ei vaadi palvelinpuolen käsittelyä."
+
+#: src/App.js:93
+#~ msgid "View a Common Cartridge (.imscc)"
+#~ msgstr "View a Common Cartridge (.imscc)"
+
+#: src/GitHubCorner.js:14
+msgid "View source on Github"
+msgstr "Näytä lähde Githubissa"
+
+#: src/CommonCartridge.js:367
+msgid "We had a problem loading the Common Cartridge"
+msgstr "Common Cartridgen latauksessa ilmeni ongelma"
+
+#: src/WikiContentList.js:61
+msgid "Wiki content"
+msgstr "Wiki-sisältö"
+
+#: src/CommonCartridge.js:462
+msgid "You are here:"
+msgstr "Olet täällä:"
+
+#: src/EmbeddedPreview.js:82
+msgid "Your browser doesn't support HTML5 audio. Here is a <0>link to the audio</0> instead."
+msgstr "Selaimesi ei tue HTML5-ääntä. Tässä <0>linkki ääneen</0>."
+
+#: src/EmbeddedPreview.js:95
+msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
+msgstr "Selaimesi ei tue HTML5-videota. Tässä <0>linkki ääneen</0>."
+
+#: src/utils.js:401
+msgid "a file upload"
+msgstr "tiedoston lataus"
+
+#: src/App.js:138
+msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS otettu käyttöön)"
+
+#: src/AssignmentBody.js:135
+msgid "pts"
+msgstr "pistetä"
+
+#: src/AssessmentListItem.js:94
+#~ msgid "{0} Questions"
+#~ msgstr "{0} Questions"
+
+#: src/WorkflowStateIcon.js:30
+msgid "{0} is published"
+msgstr "{0} julkaistu"
+
+#: src/WorkflowStateIcon.js:21
+msgid "{0} is unpublished"
+msgstr "{0} on julkaisematon"
+
+#: src/AssessmentListItem.js:129
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:91
+#: src/FileListItem.js:75
+msgid "{0} points"
+msgstr "{0} pistettä"
+
+#: src/AssessmentListItem.js:119
+msgid "{0} question(s) / {1} assigned"
+msgstr "{0} kysymys (kysymykset) / {1} osoitettu"
+
+#: src/CommonCartridge.js:426
+msgid "{0}%"
+msgstr "{0}%"
+
+#: src/CommonCartridge.js:419
+msgid "{0}% loaded"
+msgstr "{0}% ladattu"
