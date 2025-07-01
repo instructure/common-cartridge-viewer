@@ -124,37 +124,37 @@ export const resourceTypeToHref = {
 
 // these individual imports are necessary for separate webpack bundles
 export const AVAILABLE_LOCALES = {
-  ar: () => import(/* webpackChunkName: "ar" */ "./locales/ar/messages.js"),
-  cy: () => import(/* webpackChunkName: "cy" */ "./locales/cy/messages.js"),
-  da: () => import(/* webpackChunkName: "da" */ "./locales/da/messages.js"),
-  de: () => import(/* webpackChunkName: "de" */ "./locales/de/messages.js"),
+  ar: () => import(/* webpackChunkName: "ar" */ "./locales/ar/messages.po"),
+  cy: () => import(/* webpackChunkName: "cy" */ "./locales/cy/messages.po"),
+  da: () => import(/* webpackChunkName: "da" */ "./locales/da/messages.po"),
+  de: () => import(/* webpackChunkName: "de" */ "./locales/de/messages.po"),
   "en-au": () =>
-    import(/* webpackChunkName: "en_AU" */ "./locales/en_AU/messages.js"),
+    import(/* webpackChunkName: "en_AU" */ "./locales/en_AU/messages.po"),
   "en-gb": () =>
-    import(/* webpackChunkName: "en_GB" */ "./locales/en_GB/messages.js"),
-  en: () => import(/* webpackChunkName: "en" */ "./locales/en/messages.js"),
-  es: () => import(/* webpackChunkName: "es" */ "./locales/es/messages.js"),
+    import(/* webpackChunkName: "en_GB" */ "./locales/en_GB/messages.po"),
+  en: () => import(/* webpackChunkName: "en" */ "./locales/en/messages.po"),
+  es: () => import(/* webpackChunkName: "es" */ "./locales/es/messages.po"),
   "fr-ca": () =>
-    import(/* webpackChunkName: "fr_CA" */ "./locales/fr_CA/messages.js"),
-  fr: () => import(/* webpackChunkName: "fr" */ "./locales/fr/messages.js"),
-  is: () => import(/* webpackChunkName: "is" */ "./locales/is/messages.js"),
-  it: () => import(/* webpackChunkName: "it" */ "./locales/it/messages.js"),
-  ja: () => import(/* webpackChunkName: "ja" */ "./locales/ja/messages.js"),
+    import(/* webpackChunkName: "fr_CA" */ "./locales/fr_CA/messages.po"),
+  fr: () => import(/* webpackChunkName: "fr" */ "./locales/fr/messages.po"),
+  is: () => import(/* webpackChunkName: "is" */ "./locales/is/messages.po"),
+  it: () => import(/* webpackChunkName: "it" */ "./locales/it/messages.po"),
+  ja: () => import(/* webpackChunkName: "ja" */ "./locales/ja/messages.po"),
   "nb-no": () =>
-    import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
-  nb: () => import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
-  nl: () => import(/* webpackChunkName: "nl" */ "./locales/nl/messages.js"),
-  pl: () => import(/* webpackChunkName: "pl" */ "./locales/pl/messages.js"),
+    import(/* webpackChunkName: "nb" */ "./locales/nb/messages.po"),
+  nb: () => import(/* webpackChunkName: "nb" */ "./locales/nb/messages.po"),
+  nl: () => import(/* webpackChunkName: "nl" */ "./locales/nl/messages.po"),
+  pl: () => import(/* webpackChunkName: "pl" */ "./locales/pl/messages.po"),
   "pt-br": () =>
-    import(/* webpackChunkName: "pt_BR" */ "./locales/pt_BR/messages.js"),
-  pt: () => import(/* webpackChunkName: "pt" */ "./locales/pt/messages.js"),
-  ru: () => import(/* webpackChunkName: "ru" */ "./locales/ru/messages.js"),
-  sv: () => import(/* webpackChunkName: "sv" */ "./locales/sv/messages.js"),
+    import(/* webpackChunkName: "pt_BR" */ "./locales/pt_BR/messages.po"),
+  pt: () => import(/* webpackChunkName: "pt" */ "./locales/pt/messages.po"),
+  ru: () => import(/* webpackChunkName: "ru" */ "./locales/ru/messages.po"),
+  sv: () => import(/* webpackChunkName: "sv" */ "./locales/sv/messages.po"),
   "zh-hant": () =>
-    import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.js"),
+    import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.po"),
   "zh-hans": () =>
-    import(/* webpackChunkName: "zh" */ "./locales/zh/messages.js"),
+    import(/* webpackChunkName: "zh" */ "./locales/zh/messages.po"),
   "zh-hk": () =>
-    import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.js"),
-  zh: () => import(/* webpackChunkName: "zh" */ "./locales/zh/messages.js")
+    import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.po"),
+  zh: () => import(/* webpackChunkName: "zh" */ "./locales/zh/messages.po")
 };
