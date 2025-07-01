@@ -5,6 +5,7 @@
 
 # docker
 docker-compose.override.yml
+docker-compose.local.dev.yml
 
 # testing
 /coverage
