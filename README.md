@@ -27,6 +27,11 @@ npm start
 docker compose build && docker compose up -d
 ```
 
+## Inst-CLI set up
+Copy the inst-cli/docker-compose/docker-compose.local.dev.yml to the top level
+Add an .env file to the repository that has a COMPOSE_FILE variable that points
+to docker-compose.local.dev.yml
+
 ## Usage examples
 
 ### Load an extracted cartridge

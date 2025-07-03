@@ -1,0 +1,27 @@
+name: ccv
+services:
+  viewer:
+    container_name: ccv-viewer
+    build: .
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/usr/src/app
+      - ccv_node_modules:/usr/src/app/node_modules
+    ports:
+      - "3300:3300"
+    labels:
+      - traefik.enable=true
+    networks:
+      default:
+        aliases:
+          - ccv-viewer
+          - ccv-viewer.$INST_DOMAIN
+
+volumes:
+  ccv_node_modules: {}
+
+networks:
+  default:
+    external: true
+    name: inst_shared
