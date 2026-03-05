@@ -13,7 +13,7 @@ import {
 import { i18n } from "./index";
 import { t } from "@lingui/macro";
 
-const zip = window.zip;
+const JSZip = window.JSZip;
 
 export const pipe = (g, f) => x => f(g(x));
 
@@ -38,47 +38,47 @@ export function getReaderFromXHR(url) {
 }
 
 export async function getTextFromEntry(entry) {
-  return new Promise((resolve, reject) => {
-    entry.getData(new zip.TextWriter(), resolve);
-  });
+  return entry.async("text");
 }
 
 export async function getBlobFromEntry(entry) {
-  if (entry == null || entry.getData == null) {
+  if (entry == null) {
     console.warn("entry is missing");
+    return null;
   }
-  return new Promise((resolve, reject) => {
-    entry.getData(new zip.BlobWriter(), resolve);
-  });
+  return entry.async("blob");
 }
 
-export function getEntriesFromBlob(blob) {
-  return new Promise((resolve, reject) => {
-    window.zip.createReader(
-      new zip.BlobReader(blob),
-      zipReader => {
-        zipReader.getEntries(resolve);
-      },
-      reject
-    );
+export async function getEntriesFromBlob(blob) {
+  const zip = new JSZip();
+  const loaded = await zip.loadAsync(blob);
+  const entries = [];
+  loaded.forEach(function(relativePath, file) {
+    entries.push({
+      filename: relativePath,
+      directory: file.dir,
+      async: file.async.bind(file)
+    });
   });
+  return entries;
 }
 
 export function getEntriesFromXHR(file) {
   const { request, promise: readerPromise } = getReaderFromXHR(file);
 
-  const promise = readerPromise.then(
-    blob =>
-      new Promise((resolve, reject) => {
-        window.zip.createReader(
-          new zip.BlobReader(blob),
-          zipReader => {
-            zipReader.getEntries(resolve);
-          },
-          reject
-        );
-      })
-  );
+  const promise = readerPromise.then(async blob => {
+    const zip = new JSZip();
+    const loaded = await zip.loadAsync(blob);
+    const entries = [];
+    loaded.forEach(function(relativePath, file) {
+      entries.push({
+        filename: relativePath,
+        directory: file.dir,
+        async: file.async.bind(file)
+      });
+    });
+    return entries;
+  });
   return [request, promise];
 }
 
