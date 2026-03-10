@@ -5,7 +5,7 @@ fixture`Pagination`;
 const baseUrl =
   "http://localhost:5000/?manifest=https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/caleblorcruxcourse-export-big/imsmanifest.xml#/";
 const paginationButtonSelector = Selector("a").withAttribute(
-  "data-uid",
+  "data-cid",
   "Button PaginationButton"
 );
 const activePaginationButtonSelector = paginationButtonSelector.withAttribute(

@@ -42,6 +42,7 @@
     "test-safari": "testcafe safari ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
     "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
     "test-screenshots": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\" -s takeOnFails=true,path=./tests/screenshots,fullPage=true",
+    "test-chrome-headless": "testcafe chrome:headless ./tests/test.*  --page-load-timeout 10000 --assertion-timeout 10000 --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
     "test-headless": "testcafe chrome:headless,firefox:headless ./tests/test.*  --page-load-timeout 10000 --assertion-timeout 10000 --app \"node_modules/.bin/superstatic -p 5000 ./build -s\""
   },
   "husky": {
@@ -64,7 +65,7 @@
     "lint-staged": "^8.1.0",
     "prettier": "1.15.3",
     "superstatic": "^6.0.4",
-    "testcafe": "^1.4.3"
+    "testcafe": "^3.7.4"
   },
   "browserslist": [
     "last 2 version",
