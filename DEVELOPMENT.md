@@ -3,18 +3,18 @@
 [![Build Status](https://travis-ci.org/instructure/common-cartridge-viewer.svg?branch=master)](https://travis-ci.org/instructure/common-cartridge-viewer)
 
 The tests try to visit the app in localhost:5000.
-Before running the tests, set `PORT=5000` as an
-environment variable to make them pass
+Before running the tests, set `PORT=5000` and `NODE_OPTIONS=--openssl-legacy-provider` as
+environment variables to make them pass.
 
+**Recommended test command (headless Chrome only):**
 ```bash
-yarn run build
-yarn test
+PORT=5000 NODE_OPTIONS=--openssl-legacy-provider npm run build
+PORT=5000 npm run test-chrome-headless
 ```
-If you modify a test cartridge, you have to run the 
-```bash
-yarn run build
-```
-again.
+
+**Note:** Firefox headless tests are not working reliably. Use `test-chrome-headless` for stable results.
+
+If you modify a test cartridge, you have to run the build command again.
 
 ## Internationalization
 
