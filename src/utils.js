@@ -38,47 +38,29 @@ export function getReaderFromXHR(url) {
 }
 
 export async function getTextFromEntry(entry) {
-  return new Promise((resolve, reject) => {
-    entry.getData(new zip.TextWriter(), resolve);
-  });
+  return await entry.getData(new zip.TextWriter());
 }
 
 export async function getBlobFromEntry(entry) {
   if (entry == null || entry.getData == null) {
     console.warn("entry is missing");
   }
-  return new Promise((resolve, reject) => {
-    entry.getData(new zip.BlobWriter(), resolve);
-  });
+  return await entry.getData(new zip.BlobWriter());
 }
 
-export function getEntriesFromBlob(blob) {
-  return new Promise((resolve, reject) => {
-    window.zip.createReader(
-      new zip.BlobReader(blob),
-      zipReader => {
-        zipReader.getEntries(resolve);
-      },
-      reject
-    );
-  });
+export async function getEntriesFromBlob(blob) {
+  const zipReader = new zip.ZipReader(new zip.BlobReader(blob));
+  const entries = await zipReader.getEntries();
+  return entries;
 }
 
 export function getEntriesFromXHR(file) {
   const { request, promise: readerPromise } = getReaderFromXHR(file);
 
-  const promise = readerPromise.then(
-    blob =>
-      new Promise((resolve, reject) => {
-        window.zip.createReader(
-          new zip.BlobReader(blob),
-          zipReader => {
-            zipReader.getEntries(resolve);
-          },
-          reject
-        );
-      })
-  );
+  const promise = readerPromise.then(async blob => {
+    const zipReader = new zip.ZipReader(new zip.BlobReader(blob));
+    return await zipReader.getEntries();
+  });
   return [request, promise];
 }
 
