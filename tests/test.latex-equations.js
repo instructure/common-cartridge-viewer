@@ -1,22 +1,18 @@
 import { Selector } from "testcafe";
 
-fixture`LaTeX Equations`
+fixture`Course with LaTeX example`
   .page`http://localhost:5000/?cartridge=${encodeURIComponent(
-  "/test-cartridges/latex.imscc"
+  "/test-cartridges/canvas_cc_gem_course.imscc"
 )}#/`;
 
-test("Page 1 displays MathJax", async t => {
-  const modulePage1 = Selector("a").withText("Page 1");
+test("Page displays MathJax", async t => {
   await t
-    .click(modulePage1)
-    .expect(Selector("mjx-container").withAttribute("class", "MathJax"))
-    .ok();
-});
-
-test("Page 2 displays MathJax", async t => {
-  const modulePage2 = Selector("a").withText("Page 2");
-  await t
-    .click(modulePage2)
+    .click(Selector("a").withText("Pages ("))
+    .expect(Selector("a").withText("Latex Example").exists)
+    .ok()
+    .click(Selector("a").withText("Latex Example"))
+    .expect(Selector("h1").withText("Latex Example").exists)
+    .ok()
     .expect(Selector("mjx-container").withAttribute("class", "MathJax"))
     .ok();
 });
