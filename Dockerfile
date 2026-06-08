@@ -1,9 +1,9 @@
-FROM node:10-alpine
+FROM node:16-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 COPY ./package.json ./package-lock.json ./
-RUN npm install
+RUN npm ci --no-audit
 
 COPY . .
 ENV PORT=3300
