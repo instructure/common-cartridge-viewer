@@ -15,7 +15,7 @@
     "@instructure/ui-tree-browser": "^5.37.0",
     "@lingui/react": "^2.7.2",
     "@sentry/react": "^7.31.1",
-    "@sentry/tracing": "^7.31.1",
+    "@sentry/tracing": "^7.120.4",
     "babel-polyfill": "^6.26.0",
     "dompurify": "2.5.4",
     "file-saver": "^2.0.0",
