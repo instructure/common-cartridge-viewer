@@ -52,7 +52,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    fetch("/featured-cartridges.json")
+    fetch(`${process.env.PUBLIC_URL}/featured-cartridges.json`)
       .then(response => {
         return response.json();
       })

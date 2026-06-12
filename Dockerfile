@@ -32,10 +32,12 @@ COPY --from=builder /usr/src/app/build /
 
 
 # ---------- Development ----------
-# Runs the CRA dev server.
+# Runs the CRA dev server. `npm run compile` generates the per-locale
+# messages.js files that src/constants.js imports; without it the dev build
+# fails with "Can't resolve './locales/<lang>/messages.js'".
 FROM base AS development
 ENV NODE_ENV=development
 ENV PORT=3300
 COPY . .
 EXPOSE 3300
-CMD ["npm", "run", "start"]
+CMD ["sh", "-c", "npm run compile && npm run start"]
