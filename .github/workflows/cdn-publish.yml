@@ -37,4 +37,5 @@ jobs:
           app_name: 'common-cartridge-viewer'
           aws_role_arn: 'arn:aws:iam::471112596518:role/trigger/cdn/common-cartridge-viewer/common-cartridge-viewer-bucket-access-role'
           source_directory: ./build
+          remote_directory: /prod/
           entrypoint: index.html
