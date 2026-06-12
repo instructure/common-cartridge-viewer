@@ -45,9 +45,9 @@ export default class App extends Component {
     const isCartridge = ["imscc", "zip"].includes(extension);
     const isManifest = url.includes("imsmanifest.xml") && extension === "xml";
     if (isManifest) {
-      window.location.href = `/?manifest=${encodeURIComponent(url)}`;
+      window.location.href = `?manifest=${encodeURIComponent(url)}`;
     } else if (isCartridge) {
-      window.location.href = `/?cartridge=${encodeURIComponent(url)}`;
+      window.location.href = `?cartridge=${encodeURIComponent(url)}`;
     }
   };
 
@@ -66,7 +66,7 @@ export default class App extends Component {
       ([title, href, license, author, source], index) => (
         <li key={index}>
           <a
-            href={`/?${
+            href={`?${
               href.includes(".xml") ? "manifest" : "cartridge"
             }=${href}`}
           >
