@@ -4,8 +4,6 @@ services:
     build: .
     environment:
       NODE_ENV: development
-      VIRTUAL_HOST: viewer.ccv.docker
-      VIRTUAL_PORT: 3300
     volumes:
       - .:/usr/src/app
       - ccv_node_modules:/usr/src/app/node_modules
