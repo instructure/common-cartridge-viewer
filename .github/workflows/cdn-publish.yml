@@ -1,0 +1,40 @@
+name: CDN Publish
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+concurrency:
+  group: cdn-publish
+  cancel-in-progress: false
+
+permissions:
+  id-token: write   # Required for AWS OIDC in trigger-cdn-publish
+  contents: read    # Required for actions/checkout on a private repo
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build static assets via Dockerfile build-output target
+        run: |
+          docker buildx build \
+            --target=build-output \
+            --output=type=local,dest=./build \
+            .
+
+      - name: Trigger CDN Publish - Common Cartridge Viewer
+        uses: instructure-actions/trigger-cdn-publish@v2.3.0
+        with:
+          app_name: 'common-cartridge-viewer'
+          aws_role_arn: 'arn:aws:iam::471112596518:role/trigger/cdn/common-cartridge-viewer/common-cartridge-viewer-bucket-access-role'
+          source_directory: ./build
+          entrypoint: index.html
