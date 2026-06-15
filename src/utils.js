@@ -12,6 +12,23 @@ import {
 } from "./constants";
 import { i18n } from "./index";
 import { t } from "@lingui/macro";
+import createDOMPurify from "dompurify";
+
+const DOMPurify = createDOMPurify(window);
+
+export function sanitizeHref(rawHref) {
+  const a = document.createElement("a");
+  a.setAttribute("href", rawHref);
+  const fragment = DOMPurify.sanitize(a, {
+    ALLOWED_TAGS: ["a"],
+    ALLOWED_ATTR: ["href"],
+    RETURN_DOM_FRAGMENT: true
+  });
+  const cleaned = fragment.firstChild;
+  return cleaned && cleaned.getAttribute("href")
+    ? cleaned.getAttribute("href")
+    : "";
+}
 
 const zip = window.zip;
 

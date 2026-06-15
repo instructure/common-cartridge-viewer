@@ -3,6 +3,7 @@ import Heading from "@instructure/ui-elements/lib/components/Heading";
 import Icon from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import { I18n } from "@lingui/react";
 import { Trans, t } from "@lingui/macro";
+import { sanitizeHref } from "./utils";
 
 export default class WebLink extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class WebLink extends Component {
       // Not yet loaded
       return null;
     }
-    const href = doc.querySelector("url").getAttribute("href");
+    const href = sanitizeHref(doc.querySelector("url").getAttribute("href"));
 
     return (
       <I18n>
