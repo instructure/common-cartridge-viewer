@@ -39,3 +39,12 @@ jobs:
           source_directory: ./build
           remote_directory: /prod/
           entrypoint: index.html
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli@26.1.0
+
+      - name: Deploy to Netlify
+        run: netlify deploy --dir=build --prod --no-build
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_DEPLOY_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_PROD_PROJECT_ID }}
