@@ -205,7 +205,7 @@ export default class CommonCartridge extends Component {
       entry => entry.filename === "imsmanifest.xml"
     );
 
-    if (manifestEntry != null) {
+    if (manifestEntry) {
       let xml;
       try {
         xml = await getTextFromEntry(manifestEntry);
@@ -215,6 +215,8 @@ export default class CommonCartridge extends Component {
       if (xml != null) {
         this.loadResources(xml);
       }
+    } else {
+      this.setState({ errorLoading: true });
     }
   }
 
