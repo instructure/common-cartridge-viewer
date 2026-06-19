@@ -21,10 +21,15 @@ npm run build # populates locale data
 npm start
 ```
 
-## Quick start with docker compose
+## Quick start with Docker
 
 ```bash
 docker compose build && docker compose up -d
+```
+
+```bash
+docker build -t common-cartridge-viewer .
+docker run --rm -p 8080:80 common-cartridge-viewer
 ```
 
 ## Inst-CLI set up
