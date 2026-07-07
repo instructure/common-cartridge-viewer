@@ -45,6 +45,7 @@ export function getReaderFromXHR(url) {
   const request = new XMLHttpRequest();
   const promise = new Promise((resolve, reject) => {
     request.open("GET", url, true);
+    request.withCredentials = true;
     request.responseType = "blob";
     request.onload = function() {
       resolve(request.response);

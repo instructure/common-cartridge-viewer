@@ -28,9 +28,19 @@ docker compose build && docker compose up -d
 ```
 
 ## Inst-CLI set up
-Copy the inst-cli/docker-compose/docker-compose.local.dev.yml to the top level
-Add an .env file to the repository that has a COMPOSE_FILE variable that points
-to docker-compose.local.dev.yml
+First, copy the inst-cli/docker-compose/docker-compose.local.dev.yml to the top level. Then, add an .env file:
+```
+COMPOSE_FILE=./docker-compose.local.dev.yml
+```
+Next,
+```bash
+docker compose build && docker compose up -d
+docker compose exec viewer sh
+npm run build
+exit
+```
+
+Finally, check if all is well: go to http://ccv-viewer.inseng.test.
 
 ## Usage examples
 
