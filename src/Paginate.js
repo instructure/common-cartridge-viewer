@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { t } from "@lingui/macro";
 import { I18n } from "@lingui/react";
 import { Link as RouterLink } from "react-router-dom";
-import Pagination, {
-  PaginationButton
-} from "@instructure/ui-pagination/es/components/Pagination";
+import Pagination, { PaginationButton } from "@instructure/ui-pagination/es/components/Pagination";
 const queryString = require("query-string");
 
 const NUMBER_OF_ITEMS_TO_SHOW = 100;
@@ -14,9 +12,7 @@ export default class Paginate extends Component {
     const parsedQueryString = queryString.parse(this.props.location.search);
     this.setState({
       currentStartIndex:
-        isNaN(parsedQueryString.startIndex) === false
-          ? parseInt(parsedQueryString.startIndex)
-          : 0
+        isNaN(parsedQueryString.startIndex) === false ? parseInt(parsedQueryString.startIndex) : 0,
     });
   }
 
@@ -28,12 +24,12 @@ export default class Paginate extends Component {
       parseInt(parsedQueryString.startIndex) !== this.state.currentStartIndex;
     if (startIndexQueryParamDidChange) {
       this.setState({
-        currentStartIndex: parseInt(parsedQueryString.startIndex)
+        currentStartIndex: parseInt(parsedQueryString.startIndex),
       });
     }
   }
 
-  renderPaginationButton = pageIndex => {
+  renderPaginationButton = (pageIndex) => {
     const parsedQueryString = queryString.parse(this.props.location.search);
     parsedQueryString.startIndex = pageIndex * NUMBER_OF_ITEMS_TO_SHOW;
     const search = queryString.stringify(parsedQueryString);
@@ -43,15 +39,14 @@ export default class Paginate extends Component {
         as={RouterLink}
         to={{
           pathname: this.props.location.pathname,
-          search
+          search,
         }}
         // Adds a11y keyboard support for pagination navigation
-        onClick={event => {
+        onClick={(event) => {
           if (event.persist) {
             event.persist();
           }
-          const href =
-            event && event.target && event.target.getAttribute("href");
+          const href = event && event.target && event.target.getAttribute("href");
           // No need to update the hash if the user is just clicking on an href
           // However, we do want to accept clicks on the Next and Previous buttons
           // that don't have an href.
@@ -60,9 +55,7 @@ export default class Paginate extends Component {
           }
           window.location.hash = `${this.props.location.pathname}?${search}`;
         }}
-        current={
-          pageIndex * NUMBER_OF_ITEMS_TO_SHOW === this.state.currentStartIndex
-        }
+        current={pageIndex * NUMBER_OF_ITEMS_TO_SHOW === this.state.currentStartIndex}
       >
         {pageIndex + 1}
       </PaginationButton>
@@ -73,19 +66,13 @@ export default class Paginate extends Component {
     if (this.state == null) {
       return null;
     }
-    const numberOfPages = Math.ceil(
-      this.props.listItems.length / NUMBER_OF_ITEMS_TO_SHOW
-    );
+    const numberOfPages = Math.ceil(this.props.listItems.length / NUMBER_OF_ITEMS_TO_SHOW);
     if (numberOfPages === 1) {
       return (
-        <ul className={`${this.props.classNames} ExpandCollapseList`}>
-          {this.props.listItems}
-        </ul>
+        <ul className={`${this.props.classNames} ExpandCollapseList`}>{this.props.listItems}</ul>
       );
     }
-    const currentPage = Math.ceil(
-      this.state.currentStartIndex / NUMBER_OF_ITEMS_TO_SHOW
-    );
+    const currentPage = Math.ceil(this.state.currentStartIndex / NUMBER_OF_ITEMS_TO_SHOW);
 
     // https://instructure.design/#Pagination
     // Uses a sparse array for better perf when rendering pagination buttons for many pages.
@@ -95,7 +82,7 @@ export default class Paginate extends Component {
     const visiblePageRangeStart = Math.max(currentPage - 1, 0);
     const visiblePageRangeEnd = Math.min(
       currentPage + NUMBER_OF_PAGINATION_BUTTONS_TO_RENDER,
-      numberOfPages - 1
+      numberOfPages - 1,
     );
     for (let i = visiblePageRangeStart; i < visiblePageRangeEnd; i++) {
       pages[i] = this.renderPaginationButton(i);
@@ -119,7 +106,7 @@ export default class Paginate extends Component {
         <ul className={`${this.props.classNames} ExpandCollapseList`}>
           {this.props.listItems.slice(
             this.state.currentStartIndex,
-            this.state.currentStartIndex + NUMBER_OF_ITEMS_TO_SHOW
+            this.state.currentStartIndex + NUMBER_OF_ITEMS_TO_SHOW,
           )}
         </ul>
       </React.Fragment>

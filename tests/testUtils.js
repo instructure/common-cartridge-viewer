@@ -1,12 +1,12 @@
 import { Selector } from "testcafe";
 
-export const getElementsByXPath = Selector(xpath => {
+export const getElementsByXPath = Selector((xpath) => {
   const iterator = document.evaluate(
     xpath,
     document,
     null,
     XPathResult.UNORDERED_NODE_ITERATOR_TYPE,
-    null
+    null,
   );
   const items = [];
 

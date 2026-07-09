@@ -8,10 +8,7 @@ import Text from "@instructure/ui-elements/lib/components/Text";
 import View from "@instructure/ui-layout/lib/components/View";
 import Pill from "@instructure/ui-elements/lib/components/Pill";
 import { Trans } from "@lingui/macro";
-import Grid, {
-  GridCol,
-  GridRow
-} from "@instructure/ui-layout/lib/components/Grid";
+import Grid, { GridCol, GridRow } from "@instructure/ui-layout/lib/components/Grid";
 import IconCheckMark from "@instructure/ui-icons/lib/Line/IconCheckMark";
 import { getOptionalTextContent } from "./utils";
 
@@ -25,25 +22,17 @@ export default class Assessment extends Component {
       return null;
     }
     const title = assessmentNode.getAttribute("title");
-    const isFromQuizzesNext = !!assessmentNode.getAttribute(
-      "external_assignment_id"
-    );
+    const isFromQuizzesNext = !!assessmentNode.getAttribute("external_assignment_id");
     const metadata = getMetadataFields(
-      assessmentNode.parentNode.querySelector("assessment > qtimetadata")
+      assessmentNode.parentNode.querySelector("assessment > qtimetadata"),
     );
 
-    const items = Array.from(
-      assessmentNode.querySelectorAll("section > item")
-    ).map(itemNode => {
+    const items = Array.from(assessmentNode.querySelectorAll("section > item")).map((itemNode) => {
       const ident = itemNode.getAttribute("ident");
 
-      const metadata = getMetadataFields(
-        itemNode.querySelector("itemmetadata")
-      );
+      const metadata = getMetadataFields(itemNode.querySelector("itemmetadata"));
 
-      const mattextNode = itemNode.querySelector(
-        "presentation > material > mattext"
-      );
+      const mattextNode = itemNode.querySelector("presentation > material > mattext");
 
       let responses = {};
       let conditions = [];
@@ -53,84 +42,70 @@ export default class Assessment extends Component {
 
       Array.from(itemNode.querySelectorAll("resprocessing respcondition"))
         .filter(
-          respcondition =>
+          (respcondition) =>
             !respcondition.getAttribute("continue") ||
-            respcondition.getAttribute("continue") === "No"
+            respcondition.getAttribute("continue") === "No",
         )
         .map(
-          rescondition =>
+          (rescondition) =>
             (conditions = conditions.concat(
-              Array.from(rescondition.querySelectorAll("conditionvar > *"))
-            ))
+              Array.from(rescondition.querySelectorAll("conditionvar > *")),
+            )),
         );
 
-      conditions.forEach(condition => {
+      conditions.forEach((condition) => {
         switch (condition.tagName) {
           case "and":
             condition
               .querySelectorAll(":scope > varresult, :scope > varequal")
               .forEach(
-                result =>
-                  (responses[result.textContent] = result.getAttribute(
-                    "respident"
-                  ))
+                (result) => (responses[result.textContent] = result.getAttribute("respident")),
               );
             break;
           case "other":
             break;
           default:
-            responses[condition.textContent] = condition.getAttribute(
-              "respident"
-            );
+            responses[condition.textContent] = condition.getAttribute("respident");
             break;
         }
       });
 
-      const options = Array.from(
-        itemNode.querySelectorAll("presentation > response_lid")
-      ).map(response_lid => {
-        let response_lid_id = response_lid.getAttribute("ident");
-        return {
-          id: response_lid_id,
-          name: getOptionalTextContent(response_lid, "mattext"),
-          responses: Array.from(
-            response_lid.querySelectorAll("response_label")
-          ).map(response => {
-            let response_id = response.getAttribute("ident");
-            return {
-              id: response_id,
-              text: getOptionalTextContent(response, "mattext"),
-              valid:
-                response_id in responses &&
-                responses[response_id] === response_lid_id
-            };
-          })
-        };
-      });
+      const options = Array.from(itemNode.querySelectorAll("presentation > response_lid")).map(
+        (response_lid) => {
+          let response_lid_id = response_lid.getAttribute("ident");
+          return {
+            id: response_lid_id,
+            name: getOptionalTextContent(response_lid, "mattext"),
+            responses: Array.from(response_lid.querySelectorAll("response_label")).map(
+              (response) => {
+                let response_id = response.getAttribute("ident");
+                return {
+                  id: response_id,
+                  text: getOptionalTextContent(response, "mattext"),
+                  valid: response_id in responses && responses[response_id] === response_lid_id,
+                };
+              },
+            ),
+          };
+        },
+      );
 
       return {
         ident,
         metadata,
         mattextNode,
-        options
+        options,
       };
     });
 
     const showQuizzesAnswers = !window.location.href.includes("hide-responses");
 
     const questionComponents = items.map((item, index) => {
-      const type =
-        item.metadata.get("question_type") || item.metadata.get("cc_profile");
+      const type = item.metadata.get("question_type") || item.metadata.get("cc_profile");
       const material = item.mattextNode && item.mattextNode.textContent;
 
       return (
-        <View
-          key={index}
-          as="li"
-          padding="none none small"
-          background="default"
-          borderWidth="none"
-        >
+        <View key={index} as="li" padding="none none small" background="default" borderWidth="none">
           {material && (
             <RichContent
               getUrlForPath={this.props.getUrlForPath}
@@ -186,7 +161,7 @@ export default class Assessment extends Component {
                     <Grid vAlign="middle" margin="none" colSpacing="none">
                       <GridRow startAt={null}>
                         {item.options &&
-                          item.options.map(optionGroup => (
+                          item.options.map((optionGroup) => (
                             <GridCol key={optionGroup.id}>
                               {item.options.length > 1 && (
                                 <Text lineHeight="double" weight="bold">
@@ -194,16 +169,14 @@ export default class Assessment extends Component {
                                 </Text>
                               )}
                               <Grid vAlign="middle" colSpacing="none">
-                                {optionGroup.responses.map(option => (
+                                {optionGroup.responses.map((option) => (
                                   <GridRow rowSpacing="none" key={option.id}>
                                     <GridCol width="auto">
                                       <IconCheckMark
                                         color="success"
                                         className="Assessment--IconCheckMark"
                                         style={{
-                                          visibility: option.valid
-                                            ? "visible"
-                                            : "hidden"
+                                          visibility: option.valid ? "visible" : "hidden",
                                         }}
                                       />
                                     </GridCol>
@@ -213,9 +186,7 @@ export default class Assessment extends Component {
                                         html={option.text}
                                         padding="none"
                                         margin="none"
-                                        resourceIdsByHrefMap={
-                                          this.props.resourceIdsByHrefMap
-                                        }
+                                        resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
                                       />
                                     </GridCol>
                                   </GridRow>
@@ -245,11 +216,7 @@ export default class Assessment extends Component {
             )}
           </div>
           <span>
-            {isFromQuizzesNext ? (
-              <Trans>New Quizzes</Trans>
-            ) : (
-              <Trans>Classic Quiz</Trans>
-            )}
+            {isFromQuizzesNext ? <Trans>New Quizzes</Trans> : <Trans>Classic Quiz</Trans>}
           </span>
         </div>
 
@@ -275,11 +242,9 @@ function getMetadataFields(node) {
     return new Map();
   }
 
-  const metadataFields = Array.from(
-    node.querySelectorAll("qtimetadatafield")
-  ).map(field => [
+  const metadataFields = Array.from(node.querySelectorAll("qtimetadatafield")).map((field) => [
     field.querySelector("fieldlabel").textContent,
-    field.querySelector("fieldentry").textContent
+    field.querySelector("fieldentry").textContent,
   ]);
 
   return new Map(metadataFields);

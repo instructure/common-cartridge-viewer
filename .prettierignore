@@ -1,0 +1,11 @@
+/build
+/coverage
+/report
+/playwright-report
+/test-results
+/blob-report
+/all-blob-reports
+/old
+/public/test-cartridges
+/src/locales/_build
+messages.js

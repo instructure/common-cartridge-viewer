@@ -1,11 +1,10 @@
 import { Selector } from "testcafe";
 
-fixture`Single assignment cartridge`
-  .page`http://localhost:5000/?manifest=${encodeURIComponent(
-  "/test-cartridges/single-assignment/imsmanifest.xml"
+fixture`Single assignment cartridge`.page`http://localhost:5000/?manifest=${encodeURIComponent(
+  "/test-cartridges/single-assignment/imsmanifest.xml",
 )}`;
 
-test("Header and assignment is displayed", async t => {
+test("Header and assignment is displayed", async (t) => {
   await t
     .expect(Selector("h1").withText(`Assignment`).exists)
     .ok()
@@ -13,16 +12,16 @@ test("Header and assignment is displayed", async t => {
     .ok();
 });
 
-test("Nav is hidden", async t => {
+test("Nav is hidden", async (t) => {
   await t.expect(Selector("nav").exists).notOk();
 });
 
 fixture`Single assignment cartridge (with attachment, compact)`
   .page`http://localhost:5000/?compact&manifest=${encodeURIComponent(
-  "/test-cartridges/single-assignment/imsmanifest.xml"
+  "/test-cartridges/single-assignment/imsmanifest.xml",
 )}`;
 
-test("Only the assignment shows", async t => {
+test("Only the assignment shows", async (t) => {
   await t
     .expect(Selector("h1").withText(`Assignment`).exists)
     .ok()
@@ -31,9 +30,7 @@ test("Only the assignment shows", async t => {
     .expect(Selector("header").exists)
     .notOk();
 
-  const allItemsButonsButton = Selector("span")
-    .withText("All Items")
-    .parent("a");
+  const allItemsButonsButton = Selector("span").withText("All Items").parent("a");
 
   await t.expect(allItemsButonsButton.exists).notOk();
 });

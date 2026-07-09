@@ -16,9 +16,9 @@ export default class Discussion extends Component {
     }
     const title = getOptionalTextContent(topicNode, "title");
     const descriptionHtml = getOptionalTextContent(topicNode, "text");
-    const attachments = Array.from(
-      doc.querySelectorAll("topic > attachments > attachment")
-    ).map(node => getFileResourcePath(node.getAttribute("href"), true));
+    const attachments = Array.from(doc.querySelectorAll("topic > attachments > attachment")).map(
+      (node) => getFileResourcePath(node.getAttribute("href"), true),
+    );
 
     return (
       <React.Fragment>
@@ -47,15 +47,11 @@ export default class Discussion extends Component {
               <Trans>Attachments</Trans>
             </Heading>
             <ul>
-              {attachments.map(attachment => {
+              {attachments.map((attachment) => {
                 return (
                   <li key={attachment}>
                     {this.props.resourceIdsByHrefMap.has(attachment) ? (
-                      <a
-                        href={`#/resources/${this.props.resourceIdsByHrefMap.get(
-                          attachment
-                        )}`}
-                      >
+                      <a href={`#/resources/${this.props.resourceIdsByHrefMap.get(attachment)}`}>
                         {basename(attachment)}
                       </a>
                     ) : (

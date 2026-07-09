@@ -11,7 +11,7 @@ export default class EmbeddedPreview extends Component {
     super(props);
     this.state = {
       embeddedViewerSrc: "",
-      isLoading: true
+      isLoading: true,
     };
   }
   componentDidMount() {
@@ -20,9 +20,9 @@ export default class EmbeddedPreview extends Component {
       window.parent.postMessage(
         JSON.stringify({
           type: "externalViewerRequest",
-          body: this.props.externalViewer
+          body: this.props.externalViewer,
         }),
-        "*"
+        "*",
       );
     }
   }
@@ -30,7 +30,7 @@ export default class EmbeddedPreview extends Component {
     window.removeEventListener("message", this.handleMessage);
   }
 
-  handleMessage = event => {
+  handleMessage = (event) => {
     if (event.data == null || event.data[0] !== "{") {
       this.props.onFail();
       return;
@@ -59,13 +59,7 @@ export default class EmbeddedPreview extends Component {
         {this.state.isLoading && (
           <div className="EmbeddedPreview--loading">
             <I18n>
-              {({ i18n }) => (
-                <Spinner
-                  title={i18n._(t`Loading`)}
-                  size="small"
-                  margin="medium"
-                />
-              )}
+              {({ i18n }) => <Spinner title={i18n._(t`Loading`)} size="small" margin="medium" />}
             </I18n>
           </div>
         )}
@@ -73,29 +67,19 @@ export default class EmbeddedPreview extends Component {
           <I18n>
             {({ i18n }) =>
               ["mp3"].includes(extension) ? (
-                <audio
-                  className="EmbeddedPreview--audio"
-                  controls
-                  title={i18n._(t`Media viewer`)}
-                >
+                <audio className="EmbeddedPreview--audio" controls title={i18n._(t`Media viewer`)}>
                   <source src={this.state.embeddedViewerSrc} type="audio/mp3" />
                   <Trans>
                     Your browser doesn't support HTML5 audio. Here is a{" "}
-                    <a href={this.state.embeddedViewerSrc}>link to the audio</a>{" "}
-                    instead.
+                    <a href={this.state.embeddedViewerSrc}>link to the audio</a> instead.
                   </Trans>
                 </audio>
               ) : ["mp4"].includes(extension) ? (
-                <video
-                  className="EmbeddedPreview--video"
-                  controls
-                  title={i18n._(t`Media viewer`)}
-                >
+                <video className="EmbeddedPreview--video" controls title={i18n._(t`Media viewer`)}>
                   <source src={this.state.embeddedViewerSrc} type="video/mp4" />
                   <Trans>
                     Your browser doesn't support HTML5 video. Here is a{" "}
-                    <a href={this.state.embeddedViewerSrc}>link to the audio</a>{" "}
-                    instead.
+                    <a href={this.state.embeddedViewerSrc}>link to the audio</a> instead.
                   </Trans>
                 </video>
               ) : (

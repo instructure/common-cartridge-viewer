@@ -13,7 +13,7 @@ export default class AssessmentListItem extends Component {
     this.state = {
       isLoading: true,
       title: null,
-      workflowState: null
+      workflowState: null,
     };
   }
 
@@ -29,7 +29,7 @@ export default class AssessmentListItem extends Component {
         questionCount: 0,
         workflowState: "unpublished",
         resourceNotFound: true,
-        isFromQuizzesNext: false
+        isFromQuizzesNext: false,
       });
       return;
     }
@@ -44,27 +44,22 @@ export default class AssessmentListItem extends Component {
     );
     const pointsPossibleNode =
       depDoc && depDoc.querySelector("quiz > assignment > points_possible");
-    const points =
-      pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
-    const questionCount = doc.querySelectorAll("assessment section > item")
-      .length;
+    const points = pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
+    const questionCount = doc.querySelectorAll("assessment section > item").length;
     let assignedQuestionCount = 0;
-    const selectionNumbers = doc.querySelectorAll(
-      "assessment section section selection_number"
-    );
+    const selectionNumbers = doc.querySelectorAll("assessment section section selection_number");
     if (selectionNumbers.length === 0) {
       assignedQuestionCount = questionCount;
     } else {
       assignedQuestionCount = Array.from(selectionNumbers).reduce(
         (prev, curr) => prev + Number(curr.textContent),
-        0
+        0,
       );
       if (isNaN(assignedQuestionCount)) {
         assignedQuestionCount = questionCount;
       }
     }
-    const workflowStateNode =
-      depDoc && depDoc.querySelector("quiz > assignment > workflow_state");
+    const workflowStateNode = depDoc && depDoc.querySelector("quiz > assignment > workflow_state");
     const workflowState = workflowStateNode && workflowStateNode.textContent;
 
     this.setState({
@@ -74,7 +69,7 @@ export default class AssessmentListItem extends Component {
       questionCount,
       assignedQuestionCount,
       workflowState,
-      isFromQuizzesNext
+      isFromQuizzesNext,
     });
   }
 
@@ -90,8 +85,8 @@ export default class AssessmentListItem extends Component {
     const pathname = this.state.resourceNotFound
       ? `resources/unavailable`
       : this.props.isModuleItem
-      ? `module-items/${this.props.identifier}`
-      : `resources/${this.props.identifier}`;
+        ? `module-items/${this.props.identifier}`
+        : `resources/${this.props.identifier}`;
 
     return (
       <li className="ExpandCollapseList-item">
@@ -108,7 +103,7 @@ export default class AssessmentListItem extends Component {
               <Link
                 as={RouterLink}
                 to={{
-                  pathname
+                  pathname,
                 }}
               >
                 {this.state.title}
@@ -117,8 +112,8 @@ export default class AssessmentListItem extends Component {
             {this.state.questionCount > 0 && (
               <div className="ExpandCollapseList-item-details">
                 <Trans>
-                  {this.state.questionCount} question(s) /{" "}
-                  {this.state.assignedQuestionCount} assigned
+                  {this.state.questionCount} question(s) / {this.state.assignedQuestionCount}{" "}
+                  assigned
                 </Trans>
               </div>
             )}

@@ -7,11 +7,7 @@ export default function Unavailable(props) {
   return (
     <View as="div" textAlign="center">
       <View as="div">
-        <img
-          className="preview-not-available-icon"
-          src={noSignalTvIcon}
-          alt="No signal TV icon"
-        />
+        <img className="preview-not-available-icon" src={noSignalTvIcon} alt="No signal TV icon" />
       </View>
       <Text size="x-large">{props.heading}</Text>
       <br />

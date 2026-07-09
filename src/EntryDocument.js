@@ -5,7 +5,7 @@ const documents = new Map();
 const initialState = {
   doc: null,
   isLoading: true,
-  text: null
+  text: null,
 };
 
 export default class EntryDocument extends Component {

@@ -13,20 +13,18 @@ export default class AssignmentList extends Component {
     }
     const resources = getAssignmentListResources(this.props.resources);
 
-    const listItems = resources.map(
-      ({ href, dependencyHrefs, identifier }, index) => {
-        return (
-          <AssignmentListItem
-            dependencyHrefs={dependencyHrefs}
-            getTextByPath={this.props.getTextByPath}
-            href={`/${href}`}
-            identifier={identifier}
-            key={index}
-            src={this.props.src}
-          />
-        );
-      }
-    );
+    const listItems = resources.map(({ href, dependencyHrefs, identifier }, index) => {
+      return (
+        <AssignmentListItem
+          dependencyHrefs={dependencyHrefs}
+          getTextByPath={this.props.getTextByPath}
+          href={`/${href}`}
+          identifier={identifier}
+          key={index}
+          src={this.props.src}
+        />
+      );
+    });
 
     return (
       <div className="Cartridge-content-inner">
@@ -35,11 +33,7 @@ export default class AssignmentList extends Component {
             <Trans>Assignments</Trans>
           </ScreenReaderContent>
         </Heading>
-        <Paginate
-          listItems={listItems}
-          location={this.props.location}
-          classNames="Assignments"
-        />
+        <Paginate listItems={listItems} location={this.props.location} classNames="Assignments" />
       </div>
     );
   }

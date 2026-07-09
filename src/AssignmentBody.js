@@ -10,7 +10,7 @@ export default class AssignmentBody extends PureComponent {
   getRubricRatingsColSpan = () => {
     let colSpan = 1;
 
-    this.props.rubric.criteria.forEach(criteria => {
+    this.props.rubric.criteria.forEach((criteria) => {
       if (criteria.ratings.length > colSpan) colSpan = criteria.ratings.length;
     });
 
@@ -39,10 +39,7 @@ export default class AssignmentBody extends PureComponent {
               <span style={{ fontWeight: "bold" }}>
                 <Trans>Submitting</Trans>
               </span>
-              :{" "}
-              <span className="submission-format">
-                {this.props.submissionFormats}
-              </span>
+              : <span className="submission-format">{this.props.submissionFormats}</span>
             </div>
           </React.Fragment>
         )}
@@ -56,14 +53,13 @@ export default class AssignmentBody extends PureComponent {
           </div>
         )}
 
-        {this.props.descriptionHtml &&
-          this.props.descriptionHtml.length > 0 && (
-            <RichContent
-              html={this.props.descriptionHtml}
-              getUrlForPath={this.props.getUrlForPath}
-              resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
-            />
-          )}
+        {this.props.descriptionHtml && this.props.descriptionHtml.length > 0 && (
+          <RichContent
+            html={this.props.descriptionHtml}
+            getUrlForPath={this.props.getUrlForPath}
+            resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
+          />
+        )}
 
         {this.props.attachments && this.props.attachments.length > 0 && (
           <React.Fragment>
@@ -71,15 +67,11 @@ export default class AssignmentBody extends PureComponent {
               <Trans>Attachments</Trans>
             </Heading>
             <ul>
-              {this.props.attachments.map(attachment => {
+              {this.props.attachments.map((attachment) => {
                 return (
                   <li key={attachment}>
                     {this.props.resourceIdsByHrefMap.has(attachment) ? (
-                      <a
-                        href={`#/resources/${this.props.resourceIdsByHrefMap.get(
-                          attachment
-                        )}`}
-                      >
+                      <a href={`#/resources/${this.props.resourceIdsByHrefMap.get(attachment)}`}>
                         {basename(attachment)}
                       </a>
                     ) : (
@@ -125,7 +117,7 @@ export default class AssignmentBody extends PureComponent {
                 </tr>
               </thead>
               <tbody>
-                {this.props.rubric.criteria.map(criteria => {
+                {this.props.rubric.criteria.map((criteria) => {
                   return (
                     <tr key={criteria.id}>
                       <td>{criteria.description}</td>

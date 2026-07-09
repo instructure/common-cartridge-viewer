@@ -4,9 +4,7 @@ import NavLink from "./NavLink";
 import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
 import Progress from "@instructure/ui-elements/lib/components/Progress";
-import Breadcrumb, {
-  BreadcrumbLink
-} from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
+import Breadcrumb, { BreadcrumbLink } from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
 import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import {
   blobToDataUrl,
@@ -16,7 +14,7 @@ import {
   getTextFromEntry,
   parseManifestDocument,
   parseXml,
-  getOptionalTextContent
+  getOptionalTextContent,
 } from "./utils.js";
 import View from "@instructure/ui-layout/lib/components/View";
 import Text from "@instructure/ui-elements/lib/components/Text";
@@ -74,21 +72,20 @@ export default class CommonCartridge extends Component {
         this.props.manifest != null
           ? "manifest" // prefer manifest
           : this.props.cartridge != null
-          ? "cartridge" // fall back to cartridge
-          : this.props.file != null
-          ? "file"
-          : null
+            ? "cartridge" // fall back to cartridge
+            : this.props.file != null
+              ? "file"
+              : null,
     };
   }
 
-  handleDocumentKeydown = event => {
+  handleDocumentKeydown = (event) => {
     if (event.code !== "Enter") return;
     const wasLinkTriggered = event.target.nodeName === "A";
     if (wasLinkTriggered === false) return;
     setTimeout(() => {
       const isFocusInMain = this.mainRef.contains(document.activeElement);
-      const isFocusOnLink =
-        document.activeElement && document.activeElement.nodeName === "A";
+      const isFocusOnLink = document.activeElement && document.activeElement.nodeName === "A";
       if (isFocusInMain === false && isFocusOnLink === false) {
         this.mainRef.focus();
       }
@@ -112,21 +109,21 @@ export default class CommonCartridge extends Component {
 
   getEntriesFromManifest = () => {
     fetch(this.props.manifest)
-      .then(response => {
+      .then((response) => {
         if (response.ok === false) {
           throw new Error();
         }
         return response.text();
       })
-      .then(xml => this.loadResources(xml))
-      .catch(error => {
+      .then((xml) => this.loadResources(xml))
+      .catch((error) => {
         const canAttemptCartridgeFallBack =
           this.state.previewType === "manifest" && this.props.cartridge != null;
         if (canAttemptCartridgeFallBack) {
           this.setState({
             previewType: "cartridge",
             basepath: null,
-            isCartridgeRemotelyExpanded: false
+            isCartridgeRemotelyExpanded: false,
           });
         } else {
           this.setState({ errorLoading: true });
@@ -139,16 +136,13 @@ export default class CommonCartridge extends Component {
       this.getEntriesFromPreviewType();
       return;
     }
-    if (
-      this.props.cartridge !== prevProps.cartridge &&
-      this.props.file == null
-    ) {
+    if (this.props.cartridge !== prevProps.cartridge && this.props.file == null) {
       this.setState(
         {
           isLoaded: false,
-          filter: "organizations"
+          filter: "organizations",
         },
-        () => this.getEntriesFromExternalImscc()
+        () => this.getEntriesFromExternalImscc(),
       );
     } else if (this.props.file != null && this.props.file !== prevProps.file) {
       this.getEntriesFromDroppedFile();
@@ -177,9 +171,7 @@ export default class CommonCartridge extends Component {
   }
 
   async getEntriesFromExternalImscc() {
-    const [request, getEntriesPromise] = getEntriesFromXHR(
-      this.props.cartridge
-    );
+    const [request, getEntriesPromise] = getEntriesFromXHR(this.props.cartridge);
     request.addEventListener("progress", this.handleLoadProgress);
     try {
       const entries = await getEntriesPromise;
@@ -201,9 +193,7 @@ export default class CommonCartridge extends Component {
       entryMap.set(entry.filename, entry);
     }
     this.setState({ entryMap });
-    const manifestEntry = entries.find(
-      entry => entry.filename === "imsmanifest.xml"
-    );
+    const manifestEntry = entries.find((entry) => entry.filename === "imsmanifest.xml");
 
     if (manifestEntry != null) {
       let xml;
@@ -218,7 +208,7 @@ export default class CommonCartridge extends Component {
     }
   }
 
-  getUrlForPath = async path => {
+  getUrlForPath = async (path) => {
     if (this.state.isCartridgeRemotelyExpanded) {
       return `${this.state.basepath}/${path}`;
     }
@@ -226,14 +216,14 @@ export default class CommonCartridge extends Component {
     return blob ? blobToDataUrl(blob) : "";
   };
 
-  getBlobByPath = path => {
+  getBlobByPath = (path) => {
     return this.state.isCartridgeRemotelyExpanded
       ? fetch(`${this.state.basepath}/${path}`)
-          .then(response => response.blob())
-          .catch(err => null)
+          .then((response) => response.blob())
+          .catch((err) => null)
       : this.state.entryMap.has(path)
-      ? getBlobFromEntry(this.state.entryMap.get(path))
-      : "";
+        ? getBlobFromEntry(this.state.entryMap.get(path))
+        : "";
   };
 
   getRubrics = async () => {
@@ -243,75 +233,66 @@ export default class CommonCartridge extends Component {
     if (document == null) return [];
     const rubrics = new Map();
 
-    Array.from(document.querySelectorAll("rubric")).forEach(node => {
+    Array.from(document.querySelectorAll("rubric")).forEach((node) => {
       rubrics.set(node.getAttribute("identifier"), {
         title: getOptionalTextContent(node, "title"),
         pointsPossible: getOptionalTextContent(node, "points_possible"),
-        criteria: Array.from(node.querySelectorAll("criterion")).map(
-          criterion => {
-            return {
-              id: getOptionalTextContent(criterion, "criterion_id"),
-              description: getOptionalTextContent(criterion, "description"),
-              points: getOptionalTextContent(criterion, "points"),
-              ratings: Array.from(criterion.querySelectorAll("rating")).map(
-                rating => {
-                  return {
-                    id: getOptionalTextContent(rating, "id"),
-                    description: rating.querySelector("description")
-                      .textContent,
-                    points: getOptionalTextContent(rating, "points")
-                  };
-                }
-              )
-            };
-          }
-        )
+        criteria: Array.from(node.querySelectorAll("criterion")).map((criterion) => {
+          return {
+            id: getOptionalTextContent(criterion, "criterion_id"),
+            description: getOptionalTextContent(criterion, "description"),
+            points: getOptionalTextContent(criterion, "points"),
+            ratings: Array.from(criterion.querySelectorAll("rating")).map((rating) => {
+              return {
+                id: getOptionalTextContent(rating, "id"),
+                description: rating.querySelector("description").textContent,
+                points: getOptionalTextContent(rating, "points"),
+              };
+            }),
+          };
+        }),
       });
     });
 
     return rubrics;
   };
 
-  getTextByPath = path =>
+  getTextByPath = (path) =>
     this.state.isCartridgeRemotelyExpanded
       ? fetch(`${this.state.basepath}/${path}`)
-          .then(response => {
+          .then((response) => {
             return response.ok ? response.text() : null;
           })
-          .catch(err => null)
+          .catch((err) => null)
       : this.state.entryMap.has(path)
-      ? getTextFromEntry(this.state.entryMap.get(path))
-      : null;
+        ? getTextFromEntry(this.state.entryMap.get(path))
+        : null;
 
-  handleHistoryChange = history => {
+  handleHistoryChange = (history) => {
     this.history = history;
     this.props.onHistoryChange(history);
   };
 
-  handleLoadProgress = event => {
+  handleLoadProgress = (event) => {
     this.setState({ loadProgress: event });
   };
 
-  getExternalViewers = async resourceIdsByHrefMap => {
-    const xml = await this.getTextByPath(
-      "course_settings/external_viewers.xml"
-    );
+  getExternalViewers = async (resourceIdsByHrefMap) => {
+    const xml = await this.getTextByPath("course_settings/external_viewers.xml");
     if (xml == null) return;
     const document = parseXml(xml);
     if (document == null) return;
     const externalViewers = new Map();
-    Array.from(document.querySelectorAll("externalViewer")).forEach(node => {
+    Array.from(document.querySelectorAll("externalViewer")).forEach((node) => {
       const resourceId = resourceIdsByHrefMap.get(node.getAttribute("path"));
       if (resourceId != null) {
         externalViewers.set(resourceId, {
           service: node.getAttribute("service"),
-          id: node.getAttribute("id")
+          id: node.getAttribute("id"),
         });
       } else {
         console.warn(
-          `Entry ${node.getAttribute(
-            "path"
-          )} not associated in cartridge to any resource`
+          `Entry ${node.getAttribute("path")} not associated in cartridge to any resource`,
         );
       }
     });
@@ -333,9 +314,7 @@ export default class CommonCartridge extends Component {
     }
     let externalViewers = new Map();
     if (result.hasExternalViewers) {
-      externalViewers = await this.getExternalViewers(
-        result.resourceIdsByHrefMap
-      );
+      externalViewers = await this.getExternalViewers(result.resourceIdsByHrefMap);
     }
 
     const rubrics = await this.getRubrics();
@@ -352,7 +331,7 @@ export default class CommonCartridge extends Component {
       externalViewers,
       isLoaded: true,
       showcaseSingleResource,
-      rubrics
+      rubrics,
     });
   }
 
@@ -363,9 +342,7 @@ export default class CommonCartridge extends Component {
           {({ i18n }) => (
             <Unavailable
               heading={i18n._(t`Failed to load resource`)}
-              subHeading={i18n._(
-                t`We had a problem loading the Common Cartridge`
-              )}
+              subHeading={i18n._(t`We had a problem loading the Common Cartridge`)}
             />
           )}
         </I18n>
@@ -387,17 +364,17 @@ export default class CommonCartridge extends Component {
             <div className={isLarge || isTakingAwhile ? "fade-in" : "hidden"}>
               <Responsive
                 query={{
-                  large: { minWidth: "600px" }
+                  large: { minWidth: "600px" },
                 }}
                 props={{
-                  large: { margin: "small", padding: "large" }
+                  large: { margin: "small", padding: "large" },
                 }}
-                render={props => (
+                render={(props) => (
                   <View {...props} as="div" textAlign="center">
                     <Billboard
                       size="medium"
                       heading={i18n._(t`Loading Cartridge`)}
-                      hero={size => (
+                      hero={(size) => (
                         <img
                           alt=""
                           style={{ width: "125px", height: "80px" }}
@@ -415,17 +392,11 @@ export default class CommonCartridge extends Component {
                       animateOnMount
                       label={i18n._(t`Loading completion`)}
                       formatValueText={(valueNow, valueMax) =>
-                        i18n._(
-                          t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
-                        )
+                        i18n._(t`${Math.floor((valueNow / valueMax) * 100)}% loaded`)
                       }
                       formatDisplayedValue={(valueNow, valueMax) => (
                         <Text>
-                          <pre>
-                            {i18n._(
-                              t`${Math.floor((valueNow / valueMax) * 100)}%`
-                            )}
-                          </pre>
+                          <pre>{i18n._(t`${Math.floor((valueNow / valueMax) * 100)}%`)}</pre>
                         </Text>
                       )}
                       valueNow={this.state.loadProgress.loaded}
@@ -442,7 +413,7 @@ export default class CommonCartridge extends Component {
 
     const numberOfAssignments = Math.max(
       this.state.assignmentResources.length,
-      this.state.associatedContentAssignmentResources.length
+      this.state.associatedContentAssignmentResources.length,
     );
 
     const startIndexQuery = queryString.stringify({ startIndex: 0 });
@@ -460,9 +431,7 @@ export default class CommonCartridge extends Component {
                 borderWidth="0 0 small"
               >
                 <Breadcrumb size="large" label={i18n._(t`You are here:`)}>
-                  <BreadcrumbLink>
-                    {this.state.title || <Trans>Untitled</Trans>}
-                  </BreadcrumbLink>
+                  <BreadcrumbLink>{this.state.title || <Trans>Untitled</Trans>}</BreadcrumbLink>
                 </Breadcrumb>
               </View>
             )}
@@ -470,7 +439,7 @@ export default class CommonCartridge extends Component {
             <div
               className={[
                 "CommonCartridge--view",
-                this.state.showcaseSingleResource ? "single-resource" : null
+                this.state.showcaseSingleResource ? "single-resource" : null,
               ]
                 .join(" ")
                 .trim()}
@@ -481,10 +450,8 @@ export default class CommonCartridge extends Component {
                   <Button
                     as="label"
                     variant="ghost"
-                    buttonRef={ref =>
-                      ref &&
-                      ref.classList.add("open") &
-                        ref.setAttribute("for", "NavTrigger")
+                    buttonRef={(ref) =>
+                      ref && ref.classList.add("open") & ref.setAttribute("for", "NavTrigger")
                     }
                     margin="0 x-small 0 0"
                     icon={IconOpen}
@@ -500,7 +467,7 @@ export default class CommonCartridge extends Component {
                         className="MenuItem"
                         to={{
                           pathname: "/assignments",
-                          search: startIndexQuery
+                          search: startIndexQuery,
                         }}
                       >
                         <Trans>Assignments ({numberOfAssignments})</Trans>
@@ -511,7 +478,7 @@ export default class CommonCartridge extends Component {
                         className="MenuItem"
                         to={{
                           pathname: "/pages",
-                          search: startIndexQuery
+                          search: startIndexQuery,
                         }}
                       >
                         <Trans>Pages ({this.state.pageResources.length})</Trans>
@@ -522,13 +489,13 @@ export default class CommonCartridge extends Component {
                         className="MenuItem"
                         to={{
                           pathname: "/discussions",
-                          search: startIndexQuery
+                          search: startIndexQuery,
                         }}
                       >
                         <Trans
                           id="Discussions ({length})"
                           values={{
-                            length: this.state.discussionResources.length
+                            length: this.state.discussionResources.length,
                           }}
                         />
                       </NavLink>
@@ -538,12 +505,10 @@ export default class CommonCartridge extends Component {
                         className="MenuItem"
                         to={{
                           pathname: "/quizzes",
-                          search: startIndexQuery
+                          search: startIndexQuery,
                         }}
                       >
-                        <Trans>
-                          Quizzes ({this.state.assessmentResources.length})
-                        </Trans>
+                        <Trans>Quizzes ({this.state.assessmentResources.length})</Trans>
                       </NavLink>
                     )}
                     {this.state.fileResources.length > 0 && (
@@ -551,7 +516,7 @@ export default class CommonCartridge extends Component {
                         className="MenuItem"
                         to={{
                           pathname: "/files",
-                          search: startIndexQuery
+                          search: startIndexQuery,
                         }}
                       >
                         <Trans>Files ({this.state.fileResources.length})</Trans>
@@ -561,10 +526,8 @@ export default class CommonCartridge extends Component {
                   <Button
                     as="label"
                     variant="ghost"
-                    buttonRef={ref =>
-                      ref &&
-                      ref.classList.add("close") &
-                        ref.setAttribute("for", "NavTrigger")
+                    buttonRef={(ref) =>
+                      ref && ref.classList.add("close") & ref.setAttribute("for", "NavTrigger")
                     }
                     margin="0 x-small 0 0"
                     icon={IconClose}
@@ -575,7 +538,7 @@ export default class CommonCartridge extends Component {
               <div className="CommonCartridge--content">
                 <View
                   as="main"
-                  elementRef={ref => (this.mainRef = ref)}
+                  elementRef={(ref) => (this.mainRef = ref)}
                   margin={this.props.compact ? "none" : "small"}
                   background="default"
                 >
@@ -590,20 +553,16 @@ export default class CommonCartridge extends Component {
                               <Resource
                                 getTextByPath={this.getTextByPath}
                                 externalViewer={this.state.externalViewers.get(
-                                  this.state.showcaseResources[0].getAttribute(
-                                    "identifier"
-                                  )
+                                  this.state.showcaseResources[0].getAttribute("identifier"),
                                 )}
                                 getUrlForPath={this.getUrlForPath}
                                 identifier={this.state.showcaseResources[0].getAttribute(
-                                  "identifier"
+                                  "identifier",
                                 )}
                                 moduleItems={this.state.moduleItems}
                                 modules={this.state.modules}
                                 resourceMap={this.state.resourceMap}
-                                resourceIdsByHrefMap={
-                                  this.state.resourceIdsByHrefMap
-                                }
+                                resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
                                 location={location}
                                 rubrics={this.state.rubrics}
                               />
@@ -612,21 +571,17 @@ export default class CommonCartridge extends Component {
                             <React.Fragment>
                               <Resource
                                 externalViewer={this.state.externalViewers.get(
-                                  this.state.showcaseResources[0].getAttribute(
-                                    "identifier"
-                                  )
+                                  this.state.showcaseResources[0].getAttribute("identifier"),
                                 )}
                                 getTextByPath={this.getTextByPath}
                                 getUrlForPath={this.getUrlForPath}
                                 identifier={this.state.showcaseResources[0].getAttribute(
-                                  "identifier"
+                                  "identifier",
                                 )}
                                 moduleItems={this.state.moduleItems}
                                 modules={this.state.modules}
                                 resourceMap={this.state.resourceMap}
-                                resourceIdsByHrefMap={
-                                  this.state.resourceIdsByHrefMap
-                                }
+                                resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
                                 location={location}
                                 rubrics={this.state.rubrics}
                               />
@@ -657,21 +612,15 @@ export default class CommonCartridge extends Component {
                           <Resource
                             basepath={this.state.basepath}
                             externalViewers={this.state.externalViewers}
-                            externalViewer={this.state.externalViewers.get(
-                              match.params.identifier
-                            )}
+                            externalViewer={this.state.externalViewers.get(match.params.identifier)}
                             getBlobByPath={this.getBlobByPath}
                             getTextByPath={this.getTextByPath}
                             getUrlForPath={this.getUrlForPath}
                             identifier={match.params.identifier}
-                            isCartridgeRemotelyExpanded={
-                              this.state.isCartridgeRemotelyExpanded
-                            }
+                            isCartridgeRemotelyExpanded={this.state.isCartridgeRemotelyExpanded}
                             moduleItems={this.state.moduleItems}
                             modules={this.state.modules}
-                            resourceIdsByHrefMap={
-                              this.state.resourceIdsByHrefMap
-                            }
+                            resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
                             resourceMap={this.state.resourceMap}
                             location={location}
                             rubrics={this.state.rubrics}
@@ -688,21 +637,15 @@ export default class CommonCartridge extends Component {
                           <Resource
                             basepath={this.state.basepath}
                             externalViewers={this.state.externalViewers}
-                            externalViewer={this.state.externalViewers.get(
-                              match.params.identifier
-                            )}
+                            externalViewer={this.state.externalViewers.get(match.params.identifier)}
                             getBlobByPath={this.getBlobByPath}
                             getTextByPath={this.getTextByPath}
                             getUrlForPath={this.getUrlForPath}
                             identifier={match.params.identifier}
-                            isCartridgeRemotelyExpanded={
-                              this.state.isCartridgeRemotelyExpanded
-                            }
+                            isCartridgeRemotelyExpanded={this.state.isCartridgeRemotelyExpanded}
                             moduleItems={this.state.moduleItems}
                             modules={this.state.modules}
-                            resourceIdsByHrefMap={
-                              this.state.resourceIdsByHrefMap
-                            }
+                            resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
                             resourceMap={this.state.resourceMap}
                             isModuleItem={true}
                             rubrics={this.state.rubrics}
@@ -823,9 +766,7 @@ export default class CommonCartridge extends Component {
                               location={location}
                             />
                             <AssociatedContentAssignmentList
-                              resources={
-                                this.state.associatedContentAssignmentResources
-                              }
+                              resources={this.state.associatedContentAssignmentResources}
                               getTextByPath={this.getTextByPath}
                               moduleItems={this.state.moduleItems}
                               resourceMap={this.state.resourceMap}

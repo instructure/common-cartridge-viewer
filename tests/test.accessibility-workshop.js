@@ -2,10 +2,10 @@ import { Selector } from "testcafe";
 
 fixture`Accessibility Workshop cartridge`
   .page`http://localhost:5000/?cartridge=${encodeURIComponent(
-  "/test-cartridges/allyworkshop.imscc"
+  "/test-cartridges/allyworkshop.imscc",
 )}#/`;
 
-test("Pages", async t => {
+test("Pages", async (t) => {
   await t
     .expect(Selector("a").withText("Pages").exists)
     .ok({ timeout: 20000 })
@@ -20,7 +20,7 @@ test("Pages", async t => {
     .ok();
 });
 
-test("Substition token (IMS-CC-FILEBASE)", async t => {
+test("Substition token (IMS-CC-FILEBASE)", async (t) => {
   await t
     .expect(Selector("a").withText("Pages").exists)
     .ok({ timeout: 20000 })
@@ -35,12 +35,10 @@ test("Substition token (IMS-CC-FILEBASE)", async t => {
 
   const img = Selector('img[src*="data"]').withAttribute("alt", "Ally logo");
   const src = await img.getAttribute("src");
-  await t
-    .expect(src)
-    .notContains("IMS-CC-FILEBASE", "CC file prefix not replaced");
+  await t.expect(src).notContains("IMS-CC-FILEBASE", "CC file prefix not replaced");
 });
 
-test("Substition token (WIKI_REFERENCE)", async t => {
+test("Substition token (WIKI_REFERENCE)", async (t) => {
   await t
     .expect(Selector("a").withText("Pages"))
     .ok({ timeout: 20000 })
@@ -51,13 +49,11 @@ test("Substition token (WIKI_REFERENCE)", async t => {
     .expect(Selector("a").withText("on this page"))
     .ok()
     .click(Selector("a").withText("on this page"))
-    .expect(
-      Selector("h1").withText(`RTC Accessibilty Advisory Committee`).exists
-    )
+    .expect(Selector("h1").withText(`RTC Accessibilty Advisory Committee`).exists)
     .ok();
 });
 
-test("Discussions", async t => {
+test("Discussions", async (t) => {
   await t
     .click(Selector("a").withText("Discussions"))
     .expect(Selector("a").withText("Accessibility in your life").exists)
@@ -70,15 +66,12 @@ test("Discussions", async t => {
     .ok();
 });
 
-test("Files", async t => {
+test("Files", async (t) => {
   await t
     .expect(Selector("a").withText("Files").exists)
     .ok({ timeout: 20000 })
     .click(Selector("a").withText("Files"))
-    .expect(
-      Selector("div").withText("web_resources/Ally Accessibility Checklist.pdf")
-        .exists
-    )
+    .expect(Selector("div").withText("web_resources/Ally Accessibility Checklist.pdf").exists)
     .notOk()
     .expect(Selector("a").withText("Ally Accessibility Checklist.pdf").exists)
     .ok()

@@ -43,7 +43,12 @@
     "test": "testcafe chrome,firefox ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
     "test-screenshots": "testcafe chrome ./tests/test.* --app \"node_modules/.bin/superstatic -p 5000 ./build -s\" -s takeOnFails=true,path=./tests/screenshots,fullPage=true",
     "test-chrome-headless": "testcafe chrome:headless ./tests/test.*  --page-load-timeout 10000 --assertion-timeout 10000 --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
-    "test-headless": "testcafe chrome:headless,firefox:headless ./tests/test.*  --page-load-timeout 10000 --assertion-timeout 10000 --app \"node_modules/.bin/superstatic -p 5000 ./build -s\""
+    "test-headless": "testcafe chrome:headless,firefox:headless ./tests/test.*  --page-load-timeout 10000 --assertion-timeout 10000 --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "test-ci": "testcafe \"chrome:headless --no-sandbox --disable-gpu\" ./tests/test.* --page-load-timeout 30000 --assertion-timeout 30000 --selector-timeout 30000 --quarantine-mode attemptLimit=3,successThreshold=1 --screenshots path=tests/screenshots,takeOnFails=true --reporter spec,xunit:report/testcafe.xml --app \"node_modules/.bin/superstatic -p 5000 ./build -s\"",
+    "e2e": "playwright test",
+    "e2e:edge": "CCV_BASE_URL=https://common-cartridge-viewer-edge.netlify.app playwright test",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,css}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,css}\""
   },
   "husky": {
     "hooks": {
@@ -51,7 +56,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,css}": [
+    "*.{js,jsx,ts,tsx,css}": [
       "prettier --write",
       "git add"
     ]
@@ -60,10 +65,11 @@
     "@babel/core": "^7.2.2",
     "@lingui/cli": "^2.9.2",
     "@lingui/macro": "^2.7.2",
+    "@playwright/test": "^1.61.1",
     "babel-core": "^7.0.0-bridge.0",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.0",
-    "prettier": "1.15.3",
+    "prettier": "^3.9.4",
     "superstatic": "^6.0.4",
     "testcafe": "^3.7.4"
   },

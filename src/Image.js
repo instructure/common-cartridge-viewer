@@ -13,7 +13,7 @@ export default class Image extends Component {
     this.state = {
       isLoading: true,
       dataUrl: null,
-      filename: null
+      filename: null,
     };
   }
 
@@ -25,7 +25,7 @@ export default class Image extends Component {
     this.setState({
       isLoading: false,
       imageUrl,
-      filename
+      filename,
     });
   }
 
@@ -33,9 +33,7 @@ export default class Image extends Component {
     if (this.state.isLoading) {
       return (
         <I18n>
-          {({ i18n }) => (
-            <Spinner title={i18n._(t`Loading`)} size="small" margin="medium" />
-          )}
+          {({ i18n }) => <Spinner title={i18n._(t`Loading`)} size="small" margin="medium" />}
         </I18n>
       );
     }

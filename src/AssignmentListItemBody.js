@@ -10,8 +10,8 @@ export default class AssignmentListItemBody extends PureComponent {
     const pathname = this.props.resourceNotFound
       ? `resources/unavailable`
       : this.props.isModuleItem
-      ? `module-items/${this.props.identifier}`
-      : `resources/${this.props.identifier}`;
+        ? `module-items/${this.props.identifier}`
+        : `resources/${this.props.identifier}`;
     return (
       <li className="ExpandCollapseList-item">
         <div className="ExpandCollapseList-item-inner">
@@ -22,7 +22,7 @@ export default class AssignmentListItemBody extends PureComponent {
             <Link
               as={RouterLink}
               to={{
-                pathname
+                pathname,
               }}
             >
               {this.props.title}

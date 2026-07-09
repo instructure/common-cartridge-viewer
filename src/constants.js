@@ -15,16 +15,14 @@ export const MODULE_LIST = "module_list";
 export const resourceTypes = {
   ASSESSMENT_CONTENT: "imsqti_xmlv1p2/imscc_xmlv1p1/assessment",
   ASSIGNMENT: "assignment_xmlv1p0",
-  ASSOCIATED_CONTENT:
-    "associatedcontent/imscc_xmlv1p1/learning-application-resource",
+  ASSOCIATED_CONTENT: "associatedcontent/imscc_xmlv1p1/learning-application-resource",
   BLTI: "imsbasiclti_xmlv1p0",
-  CANVAS_ASSESTMENT_CONTENT:
-    "associatedcontent/imscc_xmlv1p1/learning-application-resource",
+  CANVAS_ASSESTMENT_CONTENT: "associatedcontent/imscc_xmlv1p1/learning-application-resource",
   DISCUSSION_TOPIC: "imsdt_xmlv1p1",
   EXTERNAL_TOOL: "external_tool",
   QUESTION_BANK: "imsqti_xmlv1p2/imscc_xmlv1p1/question-bank",
   WEB_CONTENT: "webcontent",
-  WEB_LINK: "imswl_xmlv1p1"
+  WEB_LINK: "imswl_xmlv1p1",
 };
 
 export const questionTypes = {
@@ -40,7 +38,7 @@ export const questionTypes = {
   NUMERICAL: ["numerical_question"],
   CALCULATED: ["calculated_question"],
   TEXT_ONLY: ["text_only_question"],
-  FILE_UPLOAD: ["file_upload_question"]
+  FILE_UPLOAD: ["file_upload_question"],
 };
 
 export const submissionTypes = {
@@ -49,7 +47,7 @@ export const submissionTypes = {
   ONLINE_URL: "online_url",
   MEDIA_RECORDING: "media_recording",
   ON_PAPER: "on_paper",
-  NONE: "none"
+  NONE: "none",
 };
 
 export const NOTORIOUS_EXTENSIONS_SUPPORTED = [
@@ -79,7 +77,7 @@ export const NOTORIOUS_EXTENSIONS_SUPPORTED = [
   "webm",
   "webm",
   "wma",
-  "wmv"
+  "wmv",
 ];
 
 export const DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED = [
@@ -99,7 +97,7 @@ export const DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED = [
   "sxw",
   "xlsx",
   "xls",
-  "txt"
+  "txt",
 ];
 
 export const moduleMetaContentTypes = {
@@ -110,7 +108,7 @@ export const moduleMetaContentTypes = {
   DISCUSSION_TOPIC: "DiscussionTopic",
   CONTEXT_MODULE_SUBHEADER: "ContextModuleSubHeade",
   EXTERNAL_URL: "ExternalUrl",
-  CONTENT_EXTERNAL_TOOL: "ContextExternalTool"
+  CONTENT_EXTERNAL_TOOL: "ContextExternalTool",
 };
 
 export const resourceTypeToHref = {
@@ -119,7 +117,7 @@ export const resourceTypeToHref = {
   Pages: "#/pages",
   Discussions: "#/discussions",
   Quizzes: "#/quizzes",
-  Files: "#/files"
+  Files: "#/files",
 };
 
 // these individual imports are necessary for separate webpack bundles
@@ -128,33 +126,25 @@ export const AVAILABLE_LOCALES = {
   cy: () => import(/* webpackChunkName: "cy" */ "./locales/cy/messages.js"),
   da: () => import(/* webpackChunkName: "da" */ "./locales/da/messages.js"),
   de: () => import(/* webpackChunkName: "de" */ "./locales/de/messages.js"),
-  "en-au": () =>
-    import(/* webpackChunkName: "en_AU" */ "./locales/en_AU/messages.js"),
-  "en-gb": () =>
-    import(/* webpackChunkName: "en_GB" */ "./locales/en_GB/messages.js"),
+  "en-au": () => import(/* webpackChunkName: "en_AU" */ "./locales/en_AU/messages.js"),
+  "en-gb": () => import(/* webpackChunkName: "en_GB" */ "./locales/en_GB/messages.js"),
   en: () => import(/* webpackChunkName: "en" */ "./locales/en/messages.js"),
   es: () => import(/* webpackChunkName: "es" */ "./locales/es/messages.js"),
-  "fr-ca": () =>
-    import(/* webpackChunkName: "fr_CA" */ "./locales/fr_CA/messages.js"),
+  "fr-ca": () => import(/* webpackChunkName: "fr_CA" */ "./locales/fr_CA/messages.js"),
   fr: () => import(/* webpackChunkName: "fr" */ "./locales/fr/messages.js"),
   is: () => import(/* webpackChunkName: "is" */ "./locales/is/messages.js"),
   it: () => import(/* webpackChunkName: "it" */ "./locales/it/messages.js"),
   ja: () => import(/* webpackChunkName: "ja" */ "./locales/ja/messages.js"),
-  "nb-no": () =>
-    import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
+  "nb-no": () => import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
   nb: () => import(/* webpackChunkName: "nb" */ "./locales/nb/messages.js"),
   nl: () => import(/* webpackChunkName: "nl" */ "./locales/nl/messages.js"),
   pl: () => import(/* webpackChunkName: "pl" */ "./locales/pl/messages.js"),
-  "pt-br": () =>
-    import(/* webpackChunkName: "pt_BR" */ "./locales/pt_BR/messages.js"),
+  "pt-br": () => import(/* webpackChunkName: "pt_BR" */ "./locales/pt_BR/messages.js"),
   pt: () => import(/* webpackChunkName: "pt" */ "./locales/pt/messages.js"),
   ru: () => import(/* webpackChunkName: "ru" */ "./locales/ru/messages.js"),
   sv: () => import(/* webpackChunkName: "sv" */ "./locales/sv/messages.js"),
-  "zh-hant": () =>
-    import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.js"),
-  "zh-hans": () =>
-    import(/* webpackChunkName: "zh" */ "./locales/zh/messages.js"),
-  "zh-hk": () =>
-    import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.js"),
-  zh: () => import(/* webpackChunkName: "zh" */ "./locales/zh/messages.js")
+  "zh-hant": () => import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.js"),
+  "zh-hans": () => import(/* webpackChunkName: "zh" */ "./locales/zh/messages.js"),
+  "zh-hk": () => import(/* webpackChunkName: "zh_HK" */ "./locales/zh_HK/messages.js"),
+  zh: () => import(/* webpackChunkName: "zh" */ "./locales/zh/messages.js"),
 };

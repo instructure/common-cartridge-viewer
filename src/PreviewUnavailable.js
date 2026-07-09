@@ -10,7 +10,7 @@ export default function PreviewUnavailable() {
         <Unavailable
           heading={i18n._(t`External Tool Content Can't be Previewed`)}
           subHeading={i18n._(
-            t`In order to use this resource in Canvas, the external tool must be installed.`
+            t`In order to use this resource in Canvas, the external tool must be installed.`,
           )}
         />
       )}

@@ -10,7 +10,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
     this.state = {
       isLoading: true,
       title: null,
-      workflowState: null
+      workflowState: null,
     };
   }
 
@@ -24,7 +24,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
         title: "Error: Resource Not Found",
         pointsPossible: "N/A",
         workflowState: "unpublished",
-        resourceNotFound: true
+        resourceNotFound: true,
       });
       return;
     }
@@ -33,18 +33,14 @@ export default class AssociatedContentAssignmentListItem extends Component {
       doc.querySelector("title") &&
       doc
         .querySelector("title")
-        .textContent.replace(
-          ASSOCIATED_CONTENT_ASSIGNMENT_TITLE_PREFIX_REGEX,
-          ""
-        );
+        .textContent.replace(ASSOCIATED_CONTENT_ASSIGNMENT_TITLE_PREFIX_REGEX, "");
 
     const settingsXml = await this.props.getTextByPath(
-      getAssignmentSettingsHref(this.props.identifier)
+      getAssignmentSettingsHref(this.props.identifier),
     );
     const settings = parser.parseFromString(settingsXml, "text/xml");
     const pointsPossibleNode = settings.querySelector("points_possible");
-    const pointsPossible =
-      pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
+    const pointsPossible = pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
     const workflowStateNode = settings.querySelector("workflow_state");
     const workflowState = workflowStateNode && workflowStateNode.textContent;
 
@@ -52,7 +48,7 @@ export default class AssociatedContentAssignmentListItem extends Component {
       isLoading: false,
       title,
       pointsPossible,
-      workflowState
+      workflowState,
     });
   }
 

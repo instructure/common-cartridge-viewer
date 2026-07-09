@@ -9,7 +9,7 @@ export default class AssignmentListItem extends Component {
     this.state = {
       isLoading: true,
       title: null,
-      workflowState: null
+      workflowState: null,
     };
   }
 
@@ -22,7 +22,7 @@ export default class AssignmentListItem extends Component {
         title: "Error: Resource Not Found",
         points: "N/A",
         workflowState: "unpublished",
-        resourceNotFound: true
+        resourceNotFound: true,
       });
       return;
     }
@@ -36,16 +36,14 @@ export default class AssignmentListItem extends Component {
       gradableNode.getAttribute("points_possible")
         ? parseFloat(gradableNode.getAttribute("points_possible"))
         : 0;
-    const workflowStateNode = doc.querySelector(
-      "extensions > assignment > workflow_state"
-    );
+    const workflowStateNode = doc.querySelector("extensions > assignment > workflow_state");
     const workflowState = workflowStateNode && workflowStateNode.textContent;
 
     this.setState({
       isLoading: false,
       title,
       points,
-      workflowState
+      workflowState,
     });
   }
 

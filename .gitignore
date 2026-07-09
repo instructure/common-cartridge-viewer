@@ -9,6 +9,14 @@ docker-compose.local.dev.yml
 
 # testing
 /coverage
+/report
+
+# playwright
+/playwright-report
+/test-results
+/blob-report
+/all-blob-reports
+/ctrf
 
 # production
 /build

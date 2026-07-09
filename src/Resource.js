@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import {
   resourceTypes,
   DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
-  NOTORIOUS_EXTENSIONS_SUPPORTED
+  NOTORIOUS_EXTENSIONS_SUPPORTED,
 } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
@@ -32,7 +32,7 @@ export default class Resource extends Component {
     this.state = {
       isLoaded: false,
       isNotFound: false,
-      embeddedPreviewFailed: false
+      embeddedPreviewFailed: false,
     };
   }
 
@@ -45,7 +45,7 @@ export default class Resource extends Component {
     document.body.addEventListener("keydown", this.handleKeyDown);
   }
 
-  handleKeyDown = event => {
+  handleKeyDown = (event) => {
     if (event.which === 37) {
       this.handlePreviousButtonPressed();
       event.preventDefault();
@@ -55,18 +55,17 @@ export default class Resource extends Component {
     }
   };
 
-  handleDownload = async path =>
-    saveAs(await this.props.getBlobByPath(path), basename(path));
+  handleDownload = async (path) => saveAs(await this.props.getBlobByPath(path), basename(path));
 
   componentWillUnmount() {
     document.body.removeEventListener("keydown", this.handleKeyDown);
   }
 
-  setNextButton = node => {
+  setNextButton = (node) => {
     this.nextButton = node;
   };
 
-  setPreviousButton = node => {
+  setPreviousButton = (node) => {
     this.previousButton = node;
   };
 
@@ -78,7 +77,7 @@ export default class Resource extends Component {
     this.previousButton && this.previousButton.click();
   };
 
-  makeNavigationButtonHrefFromModule = module =>
+  makeNavigationButtonHrefFromModule = (module) =>
     this.props.isModuleItem
       ? `/module-items/${module.identifierref || module.identifier}`
       : `/resources/${module.identifierref || module.identifier}`;
@@ -90,7 +89,7 @@ export default class Resource extends Component {
         <Tip variant="inverse" tip={previousItem.title} placement="end">
           <Button
             to={{
-              pathname: this.makeNavigationButtonHrefFromModule(previousItem)
+              pathname: this.makeNavigationButtonHrefFromModule(previousItem),
             }}
             variant="ghost"
             as={RouterLink}
@@ -111,7 +110,7 @@ export default class Resource extends Component {
         <Tip variant="inverse" tip={nextItem.title} placement="start">
           <Button
             to={{
-              pathname: this.makeNavigationButtonHrefFromModule(nextItem)
+              pathname: this.makeNavigationButtonHrefFromModule(nextItem),
             }}
             variant="ghost"
             as={RouterLink}
@@ -125,7 +124,7 @@ export default class Resource extends Component {
     );
   };
 
-  renderResourceDocument = resource => {
+  renderResourceDocument = (resource) => {
     const href = getResourceHref(resource);
     const filename = basename(href);
     const extension = getExtension(href).toLowerCase();
@@ -136,7 +135,7 @@ export default class Resource extends Component {
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
-          render={doc => <WebLink doc={doc} />}
+          render={(doc) => <WebLink doc={doc} />}
           src={this.props.src}
           type="text/xml"
         />
@@ -145,7 +144,7 @@ export default class Resource extends Component {
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
-          render={doc => (
+          render={(doc) => (
             <Assessment
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
@@ -161,7 +160,7 @@ export default class Resource extends Component {
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
-          render={doc => (
+          render={(doc) => (
             <Assignment
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
@@ -178,7 +177,7 @@ export default class Resource extends Component {
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
-          render={doc => (
+          render={(doc) => (
             <AssociatedContentAssignment
               getTextByPath={this.props.getTextByPath}
               getUrlForPath={this.props.getUrlForPath}
@@ -195,7 +194,7 @@ export default class Resource extends Component {
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
-          render={doc => (
+          render={(doc) => (
             <Discussion
               doc={doc}
               getTextByPath={this.props.getTextByPath}
@@ -206,34 +205,30 @@ export default class Resource extends Component {
           src={this.props.src}
           type="text/xml"
         />
-      )
+      ),
     };
 
     const isImage =
       type === resourceTypes.WEB_CONTENT &&
       ["png", "jpg", "jpeg", "gif", "webp"].includes(extension);
-    const isWikiContent =
-      type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
+    const isWikiContent = type === resourceTypes.WEB_CONTENT && ["htm", "html"].includes(extension);
     const isDocumentWithPreview =
       type === resourceTypes.WEB_CONTENT &&
-      [
-        ...DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED,
-        ...NOTORIOUS_EXTENSIONS_SUPPORTED
-      ].includes(extension) &&
+      [...DOCUMENT_PREVIEW_EXTENSIONS_SUPPORTED, ...NOTORIOUS_EXTENSIONS_SUPPORTED].includes(
+        extension,
+      ) &&
       this.props.externalViewer != null &&
       !this.state.embeddedPreviewFailed;
 
     let componentToRender;
     if (isImage) {
-      componentToRender = (
-        <Image getUrlForPath={this.props.getUrlForPath} href={href} />
-      );
+      componentToRender = <Image getUrlForPath={this.props.getUrlForPath} href={href} />;
     } else if (isWikiContent) {
       componentToRender = (
         <EntryDocument
           getTextByPath={this.props.getTextByPath}
           href={href}
-          render={doc => (
+          render={(doc) => (
             <WikiContent
               doc={doc}
               getBlobByPath={this.props.getBlobByPath}
@@ -266,9 +261,9 @@ export default class Resource extends Component {
       }
       componentToRender = (
         <Billboard
-          hero={size => <IconDownload size={size} />}
+          hero={(size) => <IconDownload size={size} />}
           message={`Download ${filename}`}
-          elementRef={el => el && el.setAttribute("target", "_blank")}
+          elementRef={(el) => el && el.setAttribute("target", "_blank")}
           href={filePath}
           onClick={expanded ? undefined : () => this.handleDownload(path)}
           size="medium"
@@ -278,11 +273,9 @@ export default class Resource extends Component {
     return componentToRender;
   };
 
-  deriveResourceHref = resource => {
+  deriveResourceHref = (resource) => {
     if (resource.getAttribute("identifierref") != null) {
-      resource = this.props.resourceMap.get(
-        resource.getAttribute("identifierref")
-      );
+      resource = this.props.resourceMap.get(resource.getAttribute("identifierref"));
     }
 
     return getResourceHref(resource);
@@ -292,33 +285,29 @@ export default class Resource extends Component {
     let resource = this.props.resourceMap.get(this.props.identifier);
     const { moduleItems } = this.props;
     const moduleItem = this.props.moduleItems.find(
-      moduleItem => moduleItem.identifierref === this.props.identifier
+      (moduleItem) => moduleItem.identifierref === this.props.identifier,
     );
 
     const isValidExternalToolResource =
-      moduleItem !== undefined &&
-      moduleItem.type === resourceTypes.EXTERNAL_TOOL;
+      moduleItem !== undefined && moduleItem.type === resourceTypes.EXTERNAL_TOOL;
 
     if (resource == null && isValidExternalToolResource === false) {
       return <ResourceUnavailable />;
     }
 
     const href = resource ? this.deriveResourceHref(resource) : moduleItem.href;
-    const currentIndex = moduleItems.findIndex(item => `${item.href}` === href);
+    const currentIndex = moduleItems.findIndex((item) => `${item.href}` === href);
     const previousItem = currentIndex > -1 && moduleItems[currentIndex - 1];
     const nextItem = currentIndex > -1 && moduleItems[currentIndex + 1];
 
-    const renderNextPrevButtons =
-      this.props.isModuleItem && (previousItem || nextItem);
+    const renderNextPrevButtons = this.props.isModuleItem && (previousItem || nextItem);
 
-    const nextPrevButtons = withTooltip => (
+    const nextPrevButtons = (withTooltip) => (
       <div className="Resource--navButtons">
         {this.props.isModuleItem &&
           previousItem &&
           this.renderPreviousButton(previousItem, withTooltip)}
-        {this.props.isModuleItem &&
-          nextItem &&
-          this.renderNextButton(nextItem, withTooltip)}
+        {this.props.isModuleItem && nextItem && this.renderNextButton(nextItem, withTooltip)}
       </div>
     );
 
@@ -334,9 +323,7 @@ export default class Resource extends Component {
           )}
         </div>
 
-        <ScreenReaderContent>
-          {renderNextPrevButtons && nextPrevButtons(false)}
-        </ScreenReaderContent>
+        <ScreenReaderContent>{renderNextPrevButtons && nextPrevButtons(false)}</ScreenReaderContent>
       </React.Fragment>
     );
   }

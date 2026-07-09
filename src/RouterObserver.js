@@ -8,7 +8,7 @@ class RouterObserver extends Component {
     this.url = "/";
   }
 
-  updateUrl = url => {
+  updateUrl = (url) => {
     if (this.url !== url) {
       this.url = url;
 
@@ -27,4 +27,4 @@ class RouterObserver extends Component {
   }
 }
 
-export default withRouter(props => <RouterObserver {...props} />);
+export default withRouter((props) => <RouterObserver {...props} />);

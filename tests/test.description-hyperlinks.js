@@ -3,24 +3,18 @@ import { Selector } from "testcafe";
 const assignmentUrl = `http://localhost:5000/?manifest=https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/Hyperlinks-Test-Course/imsmanifest.xml#/resources/ic0ab5c031b3cc8071f1023ae0bf34d2c`;
 fixture`Single assignment with hyperlinks`.page`${assignmentUrl}`;
 
-test("Files", async t => {
-  const fileLink = Selector("a").withText(
-    "annotated-bold-font-test.pptx (1).pdf"
-  );
+test("Files", async (t) => {
+  const fileLink = Selector("a").withText("annotated-bold-font-test.pptx (1).pdf");
   await fileLink;
   await t
     .expect(fileLink.exists)
     .ok()
     .click(fileLink)
-    .expect(
-      Selector("span").withText(
-        "Download annotated-bold-font-test.pptx (1).pdf"
-      ).exists
-    )
+    .expect(Selector("span").withText("Download annotated-bold-font-test.pptx (1).pdf").exists)
     .ok();
 });
 
-test("Pages", async t => {
+test("Pages", async (t) => {
   const pageLink = Selector("a").withText("Learning");
   await pageLink;
   await t
@@ -33,7 +27,7 @@ test("Pages", async t => {
     .ok();
 });
 
-test("Assignments", async t => {
+test("Assignments", async (t) => {
   const assignmentUrl = Selector("a").withText("Published Assignment");
   await assignmentUrl;
   await t
@@ -46,7 +40,7 @@ test("Assignments", async t => {
     .ok();
 });
 
-test("Quizzes", async t => {
+test("Quizzes", async (t) => {
   const quizLink = Selector("a").withText("New Quiz");
   await quizLink;
   await t
@@ -59,7 +53,7 @@ test("Quizzes", async t => {
     .ok();
 });
 
-test("Announcements", async t => {
+test("Announcements", async (t) => {
   const announcementLink = Selector("a").withText("Announcement");
   await announcementLink;
   await t
@@ -72,7 +66,7 @@ test("Announcements", async t => {
     .ok();
 });
 
-test("Discussions", async t => {
+test("Discussions", async (t) => {
   const discussionLink = Selector("a").withText("Discuss This");
   await discussionLink;
   await t
@@ -85,7 +79,7 @@ test("Discussions", async t => {
     .ok();
 });
 
-test("Modules", async t => {
+test("Modules", async (t) => {
   const moduleLink = Selector("a").withText("Some Assignments");
   await moduleLink;
   await t
@@ -98,7 +92,7 @@ test("Modules", async t => {
     .ok();
 });
 
-test("Course Navigation", async t => {
+test("Course Navigation", async (t) => {
   const assignments = Selector("a").withExactText("Assignments");
   const pages = Selector("a").withExactText("Pages");
   const discussions = Selector("a").withExactText("Discussions");
@@ -112,10 +106,10 @@ test("Course Navigation", async t => {
   const modules = Selector("a").withExactText("Modules");
 
   const courseNavigationWarning = Selector("span").withText(
-    "Course Navigation Cannot Be Previewed"
+    "Course Navigation Cannot Be Previewed",
   );
   const courseNavigationSubWarning = Selector("span").withText(
-    "Course navigation links are only available within a Canvas course."
+    "Course navigation links are only available within a Canvas course.",
   );
 
   await t
@@ -170,9 +164,7 @@ test("Course Navigation", async t => {
     .expect(files.exists)
     .ok()
     .click(files)
-    .expect(
-      Selector("a").withText("annotated-bold-font-test.pptx (1).pdf").exists
-    )
+    .expect(Selector("a").withText("annotated-bold-font-test.pptx (1).pdf").exists)
     .ok()
     // collaborations
     .navigateTo(assignmentUrl)

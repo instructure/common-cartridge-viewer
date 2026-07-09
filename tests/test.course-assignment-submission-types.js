@@ -2,14 +2,14 @@ import { Selector } from "testcafe";
 
 fixture`Course with multiple assignments`
   .page`http://localhost:5000/?cartridge=${encodeURIComponent(
-  "/test-cartridges/canvas_cc_gem_course.imscc"
+  "/test-cartridges/canvas_cc_gem_course.imscc",
 )}#/`;
 
 const knownType = "Course with Known Submission Type";
 const unknownType = "Course with Unknown Submission Type";
 const missingType = "Course with Missing Submission Type";
 
-test("Assignment with known submission type", async t => {
+test("Assignment with known submission type", async (t) => {
   await t
     .click(Selector("a").withText("Assignments (3)"))
     .expect(Selector("a").withText(knownType).exists)
@@ -21,7 +21,7 @@ test("Assignment with known submission type", async t => {
     .ok();
 });
 
-test("Assignment with unknown submission type", async t => {
+test("Assignment with unknown submission type", async (t) => {
   await t
     .click(Selector("a").withText("Assignments (3)"))
     .expect(Selector("a").withText(unknownType).exists)
@@ -33,7 +33,7 @@ test("Assignment with unknown submission type", async t => {
     .ok();
 });
 
-test("Assignment with missing submission type", async t => {
+test("Assignment with missing submission type", async (t) => {
   await t
     .click(Selector("a").withText("Assignments (3)"))
     .expect(Selector("a").withText(missingType).exists)

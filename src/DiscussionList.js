@@ -7,32 +7,28 @@ import { Trans } from "@lingui/macro";
 import Paginate from "./Paginate";
 export default class DiscussionList extends Component {
   render() {
-    const resources = this.props.resources.map(node => ({
-      dependencyHrefs: Array.from(node.querySelectorAll("dependency")).map(
-        node => {
-          const identifier = node.getAttribute("identifierref");
-          const resource = this.props.resourceMap.get(identifier);
-          return getResourceHref(resource);
-        }
-      ),
+    const resources = this.props.resources.map((node) => ({
+      dependencyHrefs: Array.from(node.querySelectorAll("dependency")).map((node) => {
+        const identifier = node.getAttribute("identifierref");
+        const resource = this.props.resourceMap.get(identifier);
+        return getResourceHref(resource);
+      }),
       href: node.querySelector("file").getAttribute("href"),
-      identifier: node.getAttribute("identifier")
+      identifier: node.getAttribute("identifier"),
     }));
 
-    const listItems = resources.map(
-      ({ dependencyHrefs, href, identifier }, index) => {
-        return (
-          <DiscussionListItem
-            dependencyHrefs={dependencyHrefs}
-            getTextByPath={this.props.getTextByPath}
-            href={`/${href}`}
-            identifier={identifier}
-            key={index}
-            src={this.props.src}
-          />
-        );
-      }
-    );
+    const listItems = resources.map(({ dependencyHrefs, href, identifier }, index) => {
+      return (
+        <DiscussionListItem
+          dependencyHrefs={dependencyHrefs}
+          getTextByPath={this.props.getTextByPath}
+          href={`/${href}`}
+          identifier={identifier}
+          key={index}
+          src={this.props.src}
+        />
+      );
+    });
 
     return (
       <div className="Cartridge-content-inner">
@@ -41,11 +37,7 @@ export default class DiscussionList extends Component {
             <Trans>Discussions</Trans>
           </ScreenReaderContent>
         </Heading>
-        <Paginate
-          listItems={listItems}
-          location={this.props.location}
-          classNames="Discussions"
-        />
+        <Paginate listItems={listItems} location={this.props.location} classNames="Discussions" />
       </div>
     );
   }

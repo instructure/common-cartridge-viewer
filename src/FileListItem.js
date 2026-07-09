@@ -12,7 +12,7 @@ export default class FileListItem extends Component {
     this.state = {
       isLoading: true,
       title: null,
-      workflowState: null
+      workflowState: null,
     };
   }
 
@@ -22,19 +22,17 @@ export default class FileListItem extends Component {
     const intendedEndUserRoles = new Set(
       Array.from(
         this.props.metadata
-          ? this.props.metadata.querySelectorAll(
-              "lom > educational > intendedEndUserRole"
-            )
-          : []
-      ).map(node => {
+          ? this.props.metadata.querySelectorAll("lom > educational > intendedEndUserRole")
+          : [],
+      ).map((node) => {
         return node.querySelector("value").textContent;
-      })
+      }),
     );
 
     this.setState({
       isLoading: false,
       title,
-      intendedEndUserRoles
+      intendedEndUserRoles,
     });
   }
 
@@ -46,8 +44,7 @@ export default class FileListItem extends Component {
     const title = this.state.title.replace(/^(web_resources\/)/, "");
 
     const isPublished =
-      this.state.intendedEndUserRoles.size === 0 ||
-      this.state.intendedEndUserRoles.has("Learner");
+      this.state.intendedEndUserRoles.size === 0 || this.state.intendedEndUserRoles.has("Learner");
 
     const iconColor = isPublished ? "success" : "secondary";
 
@@ -63,7 +60,7 @@ export default class FileListItem extends Component {
               to={{
                 pathname: this.props.isModuleItem
                   ? `module-items/${this.props.identifier}`
-                  : `resources/${this.props.identifier}`
+                  : `resources/${this.props.identifier}`,
               }}
             >
               {this.props.title || title}

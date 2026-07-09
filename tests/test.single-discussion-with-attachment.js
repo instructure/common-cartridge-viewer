@@ -2,10 +2,10 @@ import { Selector } from "testcafe";
 
 fixture`Single discussion cartridge (with attachment)`
   .page`http://localhost:5000/?manifest=${encodeURIComponent(
-  "/test-cartridges/single-discussion/imsmanifest.xml"
+  "/test-cartridges/single-discussion/imsmanifest.xml",
 )}`;
 
-test("Header, Content, Nav, and Files are displayed", async t => {
+test("Header, Content, Nav, and Files are displayed", async (t) => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()
@@ -17,7 +17,7 @@ test("Header, Content, Nav, and Files are displayed", async t => {
     .ok();
 });
 
-test("Discussion attachment links are displayed", async t => {
+test("Discussion attachment links are displayed", async (t) => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()
@@ -29,10 +29,10 @@ test("Discussion attachment links are displayed", async t => {
 
 fixture`Single discussion cartridge (with attachment, compact)`
   .page`http://localhost:5000/?compact&manifest=${encodeURIComponent(
-  "/test-cartridges/single-discussion/imsmanifest.xml"
+  "/test-cartridges/single-discussion/imsmanifest.xml",
 )}`;
 
-test("Header is hidden", async t => {
+test("Header is hidden", async (t) => {
   await t
     .expect(Selector("h1").withText(`Test discussion`).exists)
     .ok()

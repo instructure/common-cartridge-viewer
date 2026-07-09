@@ -1,11 +1,10 @@
 import { Selector } from "testcafe";
 
-fixture`US History Since 1877`
-  .page`http://localhost:5000/?cartridge=${encodeURIComponent(
-  "/test-cartridges/ushistory.imscc"
+fixture`US History Since 1877`.page`http://localhost:5000/?cartridge=${encodeURIComponent(
+  "/test-cartridges/ushistory.imscc",
 )}#/`;
 
-test("Organization item titles show for pages", async t => {
+test("Organization item titles show for pages", async (t) => {
   await t
     .expect(Selector("h2").withText("Main Repository").exists)
     .ok("Header shows", { timeout: 20000 })
@@ -13,26 +12,24 @@ test("Organization item titles show for pages", async t => {
     .ok()
     .expect(
       Selector("a").withText(
-        `The Women of Hull House: Harnessing Statistics for Progressive Reform`
-      ).exists
+        `The Women of Hull House: Harnessing Statistics for Progressive Reform`,
+      ).exists,
     )
     .ok();
 });
 
-test("Web link", async t => {
+test("Web link", async (t) => {
   await t
     .click(Selector("a").withText("Gumbo"))
     .expect(Selector("span").withText("EXTERNAL LINK").exists)
     .ok()
     .expect(Selector("h1").withText("Gumbo").exists)
     .ok()
-    .expect(
-      Selector("a").withText("Click here to open link in new window").exists
-    )
+    .expect(Selector("a").withText("Click here to open link in new window").exists)
     .ok();
 });
 
-test("Web link", async t => {
+test("Web link", async (t) => {
   await t
     .expect(Selector("h2").withText("Main Repository").exists)
     .ok("Header shows", { timeout: 20000 })
@@ -40,8 +37,8 @@ test("Web link", async t => {
     .ok()
     .expect(
       Selector("a").withText(
-        `The Women of Hull House: Harnessing Statistics for Progressive Reform`
-      ).exists
+        `The Women of Hull House: Harnessing Statistics for Progressive Reform`,
+      ).exists,
     )
     .ok();
 });

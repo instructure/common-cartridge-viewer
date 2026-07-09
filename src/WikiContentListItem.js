@@ -12,7 +12,7 @@ export default class WikiContentListItem extends Component {
     this.state = {
       isLoading: true,
       title: null,
-      workflowState: null
+      workflowState: null,
     };
   }
 
@@ -28,7 +28,7 @@ export default class WikiContentListItem extends Component {
         isLoading: false,
         title: "Error: Resource Not Found",
         workflowState: "unpublished",
-        resourceNotFound: true
+        resourceNotFound: true,
       });
       return;
     }
@@ -39,14 +39,13 @@ export default class WikiContentListItem extends Component {
       ? itemTitle
       : doc.querySelector("title") && doc.querySelector("title").textContent;
     const workflowStateNode = doc.querySelector('meta[name="workflow_state"]');
-    const workflowState =
-      workflowStateNode && workflowStateNode.getAttribute("content");
+    const workflowState = workflowStateNode && workflowStateNode.getAttribute("content");
 
     if (this.mounted) {
       this.setState({
         isLoading: false,
         title,
-        workflowState
+        workflowState,
       });
     }
   }
@@ -63,8 +62,8 @@ export default class WikiContentListItem extends Component {
     const pathname = this.state.resourceNotFound
       ? `resources/unavailable`
       : this.props.isModuleItem
-      ? `module-items/${this.props.identifier}`
-      : `resources/${this.props.identifier}`;
+        ? `module-items/${this.props.identifier}`
+        : `resources/${this.props.identifier}`;
 
     return (
       <li className="ExpandCollapseList-item">
@@ -76,7 +75,7 @@ export default class WikiContentListItem extends Component {
             <Link
               as={RouterLink}
               to={{
-                pathname
+                pathname,
               }}
             >
               {this.state.title || basename(this.props.href)}

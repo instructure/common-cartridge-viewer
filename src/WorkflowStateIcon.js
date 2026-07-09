@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 export default class WorkflowStateIcon extends PureComponent {
   static propTypes = {
     workflowState: PropTypes.oneOf(["unpublished", "published", "active"]),
-    resourceTitle: PropTypes.string
+    resourceTitle: PropTypes.string,
   };
 
   renderWorkflowStateIcon = () => {
@@ -38,9 +38,7 @@ export default class WorkflowStateIcon extends PureComponent {
 
   render() {
     return (
-      <div className="ExpandCollapseList-item-workflow-state">
-        {this.renderWorkflowStateIcon()}
-      </div>
+      <div className="ExpandCollapseList-item-workflow-state">{this.renderWorkflowStateIcon()}</div>
     );
   }
 }

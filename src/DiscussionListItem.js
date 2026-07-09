@@ -12,7 +12,7 @@ export default class DiscussionListItem extends Component {
     this.state = {
       isLoading: true,
       title: null,
-      workflowState: null
+      workflowState: null,
     };
   }
 
@@ -25,7 +25,7 @@ export default class DiscussionListItem extends Component {
         title: "Error: Resource Not Found",
         points: "N/A",
         workflowState: "unpublished",
-        resourceNotFound: true
+        resourceNotFound: true,
       });
       return;
     }
@@ -35,21 +35,17 @@ export default class DiscussionListItem extends Component {
     const depPath = this.props.dependencyHrefs[0];
     const depXml = await this.props.getTextByPath(depPath);
     const depDoc = parser.parseFromString(depXml, "text/xml");
-    const workflowStateNode = depDoc.querySelector(
-      "topicMeta > workflow_state"
-    );
+    const workflowStateNode = depDoc.querySelector("topicMeta > workflow_state");
     const workflowState = workflowStateNode && workflowStateNode.textContent;
     const pointsPossibleNode =
-      depDoc &&
-      depDoc.querySelector("topicMeta > assignment > points_possible");
-    const points =
-      pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
+      depDoc && depDoc.querySelector("topicMeta > assignment > points_possible");
+    const points = pointsPossibleNode && parseFloat(pointsPossibleNode.textContent);
 
     this.setState({
       isLoading: false,
       title,
       points,
-      workflowState
+      workflowState,
     });
   }
 
@@ -65,8 +61,8 @@ export default class DiscussionListItem extends Component {
     const pathname = this.state.resourceNotFound
       ? `resources/unavailable`
       : this.props.isModuleItem
-      ? `module-items/${this.props.identifier}`
-      : `resources/${this.props.identifier}`;
+        ? `module-items/${this.props.identifier}`
+        : `resources/${this.props.identifier}`;
 
     return (
       <li className="ExpandCollapseList-item">
@@ -79,7 +75,7 @@ export default class DiscussionListItem extends Component {
             <Link
               as={RouterLink}
               to={{
-                pathname
+                pathname,
               }}
             >
               {this.state.title}

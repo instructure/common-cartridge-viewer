@@ -3,10 +3,10 @@ import { Selector } from "testcafe";
 fixture`No showable resources`;
 
 const url = `http://localhost:5000/?manifest=${encodeURIComponent(
-  "/test-cartridges/course-with-no-showable-resources/imsmanifest.xml"
+  "/test-cartridges/course-with-no-showable-resources/imsmanifest.xml",
 )}`;
 
-test("Cartridge with no showable resources displays correctly", async t => {
+test("Cartridge with no showable resources displays correctly", async (t) => {
   await t
     .navigateTo(url)
     .expect(Selector("span").withText("XavierSchool").exists)
@@ -27,10 +27,10 @@ test("Cartridge with no showable resources displays correctly", async t => {
     .ok();
 });
 
-test("Cartridge with only external tool resources displays external tool warnings", async t => {
+test("Cartridge with only external tool resources displays external tool warnings", async (t) => {
   const linkSelector = Selector("a");
   const externalToolWarningSelector = Selector("span").withText(
-    "External Tool Content Can't be Previewed"
+    "External Tool Content Can't be Previewed",
   );
   await t
     .navigateTo(url)

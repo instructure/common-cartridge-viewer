@@ -9,9 +9,7 @@ export default function CourseNavigationUnavailable() {
       {({ i18n }) => (
         <Unavailable
           heading={i18n._(t`Course Navigation Cannot Be Previewed`)}
-          subHeading={i18n._(
-            t`Course navigation links are only available within a Canvas course.`
-          )}
+          subHeading={i18n._(t`Course navigation links are only available within a Canvas course.`)}
         />
       )}
     </I18n>

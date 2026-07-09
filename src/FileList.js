@@ -8,11 +8,11 @@ import Paginate from "./Paginate";
 export default class FileList extends Component {
   render() {
     const fileResources = this.props.resources
-      .filter(node => node.querySelector("file"))
-      .map(node => ({
+      .filter((node) => node.querySelector("file"))
+      .map((node) => ({
         href: node.querySelector("file").getAttribute("href"),
         identifier: node.getAttribute("identifier"),
-        metadata: node.querySelector("metadata")
+        metadata: node.querySelector("metadata"),
       }))
       .filter(({ href }) => {
         return href.startsWith("wiki_content/") === false;
@@ -30,7 +30,7 @@ export default class FileList extends Component {
             metadata={metadata}
           />
         );
-      }
+      },
     );
 
     return (
@@ -40,11 +40,7 @@ export default class FileList extends Component {
             <Trans>Files</Trans>
           </ScreenReaderContent>
         </Heading>
-        <Paginate
-          listItems={listItems}
-          location={this.props.location}
-          classNames="Files"
-        />
+        <Paginate listItems={listItems} location={this.props.location} classNames="Files" />
       </div>
     );
   }

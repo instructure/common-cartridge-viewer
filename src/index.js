@@ -24,14 +24,13 @@ export const i18n = setupI18n({});
 const rawLocale = parsedQueryString["locale"];
 const locale = AVAILABLE_LOCALES[rawLocale] ? rawLocale : "en";
 i18n.activate(locale);
-AVAILABLE_LOCALES[locale]().then(messages => {
+AVAILABLE_LOCALES[locale]().then((messages) => {
   const catalogs = {};
   catalogs[locale] = messages;
   i18n.load(catalogs);
 });
 
-const highContrastEnabled =
-  typeof parsedQueryString["high-contrast"] !== "undefined";
+const highContrastEnabled = typeof parsedQueryString["high-contrast"] !== "undefined";
 
 if (highContrastEnabled) {
   highContrastTheme.use();
@@ -44,7 +43,7 @@ if (highContrastEnabled) {
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,
   integrations: [new BrowserTracing()],
-  tracesSampleRate: 0.2
+  tracesSampleRate: 0.2,
 });
 
 ReactDOM.render(
@@ -55,7 +54,7 @@ ReactDOM.render(
       cartridge={parsedQueryString.src || parsedQueryString.cartridge}
     />
   </I18nProvider>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 registerServiceWorker();

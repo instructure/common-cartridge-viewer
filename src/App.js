@@ -24,21 +24,21 @@ export default class App extends Component {
       cartridge: this.props.cartridge,
       file: null,
       history: { location: { pathname: "/" } },
-      featuredCartridges: []
+      featuredCartridges: [],
     };
   }
 
-  selectCartridge = cartridge => {
+  selectCartridge = (cartridge) => {
     this.setState({ cartridge }, () => {
       this.handleTabClick();
     });
   };
 
-  handleHistoryChange = history => {
+  handleHistoryChange = (history) => {
     this.setState({ history });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     const url = this.inputRef.value || "";
     const extension = getExtension(url);
@@ -53,10 +53,10 @@ export default class App extends Component {
 
   componentDidMount() {
     fetch(`${process.env.PUBLIC_URL}/featured-cartridges.json`)
-      .then(response => {
+      .then((response) => {
         return response.json();
       })
-      .then(featuredCartridges => {
+      .then((featuredCartridges) => {
         this.setState({ featuredCartridges });
       });
   }
@@ -65,13 +65,7 @@ export default class App extends Component {
     const cartridges = this.state.featuredCartridges.map(
       ([title, href, license, author, source], index) => (
         <li key={index}>
-          <a
-            href={`?${
-              href.includes(".xml") ? "manifest" : "cartridge"
-            }=${href}`}
-          >
-            {title}
-          </a>
+          <a href={`?${href.includes(".xml") ? "manifest" : "cartridge"}=${href}`}>{title}</a>
           {source && (
             <span>
               {" "}
@@ -79,13 +73,11 @@ export default class App extends Component {
             </span>
           )}
         </li>
-      )
+      ),
     );
 
     const hasNoSource =
-      this.state.cartridge == null &&
-      this.state.file == null &&
-      this.props.manifest == null;
+      this.state.cartridge == null && this.state.file == null && this.props.manifest == null;
 
     return (
       <I18n>
@@ -93,10 +85,10 @@ export default class App extends Component {
           <Responsive
             match="media"
             query={{
-              large: { minWidth: "600px" }
+              large: { minWidth: "600px" },
             }}
             props={{
-              large: { margin: "medium" }
+              large: { margin: "medium" },
             }}
             render={(props, matches) => (
               <View as="div" {...props}>
@@ -106,17 +98,17 @@ export default class App extends Component {
                     <View as="div" margin="large">
                       <FileDrop
                         accept={[".imscc", ".zip"]}
-                        onDropAccepted={files => {
+                        onDropAccepted={(files) => {
                           this.setState({ file: files[0] });
                         }}
-                        onDropRejected={file => {
+                        onDropRejected={(file) => {
                           console.error("file rejected");
                         }}
                         label={
                           <Billboard
                             heading={i18n._(t`Common Cartridge Viewer`)}
                             message={i18n._(
-                              t`Drag and drop the cartridge, or click to browse your computer.`
+                              t`Drag and drop the cartridge, or click to browse your computer.`,
                             )}
                             hero={<IconZipped />}
                           />
@@ -127,7 +119,7 @@ export default class App extends Component {
                       <Flex justifyItems="center" margin="medium none large">
                         <FlexItem>
                           <TextInput
-                            inputRef={input => (this.inputRef = input)}
+                            inputRef={(input) => (this.inputRef = input)}
                             label={
                               <ScreenReaderContent>
                                 <Trans>Cartridge</Trans>
@@ -135,7 +127,7 @@ export default class App extends Component {
                             }
                             name="src"
                             placeholder={i18n._(
-                              t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`
+                              t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`,
                             )}
                             width="30rem"
                           />
@@ -150,8 +142,7 @@ export default class App extends Component {
 
                     <p>
                       <Trans>
-                        View Common Cartridges in the browser. Requires no
-                        server-side processing.
+                        View Common Cartridges in the browser. Requires no server-side processing.
                       </Trans>
                     </p>
 

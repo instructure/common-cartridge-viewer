@@ -3,20 +3,18 @@ import { Selector } from "testcafe";
 fixture`Mitigate Preview Failure`;
 
 const goodManifestUrlAndGoodImsccUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
-  "/test-cartridges/course-1/imsmanifest.xml"
+  "/test-cartridges/course-1/imsmanifest.xml",
 )}&cartridge=${encodeURIComponent("/test-cartridges/single-page.imscc")}`;
 
 const badManifestUrlAndGoodImsccUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
-  "/test-cartridges/course-1/imsmanifestDOESNOTEXIST.xml"
+  "/test-cartridges/course-1/imsmanifestDOESNOTEXIST.xml",
 )}&cartridge=${encodeURIComponent("/test-cartridges/single-page.imscc")}`;
 
 const badManifestUrlAndBadImsccUrl = `http://localhost:5000/?manifest=${encodeURIComponent(
-  "/test-cartridges/course-1/imsmanifestDOESNOTEXIST.xml"
-)}&cartridge=${encodeURIComponent(
-  "/test-cartridges/single-pageDOESNOTEXIST.imscc"
-)}`;
+  "/test-cartridges/course-1/imsmanifestDOESNOTEXIST.xml",
+)}&cartridge=${encodeURIComponent("/test-cartridges/single-pageDOESNOTEXIST.imscc")}`;
 
-test("Manifest is preferred preview type", async t => {
+test("Manifest is preferred preview type", async (t) => {
   await t.navigateTo(goodManifestUrlAndGoodImsccUrl);
 
   await t
@@ -30,7 +28,7 @@ test("Manifest is preferred preview type", async t => {
     .notOk();
 });
 
-test("Bad manifest url falls back to previewing by imscc if present in url", async t => {
+test("Bad manifest url falls back to previewing by imscc if present in url", async (t) => {
   await t.navigateTo(badManifestUrlAndGoodImsccUrl);
 
   await t
@@ -42,10 +40,8 @@ test("Bad manifest url falls back to previewing by imscc if present in url", asy
     .notOk();
 });
 
-test("Bad manifest url & bad imscc url shows error page", async t => {
+test("Bad manifest url & bad imscc url shows error page", async (t) => {
   await t.navigateTo(badManifestUrlAndBadImsccUrl);
 
-  await t
-    .expect(Selector("span").withText("Failed to load resource").exists)
-    .ok();
+  await t.expect(Selector("span").withText("Failed to load resource").exists).ok();
 });
