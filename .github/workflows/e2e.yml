@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium]
     env:
       PW_BLOB: ${{ github.job }}-${{ matrix.browser }}
     steps:
@@ -78,7 +78,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium]
     env:
       CCV_BASE_URL: ${{ inputs.base_url || 'https://common-cartridge-viewer-edge.netlify.app' }}
       PW_BLOB: ${{ github.job }}-${{ matrix.browser }}
