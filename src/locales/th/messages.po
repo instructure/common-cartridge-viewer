@@ -13,76 +13,9 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/utils.js:393
-msgid ", or "
-msgstr ""
-
-#: src/ModulesList.js:177
+#: src/ModulesList.js:175
 msgid "(unidentified)"
 msgstr "(ไม่ได้ระบุ)"
-
-#: src/WorkflowStateIcon.js:30
-#~ msgid "{0} is published"
-#~ msgstr "{0} เผยแพร่แล้ว"
-
-#. placeholder {0}: this.props.resourceTitle
-#: src/WorkflowStateIcon.js:32
-msgid "{0} is published "
-msgstr ""
-
-#: src/WorkflowStateIcon.js:21
-#~ msgid "{0} is unpublished"
-#~ msgstr "{0} ยกเลิกการเผยแพร่แล้ว"
-
-#. placeholder {0}: this.props.resourceTitle
-#: src/WorkflowStateIcon.js:23
-msgid "{0} is unpublished "
-msgstr ""
-
-#. placeholder {0}: this.props.points
-#. placeholder {0}: this.state.points
-#: src/AssessmentListItem.js:131
-#: src/AssignmentListItemBody.js:33
-#: src/DiscussionListItem.js:90
-#: src/FileListItem.js:74
-msgid "{0} points"
-msgstr "{0} คะแนน"
-
-#. placeholder {0}: this.state.questionCount
-#. placeholder {1}: this.state.assignedQuestionCount
-#: src/AssessmentListItem.js:121
-msgid "{0} question(s) / {1} assigned"
-msgstr "{0} คำถาม / {1} ที่จัดสรร"
-
-#: src/AssessmentListItem.js:94
-#~ msgid "{0} Questions"
-#~ msgstr ""
-
-#. placeholder {0}: Math.floor((valueNow / valueMax) * 100)
-#: src/CommonCartridge.js:416
-msgid "{0}%"
-msgstr "{0}%"
-
-#. placeholder {0}: Math.floor((valueNow / valueMax) * 100)
-#: src/CommonCartridge.js:411
-msgid "{0}% loaded"
-msgstr "{0}% ที่โหลด"
-
-#: src/utils.js:382
-msgid "a file upload"
-msgstr "การอัพโหลดไฟล์"
-
-#: src/utils.js:385
-msgid "a media recording"
-msgstr ""
-
-#: src/utils.js:383
-msgid "a text entry box"
-msgstr ""
-
-#: src/utils.js:384
-msgid "a website url"
-msgstr ""
 
 #: src/Resource.js:144
 #~ msgid "All Items"
@@ -104,12 +37,12 @@ msgstr ""
 #~ msgid "Assessments ({0})"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:26
+#: src/AssignmentBody.js:28
 msgid "Assignment"
 msgstr "ภารกิจ"
 
-#: src/AssignmentList.js:34
-#: src/AssociatedContentAssignmentList.js:34
+#: src/AssignmentList.js:35
+#: src/AssociatedContentAssignmentList.js:35
 msgid "Assignments"
 msgstr "ภารกิจ"
 
@@ -117,24 +50,24 @@ msgstr "ภารกิจ"
 #~ msgid "Assignments ({0})"
 #~ msgstr ""
 
-#: src/CommonCartridge.js:496
+#: src/CommonCartridge.js:506
 msgid "Assignments ({numberOfAssignments})"
 msgstr "ภารกิจ ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:69
-#: src/Discussion.js:45
+#: src/AssignmentBody.js:71
+#: src/Discussion.js:47
 msgid "Attachments"
 msgstr "เอกสารแนบ"
 
-#: src/Assessment.js:190
+#: src/Assessment.js:172
 msgid "Calculated"
 msgstr "คำนวณแล้ว"
 
-#: src/App.js:134
+#: src/App.js:133
 msgid "Cartridge"
 msgstr "กล่องข้อมูล"
 
-#: src/Assessment.js:274
+#: src/Assessment.js:251
 msgid "Classic Quiz"
 msgstr "แบบทดสอบแบบคลาสสิค"
 
@@ -142,7 +75,7 @@ msgstr "แบบทดสอบแบบคลาสสิค"
 msgid "Click here to open link in new window"
 msgstr "คลิกที่นี่เพื่อเปิดลิงค์ในหน้าต่างใหม่"
 
-#: src/App.js:120
+#: src/App.js:117
 msgid "Common Cartridge Viewer"
 msgstr "Common Cartridge Viewer"
 
@@ -150,19 +83,19 @@ msgstr "Common Cartridge Viewer"
 msgid "Course Navigation Cannot Be Previewed"
 msgstr "ไม่สามารถแสดงตัวอย่างการสืบค้นเนื้อหาบทเรียน"
 
-#: src/CourseNavigationUnavailable.js:12
+#: src/CourseNavigationUnavailable.js:13
 msgid "Course navigation links are only available within a Canvas course."
 msgstr "ลิงค์การสืบค้นเนื้อหาบทเรียนสามารถใช้ได้ในบทเรียน Canvas เท่านั้น"
 
-#: src/AssignmentBody.js:110
+#: src/AssignmentBody.js:112
 msgid "Criteria"
 msgstr "เกณฑ์"
 
-#: src/Discussion.js:28
+#: src/Discussion.js:30
 msgid "Discussion"
 msgstr "การพูดคุย"
 
-#: src/DiscussionList.js:40
+#: src/DiscussionList.js:41
 msgid "Discussions"
 msgstr "การพูดคุย"
 
@@ -174,16 +107,15 @@ msgstr "การพูดคุย"
 #~ msgid "Discussions ({0} )"
 #~ msgstr ""
 
-#. placeholder {0}: this.state.discussionResources.length
-#: src/CommonCartridge.js:518
-msgid "Discussions ({0})"
-msgstr ""
+#: src/CommonCartridge.js:430
+#~ msgid "Discussions ({0})"
+#~ msgstr ""
 
 #: src/CommonCartridge.js:528
-#~ msgid "Discussions ({length})"
-#~ msgstr "การพูดคุย ({length})"
+msgid "Discussions ({length})"
+msgstr "การพูดคุย ({length})"
 
-#: src/App.js:121
+#: src/App.js:119
 msgid "Drag and drop the cartridge, or click to browse your computer."
 msgstr "ลากและวางกล่องข้อมูล หรือคลิกเพื่อเรียกดูในคอมพิวเตอร์ของคุณ"
 
@@ -191,73 +123,68 @@ msgstr "ลากและวางกล่องข้อมูล หรื�
 #~ msgid "Drag and drop, or click to browse your computer"
 #~ msgstr ""
 
-#: src/Assessment.js:170
+#: src/Assessment.js:160
 msgid "Essay"
 msgstr "เรียงความ"
 
-#: src/App.js:158
+#: src/App.js:159
 msgid "Examples"
 msgstr "ตัวอย่าง"
-
-#: src/WebLink.js:25
-msgid "External link"
-msgstr "ลิงค์จากภายนอก"
 
 #: src/PreviewUnavailable.js:11
 msgid "External Tool Content Can't be Previewed"
 msgstr "ไม่สามารถแสดงตัวอย่างเนื้อหาจากภายนอก"
 
+#: src/WebLink.js:25
+msgid "External link"
+msgstr "ลิงค์จากภายนอก"
+
 #: src/CommonCartridge.js:365
 msgid "Failed to load resource"
 msgstr "ไม่สามารถโหลดทรัพยากร"
 
-#: src/Assessment.js:200
+#: src/Assessment.js:178
 msgid "File Upload"
 msgstr "การอัพโหลดไฟล์"
 
-#: src/FileList.js:39
+#: src/FileList.js:40
 msgid "Files"
 msgstr "ไฟล์"
 
-#. placeholder {0}: this.state.fileResources.length
-#: src/CommonCartridge.js:544
+#: src/CommonCartridge.js:557
 msgid "Files ({0})"
 msgstr "ไฟล์ ({0})"
 
-#: src/Assessment.js:160
+#: src/Assessment.js:154
 msgid "Fill in the blank"
 msgstr "กรอกในช่องว่าง"
 
-#: src/App.js:138
-msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (เปิดใช้งาน CORS)"
-
-#: src/Image.js:49
+#: src/Image.js:50
 msgid "Image"
 msgstr "ภาพ"
 
-#: src/PreviewUnavailable.js:12
+#: src/PreviewUnavailable.js:13
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "เพื่อใช้ทรัพยากรนี้ใน Canvas จะต้องติดตั้งชุดเครื่องมือจากภายนอก"
 
 #: src/EmbeddedPreview.js:64
-#: src/Image.js:36
+#: src/Image.js:37
 msgid "Loading"
 msgstr "กำลังโหลด"
 
-#: src/CommonCartridge.js:397
+#: src/CommonCartridge.js:399
 msgid "Loading Cartridge"
 msgstr "กำลังโหลดกล่องข้อมูล"
 
-#: src/CommonCartridge.js:409
+#: src/CommonCartridge.js:416
 msgid "Loading completion"
 msgstr "สถานะการโหลดข้อมูล"
 
-#: src/Assessment.js:180
+#: src/Assessment.js:166
 msgid "Match Questions"
 msgstr "เทียบเคียงคำถาม"
 
-#: src/Assessment.js:284
+#: src/Assessment.js:261
 msgid "Max attempts"
 msgstr "จำนวนการดำเนินการสูงสุด"
 
@@ -267,32 +194,31 @@ msgstr "จำนวนการดำเนินการสูงสุด"
 msgid "Media viewer"
 msgstr "โปรแกรมเปิดไฟล์สื่อ"
 
-#. placeholder {0}: this.state.modules.length
-#: src/CommonCartridge.js:485
+#: src/CommonCartridge.js:495
 msgid "Modules ({0})"
 msgstr "หน่วยการเรียน ({0})"
+
+#: src/Assessment.js:163
+msgid "Multiple Dropdowns"
+msgstr "ส่วนแสดงรายการหลายชุด"
 
 #: src/Assessment.js:145
 msgid "Multiple choice"
 msgstr "หลายตัวเลือก"
 
-#: src/Assessment.js:175
-msgid "Multiple Dropdowns"
-msgstr "ส่วนแสดงรายการหลายชุด"
-
-#: src/Assessment.js:150
+#: src/Assessment.js:148
 msgid "Multiple response"
 msgstr "หลายคำตอบ"
 
-#: src/Assessment.js:272
+#: src/Assessment.js:249
 msgid "New Quizzes"
 msgstr "แบบทดสอบใหม่"
 
-#: src/Resource.js:136
+#: src/Resource.js:121
 msgid "Next"
 msgstr "ถัดไป"
 
-#: src/Paginate.js:110
+#: src/Paginate.js:112
 msgid "Next Page"
 msgstr "หน้าถัดไป"
 
@@ -300,56 +226,43 @@ msgstr "หน้าถัดไป"
 #~ msgid "Not found"
 #~ msgstr ""
 
-#: src/utils.js:387
-msgid "Nothing"
-msgstr ""
-
-#: src/Assessment.js:185
+#: src/Assessment.js:169
 msgid "Numerical"
 msgstr "ตัวเลข"
-
-#: src/utils.js:386
-msgid "on paper"
-msgstr ""
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
 #~ msgstr ""
 
-#: src/WikiContent.js:20
+#: src/WikiContent.js:21
 msgid "Page"
 msgstr "หน้าเพจ"
 
-#. placeholder {0}: this.state.pageResources.length
-#: src/CommonCartridge.js:507
+#: src/CommonCartridge.js:517
 msgid "Pages ({0})"
 msgstr "หน้าเพจ ({0})"
 
-#: src/Assessment.js:165
+#: src/Assessment.js:157
 msgid "Pattern match"
 msgstr "ตรงตามรูปแบบ"
 
-#: src/AssignmentBody.js:51
+#: src/AssignmentBody.js:53
 msgid "Points"
 msgstr "คะแนน"
 
-#: src/Resource.js:108
+#: src/Resource.js:100
 msgid "Previous"
 msgstr "ก่อนหน้า"
 
-#: src/Paginate.js:111
+#: src/Paginate.js:113
 msgid "Previous Page"
 msgstr "หน้าที่แล้ว"
 
-#: src/AssignmentBody.js:133
-msgid "pts"
-msgstr "คะแนน"
-
-#: src/AssignmentBody.js:121
+#: src/AssignmentBody.js:123
 msgid "Pts"
 msgstr "คะแนน"
 
-#: src/Assessment.js:287
+#: src/Assessment.js:264
 msgid "Questions"
 msgstr "คำถาม"
 
@@ -357,16 +270,15 @@ msgstr "คำถาม"
 #~ msgid "Quiz"
 #~ msgstr "แบบทดสอบ"
 
-#: src/AssessmentList.js:43
+#: src/AssessmentList.js:44
 msgid "Quizzes"
 msgstr "คำถาม"
 
-#. placeholder {0}: this.state.assessmentResources.length
-#: src/CommonCartridge.js:531
+#: src/CommonCartridge.js:544
 msgid "Quizzes ({0})"
 msgstr "แบบทดสอบ ({0})"
 
-#: src/AssignmentBody.js:118
+#: src/AssignmentBody.js:120
 msgid "Ratings"
 msgstr "คะแนนโหวต"
 
@@ -378,15 +290,15 @@ msgstr "ข้อมูลไม่พร้อมใช้งาน"
 #~ msgid "Submission formats"
 #~ msgstr ""
 
-#: src/AssignmentBody.js:38
+#: src/AssignmentBody.js:40
 msgid "Submitting"
 msgstr "กำลังจัดส่ง"
 
-#: src/Assessment.js:195
+#: src/Assessment.js:175
 msgid "Text only"
 msgstr "ข้อความอย่างเดียว"
 
-#: src/CommonCartridge.js:405
+#: src/CommonCartridge.js:407
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "อาจต้องใช้เวลาครู่หนึ่งขึ้นอยู่กับขนาดของกล่องข้อมูล"
 
@@ -394,48 +306,48 @@ msgstr "อาจต้องใช้เวลาครู่หนึ่งข
 msgid "This resource is not included in the package."
 msgstr "ทรัพยากรนี้ไม่รวมอยู่ในแพคเกจนี้"
 
-#: src/AssignmentBody.js:152
+#: src/AssignmentBody.js:154
 msgid "Total points:"
 msgstr "คะแนนรวม:"
 
-#: src/Assessment.js:155
+#: src/Assessment.js:151
 msgid "True / false"
 msgstr "จริง / ไม่จริง"
 
-#: src/CommonCartridge.js:453
-#: src/ExternalToolListItem.js:29
-#: src/ModulesList.js:176
-#: src/utils.js:280
+#: src/CommonCartridge.js:464
+#: src/ExternalToolListItem.js:27
+#: src/ModulesList.js:174
 #: src/WebLink.js:32
-#: src/WebLinkListItem.js:33
+#: src/WebLinkListItem.js:31
+#: src/utils.js:299
 msgid "Untitled"
 msgstr "ไม่มีชื่อ"
 
-#: src/App.js:144
+#: src/App.js:145
 msgid "View"
 msgstr "ดู"
+
+#: src/App.js:152
+msgid "View Common Cartridges in the browser. Requires no server-side processing."
+msgstr "ดู Common Cartridge ในเบราเซอร์ ไม่ต้องมีการประมวลผลจากฝั่งเซิร์ฟเวอร์"
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
 #~ msgstr ""
 
-#: src/App.js:151
-msgid "View Common Cartridges in the browser. Requires no server-side processing."
-msgstr "ดู Common Cartridge ในเบราเซอร์ ไม่ต้องมีการประมวลผลจากฝั่งเซิร์ฟเวอร์"
-
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
 msgstr "ดูต้นทางใน Github"
 
-#: src/CommonCartridge.js:366
+#: src/CommonCartridge.js:367
 msgid "We had a problem loading the Common Cartridge"
 msgstr "เรามีปัญหาในการโหลด Common Cartridge"
 
-#: src/WikiContentList.js:60
+#: src/WikiContentList.js:61
 msgid "Wiki content"
 msgstr "เนื้อหา Wiki"
 
-#: src/CommonCartridge.js:451
+#: src/CommonCartridge.js:462
 msgid "You are here:"
 msgstr "คุณอยู่ที่นี่:"
 
@@ -446,3 +358,46 @@ msgstr "เบราเซอร์ของคุณไม่รองรับ
 #: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "เบราเซอร์ของคุณไม่รองรับข้อมูลวิดีโอ HTML5 นี่เป็น<0>ลิงค์ไปยังข้อมูลเสียง</0>ทดแทน"
+
+#: src/utils.js:401
+msgid "a file upload"
+msgstr "การอัพโหลดไฟล์"
+
+#: src/App.js:138
+msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (เปิดใช้งาน CORS)"
+
+#: src/AssignmentBody.js:135
+msgid "pts"
+msgstr "คะแนน"
+
+#: src/AssessmentListItem.js:94
+#~ msgid "{0} Questions"
+#~ msgstr ""
+
+#: src/WorkflowStateIcon.js:30
+msgid "{0} is published"
+msgstr "{0} เผยแพร่แล้ว"
+
+#: src/WorkflowStateIcon.js:21
+msgid "{0} is unpublished"
+msgstr "{0} ยกเลิกการเผยแพร่แล้ว"
+
+#: src/AssessmentListItem.js:129
+#: src/AssignmentListItemBody.js:34
+#: src/DiscussionListItem.js:91
+#: src/FileListItem.js:75
+msgid "{0} points"
+msgstr "{0} คะแนน"
+
+#: src/AssessmentListItem.js:119
+msgid "{0} question(s) / {1} assigned"
+msgstr "{0} คำถาม / {1} ที่จัดสรร"
+
+#: src/CommonCartridge.js:426
+msgid "{0}%"
+msgstr "{0}%"
+
+#: src/CommonCartridge.js:419
+msgid "{0}% loaded"
+msgstr "{0}% ที่โหลด"
