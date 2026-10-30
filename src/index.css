@@ -277,8 +277,8 @@ td {
   display: none;
 }
 
-.CommonCartridge--view nav .open,
-.CommonCartridge--view nav .close {
+.CommonCartridge--view nav input + label,
+.CommonCartridge--view nav .navLinks + label {
   position: absolute;
   top: 7px;
   left: 8px;
@@ -302,11 +302,11 @@ td {
     padding-top: 0;
   }
 
-  .CommonCartridge--view nav .open {
+  .CommonCartridge--view nav input + label {
     display: block;
   }
 
-  #NavTrigger:checked + .open {
+  #NavTrigger:checked + label {
     display: none;
   }
 
@@ -318,11 +318,11 @@ td {
     opacity: 0;
   }
 
-  #NavTrigger:checked + .open + .navLinks + .close {
+  #NavTrigger:checked + label + .navLinks + label {
     display: block;
   }
 
-  #NavTrigger:checked + .open + .navLinks {
+  #NavTrigger:checked + label + .navLinks {
     padding: 50px 10px 10px 10px;
     max-height: 100vh;
     opacity: 1;

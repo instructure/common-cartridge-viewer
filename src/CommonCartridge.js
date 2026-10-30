@@ -471,11 +471,9 @@ export default class CommonCartridge extends Component {
                     as="label"
                     color="primary"
                     withBackground={false}
-                    elementRef={ref =>
-                      ref &&
-                      ref.classList.add("open") &
-                        ref.setAttribute("for", "NavTrigger")
-                    }
+                    elementRef={ref => {
+                      if (ref) ref.setAttribute("for", "NavTrigger");
+                    }}
                     margin="0 x-small 0 0"
                     renderIcon={IconOpen}
                   />
@@ -549,11 +547,9 @@ export default class CommonCartridge extends Component {
                     as="label"
                     color="primary"
                     withBackground={false}
-                    elementRef={ref =>
-                      ref &&
-                      ref.classList.add("close") &
-                        ref.setAttribute("for", "NavTrigger")
-                    }
+                    elementRef={ref => {
+                      if (ref) ref.setAttribute("for", "NavTrigger");
+                    }}
                     margin="0 x-small 0 0"
                     renderIcon={IconClose}
                   />
