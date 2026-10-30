@@ -1,8 +1,8 @@
+import { Heading, IconExternalLinkLine as Icon } from "@instructure/ui";
 import React, { Component } from "react";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Icon from "@instructure/ui-icons/lib/Line/IconExternalLink";
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
+import I18n from "./I18n";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 export default class WebLink extends Component {
   render() {
@@ -29,7 +29,7 @@ export default class WebLink extends Component {
             <Heading level="h1" margin="0 0 small">
               {doc.querySelector("title")
                 ? doc.querySelector("title").textContent
-                : i18n._(t`Untitled`)}
+                : t`Untitled`}
             </Heading>
 
             <a href={href} target="_blank" rel="noopener noreferrer">

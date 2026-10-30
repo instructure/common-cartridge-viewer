@@ -1,10 +1,8 @@
+import { Heading, Text, IconAssignmentLine as Icon } from "@instructure/ui";
 import React, { PureComponent } from "react";
-import { basename } from "path";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Icon from "@instructure/ui-icons/lib/Line/IconAssignment";
+import { basename } from "./utils";
 import RichContent from "./RichContent";
-import { Trans } from "@lingui/macro";
-import Text from "@instructure/ui-elements/es/components/Text";
+import { Trans } from "@lingui/react/macro";
 
 export default class AssignmentBody extends PureComponent {
   getRubricRatingsColSpan = () => {

@@ -1,13 +1,19 @@
+import {
+  ProgressBar,
+  Breadcrumb,
+  Billboard,
+  View,
+  Text,
+  Responsive,
+  Button,
+  IconHamburgerSolid as IconOpen,
+  IconXSolid as IconClose
+} from "@instructure/ui";
 import React, { Component } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from "./routerCompat";
 import NavLink from "./NavLink";
 import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
-import Progress from "@instructure/ui-elements/lib/components/Progress";
-import Breadcrumb, {
-  BreadcrumbLink
-} from "@instructure/ui-breadcrumb/lib/components/Breadcrumb";
-import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
 import {
   blobToDataUrl,
   getBlobFromEntry,
@@ -18,8 +24,6 @@ import {
   parseXml,
   getOptionalTextContent
 } from "./utils.js";
-import View from "@instructure/ui-layout/lib/components/View";
-import Text from "@instructure/ui-elements/lib/components/Text";
 import AssessmentList from "./AssessmentList";
 import AssignmentList from "./AssignmentList";
 import AssociatedContentAssignmentList from "./AssociatedContentAssignmentList";
@@ -28,15 +32,11 @@ import FileList from "./FileList";
 import ModulesList from "./ModulesList";
 import WikiContentList from "./WikiContentList";
 import waitingWristWatch from "./images/waiting-wrist-watch.svg";
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
+import I18n from "./I18n";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 import CourseNavigationUnavailable from "./CourseNavigationUnavailable";
 import Unavailable from "./Unavailable";
-import Responsive from "@instructure/ui-layout/lib/components/Responsive";
-import IconOpen from "@instructure/ui-icons/lib/Solid/IconHamburger";
-import IconClose from "@instructure/ui-icons/lib/Solid/IconX";
-
-import Button from "@instructure/ui-buttons/lib/components/Button";
 
 const queryString = require("query-string");
 
@@ -362,10 +362,8 @@ export default class CommonCartridge extends Component {
         <I18n>
           {({ i18n }) => (
             <Unavailable
-              heading={i18n._(t`Failed to load resource`)}
-              subHeading={i18n._(
-                t`We had a problem loading the Common Cartridge`
-              )}
+              heading={t`Failed to load resource`}
+              subHeading={t`We had a problem loading the Common Cartridge`}
             />
           )}
         </I18n>
@@ -396,7 +394,7 @@ export default class CommonCartridge extends Component {
                   <View {...props} as="div" textAlign="center">
                     <Billboard
                       size="medium"
-                      heading={i18n._(t`Loading Cartridge`)}
+                      heading={t`Loading Cartridge`}
                       hero={size => (
                         <img
                           alt=""
@@ -404,27 +402,18 @@ export default class CommonCartridge extends Component {
                           src={waitingWristWatch}
                         />
                       )}
-                      message={i18n._(t`
-                      This may take some time depending on the size of the
-                      cartridge.
-                    `)}
+                      message={t`This may take some time depending on the size of the cartridge.`}
                     />
 
-                    <Progress
-                      variant="bar"
-                      animateOnMount
-                      label={i18n._(t`Loading completion`)}
-                      formatValueText={(valueNow, valueMax) =>
-                        i18n._(
-                          t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
-                        )
+                    <ProgressBar
+                      screenReaderLabel={t`Loading completion`}
+                      formatScreenReaderValue={({ valueNow, valueMax }) =>
+                        t`${Math.floor((valueNow / valueMax) * 100)}% loaded`
                       }
-                      formatDisplayedValue={(valueNow, valueMax) => (
+                      renderValue={({ valueNow, valueMax }) => (
                         <Text>
                           <pre>
-                            {i18n._(
-                              t`${Math.floor((valueNow / valueMax) * 100)}%`
-                            )}
+                            {t`${Math.floor((valueNow / valueMax) * 100)}%`}
                           </pre>
                         </Text>
                       )}
@@ -459,10 +448,10 @@ export default class CommonCartridge extends Component {
                 background="default"
                 borderWidth="0 0 small"
               >
-                <Breadcrumb size="large" label={i18n._(t`You are here:`)}>
-                  <BreadcrumbLink>
+                <Breadcrumb size="large" label={t`You are here:`}>
+                  <Breadcrumb.Link>
                     {this.state.title || <Trans>Untitled</Trans>}
-                  </BreadcrumbLink>
+                  </Breadcrumb.Link>
                 </Breadcrumb>
               </View>
             )}
@@ -480,18 +469,19 @@ export default class CommonCartridge extends Component {
                   <input type="checkbox" id="NavTrigger" name="NavTrigger" />
                   <Button
                     as="label"
-                    variant="ghost"
-                    buttonRef={ref =>
+                    color="primary"
+                    withBackground={false}
+                    elementRef={ref =>
                       ref &&
                       ref.classList.add("open") &
                         ref.setAttribute("for", "NavTrigger")
                     }
                     margin="0 x-small 0 0"
-                    icon={IconOpen}
+                    renderIcon={IconOpen}
                   />
                   <div className="navLinks">
                     {this.state.modules.length > 0 && (
-                      <NavLink exact className="MenuItem" to="/">
+                      <NavLink end className="MenuItem" to="/">
                         <Trans>Modules ({this.state.modules.length})</Trans>
                       </NavLink>
                     )}
@@ -525,12 +515,9 @@ export default class CommonCartridge extends Component {
                           search: startIndexQuery
                         }}
                       >
-                        <Trans
-                          id="Discussions ({length})"
-                          values={{
-                            length: this.state.discussionResources.length
-                          }}
-                        />
+                        <Trans>
+                          Discussions ({this.state.discussionResources.length})
+                        </Trans>
                       </NavLink>
                     )}
                     {this.state.assessmentResources.length > 0 && (
@@ -560,14 +547,15 @@ export default class CommonCartridge extends Component {
                   </div>
                   <Button
                     as="label"
-                    variant="ghost"
-                    buttonRef={ref =>
+                    color="primary"
+                    withBackground={false}
+                    elementRef={ref =>
                       ref &&
                       ref.classList.add("close") &
                         ref.setAttribute("for", "NavTrigger")
                     }
                     margin="0 x-small 0 0"
-                    icon={IconClose}
+                    renderIcon={IconClose}
                   />
                 </nav>
               )}
@@ -845,18 +833,7 @@ export default class CommonCartridge extends Component {
                     />
                   </Switch>
 
-                  <Route
-                    path="*"
-                    render={({ match, history }) => {
-                      return (
-                        <RouterObserver
-                          match={match}
-                          history={history}
-                          onHistoryChange={this.handleHistoryChange}
-                        />
-                      );
-                    }}
-                  />
+                  <RouterObserver onHistoryChange={this.handleHistoryChange} />
                 </View>
               </div>
             </div>

@@ -13,9 +13,76 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/ModulesList.js:175
+#: src/utils.js:393
+msgid ", or "
+msgstr ""
+
+#: src/ModulesList.js:177
 msgid "(unidentified)"
 msgstr "(अज्ञात)"
+
+#: src/WorkflowStateIcon.js:30
+#~ msgid "{0} is published"
+#~ msgstr "{0} प्रकाशित हो गया है"
+
+#. placeholder {0}: this.props.resourceTitle
+#: src/WorkflowStateIcon.js:32
+msgid "{0} is published "
+msgstr ""
+
+#: src/WorkflowStateIcon.js:21
+#~ msgid "{0} is unpublished"
+#~ msgstr "{0} अप्रकाशित है"
+
+#. placeholder {0}: this.props.resourceTitle
+#: src/WorkflowStateIcon.js:23
+msgid "{0} is unpublished "
+msgstr ""
+
+#. placeholder {0}: this.props.points
+#. placeholder {0}: this.state.points
+#: src/AssessmentListItem.js:131
+#: src/AssignmentListItemBody.js:33
+#: src/DiscussionListItem.js:90
+#: src/FileListItem.js:74
+msgid "{0} points"
+msgstr "{0} पॉइंट्स"
+
+#. placeholder {0}: this.state.questionCount
+#. placeholder {1}: this.state.assignedQuestionCount
+#: src/AssessmentListItem.js:121
+msgid "{0} question(s) / {1} assigned"
+msgstr "{0} प्रश्न / {1} असाइन किए गए"
+
+#: src/AssessmentListItem.js:94
+#~ msgid "{0} Questions"
+#~ msgstr "{0} Questions"
+
+#. placeholder {0}: Math.floor((valueNow / valueMax) * 100)
+#: src/CommonCartridge.js:416
+msgid "{0}%"
+msgstr "{0}%"
+
+#. placeholder {0}: Math.floor((valueNow / valueMax) * 100)
+#: src/CommonCartridge.js:411
+msgid "{0}% loaded"
+msgstr "{0}% लोड किया गया"
+
+#: src/utils.js:382
+msgid "a file upload"
+msgstr "फ़ाइल अपलोड"
+
+#: src/utils.js:385
+msgid "a media recording"
+msgstr ""
+
+#: src/utils.js:383
+msgid "a text entry box"
+msgstr ""
+
+#: src/utils.js:384
+msgid "a website url"
+msgstr ""
 
 #: src/Resource.js:144
 #~ msgid "All Items"
@@ -37,12 +104,12 @@ msgstr "(अज्ञात)"
 #~ msgid "Assessments ({0})"
 #~ msgstr "Assessments ({0})"
 
-#: src/AssignmentBody.js:28
+#: src/AssignmentBody.js:26
 msgid "Assignment"
 msgstr "असाइनमेंट"
 
-#: src/AssignmentList.js:35
-#: src/AssociatedContentAssignmentList.js:35
+#: src/AssignmentList.js:34
+#: src/AssociatedContentAssignmentList.js:34
 msgid "Assignments"
 msgstr "असाइनमेंट"
 
@@ -50,24 +117,24 @@ msgstr "असाइनमेंट"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Assignments ({0})"
 
-#: src/CommonCartridge.js:506
+#: src/CommonCartridge.js:496
 msgid "Assignments ({numberOfAssignments})"
 msgstr "असाइनमेंट ({numberOfAssignments})"
 
-#: src/AssignmentBody.js:71
-#: src/Discussion.js:47
+#: src/AssignmentBody.js:69
+#: src/Discussion.js:45
 msgid "Attachments"
 msgstr "संलग्नक"
 
-#: src/Assessment.js:172
+#: src/Assessment.js:190
 msgid "Calculated"
 msgstr "परिकलित"
 
-#: src/App.js:133
+#: src/App.js:134
 msgid "Cartridge"
 msgstr "कार्ट्रिज"
 
-#: src/Assessment.js:251
+#: src/Assessment.js:274
 msgid "Classic Quiz"
 msgstr "क्लासिक प्रश्नोत्तरी"
 
@@ -75,7 +142,7 @@ msgstr "क्लासिक प्रश्नोत्तरी"
 msgid "Click here to open link in new window"
 msgstr "नई विंडो में लिंक खोलने के लिए यहां क्लिक करें"
 
-#: src/App.js:117
+#: src/App.js:120
 msgid "Common Cartridge Viewer"
 msgstr "Common Cartridge व्यूअर"
 
@@ -83,19 +150,19 @@ msgstr "Common Cartridge व्यूअर"
 msgid "Course Navigation Cannot Be Previewed"
 msgstr "पाठ्यक्रम नेविगेशन का पूर्वावलोकन नहीं किया जा सकता"
 
-#: src/CourseNavigationUnavailable.js:13
+#: src/CourseNavigationUnavailable.js:12
 msgid "Course navigation links are only available within a Canvas course."
 msgstr "पाठ्यक्रम नेविगेशन लिंक केवल Canvas पाठ्यक्रम के भीतर ही उपलब्ध हैं।"
 
-#: src/AssignmentBody.js:112
+#: src/AssignmentBody.js:110
 msgid "Criteria"
 msgstr "मानदंड"
 
-#: src/Discussion.js:30
+#: src/Discussion.js:28
 msgid "Discussion"
 msgstr "चर्चा"
 
-#: src/DiscussionList.js:41
+#: src/DiscussionList.js:40
 msgid "Discussions"
 msgstr "चर्चाएं"
 
@@ -107,15 +174,16 @@ msgstr "चर्चाएं"
 #~ msgid "Discussions ({0} )"
 #~ msgstr "Discussions ({0} )"
 
-#: src/CommonCartridge.js:430
-#~ msgid "Discussions ({0})"
-#~ msgstr "Discussions ({0})"
+#. placeholder {0}: this.state.discussionResources.length
+#: src/CommonCartridge.js:518
+msgid "Discussions ({0})"
+msgstr "Discussions ({0})"
 
 #: src/CommonCartridge.js:528
-msgid "Discussions ({length})"
-msgstr "चर्चाएं ({length})"
+#~ msgid "Discussions ({length})"
+#~ msgstr "चर्चाएं ({length})"
 
-#: src/App.js:119
+#: src/App.js:121
 msgid "Drag and drop the cartridge, or click to browse your computer."
 msgstr "कार्ट्रिज को खींचें और छोड़ें, या अपने कंप्यूटर को ब्राउज़ करने के लिए क्लिक करें।"
 
@@ -123,68 +191,73 @@ msgstr "कार्ट्रिज को खींचें और छोड�
 #~ msgid "Drag and drop, or click to browse your computer"
 #~ msgstr "Drag and drop, or click to browse your computer"
 
-#: src/Assessment.js:160
+#: src/Assessment.js:170
 msgid "Essay"
 msgstr "निबंध"
 
-#: src/App.js:159
+#: src/App.js:158
 msgid "Examples"
 msgstr "उदाहरण"
-
-#: src/PreviewUnavailable.js:11
-msgid "External Tool Content Can't be Previewed"
-msgstr "बाहरी उपकरण सामग्री का पूर्वावलोकन नहीं किया जा सकता"
 
 #: src/WebLink.js:25
 msgid "External link"
 msgstr "बाहरी लिंक"
 
+#: src/PreviewUnavailable.js:11
+msgid "External Tool Content Can't be Previewed"
+msgstr "बाहरी उपकरण सामग्री का पूर्वावलोकन नहीं किया जा सकता"
+
 #: src/CommonCartridge.js:365
 msgid "Failed to load resource"
 msgstr "संसाधन लोड करने में विफल"
 
-#: src/Assessment.js:178
+#: src/Assessment.js:200
 msgid "File Upload"
 msgstr "फ़ाइल अपलोड करें"
 
-#: src/FileList.js:40
+#: src/FileList.js:39
 msgid "Files"
 msgstr "फ़ाइलें"
 
-#: src/CommonCartridge.js:557
+#. placeholder {0}: this.state.fileResources.length
+#: src/CommonCartridge.js:544
 msgid "Files ({0})"
 msgstr "फ़ाइलें ({0})"
 
-#: src/Assessment.js:154
+#: src/Assessment.js:160
 msgid "Fill in the blank"
 msgstr "रिक्त स्थान को भरें"
 
-#: src/Image.js:50
+#: src/App.js:138
+msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
+msgstr "https://www.yourdomain.com/cartridge.imscc (CORS सक्षम है)"
+
+#: src/Image.js:49
 msgid "Image"
 msgstr "छवि"
 
-#: src/PreviewUnavailable.js:13
+#: src/PreviewUnavailable.js:12
 msgid "In order to use this resource in Canvas, the external tool must be installed."
 msgstr "Canvas में इस संसाधन का उपयोग करने के लिए, बाहरी उपकरण इंस्टॉल किया जाना चाहिए।"
 
 #: src/EmbeddedPreview.js:64
-#: src/Image.js:37
+#: src/Image.js:36
 msgid "Loading"
 msgstr "लोड किया जा रहा है"
 
-#: src/CommonCartridge.js:399
+#: src/CommonCartridge.js:397
 msgid "Loading Cartridge"
 msgstr "कार्ट्रिज लोड किया जा रहा है"
 
-#: src/CommonCartridge.js:416
+#: src/CommonCartridge.js:409
 msgid "Loading completion"
 msgstr "लोड करना पूरा हुआ"
 
-#: src/Assessment.js:166
+#: src/Assessment.js:180
 msgid "Match Questions"
 msgstr "प्रश्नों का मिलान करें"
 
-#: src/Assessment.js:261
+#: src/Assessment.js:284
 msgid "Max attempts"
 msgstr "अधिकतम प्रयास"
 
@@ -194,31 +267,32 @@ msgstr "अधिकतम प्रयास"
 msgid "Media viewer"
 msgstr "मीडिया व्यूअर"
 
-#: src/CommonCartridge.js:495
+#. placeholder {0}: this.state.modules.length
+#: src/CommonCartridge.js:485
 msgid "Modules ({0})"
 msgstr "मॉड्यूल ({0})"
-
-#: src/Assessment.js:163
-msgid "Multiple Dropdowns"
-msgstr "एकाधिक ड्रॉपडाउन"
 
 #: src/Assessment.js:145
 msgid "Multiple choice"
 msgstr "एकाधिक विकल्प"
 
-#: src/Assessment.js:148
+#: src/Assessment.js:175
+msgid "Multiple Dropdowns"
+msgstr "एकाधिक ड्रॉपडाउन"
+
+#: src/Assessment.js:150
 msgid "Multiple response"
 msgstr "एकाधिक प्रतिक्रिया"
 
-#: src/Assessment.js:249
+#: src/Assessment.js:272
 msgid "New Quizzes"
 msgstr "नई प्रश्नोत्तरी"
 
-#: src/Resource.js:121
+#: src/Resource.js:136
 msgid "Next"
 msgstr "अगला"
 
-#: src/Paginate.js:112
+#: src/Paginate.js:110
 msgid "Next Page"
 msgstr "अगला पेज"
 
@@ -226,43 +300,56 @@ msgstr "अगला पेज"
 #~ msgid "Not found"
 #~ msgstr "Not found"
 
-#: src/Assessment.js:169
+#: src/utils.js:387
+msgid "Nothing"
+msgstr ""
+
+#: src/Assessment.js:185
 msgid "Numerical"
 msgstr "संख्यात्मक"
+
+#: src/utils.js:386
+msgid "on paper"
+msgstr ""
 
 #: src/Assessment.js:102
 #~ msgid "Other type"
 #~ msgstr "Other type"
 
-#: src/WikiContent.js:21
+#: src/WikiContent.js:20
 msgid "Page"
 msgstr "पेज"
 
-#: src/CommonCartridge.js:517
+#. placeholder {0}: this.state.pageResources.length
+#: src/CommonCartridge.js:507
 msgid "Pages ({0})"
 msgstr "पेज ({0})"
 
-#: src/Assessment.js:157
+#: src/Assessment.js:165
 msgid "Pattern match"
 msgstr "पैटर्न मिलान"
 
-#: src/AssignmentBody.js:53
+#: src/AssignmentBody.js:51
 msgid "Points"
 msgstr "पॉइंट्स"
 
-#: src/Resource.js:100
+#: src/Resource.js:108
 msgid "Previous"
 msgstr "पिछला"
 
-#: src/Paginate.js:113
+#: src/Paginate.js:111
 msgid "Previous Page"
 msgstr "पिछला पेज"
 
-#: src/AssignmentBody.js:123
+#: src/AssignmentBody.js:133
+msgid "pts"
+msgstr "पॉइंट्स"
+
+#: src/AssignmentBody.js:121
 msgid "Pts"
 msgstr "पॉइंट्स"
 
-#: src/Assessment.js:264
+#: src/Assessment.js:287
 msgid "Questions"
 msgstr "प्रश्न"
 
@@ -270,15 +357,16 @@ msgstr "प्रश्न"
 #~ msgid "Quiz"
 #~ msgstr "प्रश्नोत्तरी"
 
-#: src/AssessmentList.js:44
+#: src/AssessmentList.js:43
 msgid "Quizzes"
 msgstr "प्रश्नोत्तरी"
 
-#: src/CommonCartridge.js:544
+#. placeholder {0}: this.state.assessmentResources.length
+#: src/CommonCartridge.js:531
 msgid "Quizzes ({0})"
 msgstr "प्रश्नोत्तरी ({0})"
 
-#: src/AssignmentBody.js:120
+#: src/AssignmentBody.js:118
 msgid "Ratings"
 msgstr "रेटिंग"
 
@@ -290,15 +378,15 @@ msgstr "संसाधन अनुपलब्ध"
 #~ msgid "Submission formats"
 #~ msgstr "Submission formats"
 
-#: src/AssignmentBody.js:40
+#: src/AssignmentBody.js:38
 msgid "Submitting"
 msgstr "सबमिट किया जा रहा है"
 
-#: src/Assessment.js:175
+#: src/Assessment.js:195
 msgid "Text only"
 msgstr "केवल पाठ"
 
-#: src/CommonCartridge.js:407
+#: src/CommonCartridge.js:405
 msgid "This may take some time depending on the size of the cartridge."
 msgstr "कार्ट्रिज के आकार के आधार पर इसमें कुछ समय लग सकता है।"
 
@@ -306,48 +394,48 @@ msgstr "कार्ट्रिज के आकार के आधार प�
 msgid "This resource is not included in the package."
 msgstr "यह संसाधन पैकेज में शामिल नहीं है।"
 
-#: src/AssignmentBody.js:154
+#: src/AssignmentBody.js:152
 msgid "Total points:"
 msgstr "कुल पॉइंट्स:"
 
-#: src/Assessment.js:151
+#: src/Assessment.js:155
 msgid "True / false"
 msgstr "सही / गलत"
 
-#: src/CommonCartridge.js:464
-#: src/ExternalToolListItem.js:27
-#: src/ModulesList.js:174
+#: src/CommonCartridge.js:453
+#: src/ExternalToolListItem.js:29
+#: src/ModulesList.js:176
+#: src/utils.js:280
 #: src/WebLink.js:32
-#: src/WebLinkListItem.js:31
-#: src/utils.js:299
+#: src/WebLinkListItem.js:33
 msgid "Untitled"
 msgstr "शीर्षकहीन"
 
-#: src/App.js:145
+#: src/App.js:144
 msgid "View"
 msgstr "देखें"
-
-#: src/App.js:152
-msgid "View Common Cartridges in the browser. Requires no server-side processing."
-msgstr "ब्राउज़र में Common Cartridges देखें। किसी सर्वर-साइड प्रोसेसिंग की आवश्यकता नहीं है।"
 
 #: src/App.js:93
 #~ msgid "View a Common Cartridge (.imscc)"
 #~ msgstr "View a Common Cartridge (.imscc)"
 
+#: src/App.js:151
+msgid "View Common Cartridges in the browser. Requires no server-side processing."
+msgstr "ब्राउज़र में Common Cartridges देखें। किसी सर्वर-साइड प्रोसेसिंग की आवश्यकता नहीं है।"
+
 #: src/GitHubCorner.js:14
 msgid "View source on Github"
 msgstr "Github पर स्रोत देखें"
 
-#: src/CommonCartridge.js:367
+#: src/CommonCartridge.js:366
 msgid "We had a problem loading the Common Cartridge"
 msgstr "हमें Common Cartridge लोड करने में समस्या हुई"
 
-#: src/WikiContentList.js:61
+#: src/WikiContentList.js:60
 msgid "Wiki content"
 msgstr "विकी सामग्री"
 
-#: src/CommonCartridge.js:462
+#: src/CommonCartridge.js:451
 msgid "You are here:"
 msgstr "आप यहां हैं:"
 
@@ -358,46 +446,3 @@ msgstr "आपका ब्राउज़र HTML5 ऑडियो का स�
 #: src/EmbeddedPreview.js:95
 msgid "Your browser doesn't support HTML5 video. Here is a <0>link to the audio</0> instead."
 msgstr "आपका ब्राउज़र HTML5 वीडियो का समर्थन नहीं करता। इसके बजाय यहां एक <0>ऑडियो का लिंक</0> है।"
-
-#: src/utils.js:401
-msgid "a file upload"
-msgstr "फ़ाइल अपलोड"
-
-#: src/App.js:138
-msgid "https://www.yourdomain.com/cartridge.imscc (CORS enabled)"
-msgstr "https://www.yourdomain.com/cartridge.imscc (CORS सक्षम है)"
-
-#: src/AssignmentBody.js:135
-msgid "pts"
-msgstr "पॉइंट्स"
-
-#: src/AssessmentListItem.js:94
-#~ msgid "{0} Questions"
-#~ msgstr "{0} Questions"
-
-#: src/WorkflowStateIcon.js:30
-msgid "{0} is published"
-msgstr "{0} प्रकाशित हो गया है"
-
-#: src/WorkflowStateIcon.js:21
-msgid "{0} is unpublished"
-msgstr "{0} अप्रकाशित है"
-
-#: src/AssessmentListItem.js:129
-#: src/AssignmentListItemBody.js:34
-#: src/DiscussionListItem.js:91
-#: src/FileListItem.js:75
-msgid "{0} points"
-msgstr "{0} पॉइंट्स"
-
-#: src/AssessmentListItem.js:119
-msgid "{0} question(s) / {1} assigned"
-msgstr "{0} प्रश्न / {1} असाइन किए गए"
-
-#: src/CommonCartridge.js:426
-msgid "{0}%"
-msgstr "{0}%"
-
-#: src/CommonCartridge.js:419
-msgid "{0}% loaded"
-msgstr "{0}% लोड किया गया"

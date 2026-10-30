@@ -1,9 +1,8 @@
+import { Link, IconDiscussionLine as IconDiscussion } from "@instructure/ui";
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import IconDiscussion from "@instructure/ui-icons/lib/Line/IconDiscussion";
 import WorkflowStateIcon from "./WorkflowStateIcon";
-import Link from "@instructure/ui-elements/lib/components/Link";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import { getOptionalTextContent } from "./utils";
 
 export default class DiscussionListItem extends Component {

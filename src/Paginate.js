@@ -1,10 +1,8 @@
+import { Pagination } from "@instructure/ui";
 import React, { Component } from "react";
-import { t } from "@lingui/macro";
-import { I18n } from "@lingui/react";
+import { t } from "@lingui/core/macro";
+import I18n from "./I18n";
 import { Link as RouterLink } from "react-router-dom";
-import Pagination, {
-  PaginationButton
-} from "@instructure/ui-pagination/es/components/Pagination";
 const queryString = require("query-string");
 
 const NUMBER_OF_ITEMS_TO_SHOW = 100;
@@ -38,7 +36,7 @@ export default class Paginate extends Component {
     parsedQueryString.startIndex = pageIndex * NUMBER_OF_ITEMS_TO_SHOW;
     const search = queryString.stringify(parsedQueryString);
     return (
-      <PaginationButton
+      <Pagination.Page
         key={pageIndex}
         as={RouterLink}
         to={{
@@ -65,7 +63,7 @@ export default class Paginate extends Component {
         }
       >
         {pageIndex + 1}
-      </PaginationButton>
+      </Pagination.Page>
     );
   };
 
@@ -109,8 +107,8 @@ export default class Paginate extends Component {
               as="nav"
               margin="small"
               variant="compact"
-              labelNext={i18n._(t`Next Page`)}
-              labelPrev={i18n._(t`Previous Page`)}
+              labelNext={t`Next Page`}
+              labelPrev={t`Previous Page`}
             >
               {pages}
             </Pagination>

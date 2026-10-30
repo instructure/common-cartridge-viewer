@@ -1,9 +1,8 @@
+import { Link, IconDocumentLine as IconDocument } from "@instructure/ui";
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import IconDocument from "@instructure/ui-icons/lib/Line/IconDocument";
 import WorkflowStateIcon from "./WorkflowStateIcon";
-import Link from "@instructure/ui-elements/lib/components/Link";
-import { basename } from "path";
+import { basename } from "./utils";
 
 export default class WikiContentListItem extends Component {
   constructor(props) {

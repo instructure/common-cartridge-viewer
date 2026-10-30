@@ -1,8 +1,7 @@
+import { Link, IconAssignmentLine as IconAssignment } from "@instructure/ui";
 import React, { PureComponent } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import IconAssignment from "@instructure/ui-icons/lib/Line/IconAssignment";
-import Link from "@instructure/ui-elements/lib/components/Link";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import WorkflowStateIcon from "./WorkflowStateIcon";
 
 export default class AssignmentListItemBody extends PureComponent {

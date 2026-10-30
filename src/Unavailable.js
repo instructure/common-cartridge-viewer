@@ -1,7 +1,6 @@
+import { View, Text } from "@instructure/ui";
 import React from "react";
 import noSignalTvIcon from "./images/no-signal-tv.svg";
-import View from "@instructure/ui-layout/lib/components/View";
-import Text from "@instructure/ui-elements/lib/components/Text";
 
 export default function Unavailable(props) {
   return (

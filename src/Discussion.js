@@ -1,10 +1,8 @@
+import { Heading, IconDiscussionLine as Icon } from "@instructure/ui";
 import React, { Component } from "react";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Icon from "@instructure/ui-icons/lib/Line/IconDiscussion";
 import RichContent from "./RichContent";
-import { basename } from "path";
-import { Trans } from "@lingui/macro";
-import { getFileResourcePath, getOptionalTextContent } from "./utils";
+import { Trans } from "@lingui/react/macro";
+import { basename, getFileResourcePath, getOptionalTextContent } from "./utils";
 
 export default class Discussion extends Component {
   render() {

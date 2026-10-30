@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { I18n } from "@lingui/react";
-import { t } from "@lingui/macro";
+import I18n from "./I18n";
+import { t } from "@lingui/core/macro";
 
 export default class GitHubCorner extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class GitHubCorner extends Component {
             <a
               href="https://github.com/instructure/common-cartridge-viewer"
               className="github-corner"
-              aria-label={i18n._(t`View source on Github`)}
+              aria-label={t`View source on Github`}
             >
               <svg
                 width={80}

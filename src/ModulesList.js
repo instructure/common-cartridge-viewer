@@ -1,7 +1,9 @@
+import {
+  Heading,
+  Link,
+  IconExternalLinkLine as IconExternalLink
+} from "@instructure/ui";
 import React, { Component } from "react";
-import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Link from "@instructure/ui-elements/lib/components/Link";
 
 import { resourceTypes, WIKI_CONTENT_HREF_PREFIX } from "./constants";
 import NavLink from "./NavLink";
@@ -11,7 +13,7 @@ import DiscussionListItem from "./DiscussionListItem";
 import WikiContentListItem from "./WikiContentListItem";
 import FileListItem from "./FileListItem";
 import WebLinkListItem from "./WebLinkListItem";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 import { getAssignmentSettingsHref } from "./utils.js";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";

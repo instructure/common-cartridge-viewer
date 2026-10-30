@@ -1,8 +1,10 @@
+import {
+  Link,
+  IconExternalLinkLine as IconExternalLink
+} from "@instructure/ui";
 import React, { Component } from "react";
-import Link from "@instructure/ui-elements/lib/components/Link";
-import IconExternalLink from "@instructure/ui-icons/lib/Line/IconExternalLink";
 import NavLink from "./NavLink";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 export default class ExternalToolListItem extends Component {
   render() {

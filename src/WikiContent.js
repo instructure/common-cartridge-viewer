@@ -1,8 +1,7 @@
+import { Heading, IconDocumentLine as Icon } from "@instructure/ui";
 import React, { Component } from "react";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Icon from "@instructure/ui-icons/lib/Line/IconDocument";
 import RichContent from "./RichContent";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import { getOptionalTextContent } from "./utils";
 
 export default class WikiContent extends Component {

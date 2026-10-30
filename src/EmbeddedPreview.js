@@ -1,9 +1,9 @@
+import { Spinner } from "@instructure/ui";
 import React, { Component } from "react";
 
-import Spinner from "@instructure/ui-elements/lib/components/Spinner";
-
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
+import I18n from "./I18n";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 import { getExtension } from "./utils";
 
 export default class EmbeddedPreview extends Component {
@@ -61,7 +61,7 @@ export default class EmbeddedPreview extends Component {
             <I18n>
               {({ i18n }) => (
                 <Spinner
-                  title={i18n._(t`Loading`)}
+                  renderTitle={t`Loading`}
                   size="small"
                   margin="medium"
                 />
@@ -76,7 +76,7 @@ export default class EmbeddedPreview extends Component {
                 <audio
                   className="EmbeddedPreview--audio"
                   controls
-                  title={i18n._(t`Media viewer`)}
+                  title={t`Media viewer`}
                 >
                   <source src={this.state.embeddedViewerSrc} type="audio/mp3" />
                   <Trans>
@@ -89,7 +89,7 @@ export default class EmbeddedPreview extends Component {
                 <video
                   className="EmbeddedPreview--video"
                   controls
-                  title={i18n._(t`Media viewer`)}
+                  title={t`Media viewer`}
                 >
                   <source src={this.state.embeddedViewerSrc} type="video/mp4" />
                   <Trans>
@@ -100,7 +100,7 @@ export default class EmbeddedPreview extends Component {
                 </video>
               ) : (
                 <iframe
-                  title={i18n._(t`Media viewer`)}
+                  title={t`Media viewer`}
                   src={this.state.embeddedViewerSrc}
                   allowfullscreen
                 />

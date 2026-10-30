@@ -1,10 +1,9 @@
-import { basename } from "path";
+import { Spinner, Heading, IconImageLine as Icon } from "@instructure/ui";
+import { basename } from "./utils";
 import React, { Component } from "react";
-import Spinner from "@instructure/ui-elements/lib/components/Spinner";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import Icon from "@instructure/ui-icons/lib/Line/IconImage";
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
+import I18n from "./I18n";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 
 export default class Image extends Component {
   constructor(props) {
@@ -34,7 +33,7 @@ export default class Image extends Component {
       return (
         <I18n>
           {({ i18n }) => (
-            <Spinner title={i18n._(t`Loading`)} size="small" margin="medium" />
+            <Spinner renderTitle={t`Loading`} size="small" margin="medium" />
           )}
         </I18n>
       );
