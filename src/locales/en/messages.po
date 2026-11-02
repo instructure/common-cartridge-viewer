@@ -21,23 +21,23 @@ msgstr ", or "
 msgid "(unidentified)"
 msgstr "(unidentified)"
 
-#: src/WorkflowStateIcon.js:30
-#~ msgid "{0} is published"
-#~ msgstr "{0} is published"
-
 #. placeholder {0}: this.props.resourceTitle
 #: src/WorkflowStateIcon.js:32
-msgid "{0} is published "
-msgstr "{0} is published "
+msgid "{0} is published"
+msgstr "{0} is published"
 
-#: src/WorkflowStateIcon.js:21
-#~ msgid "{0} is unpublished"
-#~ msgstr "{0} is unpublished"
+#: src/WorkflowStateIcon.js:32
+#~ msgid "{0} is published "
+#~ msgstr "{0} is published "
 
 #. placeholder {0}: this.props.resourceTitle
 #: src/WorkflowStateIcon.js:23
-msgid "{0} is unpublished "
-msgstr "{0} is unpublished "
+msgid "{0} is unpublished"
+msgstr "{0} is unpublished"
+
+#: src/WorkflowStateIcon.js:23
+#~ msgid "{0} is unpublished "
+#~ msgstr "{0} is unpublished "
 
 #. placeholder {0}: this.props.points
 #. placeholder {0}: this.state.points
@@ -117,7 +117,7 @@ msgstr "Assignments"
 #~ msgid "Assignments ({0})"
 #~ msgstr "Assignments ({0})"
 
-#: src/CommonCartridge.js:496
+#: src/CommonCartridge.js:494
 msgid "Assignments ({numberOfAssignments})"
 msgstr "Assignments ({numberOfAssignments})"
 
@@ -175,7 +175,7 @@ msgstr "Discussions"
 #~ msgstr "Discussions ({0} )"
 
 #. placeholder {0}: this.state.discussionResources.length
-#: src/CommonCartridge.js:518
+#: src/CommonCartridge.js:516
 msgid "Discussions ({0})"
 msgstr "Discussions ({0})"
 
@@ -220,7 +220,7 @@ msgid "Files"
 msgstr "Files"
 
 #. placeholder {0}: this.state.fileResources.length
-#: src/CommonCartridge.js:544
+#: src/CommonCartridge.js:542
 msgid "Files ({0})"
 msgstr "Files ({0})"
 
@@ -268,7 +268,7 @@ msgid "Media viewer"
 msgstr "Media viewer"
 
 #. placeholder {0}: this.state.modules.length
-#: src/CommonCartridge.js:485
+#: src/CommonCartridge.js:483
 msgid "Modules ({0})"
 msgstr "Modules ({0})"
 
@@ -321,7 +321,7 @@ msgid "Page"
 msgstr "Page"
 
 #. placeholder {0}: this.state.pageResources.length
-#: src/CommonCartridge.js:507
+#: src/CommonCartridge.js:505
 msgid "Pages ({0})"
 msgstr "Pages ({0})"
 
@@ -362,7 +362,7 @@ msgid "Quizzes"
 msgstr "Quizzes"
 
 #. placeholder {0}: this.state.assessmentResources.length
-#: src/CommonCartridge.js:531
+#: src/CommonCartridge.js:529
 msgid "Quizzes ({0})"
 msgstr "Quizzes ({0})"
 

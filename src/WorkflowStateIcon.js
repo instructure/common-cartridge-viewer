@@ -20,7 +20,7 @@ export default class WorkflowStateIcon extends PureComponent {
       return (
         <React.Fragment>
           <ScreenReaderContent>
-            <Trans>{this.props.resourceTitle} is unpublished </Trans>
+            <Trans>{this.props.resourceTitle} is unpublished</Trans>
           </ScreenReaderContent>
           <IconUnpublished color="secondary" />
         </React.Fragment>
@@ -29,7 +29,7 @@ export default class WorkflowStateIcon extends PureComponent {
       return (
         <React.Fragment>
           <ScreenReaderContent>
-            <Trans>{this.props.resourceTitle} is published </Trans>
+            <Trans>{this.props.resourceTitle} is published</Trans>
           </ScreenReaderContent>
           <IconPublish color="success" />
         </React.Fragment>
