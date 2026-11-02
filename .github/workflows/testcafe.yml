@@ -1,0 +1,31 @@
+name: TestCafe
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  testcafe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - run: npm run test-headless
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: testcafe-screenshots
+          path: tests/screenshots
+          if-no-files-found: ignore
