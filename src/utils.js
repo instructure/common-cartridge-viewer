@@ -10,8 +10,7 @@ import {
   WEB_RSC_FILES,
   WIKI_CONTENT_HREF_PREFIX,
 } from "./constants";
-import { i18n } from "./index";
-import { t } from "@lingui/macro";
+import { t } from "@lingui/core/macro";
 import createDOMPurify from "dompurify";
 
 const DOMPurify = createDOMPurify(window);
@@ -270,7 +269,7 @@ export function parseManifestDocument(manifest, { moduleMeta }) {
         const identifier = item.getAttribute("identifier");
         const title = item.querySelector("title")
           ? item.querySelector("title").textContent
-          : i18n._(t`Untitled`);
+          : t`Untitled`;
         const identifierref = item.getAttribute("identifierref");
         if (identifierref == null) {
           return { title };
@@ -365,17 +364,17 @@ function isNot(type) {
 
 export function generateFriendlyStringFromSubmissionFormats(submissionType) {
   const submissionTypeLabels = {
-    [submissionTypes.ONLINE_UPLOAD]: i18n._(t`a file upload`),
-    [submissionTypes.ONLINE_TEXT_ENTRY]: i18n._(`a text entry box`),
-    [submissionTypes.ONLINE_URL]: i18n._(`a website url`),
-    [submissionTypes.MEDIA_RECORDING]: i18n._(`a media recording`),
-    [submissionTypes.ON_PAPER]: i18n._(`on paper`),
-    [submissionTypes.NONE]: i18n._(`Nothing`),
+    [submissionTypes.ONLINE_UPLOAD]: t`a file upload`,
+    [submissionTypes.ONLINE_TEXT_ENTRY]: t`a text entry box`,
+    [submissionTypes.ONLINE_URL]: t`a website url`,
+    [submissionTypes.MEDIA_RECORDING]: t`a media recording`,
+    [submissionTypes.ON_PAPER]: t`on paper`,
+    [submissionTypes.NONE]: t`Nothing`,
   };
 
   if (submissionType === null) return submissionTypeLabels[submissionTypes.NONE];
 
-  const SUBMISSION_TYPE_JOIN_STRING = i18n._(`, or `);
+  const SUBMISSION_TYPE_JOIN_STRING = t`, or `;
 
   const submissionTypeToSubmissionLabel = (submissionType) =>
     Object.keys(submissionTypeLabels).includes(submissionType)
@@ -408,3 +407,5 @@ export function getAssignmentListResources(resources) {
       }),
     }));
 }
+
+export const basename = (path) => String(path).replace(/\/+$/, "").split("/").pop();

@@ -1,20 +1,23 @@
+import {
+  Flex,
+  FileDrop,
+  Billboard,
+  ScreenReaderContent,
+  TextInput,
+  Button,
+  Heading,
+  View,
+  Responsive,
+  IconZippedLine as IconZipped,
+} from "@instructure/ui";
 import React, { Component } from "react";
 import CommonCartridge from "./CommonCartridge";
-import Flex, { FlexItem } from "@instructure/ui-layout/lib/components/Flex";
-import FileDrop from "@instructure/ui-forms/lib/components/FileDrop";
-import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
-import IconZipped from "@instructure/ui-icons/lib/Line/IconZipped";
-import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
-import TextInput from "@instructure/ui-forms/lib/components/TextInput";
-import Button from "@instructure/ui-buttons/lib/components/Button";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import View from "@instructure/ui-layout/lib/components/View";
-import Responsive from "@instructure/ui-layout/lib/components/Responsive";
 
 import { HashRouter as Router } from "react-router-dom";
 import { getExtension } from "./utils";
-import { I18n } from "@lingui/react";
-import { Trans, t } from "@lingui/macro";
+import I18n from "./I18n";
+import { Trans } from "@lingui/react/macro";
+import { t } from "@lingui/core/macro";
 import GithubCorner from "react-github-corner";
 
 export default class App extends Component {
@@ -104,12 +107,10 @@ export default class App extends Component {
                         onDropRejected={(file) => {
                           console.error("file rejected");
                         }}
-                        label={
+                        renderLabel={
                           <Billboard
-                            heading={i18n._(t`Common Cartridge Viewer`)}
-                            message={i18n._(
-                              t`Drag and drop the cartridge, or click to browse your computer.`,
-                            )}
+                            heading={t`Common Cartridge Viewer`}
+                            message={t`Drag and drop the cartridge, or click to browse your computer.`}
                             hero={<IconZipped />}
                           />
                         }
@@ -117,26 +118,24 @@ export default class App extends Component {
                     </View>
                     <form onSubmit={this.handleSubmit}>
                       <Flex justifyItems="center" margin="medium none large">
-                        <FlexItem>
+                        <Flex.Item>
                           <TextInput
                             inputRef={(input) => (this.inputRef = input)}
-                            label={
+                            renderLabel={
                               <ScreenReaderContent>
                                 <Trans>Cartridge</Trans>
                               </ScreenReaderContent>
                             }
                             name="src"
-                            placeholder={i18n._(
-                              t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`,
-                            )}
+                            placeholder={t`https://www.yourdomain.com/cartridge.imscc (CORS enabled)`}
                             width="30rem"
                           />
-                        </FlexItem>
-                        <FlexItem padding="0 0 0 x-small">
-                          <Button type="submit" variant="primary">
+                        </Flex.Item>
+                        <Flex.Item padding="0 0 0 x-small">
+                          <Button type="submit" color="primary">
                             <Trans>View</Trans>
                           </Button>
-                        </FlexItem>
+                        </Flex.Item>
                       </Flex>
                     </form>
 

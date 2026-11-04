@@ -1,15 +1,17 @@
+import {
+  Heading,
+  Text,
+  View,
+  Pill,
+  Grid,
+  IconQuizLine as ClassicQuizIcon,
+  IconQuizSolid as QuizzesNextIcon,
+  IconCheckMarkLine as IconCheckMark,
+} from "@instructure/ui";
 import React, { Component } from "react";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
 import { questionTypes } from "./constants";
 import RichContent from "./RichContent";
-import ClassicQuizIcon from "@instructure/ui-icons/lib/Line/IconQuiz";
-import QuizzesNextIcon from "@instructure/ui-icons/lib/Solid/IconQuiz";
-import Text from "@instructure/ui-elements/lib/components/Text";
-import View from "@instructure/ui-layout/lib/components/View";
-import Pill from "@instructure/ui-elements/lib/components/Pill";
-import { Trans } from "@lingui/macro";
-import Grid, { GridCol, GridRow } from "@instructure/ui-layout/lib/components/Grid";
-import IconCheckMark from "@instructure/ui-icons/lib/Line/IconCheckMark";
+import { Trans } from "@lingui/react/macro";
 import { getOptionalTextContent } from "./utils";
 
 export default class Assessment extends Component {
@@ -117,52 +119,76 @@ export default class Assessment extends Component {
           )}
 
           {questionTypes.MULTIPLE_CHOICE.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Multiple choice</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Multiple choice</Trans>
+            </Pill>
           )}
           {questionTypes.MULTIPLE_RESPONSE.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Multiple response</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Multiple response</Trans>
+            </Pill>
           )}
           {questionTypes.TRUEFALSE.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>True / false</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>True / false</Trans>
+            </Pill>
           )}
           {questionTypes.FILL_IN_THE_BLANK.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Fill in the blank</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Fill in the blank</Trans>
+            </Pill>
           )}
           {questionTypes.PATTERN_MATCH.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Pattern match</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Pattern match</Trans>
+            </Pill>
           )}
           {questionTypes.ESSAY.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Essay</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Essay</Trans>
+            </Pill>
           )}
           {questionTypes.MULTIPLE_DROPDOWN.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Multiple Dropdowns</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Multiple Dropdowns</Trans>
+            </Pill>
           )}
           {questionTypes.MATCH_QUESTION.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Match Questions</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Match Questions</Trans>
+            </Pill>
           )}
           {questionTypes.NUMERICAL.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Numerical</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Numerical</Trans>
+            </Pill>
           )}
           {questionTypes.CALCULATED.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Calculated</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Calculated</Trans>
+            </Pill>
           )}
           {questionTypes.TEXT_ONLY.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>Text only</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>Text only</Trans>
+            </Pill>
           )}
           {questionTypes.FILE_UPLOAD.includes(type) && (
-            <Pill margin="0 0 small" text={<Trans>File Upload</Trans>} />
+            <Pill margin="0 0 small">
+              <Trans>File Upload</Trans>
+            </Pill>
           )}
 
           {showQuizzesAnswers && (
             <div className="question-answers">
               <Grid vAlign="middle" colSpacing="none">
-                <GridRow>
-                  <GridCol width={item.options.length > 1 ? 8 : 5}>
+                <Grid.Row>
+                  <Grid.Col width={item.options.length > 1 ? 8 : 5}>
                     <Grid vAlign="middle" margin="none" colSpacing="none">
-                      <GridRow startAt={null}>
+                      <Grid.Row startAt={null}>
                         {item.options &&
                           item.options.map((optionGroup) => (
-                            <GridCol key={optionGroup.id}>
+                            <Grid.Col key={optionGroup.id}>
                               {item.options.length > 1 && (
                                 <Text lineHeight="double" weight="bold">
                                   {optionGroup.name}
@@ -170,8 +196,8 @@ export default class Assessment extends Component {
                               )}
                               <Grid vAlign="middle" colSpacing="none">
                                 {optionGroup.responses.map((option) => (
-                                  <GridRow rowSpacing="none" key={option.id}>
-                                    <GridCol width="auto">
+                                  <Grid.Row rowSpacing="none" key={option.id}>
+                                    <Grid.Col width="auto">
                                       <IconCheckMark
                                         color="success"
                                         className="Assessment--IconCheckMark"
@@ -179,8 +205,8 @@ export default class Assessment extends Component {
                                           visibility: option.valid ? "visible" : "hidden",
                                         }}
                                       />
-                                    </GridCol>
-                                    <GridCol>
+                                    </Grid.Col>
+                                    <Grid.Col>
                                       <RichContent
                                         getUrlForPath={this.props.getUrlForPath}
                                         html={option.text}
@@ -188,16 +214,16 @@ export default class Assessment extends Component {
                                         margin="none"
                                         resourceIdsByHrefMap={this.props.resourceIdsByHrefMap}
                                       />
-                                    </GridCol>
-                                  </GridRow>
+                                    </Grid.Col>
+                                  </Grid.Row>
                                 ))}
                               </Grid>
-                            </GridCol>
+                            </Grid.Col>
                           ))}
-                      </GridRow>
+                      </Grid.Row>
                     </Grid>
-                  </GridCol>
-                </GridRow>
+                  </Grid.Col>
+                </Grid.Row>
               </Grid>
             </div>
           )}

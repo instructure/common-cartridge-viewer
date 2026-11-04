@@ -1,10 +1,12 @@
+import {
+  Link,
+  IconQuizLine as ClassicQuizIcon,
+  IconQuizSolid as QuizzesNextIcon,
+} from "@instructure/ui";
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import ClassicQuizIcon from "@instructure/ui-icons/lib/Line/IconQuiz";
-import QuizzesNextIcon from "@instructure/ui-icons/lib/Solid/IconQuiz";
 import WorkflowStateIcon from "./WorkflowStateIcon";
-import Link from "@instructure/ui-elements/lib/components/Link";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 export default class AssessmentListItem extends Component {
   constructor(props) {

@@ -1,30 +1,18 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 
-class RouterObserver extends Component {
-  constructor(props) {
-    super(props);
+export default function RouterObserver({ onHistoryChange }) {
+  const location = useLocation();
+  const url = useRef("/");
 
-    this.url = "/";
-  }
-
-  updateUrl = (url) => {
-    if (this.url !== url) {
-      this.url = url;
-
-      if (this.props.onHistoryChange) {
-        this.props.onHistoryChange(this.props.history);
+  useEffect(() => {
+    if (url.current !== location.pathname) {
+      url.current = location.pathname;
+      if (onHistoryChange) {
+        onHistoryChange({ location });
       }
     }
-  };
+  });
 
-  componentWillUpdate(nextProps) {
-    this.updateUrl(nextProps.location.pathname);
-  }
-
-  render() {
-    return null;
-  }
+  return null;
 }
-
-export default withRouter((props) => <RouterObserver {...props} />);

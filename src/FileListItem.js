@@ -1,9 +1,8 @@
+import { Link, IconPaperclipLine as IconPaperclip } from "@instructure/ui";
 import React, { Component } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import IconPaperclip from "@instructure/ui-icons/lib/Line/IconPaperclip";
 import WorkflowStateIcon from "./WorkflowStateIcon";
-import Link from "@instructure/ui-elements/lib/components/Link";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 export default class FileListItem extends Component {
   constructor(props) {

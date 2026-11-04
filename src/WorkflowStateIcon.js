@@ -1,8 +1,10 @@
+import {
+  ScreenReaderContent,
+  IconUnpublishedLine as IconUnpublished,
+  IconPublishSolid as IconPublish,
+} from "@instructure/ui";
 import React, { PureComponent } from "react";
-import IconUnpublished from "@instructure/ui-icons/lib/Line/IconUnpublished";
-import IconPublish from "@instructure/ui-icons/lib/Solid/IconPublish";
-import { Trans } from "@lingui/macro";
-import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
+import { Trans } from "@lingui/react/macro";
 import PropTypes from "prop-types";
 
 export default class WorkflowStateIcon extends PureComponent {
@@ -18,7 +20,7 @@ export default class WorkflowStateIcon extends PureComponent {
       return (
         <React.Fragment>
           <ScreenReaderContent>
-            <Trans>{this.props.resourceTitle} is unpublished </Trans>
+            <Trans>{this.props.resourceTitle} is unpublished</Trans>
           </ScreenReaderContent>
           <IconUnpublished color="secondary" />
         </React.Fragment>
@@ -27,7 +29,7 @@ export default class WorkflowStateIcon extends PureComponent {
       return (
         <React.Fragment>
           <ScreenReaderContent>
-            <Trans>{this.props.resourceTitle} is published </Trans>
+            <Trans>{this.props.resourceTitle} is published</Trans>
           </ScreenReaderContent>
           <IconPublish color="success" />
         </React.Fragment>

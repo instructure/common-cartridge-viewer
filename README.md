@@ -12,10 +12,11 @@ View Common Cartridges in the browser. Methods:
 
 ## Quick start
 
+Requires Node 26 (see `.nvmrc` and `.tool-versions`).
+
 ```bash
 git clone https://github.com/instructure/common-cartridge-viewer.git
 cd common-cartridge-viewer
-export NODE_OPTIONS=--openssl-legacy-provider
 npm ci
 npm run build # populates locale data
 npm start

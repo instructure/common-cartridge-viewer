@@ -1,9 +1,8 @@
+import { Heading, ScreenReaderContent } from "@instructure/ui";
 import React, { Component } from "react";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import AssociatedContentAssignmentListItem from "./AssociatedContentAssignmentListItem";
 import { getAssignmentListResources } from "./utils";
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import Paginate from "./Paginate";
 
 export default class AssociatedContentAssignmentList extends Component {

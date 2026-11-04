@@ -1,4 +1,10 @@
-import { basename } from "path";
+import {
+  Billboard,
+  Button,
+  Tooltip,
+  ScreenReaderContent,
+  IconDownloadLine as IconDownload,
+} from "@instructure/ui";
 import React, { Component } from "react";
 import {
   resourceTypes,
@@ -7,11 +13,6 @@ import {
 } from "./constants";
 import { Link as RouterLink } from "react-router-dom";
 import { saveAs } from "file-saver";
-import Billboard from "@instructure/ui-billboard/lib/components/Billboard";
-import IconDownload from "@instructure/ui-icons/lib/Line/IconDownload";
-import Button from "@instructure/ui-buttons/lib/components/Button";
-import Tooltip from "@instructure/ui-overlays/lib/components/Tooltip";
-import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
 import EntryDocument from "./EntryDocument";
 import Image from "./Image";
 import Assignment from "./Assignment";
@@ -20,8 +21,8 @@ import Discussion from "./Discussion";
 import Assessment from "./Assessment";
 import WikiContent from "./WikiContent";
 import WebLink from "./WebLink";
-import { getExtension, getResourceHref } from "./utils";
-import { Trans } from "@lingui/macro";
+import { basename, getExtension, getResourceHref } from "./utils";
+import { Trans } from "@lingui/react/macro";
 import EmbeddedPreview from "./EmbeddedPreview";
 import ResourceUnavailable from "./ResourceUnavailable";
 import PreviewUnavailable from "./PreviewUnavailable";
@@ -86,14 +87,21 @@ export default class Resource extends Component {
     let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
       <div className="previous-link">
-        <Tip variant="inverse" tip={previousItem.title} placement="end">
+        <Tip
+          {...(withTooltip && {
+            color: "primary-inverse",
+            renderTip: previousItem.title,
+            placement: "end",
+          })}
+        >
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(previousItem),
             }}
-            variant="ghost"
+            color="primary"
+            withBackground={false}
             as={RouterLink}
-            innerRef={this.setPreviousButton}
+            elementRef={this.setPreviousButton}
             onClick={this.handlePreviousButtonPressed}
           >
             <Trans>Previous</Trans>
@@ -107,14 +115,21 @@ export default class Resource extends Component {
     let Tip = withTooltip ? Tooltip : React.Fragment;
     return (
       <div className="next-link">
-        <Tip variant="inverse" tip={nextItem.title} placement="start">
+        <Tip
+          {...(withTooltip && {
+            color: "primary-inverse",
+            renderTip: nextItem.title,
+            placement: "start",
+          })}
+        >
           <Button
             to={{
               pathname: this.makeNavigationButtonHrefFromModule(nextItem),
             }}
-            variant="ghost"
+            color="primary"
+            withBackground={false}
             as={RouterLink}
-            innerRef={this.setNextButton}
+            elementRef={this.setNextButton}
             onClick={this.handleNextButtonPressed}
           >
             <Trans>Next</Trans>

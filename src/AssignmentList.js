@@ -1,7 +1,6 @@
+import { Heading, ScreenReaderContent } from "@instructure/ui";
 import React, { Component } from "react";
-import { Trans } from "@lingui/macro";
-import Heading from "@instructure/ui-elements/lib/components/Heading";
-import ScreenReaderContent from "@instructure/ui-a11y/lib/components/ScreenReaderContent";
+import { Trans } from "@lingui/react/macro";
 import AssignmentListItem from "./AssignmentListItem";
 import { getAssignmentListResources } from "./utils";
 import Paginate from "./Paginate";

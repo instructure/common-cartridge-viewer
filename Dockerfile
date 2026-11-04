@@ -2,7 +2,7 @@
 
 # ---------- Base ----------
 # Shared base with dependencies installed from the lockfile.
-FROM node:16-alpine AS base
+FROM node:26-alpine AS base
 WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./

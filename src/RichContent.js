@@ -1,3 +1,4 @@
+import { Text } from "@instructure/ui";
 import React, { Component } from "react";
 import createDOMPurify from "dompurify";
 import {
@@ -12,7 +13,6 @@ import {
   resourceTypeToHref,
 } from "./constants";
 import { getFileResourcePath, mathJaxTypeset } from "./utils";
-import Text from "@instructure/ui-elements/lib/components/Text";
 import _ from "lodash";
 
 const DOMPurify = createDOMPurify(window);
