@@ -7,10 +7,10 @@ import WorkflowStateIcon from "./WorkflowStateIcon";
 export default class AssignmentListItemBody extends PureComponent {
   render() {
     const pathname = this.props.resourceNotFound
-      ? `resources/unavailable`
+      ? `/resources/unavailable`
       : this.props.isModuleItem
-        ? `module-items/${this.props.identifier}`
-        : `resources/${this.props.identifier}`;
+        ? `/module-items/${this.props.identifier}`
+        : `/resources/${this.props.identifier}`;
     return (
       <li className="ExpandCollapseList-item">
         <div className="ExpandCollapseList-item-inner">

@@ -85,10 +85,10 @@ export default class AssessmentListItem extends Component {
       : "secondary";
 
     const pathname = this.state.resourceNotFound
-      ? `resources/unavailable`
+      ? `/resources/unavailable`
       : this.props.isModuleItem
-        ? `module-items/${this.props.identifier}`
-        : `resources/${this.props.identifier}`;
+        ? `/module-items/${this.props.identifier}`
+        : `/resources/${this.props.identifier}`;
 
     return (
       <li className="ExpandCollapseList-item">

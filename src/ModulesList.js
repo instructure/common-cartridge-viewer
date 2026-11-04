@@ -166,7 +166,7 @@ export default class ModulesList extends Component {
 
               <div style={{ flex: 1 }}>
                 {item.href && (
-                  <Link as={NavLink} to={`resources/${item.identifier}`}>
+                  <Link as={NavLink} to={`/resources/${item.identifier}`}>
                     <span>
                       {item.title || <Trans>Untitled</Trans>} <Trans>(unidentified)</Trans>
                     </span>

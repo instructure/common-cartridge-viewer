@@ -19,8 +19,8 @@ export default class ExternalToolListItem extends Component {
               as={NavLink}
               to={{
                 pathname: this.props.isModuleItem
-                  ? `module-items/${this.props.identifier}`
-                  : `resources/${this.props.identifier}`,
+                  ? `/module-items/${this.props.identifier}`
+                  : `/resources/${this.props.identifier}`,
               }}
             >
               <span>{this.props.item.title || <Trans>Untitled</Trans>}</span>

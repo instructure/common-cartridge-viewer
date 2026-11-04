@@ -10,7 +10,7 @@ import {
   IconXSolid as IconClose,
 } from "@instructure/ui";
 import React, { Component } from "react";
-import { Route, Switch } from "./routerCompat";
+import { Routes, Route, useLocation, useParams } from "react-router-dom";
 import NavLink from "./NavLink";
 import Resource from "./Resource";
 import RouterObserver from "./RouterObserver";
@@ -43,6 +43,12 @@ const queryString = require("query-string");
 const ONE_MEG_IN_BYTES = 1000000;
 
 // https://www.imsglobal.org/cc/ccv1p1/imscc_profilev1p1-Implementation.html
+
+function RouteContent({ children }) {
+  const params = useParams();
+  const location = useLocation();
+  return children({ params, location });
+}
 
 export default class CommonCartridge extends Component {
   constructor(props) {
@@ -536,51 +542,131 @@ export default class CommonCartridge extends Component {
                   margin={this.props.compact ? "none" : "small"}
                   background="default"
                 >
-                  <Switch>
+                  <Routes>
                     <Route
-                      exact
                       path="/"
-                      render={({ match, location }) => (
-                        <React.Fragment>
-                          {this.state.showcaseSingleResource !== null ? (
+                      element={
+                        <RouteContent>
+                          {({ params, location }) => (
+                            <React.Fragment>
+                              {this.state.showcaseSingleResource !== null ? (
+                                <React.Fragment>
+                                  <Resource
+                                    getTextByPath={this.getTextByPath}
+                                    externalViewer={this.state.externalViewers.get(
+                                      this.state.showcaseResources[0].getAttribute("identifier"),
+                                    )}
+                                    getUrlForPath={this.getUrlForPath}
+                                    identifier={this.state.showcaseResources[0].getAttribute(
+                                      "identifier",
+                                    )}
+                                    moduleItems={this.state.moduleItems}
+                                    modules={this.state.modules}
+                                    resourceMap={this.state.resourceMap}
+                                    resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
+                                    location={location}
+                                    rubrics={this.state.rubrics}
+                                  />
+                                </React.Fragment>
+                              ) : this.state.showcaseResources.length === 1 ? (
+                                <React.Fragment>
+                                  <Resource
+                                    externalViewer={this.state.externalViewers.get(
+                                      this.state.showcaseResources[0].getAttribute("identifier"),
+                                    )}
+                                    getTextByPath={this.getTextByPath}
+                                    getUrlForPath={this.getUrlForPath}
+                                    identifier={this.state.showcaseResources[0].getAttribute(
+                                      "identifier",
+                                    )}
+                                    moduleItems={this.state.moduleItems}
+                                    modules={this.state.modules}
+                                    resourceMap={this.state.resourceMap}
+                                    resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
+                                    location={location}
+                                    rubrics={this.state.rubrics}
+                                  />
+                                </React.Fragment>
+                              ) : (
+                                <React.Fragment>
+                                  <ModulesList
+                                    getTextByPath={this.getTextByPath}
+                                    associatedContentAssignmentHrefsSet={
+                                      this.state.associatedContentAssignmentHrefsSet
+                                    }
+                                    moduleItems={this.state.moduleItems}
+                                    modules={this.state.modules}
+                                    location={location}
+                                  />
+                                </React.Fragment>
+                              )}
+                            </React.Fragment>
+                          )}
+                        </RouteContent>
+                      }
+                    />
+
+                    <Route
+                      path="resources/:identifier"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) => (
                             <React.Fragment>
                               <Resource
+                                basepath={this.state.basepath}
+                                externalViewers={this.state.externalViewers}
+                                externalViewer={this.state.externalViewers.get(params.identifier)}
+                                getBlobByPath={this.getBlobByPath}
                                 getTextByPath={this.getTextByPath}
-                                externalViewer={this.state.externalViewers.get(
-                                  this.state.showcaseResources[0].getAttribute("identifier"),
-                                )}
                                 getUrlForPath={this.getUrlForPath}
-                                identifier={this.state.showcaseResources[0].getAttribute(
-                                  "identifier",
-                                )}
+                                identifier={params.identifier}
+                                isCartridgeRemotelyExpanded={this.state.isCartridgeRemotelyExpanded}
                                 moduleItems={this.state.moduleItems}
                                 modules={this.state.modules}
-                                resourceMap={this.state.resourceMap}
                                 resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
+                                resourceMap={this.state.resourceMap}
                                 location={location}
                                 rubrics={this.state.rubrics}
                               />
                             </React.Fragment>
-                          ) : this.state.showcaseResources.length === 1 ? (
+                          )}
+                        </RouteContent>
+                      }
+                    />
+
+                    <Route
+                      path="module-items/:identifier"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) => (
                             <React.Fragment>
                               <Resource
-                                externalViewer={this.state.externalViewers.get(
-                                  this.state.showcaseResources[0].getAttribute("identifier"),
-                                )}
+                                basepath={this.state.basepath}
+                                externalViewers={this.state.externalViewers}
+                                externalViewer={this.state.externalViewers.get(params.identifier)}
+                                getBlobByPath={this.getBlobByPath}
                                 getTextByPath={this.getTextByPath}
                                 getUrlForPath={this.getUrlForPath}
-                                identifier={this.state.showcaseResources[0].getAttribute(
-                                  "identifier",
-                                )}
+                                identifier={params.identifier}
+                                isCartridgeRemotelyExpanded={this.state.isCartridgeRemotelyExpanded}
                                 moduleItems={this.state.moduleItems}
                                 modules={this.state.modules}
-                                resourceMap={this.state.resourceMap}
                                 resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
-                                location={location}
+                                resourceMap={this.state.resourceMap}
+                                isModuleItem={true}
                                 rubrics={this.state.rubrics}
                               />
                             </React.Fragment>
-                          ) : (
+                          )}
+                        </RouteContent>
+                      }
+                    />
+
+                    <Route
+                      path="modules/:module"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) => (
                             <React.Fragment>
                               <ModulesList
                                 getTextByPath={this.getTextByPath}
@@ -589,196 +675,144 @@ export default class CommonCartridge extends Component {
                                 }
                                 moduleItems={this.state.moduleItems}
                                 modules={this.state.modules}
-                                match={match}
                                 location={location}
                               />
                             </React.Fragment>
                           )}
-                        </React.Fragment>
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/resources/:identifier"
-                      render={({ match, location }) => (
-                        <React.Fragment>
-                          <Resource
-                            basepath={this.state.basepath}
-                            externalViewers={this.state.externalViewers}
-                            externalViewer={this.state.externalViewers.get(match.params.identifier)}
-                            getBlobByPath={this.getBlobByPath}
-                            getTextByPath={this.getTextByPath}
-                            getUrlForPath={this.getUrlForPath}
-                            identifier={match.params.identifier}
-                            isCartridgeRemotelyExpanded={this.state.isCartridgeRemotelyExpanded}
-                            moduleItems={this.state.moduleItems}
-                            modules={this.state.modules}
-                            resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
-                            resourceMap={this.state.resourceMap}
-                            location={location}
-                            rubrics={this.state.rubrics}
-                          />
-                        </React.Fragment>
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/module-items/:identifier"
-                      render={({ match, location }) => (
-                        <React.Fragment>
-                          <Resource
-                            basepath={this.state.basepath}
-                            externalViewers={this.state.externalViewers}
-                            externalViewer={this.state.externalViewers.get(match.params.identifier)}
-                            getBlobByPath={this.getBlobByPath}
-                            getTextByPath={this.getTextByPath}
-                            getUrlForPath={this.getUrlForPath}
-                            identifier={match.params.identifier}
-                            isCartridgeRemotelyExpanded={this.state.isCartridgeRemotelyExpanded}
-                            moduleItems={this.state.moduleItems}
-                            modules={this.state.modules}
-                            resourceIdsByHrefMap={this.state.resourceIdsByHrefMap}
-                            resourceMap={this.state.resourceMap}
-                            isModuleItem={true}
-                            rubrics={this.state.rubrics}
-                          />
-                        </React.Fragment>
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/modules/:module"
-                      render={({ match, location }) => (
-                        <React.Fragment>
-                          <ModulesList
-                            getTextByPath={this.getTextByPath}
-                            associatedContentAssignmentHrefsSet={
-                              this.state.associatedContentAssignmentHrefsSet
-                            }
-                            moduleItems={this.state.moduleItems}
-                            modules={this.state.modules}
-                            match={match}
-                            location={location}
-                          />
-                        </React.Fragment>
-                      )}
-                    />
-
-                    <Route
-                      exact
-                      path="/quizzes"
-                      render={({ match, location }) =>
-                        this.state.assessmentResources.length > 0 ? (
-                          <React.Fragment>
-                            <AssessmentList
-                              getTextByPath={this.getTextByPath}
-                              moduleItems={this.state.moduleItems}
-                              resourceMap={this.state.resourceMap}
-                              resources={this.state.assessmentResources}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        ) : (
-                          <CourseNavigationUnavailable />
-                        )
+                        </RouteContent>
                       }
                     />
 
                     <Route
-                      exact
-                      path="/pages"
-                      render={({ match, location }) =>
-                        this.state.pageResources.length > 0 ? (
-                          <React.Fragment>
-                            <WikiContentList
-                              getTextByPath={this.getTextByPath}
-                              moduleItems={this.state.moduleItems}
-                              resourceMap={this.state.resourceMap}
-                              resources={this.state.pageResources}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        ) : (
-                          <CourseNavigationUnavailable />
-                        )
+                      path="quizzes"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) =>
+                            this.state.assessmentResources.length > 0 ? (
+                              <React.Fragment>
+                                <AssessmentList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.assessmentResources}
+                                  location={location}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
+                        </RouteContent>
                       }
                     />
 
                     <Route
-                      exact
-                      path="/discussions"
-                      render={({ match, location }) =>
-                        this.state.discussionResources.length > 0 ? (
-                          <React.Fragment>
-                            <DiscussionList
-                              getTextByPath={this.getTextByPath}
-                              moduleItems={this.state.moduleItems}
-                              resourceMap={this.state.resourceMap}
-                              resources={this.state.discussionResources}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        ) : (
-                          <CourseNavigationUnavailable />
-                        )
+                      path="pages"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) =>
+                            this.state.pageResources.length > 0 ? (
+                              <React.Fragment>
+                                <WikiContentList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.pageResources}
+                                  location={location}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
+                        </RouteContent>
                       }
                     />
 
                     <Route
-                      exact
-                      path="/files"
-                      render={({ match, location }) =>
-                        this.state.fileResources.length > 0 ? (
-                          <React.Fragment>
-                            <FileList
-                              resources={this.state.fileResources}
-                              moduleItems={this.state.moduleItems}
-                              resourceMap={this.state.resourceMap}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        ) : (
-                          <CourseNavigationUnavailable />
-                        )
+                      path="discussions"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) =>
+                            this.state.discussionResources.length > 0 ? (
+                              <React.Fragment>
+                                <DiscussionList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.discussionResources}
+                                  location={location}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
+                        </RouteContent>
                       }
                     />
 
                     <Route
-                      exact
-                      path="/assignments"
-                      render={({ match, location }) =>
-                        numberOfAssignments > 0 ? (
-                          <React.Fragment>
-                            <AssignmentList
-                              getTextByPath={this.getTextByPath}
-                              moduleItems={this.state.moduleItems}
-                              resourceMap={this.state.resourceMap}
-                              resources={this.state.assignmentResources}
-                              location={location}
-                            />
-                            <AssociatedContentAssignmentList
-                              resources={this.state.associatedContentAssignmentResources}
-                              getTextByPath={this.getTextByPath}
-                              moduleItems={this.state.moduleItems}
-                              resourceMap={this.state.resourceMap}
-                              location={location}
-                            />
-                          </React.Fragment>
-                        ) : (
-                          <CourseNavigationUnavailable />
-                        )
+                      path="files"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) =>
+                            this.state.fileResources.length > 0 ? (
+                              <React.Fragment>
+                                <FileList
+                                  resources={this.state.fileResources}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  location={location}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
+                        </RouteContent>
                       }
                     />
 
                     <Route
-                      exact
-                      path="/course/navigation"
-                      render={({ match }) => <CourseNavigationUnavailable />}
+                      path="assignments"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) =>
+                            numberOfAssignments > 0 ? (
+                              <React.Fragment>
+                                <AssignmentList
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  resources={this.state.assignmentResources}
+                                  location={location}
+                                />
+                                <AssociatedContentAssignmentList
+                                  resources={this.state.associatedContentAssignmentResources}
+                                  getTextByPath={this.getTextByPath}
+                                  moduleItems={this.state.moduleItems}
+                                  resourceMap={this.state.resourceMap}
+                                  location={location}
+                                />
+                              </React.Fragment>
+                            ) : (
+                              <CourseNavigationUnavailable />
+                            )
+                          }
+                        </RouteContent>
+                      }
                     />
-                  </Switch>
+
+                    <Route
+                      path="course/navigation"
+                      element={
+                        <RouteContent>
+                          {({ params, location }) => <CourseNavigationUnavailable />}
+                        </RouteContent>
+                      }
+                    />
+                  </Routes>
 
                   <RouterObserver onHistoryChange={this.handleHistoryChange} />
                 </View>

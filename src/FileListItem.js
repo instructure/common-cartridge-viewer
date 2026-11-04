@@ -58,8 +58,8 @@ export default class FileListItem extends Component {
               as={RouterLink}
               to={{
                 pathname: this.props.isModuleItem
-                  ? `module-items/${this.props.identifier}`
-                  : `resources/${this.props.identifier}`,
+                  ? `/module-items/${this.props.identifier}`
+                  : `/resources/${this.props.identifier}`,
               }}
             >
               {this.props.title || title}
