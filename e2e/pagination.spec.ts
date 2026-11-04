@@ -6,9 +6,9 @@ const S3_MANIFEST =
   "https://s3.amazonaws.com/public-imscc/UNZIPPED+STUFF/caleblorcruxcourse-export-big/imsmanifest.xml";
 
 const pageButton = (page: Page, n: string) =>
-  page.locator('a[data-cid="Button PaginationButton"]', { hasText: n });
+  page.locator('a[data-cid="BaseButton PaginationButton"]', { hasText: n });
 const activePageButton = (page: Page, n: string) =>
-  page.locator('a[data-cid="Button PaginationButton"][aria-current="page"]', {
+  page.locator('a[data-cid="BaseButton PaginationButton"][aria-current="page"]', {
     hasText: n,
   });
 const fileLink = (page: Page, name: string) => page.locator("a", { hasText: name });

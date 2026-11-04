@@ -153,7 +153,7 @@ export default class CommonCartridge extends Component {
     const isOnEmptyModulesPage =
       this.state.showcaseSingleResource == null &&
       this.state.modules.length === 0 &&
-      window.location.hash === "#/";
+      ["", "#", "#/"].includes(window.location.hash);
     if (isOnEmptyModulesPage && this.state.showcaseResources.length > 1) {
       if (
         this.state.assignmentResources.length > 0 ||

@@ -102,7 +102,6 @@ export default class Resource extends Component {
             withBackground={false}
             as={RouterLink}
             elementRef={this.setPreviousButton}
-            onClick={this.handlePreviousButtonPressed}
           >
             <Trans>Previous</Trans>
           </Button>
@@ -130,7 +129,6 @@ export default class Resource extends Component {
             withBackground={false}
             as={RouterLink}
             elementRef={this.setNextButton}
-            onClick={this.handleNextButtonPressed}
           >
             <Trans>Next</Trans>
           </Button>
