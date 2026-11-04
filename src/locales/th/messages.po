@@ -401,3 +401,7 @@ msgstr "{0}%"
 #: src/CommonCartridge.js:419
 msgid "{0}% loaded"
 msgstr "{0}% ที่โหลด"
+
+#. placeholder {0}: this.state.discussionResources.length
+msgid "Discussions ({0})"
+msgstr "การพูดคุย ({0})"
